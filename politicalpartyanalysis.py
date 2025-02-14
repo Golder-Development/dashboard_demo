@@ -18,7 +18,7 @@ app = MultiPage(app_name="UK Political Donations")  # Create an instance
 app.add_page("Introduction", page1_body)
 app.add_page("Head Line Figures", hlf_body)
 app.add_page("Cash Donations", page3_body)
-app.add_page("Cash Donations", page4_body)
+app.add_page("Dubious Donations", page4_body)
 app.add_page("Notes on Data and Manipulations", notesondataprep_body)
 
 app.run()  # Run the  app
