@@ -1,6 +1,8 @@
 import streamlit as st
 
 # Define a class for managing multiple pages in a Streamlit app
+
+
 class MultiPage:
 
     def __init__(self, app_name) -> None:
@@ -20,5 +22,7 @@ class MultiPage:
     # Method to run the app
     def run(self):
         st.title(self.app_name)  # Display the app title
-        page = st.sidebar.radio("Menu", self.pages, format_func=lambda page: page["title"])  # Create a sidebar menu
+        page = st.sidebar.radio("Menu",
+                                self.pages,
+                                format_func=lambda page: page["title"])
         page["function"]()  # Run the selected page's function

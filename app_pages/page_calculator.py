@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 def calculator_body():
     st.write("---")
     col1, col2, col3 = st.columns(3)
@@ -8,9 +9,11 @@ def calculator_body():
     with col2:
         num2 = st.number_input(label="Enter the second number", step=1)
     with col3:
-        operation = st.selectbox(label="Select an operation", 
-                                 options=["Addition", "Subtraction", "Multiplication", "Division"])
-        
+        operation = st.selectbox(label="Select an operation",
+                                 options=["Addition",
+                                          "Subtraction",
+                                          "Multiplication",
+                                          "Division"])
     if st.button("Click here for the maths"):
         if num2 == 0 and operation == "Division":
             st.error("Cannot divide by zero. Try again.")
@@ -25,7 +28,8 @@ def calculator_function(num1, num2, operation):
     Parameters:
     - num1 (float): The first number.
     - num2 (float): The second number.
-    - operation (str): The operation to perform. Valid options are "Addition", "Subtraction", "Multiplication", and "Division".
+    - operation (str): The operation to perform. Valid options are "Addition",
+    "Subtraction", "Multiplication", and "Division".
 
     Returns:
     - None
@@ -47,4 +51,4 @@ def calculator_function(num1, num2, operation):
         st.success(f"The quotient of {num1} and {num2} is **{result}**")
     else:
         st.error("Invalid operation. Please try again.")
-    
+    return None
