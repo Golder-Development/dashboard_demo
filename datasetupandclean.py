@@ -1,7 +1,7 @@
 import pandas as pd
 import datetime as dt
 import streamlit as st
-
+import calculations as ppcalc
 
 def load_data():
     # Load the data
@@ -44,11 +44,27 @@ def load_data():
     # df.to_csv('original_donations.csv')
     return df
 
+def create_thresholds():
+    if 'g_thresholds' not in st.session_state:
+        st.session_state.g_thresholds = {
+            0: "No Relevant Donations", 
+            1: "Single Donation Entity", 
+            50: "Very Small Entity",
+            100: "Small Entity", 
+            1000: "Medium Entity"
+        }
 
 def calculate_reg_entity_group(donation_events, entity_name):
-    thresholds = {0: "No Relevant Donations", 1: "Single Donation Entity", 50: "Very Small Entity",
-                  100: "Small Entity", 1000: "Medium Entity", float("inf"): entity_name}
-    for limit, category in thresholds.items():
+    global g_thresholds
+    if 'g_thresholds' not in st.session_state:
+        create_thresholds()
+    # Copy g_thresholds and add the new entity_name to the thresholds dictionary
+    # Make a copy to avoid modifying the global dictionary
+    thresholds = st.session_state.g_thresholds.copy()
+    # Add the new threshold with entity_name
+    thresholds[float("inf")] = entity_name
+    # Loop through the thresholds to find the corresponding category
+    for limit, category in g_thresholds.items():
         if donation_events <= limit:
             return category
 
@@ -59,9 +75,9 @@ def load_party_summary_data():
         st.error("No data found in session state!")
         return None
     # Create a DataFrame with the sum, count and mean of the donations for each RegulatedEntityName
-    RegulatedEntity_df = df.groupby(['RegulatedEntityName','RegulatedEntityType']).agg({'Value': ['sum', 'count', 'mean']}).reset_index()
+    RegulatedEntity_df = df.groupby(['RegulatedEntityName', 'RegulatedEntityType']).agg({'Value': ['sum', 'count', 'mean']}).reset_index()
     # Rename columns
-    RegulatedEntity_df.columns = ['RegulatedEntityName','RegulatedEntityType','DonationsValue', 'DonationEvents', 'DonationMean']
+    RegulatedEntity_df.columns = ['RegulatedEntityName', 'RegulatedEntityType', 'DonationsValue', 'DonationEvents', 'DonationMean']
 
     # Add RegEntity_Group column
     RegulatedEntity_df['RegEntity_Group'] = RegulatedEntity_df.apply(
@@ -129,6 +145,9 @@ def load_cleaned_data():
         df["DonorId"].isna().astype(int) +
         df["DonationAction"].notna().astype(int)
     )
+
+    # Create simple column to enable count of events using sum
+    df["EventCount"] = 1
 
     # Load party summary data to get RegEntity_Group
     RegulatedEntity_df = st.session_state.get("data_party_sum", None)

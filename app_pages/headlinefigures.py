@@ -4,9 +4,6 @@ def hlf_body():
     """
     import streamlit as st
     import calculations as ppcalc
-    import matplotlib.pyplot as plt
-    import matplotlib.ticker as ticker
-    import seaborn as sns
     import Visualisations as vis
 
     def format_number(value):
@@ -32,17 +29,16 @@ def hlf_body():
     max_date = ppcalc.get_maxdate(filtered_df, filters).date()
 
     # Display the headline figures
-    st.write("# Topline Summary of Political Donations to the UK Political "
+    st.write("## Topline Summary of Political Donations to the UK Political "
              "Parties")
     col1, col2 = st.columns(2)
     with col1:
-        st.write("## Headline Figures")
+        st.write("### Headline Figures")
         st.write(f"* During the period from {min_date} to {max_date}, {format_number(unique_regulated_entities)} "
                  "regulated political bodies received donations")
         st.write(f"* These received a total value of £{format_number(total_value_donations)} from {format_number(unique_donors)} unique donors")
         st.write(f"* The average donation was £{format_number(mean_value_donations)} and there were {format_number(unique_donations)} unique donations")
         # Add a graph comparing the number of donations per RegulatedEntity to the value of donations
-        st.write("## Donations vs. Value by Regulated Entity")
         if sum_df is not None:
             vis.plot_regressionplot(
                 sum_df,
@@ -54,31 +50,27 @@ def hlf_body():
             )
         else:
             st.error("Summary data not found. Please check dataset loading in the main app.")
-        st.write("### Share of Donations by Year and Regulated Entity Type")
         if filtered_df.empty:
             st.write("No data available for the selected filters.")
             return
-        vis.plot_donations_by_year(filtered_df, XValues="YearReceived", YValue="Value", GGroup="RegulatedEntityType", XLabel="Year", YLabel="Total Value (£)", Title="Donations by Year and Entity Type")
+        vis.plot_donations_by_year(filtered_df, XValues="YearReceived", YValue="EventCount", GGroup="RegulatedEntityType", XLabel="Year", YLabel="Donations", Title="Donations by Year and Entity Type")
     with col2:
         # use data from the summary dataset
-        st.write("## Headline Visuals")
-        st.write("* Share of number of donations by Regulated Entity")
+        st.write("### Headline Visuals")
         if sum_df is not None:
             # Plot the pie chart
-            vis.plot_pie_chart(sum_df, category_column="RegEntity_Group", title="Entity Distribution by Count")
+            vis.plot_pie_chart(sum_df, category_column="RegEntity_Group", title="Donations by Regulated Entity")
         else:
             st.error("Summary data not found. Please check dataset loading in the "
                      "main app.")
-        st.write("* Share of value of donations by party")
         if sum_df is not None:
             # Create the pie chart
-            vis.plot_pie_chart(sum_df, category_column="RegEntity_Group", value_column="DonationsValue", title="Entity Distribution by Total Donations (£)")
+            vis.plot_pie_chart(sum_df, category_column="RegEntity_Group", value_column="DonationsValue", title="Value of Donations by Regulated Entity")
         else:
             st.error("Summary data not found. Please check dataset loading in the "
                      "main app.")
-        st.write("### Value of Donations Over Time")
         if filtered_df.empty:
             st.write("No data available for the selected filters.")
             return
         vis.plot_donations_by_year(filtered_df, XValues="YearReceived", YValue="Value", GGroup="DonorStatus", XLabel="Year", YLabel="Total Value (£)", Title="Donations by Year")
-    st.write("## Next Steps")
+    st.write("### Click on any Visualisation to view it full screen.")

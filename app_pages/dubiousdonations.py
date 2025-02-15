@@ -66,8 +66,8 @@ def dubiousdonations_body():
     dubious_percent_of_donation_actions = (dubious_donation_actions / ppcalc.get_donations_ct(filtered_df, filters)) * 100
 
     # Format text
-    st.write("# Donations Identified as Potentially Questionable")
-    st.write("## Explanation")
+    st.write("## Donations Identified as Potentially Questionable")
+    st.write("### Explanation")
     st.write("* Certain Political Donations represent funds either "
              "donated by donors who are not allowed to donate to UK Political Parties or"
              "are perceived to have been made with an aim to gain influence or in a "
@@ -76,7 +76,7 @@ def dubiousdonations_body():
              "These are often returned to the donor after investigation, but"
              "the number and nature of these donations can be indicative of the "
              "state of a party's happiness to interact with dubious people and entities.")
-    st.write("## Topline Figures")
+    st.write("### Topline Figures")
     if dubious_donors >= 1:
         st.write(f"* During the period of the data, there were {dubious_donors} donors identified as dubious.")
         st.write(f"* These donors represented {dubious_percent_of_donors:.2f}% of donors to the regulated entity.")
@@ -94,13 +94,11 @@ def dubiousdonations_body():
         st.write(f"* All these had a value of £{format_number(total_value_dubious_donations)} and represented {dubious_percent_of_value:.2f}% in value of all donations.")
     st.write("---")
     # Add a visualization in col2 showing the share of all donations by year by RegulatedEntityType
-    st.write("### Dubious Donations by Year and Nature")
     filtered_df = filtered_df[filtered_df["DubiousData"] == 1]
     if filtered_df.empty:
         st.write("No data available for the selected filters.")
         return
     vis.plot_donations_by_year(filtered_df, XValues="YearReceived", YValue="Value", GGroup="NatureOfDonation", XLabel="Year", YLabel="Total Value (£)", Title="Dubious Donations by Year and Nature")
-    st.write("## Next Steps")
     # Display the filtered data (Optional)
     filtered_df = filtered_df[["ReceivedDate",
                                "DonorName",
@@ -112,5 +110,6 @@ def dubiousdonations_body():
                                "DonorStatus",
                                "DubiousData"]].query("DubiousData == 1")
     if not filtered_df.empty:
-        st.write("## Filtered Data")
+        st.write("### Scrollable table of identified donations")
         st.write(filtered_df)
+    st.write("### Click on Visuals to expand the graphs. Tables are scrollable")

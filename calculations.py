@@ -1,3 +1,8 @@
+import pandas as pd
+import streamlit as st
+import datasetupandclean as duc
+
+
 def apply_filters(df, filters=None):
     """
     Apply filtering conditions to the DataFrame.
@@ -119,3 +124,12 @@ def get_maxdate(df, filters=None):
     """Mean of value of donations"""
     df = apply_filters(df, filters)
     return df["ReceivedDate"].max()
+
+
+def display_thresholds_table():
+    """Creates and displays a table showing the threshold logic."""
+    # Convert the dictionary into a DataFrame
+    thresholds_df = pd.DataFrame(list(st.session_state.g_thresholds.items()), columns=["Donation Event Threshold", "Entity Category"])
+
+    st.write("### Threshold Logic Table")
+    st.table(thresholds_df)  # Static table (can use `st.dataframe()` for interactive table)
