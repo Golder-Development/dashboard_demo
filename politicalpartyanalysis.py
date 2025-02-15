@@ -26,7 +26,7 @@ app.add_page("Sponsorships", sponsorship_body)
 # app.add_page("Paid Visits", visits_body)
 app.add_page("Regulated Entities", regulatedentitypage_body)
 app.add_page("Donors", donorspage_body)
-app.add_page("Donations by Political Party", donationsbypoliticalpartys_body)
+app.add_page("Donator is Political Party", donationsbypoliticalpartys_body)
 app.add_page("Dubious Donations", dubiousdonations_body)
 app.add_page("Notes on Data and Manipulations", notesondataprep_body)
 

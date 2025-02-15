@@ -44,7 +44,7 @@ def cashdonations_body():
 
     # Apply filters to the dataset
     # filtered_df = df[date_filter]
-    filtered_df = df[df['DonationType' == 'cash' & 'DubiousData' == 0]].copy()
+    filtered_df = df[df['DonationType' == 'cash']].copy()
     if filters:
         filtered_df = filtered_df[filtered_df["RegulatedEntityId"] == filters["RegulatedEntityId"]]
 
