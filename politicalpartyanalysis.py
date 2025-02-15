@@ -1,7 +1,6 @@
 import streamlit as st
 import datasetupandclean as dc
 
-
 # Set up multipage navigation and reference pages.
 from app_pages.multi_page import MultiPage
 
@@ -33,30 +32,34 @@ app.add_page("Notes on Data and Manipulations", notesondataprep_body)
 
 app.run()  # Run the  app
 
+# Display a loading message
+loading_message = st.empty()
+loading_message.text("Please wait while the data sets are being calculated...")
 
 # Load and cache data correctly
 @st.cache_data
 def get_data():
     return dc.load_data()
 
-
 @st.cache_data
 def get_party_summary_data():
     return dc.load_party_summary_data()
-
 
 @st.cache_data
 def get_cleaned_data():
     return dc.load_cleaned_data()
 
-
 if "data" not in st.session_state:
     st.session_state["data"] = get_data()
+
 if "data_party_sum" not in st.session_state:
     st.session_state["data_party_sum"] = get_party_summary_data()
+
 if "data_clean" not in st.session_state:
     st.session_state["data_clean"] = get_cleaned_data()
 
+# Remove the loading message
+loading_message.empty()
 
 # The app is now ready to be run. To run the app, open a terminal
 # and run the following command streamlit run politicalpartyanalysis.py

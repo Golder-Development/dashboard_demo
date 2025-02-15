@@ -5,15 +5,6 @@ def hlf_body():
     import streamlit as st
     import calculations as ppcalc
     import matplotlib.pyplot as plt
-    import seaborn as sns
-
-    def format_number(value):
-        if value >= 1_000_000:
-            return f"{value / 1_000_000:.1f}M"
-        elif value >= 10_000:
-            return f"{value / 1_000:.1f}k"
-        else:
-            return f"{value:,.2f}"
 
     df = st.session_state.get("data_clean", None)
     sum_df = st.session_state.get("data_party_sum", None)
@@ -35,19 +26,19 @@ def hlf_body():
     col1, col2 = st.columns(2)
     with col1:
         st.write("## Headline Figures")
-        st.write(f"* During the period from {min_date} to {max_date}, {unique_regulated_entities:,} "
+        st.write(f"* During the period from {min_date} to {max_date}, {unique_regulated_entities} "
                  "regulated political bodies received donations")
-        st.write(f"* These received a total value of £{format_number(total_value_donations)} from {unique_donors:,} unique donors")
-        st.write(f"* The average donation was £{format_number(mean_value_donations)} and there were {unique_donations:,} unique donations")
+        st.write(f"* These reveived a total value of £{total_value_donations} from {unique_donors} unique donors")
+        st.write(f"* The average donation was £{mean_value_donations} and there were {unique_donations} unique donations")
     with col2:
-        # use data from the summary dataset
+        # use data from the dataset
         st.write("## Headline Visuals")
         st.write("* Share of number of donations by Regulated Entity")
-        if sum_df is not None:
-            grouped_data = sum_df["RegEntity_Group"].value_counts()
+        if filtered_df is not None:
+            grouped_data = filtered_df.groupby("RegEntity_Group").value_counts()
             # Plot the pie chart
             fig, ax = plt.subplots()
-            grouped_data.plot.pie(ax=ax, autopct=lambda p: f'{p:.0f}%', startangle=90)
+            grouped_data.plot.pie(ax=ax, autopct='%1.1f%%', startangle=90)
 
             # Set the title and ensure the chart is circular
             ax.set_title("Regulated Entity Distribution")
@@ -56,15 +47,15 @@ def hlf_body():
             # Display the chart in Streamlit
             st.pyplot(fig)
         else:
-            st.error("Summary data not found. Please check dataset loading in the "
+            st.error("Data not found. Please check dataset loading in the "
                      "main app.")
         st.write("* Share of value of donations by party")
-        if sum_df is not None:
-            # Group by RegEntity_Group and sum the 'DonationsValue' column
-            grouped_data2 = sum_df.groupby("RegEntity_Group")["DonationsValue"].sum()
+        if filtered_df is not None:
+            # Group by RegulatedEntityName and sum the 'Value' column
+            grouped_data2 = filtered_df.groupby("RegEntity_Group")["Value"].sum()
             # Create the pie chart
             fig, ax = plt.subplots()
-            grouped_data2.plot.pie(ax=ax, autopct=lambda p: f'{p:.0f}%', startangle=90)
+            grouped_data2.plot.pie(ax=ax, autopct='%1.1f%%', startangle=90)
 
             # Set the title and ensure the chart is circular
             ax.set_title("Regulated Entity Donation Distribution")
@@ -73,20 +64,6 @@ def hlf_body():
             # Display the chart in Streamlit
             st.pyplot(fig)
         else:
-            st.error("Summary data not found. Please check dataset loading in the "
+            st.error("Data not found. Please check dataset loading in the "
                      "main app.")
-
-    # Add a graph comparing the number of donations per RegulatedEntity to the value of donations
-    st.write("## Donations vs. Value by Regulated Entity")
-    if sum_df is not None:
-        fig, ax = plt.subplots()
-        sns.regplot(x=sum_df["DonationEvents"], y=sum_df["DonationsValue"], ax=ax)
-        ax.set_xlabel("Number of Donations")
-        ax.set_ylabel("Value of Donations (£)")
-        ax.set_title("Number of Donations vs. Value of Donations by Regulated Entity")
-        ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, loc: format_number(x)))
-        st.pyplot(fig)
-    else:
-        st.error("Summary data not found. Please check dataset loading in the main app.")
-
     st.write("## Next Steps")
