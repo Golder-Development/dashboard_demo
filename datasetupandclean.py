@@ -1,7 +1,12 @@
 import pandas as pd
+import datetime as dt
+import streamlit as st
 
 
+@st.cache
 def load_data():
+    import pandas as pd
+    # Load the data
     df = pd.read_csv('Donations_accepted_by_political_parties.csv', dtype={
         'index': 'int64',
         'ECRef': 'object',
@@ -37,23 +42,49 @@ def load_data():
     # Remove Currency sign of Value and convert to Float
     df['Value'] = df['Value'].replace({'£': '', ',': ''},
                                       regex=True).astype(float)
+
+    return df
+
+
+# create summary data
+@st.cache
+def load_party_summary_data():
+    import calculations.RegulationEntityGroup as RegulatedEntityGroup
+    df = st.session_state.get("data", None)
+    # Create a DataFrame with the sum, count and mean of the donations for each RegulatedEntityName
+    RegulatedEntity_df = df.groupby('RegulatedEntityName').agg({'Value': ['sum', 'count', 'mean']})
+    # Rename columns
+    RegulatedEntity_df.columns = ['DonationsValue', 'DonationEvents', 'DonationMean']
+    # Apply the function to create a new column
+    df['RegEntity_Group'] = df.RegulatedEntityName.apply(RegulatedEntityGroup)
+    # Summary of update from above
+    df.groupby(['RegEntity_Group']).agg({'Value': ['sum', 'count', 'mean']})
+    return df
+
+
+# create cleaned data
+@st.cache
+def load_cleaned_data():
+    df = st.session_state.get("data", None)
     # # Fill blank ReceivedDate with ReportedDate
     df['ReceivedDate'] = df['ReceivedDate'].fillna(df['ReportedDate'])
     # # Fill blank ReceivedDate with AcceptedDate
     df['ReceivedDate'] = df['ReceivedDate'].fillna(df['AcceptedDate'])
-    # # convert Received date to Date Format
-    df['ReceivedDate'] = pd.to_datetime(df['ReceivedDate'],
-                                        format='%d/%m/%Y', errors='coerce')
     # # Convert 'ReportingPeriodName' to datetime if it contains dates at the e
     df['ReportingPeriodName_Date'] = pd.to_datetime(
          df['ReportingPeriodName'].str.strip().str[-10:],
          dayfirst=True,
          format='mixed',
          errors='coerce'
-    )
+    ).dt.normalize()
+    # # convert Received date to Date Format
+    df['ReceivedDate'] = pd.to_datetime(df['ReceivedDate'],
+                                        errors='coerce').dt.normalize()
     # # Fill missing 'ReceivedDate' with dates from 'ReportingPeriodName'
     df['ReceivedDate'] = df['ReceivedDate'].fillna(
         df['ReportingPeriodName_Date'])
+    # # Fill errors in ReceivedDate with 01/01/1900 00:00:00
+    df['ReceivedDate'] = df['ReceivedDate'].fillna(dt.datetime(1900, 1, 1))
     # # Append YearReceived column
     df['YearReceived'] = round(df['ReceivedDate'].dt.year)
     # # Append MonthReceived column
@@ -78,4 +109,12 @@ def load_data():
     # # Replace Donationm to nan in NatureOfDonation with Other
     df['NatureOfDonation'] = df['NatureOfDonation'].replace({'Donation to nan': 'Other',
                                                              'Other Payment': 'Other'}, regex=True)
+    # # Add flag to mark 1 when received date - 01/01/1900 00:00:00
+    df['DubiousData'] = df['ReceivedDate'].apply(lambda x: 1 if x == dt.datetime(1900, 1, 1) else 0)
+    # # Add flag to mark 1 when RegulatedEntityId is null
+    df['DubiousData'] = df['DubiousData'] + df['RegulatedEntityId'].apply(lambda x: 1 if pd.isnull(x) else 0)
+    # # Add flag to mark 1 when DonorId is null
+    df['DubiousData'] = df['DubiousData'] + df['DonorId'].apply(lambda x: 1 if pd.isnull(x) else 0)
+    # # Add flag to mark 1 when DonationAction is not null
+    df['DubiousData'] = df['DubiousData'] + df['DonationAction'].apply(lambda x: 1 if pd.notnull(x) else 0)
     return df

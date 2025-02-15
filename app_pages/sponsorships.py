@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-def page4_body():
+def sponsorship_body():
     """
     This function displays the content of Page two.
     """

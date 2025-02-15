@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-def page1_body():
+def introduction_body():
     """
     This function displays the content of Page one.
     """

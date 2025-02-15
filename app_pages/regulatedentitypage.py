@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-def page3_body():
+def regulatedentitypage_body():
     """
     This function displays the content of Page two.
     """

@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-def hlf_body():
+def donorspage_body():
     """
     This function displays the content of Page two.
     """
