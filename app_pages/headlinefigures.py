@@ -39,6 +39,18 @@ def hlf_body():
                  "regulated political bodies received donations")
         st.write(f"* These received a total value of £{format_number(total_value_donations)} from {unique_donors:,} unique donors")
         st.write(f"* The average donation was £{format_number(mean_value_donations)} and there were {unique_donations:,} unique donations")
+        # Add a graph comparing the number of donations per RegulatedEntity to the value of donations
+        st.write("## Donations vs. Value by Regulated Entity")
+        if sum_df is not None:
+            fig, ax = plt.subplots()
+            sns.regplot(x=sum_df["DonationEvents"], y=sum_df["DonationsValue"], ax=ax)
+            ax.set_xlabel("Number of Donations")
+            ax.set_ylabel("Value of Donations (£)")
+            ax.set_title("Number of Donations vs. Value of Donations by Regulated Entity")
+            ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, loc: format_number(x)))
+            st.pyplot(fig)
+        else:
+            st.error("Summary data not found. Please check dataset loading in the main app.")
     with col2:
         # use data from the summary dataset
         st.write("## Headline Visuals")
@@ -76,17 +88,36 @@ def hlf_body():
             st.error("Summary data not found. Please check dataset loading in the "
                      "main app.")
 
-    # Add a graph comparing the number of donations per RegulatedEntity to the value of donations
-    st.write("## Donations vs. Value by Regulated Entity")
-    if sum_df is not None:
-        fig, ax = plt.subplots()
-        sns.regplot(x=sum_df["DonationEvents"], y=sum_df["DonationsValue"], ax=ax)
-        ax.set_xlabel("Number of Donations")
-        ax.set_ylabel("Value of Donations (£)")
-        ax.set_title("Number of Donations vs. Value of Donations by Regulated Entity")
-        ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, loc: format_number(x)))
-        st.pyplot(fig)
-    else:
-        st.error("Summary data not found. Please check dataset loading in the main app.")
 
+
+    # Add a visualization in col1 showing the cumulative Value of donations over time
+    col1, col2 = st.columns(2)
+    with col1:
+        st.write("### Cumulative Value of Donations Over Time")
+        if filtered_df.empty:
+            st.write("No data available for the selected filters.")
+            return
+        cumulative_value = filtered_df.groupby('ReceivedDate')['Value'].sum().cumsum()
+        plt.figure(figsize=(10, 5))
+        plt.plot(cumulative_value.index, cumulative_value.values, label='Cumulative Value')
+        plt.xlabel('Date')
+        plt.ylabel('Cumulative Value (£)')
+        plt.title('Cumulative Value of Donations Over Time')
+        plt.legend()
+        st.pyplot(plt)
+
+    # Add a visualization in col2 showing the share of all donations by year by RegulatedEntityType
+    with col2:
+        st.write("### Share of Donations by Year and Regulated Entity Type")
+        if filtered_df.empty:
+            st.write("No data available for the selected filters.")
+            return
+        filtered_df['Year'] = filtered_df['ReceivedDate'].dt.year
+        donations_by_year_entity = filtered_df.groupby(['Year', 'RegulatedEntityType'])['Value'].sum().unstack().fillna(0)
+        donations_by_year_entity.plot(kind='bar', stacked=True, figsize=(10, 5))
+        plt.xlabel('Year')
+        plt.ylabel('Total Value (£)')
+        plt.title('Share of Donations by Year and Regulated Entity Type')
+        plt.legend(title='Regulated Entity Type')
+        st.pyplot(plt)
     st.write("## Next Steps")

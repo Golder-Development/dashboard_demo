@@ -5,60 +5,45 @@ def dubiousdonations_body():
     import streamlit as st
     import calculations as ppcalc
     import pandas as pd
-    df = st.session_state.get("data", None)  # Load dataset from session state
-
+    # Load dataset from session state
+    df = st.session_state.get("data", None)
     # # Ensure ReceivedDate is in datetime format
-    # df["ReceivedDate"] = pd.to_datetime(df["ReceivedDate"], errors="coerce")
-
+    df["ReceivedDate"] = pd.to_datetime(df["ReceivedDate"], errors="coerce")
     # # Get min and max dates from the dataset
-    # min_date = df["ReceivedDate"].min()
-    # max_date = df["ReceivedDate"].max()
-
+    min_date = df["ReceivedDate"].min()
+    max_date = df["ReceivedDate"].max()
     # # Add a date range slider to filter by received date
-    # date_range = st.slider(
-    #     "Select Date Range",
-    #     min_value=min_date,
-    #     max_value=max_date,
-    #     value=(min_date, max_date),
-    #     format="YYYY-MM-DD"
-    # )
-
+    date_range = st.slider(
+        "Select Date Range",
+        min_value=min_date,
+        max_value=max_date,
+        value=(min_date, max_date),
+        format="YYYY-MM-DD"
+    )
     # # Extract start and end dates from the slider
-    # start_date, end_date = date_range
-
+    start_date, end_date = date_range
     # # Filter by date range
-    # date_filter = (df["ReceivedDate"] >= start_date) & (df["ReceivedDate"] <= end_date)
-
+    date_filter = (df["ReceivedDate"] >= start_date) & (df["ReceivedDate"] <= end_date)
     # --- Dropdown for Regulated Entity ---
     # Create a mapping of RegulatedEntityName -> RegulatedEntityId
     entity_mapping = dict(zip(df["RegulatedEntityName"], df["RegulatedEntityId"]))
-
     # Add "All" as an option and create a dropdown that displays names but returns IDs
     selected_entity_name = st.selectbox("Filter by Regulated Entity", ["All"] + sorted(entity_mapping.keys()))
-
     # Get the corresponding ID for filtering
     selected_entity_id = entity_mapping.get(selected_entity_name, None)
-
     # Apply filters
     filters = {"RegulatedEntityId": selected_entity_id} if selected_entity_name != "All" else None
-
     # Apply filters to the dataset
-    #filtered_df = df[date_filter]
-    filtered_df = df.copy()
+    filtered_df = df[date_filter]
     if filters:
         filtered_df = filtered_df[filtered_df["RegulatedEntityId"] == filters["RegulatedEntityId"]]
-
     # Call each function separately with the selected filter
-    # impermissible_donors_ct = ppcalc.get_impermissible_donors_ct(df, filters)
-    # dubious_donation_actions_ct = ppcalc.get_dubious_donation_actions_ct(df, filters)
     blank_received_date_ct = ppcalc.get_blank_received_date_ct(filtered_df, filters)
     blank_regulated_entity_id_ct = ppcalc.get_blank_regulated_entity_id_ct(filtered_df, filters)
-    # blank_donor_id_ct = ppcalc.get_blank_donor_id_ct(df, filters)
-    # blank_donor_name_ct = ppcalc.get_blank_donor_name_ct(df, filters)
     dubious_donors = ppcalc.get_dubious_donors_ct(filtered_df, filters)
     dubious_donation_actions = ppcalc.get_dubious_donation_actions(filtered_df, filters)
     total_value_dubious_donations = ppcalc.get_total_value_dubious_donations(filtered_df, filters)
-
+    # format text
     st.write("# Donations Identified as Potentially Questionable")
     st.write("## Explaination")
     st.write("* Certain Political Donations represent funds either "
@@ -82,6 +67,5 @@ def dubiousdonations_body():
                  "regulated entity.")
     st.write(f"* All these had a value of £{total_value_dubious_donations}")
     st.write("---")
-    
     # Display the filtered data (Optional)
     st.write(filtered_df)

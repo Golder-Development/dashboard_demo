@@ -119,17 +119,3 @@ def get_maxdate(df, filters=None):
     """Mean of value of donations"""
     df = apply_filters(df, filters)
     return df["ReceivedDate"].max()
-
-
-# # Define a function to set the category
-# def RegulatedEntityGroup(RegulatedEntityNameVar):
-#     import streamlit as st
-#     RegulatedEntity_df = st.session_state.get("data_party_sum", None)
-#     # Define Dictionary with grouped values
-#     RegEntityGrouping = {0: 'No Relevant Donations', 1: 'Single Donation Entity', 50: 'Very Small Entity', 100: 'Small Entity', 1000: 'Medium Entity', float('inf'): RegulatedEntityNameVar}
-#     # Select all relevant donation events for specified Entity Name
-#     RE_Events = RegulatedEntity_df[RegulatedEntity_df.index == RegulatedEntityNameVar]
-#     # Compare Count of events to rangelimits in Dictionary and return Category
-#     for rangeLimit, category in RegEntityGrouping.items():
-#         if RE_Events.DonationEvents.agg(sum) <= rangeLimit:
-#             return category

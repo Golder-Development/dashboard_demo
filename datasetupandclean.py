@@ -41,8 +41,9 @@ def load_data():
     df['Value'] = df['Value'].replace({'£': '', ',': ''},
                                       regex=True).astype(float)
     # generate CSV file of original data
-    # df.to_csv('original_donations.csv')
+    df.to_csv('original_donations.csv')
     return df
+
 
 def calculate_reg_entity_group(donation_events, entity_name):
     thresholds = {0: "No Relevant Donations", 1: "Single Donation Entity", 50: "Very Small Entity",
@@ -50,6 +51,7 @@ def calculate_reg_entity_group(donation_events, entity_name):
     for limit, category in thresholds.items():
         if donation_events <= limit:
             return category
+
 
 def load_party_summary_data():
     df = st.session_state.get("data", None)
@@ -66,8 +68,9 @@ def load_party_summary_data():
         lambda row: calculate_reg_entity_group(row['DonationEvents'], row.name), axis=1
     )
     # generate CSV file of summary data
-    # RegulatedEntity_df.to_csv('party_summary.csv')
+    RegulatedEntity_df.to_csv('party_summary.csv')
     return RegulatedEntity_df
+
 
 def load_cleaned_data():
     orig_df = st.session_state.get("data", None)
@@ -149,5 +152,5 @@ def load_cleaned_data():
             df[col] = orig_df[col]
 
     # Save cleaned data
-    # df.to_csv("cleaned_donations.csv", index=False)
+    df.to_csv("cleaned_donations.csv", index=False)
     return df
