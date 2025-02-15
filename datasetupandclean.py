@@ -55,7 +55,6 @@ def create_thresholds():
         }
 
 def calculate_reg_entity_group(donation_events, entity_name):
-    global g_thresholds
     if 'g_thresholds' not in st.session_state:
         create_thresholds()
     # Copy g_thresholds and add the new entity_name to the thresholds dictionary
@@ -64,10 +63,9 @@ def calculate_reg_entity_group(donation_events, entity_name):
     # Add the new threshold with entity_name
     thresholds[float("inf")] = entity_name
     # Loop through the thresholds to find the corresponding category
-    for limit, category in g_thresholds.items():
+    for limit, category in thresholds.items():
         if donation_events <= limit:
             return category
-
 
 def load_party_summary_data():
     df = st.session_state.get("data", None)
@@ -86,7 +84,6 @@ def load_party_summary_data():
     # generate CSV file of summary data
     # RegulatedEntity_df.to_csv('party_summary.csv')
     return RegulatedEntity_df
-
 
 def load_cleaned_data():
     orig_df = st.session_state.get("data", None)

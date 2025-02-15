@@ -1,6 +1,5 @@
 import streamlit as st
 import calculations as ppcalc
-import datasetupandclean as duc
 
 
 def notesondataprep_body():

@@ -1,6 +1,5 @@
 import pandas as pd
 import streamlit as st
-import datasetupandclean as duc
 
 
 def apply_filters(df, filters=None):

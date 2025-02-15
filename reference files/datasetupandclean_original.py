@@ -116,10 +116,9 @@ def load_cleaned_data():
     # Apply the function to create a new column
 
     def RegulatedEntityGroup(RegulatedEntityNameVar):
-        import streamlit as st
         RegulatedEntity_df = st.session_state.get("data_party_sum", None)
-        # Define Dictionary with grouped values
-        RegEntityGrouping = {0: 'No Relevant Donations', 1: 'Single Donation Entity', 50: 'Very Small Entity', 100: 'Small Entity', 1000: 'Medium Entity', float('inf'): RegulatedEntityNameVar}
+        # Use the global dictionary g_thresholds
+        RegEntityGrouping = st.session_state.g_thresholds
         # Select all relevant donation events for specified Entity Name
         RE_Events = RegulatedEntity_df[RegulatedEntity_df.index == RegulatedEntityNameVar]
         # Compare Count of events to rangelimits in Dictionary and return Category
