@@ -18,6 +18,8 @@ from app_pages.notesondataprep import notesondataprep_body
 app = MultiPage(app_name="UK Political Donations")  # Create an instance
 
 # Add your app pages here using .add_page()
+# Display a loading message
+
 app.add_page("Introduction", introduction_body)
 app.add_page("Head Line Figures", hlf_body)
 # app.add_page("Cash Donations", cashdonations_body)
@@ -32,9 +34,8 @@ app.add_page("Notes on Data and Manipulations", notesondataprep_body)
 
 app.run()  # Run the  app
 
-# Display a loading message
 loading_message = st.empty()
-loading_message.text("Please wait while the data sets are being calculated...")
+loading_message.markdown("<h3 style='text-align: center; color: blue;'>Please wait while the data sets are being calculated...</h3>", unsafe_allow_html=True)
 
 # Load and cache data correctly
 @st.cache_data
