@@ -1,7 +1,7 @@
 import pandas as pd
 import datetime as dt
 import streamlit as st
-import calculations as ppcalc
+
 
 def load_data():
     # Load the data
@@ -44,15 +44,17 @@ def load_data():
     # df.to_csv('original_donations.csv')
     return df
 
+
 def create_thresholds():
     if 'g_thresholds' not in st.session_state:
         st.session_state.g_thresholds = {
-            0: "No Relevant Donations", 
-            1: "Single Donation Entity", 
+            0: "No Relevant Donations",
+            1: "Single Donation Entity",
             50: "Very Small Entity",
-            100: "Small Entity", 
+            100: "Small Entity",
             1000: "Medium Entity"
         }
+
 
 def calculate_reg_entity_group(donation_events, entity_name):
     if 'g_thresholds' not in st.session_state:
@@ -66,6 +68,7 @@ def calculate_reg_entity_group(donation_events, entity_name):
     for limit, category in thresholds.items():
         if donation_events <= limit:
             return category
+
 
 def load_party_summary_data():
     df = st.session_state.get("data", None)
@@ -84,6 +87,7 @@ def load_party_summary_data():
     # generate CSV file of summary data
     # RegulatedEntity_df.to_csv('party_summary.csv')
     return RegulatedEntity_df
+
 
 def load_cleaned_data():
     orig_df = st.session_state.get("data", None)

@@ -40,26 +40,30 @@ loading_message.markdown("<h3 style='text-align: center; color: blue;'>Please wa
 # Ensure g_thresholds is available as a global dictionary
 if 'g_thresholds' not in st.session_state:
     st.session_state.g_thresholds = {
-        0: "No Relevant Donations", 
-        1: "Single Donation Entity", 
+        0: "No Relevant Donations",
+        1: "Single Donation Entity",
         50: "Very Small Entity",
-        100: "Small Entity", 
+        100: "Small Entity",
         1000: "Medium Entity",
         float('inf'): "Large Entity"
     }
+
 
 # Load and cache data correctly
 @st.cache_data
 def get_data():
     return dc.load_data()
 
+
 @st.cache_data
 def get_party_summary_data():
     return dc.load_party_summary_data()
 
+
 @st.cache_data
 def get_cleaned_data():
     return dc.load_cleaned_data()
+
 
 if "data" not in st.session_state:
     st.session_state["data"] = get_data()

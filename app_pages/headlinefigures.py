@@ -72,5 +72,5 @@ def hlf_body():
         if filtered_df.empty:
             st.write("No data available for the selected filters.")
             return
-        vis.plot_donations_by_year(filtered_df, XValues="YearReceived", YValue="Value", GGroup="DonorStatus", XLabel="Year", YLabel="Total Value (£)", Title="Donations by Year")
+        vis.plot_donations_by_year(filtered_df, XValues="YearReceived", YValue="Value", GGroup="RegEntity_Group", XLabel="Year", YLabel="Total Value (£)", Title="Donations by Year")
     st.write("### Click on any Visualisation to view it full screen.")
