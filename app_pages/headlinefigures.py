@@ -84,4 +84,4 @@ def hlf_body():
         st.write("No data available for the selected filters.")
         return
     else:
-        vis.plot_pie_chart(filtered_df, "DonationType", "Value", "Donation Type", "Total Value of Donations by Type")
+        vis.plot_pie_chart(filtered_df, "RegEntity_Group", "Value")
