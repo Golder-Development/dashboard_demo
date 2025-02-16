@@ -9,7 +9,7 @@ from app_pages.introduction import introduction_body
 from app_pages.headlinefigures import hlf_body
 # from app_pages.regulatedentitypage import regulatedentitypage_body
 from app_pages.dubiousdonations import dubiousdonations_body
-from app_pages.dubiousdonationsByDonor import dubiousdonationsByDonor_body
+from app_pages.dubiousdonationsByRegulatedEntity import dubiousdonationsByDonor_body
 # from app_pages.sponsorships import sponsorship_body
 from app_pages.notesondataprep import notesondataprep_body
 # from app_pages.cashdonations import cashdonations_body
@@ -31,7 +31,7 @@ app.add_page("Head Line Figures", hlf_body)
 # app.add_page("Donors", donorspage_body)
 # app.add_page("Donor is a Political Party", donationsbypoliticalpartys_body)
 app.add_page("Dubious Donations", dubiousdonations_body)
-app.add_page("Dubious Donations by Donor", dubiousdonationsByDonor_body)
+app.add_page("Dubious Donations by Regulated Entity", dubiousdonationsByDonor_body)
 app.add_page("Notes on Data and Manipulations", notesondataprep_body)
 
 app.run()  # Run the  app
@@ -42,8 +42,8 @@ loading_message.markdown("<h3 style='text-align: center; color: blue;'>Please wa
 # Ensure g_thresholds is available as a global dictionary
 if 'g_thresholds' not in st.session_state:
     dc.create_thresholds()
-    
-    
+
+
 # Load and cache data correctly
 @st.cache_data
 def get_data():
@@ -63,11 +63,14 @@ def get_cleaned_data():
 if "data" not in st.session_state:
     st.session_state["data"] = get_data()
 
+
 if "data_party_sum" not in st.session_state:
     st.session_state["data_party_sum"] = get_party_summary_data()
 
+
 if "data_clean" not in st.session_state:
     st.session_state["data_clean"] = get_cleaned_data()
+
 
 # Remove the loading message
 loading_message.empty()

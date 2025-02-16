@@ -75,8 +75,9 @@ def get_total_value_dubious_donations(df, filters=None):
     df = apply_filters(df, filters)
     return df[
         (df["DonationType"] == "Impermissible Donor") |
+        (df["DonationType"] == "Total value of donations not reported individually") |
         (df["DonationAction"].notnull()) |
-        (df["ReceivedDate"].isnull()) |
+        (df["ReceivedDate"] == '1900-01-01 00:00:00') |
         (df["RegulatedEntityId"].isnull()) |
         (df["DonorId"].isnull()) |
         (df["DonorName"].isnull())
@@ -88,8 +89,9 @@ def get_total_ct_dubious_donations(df, filters=None):
     df = apply_filters(df, filters)
     return df[
         (df["DonationType"] == "Impermissible Donor") |
+        (df["DonationType"] == "Total value of donations not reported individually") |
         (df["DonationAction"].notnull()) |
-        (df["ReceivedDate"].isnull()) |
+        (df["ReceivedDate"] == '1900-01-01 00:00:00') |
         (df["RegulatedEntityId"].isnull()) |
         (df["DonorId"].isnull()) |
         (df["DonorName"].isnull())
@@ -203,11 +205,11 @@ def get_donation_isanaggregate_value(df, filters=None):
 def get_top_entity_by_value(df, filters=None):
     """
     Returns the name and value of the regulated entity with the greatest value of donations.
-    
+
     Parameters:
         df (pd.DataFrame): The dataset.
         filters (dict, optional): Dictionary where keys are column names and values are filter conditions.
-    
+
     Returns:
         tuple: (RegulatedEntityName, Value)
     """
@@ -216,14 +218,15 @@ def get_top_entity_by_value(df, filters=None):
     top_value = df.groupby("RegulatedEntityName")["Value"].sum().max()
     return top_entity, top_value
 
+
 def get_top_entity_by_donations(df, filters=None):
     """
     Returns the name and value of the regulated entity with the greatest number of donations.
-    
+
     Parameters:
         df (pd.DataFrame): The dataset.
         filters (dict, optional): Dictionary where keys are column names and values are filter conditions.
-    
+
     Returns:
         tuple: (RegulatedEntityName, Value)
     """
@@ -232,14 +235,15 @@ def get_top_entity_by_donations(df, filters=None):
     top_value = df.groupby("RegulatedEntityName")["EventCount"].sum().max()
     return top_entity, top_value
 
+
 def get_top_donationType_by_donations(df, filters=None):
     """
     Returns the name and value of the regulated entity with the greatest number of donations.
-    
+
     Parameters:
         df (pd.DataFrame): The dataset.
         filters (dict, optional): Dictionary where keys are column names and values are filter conditions.
-    
+
     Returns:
         tuple: (RegulatedEntityName, Value)
     """

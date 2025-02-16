@@ -15,7 +15,8 @@ def dubiousdonationsByDonor_body():
             return f"{value / 1_000:,.1f}k"
         else:
             return f"{value:,.2f}"
-
+    ## Page Title
+    st.write("## Investigate Dubious Donations by Period and Regulated Entity")
     # Load dataset from session state
     df = st.session_state.get("data_clean", None)
 
@@ -89,25 +90,15 @@ def dubiousdonationsByDonor_body():
     returned_donations_percent_value = ((returned_donations_value / total_value_dubious_donations) * 100) if total_value_dubious_donations > 0 else 0
     returned_donations_percent_donations = ((returned_donations / dubious_donation_actions) * 100) if dubious_donation_actions > 0 else 0
     # Format text
-    st.write("## Donations Identified as Potentially Questionable")
-    st.write("### Explanation")
-    st.write("* Certain Political Donations represent funds either "
-             "donated by donors who are not allowed to donate to UK Political Parties or"
-             "are perceived to have been made with an aim to gain influence or in a "
-             "manner that is not in line with the spirit of the law.")
-    st.write("* These are identified by the regulator and marked in the data. "
-             "These are often returned to the donor after investigation, but"
-             "the number and nature of these donations can be indicative of the "
-             "state of a party's happiness to interact with dubious people and entities.")
-    st.write("### Topline Figures")
+    st.write(f"### Summary of Dubious Donations for {selected_entity_name}")
     if dubious_donors >= 1:
         st.write(f"* Between {start_date} and {end_date}, there were {dubious_donors} donors identified as dubious."
-                  f"These donors represented {dubious_percent_of_donors:.2f}% of donors to the regulated entity.")
+                  f" These donors represented {dubious_percent_of_donors:.2f}% of donors to the regulated entity.")
     else:
         st.write("* No donations from dubious donors were identified.")
     if dubious_donation_actions >= 1:
         st.write(f"* There were {dubious_donation_actions} donations that were identified as of questionable nature."
-                 f"These donations represented {dubious_percent_of_donation_actions:.2f}% of all donations made to the entity.")
+                 f" These donations represented {dubious_percent_of_donation_actions:.2f}% of all donations made to the entity.")
     if blank_received_date_ct >= 1:
         st.write(f"* {blank_received_date_ct} donations had no recorded date.")
     if blank_regulated_entity_id_ct >= 1:
@@ -156,13 +147,13 @@ def dubiousdonationsByDonor_body():
         df["Difference"] = df["Difference"].map(lambda x: f"{x:.2f}%")
         styled_df = df.style.applymap(color_negative_red, subset=["Difference"]).hide(axis='index')
         st.table(styled_df)
-
     else:
          st.write(f"* No benchmarking as analysis is for entire dataset, so variance to average is not relevant.")
     st.write("### Visuals")
-    vis.plot_donations_by_year(filtered_df2, XValues="YearReceived", YValue="Value", GGroup="DonationType", XLabel="Year", YLabel="Total Value (£)", Title="Dubious Donations by Year and Nature")
-    # Display the filtered data (Optional)
-    filtered_df = filtered_df[["ReceivedDate",
+    if not filtered_df2.empty:
+        vis.plot_donations_by_year(filtered_df2, XValues="YearReceived", YValue="Value", GGroup="DonationType", XLabel="Year", YLabel="Total Value (£)", Title="Dubious Donations by Year and Nature")
+        # Display the filtered data (Optional)
+    filtered_df3 = filtered_df2[["ReceivedDate",
                                "DonorName",
                                "Value",
                                "DonationAction",
@@ -171,7 +162,7 @@ def dubiousdonationsByDonor_body():
                                "NatureOfDonation",
                                "DonorStatus",
                                "DubiousData"]].query("DubiousData == 1")
-    if not filtered_df.empty:
+    if not filtered_df3.empty:
         st.write("### Scrollable table of identified donations")
-        st.write(filtered_df)
+        st.write(filtered_df3)
     st.write("### Click on Visuals to expand the graphs. Tables are scrollable")
