@@ -25,15 +25,15 @@ def hlf_body():
     mean_value_donations = ppcalc.get_value_mean(filtered_df, filters)
     unique_donations = ppcalc.get_donations_ct(filtered_df, filters)
     unique_regulated_entities = ppcalc.get_regentity_ct(filtered_df, filters)
-    cash_donations = ppcalc.get_donationtype_ct(filtered_df, {"DonationType": "Cash"})
-    cash_don_percent = (cash_donations / unique_donations) * 100 if total_value_donations > 0 else 0
-    cash_donations_value = ppcalc.get_value_total(filtered_df, {"DonationType": "Cash"})
-    cash_don_value_percent = (cash_donations_value / total_value_donations) * 100 if total_value_donations > 0 else 0
     PP_donations = ppcalc.get_donationtype_ct(filtered_df, {"DonorStatus": "Registered Political Party"})
     PP_donations_value = ppcalc.get_value_total(filtered_df, {"DonorStatus": "Registered Political Party"})
     PP_donations_percent = (PP_donations / unique_donations) * 100 if total_value_donations > 0 else 0
     PP_donations_value_percent = (PP_donations_value / total_value_donations) * 100 if total_value_donations > 0 else 0
-    
+    single_donation_entity = ppcalc.get_donations_ct(filtered_df, {"RegEntity_Group": "Single Donation Entity"})
+    single_donation_entity_value = ppcalc.get_value_total(filtered_df, {"RegEntity_Group": "Single Donation Entity"})
+    single_donation_percent = (single_donation_entity / unique_donations) * 100 if total_value_donations > 0 else 0
+    single_donation_entity_value_percent = (single_donation_entity_value / total_value_donations) * 100 if total_value_donations > 0 else 0
+    single_donation_entity_percent = (single_donation_entity / unique_regulated_entities) * 100 if total_value_donations > 0 else 0
     min_date = ppcalc.get_mindate(filtered_df, filters).date()
     max_date = ppcalc.get_maxdate(filtered_df, filters).date()
 
@@ -58,7 +58,11 @@ def hlf_body():
                  "regulated political bodies received donations.")
         st.write(f"* These received a total value of £{format_number(total_value_donations)} from {format_number(unique_donors)} unique donors")
         st.write(f"* The average donation was £{format_number(mean_value_donations)} and there were {format_number(unique_donations)} unique donations")
-        st.write(f"* Political parties were identified as the donor in {PP_donations_percent:.0f}% of dontations. These donations were worth £{format_number(cash_donations_value)} or {PP_donations_value_percent:.2f}% of the total value of donations.")
+        st.write(f"* Political parties were identified as the donor in {PP_donations_percent:.0f}% of dontations. These donations were worth £{format_number(PP_donations_value)} or {PP_donations_value_percent:.2f}% of the total value of donations.")
+        st.write(f"* {single_donation_entity} of the donations were to entities that only received one donation."
+                 f" These donations represented {single_donation_percent:.2f}% of all donations, were worth "
+                 f" £{format_number(single_donation_entity_value)} or {single_donation_entity_value_percent:.2f}% of "
+                 f" the total value of donations and were {single_donation_entity_percent:.0f}% of the regulated entities.")
     with col2:
         st.write(f"* Most Donations were in {top_dontype_ct}, these represented {top_dontype_dons_percent:.2f}% of donations and were {top_dontype_value_percent:.2f}% of the total value of donations.")    
         # use data from the summary dataset
@@ -76,5 +80,8 @@ def hlf_body():
         return
     else:
         vis.plot_donations_by_year(filtered_df, XValues="YearReceived", YValue="Value", GGroup="RegEntity_Group", XLabel="Year", YLabel="Total Value (£)", Title="Value of Donations by Year")
-
-
+    if filtered_df.empty:
+        st.write("No data available for the selected filters.")
+        return
+    else:
+        vis.plot_pie_chart(filtered_df, "DonationType", "Value", "Donation Type", "Total Value of Donations by Type")

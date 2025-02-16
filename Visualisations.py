@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import seaborn as sns
 
+
 def format_number(value):
     if value >= 1_000_000:
         return f"{value / 1_000_000:,.1f}M"
@@ -10,6 +11,7 @@ def format_number(value):
         return f"{value / 1_000:,.1f}k"
     else:
         return f"{value:,.2f}"
+
 
 def plot_donations_by_year(Data='filtered_df', XValues='YearReceived', YValue='Value', GGroup='RegEntity_Group', XLabel='Year', YLabel='Total Value (£)', Title='Donations by Year and Entity Type'):
     """
@@ -50,11 +52,11 @@ def plot_donations_by_year(Data='filtered_df', XValues='YearReceived', YValue='V
     st.pyplot(fig)
 
 def plot_regressionplot(
-        sum_df, 
-        x_column="DonationEvents", 
-        y_column="DonationsValue", 
-        x_label="Number of Donations", 
-        y_label="Value of Donations (£)", 
+        sum_df,
+        x_column="DonationEvents",
+        y_column="DonationsValue",
+        x_label="Number of Donations",
+        y_label="Value of Donations (£)",
         title="Number of Donations vs. Value of Donations by Regulated Entity"
         ):
     """
@@ -74,25 +76,25 @@ def plot_regressionplot(
     if sum_df is None or x_column not in sum_df or y_column not in sum_df:
         st.error("Data is missing or incorrect column names provided.")
         return
-    
+
     fig, ax = plt.subplots()
     sns.regplot(x=sum_df[x_column], y=sum_df[y_column], ax=ax)
-    
+
     ax.set_xlabel(x_label)
     ax.set_ylabel(y_label)
     ax.set_title(title)
-    
+
     ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, loc: format_number(x)))
 
     st.pyplot(fig)
 
 
 def plot_pie_chart(
-        df, 
-        category_column, 
-        value_column=None, 
-        title="Pie Chart", 
-        autopct_format="{p:.0f}%", 
+        df,
+        category_column,
+        value_column=None,
+        title="Pie Chart",
+        autopct_format="{p:.0f}%",
         start_angle=90
         ):
     """
@@ -129,7 +131,7 @@ def plot_pie_chart(
     st.pyplot(fig)
 
 
-""" 
+"""
 stored visulisation functions not used in the final app
         # Add a graph comparing the number of donations per RegulatedEntity to the value of donations
         if sum_df is not None:

@@ -15,14 +15,23 @@ def notesondataprep_body():
     st.write("### Notes on Data Source")
     st.write(f"* The data covers the period from {min_date} to {max_date}")
     st.write("* The data was sourced from the [Electoral Commission](%s)." % electoral_commission,
-                "Having been initially extracted and compiled by https://data.world/vizwiz.")
+             "Having been initially extracted and compiled by https://data.world/vizwiz.")
     st.write("* The data is a snapshot of donations made to Political Parties ")
     st.write("### Data Cleansing and Assumptions")
     st.write("* This was built using Streamlit and Python following training "
-             "from the [Code Institute](%s)." % "https://codeinstitute.net/", 
+             "from the [Code Institute](%s)." % "https://codeinstitute.net/"
              "On a Data Analytics and AI Course funded by the [WMCA](%s)." % "https://www.wmca.org.uk/")
-    st.write("* The initial data had the value changed into a numeric format to enable calculations"
-             " and visualisations.  It is available from [Kaggle](%s)." % "https://www.kaggle.com/robertjacobson/uk-political-donations")
+    st.write("* The initial data had the value changed into a numeric format "
+             "to enable calculations and visualisations.  It is available from "
+             "[Kaggle](%s)." % "https://www.kaggle.com/robertjacobson/uk-political-donations")
+    st.write("* The data included records for the Northern Ireland Assembly"
+             "and were identified by their own register, these have been "
+             "seperated out and are not included in the analysis unless "
+             "explicitly stated otherwise.")
+    st.write("* The data included records for donations from Public Funds "
+             "these have been excluded from the analysis unless explicitly "
+             "stated otherwise.")
+
     st.write("* The data was then cleaned to ensure that every record had a valid received date, this was achieved by"
              " firstly populating the missing dates with either the Recorded Date or the Reported Date. If both of these"
              " were also missing then a date was calculated based on the Reporting Period.  If the value was still blank"

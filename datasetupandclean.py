@@ -40,6 +40,10 @@ def load_data():
     # Remove Currency sign of Value and convert to Float
     df['Value'] = df['Value'].replace({'£': '', ',': ''},
                                       regex=True).astype(float)
+    # Remove Northern Ireland register data
+    df = df[df["RegisterName"] != "Northern Ireland"]
+    # Remove Public Funds
+    df = df[df["DonationType"] != "Public Funds"]
     # generate CSV file of original data
     # df.to_csv('original_donations.csv')
     return df
@@ -97,7 +101,6 @@ def load_cleaned_data():
         return None
 
     df = orig_df.copy()
-
     # # Fill blank ReceivedDate with ReportedDate
     df['ReceivedDate'] = df['ReceivedDate'].fillna(df['ReportedDate'])
     # # Fill blank ReceivedDate with AcceptedDate
@@ -111,6 +114,8 @@ def load_cleaned_data():
     ).dt.normalize()
     # # convert Received date to Date Format
     df['ReceivedDate'] = pd.to_datetime(df['ReceivedDate'],
+                                        dayfirst=True,
+                                        format='mixed',
                                         errors='coerce').dt.normalize()
     # # Fill missing 'ReceivedDate' with dates from 'ReportingPeriodName'
     df['ReceivedDate'] = df['ReceivedDate'].fillna(
@@ -139,14 +144,27 @@ def load_cleaned_data():
         df["NatureOfDonation"] = df["NatureOfDonation"].replace(
             {"Donation to nan": "Other", "Other Payment": "Other"}
         )
+        df["NatureOfDonation"] = df["NatureOfDonation"].fillna(
+            df["DonationAction"].map(lambda x: f"{x}" if pd.notna(x) else None)
+        )
+        df["NatureOfDonation"] = df["NatureOfDonation"].fillna(
+            df["DonationType"].map(lambda x: f"{x}" if pd.notna(x) else None)
+        )
 
     # Create a DubiousData flag for problematic records
     df["DubiousData"] = (
+        (df["DonationType"] == "Impermissible Donor").astype(int) +
+        (df["DonationType"] == "Unidentified Donor").astype(int) +
+        (df["DonationType"] == "Total value of donations not reported individually").astype(int) +
+        (df['IsAggregation'] == "True").astype(int) +
+        (df["DonationType"] == "Visit").astype(int) +
+        (df['NatureOfDonation'] == "Other").astype(int) +
+        (df["DonationAction"].notnull()).astype(int) +
         (df["ReceivedDate"] == dt.datetime(1900, 1, 1)).astype(int) +
         df["RegulatedEntityId"].isna().astype(int) +
         df["DonorId"].isna().astype(int) +
-        df["DonationAction"].notna().astype(int)
-    )
+        (df["DonorName"].isnull()).astype(int)
+        )
 
     # Create simple column to enable count of events using sum
     df["EventCount"] = 1
@@ -168,6 +186,21 @@ def load_cleaned_data():
     for col in orig_df.columns:
         if col not in df.columns:
             df[col] = orig_df[col]
+
+    # Drop Columns that are not needed
+    df = df.drop(['ReportingPeriodName_Date',
+                  'IsIrishSource',
+                  'AccountingUnitsAsCentralParty',
+                  'AccountingUnitName',
+                  'AcceptedDate',
+                  'ReportedDate',
+                  'IsReportedPrePoll',
+                  'AccountingUnitId',
+                  'Postcode',
+                  'CompanyRegistrationNumber',
+                  'CampaigningName'
+                  ],
+                 axis=1)
 
     # Save cleaned data
     df.to_csv("cleaned_donations.csv", index=False)
