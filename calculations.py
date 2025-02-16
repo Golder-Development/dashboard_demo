@@ -112,15 +112,14 @@ def get_regentity_ct(df, filters=None):
 
 
 def get_mindate(df, filters=None):
-    import pandas as pd
-    """Mean of value of donations"""
+    """Earliest date from data subset"""
     df = apply_filters(df, filters)
     df = df[df["ReceivedDate"] != pd.to_datetime('1900-01-01 00:00:00')]
     return df["ReceivedDate"].min()
 
 
 def get_maxdate(df, filters=None):
-    """Mean of value of donations"""
+    """Most recent date from data subset"""
     df = apply_filters(df, filters)
     return df["ReceivedDate"].max()
 
@@ -129,6 +128,35 @@ def display_thresholds_table():
     """Creates and displays a table showing the threshold logic."""
     # Convert the dictionary into a DataFrame
     thresholds_df = pd.DataFrame(list(st.session_state.g_thresholds.items()), columns=["Donation Event Threshold", "Entity Category"])
-
+    # format the table change Donation event Threshold column to Integer and add bold to header
+    thresholds_df = thresholds_df.style.format({"Donation Event Threshold": "{:.0f}"}).set_table_styles([{
+        'selector': 'th',
+        'props': [('font-size', '1.2em'), ('text-align', 'center')]}])
     st.write("### Threshold Logic Table")
     st.table(thresholds_df)  # Static table (can use `st.dataframe()` for interactive table)
+
+
+def get_returned_donations_ct(df, filters=None):
+    """Counts donations that have been returned."""
+    df = apply_filters(df, filters)
+    return df[df["DonationAction"] == "Returned"]["DonorId"].nunique()
+
+
+def get_returned_donations_value(df, filters=None):
+    """Calculates the total value of all returned donations."""
+    df = apply_filters(df, filters)
+    return df[df["DonationAction"] == "Returned"]["Value"].sum()
+
+
+def get_datamindate():
+    """Earliest date from full data"""
+    df = st.session_state.get("data_clean", None)
+    df = df[df["ReceivedDate"] != pd.to_datetime('1900-01-01 00:00:00')]
+    return df["ReceivedDate"].min()
+
+
+def get_datamaxdate():
+    """Most recent date from full data"""
+    df = st.session_state.get("data_clean", None)
+    df = apply_filters(df, filters)
+    return df["ReceivedDate"].max()

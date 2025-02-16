@@ -52,10 +52,25 @@ def dubiousdonations_body():
 
     # Apply filters to the dataset
     filtered_df = df[date_filter]
+    # Call each function separately with the selected date filter for benchmarking
+    bm_blank_received_date_ct = ppcalc.get_blank_received_date_ct(filtered_df)
+    bm_blank_regulated_entity_id_ct = ppcalc.get_blank_regulated_entity_id_ct(filtered_df)
+    bm_dubious_donors = ppcalc.get_dubious_donors_ct(filtered_df)
+    bm_dubious_donation_actions = ppcalc.get_dubious_donation_actions(filtered_df)
+    bm_total_value_dubious_donations = ppcalc.get_total_value_dubious_donations(filtered_df)
+    bm_dubious_percent_of_value = (bm_total_value_dubious_donations / ppcalc.get_value_total(filtered_df)) * 100
+    bm_dubious_percent_of_donors = (bm_dubious_donors / ppcalc.get_donors_ct(filtered_df)) * 100
+    bm_dubious_percent_of_donation_actions = (dubious_donation_actions / ppcalc.get_donations_ct(filtered_df)) * 100
+    bm_returned_donations = ppcalc.get_returned_donations_ct(filtered_df)
+    bm_returned_donations_value = ppcalc.get_returned_donations_value(filtered_df)
+    bm_returned_donations_percent_value = (bm_returned_donations_value / bm_total_value_dubious_donations) * 100
+    bm_returned_donations_percent_donations = (bm_returned_donations / bm_dubious_donation_actions) * 100
+    min_date = ppcalc.get_mindate(filtered_df).date()
+    max_date = ppcalc.get_maxdate(filtered_df).date()
+    # Apply entity filter to dataset
     if filters:
         filtered_df = filtered_df[filtered_df["RegulatedEntityId"] == filters["RegulatedEntityId"]]
-
-    # Call each function separately with the selected filter
+    # Call each function separately with the selected date and entity filter
     blank_received_date_ct = ppcalc.get_blank_received_date_ct(filtered_df, filters)
     blank_regulated_entity_id_ct = ppcalc.get_blank_regulated_entity_id_ct(filtered_df, filters)
     dubious_donors = ppcalc.get_dubious_donors_ct(filtered_df, filters)
@@ -64,7 +79,10 @@ def dubiousdonations_body():
     dubious_percent_of_value = (total_value_dubious_donations / ppcalc.get_value_total(filtered_df, filters)) * 100
     dubious_percent_of_donors = (dubious_donors / ppcalc.get_donors_ct(filtered_df, filters)) * 100
     dubious_percent_of_donation_actions = (dubious_donation_actions / ppcalc.get_donations_ct(filtered_df, filters)) * 100
-
+    returned_donations = ppcalc.get_returned_donations_ct(filtered_df, filters)
+    returned_donations_value = ppcalc.get_returned_donations_value(filtered_df, filters)
+    returned_donations_percent_value = (returned_donations_value / total_value_dubious_donations) * 100
+    returned_donations_percent_donations = (returned_donations / dubious_donation_actions) * 100
     # Format text
     st.write("## Donations Identified as Potentially Questionable")
     st.write("### Explanation")
@@ -78,13 +96,15 @@ def dubiousdonations_body():
              "state of a party's happiness to interact with dubious people and entities.")
     st.write("### Topline Figures")
     if dubious_donors >= 1:
-        st.write(f"* During the period of the data, there were {dubious_donors} donors identified as dubious.")
-        st.write(f"* These donors represented {dubious_percent_of_donors:.2f}% of donors to the regulated entity.")
+        st.write(f"* Between {start_date} and {end_date}, there were {dubious_donors} donors identified as dubious."
+                  f"These donors represented {dubious_percent_of_donors:.2f}% of donors to the regulated entity.")
     else:
         st.write("* No donations from dubious donors were identified.")
     if dubious_donation_actions >= 1:
-        st.write(f"* There were {dubious_donation_actions} donations that were identified as of questionable nature.")
-        st.write(f"* These donations represented {dubious_percent_of_donation_actions:.2f}% of all donations made to the entity.")
+        st.write(f"* There were {dubious_donation_actions} donations that were identified as of questionable nature."
+                 f"These donations represented {dubious_percent_of_donation_actions:.2f}% of all donations made to the entity.")
+        st.write(f"* Of these donations {returned_donations} or {returned_donations_percent_donations} were returned to the donor,"
+                 f"representing £{format_number(returned_donations_value)} or {returned_donations_percent_value:.2f}% of the total value of dubious donations.")
     if blank_received_date_ct >= 1:
         st.write(f"* {blank_received_date_ct} donations had no recorded date.")
     if blank_regulated_entity_id_ct >= 1:
@@ -93,11 +113,15 @@ def dubiousdonations_body():
     if total_value_dubious_donations >= 1:
         st.write(f"* All these had a value of £{format_number(total_value_dubious_donations)} and represented {dubious_percent_of_value:.2f}% in value of all donations.")
     st.write("---")
-    # Add a visualization in col2 showing the share of all donations by year by RegulatedEntityType
-    filtered_df = filtered_df[filtered_df["DubiousData"] == 1]
-    if filtered_df.empty:
-        st.write("No data available for the selected filters.")
-        return
+    st.write("### Benchmarked Figures")
+    if filters:
+        st.write(f"* The benchmarked figures are based on the selected date range and regulated entity.")
+        # Table comparing figures for the selected entity with the benchmarked figures for the whole dataset
+        
+        
+    else:
+         st.write(f"* No benchmarking as analysis is for entire dataset, so variance to average is not relevant.")
+    st.write("### Visuals")
     vis.plot_donations_by_year(filtered_df, XValues="YearReceived", YValue="Value", GGroup="NatureOfDonation", XLabel="Year", YLabel="Total Value (£)", Title="Dubious Donations by Year and Nature")
     # Display the filtered data (Optional)
     filtered_df = filtered_df[["ReceivedDate",

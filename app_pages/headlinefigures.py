@@ -12,7 +12,7 @@ def hlf_body():
         elif value >= 10_000:
             return f"{value / 1_000:,.1f}k"
         else:
-            return f"{value:,.2f}"
+            return f"{value:,.0f}"
 
     df = st.session_state.get("data_clean", None)
     sum_df = st.session_state.get("data_party_sum", None)
@@ -34,7 +34,7 @@ def hlf_body():
     col1, col2 = st.columns(2)
     with col1:
         st.write("### Headline Figures")
-        st.write(f"* During the period from {min_date} to {max_date}, {format_number(unique_regulated_entities)} "
+        st.write(f"* During the period from {min_date} to {max_date}, {unique_regulated_entities:,.0f} "
                  "regulated political bodies received donations")
         st.write(f"* These received a total value of £{format_number(total_value_donations)} from {format_number(unique_donors)} unique donors")
         st.write(f"* The average donation was £{format_number(mean_value_donations)} and there were {format_number(unique_donations)} unique donations")
