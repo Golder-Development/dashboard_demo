@@ -9,6 +9,7 @@ from app_pages.introduction import introduction_body
 from app_pages.headlinefigures import hlf_body
 # from app_pages.regulatedentitypage import regulatedentitypage_body
 from app_pages.dubiousdonations import dubiousdonations_body
+from app_pages.dubiousdonationsByDonor import dubiousdonationsByDonor_body
 # from app_pages.sponsorships import sponsorship_body
 from app_pages.notesondataprep import notesondataprep_body
 # from app_pages.cashdonations import cashdonations_body
@@ -30,6 +31,7 @@ app.add_page("Head Line Figures", hlf_body)
 # app.add_page("Donors", donorspage_body)
 # app.add_page("Donor is a Political Party", donationsbypoliticalpartys_body)
 app.add_page("Dubious Donations", dubiousdonations_body)
+app.add_page("Dubious Donations by Donor", dubiousdonationsByDonor_body)
 app.add_page("Notes on Data and Manipulations", notesondataprep_body)
 
 app.run()  # Run the  app
