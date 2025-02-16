@@ -11,7 +11,7 @@ def format_number(value):
     else:
         return f"{value:,.2f}"
 
-def plot_donations_by_year(Data='filtered_df', XValues='YearReceived', YValue='Value', GGroup='RegulatedEntityType', XLabel='Year', YLabel='Total Value (£)', Title='Dubious Donations by Year and Entity Type'):
+def plot_donations_by_year(Data='filtered_df', XValues='YearReceived', YValue='Value', GGroup='RegEntity_Group', XLabel='Year', YLabel='Total Value (£)', Title='Donations by Year and Entity Type'):
     """
     Plots a stacked bar chart of donations by year and entity type.
 
@@ -127,3 +127,23 @@ def plot_pie_chart(
     ax.axis('equal')  # Ensures the pie chart is circular
 
     st.pyplot(fig)
+
+
+""" 
+stored visulisation functions not used in the final app
+        # Add a graph comparing the number of donations per RegulatedEntity to the value of donations
+        if sum_df is not None:
+            vis.plot_regressionplot(
+                sum_df,
+                x_column="DonationEvents",
+                y_column="DonationsValue",
+                x_label="Total Donations",
+                y_label="Donation Amount (£)",
+                title="Impact of Donations on Political Entities"
+            )
+        # Plot the pie chart
+        vis.plot_pie_chart(sum_df, category_column="RegEntity_Group", title="Donations by Regulated Entity")
+        # Create the pie chart
+        vis.plot_pie_chart(sum_df, category_column="RegEntity_Group", value_column="DonationsValue", title="Value of Donations by Regulated Entity")
+
+"""

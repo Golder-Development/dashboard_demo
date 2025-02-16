@@ -52,7 +52,8 @@ def create_thresholds():
             1: "Single Donation Entity",
             50: "Very Small Entity",
             100: "Small Entity",
-            1000: "Medium Entity"
+            1000: "Medium Entity",
+            float('inf'): "Large Entity"
         }
 
 
@@ -76,16 +77,16 @@ def load_party_summary_data():
         st.error("No data found in session state!")
         return None
     # Create a DataFrame with the sum, count and mean of the donations for each RegulatedEntityName
-    RegulatedEntity_df = df.groupby(['RegulatedEntityName', 'RegulatedEntityType']).agg({'Value': ['sum', 'count', 'mean']}).reset_index()
+    RegulatedEntity_df = df.groupby(['RegulatedEntityName']).agg({'Value': ['sum', 'count', 'mean']}).reset_index()
     # Rename columns
-    RegulatedEntity_df.columns = ['RegulatedEntityName', 'RegulatedEntityType', 'DonationsValue', 'DonationEvents', 'DonationMean']
+    RegulatedEntity_df.columns = ['RegulatedEntityName', 'DonationsValue', 'DonationEvents', 'DonationMean']
 
     # Add RegEntity_Group column
     RegulatedEntity_df['RegEntity_Group'] = RegulatedEntity_df.apply(
-        lambda row: calculate_reg_entity_group(row['DonationEvents'], row.name), axis=1
+        lambda row: calculate_reg_entity_group(row['DonationEvents'], row['RegulatedEntityName']), axis=1
     )
     # generate CSV file of summary data
-    # RegulatedEntity_df.to_csv('party_summary.csv')
+    RegulatedEntity_df.to_csv('party_summary.csv')
     return RegulatedEntity_df
 
 
@@ -156,11 +157,12 @@ def load_cleaned_data():
         RegulatedEntity_df = load_party_summary_data()
         st.session_state["data_party_sum"] = RegulatedEntity_df
 
-    reg_entity_dict = RegulatedEntity_df["RegEntity_Group"].to_dict()
+    # Create a dictionary to map RegulatedEntityName to RegEntity_Group
+    reg_entity_dict = RegulatedEntity_df.set_index("RegulatedEntityName")[["RegEntity_Group"]].to_dict(orient="index")
 
     # Apply dictionary to populate RegEntity_Group
     if "RegulatedEntityName" in df.columns:
-        df["RegEntity_Group"] = df["RegulatedEntityName"].map(reg_entity_dict).fillna("Unknown")
+        df["RegEntity_Group"] = df["RegulatedEntityName"].map(lambda x: reg_entity_dict.get(x, {}).get("RegEntity_Group", "Unknown"))
 
     # Ensure all columns that are in data are also in data_clean
     for col in orig_df.columns:
@@ -168,5 +170,5 @@ def load_cleaned_data():
             df[col] = orig_df[col]
 
     # Save cleaned data
-    # df.to_csv("cleaned_donations.csv", index=False)
+    df.to_csv("cleaned_donations.csv", index=False)
     return df
