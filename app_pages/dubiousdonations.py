@@ -60,7 +60,7 @@ def dubiousdonations_body():
     bm_total_value_dubious_donations = ppcalc.get_total_value_dubious_donations(filtered_df)
     bm_dubious_percent_of_value = (bm_total_value_dubious_donations / ppcalc.get_value_total(filtered_df)) * 100
     bm_dubious_percent_of_donors = (bm_dubious_donors / ppcalc.get_donors_ct(filtered_df)) * 100
-    bm_dubious_percent_of_donation_actions = (dubious_donation_actions / ppcalc.get_donations_ct(filtered_df)) * 100
+    bm_dubious_percent_of_donation_actions = (bm_dubious_donation_actions / ppcalc.get_donations_ct(filtered_df)) * 100
     bm_returned_donations = ppcalc.get_returned_donations_ct(filtered_df)
     bm_returned_donations_value = ppcalc.get_returned_donations_value(filtered_df)
     bm_returned_donations_percent_value = (bm_returned_donations_value / bm_total_value_dubious_donations) * 100
