@@ -121,6 +121,7 @@ def cashdonations_body():
                                        Title="Value of Donations by Year and"
                                              " Entity",
                                        CalcType='count',
+                                       use_custom_colors=True,
                                        widget_key="Value_by_entity",
                                        use_container_width=True)
     with right:

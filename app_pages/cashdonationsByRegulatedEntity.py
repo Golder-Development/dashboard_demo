@@ -144,6 +144,7 @@ def cashdonationsregentity_body():
                                        Title="Value of Donations by Year "
                                        "and Entity",
                                        CalcType='count',
+                                       use_custom_colors=True,
                                        widget_key="cash_dons_by_reg_entity")
     with right:
         # write code to return analysis of the graph above highlighting

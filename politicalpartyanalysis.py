@@ -16,7 +16,7 @@ from app_pages.notesondataprep import notesondataprep_body
 from app_pages.cashdonations import cashdonations_body
 from app_pages.cashdonationsByRegulatedEntity\
     import cashdonationsregentity_body
-# from app_pages.donorspage_headlines import donorsheadlinespage_body
+from app_pages.donorspage_headlines import donorsheadlinespage_body
 # from app_pages.donationsbypoliticalpartys import
 # donationsbypoliticalpartys_body
 
@@ -38,7 +38,7 @@ app.add_page("Cash Donations by Regulated Entity",
 app.add_page("Dubious Donations", dubiousdonations_body)
 app.add_page("Dubious Donations by Regulated Entity",
              dubiousdonationsByDonor_body)
-# app.add_page("Donors", donorsheadlinespage_body)
+app.add_page("Donors", donorsheadlinespage_body)
 app.add_page("Notes on Data and Manipulations", notesondataprep_body)
 
 app.run()  # Run the  app

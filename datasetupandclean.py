@@ -40,6 +40,12 @@ def load_data():
     # Remove Currency sign of Value and convert to Float
     df['Value'] = df['Value'].replace({'£': '', ',': ''},
                                       regex=True).astype(float)
+
+    # rename "Total value of donations not reported individually" to "Aggregated Donation" in DonationType
+    df['DonationType'] = df['DonationType'].replace(
+        {"Total value of donations not reported individually": "Aggregated Donation",
+        "Permissible Donor Exempt Trust" : "P.D. Exempt Trust"}
+    )
     # Remove Northern Ireland register data
     df = df[df["RegisterName"] != "Northern Ireland"]
     # Remove Public Funds

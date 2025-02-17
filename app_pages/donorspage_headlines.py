@@ -8,6 +8,7 @@ def donorsheadlinespage_body():
     This function displays the content of Page two.
     """
     donors_df = st.session_state.get("data_clean", None)
+    donors_df = donors_df[donors_df["DonorStatus"] != "Registered Political Party"]
     donors = ppcalc.get_donors_ct(donors_df)
     donations = ppcalc.get_donations_ct(donors_df)
     totaldonations = ppcalc.get_value_total(donors_df)
@@ -36,6 +37,28 @@ def donorsheadlinespage_body():
         donors_summary['Total Value'] / donors_summary['Regulated Entities']
     donors_summary['Average Number Donations per Entity'] =\
         donors_summary['No of Donations'] / donors_summary['Regulated Entities']
+    donors_topline_summary = donors_df.groupby(['DonorName'])\
+        .agg({'Value': ['count',
+                        'sum',
+                        'mean',
+                        'median'],
+              'RegulatedEntityName':'nunique'}).reset_index()
+    donors_topline_summary.columns = ['Donor Name',
+                              'No of Donations',
+                              'Total Value',
+                              'Average Donation',
+                              'Median Donation',
+                              'Regulated Entities']
+    donors_topline_summary['Average Value per Regulated Entity'] =\
+        donors_topline_summary['Total Value'] / donors_topline_summary['Regulated Entities']
+    donors_topline_summary['Average Number Donations per Entity'] =\
+        donors_topline_summary['No of Donations'] / donors_topline_summary['Regulated Entities']
+    donors_topline_summary['Regulated Entities_f'] = donors_topline_summary['Average Number Donations per Entity'].apply(lambda x: f"{x:.0f}")
+    donors_topline_summary['Total Donations £'] = donors_topline_summary['Total Value'].apply(lambda x: f"£{ppcalc.format_number(x)}")
+    donors_topline_summary['Avg Donations'] = donors_topline_summary['Average Donation'].apply(lambda x: f"£{ppcalc.format_number(x)}")
+    donors_topline_summary['Median Donations'] = donors_topline_summary['Median Donation'].apply(lambda x: f"£{ppcalc.format_number(x)}")
+    donors_topline_summary['Avg Value Per Entity'] = donors_topline_summary['Average Value per Regulated Entity'].apply(lambda x: f"£{ppcalc.format_number(x)}")
+    donors_topline_summary['Avg No. Donations Per Entity'] = donors_topline_summary['Average Number Donations per Entity'].apply(lambda x: f"{x:.2f}")
     # Apply formating to values
     donors = ppcalc.format_number(donors)
     donations = ppcalc.format_number(donations)
@@ -46,6 +69,9 @@ def donorsheadlinespage_body():
     st.write("## Headline Figures")
     col1, col2 = st.columns(2)
     with col1:
+        st.write("* For this analysis, any donations made by Political Parties"
+                 " have been excluded. This is to focus on donations made by"
+                 " individuals, companies, and other organisations.")
         st.write(f"* Between {min_date} and {max_date}, {donors} donors made "
                  f"{donations} these were worth in total £{totaldonations}."
                  f" The average donations per donor was {avg_donations}, and"
@@ -53,13 +79,14 @@ def donorsheadlinespage_body():
         # Graph showing average donor donation vs total number of
         # donations per donor with size of circle set to number of regulated
         # entities donated to.
-        vis.plot_regressionplot(donors_summary,
+        vis.plot_regressionplot(donors_topline_summary,
                                 y_column='Average Donation',
                                 x_column='No of Donations',
                                 size_column='Regulated Entities',
                                 title='Avg. Donation vs No. of Donations per Donor',
                                 y_label='Average Donation £',
                                 x_label='Number of Donations',
+                                x_scale='linear',
                                 size_label='Regulated Entities',
                                 size_scale=0.5
                                 )
@@ -71,15 +98,166 @@ def donorsheadlinespage_body():
         st.write('* There are a few donors who make multiple donations, and a '
                  ' few who make donations to multiple regulated entities. These'
                  ' donations are generally larger in value.')
-        st.write('* The whisker and box graphs below shoe the distribution of '
-                 ' Average Donation size by Donation Type. These reenforce the'
-                 ' point that there are a few donors who make large donations,'
-                 ' and the majority of donors make small donations, regardless'
-                 ' of the type of donation.')
-    vis.generate_boxplots(donors_summary,
-                            column="Donation Type",
-                            value_column='Average Donation',
-                            row_height=5,
-                            plots_per_row=2
-                            )
+        st.write('* From the charts below, we can see that on average, donors'
+                 ' donated more using cash than other methods.  We can also see that'
+                 ' quite a few donors made donations to multiple regulated entities.'
+                 ' with BAA being the most promiscuous donor.')
+        st.write('* The top 3 most generous donors overall where all Trade Unions, '
+                 ' as were all 5 of the most active donors by number of donations. ')
+        st.write('* The top 5 most generous on average donors were all individuals,'
+                 ' and apart from 2 they each made a single donation. When we exclude'
+                 ' donors who only made a single donation, the top 5 most generous'
+                 ' on average donors were all except 1 still individuals.')
+        st.write('* When we look at the Average value of donations per regulated entity'
+                 ' and the number of Entities donated to, we see as the number of Entities'
+                 ' donated to increased, the average donation per entity decreased.')
+        st.write('* Unsurprisingly, the more Entities donated to more donations made.')
+    left,mid,right = st.columns(3)
+    with left:
+        vis.plot_custom_bar_chart(
+                                    df=donors_df,  # DataFrame to plot
+                                    x_column='RegEntity_Group',  # Column for the x-axis (categorical)
+                                    y_column='Value',  # Column for the y-axis (numerical)
+                                    group_column='DonationType',  # No grouping by another column
+                                    agg_func='sum',
+                                    title='Total Donations by Donation Type',  # Title of the chart
+                                    x_label='Donation Type',  # X-axis label
+                                    y_label='Average Donation £',  # Y-axis label
+                                    orientation='v',  # Vertical bars
+                                    barmode='stack',  # Grouped bars
+                                    x_scale='category',
+                                    y_scale='log',
+                                    # color_palette='Set1',  # Color palette for bars
+                                    key='avg_donation_donation_type',  # Streamlit widget key
+                                    use_container_width=True  # Ensures chart fits container width
+                                )
+        vis.plot_custom_bar_chart(
+                                    df=donors_topline_summary,  # DataFrame to plot
+                                    x_column='Regulated Entities',  # Column for the x-axis (categorical)
+                                    y_column='Donor Name',  # Column for the y-axis (numerical)
+                                    group_column=None,  # No grouping by another column
+                                    agg_func='count',
+                                    title='Count of Donors vs No of Regulated Entities',  # Title of the chart
+                                    x_label='No of Regulated Entities',  # X-axis label
+                                    y_label='No of Donors',  # Y-axis label
+                                    orientation='v',  
+                                    barmode='stack',
+                                    x_scale='log',
+                                    y_scale='log',
+                                    color_palette='Viridis',  # Color palette for bars
+                                    key='reg_ent_don_name',  # Streamlit widget key
+                                    use_container_width=True  # Ensures chart fits container width
+                                )
+    with mid:
+        vis.plot_regressionplot(donors_topline_summary,
+                                y_column='No of Donations',
+                                x_column='Regulated Entities',
+                                size_column='Total Value',
+                                title='Avg. Donation vs No. of Donations per Donor',
+                                y_label='No. of Donations',
+                                x_label='No. of Entities Donated to',
+                                size_label='Total Donated Value £',
+                                size_scale=0.5
+                                )
+    with right:
+        vis.plot_regressionplot(donors_topline_summary,
+                                y_column='Average Value per Regulated Entity',
+                                x_column='Regulated Entities',
+                                size_column='Total Value',
+                                title='Avg. Donation vs No. of Entities per Donor',
+                                y_label='Avg. Value per Entity £',
+                                x_label='No. of Entities Donated to',
+                                size_label='Total Donated Value £',
+                                size_scale=0.5
+                                )
+    st.write("### Top 5 Most Promiscuous Donors: Entities Donated to")
+    donors_summary2 = donors_topline_summary.sort_values('Regulated Entities', ascending=False)
+    donors_summary2 = donors_summary2[['Donor Name',
+                                      'Regulated Entities',
+                                      'Avg No. Donations Per Entity',
+                                      'No of Donations',
+                                      'Total Donations £',
+                                      'Avg Donations',
+                                      'Median Donations',
+                                      'Avg Value Per Entity'
+                                      ]].head(5)
+    donors_summary2_styled = donors_summary2.style.set_properties(
+    subset=donors_summary2.columns[1:],  # Exclude the first column
+    **{'text-align': 'center'}
+    )
+    # Display the styled dataframe
+    st.dataframe(donors_summary2_styled)
+    st.write("### Top 5 Most Generous Overall Donors")
+    donors_summary2 = donors_topline_summary.sort_values('Total Value', ascending=False)
+    donors_summary2 = donors_summary2[['Donor Name',
+                                      'Regulated Entities',
+                                      'Avg No. Donations Per Entity',
+                                      'No of Donations',
+                                      'Total Donations £',
+                                      'Avg Donations',
+                                      'Median Donations',
+                                      'Avg Value Per Entity'
+                                      ]].head(5)
+    donors_summary2_styled = donors_summary2.style.set_properties(
+    subset=donors_summary2.columns[1:],  # Exclude the first column
+    **{'text-align': 'center'}
+    )
+    # Display the styled dataframe
+    st.dataframe(donors_summary2_styled)
+    st.write("### Top 5 Most Generous on Average Donors")
+    donors_summary2 = donors_topline_summary.sort_values('Average Donation', ascending=False)
+    donors_summary2 = donors_summary2[['Donor Name',
+                                      'Regulated Entities',
+                                      'Avg No. Donations Per Entity',
+                                      'No of Donations',
+                                      'Total Donations £',
+                                      'Avg Donations',
+                                      'Median Donations',
+                                      'Avg Value Per Entity'
+                                      ]].head(5)
+    donors_summary2_styled = donors_summary2.style.set_properties(
+    subset=donors_summary2.columns[1:],  # Exclude the first column
+    **{'text-align': 'center'}
+    )
+    # Display the styled dataframe
+    st.dataframe(donors_summary2_styled)
+    st.write("### Top 5 Most Generous on Average Donors")
+    st.write("#### Excluding donors who only made a single donation")
+    donors_summary2 = donors_topline_summary.sort_values('Average Donation', ascending=False)
+    donors_summary2 = donors_summary2[donors_summary2['No of Donations'] > 1]
+    donors_summary2 = donors_summary2[['Donor Name',
+                                      'Regulated Entities',
+                                      'Avg No. Donations Per Entity',
+                                      'No of Donations',
+                                      'Total Donations £',
+                                      'Avg Donations',
+                                      'Median Donations',
+                                      'Avg Value Per Entity'
+                                      ]].head(5)
+    donors_summary2_styled = donors_summary2.style.set_properties(
+    subset=donors_summary2.columns[1:],  # Exclude the first column
+    **{'text-align': 'center'}
+    )
+    # Display the styled dataframe
+    st.dataframe(donors_summary2_styled)
+    
+    st.write("### Top 5 Most Active Donors by No of Donations")
+    donors_summary2 = donors_topline_summary.sort_values('No of Donations', ascending=False)
+    donors_summary2 = donors_summary2[['Donor Name',
+                                      'Regulated Entities',
+                                      'Avg No. Donations Per Entity',
+                                      'No of Donations',
+                                      'Total Donations £',
+                                      'Avg Donations',
+                                      'Median Donations',
+                                      'Avg Value Per Entity'
+                                      ]].head(5)
+    donors_summary2_styled = donors_summary2.style.set_properties(
+    subset=donors_summary2.columns[1:],  # Exclude the first column
+    **{'text-align': 'center'}
+    )
+    # Display the styled dataframe
+    st.dataframe(donors_summary2_styled)
+
+    
     st.write("## Individual Donor Analysis and Data")
