@@ -13,11 +13,13 @@ def donationsbypoliticalpartys_body():
     # Example: Get filtered results for a specific party (if needed)
     selected_party = st.selectbox("Filter by Political Party", ["All"] +
                                   sorted(df["RegulatedEntityId"].unique()))
-    filters = {"RegulatedEntityId": selected_party} if selected_party != "All" else None
+    filters = {"RegulatedEntityId": selected_party} if selected_party != "All"\
+        else None
 
     # Call each function separately with the selected filter
     # impermissible_donors_ct = ppcalc.get_impermissible_donors_ct(df, filters)
-    # dubious_donation_actions_ct = ppcalc.get_dubious_donation_actions_ct(df, filters)
+    # dubious_donation_actions_ct = ppcalc.get_dubious_donation_actions_ct(df,
+    # filters)
     blank_received_date_ct = ppcalc.get_blank_received_date_ct(df, filters)
     blank_regulated_entity_id_ct = ppcalc.get_blank_regulated_entity_id_ct(df, filters)
     # blank_donor_id_ct = ppcalc.get_blank_donor_id_ct(df, filters)

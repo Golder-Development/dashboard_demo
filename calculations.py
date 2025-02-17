@@ -319,3 +319,9 @@ def format_number(value):
         return f"{value / 1_000:,.1f}k"
     else:
         return f"{value:,.2f}"
+
+
+def get_median_donation(df, filters=None):
+    """Calculates the median donation value."""
+    df = apply_filters(df, filters)
+    return df["Value"].median()
