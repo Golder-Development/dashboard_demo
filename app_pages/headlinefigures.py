@@ -88,7 +88,8 @@ def hlf_body():
                                    GGroup="RegulatedEntityType",
                                    XLabel="Year", YLabel="Donations",
                                    Title="Donations by Year and Entity Type",
-                                   CalcType='sum')
+                                   CalcType='sum',
+                                   widget_key="dons_by_year_n_entity")
     if filtered_df.empty:
         st.write("No data available for the selected filters.")
         return
@@ -98,9 +99,10 @@ def hlf_body():
                                    YValue="Value",
                                    GGroup="RegEntity_Group",
                                    XLabel="Year",
-                                   YLabel="Value of Donations £",
+                                   YLabel="Value of Donations £ 000's",
                                    Title="Value of Donations by Year",
-                                   CalcType='count')
+                                   widget_key="value_by_year_n_entity",                                   
+                                   CalcType='sum')
     if filtered_df.empty:
         st.write("No data available for the selected filters.")
         return
@@ -112,9 +114,40 @@ def hlf_body():
                                    XLabel="Year",
                                    YLabel="Total Value (£)",
                                    Title="Value of Donations Types by Year",
+                                   widget_key="value_by_year_n_type",
                                    CalcType='sum')
-    if filtered_df.empty:
-        st.write("No data available for the selected filters.")
-        return
-    else:
-        vis.plot_pie_chart(filtered_df, "RegEntity_Group", "Value")
+    col1, col2 = st.columns(2)
+    with col1:
+        if filtered_df.empty:
+            st.write("No data available for the selected filters.")
+            return
+        else:
+            st.write("### Entity Distribution")
+            vis.plot_pie_chart(
+                df=filtered_df,
+                category_column="RegEntity_Group",
+                value_column="Value",  # Use None for count
+                color_column="RegEntity_Group",
+                title="Distribution of Donated Value by Entity",
+                category_label="Regulated Entity",
+                value_label="Percentage of Total Donations",
+                hole=0.3,  # Adjust for more or less donut effect
+                key="Value_by_entity"
+            )
+    with col2:
+        if filtered_df.empty:
+            st.write("No data available for the selected filters.")
+            return
+        else:
+            st.write("### Entity Distribution")
+            vis.plot_pie_chart(
+                df=filtered_df,
+                category_column="RegEntity_Group",
+                value_column=None,  # Use None for count
+                color_column="RegEntity_Group",
+                title="Distribution of Donations by Entity",
+                category_label="Regulated Entity",
+                value_label="Percentage of Donation Events",
+                hole=0.3,  # Adjust for more or less donut effect
+                key="pie_donations_by_entity"
+            )

@@ -4,7 +4,7 @@ import streamlit as st
 
 
 class MultiPage:
-
+    
     def __init__(self, app_name) -> None:
         self.pages = []  # List to store the pages
         self.app_name = app_name  # Name of the app
@@ -12,7 +12,8 @@ class MultiPage:
         # Set the page configuration
         st.set_page_config(
             page_title=self.app_name,
-            page_icon=":computer:"
+            page_icon=":computer:",
+            layout="wide"
         )
 
     # Method to add a new page to the app

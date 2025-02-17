@@ -93,7 +93,7 @@ def cashdonationsregentity_body():
              "parties.")
     st.write("## Topline Figures")
     st.write(f"* During the period between {min_date_df} and {max_date_df},"
-             "there were {unique_donations_c_d} cash donations made to "
+             f"there were {unique_donations_c_d} cash donations made to "
              f"{unique_regulated_entities_c_d}.")
     st.write(f"* These had a mean value of £{ppcalc.format_number
              (mean_value_donations_c_d)} "
@@ -121,7 +121,8 @@ def cashdonationsregentity_body():
                                        XLabel="Year", YLabel="Donations",
                                        Title="Donations by Year and Entity "
                                        "Type",
-                                       CalcType='sum')
+                                       CalcType='sum',
+                                       widget_key="cash_dons_by_party")
     with right:
         st.write('As can  be seen from the chart to the left'
                  'most cash donations are made to Political Parties.'
@@ -142,7 +143,8 @@ def cashdonationsregentity_body():
                                        YLabel="Value of Donations £",
                                        Title="Value of Donations by Year "
                                        "and Entity",
-                                       CalcType='count')
+                                       CalcType='count',
+                                       widget_key="cash_dons_by_reg_entity")
     with right:
         # write code to return analysis of the graph above highlighting
         # interesting factors that will refresh when the input changes.
@@ -162,7 +164,8 @@ def cashdonationsregentity_body():
                                        YLabel="Total Value (£)",
                                        Title="Value of Donations Types "
                                        "by Year",
-                                       CalcType='sum')
+                                       CalcType='sum',
+                                       widget_key="cash_dons_by_type")
         if cleaned_c_d_df.empty:
             st.write("No data available for the selected filters.")
             return

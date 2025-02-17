@@ -93,6 +93,7 @@ def cashdonations_body():
                                        Title="Donations by Year and "
                                        "Entity Type",
                                        CalcType='sum',
+                                       widget_key="donations_by_entity",
                                        use_container_width=True)
     with right:
         # write function to find the top 3 RegulatedEntityTypes and share of
@@ -120,6 +121,7 @@ def cashdonations_body():
                                        Title="Value of Donations by Year and"
                                              " Entity",
                                        CalcType='count',
+                                       widget_key="Value_by_entity",
                                        use_container_width=True)
     with right:
         # write code to find top 3 political entities by value of donations and
@@ -146,6 +148,7 @@ def cashdonations_body():
                                        YLabel="Total Value (£)",
                                        Title="Value of Donor Types by Year",
                                        CalcType='sum',
+                                       widget_key="Value by type",
                                        use_container_width=True)
         if cleaned_c_d_df.empty:
             st.write("No data available for the selected filters.")
