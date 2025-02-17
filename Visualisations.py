@@ -2,18 +2,18 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import seaborn as sns
+import calculations as ppcalc
 
 
-def format_number(value):
-    if value >= 1_000_000:
-        return f"{value / 1_000_000:,.1f}M"
-    elif value >= 10_000:
-        return f"{value / 1_000:,.1f}k"
-    else:
-        return f"{value:,.2f}"
-
-
-def plot_donations_by_year(Data='filtered_df', XValues='YearReceived', YValue='Value', GGroup='RegEntity_Group', XLabel='Year', YLabel='Total Value (£)', Title='Donations by Year and Entity Type'):
+def plot_donations_by_year(Data='filtered_df',
+                           XValues='YearReceived',
+                           YValue='Value',
+                           GGroup='RegEntity_Group',
+                           XLabel='Year',
+                           YLabel='Total Value (£)',
+                           Title='Donations by Year and Entity Type',
+                           CalcType='sum'
+                           ):
     """
     Plots a stacked bar chart of donations by year and entity type.
 
@@ -27,8 +27,37 @@ def plot_donations_by_year(Data='filtered_df', XValues='YearReceived', YValue='V
         None (displays the plot in Streamlit)
     """
     filtered_df = Data
-    # Group data by YearReceived and RegulatedEntityType, summing the 'Value' column
-    donations_by_year_entity = filtered_df.groupby([XValues, GGroup])[YValue].sum().unstack().fillna(0)
+    # Group data using requested columns and calculation type
+    if CalcType == 'sum':
+        donations_by_year_entity = filtered_df.groupby([XValues, GGroup])[YValue].sum().unstack().fillna(0)
+    if CalcType == 'avg':
+        donations_by_year_entity = filtered_df.groupby([XValues, GGroup])[YValue].mean().unstack().fillna(0)
+    if CalcType == 'count':
+        donations_by_year_entity = filtered_df.groupby([XValues, GGroup])[YValue].count().unstack().fillna(0)
+    if CalcType == 'median':
+        donations_by_year_entity = filtered_df.groupby([XValues, GGroup])[YValue].median().unstack().fillna(0)
+    if CalcType == 'max':
+        donations_by_year_entity = filtered_df.groupby([XValues, GGroup])[YValue].max().unstack().fillna(0)
+    if CalcType == 'min':
+        donations_by_year_entity = filtered_df.groupby([XValues, GGroup])[YValue].min().unstack().fillna(0)
+    if CalcType == 'std':
+        donations_by_year_entity = filtered_df.groupby([XValues, GGroup])[YValue].std().unstack().fillna(0)
+    if CalcType == 'var':
+        donations_by_year_entity = filtered_df.groupby([XValues, GGroup])[YValue].var().unstack().fillna(0)
+    if CalcType == 'sem':
+        donations_by_year_entity = filtered_df.groupby([XValues, GGroup])[YValue].sem().unstack().fillna(0)
+    if CalcType == 'skew':
+        donations_by_year_entity = filtered_df.groupby([XValues, GGroup])[YValue].skew().unstack().fillna(0)
+    if CalcType == 'kurt':
+        donations_by_year_entity = filtered_df.groupby([XValues, GGroup])[YValue].kurt().unstack().fillna(0)
+    if CalcType == 'quantile':
+        donations_by_year_entity = filtered_df.groupby([XValues, GGroup])[YValue].quantile().unstack().fillna(0)
+    if CalcType == 'corr':
+        donations_by_year_entity = filtered_df.groupby([XValues, GGroup])[YValue].corr().unstack().fillna(0)
+    if CalcType == 'cov':
+        donations_by_year_entity = filtered_df.groupby([XValues, GGroup])[YValue].cov().unstack().fillna(0)
+    else:
+        donations_by_year_entity = filtered_df.groupby([XValues, GGroup])[YValue].sum().unstack().fillna(0)        
 
     # Create figure and axis
     fig, ax = plt.subplots(figsize=(10, 5))
@@ -84,7 +113,7 @@ def plot_regressionplot(
     ax.set_ylabel(y_label)
     ax.set_title(title)
 
-    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, loc: format_number(x)))
+    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, loc: ppcalc.format_number(x)))
 
     st.pyplot(fig)
 

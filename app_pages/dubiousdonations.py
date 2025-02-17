@@ -6,13 +6,6 @@ def dubiousdonations_body():
     import calculations as ppcalc
     import Visualisations as vis
 
-    def format_number(value):
-        if value >= 1_000_000:
-            return f"{value / 1_000_000:,.1f}M"
-        elif value >= 10_000:
-            return f"{value / 1_000:,.1f}k"
-        else:
-            return f"{value:,.2f}"
     ## Page Title
     st.write("## Dubious Donations to ")
     st.write("## UK Regulated Political Entities")
@@ -74,14 +67,14 @@ def dubiousdonations_body():
     if dubious_donors >= 1:
         st.write(f"* Between {start_date} and {end_date}, there were {dubious_donors} donors identified as dubious."
                  f" These donors represented {dubious_percent_of_donors:.2f}% of donors to regulated entities,"
-                 f" and includes Impremissible Donors and Unidentified Donors.  They donated a total of £{format_number(dubious_donors_value)},"
+                 f" and includes Impremissible Donors and Unidentified Donors.  They donated a total of £{ppcalc.format_number(dubious_donors_value)},"
                  f" which represented {dubious_donors_percent_of_value:.2f}% of the total value of donations made in the period.")
     else:
         st.write("* No donations from dubious donors were identified.")
     if dubious_donation_actions >= 1:
         st.write(f"* There were {dubious_donation_actions} donations that were identified as of questionable nature."
                  f" These donations represented {dubious_percent_of_donation_actions:.2f}% of all donations made in the period."
-                 f" These had a combined value of £{format_number(total_value_dubious_donations)} and represented {dubious_percent_of_value:.2f}% in value of all donations.")
+                 f" These had a combined value of £{ppcalc.format_number(total_value_dubious_donations)} and represented {dubious_percent_of_value:.2f}% in value of all donations.")
     if blank_received_date_ct >= 1:
         st.write(f"* {blank_received_date_ct} donations had no recorded date.")
     if blank_regulated_entity_id_ct >= 1:
@@ -89,13 +82,13 @@ def dubiousdonations_body():
                  "regulated entity.")
     if total_value_dubious_donations >= 1:
         st.write(f"* Of these donations {returned_donations} or {returned_donations_percent_donations:.2f}% were returned to the donor,"
-                 f"representing £{format_number(returned_donations_value)} or {returned_donations_percent_value:.2f}% of the total value of dubious donations.")
+                 f"representing £{ppcalc.format_number(returned_donations_value)} or {returned_donations_percent_value:.2f}% of the total value of dubious donations.")
     if aggregated_donations >= 1:
         st.write(f"* There were {aggregated_donations} aggregated donations, representing {aggregated_percent_of_donation_actions:.2f}% of all donation actions."
-                 f" The total value of these aggregated donations was £{format_number(aggregated_donations_value)}, representing {aggregated_percent_of_value:.2f}% of the total value of all donations.")
+                 f" The total value of these aggregated donations was £{ppcalc.format_number(aggregated_donations_value)}, representing {aggregated_percent_of_value:.2f}% of the total value of all donations.")
     if donated_visits >= 1:
         st.write(f"* There were {donated_visits} visits donated to regulated entities, representing {donated_visits_percent_of_donation_actions:.2f}% of all donation actions."
-                 f" The total value of these visits was £{format_number(donated_visits_value)}, representing {donated_visits_percent_of_value:.2f}% of the total value of all donations.")
+                 f" The total value of these visits was £{ppcalc.format_number(donated_visits_value)}, representing {donated_visits_percent_of_value:.2f}% of the total value of all donations.")
     st.write("---")
     st.write("### Visuals")
     # Display the filtered data (Optional)

@@ -310,3 +310,12 @@ def get_top_donationType_by_donations(df, filters=None):
     top_entity = df.groupby("DonationType")["EventCount"].sum().idxmax()
     top_value = df.groupby("DonationType")["EventCount"].sum().max()
     return top_entity, top_value
+
+
+def format_number(value):
+    if value >= 1_000_000:
+        return f"{value / 1_000_000:,.1f}M"
+    elif value >= 10_000:
+        return f"{value / 1_000:,.1f}k"
+    else:
+        return f"{value:,.2f}"

@@ -6,13 +6,6 @@ def hlf_body():
     import calculations as ppcalc
     import Visualisations as vis
 
-    def format_number(value):
-        if value >= 1_000_000:
-            return f"{value / 1_000_000:,.1f}M"
-        elif value >= 10_000:
-            return f"{value / 1_000:,.1f}k"
-        else:
-            return f"{value:,.0f}"
 
     df = st.session_state.get("data_clean", None)
     sum_df = st.session_state.get("data_party_sum", None)
@@ -54,32 +47,72 @@ def hlf_body():
     st.write("### Headline Figures")
     col1, col2 = st.columns(2)
     with col1:
-        st.write(f"* During the period from {min_date} to {max_date},  {unique_regulated_entities:.0f} "
-                 "regulated political bodies received donations.")
-        st.write(f"* These received a total value of £{format_number(total_value_donations)} from {format_number(unique_donors)} unique donors")
-        st.write(f"* The average donation was £{format_number(mean_value_donations)} and there were {format_number(unique_donations)} unique donations")
-        st.write(f"* Political parties were identified as the donor in {PP_donations_percent:.0f}% of dontations. These donations were worth £{format_number(PP_donations_value)} or {PP_donations_value_percent:.2f}% of the total value of donations.")
-        st.write(f"* {single_donation_entity} of the donations were to entities that only received one donation."
-                 f" These donations represented {single_donation_percent:.2f}% of all donations, were worth "
-                 f" £{format_number(single_donation_entity_value)} or {single_donation_entity_value_percent:.2f}% of "
-                 f" the total value of donations and were {single_donation_entity_percent:.0f}% of the regulated entities.")
+        st.write(f"* During the period from {min_date} to {max_date}, "
+                 f"{unique_regulated_entities:.0f} regulated political "
+                 "bodies received donations.")
+        st.write(f"* These received a total value of £{ppcalc.format_number(total_value_donations)} "
+                 f"from {ppcalc.format_number(unique_donors)} unique donors")
+        st.write(f"* The average donation was £{ppcalc.format_number(mean_value_donations)} "
+                 f"and there were {ppcalc.format_number(unique_donations)} unique donations")
+        st.write(f"* Political parties were identified as the donor in {PP_donations_percent:.0f}% "
+                 f"of dontations. These donations were worth £{ppcalc.format_number(PP_donations_value)} "
+                 f"or {PP_donations_value_percent:.2f}% of the total value of donations.")
+        st.write(f"* {single_donation_entity} of the donations were to entities"
+                 f"that only received one donation. These donations represented "
+                 f"{single_donation_percent:.2f}% of all donations, were worth "
+                 f" £{ppcalc.format_number(single_donation_entity_value)} or "
+                 f"{single_donation_entity_value_percent:.2f}% of the total value "
+                 f"of donations and were {single_donation_entity_percent:.0f}% of "
+                 f"the regulated entities.")
     with col2:
-        st.write(f"* Most Donations were in {top_dontype_ct}, these represented {top_dontype_dons_percent:.2f}% of donations and were {top_dontype_value_percent:.2f}% of the total value of donations.")    
+        st.write(f"* Most Donations were in {top_dontype_ct}, these "
+                 f"represented {top_dontype_dons_percent:.2f}% of "
+                 f"donations and were {top_dontype_value_percent:.2f}% "
+                 f"of the total value of donations.")    
         # use data from the summary dataset
-        st.write(f"* The {top_entity} received the most donations by value, with a total value of £{format_number(top_value)} or {top_value/total_value_donations*100:.2f}% of all donations.") 
-        st.write(f"* The {top_entity_ct} received the most donations by count, having {top_donations:,.0f} donations which represented {top_donations/unique_donations*100:.2f}% of all donations.")
+        st.write(f"* The {top_entity} received the most donations by value, with "
+                 f"a total value of £{ppcalc.format_number(top_value)} or "
+                 f"{top_value/total_value_donations*100:.2f}% of all donations.") 
+        st.write(f"* The {top_entity_ct} received the most donations by count, "
+                 f"having {top_donations:,.0f} donations which represented "
+                 f"{top_donations/unique_donations*100:.2f}% of all donations.")
     st.write("### Topline Visuals")
     st.write("#### Click on any Visualisation to view it full screen.") 
     if filtered_df.empty:
         st.write("No data available for the selected filters.")
         return
     else:
-        vis.plot_donations_by_year(filtered_df, XValues="YearReceived", YValue="EventCount", GGroup="RegulatedEntityType", XLabel="Year", YLabel="Donations", Title="Donations by Year and Entity Type")
+        vis.plot_donations_by_year(filtered_df,
+                                   XValues="YearReceived",
+                                   YValue="EventCount",
+                                   GGroup="RegulatedEntityType",
+                                   XLabel="Year", YLabel="Donations",
+                                   Title="Donations by Year and Entity Type",
+                                   CalcType='sum')
     if filtered_df.empty:
         st.write("No data available for the selected filters.")
         return
     else:
-        vis.plot_donations_by_year(filtered_df, XValues="YearReceived", YValue="Value", GGroup="RegEntity_Group", XLabel="Year", YLabel="Total Value (£)", Title="Value of Donations by Year")
+        vis.plot_donations_by_year(filtered_df,
+                                   XValues="YearReceived",
+                                   YValue="Value",
+                                   GGroup="RegEntity_Group",
+                                   XLabel="Year",
+                                   YLabel="Value of Donations £",
+                                   Title="Value of Donations by Year",
+                                   CalcType='count')
+    if filtered_df.empty:
+        st.write("No data available for the selected filters.")
+        return
+    else:
+        vis.plot_donations_by_year(filtered_df, 
+                                   XValues="YearReceived",
+                                   YValue="Value",
+                                   GGroup="DonationType",
+                                   XLabel="Year",
+                                   YLabel="Total Value (£)",
+                                   Title="Value of Donations Types by Year",
+                                   CalcType='sum')
     if filtered_df.empty:
         st.write("No data available for the selected filters.")
         return

@@ -12,7 +12,7 @@ from app_pages.dubiousdonations import dubiousdonations_body
 from app_pages.dubiousdonationsByRegulatedEntity import dubiousdonationsByDonor_body
 # from app_pages.sponsorships import sponsorship_body
 from app_pages.notesondataprep import notesondataprep_body
-# from app_pages.cashdonations import cashdonations_body
+from app_pages.cashdonations import cashdonations_body
 # from app_pages.donorspage import donorspage_body
 # from app_pages.donationsbypoliticalpartys import donationsbypoliticalpartys_body
 
@@ -23,7 +23,7 @@ app = MultiPage(app_name="UK Political Donations")  # Create an instance
 
 app.add_page("Introduction", introduction_body)
 app.add_page("Head Line Figures", hlf_body)
-# app.add_page("Cash Donations", cashdonations_body)
+app.add_page("Cash Donations", cashdonations_body)
 # app.add_page("Sponsorships", sponsorship_body)
 # app.add_page("Bequeths", bequeth_body)
 # app.add_page("Paid Visits", visits_body)
