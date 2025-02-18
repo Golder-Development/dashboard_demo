@@ -315,6 +315,7 @@ def plot_pie_chart(
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=use_container_width)
 
+
 def plot_custom_bar_chart(
         df,
         x_column,

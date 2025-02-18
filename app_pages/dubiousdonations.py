@@ -6,12 +6,12 @@ def dubiousdonations_body():
     import calculations as ppcalc
     import Visualisations as vis
 
-    ## Page Title
+    # Page Title
     st.write("## Dubious Donations to ")
     st.write("## UK Regulated Political Entities")
     # Load dataset from session state
     df = st.session_state.get("data_clean", None)
-    filters= {}
+    filters = {}
     # Get min and max dates from the dataset
     min_date = ppcalc.get_mindate(df).date()
     max_date = ppcalc.get_maxdate(df).date()
@@ -34,8 +34,8 @@ def dubiousdonations_body():
     total_value_dubious_donations = ppcalc.get_total_value_dubious_donations(filtered_df2)
     dubious_donors_percent_of_value = ((dubious_donors_value / total_value_of_donations) * 100) if total_value_of_donations > 0 else 0
     dubious_percent_of_value = ((total_value_dubious_donations / total_value_of_donations) * 100) if total_value_of_donations > 0 else 0
-    dubious_percent_of_donors = ((dubious_donors / total_count_of_donors ) * 100) if total_count_of_donors> 0 else 0
-    dubious_percent_of_donation_actions = ((dubious_donation_actions / total_count_of_donations) * 100) if total_count_of_donations> 0 else 0
+    dubious_percent_of_donors = ((dubious_donors / total_count_of_donors) * 100) if total_count_of_donors > 0 else 0
+    dubious_percent_of_donation_actions = ((dubious_donation_actions / total_count_of_donations) * 100) if total_count_of_donations > 0 else 0
     returned_donations = ppcalc.get_returned_donations_ct(filtered_df2)
     returned_donations_value = ppcalc.get_returned_donations_value(filtered_df2)
     returned_donations_percent_value = ((returned_donations_value / total_value_dubious_donations) * 100) if total_value_dubious_donations > 0 else 0

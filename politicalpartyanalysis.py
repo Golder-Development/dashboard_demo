@@ -17,6 +17,7 @@ from app_pages.cashdonations import cashdonations_body
 from app_pages.cashdonationsByRegulatedEntity\
     import cashdonationsregentity_body
 from app_pages.donorspage_headlines import donorsheadlinespage_body
+# from app_pages.donorspage_perdonor import donorspage_perdonor_body
 # from app_pages.donationsbypoliticalpartys import
 # donationsbypoliticalpartys_body
 

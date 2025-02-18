@@ -63,16 +63,16 @@ def cashdonations_body():
     st.write(f"* During the period between {min_date_df} and {max_date_df}, "
              f"there were {unique_donations_c_d} cash donations made to "
              f"{unique_regulated_entities_c_d}.")
-    st.write(f"* These had a mean value of £{ppcalc.format_number\
-              (mean_value_donations_c_d)} "
+    st.write(f"* These had a mean value of £"
+             f"{ppcalc.format_number(mean_value_donations_c_d)} "
              f"and were made by {ppcalc.format_number(unique_donors_c_d)} "
              "unique donors.")
     st.write(f"* Cash donations represented {perc_cash_donations_d:.2f}% of "
              "all donations during the period selected, and "
              f"{perc_cash_donations:.2f}% of all donations made to political "
              f"parties between {min_date} and {max_date},.")
-    st.write(f"* All these had a value of £{ppcalc.format_number
-             (total_value_donations_c_d)}")
+    st.write(f"* All these had a value of £ "
+             f"{ppcalc.format_number(total_value_donations_c_d)}")
     st.write("---")
 
     st.write("### Topline Visuals")

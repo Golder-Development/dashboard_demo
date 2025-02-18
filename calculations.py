@@ -55,6 +55,7 @@ def get_blank_donor_name_ct(df, filters=None):
     df = apply_filters(df, filters)
     return df[df["DonorName"].isnull()].index.nunique()
 
+
 def get_unidentified_donors_ct(df, filters=None):
     """Counts unique donors labeled as 'Impermissible Donor'."""
     df = apply_filters(df, filters)
@@ -67,7 +68,8 @@ def get_dubious_donors_ct(df, filters=None):
     return df[
         (df["DonationType"] == "Impermissible Donor") |
         (df["DonationType"] == "Unidentified Donor") |
-        (df["DonationType"] == "Total value of donations not reported individually") |
+        (df["DonationType"] == "Total value of donations not reported\
+            individually") |
         (df["NatureOfDonation"] == "Aggregated Donation") |
         (df["IsAggregation"] == "True") |
         (df["DonorId"].isnull()) |
@@ -81,7 +83,8 @@ def get_dubious_donors_value(df, filters=None):
     return df[
         (df["DonationType"] == "Impermissible Donor") |
         (df["DonationType"] == "Unidentified Donor") |
-        (df["DonationType"] == "Total value of donations not reported individually") |
+        (df["DonationType"] == "Total value of donations not reported\
+            individually") |
         (df["NatureOfDonation"] == "Aggregated Donation") |
         (df["IsAggregation"] == "True") |
         (df["DonorId"].isnull()) |
@@ -96,12 +99,13 @@ def get_dubious_donation_actions(df, filters=None):
         (df["DonationType"] == "Visit") |
         (df["DonationType"] == "Impermissible Donor") |
         (df["DonationType"] == "Unidentified Donor") |
-        (df["DonationType"] == "Total value of donations not reported individually") |
+        (df["DonationType"] == "Total value of donations not reported\
+            individually") |
         (df["NatureOfDonation"] == "Aggregated Donation") |
         (df["IsAggregation"] == "True") |
         (df["DonationAction"].notnull()) |
         (df["ReceivedDate"] == '1900-01-01 00:00:00') |
-        (df["RegulatedEntityId"].isnull()) 
+        (df["RegulatedEntityId"].isnull())
     ]["EventCount"].sum()
 
 
@@ -112,12 +116,13 @@ def get_dubious_donation_value(df, filters=None):
         (df["DonationType"] == "Visit") |
         (df["DonationType"] == "Impermissible Donor") |
         (df["DonationType"] == "Unidentified Donor") |
-        (df["DonationType"] == "Total value of donations not reported individually") |
+        (df["DonationType"] == "Total value of donations\
+            not reported individually") |
         (df["NatureOfDonation"] == "Aggregated Donation") |
         (df["IsAggregation"] == "True") |
         (df["DonationAction"].notnull()) |
         (df["ReceivedDate"] == '1900-01-01 00:00:00') |
-        (df["RegulatedEntityId"].isnull()) 
+        (df["RegulatedEntityId"].isnull())
     ]["Value"].sum()
 
 
@@ -127,7 +132,8 @@ def get_total_value_dubious_donations(df, filters=None):
     return df[
         (df["DonationType"] == "Impermissible Donor") |
         (df["DonationType"] == "Unidentified Donor") |
-        (df["DonationType"] == "Total value of donations not reported individually") |
+        (df["DonationType"] == "Total value of donations\
+            not reported individually") |
         (df["DonationType"] == "Visit") |
         (df["DonationAction"].notnull()) |
         (df["NatureOfDonation"] == "Aggregated Donation") |
@@ -145,7 +151,8 @@ def get_total_ct_dubious_donations(df, filters=None):
     return df[
         (df["DonationType"] == "Impermissible Donor") |
         (df["DonationType"] == "Unidentified Donor") |
-        (df["DonationType"] == "Total value of donations not reported individually") |
+        (df["DonationType"] == "Total value of donations not reported\
+            individually") |
         (df["DonationType"] == "Visit") |
         (df["DonationAction"].notnull()) |
         (df["NatureOfDonation"] == "Aggregated Donation") |
@@ -203,13 +210,20 @@ def get_maxdate(df, filters=None):
 def display_thresholds_table():
     """Creates and displays a table showing the threshold logic."""
     # Convert the dictionary into a DataFrame
-    thresholds_df = pd.DataFrame(list(st.session_state.g_thresholds.items()), columns=["Donation Event Threshold", "Entity Category"])
-    # format the table change Donation event Threshold column to Integer and add bold to header
-    thresholds_df = thresholds_df.style.format({"Donation Event Threshold": "{:.0f}"}).set_table_styles([{
-        'selector': 'th',
-        'props': [('font-size', '1.2em'), ('text-align', 'center')]}])
+    thresholds_df = pd.DataFrame(list(st.session_state.g_thresholds.items()),
+                                 columns=["Donation Event Threshold",
+                                          "Entity Category"])
+    # format the table change Donation event Threshold column to Integer and
+    # add bold to header
+    thresholds_df = thresholds_df.style.format(
+        {"Donation Event Threshold": "{:.0f}"}
+    ).set_table_styles(
+        [{'selector': 'th', 'props': [('font-size', '1.2em'),
+                                      ('text-align', 'center')]}]
+    )
     st.write("### Threshold Logic Table")
-    st.table(thresholds_df)  # Static table (can use `st.dataframe()` for interactive table)
+    # Static table (can use `st.dataframe()` for interactive table)
+    st.table(thresholds_df)
 
 
 def get_returned_donations_ct(df, filters=None):
@@ -263,11 +277,13 @@ def get_donation_isanaggregate_value(df, filters=None):
 
 def get_top_entity_by_value(df, filters=None):
     """
-    Returns the name and value of the regulated entity with the greatest value of donations.
+    Returns the name and value of the regulated entity with the
+    greatest value of donations.
 
     Parameters:
         df (pd.DataFrame): The dataset.
-        filters (dict, optional): Dictionary where keys are column names and values are filter conditions.
+        filters (dict, optional): Dictionary where keys are column names
+        and values are filter conditions.
 
     Returns:
         tuple: (RegulatedEntityName, Value)
@@ -280,11 +296,13 @@ def get_top_entity_by_value(df, filters=None):
 
 def get_top_entity_by_donations(df, filters=None):
     """
-    Returns the name and value of the regulated entity with the greatest number of donations.
+    Returns the name and value of the regulated entity with the
+    greatest number of donations.
 
     Parameters:
         df (pd.DataFrame): The dataset.
-        filters (dict, optional): Dictionary where keys are column names and values are filter conditions.
+        filters (dict, optional): Dictionary where keys are column names
+        and values are filter conditions.
 
     Returns:
         tuple: (RegulatedEntityName, Value)
@@ -297,11 +315,13 @@ def get_top_entity_by_donations(df, filters=None):
 
 def get_top_donationType_by_donations(df, filters=None):
     """
-    Returns the name and value of the regulated entity with the greatest number of donations.
+    Returns the name and value of the regulated entity with the greatest
+    number of donations.
 
     Parameters:
         df (pd.DataFrame): The dataset.
-        filters (dict, optional): Dictionary where keys are column names and values are filter conditions.
+        filters (dict, optional): Dictionary where keys are column names and
+        values are filter conditions.
 
     Returns:
         tuple: (RegulatedEntityName, Value)

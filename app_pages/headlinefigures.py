@@ -6,9 +6,8 @@ def hlf_body():
     import calculations as ppcalc
     import Visualisations as vis
 
-
     df = st.session_state.get("data_clean", None)
-    sum_df = st.session_state.get("data_party_sum", None)
+    # sum_df = st.session_state.get("data_party_sum", None)
     # set filters to None and filtered_df to the original dataset
     filters = None
     filtered_df = df
@@ -37,7 +36,7 @@ def hlf_body():
     # Get the donationtype with the greatest number of donations
     top_dontype_ct, top_dontype_dons = ppcalc.get_top_donationType_by_donations(filtered_df, filters)
     # Get the donationtype with the greatest number of donations
-    top_dontype_value = ppcalc.get_value_total(filtered_df,{'DonationType':top_dontype_ct})
+    top_dontype_value = ppcalc.get_value_total(filtered_df, {'DonationType': top_dontype_ct})
     top_dontype_value_percent = (top_dontype_value / total_value_donations) * 100 if total_value_donations > 0 else 0
     top_dontype_dons_percent = (top_dontype_dons / unique_donations) * 100 if total_value_donations > 0 else 0
 
@@ -68,29 +67,29 @@ def hlf_body():
         st.write(f"* Most Donations were in {top_dontype_ct}, these "
                  f"represented {top_dontype_dons_percent:.2f}% of "
                  f"donations and were {top_dontype_value_percent:.2f}% "
-                 f"of the total value of donations.")    
+                 f"of the total value of donations.")
         # use data from the summary dataset
         st.write(f"* The {top_entity} received the most donations by value, with "
                  f"a total value of £{ppcalc.format_number(top_value)} or "
-                 f"{top_value/total_value_donations*100:.2f}% of all donations.") 
+                 f"{top_value/total_value_donations*100:.2f}% of all donations.")
         st.write(f"* The {top_entity_ct} received the most donations by count, "
                  f"having {top_donations:,.0f} donations which represented "
                  f"{top_donations/unique_donations*100:.2f}% of all donations.")
     st.write("### Topline Visuals")
-    st.write("#### Click on any Visualisation to view it full screen.") 
-    
+    st.write("#### Click on any Visualisation to view it full screen.")
+
     if filtered_df.empty:
         st.write("No data available for the selected filters.")
         return
     else:
         vis.plot_donations_by_year(filtered_df,
-                                XValues="YearReceived",
-                                YValue="EventCount",
-                                GGroup="RegulatedEntityType",
-                                XLabel="Year", YLabel="Donations",
-                                Title="Donations by Year and Entity Type",
-                                CalcType='sum',
-                                widget_key="dons_by_year_n_entity")
+                                   XValues="YearReceived",
+                                   YValue="EventCount",
+                                   GGroup="RegulatedEntityType",
+                                   XLabel="Year", YLabel="Donations",
+                                   Title="Donations by Year and Entity Type",
+                                   CalcType='sum',
+                                   widget_key="dons_by_year_n_entity")
     mid, right = st.columns(2)
     with mid:
         if filtered_df.empty:
@@ -98,29 +97,29 @@ def hlf_body():
             return
         else:
             vis.plot_donations_by_year(filtered_df,
-                                    XValues="YearReceived",
-                                    YValue="Value",
-                                    GGroup="RegEntity_Group",
-                                    XLabel="Year",
-                                    YLabel="Value of Donations £ 000's",
-                                    Title="Value of Donations by Year and Entity",
-                                    use_custom_colors=True,  # Use custom colors  
-                                    widget_key="value_by_year_n_entity",                                   
-                                    CalcType='sum')
+                                       XValues="YearReceived",
+                                       YValue="Value",
+                                       GGroup="RegEntity_Group",
+                                       XLabel="Year",
+                                       YLabel="Value of Donations £ 000's",
+                                       Title="Value of Donations by Year and Entity",
+                                       use_custom_colors=True,  # Use custom colors
+                                       widget_key="value_by_year_n_entity",
+                                       CalcType='sum')
     with right:
         if filtered_df.empty:
             st.write("No data available for the selected filters.")
             return
         else:
-            vis.plot_donations_by_year(filtered_df, 
-                                    XValues="YearReceived",
-                                    YValue="Value",
-                                    GGroup="DonationType",
-                                    XLabel="Year",
-                                    YLabel="Total Value (£)",
-                                    Title="Value of Donations Types by Year",
-                                    widget_key="value_by_year_n_type",
-                                    CalcType='sum')
+            vis.plot_donations_by_year(filtered_df,
+                                       XValues="YearReceived",
+                                       YValue="Value",
+                                       GGroup="DonationType",
+                                       XLabel="Year",
+                                       YLabel="Total Value (£)",
+                                       Title="Value of Donations Types by Year",
+                                       widget_key="value_by_year_n_type",
+                                       CalcType='sum')
     col1, col2 = st.columns(2)
     with col1:
         if filtered_df.empty:
@@ -136,7 +135,7 @@ def hlf_body():
                 title="Distribution of Donated Value by Entity",
                 category_label="Regulated Entity",
                 value_label="Percentage of Total Donations",
-                use_custom_colors=True,  # Use custom colors  
+                use_custom_colors=True,  # Use custom colors
                 hole=0.3,  # Adjust for more or less donut effect
                 key="Value_by_entity"
             )
@@ -153,7 +152,7 @@ def hlf_body():
                 color_column="RegEntity_Group",
                 title="Distribution of Donations by Entity",
                 category_label="Regulated Entity",
-                use_custom_colors=True,  # Use custom colors  
+                use_custom_colors=True,  # Use custom colors
                 value_label="Percentage of Donation Events",
                 hole=0.3,  # Adjust for more or less donut effect
                 key="pie_donations_by_entity"

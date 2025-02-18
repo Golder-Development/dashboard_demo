@@ -8,7 +8,8 @@ def donorsheadlinespage_body():
     This function displays the content of Page two.
     """
     donors_df = st.session_state.get("data_clean", None)
-    donors_df = donors_df[donors_df["DonorStatus"] != "Registered Political Party"]
+    donors_df = donors_df[donors_df["DonorStatus"] != "Registered Political\
+        Party"]
     donors = ppcalc.get_donors_ct(donors_df)
     donations = ppcalc.get_donations_ct(donors_df)
     totaldonations = ppcalc.get_value_total(donors_df)
@@ -44,21 +45,29 @@ def donorsheadlinespage_body():
                         'median'],
               'RegulatedEntityName': 'nunique'}).reset_index()
     donors_topline_summary.columns = ['Donor Name',
-                              'No of Donations',
-                              'Total Value',
-                              'Average Donation',
-                              'Median Donation',
-                              'Regulated Entities']
+                                      'No of Donations',
+                                      'Total Value',
+                                      'Average Donation',
+                                      'Median Donation',
+                                      'Regulated Entities']
     donors_topline_summary['Average Value per Regulated Entity'] =\
-        donors_topline_summary['Total Value'] / donors_topline_summary['Regulated Entities']
+        donors_topline_summary['Total Value'] / donors_topline_summary[
+            'Regulated Entities']
     donors_topline_summary['Average Number Donations per Entity'] =\
-        donors_topline_summary['No of Donations'] / donors_topline_summary['Regulated Entities']
-    donors_topline_summary['Regulated Entities_f'] = donors_topline_summary['Average Number Donations per Entity'].apply(lambda x: f"{x:.0f}")
-    donors_topline_summary['Total Donations £'] = donors_topline_summary['Total Value'].apply(lambda x: f"£{ppcalc.format_number(x)}")
-    donors_topline_summary['Avg Donations'] = donors_topline_summary['Average Donation'].apply(lambda x: f"£{ppcalc.format_number(x)}")
-    donors_topline_summary['Median Donations'] = donors_topline_summary['Median Donation'].apply(lambda x: f"£{ppcalc.format_number(x)}")
-    donors_topline_summary['Avg Value Per Entity'] = donors_topline_summary['Average Value per Regulated Entity'].apply(lambda x: f"£{ppcalc.format_number(x)}")
-    donors_topline_summary['Avg No. Donations Per Entity'] = donors_topline_summary['Average Number Donations per Entity'].apply(lambda x: f"{x:.2f}")
+        donors_topline_summary['No of Donations'] / donors_topline_summary[
+            'Regulated Entities']
+    donors_topline_summary['Regulated Entities_f'] = donors_topline_summary[
+        'Average Number Donations per Entity'].apply(lambda x: f"{x:.0f}")
+    donors_topline_summary['Total Donations £'] = donors_topline_summary[
+        'Total Value'].apply(lambda x: f"£{ppcalc.format_number(x)}")
+    donors_topline_summary['Avg Donations'] = donors_topline_summary[
+        'Average Donation'].apply(lambda x: f"£{ppcalc.format_number(x)}")
+    donors_topline_summary['Median Donations'] = donors_topline_summary[
+        'Median Donation'].apply(lambda x: f"£{ppcalc.format_number(x)}")
+    donors_topline_summary['Avg Value Per Entity'] = donors_topline_summary[
+        'Average Value per Regulated Entity'].apply(lambda x: f"£{ppcalc.format_number(x)}")
+    donors_topline_summary['Avg No. Donations Per Entity'] = \
+        donors_topline_summary['Average Number Donations per Entity'].apply(lambda x: f"{x:.2f}")
     # Apply formating to values
     donors = ppcalc.format_number(donors)
     donations = ppcalc.format_number(donations)
@@ -140,7 +149,7 @@ def donorsheadlinespage_body():
                                     title='Count of Donors vs No of Regulated Entities',  # Title of the chart
                                     x_label='No of Regulated Entities',  # X-axis label
                                     y_label='No of Donors',  # Y-axis label
-                                    orientation='v',  
+                                    orientation='v',
                                     barmode='stack',
                                     x_scale='log',
                                     y_scale='log',
@@ -174,51 +183,51 @@ def donorsheadlinespage_body():
     st.write("### Top 5 Most Promiscuous Donors: Entities Donated to")
     donors_summary2 = donors_topline_summary.sort_values('Regulated Entities', ascending=False)
     donors_summary2 = donors_summary2[['Donor Name',
-                                      'Regulated Entities',
-                                      'Avg No. Donations Per Entity',
-                                      'No of Donations',
-                                      'Total Donations £',
-                                      'Avg Donations',
-                                      'Median Donations',
-                                      'Avg Value Per Entity'
-                                      ]].head(5)
+                                       'Regulated Entities',
+                                       'Avg No. Donations Per Entity',
+                                       'No of Donations',
+                                       'Total Donations £',
+                                       'Avg Donations',
+                                       'Median Donations',
+                                       'Avg Value Per Entity'
+                                       ]].head(5)
     donors_summary2_styled = donors_summary2.style.set_properties(
-    subset=donors_summary2.columns[1:],  # Exclude the first column
-    **{'text-align': 'center'}
+        subset=donors_summary2.columns[1:],  # Exclude the first column
+        **{'text-align': 'center'}
     )
     # Display the styled dataframe
     st.dataframe(donors_summary2_styled)
     st.write("### Top 5 Most Generous Overall Donors")
     donors_summary2 = donors_topline_summary.sort_values('Total Value', ascending=False)
     donors_summary2 = donors_summary2[['Donor Name',
-                                      'Regulated Entities',
-                                      'Avg No. Donations Per Entity',
-                                      'No of Donations',
-                                      'Total Donations £',
-                                      'Avg Donations',
-                                      'Median Donations',
-                                      'Avg Value Per Entity'
-                                      ]].head(5)
+                                       'Regulated Entities',
+                                       'Avg No. Donations Per Entity',
+                                       'No of Donations',
+                                       'Total Donations £',
+                                       'Avg Donations',
+                                       'Median Donations',
+                                       'Avg Value Per Entity'
+                                       ]].head(5)
     donors_summary2_styled = donors_summary2.style.set_properties(
-    subset=donors_summary2.columns[1:],  # Exclude the first column
-    **{'text-align': 'center'}
+        subset=donors_summary2.columns[1:],  # Exclude the first column
+        **{'text-align': 'center'}
     )
     # Display the styled dataframe
     st.dataframe(donors_summary2_styled)
     st.write("### Top 5 Most Generous on Average Donors")
     donors_summary2 = donors_topline_summary.sort_values('Average Donation', ascending=False)
     donors_summary2 = donors_summary2[['Donor Name',
-                                      'Regulated Entities',
-                                      'Avg No. Donations Per Entity',
-                                      'No of Donations',
-                                      'Total Donations £',
-                                      'Avg Donations',
-                                      'Median Donations',
-                                      'Avg Value Per Entity'
-                                      ]].head(5)
+                                       'Regulated Entities',
+                                       'Avg No. Donations Per Entity',
+                                       'No of Donations',
+                                       'Total Donations £',
+                                       'Avg Donations',
+                                       'Median Donations',
+                                       'Avg Value Per Entity'
+                                       ]].head(5)
     donors_summary2_styled = donors_summary2.style.set_properties(
-    subset=donors_summary2.columns[1:],  # Exclude the first column
-    **{'text-align': 'center'}
+        subset=donors_summary2.columns[1:],  # Exclude the first column
+        **{'text-align': 'center'}
     )
     # Display the styled dataframe
     st.dataframe(donors_summary2_styled)
@@ -227,38 +236,37 @@ def donorsheadlinespage_body():
     donors_summary2 = donors_topline_summary.sort_values('Average Donation', ascending=False)
     donors_summary2 = donors_summary2[donors_summary2['No of Donations'] > 1]
     donors_summary2 = donors_summary2[['Donor Name',
-                                      'Regulated Entities',
-                                      'Avg No. Donations Per Entity',
-                                      'No of Donations',
-                                      'Total Donations £',
-                                      'Avg Donations',
-                                      'Median Donations',
-                                      'Avg Value Per Entity'
-                                      ]].head(5)
+                                       'Regulated Entities',
+                                       'Avg No. Donations Per Entity',
+                                       'No of Donations',
+                                       'Total Donations £',
+                                       'Avg Donations',
+                                       'Median Donations',
+                                       'Avg Value Per Entity'
+                                       ]].head(5)
     donors_summary2_styled = donors_summary2.style.set_properties(
-    subset=donors_summary2.columns[1:],  # Exclude the first column
-    **{'text-align': 'center'}
-    )
-    # Display the styled dataframe
-    st.dataframe(donors_summary2_styled)
-    
-    st.write("### Top 5 Most Active Donors by No of Donations")
-    donors_summary2 = donors_topline_summary.sort_values('No of Donations', ascending=False)
-    donors_summary2 = donors_summary2[['Donor Name',
-                                      'Regulated Entities',
-                                      'Avg No. Donations Per Entity',
-                                      'No of Donations',
-                                      'Total Donations £',
-                                      'Avg Donations',
-                                      'Median Donations',
-                                      'Avg Value Per Entity'
-                                      ]].head(5)
-    donors_summary2_styled = donors_summary2.style.set_properties(
-    subset=donors_summary2.columns[1:],  # Exclude the first column
-    **{'text-align': 'center'}
+        subset=donors_summary2.columns[1:],  # Exclude the first column
+        **{'text-align': 'center'}
     )
     # Display the styled dataframe
     st.dataframe(donors_summary2_styled)
 
-    
+    st.write("### Top 5 Most Active Donors by No of Donations")
+    donors_summary2 = donors_topline_summary.sort_values('No of Donations', ascending=False)
+    donors_summary2 = donors_summary2[['Donor Name',
+                                       'Regulated Entities',
+                                       'Avg No. Donations Per Entity',
+                                       'No of Donations',
+                                       'Total Donations £',
+                                       'Avg Donations',
+                                       'Median Donations',
+                                       'Avg Value Per Entity'
+                                       ]].head(5)
+    donors_summary2_styled = donors_summary2.style.set_properties(
+       subset=donors_summary2.columns[1:],  # Exclude the first column
+                                            **{'text-align': 'center'}
+    )
+    # Display the styled dataframe
+    st.dataframe(donors_summary2_styled)
+
     st.write("## Individual Donor Analysis and Data")

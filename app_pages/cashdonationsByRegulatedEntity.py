@@ -6,7 +6,7 @@ def cashdonationsregentity_body():
     import calculations as ppcalc
     import Visualisations as vis
     import datetime as dt
-    import pandas as pd
+
     # Load dataset from session state
     cleaned_df = st.session_state.get("data_clean", None)
 
@@ -95,8 +95,7 @@ def cashdonationsregentity_body():
     st.write(f"* During the period between {min_date_df} and {max_date_df},"
              f"there were {unique_donations_c_d} cash donations made to "
              f"{unique_regulated_entities_c_d}.")
-    st.write(f"* These had a mean value of £{ppcalc.format_number
-             (mean_value_donations_c_d)} "
+    st.write(f"* These had a mean value of £{ppcalc.format_number(mean_value_donations_c_d)} "
              f"and were made by {ppcalc.format_number(unique_donors_c_d)} "
              "unique donors.")
     st.write(f"* Cash donations represented {perc_cash_donations_d:.2f}% of"

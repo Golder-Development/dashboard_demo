@@ -8,8 +8,7 @@ def dubiousdonationsByDonor_body():
     import Visualisations as vis
     import pandas as pd
 
-
-    ## Page Title
+    # Page Title
     st.write("## Investigate Dubious Donations by Period and Regulated Entity")
     # Load dataset from session state
     df = st.session_state.get("data_clean", None)

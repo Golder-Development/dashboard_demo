@@ -4,7 +4,7 @@ import streamlit as st
 
 
 class MultiPage:
-    
+
     def __init__(self, app_name) -> None:
         self.pages = []  # List to store the pages
         self.app_name = app_name  # Name of the app
