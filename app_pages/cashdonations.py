@@ -64,7 +64,7 @@ def cashdonations_body():
              f"there were {unique_donations_c_d} cash donations made to "
              f"{unique_regulated_entities_c_d}.")
     st.write(f"* These had a mean value of £{ppcalc.format_number}"
-             (mean_value_donations_c_d)} "
+             " (mean_value_donations_c_d)} "
              f"and were made by {ppcalc.format_number(unique_donors_c_d)} "
              "unique donors.")
     st.write(f"* Cash donations represented {perc_cash_donations_d:.2f}% of "
