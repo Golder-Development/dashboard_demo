@@ -112,17 +112,17 @@ def donorsheadlinespage_body():
                  ' and the number of Entities donated to, we see as the number of Entities'
                  ' donated to increased, the average donation per entity decreased.')
         st.write('* Unsurprisingly, the more Entities donated to more donations made.')
-    left,mid,right = st.columns(3)
+    left, mid = st.columns(2)
     with left:
         vis.plot_custom_bar_chart(
                                     df=donors_df,  # DataFrame to plot
-                                    x_column='RegEntity_Group',  # Column for the x-axis (categorical)
+                                    x_column='DonorStatus',  # Column for the x-axis (categorical)
                                     y_column='Value',  # Column for the y-axis (numerical)
                                     group_column='DonationType',  # No grouping by another column
                                     agg_func='sum',
                                     title='Total Donations by Donation Type',  # Title of the chart
                                     x_label='Donation Type',  # X-axis label
-                                    y_label='Average Donation £',  # Y-axis label
+                                    y_label='Donation £',  # Y-axis label
                                     orientation='v',  # Vertical bars
                                     barmode='stack',  # Grouped bars
                                     x_scale='category',
@@ -152,24 +152,25 @@ def donorsheadlinespage_body():
         vis.plot_regressionplot(donors_topline_summary,
                                 y_column='No of Donations',
                                 x_column='Regulated Entities',
-                                size_column='Total Value',
-                                title='Avg. Donation vs No. of Donations per Donor',
+                                size_column='Average Value per Regulated Entity',
+                                title='Average Value vs No. of Regulated Entities Donated to',
                                 y_label='No. of Donations',
                                 x_label='No. of Entities Donated to',
-                                size_label='Total Donated Value £',
+                                size_label='Avg Donated Value £',
                                 size_scale=0.5
                                 )
-    with right:
+        st.write("<div style='text-align: center;'><b>Size of circles represent the Total Value in GBP.</b></div>", unsafe_allow_html=True)
         vis.plot_regressionplot(donors_topline_summary,
-                                y_column='Average Value per Regulated Entity',
+                                y_column='Total Value',
                                 x_column='Regulated Entities',
-                                size_column='Total Value',
-                                title='Avg. Donation vs No. of Entities per Donor',
-                                y_label='Avg. Value per Entity £',
+                                size_column='Average Value per Regulated Entity',
+                                title='Total Value vs No. of Regulated Entities Donated to',
+                                y_label='Total Donations £',
                                 x_label='No. of Entities Donated to',
-                                size_label='Total Donated Value £',
+                                size_label='Avg Donated Value £',
                                 size_scale=0.5
                                 )
+        st.write("<div style='text-align: center;'><b>Size of circles represent the Average Value in GBP per entity.</b></div>", unsafe_allow_html=True)
     st.write("### Top 5 Most Promiscuous Donors: Entities Donated to")
     donors_summary2 = donors_topline_summary.sort_values('Regulated Entities', ascending=False)
     donors_summary2 = donors_summary2[['Donor Name',
