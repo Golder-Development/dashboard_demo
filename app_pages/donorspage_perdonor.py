@@ -20,9 +20,7 @@ def donorsheadlinespage_body():
         st.write(f"* Between {min_date} and {max_date}, {donors} made "
                  f"{donations} these were worth £{totaldonations}")
         #create x,y graph showing average donor donation vs total number of donations per donor with size of circle set to number of regulated entities donated to.
-        
-        
-        
+      
     with col2:
         # use data from the dataset
         st.write("## Displaying data from the dataset")

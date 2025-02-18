@@ -20,12 +20,12 @@ def donorsheadlinespage_body():
     # donations, median donation size, average donation size, number of
     # regulated entities donated to, average donation size per regulated entity
     # donated to, average donation size per donation
-    donors_summary = donors_df.groupby(['DonorName','DonationType'])\
+    donors_summary = donors_df.groupby(['DonorName', 'DonationType'])\
         .agg({'Value': ['count',
                         'sum',
                         'mean',
                         'median'],
-              'RegulatedEntityName':'nunique'}).reset_index()
+              'RegulatedEntityName': 'nunique'}).reset_index()
     donors_summary.columns = ['Donor Name',
                               'Donation Type',
                               'No of Donations',
@@ -42,7 +42,7 @@ def donorsheadlinespage_body():
                         'sum',
                         'mean',
                         'median'],
-              'RegulatedEntityName':'nunique'}).reset_index()
+              'RegulatedEntityName': 'nunique'}).reset_index()
     donors_topline_summary.columns = ['Donor Name',
                               'No of Donations',
                               'Total Value',
