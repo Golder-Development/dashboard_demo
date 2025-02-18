@@ -96,7 +96,7 @@ def load_party_summary_data():
         lambda row: calculate_reg_entity_group(row['DonationEvents'], row['RegulatedEntityName']), axis=1
     )
     # generate CSV file of summary data
-    RegulatedEntity_df.to_csv('party_summary.csv')
+    # RegulatedEntity_df.to_csv('party_summary.csv')
     return RegulatedEntity_df
 
 
@@ -209,5 +209,5 @@ def load_cleaned_data():
                  axis=1)
 
     # Save cleaned data
-    df.to_csv("cleaned_donations.csv", index=False)
+    # df.to_csv("cleaned_donations.csv", index=False)
     return df
