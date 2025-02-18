@@ -27,6 +27,9 @@ app = MultiPage(app_name="UK Political Donations")  # Create an instance
 
 app.add_page("Introduction", introduction_body)
 app.add_page("Head Line Figures", hlf_body)
+app.add_page("Dubious Donations", dubiousdonations_body)
+app.add_page("Dubious Donations by Regulated Entity",
+             dubiousdonationsByDonor_body)
 app.add_page("Cash Donations", cashdonations_body)
 app.add_page("Cash Donations by Regulated Entity",
              cashdonationsregentity_body)
@@ -35,9 +38,9 @@ app.add_page("Cash Donations by Regulated Entity",
 # app.add_page("Paid Visits", visits_body)
 # app.add_page("Regulated Entities", regulatedentitypage_body)
 # app.add_page("Donor is a Political Party", donationsbypoliticalpartys_body)
-app.add_page("Dubious Donations", dubiousdonations_body)
-app.add_page("Dubious Donations by Regulated Entity",
-             dubiousdonationsByDonor_body)
+# app.add_page("Dubious Donations", dubiousdonations_body)
+# app.add_page("Dubious Donations by Regulated Entity",
+#            dubiousdonationsByDonor_body)
 app.add_page("Donors", donorsheadlinespage_body)
 app.add_page("Notes on Data and Manipulations", notesondataprep_body)
 
