@@ -313,7 +313,7 @@ def get_top_entity_by_donations(df, filters=None):
     return top_entity, top_value
 
 
-def get_top_donationType_by_donations(df, filters=None):
+def get_top_donType_by_don(df, filters=None):
     """
     Returns the name and value of the regulated entity with the greatest
     number of donations.

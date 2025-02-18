@@ -1,32 +1,58 @@
 import streamlit as st
-import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
 # import seaborn as sns
 # import calculations as ppcalc
-import math
-import streamlit as st
-import pandas as pd
+# import pandas as pd
 import plotly.express as px
-import plotly.subplots as sp
+# import plotly.subplots as sp
 
-def plot_donations_by_year(
-    Data,  
-    XValues='YearReceived',
-    YValue='Value',
-    GGroup='RegEntity_Group',
-    XLabel='Year',
-    YLabel='Total Value (£)',
-    Title='Donations by Year and Entity Type',
-    CalcType='sum',
-    ChartType='Bar',  
-    x_scale='linear',
-    y_scale='linear',
-    use_custom_colors=False,  
-    use_container_width=True,
-    widget_key="graph1"  
-):
+
+def plot_bar_line_by_year(
+                Data,
+                XValues='YearReceived',
+                YValue='Value',
+                GGroup='RegEntity_Group',
+                XLabel='Year',
+                YLabel='Total Value (£)',
+                Title='Donations by Year and Entity Type',
+                CalcType='sum',
+                ChartType='Bar',
+                x_scale='linear',
+                y_scale='linear',
+                use_custom_colors=False,
+                use_container_width=True,
+                widget_key="graph1"
+                ):
     """
-    Interactive Plotly stacked bar or line chart of donations by year and entity type.
+    Interactive Plotly stacked bar or line chart of donations by year
+    and entity type.
+
+    Parameters:
+    - Data (pd.DataFrame): The input data frame containing the data to plot.
+    - XValues (str): The column name for the x-axis values.
+            Default is 'YearReceived'.
+    - YValue (str): The column name for the y-axis values. Default is 'Value'.
+    - GGroup (str): The column name for the grouping variable.
+            Default is 'RegEntity_Group'.
+    - XLabel (str): The label for the x-axis. Default is 'Year'.
+    - YLabel (str): The label for the y-axis. Default is 'Total Value (£)'.
+    - Title (str): The title of the chart. Default is 'Donations by Year and
+            Entity Type'.
+    - CalcType (str): The type of aggregation to apply ('sum', 'avg', 'count',
+            etc.). Default is 'sum'.
+    - ChartType (str): The type of chart to plot ('Bar' or 'Line').
+            Default is 'Bar'.
+    - x_scale (str): The scale type for the x-axis ('linear' or 'log').
+            Default is 'linear'.
+    - y_scale (str): The scale type for the y-axis ('linear' or 'log').
+            Default is 'linear'.
+    - use_custom_colors (bool): Whether to use custom colors for the entities.
+            Default is False.
+    - use_container_width (bool): Use the container width for the chart.
+            Default is True.
+    - widget_key (str): The key for the Streamlit widgets to avoid conflicts.
+            Default is "graph1".
+    Returns:
+    - None: The function directly plots the chart using Streamlit.
     """
     if Data is None or Data.empty:
         st.warning("No data available to plot.")
@@ -63,28 +89,47 @@ def plot_donations_by_year(
     if CalcType not in aggregation_methods:
         CalcType = 'sum'
 
-    grouped_data = Data.groupby([XValues, GGroup])[YValue].agg(aggregation_methods[CalcType]).reset_index()
-
+    grouped_data = (
+        Data.groupby([XValues, GGroup])[YValue]
+            .agg(aggregation_methods[CalcType])
+            .reset_index()
+    )
     with st.expander("🔍 Filter Data", expanded=True):
         year_options = sorted(grouped_data[XValues].unique())
-        selected_years = st.slider("Select Year Range", min(year_options), max(year_options), 
-                                   (min(year_options), max(year_options)), key=f"year_slider_{widget_key}")
+        selected_years = st.slider(
+            "Select Year Range",
+            min(year_options),
+            max(year_options),
+            (min(year_options),
+             max(year_options)),
+            key=f"year_slider_{widget_key}")
 
         entity_options = grouped_data[GGroup].unique()
-        selected_entities = st.multiselect("Select Entity Types", entity_options, default=entity_options, 
-                                           key=f"entity_multiselect_{widget_key}")
+        selected_entities = st.multiselect(
+            "Select Entity Types",
+            entity_options,
+            default=entity_options,
+            key=f"entity_multiselect_{widget_key}"
+        )
 
-        ChartType = st.radio("Select Chart Type", ["Bar", "Line"], index=0, key=f"chart_type_{widget_key}")
+        ChartType = st.radio(
+            "Select Chart Type",
+            ["Bar", "Line"],
+            index=0 if ChartType == "Bar" else 1,
+            key=f"chart_type_{widget_key}")
 
     filtered_data = grouped_data[
-        (grouped_data[XValues].between(*selected_years)) & (grouped_data[GGroup].isin(selected_entities))
+        (grouped_data[XValues].between(*selected_years)) &
+        (grouped_data[GGroup].isin(selected_entities))
     ]
 
     if use_custom_colors:
-        color_map = {entity: color_mapping.get(entity, "#7f7f7f") for entity in entity_options}
+        color_map = {entity: color_mapping.get(entity, "#7f7f7f")
+                     for entity in entity_options}
     else:
         color_palette = px.colors.qualitative.Set1
-        color_map = {entity: color_palette[i % len(color_palette)] for i, entity in enumerate(entity_options)}
+        color_map = {entity: color_palette[i % len(color_palette)] for i,
+                     entity in enumerate(entity_options)}
 
     if ChartType == "Bar":
         fig = px.bar(
@@ -100,11 +145,17 @@ def plot_donations_by_year(
         )
 
     fig.update_layout(
-        xaxis_title=XLabel, yaxis_title=YLabel, xaxis={'type': x_scale}, yaxis={'type': y_scale},
-        legend_title=GGroup, hovermode="x unified"
+        xaxis_title=XLabel,
+        yaxis_title=YLabel,
+        xaxis={'type': x_scale},
+        yaxis={'type': y_scale},
+        legend_title=GGroup,
+        hovermode="x unified"
     )
 
-    fig.update_traces(hovertemplate="<b>%{x}</b><br>%{y:,.0f} GBP<br>%{legendgroup}")
+    fig.update_traces(
+        hovertemplate="<b>%{x}</b><br>%{y:,.0f}GBP<br>%{legendgroup}"
+    )
 
     st.plotly_chart(fig, use_container_width=use_container_width)
 
@@ -123,7 +174,7 @@ def plot_regressionplot(
     dot_size=50,
     x_scale='log',
     y_scale='log',
-    use_custom_colors=False,  # Use custom colors  
+    use_custom_colors=False,
     show_trendline=True,  # New: Option to enable regression trendline
     use_container_width=True
 ):
@@ -187,7 +238,7 @@ def plot_regressionplot(
             log_x=(x_scale == 'log'),
             log_y=(y_scale == 'log')
         )
-        trend_trace = trend_fig.data[1]  # Extract trendline from the second trace
+        trend_trace = trend_fig.data[1]
         fig.add_trace(trend_trace)
 
     # Improve Layout & Hover Info
@@ -216,7 +267,7 @@ def plot_pie_chart(
         hole=0.4,
         key=None,
         use_container_width=True
-    ):
+        ):
     """
     Creates an interactive pie chart in Streamlit using Plotly Express.
 
@@ -231,15 +282,19 @@ def plot_pie_chart(
     Parameters:
         df (pd.DataFrame): The DataFrame containing the data.
         category_column (str): Column used for grouping (categorical variable).
-        value_column (str, optional): Column for summing values. If None, counts instances.
+        value_column (str, optional): Column for summing values.
+            If None, counts instances.
         title (str): Title of the pie chart.
         category_label (str): Custom label for category column in tooltips.
         value_label (str): Custom label for the values.
         color_label (str): Custom label for the color column (if used).
         color_column (str, optional): Column for color differentiation.
-        use_custom_colors (bool): Whether to apply custom colors from a dictionary.
-        hole (float): Size of the hole in the middle (0 for full pie, >0 for donut).
-        key (str, optional): Unique key for Streamlit widgets to allow multiple charts on the same page.
+        use_custom_colors (bool): Whether to apply custom colors from a
+            dictionary.
+        hole (float): Size of the hole in the middle (0 for full pie,
+            >0 for donut).
+        key (str, optional): Unique key for Streamlit widgets to allow
+            multiple charts on the same page.
         use_container_width (bool): Whether to use full width in Streamlit.
 
     Returns:
@@ -251,20 +306,34 @@ def plot_pie_chart(
 
     # Define custom color mapping (Adjust colors as needed)
     color_mapping = {
-        "Conservative and Unionist Party": "#0087DC",  # Official Tory blue
-        "Labour Party": "#DC241F",  # Official Labour red
-        "Liberal Democrats": "#FDBB30",  # Official Lib Dem yellow-orange
-        "Green Party": "#78B943",  # Official Green Party green
-        "Scottish National Party (SNP)": "#FFFF00",  # SNP uses bright yellow
-        "Plaid Cymru": "#3F8428",  # Plaid Cymru green
-        "Reform UK": "#12B6CF",  # Reform UK blue-cyan
-        "UK Independence Party (UKIP)": "#70147A",  # UKIP purple
-        "Democratic Unionist Party (DUP)": "#D50000",  # DUP red
-        "Sinn Féin": "#326760",  # Sinn Féin dark green
-        "Ulster Unionist Party (UUP)": "#48A5EE",  # UUP light blue
-        "Social Democratic and Labour Party (SDLP)": "#99D700",  # SDLP green-yellow
-        "Alliance Party of Northern Ireland": "#FFD700",  # Alliance gold
-        "Other": "#7f7f7f",  # Neutral gray for unclassified entities
+        # Official Tory blue
+        "Conservative and Unionist Party": "#0087DC",
+        # Official Labour red
+        "Labour Party": "#DC241F",
+        # Official Lib Dem yellow-orange
+        "Liberal Democrats": "#FDBB30",
+        # Official Green Party green
+        "Green Party": "#78B943",
+        # SNP uses bright yellow
+        "Scottish National Party (SNP)": "#FFFF00",
+        # Plaid Cymru green
+        "Plaid Cymru": "#3F8428",
+        # Reform UK blue-cyan
+        "Reform UK": "#12B6CF",
+        # UKIP purple
+        "UK Independence Party (UKIP)": "#70147A",
+        # DUP red
+        "Democratic Unionist Party (DUP)": "#D50000",
+        # Sinn Féin dark green
+        "Sinn Féin": "#326760",
+        # UUP light blue
+        "Ulster Unionist Party (UUP)": "#48A5EE",
+        # SDLP green-yellow
+        "Social Democratic and Labour Party (SDLP)": "#99D700",
+        # Alliance gold
+        "Alliance Party of Northern Ireland": "#FFD700",
+        # Neutral gray for unclassified entities
+        "Other": "#7f7f7f",
 
         # Categories for entity sizes
         "Large Entity": "#9467bd",  # Purple
@@ -287,13 +356,16 @@ def plot_pie_chart(
         category_column: category_label,
         value_column: value_label
     }
-    
+
     if color_column:
         labels[color_column] = color_label
 
     # Determine color mapping
     if use_custom_colors:
-        color_discrete_map = {cat: color_mapping.get(cat, "#636efa") for cat in data[category_column]}
+        color_discrete_map = {
+            cat: color_mapping.get(cat, "#636efa")
+            for cat in data[category_column]
+            }
     else:
         color_discrete_map = None
 
@@ -302,11 +374,11 @@ def plot_pie_chart(
         data,
         names=category_column,
         values=value_column,
-        color=category_column if use_custom_colors else None,  # Apply color mapping if enabled
+        color=category_column if use_custom_colors else None,
         title=title,
         hole=hole,
         labels=labels,
-        color_discrete_map=color_discrete_map  # Apply color mapping
+        color_discrete_map=color_discrete_map
     )
 
     # Improve layout
@@ -332,11 +404,9 @@ def plot_custom_bar_chart(
         x_scale='linear',
         y_scale='linear',
         use_container_width=True
-    ):
+        ):
     """
-    Generates an interactive bar chart using Plotly Express with reduced customization for 
-    x_column, y_column, and group_column. These are now passed directly to the function.
-
+    Generates an interactive bar chart using Plotly Express
     Parameters:
         df (pd.DataFrame): DataFrame containing the data.
         x_column (str): Column for x-axis (categorical variable).
@@ -350,8 +420,12 @@ def plot_custom_bar_chart(
         barmode (str): 'group' (side-by-side) or 'stack' (stacked bars).
         color_palette (str): Plotly color scale.
         key (str, optional): Unique key for Streamlit widgets.
-        x_scale (str): Scale for the x-axis ('linear' or 'log').Type: enumerated , one of ( "-" | "linear" | "log" | "date" | "category" | "multicategory" )
-        y_scale (str): Scale for the y-axis ('linear' or 'log').Type: enumerated , one of ( "-" | "linear" | "log" | "date" | "category" | "multicategory" )
+        x_scale (str): Scale for the x-axis ('linear' or 'log').Type:
+            enumerated , one of
+            ( "-" | "linear" | "log" | "date" | "category" | "multicategory" )
+        y_scale (str): Scale for the y-axis ('linear' or 'log').Type:
+            enumerated , one of
+            ( "-" | "linear" | "log" | "date" | "category" | "multicategory" )
         use_container_width (bool): Whether to use full width in Streamlit.
 
     Returns:
@@ -364,15 +438,35 @@ def plot_custom_bar_chart(
 
     # Aggregate Data
     if agg_func == 'sum':
-        df_agg = df.groupby([x_column] + ([group_column] if group_column else [])).agg({y_column: 'sum'}).reset_index()
+        df_agg = (
+            df.groupby([x_column] + ([group_column] if group_column else []))
+            .agg({y_column: 'sum'})
+            .reset_index()
+            )
     elif agg_func == 'avg':
-        df_agg = df.groupby([x_column] + ([group_column] if group_column else [])).agg({y_column: 'mean'}).reset_index()
+        df_agg = (
+            df.groupby([x_column] + ([group_column] if group_column else []))
+            .agg({y_column: 'mean'})
+            .reset_index()
+        )
     elif agg_func == 'count':
-        df_agg = df.groupby([x_column] + ([group_column] if group_column else [])).agg({y_column: 'count'}).reset_index()
+        df_agg = (
+            df.groupby([x_column] + ([group_column] if group_column else []))
+            .agg({y_column: 'count'})
+            .reset_index()
+        )
     elif agg_func == 'max':
-        df_agg = df.groupby([x_column] + ([group_column] if group_column else [])).agg({y_column: 'max'}).reset_index()
+        df_agg = (
+            df.groupby([x_column] + ([group_column] if group_column else []))
+            .agg({y_column: 'max'})
+            .reset_index()
+        )
     elif agg_func == 'min':
-        df_agg = df.groupby([x_column] + ([group_column] if group_column else [])).agg({y_column: 'min'}).reset_index()
+        df_agg = (
+            df.groupby([x_column] + ([group_column] if group_column else []))
+            .agg({y_column: 'min'})
+            .reset_index()
+        )
 
     # Generate Bar Chart
     fig = px.bar(
@@ -383,7 +477,8 @@ def plot_custom_bar_chart(
         barmode=barmode,
         title=title,
         labels={x_column: x_label or x_column, y_column: y_label or y_column},
-        color_discrete_sequence=px.colors.qualitative.__dict__.get(color_palette, px.colors.qualitative.Set1),
+        color_discrete_sequence=px.colors.qualitative.__dict__.get(
+            color_palette, px.colors.qualitative.Set1),
         orientation=orientation
     )
 

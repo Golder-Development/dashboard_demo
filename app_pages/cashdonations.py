@@ -85,7 +85,7 @@ def cashdonations_body():
             st.write("No data available for the selected filters.")
             return
         else:
-            vis.plot_donations_by_year(cleaned_c_d_df,
+            vis.plot_bar_line_by_year(cleaned_c_d_df,
                                        XValues="YearReceived",
                                        YValue="EventCount",
                                        GGroup="RegulatedEntityType",
@@ -112,7 +112,7 @@ def cashdonations_body():
             st.write("No data available for the selected filters.")
             return
         else:
-            vis.plot_donations_by_year(cleaned_c_d_df,
+            vis.plot_bar_line_by_year(cleaned_c_d_df,
                                        XValues="YearReceived",
                                        YValue="Value",
                                        GGroup="RegEntity_Group",
@@ -141,7 +141,7 @@ def cashdonations_body():
             st.write("No data available for the selected filters.")
             return
         else:
-            vis.plot_donations_by_year(cleaned_c_d_df,
+            vis.plot_bar_line_by_year(cleaned_c_d_df,
                                        XValues="YearReceived",
                                        YValue="Value",
                                        GGroup="DonorStatus",
