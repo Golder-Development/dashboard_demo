@@ -21,40 +21,10 @@ def plot_bar_line_by_year(
                 y_scale='linear',
                 use_custom_colors=False,
                 use_container_width=True,
+                percentbars=False,
                 widget_key="graph1"
                 ):
-    """
-    Interactive Plotly stacked bar or line chart of donations by year
-    and entity type.
 
-    Parameters:
-    - Data (pd.DataFrame): The input data frame containing the data to plot.
-    - XValues (str): The column name for the x-axis values.
-            Default is 'YearReceived'.
-    - YValue (str): The column name for the y-axis values. Default is 'Value'.
-    - GGroup (str): The column name for the grouping variable.
-            Default is 'RegEntity_Group'.
-    - XLabel (str): The label for the x-axis. Default is 'Year'.
-    - YLabel (str): The label for the y-axis. Default is 'Total Value (£)'.
-    - Title (str): The title of the chart. Default is 'Donations by Year and
-            Entity Type'.
-    - CalcType (str): The type of aggregation to apply ('sum', 'avg', 'count',
-            etc.). Default is 'sum'.
-    - ChartType (str): The type of chart to plot ('Bar' or 'Line').
-            Default is 'Bar'.
-    - x_scale (str): The scale type for the x-axis ('linear' or 'log').
-            Default is 'linear'.
-    - y_scale (str): The scale type for the y-axis ('linear' or 'log').
-            Default is 'linear'.
-    - use_custom_colors (bool): Whether to use custom colors for the entities.
-            Default is False.
-    - use_container_width (bool): Use the container width for the chart.
-            Default is True.
-    - widget_key (str): The key for the Streamlit widgets to avoid conflicts.
-            Default is "graph1".
-    Returns:
-    - None: The function directly plots the chart using Streamlit.
-    """
     if Data is None or Data.empty:
         st.warning("No data available to plot.")
         return
@@ -65,28 +35,6 @@ def plot_bar_line_by_year(
         'skew': 'skew', 'kurt': 'kurt'
     }
 
-    color_mapping = {
-        "Conservative and Unionist Party": "#0087DC",
-        "Labour Party": "#DC241F",
-        "Liberal Democrats": "#FDBB30",
-        "Green Party": "#78B943",
-        "Scottish National Party (SNP)": "#FFFF00",
-        "Plaid Cymru": "#3F8428",
-        "Reform UK": "#12B6CF",
-        "UK Independence Party (UKIP)": "#70147A",
-        "Democratic Unionist Party (DUP)": "#D50000",
-        "Sinn Féin": "#326760",
-        "Ulster Unionist Party (UUP)": "#48A5EE",
-        "Social Democratic and Labour Party (SDLP)": "#99D700",
-        "Alliance Party of Northern Ireland": "#FFD700",
-        "Other": "#7f7f7f",
-        "Large Entity": "#9467bd",
-        "Medium Entity": "#8c564b",
-        "Small Entity": "#e377c2",
-        "Very Small Entity": "#bcbd22",
-        "Single Donation Entity": "#7f7f7f"
-    }
-
     if CalcType not in aggregation_methods:
         CalcType = 'sum'
 
@@ -95,15 +43,16 @@ def plot_bar_line_by_year(
             .agg(aggregation_methods[CalcType])
             .reset_index()
     )
+
     with st.expander("🔍 Filter Data", expanded=True):
         year_options = sorted(grouped_data[XValues].unique())
         selected_years = st.slider(
             "Select Year Range",
             min(year_options),
             max(year_options),
-            (min(year_options),
-             max(year_options)),
-            key=f"year_slider_{widget_key}")
+            (min(year_options), max(year_options)),
+            key=f"year_slider_{widget_key}"
+        )
 
         entity_options = grouped_data[GGroup].unique()
         selected_entities = st.multiselect(
@@ -117,21 +66,34 @@ def plot_bar_line_by_year(
             "Select Chart Type",
             ["Bar", "Line"],
             index=0 if ChartType == "Bar" else 1,
-            key=f"chart_type_{widget_key}")
+            key=f"chart_type_{widget_key}"
+        )
 
+        show_as_percentage = st.checkbox(
+            "Show as 100% stacked (percentage of total)", value=percentbars,
+            key=f"percent_checkbox_{widget_key}"
+        )
+
+    # Filter data based on selections
     filtered_data = grouped_data[
         (grouped_data[XValues].between(*selected_years)) &
         (grouped_data[GGroup].isin(selected_entities))
     ]
 
-    if use_custom_colors:
-        color_map = {entity: color_mapping.get(entity, "#7f7f7f")
-                     for entity in entity_options}
-    else:
-        color_palette = px.colors.qualitative.Set1
-        color_map = {entity: color_palette[i % len(color_palette)] for i,
-                     entity in enumerate(entity_options)}
+    if show_as_percentage and ChartType == "Bar":
+        # Normalize each year's values to sum to 100%
+        filtered_data[YValue] = (
+            filtered_data.groupby(XValues)[YValue]
+            .transform(lambda x: (x / x.sum()) * 100)
+        )
+        YLabel = "Percentage of Total (%)"
 
+    # Define colors
+    color_palette = px.colors.qualitative.Set1
+    color_map = {entity: color_palette[i % len(color_palette)]
+                 for i, entity in enumerate(entity_options)}
+
+    # Plot Bar or Line Chart
     if ChartType == "Bar":
         fig = px.bar(
             filtered_data, x=XValues, y=YValue, color=GGroup,
@@ -145,11 +107,12 @@ def plot_bar_line_by_year(
             markers=True, color_discrete_map=color_map
         )
 
+    # Update layout
     fig.update_layout(
         xaxis_title=XLabel,
         yaxis_title=YLabel,
         xaxis={'type': x_scale},
-        yaxis={'type': y_scale},
+        yaxis={'type': y_scale if not show_as_percentage else 'linear'},
         legend_title=LegendTitle,
         hovermode="x unified",
         legend=dict(
@@ -158,7 +121,7 @@ def plot_bar_line_by_year(
                 y=-0.1,
                 xanchor="center",
                 x=0.5
-            ),
+        ),
         title=dict(
             xanchor='center',
             yanchor='top',
@@ -167,7 +130,8 @@ def plot_bar_line_by_year(
     )
 
     fig.update_traces(
-        hovertemplate="<b>%{x}</b><br>%{y:,.0f}GBP<br>%{legendgroup}"
+        hovertemplate="<b>%{x}</b><br>%{y:.2f}%<br>%{legendgroup}" if show_as_percentage else 
+                      "<b>%{x}</b><br>%{y:,.0f}GBP<br>%{legendgroup}"
     )
 
     st.plotly_chart(fig, use_container_width=use_container_width)

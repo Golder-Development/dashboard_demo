@@ -1,5 +1,4 @@
 import pandas as pd
-import datetime as dt
 import streamlit as st
 from rapidfuzz import process, fuzz
 from collections import defaultdict
@@ -14,107 +13,74 @@ def load_data(output_csv=False):
         'RegulatedEntityType': 'object',
         'Value': 'object',
         "AcceptedDate": 'object',
-        "AccountingUnitName": 'category',
+        "AccountingUnitName": 'object',
         "DonorName": 'object',
         "AccountingUnitsAsCentralParty": 'object',
         'IsSponsorship': 'object',
         'DonorStatus': 'object',
         'RegulatedDoneeType': 'object',
-        'CompanyRegistrationNumber': 'category',
-        'Postcode': 'category',
+        'CompanyRegistrationNumber': 'object',
+        'Postcode': 'object',
         'DonationType': 'object',
         'NatureOfDonation': 'object',
-        'PurposeOfVisit': 'category',
-        'DonationAction': 'category',
+        'PurposeOfVisit': 'object',
+        'DonationAction': 'object',
         'ReceivedDate': 'object',
         'ReportedDate': 'object',
         'IsReportedPrePoll': 'object',
-        'ReportingPeriodName': 'category',
+        'ReportingPeriodName': 'object',
         'IsBequest': 'object',
         'IsAggregation': 'object',
         'RegulatedEntityId': 'object',
-        'AccountingUnitId': 'category',
+        'AccountingUnitId': 'object',
         'DonorId': 'object',
-        'CampaigningName': 'category',
-        'RegisterName': 'category',
+        'CampaigningName': 'object',
+        'RegisterName': 'object',
         'IsIrishSource': 'object'
         }, index_col="index")  # Load the data
     # Remove Currency sign of Value and convert to Float
     df['Value'] = df['Value'].replace({'£': '', ',': ''},
                                       regex=True).astype(float)
     # Fill missing text fields with empty strings
-    df["PurposeOfVisit"] = df["PurposeOfVisit"].fillna("").astype(str)
-    df["DonorName"] = df["Donor Name"].fillna("").astype(str)
-    df["CampaigningName"] = df["CampaigningName"].fillna("").astype(str)
-    df["AccountingUnitName"] = df["AccountingUnitName"].fillna("").astype(str)
-    df["ReportingPeriodName"] = (
-        df["ReportingPeriodName"].fillna("").astype(str)
-        )
-    df["RegulatedEntityName"] = (
-        df["RegulatedEntityName"].fillna("").astype(str)
-        )
-    df["DonationAction"] = df["DonationAction"].fillna("").astype(str)
-    df["DonationType"] = df["DonationType"].fillna("").astype(str)
-    df["NatureOfDonation"] = df["NatureOfDonation"].fillna("").astype(str)
-    df["IsBequest"] = df["IsBequest"].fillna("").astype(str)
-    df["IsAggregation"] = df["IsAggregation"].fillna("").astype(str)
-    df["IsSponsorship"] = df["IsSponsorship"].fillna("").astype(str)
-    df["RegulatedDoneeType"] = df["RegulatedDoneeType"].fillna("").astype(str)
-    df["DonorStatus"] = df["DonorStatus"].fillna("").astype(str)
-    df["CompanyRegistrationNumber"] = (
-        df["CompanyRegistrationNumber"].fillna("").astype(str)
-        )
-    df["Postcode"] = df["Postcode"].fillna("").astype(str)
-    df["RegisterName"] = df["RegisterName"].fillna("").astype(str)
-    df["IsIrishSource"] = df["IsIrishSource"].fillna("").astype(str)
-    df["DonorId"] = df["DonorId"].fillna("").astype(str)
-    df["RegulatedEntityId"] = df["RegulatedEntityId"].fillna("").astype(str)
-    df["AccountingUnitId"] = df["AccountingUnitId"].fillna("").astype(str)
-    df["ECRef"] = df["ECRef"].fillna("").astype(str)
+    columns_to_fill = [
+        "PurposeOfVisit", "DonorName", "CampaigningName", "AccountingUnitName",
+        "ReportingPeriodName", "RegulatedEntityName", "DonationAction",
+        "DonationType", "NatureOfDonation", "IsBequest", "IsAggregation",
+        "IsSponsorship", "RegulatedDoneeType", "DonorStatus",
+        "CompanyRegistrationNumber", "Postcode", "RegisterName",
+        "IsIrishSource", "DonorId", "RegulatedEntityId", "AccountingUnitId",
+        "ECRef"
+    ]
+    df[columns_to_fill] = df[columns_to_fill].fillna("").astype(str)
 
     # remove leading and trailing spaces from DonorName, RegulatedEntityName
     # remove leading and trailing spaces from DonorID and RegulatedEntityID
     # remove leading and trailing spaces from CampaignName and PurposeOfVisit
     # remove leading and trailing spaces from AccountingUnitName and
     # ReportingPeriodName
-    df['DonorName'] = df['DonorName'].str.strip()
-    df['RegulatedEntityName'] = df['RegulatedEntityName'].str.strip()
-    df['DonorId'] = df['DonorId'].str.strip()
-    df['RegulatedEntityId'] = df['RegulatedEntityId'].str.strip()
-    df['CampaigningName'] = df['CampaigningName'].str.strip()
-    df['PurposeOfVisit'] = df['PurposeOfVisit'].str.strip()
-    df['AccountingUnitName'] = df['AccountingUnitName'].str.strip()
-    df['ReportingPeriodName'] = df['ReportingPeriodName'].str.strip()
+    columns_to_strip = [
+        'DonorName', 'RegulatedEntityName', 'DonorId', 'RegulatedEntityId',
+        'CampaigningName', 'PurposeOfVisit', 'AccountingUnitName', 'ReportingPeriodName'
+    ]
+    df[columns_to_strip] = df[columns_to_strip].apply(lambda x: x.str.strip())
 
     # remove line returns and commas from DonorName, RegulatedEntityName,
     # CampaignName,
     # AccountingUnitName, ReportingPeriodName and PurposeOfVisit
-    df['DonorName'] = df['DonorName'].replace({',': '', '\n': ' '}, regex=True)
-    df['RegulatedEntityName'] = (
-        df['RegulatedEntityName'].replace({',': '', '\n': ' '}, regex=True)
-    )
-    df['PurposeOfVisit'] = (
-        df['PurposeOfVisit'].replace({',': '', '\n': ' '}, regex=True)
-    )
-    df['CampaigningName'] = (
-        df['CampaigningName'].replace({',': '', '\n': ' '}, regex=True)
-    )
-    df['AccountingUnitName'] = (
-        df['AccountingUnitName'].replace({',': '', '\n': ' '}, regex=True)
-    )
-    df['ReportingPeriodName'] = (
-        df['ReportingPeriodName'].replace({',': '', '\n': ' '}, regex=True)
-    )
+    columns_to_clean = [
+        'DonorName', 'RegulatedEntityName', 'PurposeOfVisit', 'CampaigningName',
+        'AccountingUnitName', 'ReportingPeriodName'
+    ]
+    df[columns_to_clean] = df[columns_to_clean].replace({',': '', '\n': ' '}, regex=True)
 
     # standardise capitalisation of DonorName, RegulatedEntityName,
     # CampaignName,
     # AccountingUnitName, ReportingPeriodName and PurposeOfVisit
-    df['DonorName'] = df['DonorName'].str.title()
-    df['RegulatedEntityName'] = df['RegulatedEntityName'].str.title()
-    df['PurposeOfVisit'] = df['PurposeOfVisit'].str.title()
-    df['CampaigningName'] = df['CampaigningName'].str.title()
-    df['AccountingUnitName'] = df['AccountingUnitName'].str.title()
-    df['ReportingPeriodName'] = df['ReportingPeriodName'].str.title()
+    columns_to_title = [
+        'DonorName', 'RegulatedEntityName', 'PurposeOfVisit', 
+        'CampaigningName', 'AccountingUnitName', 'ReportingPeriodName'
+    ]
+    df[columns_to_title] = df[columns_to_title].apply(lambda x: x.str.title())
 
     # rename "Total value of donations not reported individually"
     # to "Aggregated Donation" in DonationType
@@ -122,22 +88,23 @@ def load_data(output_csv=False):
         {"Total value of donations not reported individually": "Aggregated Donation",
          "Permissible Donor Exempt Trust": "P.D. Exempt Trust"}
     )
+    # update Blank DonorName to "Anonymous Donor"
+    df['DonorName'] = df['DonorName'].replace("", "Unidentified Donor")
+    # update Blank DonorId to "1000001"
+    df['DonorId'] = df['DonorId'].replace("", "1000001")
+    
     # make donorid and regulatedentityid numeric
     df['DonorId'] = pd.to_numeric(df['DonorId'], errors='coerce')
     df['RegulatedEntityId'] = pd.to_numeric(df['RegulatedEntityId'],
                                             errors='coerce')
 
-    # update Blank DonorName to "Anonymous Donor"
-    df['DonorName'] = df['DonorName'].replace("", "Anonymous Donor")
-    # update Blank DonorId to "1000001"
-    df['DonorId'] = df['DonorId'].replace("", "1000001")
     # update Blank RegulatedEntityName to "Anonymous Entity"
     df['RegulatedEntityName'] = (
-        df['RegulatedEntityName'].replace("", "Anonymous Entity")
+        df['RegulatedEntityName'].replace("", "Unidentified Entity")
         )
     # update Blank RegulatedEntityId to "1000001"
     df['RegulatedEntityId'] = df['RegulatedEntityId'].replace("", "1000001")
-
+    df['DonationAction'] = df['DonationAction'].replace("", "Accepted")
     # Load the dataset
     # file_path = "cleaned_donations.csv"  # Adjust path as needed
     # df = pd.read_csv(file_path)
@@ -176,7 +143,7 @@ def load_data(output_csv=False):
                             v in potential_duplicates.items()}
 
     # Save results or display
-    print(list(potential_duplicates.items())[:10])  # Show sample of results
+    # print(list(potential_duplicates.items())[:10])  # Show sample of results
 
     # Save results to a CSV file
     output_df = (
@@ -207,6 +174,9 @@ def load_data(output_csv=False):
         for donor_id in all_ids:
             id_to_cleansed[donor_id] = cleansed_id
             name_to_cleansed[donor_id] = cleansed_name
+
+    # convert DonorId = "" to null
+    df['DonorId'] = df['DonorId'].replace("", pd.NA)
 
     # Apply mappings to the dataset
     df["Cleansed Donor ID"] = (
@@ -293,12 +263,26 @@ def load_party_summary_data(output_csv=False):
 
 
 def load_cleaned_data(output_csv=False):
+    # orig_df = df
     orig_df = st.session_state.get("data", None)
     if orig_df is None:
         st.error("No data found in session state!")
         return None
 
     df = orig_df.copy()
+    
+    # convert DonorId = "" to null
+    df['DonorId'] = df['DonorId'].replace("", pd.NA)    
+    # Fill missing text fields with empty strings
+    columns_to_fill = [
+                "ReceivedDate",
+                "ReportingPeriodName",
+                "NatureOfDonation",
+                "DonationAction",
+                "DonationType"
+            ]
+    df[columns_to_fill] = df[columns_to_fill].replace("", pd.NA)    
+    
     # # Fill blank ReceivedDate with ReportedDate
     df['ReceivedDate'] = df['ReceivedDate'].fillna(df['ReportedDate'])
     # # Fill blank ReceivedDate with AcceptedDate
@@ -361,15 +345,18 @@ def load_cleaned_data(output_csv=False):
     df["DubiousData"] = (
         (df["DonationType"] == "Impermissible Donor").astype(int) +
         (df["DonationType"] == "Unidentified Donor").astype(int) +
+        (df["DonationType"] == "Total value of donations not reported\
+            individually").astype(int) +
         (df["DonationType"] == "Aggregated Donation").astype(int) +
-        (df['IsAggregation'] == "True").astype(int) +
         (df["DonationType"] == "Visit").astype(int) +
-        (df['NatureOfDonation'] == "Other").astype(int) +
-        (df["DonationAction"].notnull()).astype(int) +
-        (df["ReceivedDate"] == dt.datetime(1900, 1, 1)).astype(int) +
-        df["RegulatedEntityId"].isna().astype(int) +
-        df["DonorId"].isna().astype(int) +
-        (df["DonorName"].isnull()).astype(int)
+        (df["DonationAction"] != "Accepted").astype(int) +
+        (df["NatureOfDonation"] == "Aggregated Donation").astype(int) +
+        (df["IsAggregation"] == "True").astype(int) +
+        (df["ReceivedDate"] == '1900-01-01 00:00:00').astype(int) +
+        (df["RegulatedEntityId"] == "1000001").astype(int) +
+        (df["RegulatedEntityName"] == 'Unidentified Entity').astype(int) +
+        (df["DonorId"] == "1000001").astype(int) +
+        (df["DonorName"] == 'Unidentified Donor').astype(int)
         )
 
     # Create simple column to enable count of events using sum

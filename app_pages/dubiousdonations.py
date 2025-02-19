@@ -128,25 +128,21 @@ def dubiousdonations_body():
             f"* Between {start_date} and {end_date},"
             f" there were {dubious_donors} donors identified as dubious."
             f" These donors represented {dubious_percent_of_donors:.2f}%"
-            "of donors to regulated entities,"
-            f" and includes Impremissible Donors and Unidentified Donors."
-            f" They donated a total of "
+            " of donors to regulated entities,"
+            f" and includes Impremissible Donors, Unidentified Donors "
+            f" and Aggregated Donors.  They donated a total of "
             f"£{ppcalc.format_number(dubious_donors_value)},"
             f" which represented {dubious_donors_percent_of_value:.2f}%"
-            "of the total value of donations made in the period.")
+            " of the total value of donations made in the period.")
     else:
         st.write("* No donations from dubious donors were identified.")
     if dubious_donation_actions >= 1:
         st.write(
-            f"* There were {dubious_donation_actions} donations that were"
-            "identified as of questionable nature."
+            f"* There were {dubious_donation_actions:,.0f} donations that were"
+            " identified as of questionable nature."
             f" These donations represented"
             f" {dubious_percent_of_donation_actions:.2f}% "
-            "of all donations made in the period."
-            f" These had a combined value of "
-            f"£{ppcalc.format_number(total_value_dubious_donations)}"
-            f"and represented {dubious_percent_of_value:.2f}% in "
-            "value of all donations.")
+            "of all donations made in the period.")
     if blank_received_date_ct >= 1:
         st.write(f"* {blank_received_date_ct} donations had no recorded date.")
     if blank_regulated_entity_id_ct >= 1:
@@ -158,7 +154,7 @@ def dubiousdonations_body():
             f" {returned_donations_percent_donations:.2f}% "
             "were returned to the donor,"
             f"representing £{ppcalc.format_number(returned_donations_value)}"
-            f" or {returned_donations_percent_value:.2f}% of the total"
+            f" or {returned_donations_percent_value:.2f}% of the total "
             "value of dubious donations.")
     if aggregated_donations >= 1:
         st.write(
@@ -171,12 +167,12 @@ def dubiousdonations_body():
             "the total value of all donations.")
     if donated_visits >= 1:
         st.write(
-            f"* There were {donated_visits} visits donated to regulated"
-            " entities, representing"
-            f"{donated_visits_percent_of_donation_actions:.2f}% of all"
+            f"* There were {donated_visits:,.0f} visits donated to regulated"
+            " entities, representing "
+            f"{donated_visits_percent_of_donation_actions:.2f}% of all "
             "donation actions. The total value of these visits was "
-            f" £{ppcalc.format_number(donated_visits_value)}, representing"
-            f" {donated_visits_percent_of_value:.2f}% of the total value of"
+            f" £{ppcalc.format_number(donated_visits_value)}, representing "
+            f" {donated_visits_percent_of_value:.2f}% of the total value of "
             "all donations.")
     st.write("---")
     st.write("### Visuals")
@@ -192,6 +188,7 @@ def dubiousdonations_body():
                 GGroup="DonationType",
                 XLabel="Year",
                 YLabel="Total Value (£)",
+                y_scale="linear",
                 Title="Dubious Donations by Year and Nature",
                 widget_key="dubious_donations_by_year_and_nature")
         else:
@@ -208,7 +205,7 @@ def dubiousdonations_body():
                 YLabel="Total Value (£)",
                 Title="Dubious Donations by Year and Regulated Entity",
                 use_custom_colors=True,
-                y_scale="log",
+                y_scale="linear",
                 ChartType="line",
                 widget_key="dubious_donations_by_year_and_entity")
         else:

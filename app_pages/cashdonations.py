@@ -95,9 +95,6 @@ def cashdonations_body():
                                        CalcType='sum',
                                        widget_key="donations_by_entity",
                                        use_container_width=True)
-    with right:
-        # write function to find the top 3 RegulatedEntityTypes and share of
-        # donations then update the text below.
         st.write('As can  be seen from the chart to the left'
                  'most cash donations are made to Political Parties.'
                  'This is not surprising as this is true for all '
@@ -105,9 +102,8 @@ def cashdonations_body():
         st.write('In 2016 we see an increase in donations to '
                  'Permitted Participants, this was due to the EU'
                  'Referendum, and the orgnaisations associated.')
-    st.write('#### Cash Donations by Regulated Entity')
-    left, right = st.columns(2)
-    with left:
+    
+    with right:
         if cleaned_c_d_df.empty:
             st.write("No data available for the selected filters.")
             return
@@ -120,13 +116,12 @@ def cashdonations_body():
                                        YLabel="Value of Donations £",
                                        Title="Value of Donations by Year and"
                                              " Entity",
-                                       CalcType='count',
+                                       CalcType='sum',
                                        use_custom_colors=True,
                                        widget_key="Value_by_entity",
+                                       ChartType='line',
+                                       percentbars=True,
                                        use_container_width=True)
-    with right:
-        # write code to find top 3 political entities by value of donations and
-        # update the text below
         st.write("The top 3 political entities by value of donations are "
                  "the Conservative Party, the Labour Party and the "
                  "Liberal Democrats. This is not surprising as these are "

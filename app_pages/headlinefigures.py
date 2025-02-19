@@ -220,7 +220,7 @@ def hlf_body():
                 value_label="Percentage of Total Donations",
                 use_custom_colors=True,  # Use custom colors
                 hole=0.3,  # Adjust for more or less donut effect
-                key="Value_by_entity"
+                widget_key="Value_by_entity"
             )
     with col2:
         if filtered_df.empty:
@@ -238,5 +238,5 @@ def hlf_body():
                 use_custom_colors=True,  # Use custom colors
                 value_label="Percentage of Donation Events",
                 hole=0.3,  # Adjust for more or less donut effect
-                key="pie_donations_by_entity"
+                widget_key="pie_donations_by_entity"
             )

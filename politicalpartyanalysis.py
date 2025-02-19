@@ -50,7 +50,7 @@ app.run()  # Run the  app
 
 loading_message = st.empty()
 loading_message.markdown("<h3 style='text-align: center; color: blue;'>"
-                         "Please wait while the data sets are being"
+                         "Please wait while the data sets are being "
                          "calculated...</h3>", unsafe_allow_html=True)
 
 # Ensure g_thresholds is available as a global dictionary
