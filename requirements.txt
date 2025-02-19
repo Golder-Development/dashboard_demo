@@ -19,5 +19,5 @@ seaborn
 plotly
 patsy
 statsmodels
-levenshein
+# levenshein
 streamlit
