@@ -210,24 +210,24 @@ def donorspage_body():
                                               "Median Donation": "£{:.2f}",
                                               "Average Value per Regulated Entity": "£{:.2f}"}))
     # Top 5 donors
-    st.write("### Top 5 Most Promiscuous Donors")
-    st.dataframe(ppcalc.get_top_donors(donors_entity_summary,
-                                       "Regulated Entities"))
+    # st.write("### Top 5 Most Promiscuous Donors")
+    # st.dataframe(ppcalc.get_top_donors(donors_entity_summary,
+    #                                    "Regulated Entities"))
 
-    st.write("### Top 5 Most Generous Overall Donors")
-    st.dataframe(ppcalc.get_top_donors(donors_entity_summary,
-                                       "Total Value"))
+    # st.write("### Top 5 Most Generous Overall Donors")
+    # st.dataframe(ppcalc.get_top_donors(donors_entity_summary,
+    #                                    "Total Value"))
 
-    st.write("### Top 5 Most Generous on Avg Donors")
-    st.dataframe(ppcalc.get_top_donors(donors_entity_summary,
-                                       "Average Donation"))
+    # st.write("### Top 5 Most Generous on Avg Donors")
+    # st.dataframe(ppcalc.get_top_donors(donors_entity_summary,
+    #                                    "Average Donation"))
 
-    st.write("### Top 5 Most Generous on Avg Donors (Excluding single donations)")
-    st.dataframe(ppcalc.get_top_donors(donors_entity_summary,
-                                       "Average Donation",
-                                       exclude_single_donation=True))
+    # st.write("### Top 5 Most Generous on Avg Donors (Excluding single donations)")
+    # st.dataframe(ppcalc.get_top_donors(donors_entity_summary,
+    #                                    "Average Donation",
+    #                                    exclude_single_donation=True))
 
-    st.write("### Top 5 Most Active Donors by No of Donations")
-    st.dataframe(ppcalc.get_top_donors(donors_entity_summary,
-                                       "No of Donations",
-                                       exclude_single_donation=False))
+    # st.write("### Top 5 Most Active Donors by No of Donations")
+    # st.dataframe(ppcalc.get_top_donors(donors_entity_summary,
+    #                                    "No of Donations",
+    #                                    exclude_single_donation=False))
