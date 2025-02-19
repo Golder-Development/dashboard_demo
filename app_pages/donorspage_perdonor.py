@@ -4,6 +4,7 @@ import datetime as dt
 import Visualisations as vis
 import pandas as pd
 
+
 def donorspage_body():
     """
     This function displays the content of Page two.
@@ -92,12 +93,19 @@ def donorspage_body():
                               'Average Donation',
                               'Median Donation',
                               'Regulated Entities']
-    donors_summary['Total Value'] = pd.to_numeric(donors_summary['Total Value'], errors='coerce')
-    donors_summary['Regulated Entities'] = pd.to_numeric(donors_summary['Regulated Entities'], errors='coerce')
-    donors_summary['Average Value per Regulated Entity'] =\
+    donors_summary['Total Value'] = (
+        pd.to_numeric(donors_summary['Total Value'], errors='coerce')
+    )
+    donors_summary['Regulated Entities'] = (
+        pd.to_numeric(donors_summary['Regulated Entities'], errors='coerce')
+    )
+    donors_summary['Avg Value per Entity'] = (
         donors_summary['Total Value'] / donors_summary['Regulated Entities']
-    donors_summary['Average Number Donations per Entity'] =\
-        donors_summary['No of Donations'] / donors_summary['Regulated Entities']
+        )
+    donors_summary['Avg Donations per Entity'] = (
+        donors_summary['No of Donations'] /
+        donors_summary['Regulated Entities']
+    )
     donors_entity_summary = donors_d_df.groupby(['DonorName'])\
         .agg({'Value': ['count',
                         'sum',
@@ -107,24 +115,26 @@ def donorspage_body():
 
     # Ensure aggregates are numeric
     donors_entity_summary.columns = ['RegulatedEntityName',
-                                      'No of Donations',
-                                      'Total Value',
-                                      'Average Donation',
-                                      'Median Donation',
-                                      'Regulated Entities']
+                                     'No of Donations',
+                                     'Total Value',
+                                     'Average Donation',
+                                     'Median Donation',
+                                     'Regulated Entities']
     for col in ['No of Donations',
                 'Total Value',
                 'Average Donation',
                 'Median Donation',
                 'Regulated Entities']:
-        donors_entity_summary[col] = pd.to_numeric(donors_entity_summary[col], errors='coerce')
+        donors_entity_summary[col] = (
+             pd.to_numeric(donors_entity_summary[col], errors='coerce')
+        )
     donors_entity_summary.columns = ['Regulated Entity',
-                                      'No of Donations',
-                                      'Total Value',
-                                      'Average Donation',
-                                      'Median Donation',
-                                      'Regulated Entities']
-    donors_entity_summary['Average Value per Regulated Entity'] = (
+                                     'No of Donations',
+                                     'Total Value',
+                                     'Average Donation',
+                                     'Median Donation',
+                                     'Regulated Entities']
+    donors_entity_summary['Avg Value per Entity'] = (
         donors_entity_summary.apply(
             lambda row: row['Total Value'] / row['Regulated Entities']
             if row['Regulated Entities'] > 0 else 0, axis=1
@@ -142,8 +152,10 @@ def donorspage_body():
     for col in ['Total Value',
                 'Average Donation',
                 'Median Donation',
-                'Average Value per Regulated Entity']:
-        donors_entity_summary[col] = pd.to_numeric(donors_entity_summary[col], errors='coerce')
+                'Avg Value per Entity']:
+        donors_entity_summary[col] = (
+            pd.to_numeric(donors_entity_summary[col], errors='coerce')
+        )
         donors_entity_summary[col] = (
             donors_entity_summary[col]
             .apply(lambda x: f"£{ppcalc.format_number(x)}")
@@ -205,10 +217,11 @@ def donorspage_body():
                  unsafe_allow_html=True)
 
     # Display the styled dataframe
-    st.dataframe(donors_summary.style.format({"Total Value": "£{:.2f}",
-                                              "Average Donation": "£{:.2f}",
-                                              "Median Donation": "£{:.2f}",
-                                              "Average Value per Regulated Entity": "£{:.2f}"}))
+    st.dataframe(donors_summary.style.format(
+        {"Total Value": "£{:.2f}",
+         "Average Donation": "£{:.2f}",
+         "Median Donation": "£{:.2f}",
+         "Avg Value per Entity": "£{:.2f}"}))
     # Top 5 donors
     # st.write("### Top 5 Most Promiscuous Donors")
     # st.dataframe(ppcalc.get_top_donors(donors_entity_summary,
@@ -222,7 +235,8 @@ def donorspage_body():
     # st.dataframe(ppcalc.get_top_donors(donors_entity_summary,
     #                                    "Average Donation"))
 
-    # st.write("### Top 5 Most Generous on Avg Donors (Excluding single donations)")
+    # st.write("### Top 5 Most Generous on Avg Donors
+    #                   (Excluding single donations)")
     # st.dataframe(ppcalc.get_top_donors(donors_entity_summary,
     #                                    "Average Donation",
     #                                    exclude_single_donation=True))

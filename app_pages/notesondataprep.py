@@ -29,6 +29,16 @@ def notesondataprep_body():
     st.write("The initial data had the value changed into a numeric format "
              "to enable calculations and visualisations.  It is available from"
              " [Kaggle](%s)." % datalink)
+    st.write("The all text based data was the cleaned and transformed "
+             "to enable analysis.  The following steps were taken:"
+             "Leading and trailing spaces were removed, all text was "
+             "converted to Title case, and all special characters were "
+             "removed.")
+    st.write("The data was then analysed to identify any missing values.  The"
+             "following fields were identified as having missing values:")
+    st.write("The DonorId and DonorName fields were then analysed to identify"
+             "dublicates due to poor data entry.  The following rules were "
+             "used to identify duplicates:")
     st.write("The data included records for the Northern Ireland Assembly"
              "and were identified by their own register, these have been "
              "seperated out and are not included in the analysis unless "

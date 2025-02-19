@@ -19,4 +19,5 @@ seaborn
 plotly
 patsy
 statsmodels
+levenshein
 streamlit
