@@ -92,7 +92,7 @@ def load_data(output_csv=False):
     df['DonorName'] = df['DonorName'].replace("", "Unidentified Donor")
     # update Blank DonorId to "1000001"
     df['DonorId'] = df['DonorId'].replace("", "1000001")
-    
+
     # make donorid and regulatedentityid numeric
     df['DonorId'] = pd.to_numeric(df['DonorId'], errors='coerce')
     df['RegulatedEntityId'] = pd.to_numeric(df['RegulatedEntityId'],
@@ -270,7 +270,7 @@ def load_cleaned_data(output_csv=False):
         return None
 
     df = orig_df.copy()
-    
+
     # convert DonorId = "" to null
     df['DonorId'] = df['DonorId'].replace("", pd.NA)    
     # Fill missing text fields with empty strings
@@ -282,7 +282,7 @@ def load_cleaned_data(output_csv=False):
                 "DonationType"
             ]
     df[columns_to_fill] = df[columns_to_fill].replace("", pd.NA)    
-    
+
     # # Fill blank ReceivedDate with ReportedDate
     df['ReceivedDate'] = df['ReceivedDate'].fillna(df['ReportedDate'])
     # # Fill blank ReceivedDate with AcceptedDate

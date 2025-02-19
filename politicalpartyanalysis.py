@@ -18,6 +18,7 @@ from app_pages.cashdonationsByRegulatedEntity\
     import cashdonationsregentity_body
 from app_pages.donorspage_headlines import donorsheadlinespage_body
 from app_pages.donorspage_perdonor import donorspage_body
+from app_pages.visits import visits_body
 # from app_pages.donationsbypoliticalpartys import
 # donationsbypoliticalpartys_body
 
@@ -36,12 +37,9 @@ app.add_page("Cash Donations by Regulated Entity",
              cashdonationsregentity_body)
 app.add_page("Sponsorships", sponsorships_body)
 # app.add_page("Bequeths", bequeth_body)
-# app.add_page("Paid Visits", visits_body)
+app.add_page("Paid Visits", visits_body)
 # app.add_page("Regulated Entities", regulatedentitypage_body)
 # app.add_page("Donor is a Political Party", donationsbypoliticalpartys_body)
-# app.add_page("Dubious Donations", dubiousdonations_body)
-# app.add_page("Dubious Donations by Regulated Entity",
-#            dubiousdonationsByDonor_body)
 app.add_page("Donors Head Lines", donorsheadlinespage_body)
 app.add_page("Donors Per Donor", donorspage_body)
 app.add_page("Notes on Data and Manipulations", notesondataprep_body)
