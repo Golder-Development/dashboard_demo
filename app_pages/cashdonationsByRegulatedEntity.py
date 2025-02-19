@@ -6,6 +6,7 @@ def cashdonationsregentity_body():
     import calculations as ppcalc
     import Visualisations as vis
     import datetime as dt
+    import random
 
     # Load dataset from session state
     cleaned_df = st.session_state.get("data_clean", None)
@@ -33,9 +34,10 @@ def cashdonationsregentity_body():
     end_date = dt.datetime.combine(end_date, dt.datetime.max.time())
 
     # # Filter by date range
-    date_filter = (cleaned_df["ReceivedDate"] >= start_date) & (cleaned_df
-                                                                ["ReceivedDate"]
-                                                                <= end_date)
+    date_filter = (
+        cleaned_df["ReceivedDate"] >= start_date) & (cleaned_df
+                                                     ["ReceivedDate"]
+                                                     <= end_date)
 
     # --- Dropdown for Regulated Entity ---
     # Create a mapping of RegulatedEntityName -> RegulatedEntityId
@@ -51,61 +53,236 @@ def cashdonationsregentity_body():
     selected_entity_id = entity_mapping.get(selected_entity_name, None)
 
     # Apply filters
-    filters = {"RegulatedEntityId": selected_entity_id} if\
-        selected_entity_name != "All" else None
+    filters = {"RegulatedEntityId": selected_entity_id} if selected_entity_name != "All" else {}
 
-    # Apply filters to the dataset
-    cleaned_d_df = cleaned_df[date_filter]
+    # Create dataframe for chosen date range
+    cleaned_d_df = cleaned_df[date_filter] if date_filter.any() else cleaned_df
 
+    # Create dataframe for chosen entity
     if filters:
-        cleaned_r_d_df = cleaned_d_df[cleaned_d_df["RegulatedEntityId"] ==
-                                      filters["RegulatedEntityId"]]
+        cleaned_r_d_df = cleaned_d_df[
+            cleaned_d_df["RegulatedEntityId"] == filters["RegulatedEntityId"]
+            if filters else True  # If no filters, return all rows
+        ]
     else:
         cleaned_r_d_df = cleaned_d_df
+    # Create dataframe for chosen entity all time
+    # cleaned_r_df = cleaned_df[
+    #     cleaned_df["RegulatedEntityId"] == filters["RegulatedEntityId"]
+    # ]
+    # Define filter condition
+    current_target = 'DonationType == "Cash"'
 
-    cleaned_c_r_d_df = cleaned_r_d_df[cleaned_r_d_df['DonationType'] == 'Cash']
-    cleaned_c_d_df = cleaned_d_df[cleaned_d_df['DonationType'] == 'Cash']
-    # Call each function separately with the selected filter
+    # Ensure relevant column exists in the dataframe before filtering
+    if 'DonationType' in cleaned_r_d_df.columns:
+        cleaned_c_r_d_df = cleaned_r_d_df.query(current_target)
+    else:
+        raise KeyError("Column 'DonationType' not found in cleaned_r_d_df")
+
+    if 'DonationType' in cleaned_d_df.columns:
+        cleaned_c_d_df = cleaned_d_df.query(current_target)
+    else:
+        raise KeyError("Column 'DonationType' not found in cleaned_d_df")
+
+    # Values for all entities, all time and all donations
+    unique_donations_pop = ppcalc.get_donations_ct(cleaned_df, filters)
+    unique_donations_c = ppcalc.get_donations_ct(cleaned_df, {"DonationType":
+                                                 "Cash"})
+    unique_donors_pop = ppcalc.get_donors_ct(cleaned_df, filters)
+    total_value_pop = ppcalc.get_value_total(cleaned_df, filters)
+    mean_value_pop = ppcalc.get_value_mean(cleaned_df, filters)
+    # Values for all entities, chosen date range and current target
     unique_donors_c_d = ppcalc.get_donors_ct(cleaned_c_d_df, filters)
     total_value_donations_c_d = ppcalc.get_value_total(cleaned_c_d_df, filters)
     mean_value_donations_c_d = ppcalc.get_value_mean(cleaned_c_d_df, filters)
     unique_donations_c_d = ppcalc.get_donations_ct(cleaned_c_d_df, filters)
     unique_regulated_entities_c_d = ppcalc.get_regentity_ct(cleaned_c_d_df,
                                                             filters)
+    # Values for all entities, chosen date range and all donations
     unique_donations_d = ppcalc.get_donations_ct(cleaned_d_df, filters)
-    unique_donations_pop = ppcalc.get_donations_ct(cleaned_df, filters)
-    unique_donations_c = ppcalc.get_donations_ct(cleaned_df, {"DonationType":
-                                                 "Cash"})
-    perc_cash_donations = (unique_donations_c / unique_donations_pop) * 100 if\
-        unique_donations_pop > 0 else 0
-    perc_cash_donations_d = (unique_donations_c_d / unique_donations_d) * 100\
+    unique_donors_d = ppcalc.get_donors_ct(cleaned_d_df, filters)
+    total_value_donations_d = ppcalc.get_value_total(cleaned_d_df, filters)
+    mean_value_donations_d = ppcalc.get_value_mean(cleaned_d_df, filters)
+    # Values for chosen entity, date range and all donations
+    unique_donations_r_d = ppcalc.get_donations_ct(cleaned_r_d_df, filters)
+    unique_donors_r_d = ppcalc.get_donors_ct(cleaned_r_d_df, filters)
+    total_value_donations_r_d = ppcalc.get_value_total(cleaned_r_d_df, filters)
+    mean_value_donations_r_d = ppcalc.get_value_mean(cleaned_r_d_df, filters)  
+    # Values for chosen entity, date range and current target
+    unique_donations_c_r_d = ppcalc.get_donations_ct(cleaned_c_r_d_df, filters)
+    unique_donors_c_r_d = ppcalc.get_donors_ct(cleaned_c_r_d_df, filters)
+    total_value_donations_c_r_d = ppcalc.get_value_total(cleaned_c_r_d_df,
+                                                         filters)
+    mean_value_donations_c_r_d = ppcalc.get_value_mean(cleaned_c_r_d_df,
+                                                       filters)
+    # Relative relationship calculations
+    perc_cash_donations_all = (
+        (unique_donations_c / unique_donations_pop) * 100
+        if unique_donations_pop > 0 else 0
+        )
+    perc_value_share_all = (
+        (total_value_donations_d / total_value_pop) * 100
+        if total_value_pop > 0 else 0
+    )
+    perc_cash_donations_c_d = (
+        (unique_donations_c_d / unique_donations_d) * 100
         if unique_donations_d > 0 else 0
-    min_date_df = ppcalc.get_mindate(cleaned_c_d_df, filters).date()
-    max_date_df = ppcalc.get_maxdate(cleaned_c_d_df, filters).date()
+        )
+    perc_value_share_c_d = (
+        (total_value_donations_c_d / total_value_pop) * 100
+        if total_value_pop > 0 else 0
+        )
+    perc_cash_donations_c_r_d = (
+        (unique_donations_c_r_d / unique_donations_c) * 100
+        if unique_donations_c > 0 else 0
+        )
+    perc_donations_c_r = (unique_donations_c_r_d / unique_donations_d) * 100\
+        if unique_donations_d > 0 else 0
+    perc_donations_d = (unique_donations_d / unique_donations_pop) * 100\
+        if unique_donations_d > 0 else 0
+    # Format selected dates for inclusion in text
+    min_date_df = start_date.date()
+    max_date_df = end_date.date()
 
-    st.write("## Explaination")
-    st.write("* The majority of donations to political parties are in cash."
-             "These vary from small donations from individuals, to larger "
-             "aggregated donations from multiple donors, and include "
-             "donations from trade unions, business and bequests.")
-    st.write("* These are identified by the regulator and marked in the data. "
-             "This page provides a summary of the cash donations to political "
-             "parties.")
-    st.write(f"## Topline Figures for {selected_entity_name}")
-    st.write(f"* During the period between {min_date_df} and {max_date_df},"
+    st.write(f"## Topline Figures for Cash Donations to {selected_entity_name}"
+             f" between {min_date_df} and {max_date_df}")
+    st.write(f"* During the period between {min_date_df} and {max_date_df}, "
              f"there were {unique_donations_c_d:,.0f} cash donations made to "
-             f"{unique_regulated_entities_c_d}.")
-    st.write("* These had a mean value of "
+             f"{selected_entity_name}.  These had an average value of "
              f"£{ppcalc.format_number(mean_value_donations_c_d)} "
              f"and were made by {ppcalc.format_number(unique_donors_c_d)} "
-             "unique donors.")
-    st.write(f"* Cash donations represented {perc_cash_donations_d:.2f}% of"
-             f"all donations during the period selected and had a value of "
-             f"£{ppcalc.format_number(total_value_donations_c_d)}")
-    st.write("---")
+             "unique donors. These donations totalled "
+             f"£{ppcalc.format_number(total_value_donations_c_d)}"
+             f" and represented {perc_cash_donations_c_d:.2f}% of"
+             f" all donations made "
+             f" to {selected_entity_name}"
+             " during the period selected.")
+    
+    if unique_donations_c_d < unique_donations_r_d:
+             st.write("* During the period they received a total of"
+                      f" {unique_donations_r_d:,.0f} donations with a total value of"
+                      f" £{ppcalc.format_number(total_value_donations_r_d)} and an"
+                      " average value of "
+                      f"£{ppcalc.format_number(mean_value_donations_r_d)}"
+                      f" from {unique_donors_r_d:,.0f} unique donors.")
+             
+    # Compare percentage of cash donations to chosen entity vs avergage
+    # percentage cash donations for all entities
+    if perc_cash_donations_c_r_d > perc_cash_donations_all:
+        st.write("* The percentage of cash donations made"
+                 f" to {selected_entity_name} "
+                 f"({perc_cash_donations_c_r_d:.2f}%) is "
+                 "higher than the average"
+                 "percentage of cash donations made to all entities"
+                 f" ({perc_cash_donations_all:.2f}%)")
+    elif perc_cash_donations_c_r_d < perc_cash_donations_all:
+        st.write("* The percentage of cash donations made "
+                 f"to {selected_entity_name} "
+                 f"({perc_cash_donations_c_r_d:.2f}%) is lower than the"
+                 " average percentage of cash donations made to all entities"
+                 f" ({perc_cash_donations_all:.2f}%)")
+    else:
+        st.write("* The percentage of cash donations made to "
+                 f"{selected_entity_name} "
+                 f"({perc_cash_donations_c_r_d:.2f}%) is "
+                 "the same as the average"
+                 " percentage of cash donations made to all entities"
+                 f" ({perc_cash_donations_all:.2f}%)")
+    # Compare value share of cash donations to value of all chosen entity
+    # donations vs avergage value share of cash donations for all entities
+    if perc_value_share_c_d > perc_value_share_all:
+        st.write("* The value of cash donations "
+                 " as a percentage of all donations made to "
+                 f"{selected_entity_name} "
+                 f"({perc_value_share_c_d:.2f}%) is higher than the average"
+                 " value of cash donations made to all entities"
+                 f" ({perc_value_share_all:.2f}%)")
+    elif perc_value_share_c_d < perc_value_share_all:
+        st.write("* The value of cash donations made to"
+                 f"{selected_entity_name} "
+                 f"({perc_value_share_c_d:.2f}%) is lower than the average"
+                 " value of cash donations made to all entities"
+                 f" ({perc_value_share_all:.2f}%)")
+    else:
+        st.write("* The value of cash donations made "
+                 f"to {selected_entity_name} "
+                 f"({perc_value_share_c_d:.2f}%) is the same as the average"
+                 f" value of cash donations made to all entities"
+                 f" ({perc_value_share_all:.2f}%)")
+    # Compare number of donors to chosen entity vs
+    # avergage number of donors for all entities
+    if unique_donors_c_d > unique_donors_pop:
+        st.write(f"* The number of unique donors to {selected_entity_name} "
+                 f"({ppcalc.format_number(unique_donors_c_d)}) is higher than"
+                 f" the average number of unique donors to all entities"
+                 f" ({ppcalc.format_number(unique_donors_pop)})")
+    elif unique_donors_c_d < unique_donors_pop:
+        st.write(f"* The number of unique donors to {selected_entity_name} "
+                 f"({ppcalc.format_number(unique_donors_c_d)}) is lower than"
+                 f"the average number of unique donors to all entities"
+                 f" ({ppcalc.format_number(unique_donors_pop)})")
+    else:
+        st.write(f"* The number of unique donors to {selected_entity_name} "
+                 f"({ppcalc.format_number(unique_donors_c_d)}) is the same"
+                 f" as the average number of unique donors to all entities"
+                 f" ({ppcalc.format_number(unique_donors_pop)})")
+    # Compare average value of donations to chosen entity vs
+    # avergage average value of donations for all entities
+    if mean_value_donations_c_d > mean_value_pop:
+        st.write(f"* The average value of donations to {selected_entity_name} "
+                 f"(£{ppcalc.format_number(mean_value_donations_c_d)}) is"
+                 f" higher than the average average value of donations to"
+                 f" all entities (£{ppcalc.format_number(mean_value_pop)})")
+    elif mean_value_donations_c_d < mean_value_pop:
+        st.write(f"* The average value of donations to {selected_entity_name} "
+                 f"(£{ppcalc.format_number(mean_value_donations_c_d)}) is"
+                 f" lower than the average average value of donations to all "
+                 f"entities (£{ppcalc.format_number(mean_value_pop)})")
+    else:
+        st.write(f"* The average value of donations to {selected_entity_name} "
+                 f"(£{ppcalc.format_number(mean_value_donations_c_d)}) is the"
+                 f" same as the average average value of donations to all"
+                 f" entities (£{ppcalc.format_number(mean_value_pop)})")
+    if min_date_df != min_date or max_date_df != max_date:
+        # Compare percentage of cash donations to chosen entity vs
+        # percentage of all donations
+        st.write("---")
+        st.write(f"#### Comparison of activity between {min_date_df} and"
+                 f" {max_date_df} to activity between {min_date} and {max_date}")
+        st.write("---")
+        st.write(f"* The percentage of cash donations to {selected_entity_name} "
+                f"({perc_cash_donations_c_r_d:.2f}%) compared to the"
+                " percentage of all donations "
+                f"({perc_donations_d:.2f}%) during the selected date range.")
 
-    st.write(f"### Topline Visuals for Donations to {selected_entity_name}"
-             f"between {min_date_df} and {max_date_df}")
+        # Compare value share of cash donations to chosen entity vs
+        # value share of all donations
+        st.write(f"* The value share of cash donations to {selected_entity_name} "
+                f"({perc_value_share_c_d:.2f}%) compared to the value"
+                " share of all donations "
+                f"({perc_value_share_all:.2f}%) during the selected date range.")
+
+        # Compare number of unique donors to chosen entity vs
+        # number of unique donors for all entities
+        st.write(f"* The number of unique donors to {selected_entity_name} "
+                f"({unique_donors_c_r_d}) compared to the number of "
+                "unique donors for all entities "
+                f"({unique_donors_pop}) during the selected date range.")
+
+        # Compare average value of donations to chosen entity vs
+        # average value of donations for all entities
+        st.write(f"* The average value of donations to {selected_entity_name} "
+                f"(£{ppcalc.format_number(mean_value_donations_c_r_d)}) compared"
+                " to the average value of donations for all entities "
+                f"(£{ppcalc.format_number(mean_value_pop)}) during the"
+                " selected date range.")
+    else:
+        "No date range selected."
+        st.write("---")
+
+    st.write("### Topline Visuals for Cash Donations"
+             f" to {selected_entity_name}"
+             f" between {min_date_df} and {max_date_df}")
     st.write("#### Click on any Visualisation to view it full screen.")
     left, right = st.columns(2)
     with left:

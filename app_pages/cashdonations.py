@@ -62,16 +62,14 @@ def cashdonations_body():
     st.write("## Topline Figures")
     st.write(f"* During the period between {min_date_df} and {max_date_df}, "
              f"there were {unique_donations_c_d:,.0f} cash donations made to "
-             f"{unique_regulated_entities_c_d}.")
+             f"{unique_regulated_entities_c_d} regulated political entities.")
     st.write(f"* These had a mean value of £"
              f"{ppcalc.format_number(mean_value_donations_c_d)} "
              f"and were made by {ppcalc.format_number(unique_donors_c_d)} "
              "unique donors.")
     st.write(f"* Cash donations represented {perc_cash_donations_d:.2f}% of "
-             "all donations during the period selected, and "
-             f"{perc_cash_donations:.2f}% of all donations made to political "
-             f"parties between {min_date} and {max_date},.")
-    st.write(f"* All these had a value of £ "
+             f"all donations made to political parties between {min_date}"
+             f"and {max_date}. All these had a total value of £ "
              f"{ppcalc.format_number(total_value_donations_c_d)}")
     st.write("---")
 
@@ -95,14 +93,19 @@ def cashdonations_body():
                                        CalcType='sum',
                                        widget_key="donations_by_entity",
                                        use_container_width=True)
-        st.write('As can  be seen from the chart to the left'
+        st.write('As can  be seen from the chart above, the'
                  'most cash donations are made to Political Parties.'
                  'This is not surprising as this is true for all '
                  'donations.')
         st.write('In 2016 we see an increase in donations to '
                  'Permitted Participants, this was due to the EU'
-                 'Referendum, and the orgnaisations associated.')
-    
+                 'Referendum, and the orgnaisations associated with '
+                 'the Leave and Remain campaigns.')
+        st.write('It is interesting to also note that the total number of cash '
+                 'donations made in 2016 was lower than the previous 2 years.'
+                 'This is like due to the fact that the EU Referendum was held'
+                 ' on the 23rd June 2016.  But the build up had been going on'
+                 ' since campaigning for the 2015 General Election started.')
     with right:
         if cleaned_c_d_df.empty:
             st.write("No data available for the selected filters.")
@@ -119,7 +122,7 @@ def cashdonations_body():
                                        CalcType='sum',
                                        use_custom_colors=True,
                                        widget_key="Value_by_entity",
-                                       ChartType='line',
+                                       ChartType='bar',
                                        percentbars=True,
                                        use_container_width=True)
         st.write("The top 3 political entities by value of donations are "
