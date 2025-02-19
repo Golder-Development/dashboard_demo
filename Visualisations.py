@@ -14,6 +14,7 @@ def plot_bar_line_by_year(
                 XLabel='Year',
                 YLabel='Total Value (£)',
                 Title='Donations by Year and Entity Type',
+                LegendTitle='Regulated Entity Group',
                 CalcType='sum',
                 ChartType='Bar',
                 x_scale='linear',
@@ -149,8 +150,20 @@ def plot_bar_line_by_year(
         yaxis_title=YLabel,
         xaxis={'type': x_scale},
         yaxis={'type': y_scale},
-        legend_title=GGroup,
-        hovermode="x unified"
+        legend_title=LegendTitle,
+        hovermode="x unified",
+        legend=dict(
+                orientation="h",
+                yanchor="top",
+                y=-0.1,
+                xanchor="center",
+                x=0.5
+            ),
+        title=dict(
+            xanchor='center',
+            yanchor='top',
+            x=0.5
+        ),
     )
 
     fig.update_traces(
@@ -175,6 +188,7 @@ def plot_regressionplot(
     x_scale='log',
     y_scale='log',
     use_custom_colors=False,
+    legend_title=None,
     show_trendline=True,  # New: Option to enable regression trendline
     use_container_width=True
 ):
@@ -245,9 +259,23 @@ def plot_regressionplot(
     fig.update_layout(
         xaxis_title=x_label,
         yaxis_title=y_label,
-        legend_title=color_column if color_column else "Legend",
+        legend_title=(color_column if color_column 
+                      else "Legend" 
+                      if legend_title is None 
+                      else legend_title),
         hovermode="closest",
-        title_x=0.5,  # Centered title
+        legend=dict(
+                orientation="h",
+                yanchor="top",
+                y=-0.1,
+                xanchor="center",
+                x=0.5
+            ),
+        title=dict(
+            xanchor='center',
+            yanchor='top',
+            x=0.5
+        )  # Centered title
     )
 
     # Display in Streamlit
@@ -265,7 +293,8 @@ def plot_pie_chart(
         color_column=None,
         use_custom_colors=False,  # Flag to enable color mapping
         hole=0.4,
-        key=None,
+        widget_key=None,
+        legend_title=None,
         use_container_width=True
         ):
     """
@@ -382,7 +411,24 @@ def plot_pie_chart(
     )
 
     # Improve layout
-    fig.update_layout(title_x=0.5, legend_title=category_label)
+    fig.update_layout(
+        title=dict(
+            xanchor='center',
+            yanchor='top',
+            x=0.5
+        ),
+        legend=dict(
+            orientation="h",
+            yanchor="top",
+            y=-0.1,
+            xanchor="center",
+            x=0.5
+        ),
+        legend_title=(category_label if category_label
+                else "Legend" 
+                if legend_title is None 
+                else legend_title)
+    )
 
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=use_container_width)
@@ -403,6 +449,7 @@ def plot_custom_bar_chart(
         key=None,
         x_scale='linear',
         y_scale='linear',
+        legend_title=None,
         use_container_width=True
         ):
     """
@@ -485,7 +532,23 @@ def plot_custom_bar_chart(
     # Update layout with axis scale options
     fig.update_layout(
         xaxis={'type': x_scale},
-        yaxis={'type': y_scale}
+        yaxis={'type': y_scale},
+        legend=dict(
+            orientation="h",
+            yanchor="top",
+            y=-0.1,
+            xanchor="center",
+            x=0.5
+            ),
+        legend_title=(legend_title if legend_title
+                else group_column 
+                if group_column
+                else "legend"),
+        title=dict(
+            xanchor='center',
+            yanchor='top',
+            x=0.5
+        )     
     )
 
     # Display in Streamlit

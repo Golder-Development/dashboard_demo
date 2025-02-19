@@ -237,15 +237,15 @@ def dubiousdonationsByDonor_body():
     # Format text
     st.write(f"### Summary of Dubious Donations for {selected_entity_name}")
     if dubious_donors >= 1:
-        st.write(f"* Between {start_date} and {end_date}, there were"
-                 f" {dubious_donors} donors identified as dubious."
+        st.write(f"* Between {min_date} and {max_date}, there were"
+                 f" {dubious_donors:,.0f} donors identified as dubious."
                  f" These donors represented {dubious_percent_of_donors:.2f}%"
                  " of donors to regulated entities,"
                  " and includes Impremissible Donors and Unidentified Donors.")
     else:
         st.write("* No donations from dubious donors were identified.")
     if dubious_donation_actions >= 1:
-        st.write(f"* There were {dubious_donation_actions} donations that were"
+        st.write(f"* There were {dubious_donation_actions:,.0f} donations that were"
                  " identified as of questionable nature. These donations "
                  "represented "
                  f"{dubious_percent_of_donation_actions:.2f}% of all donations"
@@ -259,7 +259,7 @@ def dubiousdonationsByDonor_body():
         st.write(f"* {blank_regulated_entity_id_ct} donations had no recorded "
                  "regulated entity.")
     if total_value_dubious_donations >= 1:
-        st.write(f"* Of these donations {returned_donations} or"
+        st.write(f"* Of these donations {returned_donations:,.0f} or"
                  f" {returned_donations_percent_donations:.2f}% were returned"
                  " to the donor, representing "
                  f"£{ppcalc.format_number(returned_donations_value)} or "
@@ -267,7 +267,7 @@ def dubiousdonationsByDonor_body():
                  " of dubious donations.")
     if aggregated_donations >= 1:
         st.write(
-            f"* There were {aggregated_donations} aggregated donations, "
+            f"* There were {aggregated_donations:,.0f} aggregated donations, "
             f" representing {aggregated_percent_of_donation_actions:.2f}%"
             " of all donation actions. The total value of these aggregated"
             " donations was "
@@ -276,7 +276,7 @@ def dubiousdonationsByDonor_body():
             " value of all donations.")
     if donated_visits >= 1:
         st.write(
-            f"* There were {donated_visits} visits donated to regulated"
+            f"* There were {donated_visits:,.0f} visits donated to regulated"
             "entities, representing"
             f" {donated_visits_percent_of_donation_actions:.2f}%"
             " of all donation actions. The total value of these visits was"

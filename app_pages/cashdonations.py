@@ -48,8 +48,8 @@ def cashdonations_body():
         if unique_donations_pop > 0 else 0
     perc_cash_donations_d = (unique_donations_c_d / unique_donations_d) * 100 \
         if unique_donations_d > 0 else 0
-    min_date_df = ppcalc.get_mindate(cleaned_c_d_df, filters)
-    max_date_df = ppcalc.get_maxdate(cleaned_c_d_df, filters)
+    min_date_df = ppcalc.get_mindate(cleaned_c_d_df, filters).date()
+    max_date_df = ppcalc.get_maxdate(cleaned_c_d_df, filters).date()
 
     st.write("## Explaination")
     st.write("* The majority of donations to political parties are in cash."
@@ -61,7 +61,7 @@ def cashdonations_body():
              "parties.")
     st.write("## Topline Figures")
     st.write(f"* During the period between {min_date_df} and {max_date_df}, "
-             f"there were {unique_donations_c_d} cash donations made to "
+             f"there were {unique_donations_c_d:,.0f} cash donations made to "
              f"{unique_regulated_entities_c_d}.")
     st.write(f"* These had a mean value of £"
              f"{ppcalc.format_number(mean_value_donations_c_d)} "

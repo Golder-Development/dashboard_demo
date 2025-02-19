@@ -1,6 +1,6 @@
 def cashdonationsregentity_body():
     """
-    Displays the content of the Cash Donations by Political Party page.
+    Displays the content of the Cash Donations to Political Party page.
     """
     import streamlit as st
     import calculations as ppcalc
@@ -80,8 +80,8 @@ def cashdonationsregentity_body():
         unique_donations_pop > 0 else 0
     perc_cash_donations_d = (unique_donations_c_d / unique_donations_d) * 100\
         if unique_donations_d > 0 else 0
-    min_date_df = ppcalc.get_mindate(cleaned_c_d_df, filters)
-    max_date_df = ppcalc.get_maxdate(cleaned_c_d_df, filters)
+    min_date_df = ppcalc.get_mindate(cleaned_c_d_df, filters).date()
+    max_date_df = ppcalc.get_maxdate(cleaned_c_d_df, filters).date()
 
     st.write("## Explaination")
     st.write("* The majority of donations to political parties are in cash."
@@ -91,11 +91,12 @@ def cashdonationsregentity_body():
     st.write("* These are identified by the regulator and marked in the data. "
              "This page provides a summary of the cash donations to political "
              "parties.")
-    st.write("## Topline Figures")
+    st.write(f"## Topline Figures for {selected_entity_name}")
     st.write(f"* During the period between {min_date_df} and {max_date_df},"
-             f"there were {unique_donations_c_d} cash donations made to "
+             f"there were {unique_donations_c_d:,.0f} cash donations made to "
              f"{unique_regulated_entities_c_d}.")
-    st.write(f"* These had a mean value of £{ppcalc.format_number(mean_value_donations_c_d)} "
+    st.write("* These had a mean value of "
+             f"£{ppcalc.format_number(mean_value_donations_c_d)} "
              f"and were made by {ppcalc.format_number(unique_donors_c_d)} "
              "unique donors.")
     st.write(f"* Cash donations represented {perc_cash_donations_d:.2f}% of"
@@ -103,7 +104,8 @@ def cashdonationsregentity_body():
              f"£{ppcalc.format_number(total_value_donations_c_d)}")
     st.write("---")
 
-    st.write("### Topline Visuals")
+    st.write(f"### Topline Visuals for Donations to {selected_entity_name}"
+             f"between {min_date_df} and {max_date_df}")
     st.write("#### Click on any Visualisation to view it full screen.")
     left, right = st.columns(2)
     with left:
@@ -114,38 +116,34 @@ def cashdonationsregentity_body():
             return
         else:
             vis.plot_bar_line_by_year(cleaned_c_d_df,
-                                       XValues="YearReceived",
-                                       YValue="EventCount",
-                                       GGroup="RegulatedEntityType",
-                                       XLabel="Year", YLabel="Donations",
-                                       Title="Donations by Year and Entity "
-                                       "Type",
-                                       CalcType='sum',
-                                       widget_key="cash_dons_by_party")
-    with right:
+                                      XValues="YearReceived",
+                                      YValue="EventCount",
+                                      GGroup="RegulatedEntityType",
+                                      XLabel="Year", YLabel="Donations",
+                                      Title="Donations by Year and Entity "
+                                      "Type",
+                                      CalcType='sum',
+                                      widget_key="cash_dons_by_party")
         st.write('As can  be seen from the chart to the left'
                  'most cash donations are made to Political Parties.'
                  'This is not surprising as this is true for all '
                  'donations.')
-    st.write('#### Cash Donations by Regulated Entity')
-    left, right = st.columns(2)
-    with left:
+    with right:
         if cleaned_c_d_df.empty:
             st.write("No data available for the selected filters.")
             return
         else:
             vis.plot_bar_line_by_year(cleaned_c_d_df,
-                                       XValues="YearReceived",
-                                       YValue="Value",
-                                       GGroup="RegEntity_Group",
-                                       XLabel="Year",
-                                       YLabel="Value of Donations £",
-                                       Title="Value of Donations by Year "
-                                       "and Entity",
-                                       CalcType='count',
-                                       use_custom_colors=True,
-                                       widget_key="cash_dons_by_reg_entity")
-    with right:
+                                      XValues="YearReceived",
+                                      YValue="Value",
+                                      GGroup="RegEntity_Group",
+                                      XLabel="Year",
+                                      YLabel="Value of Donations £",
+                                      Title="Value of Donations by Year "
+                                      "and Entity",
+                                      CalcType='count',
+                                      use_custom_colors=True,
+                                      widget_key="cash_dons_by_reg_entity")
         # write code to return analysis of the graph above highlighting
         # interesting factors that will refresh when the input changes.
 
@@ -157,15 +155,19 @@ def cashdonationsregentity_body():
             return
         else:
             vis.plot_bar_line_by_year(cleaned_c_d_df,
-                                       XValues="YearReceived",
-                                       YValue="Value",
-                                       GGroup="DonationType",
-                                       XLabel="Year",
-                                       YLabel="Total Value (£)",
-                                       Title="Value of Donations Types "
-                                       "by Year",
-                                       CalcType='sum',
-                                       widget_key="cash_dons_by_type")
+                                      XValues="YearReceived",
+                                      YValue="Value",
+                                      GGroup="DonationType",
+                                      XLabel="Year",
+                                      YLabel="Total Value (£)",
+                                      Title="Value of Donations Types "
+                                      "by Year",
+                                      CalcType='sum',
+                                      widget_key="cash_dons_by_type")
+    with right:
         if cleaned_c_d_df.empty:
             st.write("No data available for the selected filters.")
             return
+        else:
+            "analysis of the graph above highlighting interesting factors"
+            "that will refresh when the input changes."

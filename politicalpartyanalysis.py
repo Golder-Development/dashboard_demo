@@ -11,13 +11,13 @@ from app_pages.headlinefigures import hlf_body
 from app_pages.dubiousdonations import dubiousdonations_body
 from app_pages.dubiousdonationsByRegulatedEntity\
     import dubiousdonationsByDonor_body
-# from app_pages.sponsorships import sponsorship_body
+from app_pages.sponsorships import sponsorships_body
 from app_pages.notesondataprep import notesondataprep_body
 from app_pages.cashdonations import cashdonations_body
 from app_pages.cashdonationsByRegulatedEntity\
     import cashdonationsregentity_body
 from app_pages.donorspage_headlines import donorsheadlinespage_body
-# from app_pages.donorspage_perdonor import donorspage_perdonor_body
+from app_pages.donorspage_perdonor import donorspage_body
 # from app_pages.donationsbypoliticalpartys import
 # donationsbypoliticalpartys_body
 
@@ -34,7 +34,7 @@ app.add_page("Dubious Donations by Regulated Entity",
 app.add_page("Cash Donations", cashdonations_body)
 app.add_page("Cash Donations by Regulated Entity",
              cashdonationsregentity_body)
-# app.add_page("Sponsorships", sponsorship_body)
+app.add_page("Sponsorships", sponsorships_body)
 # app.add_page("Bequeths", bequeth_body)
 # app.add_page("Paid Visits", visits_body)
 # app.add_page("Regulated Entities", regulatedentitypage_body)
@@ -42,7 +42,8 @@ app.add_page("Cash Donations by Regulated Entity",
 # app.add_page("Dubious Donations", dubiousdonations_body)
 # app.add_page("Dubious Donations by Regulated Entity",
 #            dubiousdonationsByDonor_body)
-app.add_page("Donors", donorsheadlinespage_body)
+app.add_page("Donors Head Lines", donorsheadlinespage_body)
+app.add_page("Donors Per Donor", donorspage_body)
 app.add_page("Notes on Data and Manipulations", notesondataprep_body)
 
 app.run()  # Run the  app
@@ -60,17 +61,27 @@ if 'g_thresholds' not in st.session_state:
 # Load and cache data correctly
 @st.cache_data
 def get_data():
-    return dc.load_data()
+    return dc.load_data(output_csv=False)
 
 
 @st.cache_data
 def get_party_summary_data():
-    return dc.load_party_summary_data()
+    return dc.load_party_summary_data(output_csv=False)
 
 
 @st.cache_data
 def get_cleaned_data():
-    return dc.load_cleaned_data()
+    return dc.load_cleaned_data(output_csv=False)
+
+
+@st.cache_data
+def get_donor_data():
+    return dc.load_donorList_data(output_csv=True)
+
+
+@st.cache_data
+def get_regentity_data():
+    return dc.load_regulated_entity_data(output_csv=True)
 
 
 if "data" not in st.session_state:
@@ -83,6 +94,14 @@ if "data_party_sum" not in st.session_state:
 
 if "data_clean" not in st.session_state:
     st.session_state["data_clean"] = get_cleaned_data()
+
+
+if "data_donor" not in st.session_state:
+    st.session_state["data_donor"] = get_donor_data()
+
+
+if "data_regentity" not in st.session_state:
+    st.session_state["data_regentity"] = get_regentity_data()
 
 
 # Remove the loading message

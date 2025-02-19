@@ -1,9 +1,9 @@
 import pandas as pd
 import datetime as dt
 import streamlit as st
+import GenElectionRelationship as ger
 
-
-def load_data():
+def load_data(output_csv=False):
     # Load the data
     df = pd.read_csv('Donations_accepted_by_political_parties.csv', dtype={
         'index': 'int64',
@@ -49,9 +49,11 @@ def load_data():
     # Remove Northern Ireland register data
     df = df[df["RegisterName"] != "Northern Ireland"]
     # Remove Public Funds
-    df = df[df["DonationType"] != "Public Funds"]
+    # df = df[df["DonationType"] != "Public Funds"]
     # generate CSV file of original data
-    # df.to_csv('original_donations.csv')
+    if output_csv:
+        df.to_csv('original_donations.csv')
+
     return df
 
 
@@ -70,7 +72,8 @@ def create_thresholds():
 def calculate_reg_entity_group(donation_events, entity_name):
     if 'g_thresholds' not in st.session_state:
         create_thresholds()
-    # Copy g_thresholds and add the new entity_name to the thresholds dictionary
+    # Copy g_thresholds and add the new entity_name to the thresholds 
+    # dictionary
     # Make a copy to avoid modifying the global dictionary
     thresholds = st.session_state.g_thresholds.copy()
     # Add the new threshold with entity_name
@@ -81,7 +84,7 @@ def calculate_reg_entity_group(donation_events, entity_name):
             return category
 
 
-def load_party_summary_data():
+def load_party_summary_data(output_csv=False):
     df = st.session_state.get("data", None)
     if df is None:
         st.error("No data found in session state!")
@@ -96,11 +99,13 @@ def load_party_summary_data():
         lambda row: calculate_reg_entity_group(row['DonationEvents'], row['RegulatedEntityName']), axis=1
     )
     # generate CSV file of summary data
-    # RegulatedEntity_df.to_csv('party_summary.csv')
+    if output_csv:
+        RegulatedEntity_df.to_csv('party_summary.csv')
+
     return RegulatedEntity_df
 
 
-def load_cleaned_data():
+def load_cleaned_data(output_csv=False):
     orig_df = st.session_state.get("data", None)
     if orig_df is None:
         st.error("No data found in session state!")
@@ -208,6 +213,70 @@ def load_cleaned_data():
                   ],
                  axis=1)
 
+    # # Calculate the number of days to the next election
+    # df["DaysTillNextElection"] = df["ReceivedDate"].map(
+    #     lambda x: ger.GenElectionRelation2(x, direction="DaysTill", date_format='%Y/%m/%d %H:%M:%S')
+    # )
+    
+    # # Calculate the number of days since the last election
+    # df["DaysSinceLastElection"] = df["ReceivedDate"].map(
+    #     lambda x: ger.GenElectionRelation2(x, direction="DaysSince", date_format='%Y/%m/%d %H:%M:%S')
+    # )
+    
+    # # Apply the function to calculate weeks till the next election
+    # df['WeeksTillNextElection'] = df['ReceivedDate'].apply(
+    #     lambda x: GenElectionRelation2(x, divisor=7, direction="DaysTill")
+    # )
+
+    # # Apply the function to calculate weeks since the last election
+    # df['WeeksSinceLastElection'] = df['ReceivedDate'].apply(
+    #     lambda x: GenElectionRelation2(x, divisor=7, direction="DaysSince")
+    # )
+
+    # # Apply the function to calculate qtrs till the next election
+    # df['WeeksTillNextElection'] = df['ReceivedDate'].apply(
+    #     lambda x: GenElectionRelation2(x, divisor=91, direction="DaysTill")
+    # )
+
+    # # Apply the function to calculate qtrs since the last election
+    # df['WeeksSinceLastElection'] = df['ReceivedDate'].apply(
+    #     lambda x: GenElectionRelation2(x, divisor=91, direction="DaysSince")
+    #)
     # Save cleaned data
-    # df.to_csv("cleaned_donations.csv", index=False)
+    if output_csv:
+        df.to_csv('cleaned_donations.csv')
+    
     return df
+
+
+def load_donorList_data(output_csv=False):
+    orig_df = st.session_state.get("data_clean", None)
+    if orig_df is None:
+        st.error("No data found in session state!")
+        return None
+    else:
+        orig_df = orig_df.groupby(['DonorId',
+                                   'DonorName']).agg({'Value': ['sum', 'count', 'mean']}).reset_index()
+        orig_df.columns = ['DonorId',
+                           'Donor Name',
+                           'Donations Value',
+                           'Donation Events',
+                           'Donation Mean']
+        if output_csv:
+            orig_df.to_csv('cleaned_donations.csv')
+        return orig_df
+
+
+def load_regulated_entity_data(output_csv=False):
+    orig_df = st.session_state.get("data_clean", None)
+    if orig_df is None:
+        st.error("No data found in session state!")
+        return None
+    else:
+        orig_df = orig_df.groupby(['RegulatedEntityId', 
+                                   'RegulatedEntityName',
+                                   'RegEntity_Group']).agg({'Value': ['sum', 'count', 'mean']}).reset_index()
+        orig_df.columns = ['RegulatedEntityId', 'Regulated Entity Name', 'Regulated Entity Group', 'Donations Value', 'Donation Events', 'Donation Mean']
+        if output_csv:
+            orig_df.to_csv('cleaned_regentity.csv')
+        return orig_df

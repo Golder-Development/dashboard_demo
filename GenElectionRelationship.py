@@ -6,18 +6,35 @@
 import math
 import datetime as dt
 
-## List of Election Dates
-ElectionDates = ['2001/06/07 00:00:00',
-                 '2005/05/05 00:00:00',
-                 '2010/06/05 00:00:00',
-                 '2015/07/05 00:00:00',
-                 '2017/07/05 00:00:00',
-                 '2019/12/12 00:00:00', 
-                 '2024/07/04 00:00:00']
 
-# Pre-sorted lists of election dates
-ElectionDatesAscend = sorted(ElectionDates)
-ElectionDatesDescend = sorted(ElectionDates, reverse=True)
+def load_election_dates():
+    """
+    Load the general election dates from the pdpy.elections module.
+
+    Returns:
+        dict: A dictionary of general election dates.
+    """
+    ElectionDates_dict = elections.get_general_elections_dict()
+
+    # Create List of Election Dates from ElectionDates_dict
+    ElectionDates = [] 
+    for key in ElectionDates_dict.keys():
+        ElectionDates.append(ElectionDates_dict[key])
+
+    ## List of Election Dates
+    """
+    ElectionDates_old = ['2001/06/07 00:00:00',
+                    '2005/05/05 00:00:00',
+                    '2010/06/05 00:00:00',
+                    '2015/07/05 00:00:00',
+                    '2017/07/05 00:00:00',
+                    '2019/12/12 00:00:00', 
+                    '2024/07/04 00:00:00']
+    
+    return elections.get_general_elections_dict()
+    """
+    return ElectionDates
+    
 
 def GenElectionRelation2(R_Date,
                          divisor=1,
@@ -40,6 +57,16 @@ def GenElectionRelation2(R_Date,
         int: The calculated difference in the specified period, or 0 if no 
               match is found.
     """
+    # Load Election Dates
+    if 'ElectionDates' not in st.session_state:
+        ElectionDates = load_election_dates()
+        st.session_state.ElectionDates = ElectionDates
+
+
+    # Pre-sorted lists of election dates
+        ElectionDatesAscend = sorted(ElectionDates)
+        ElectionDatesDescend = sorted(ElectionDates, reverse=True)
+    
     try:
         # Convert the reference date to datetime
         R_Date2 = dt.datetime.strptime(R_Date, date_format)

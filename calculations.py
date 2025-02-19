@@ -345,3 +345,14 @@ def get_median_donation(df, filters=None):
     """Calculates the median donation value."""
     df = apply_filters(df, filters)
     return df["Value"].median()
+
+
+def get_top_donors(df, sort_col, exclude_single_donation=False):
+    """Returns top 5 donors sorted by a specific column."""
+    if exclude_single_donation:
+        df = df[df["No of Donations"] > 1]
+    return df.sort_values(sort_col, ascending=False)[[
+        "Donor Name", "Regulated Entities", "Avg No. Donations Per Entity",
+        "No of Donations", "Total Donations £", "Avg Donations",
+        "Median Donations", "Avg Value Per Entity"
+    ]].head(5)
