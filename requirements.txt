@@ -20,4 +20,5 @@ plotly
 patsy
 statsmodels
 levenshein
+rapidfuzz
 streamlit
