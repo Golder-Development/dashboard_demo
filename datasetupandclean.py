@@ -1,6 +1,5 @@
 import pandas as pd
 import streamlit as st
-import levenshein 
 from rapidfuzz import process, fuzz
 from collections import defaultdict
 
