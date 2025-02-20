@@ -4,7 +4,7 @@ from rapidfuzz import process, fuzz
 from collections import defaultdict
 
 
-def load_data(output_csv=False):
+def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
     # Load the data
     df = pd.read_csv('Donations_accepted_by_political_parties.csv', dtype={
         'index': 'int64',
@@ -127,88 +127,195 @@ def load_data(output_csv=False):
     # file_path = "cleaned_donations.csv"  # Adjust path as needed
     # df = pd.read_csv(file_path)
 
-    # Extract donor names and IDs
-    donor_names = df[['DonorId', 'DonorName']].drop_duplicates()
+    if dedupe_regentity:
+        # Extract donor names and IDs
+        entity_names = (
+            df[['RegulatedEntityId', 'RegulatedEntityName']].drop_duplicates()
+            )
 
-    # Preprocess donor names (lowercase and remove special characters)
-    donor_names["Cleaned Name"] = (
-        donor_names["DonorName"]
-        .str.lower()
-        .str.replace(r"[^a-z0-9\s]", "", regex=True)
+        # Preprocess donor names (lowercase and remove special characters)
+        entity_names["Cleaned Name"] = (
+            entity_names["RegulatedEntityName"]
+            .str.lower()
+            .str.replace(r"[^a-z0-9\s]", "", regex=True)
+            )
+
+        # Create a mapping of donor names to IDs
+        name_to_id = (
+            entity_names.set_index("Cleaned Name")["RegulatedEntityId"]
+            .to_dict()
         )
 
-    # Create a mapping of donor names to IDs
-    name_to_id = donor_names.set_index("Cleaned Name")["DonorId"].to_dict()
+        # Dictionary to store potential duplicates
+        potential_duplicates = defaultdict(set)
+        threshold = 85  # Adjust similarity threshold as needed
 
-    # Dictionary to store potential duplicates
-    potential_duplicates = defaultdict(set)
-    threshold = 85  # Adjust similarity threshold as needed
+        # Apply fuzzy matching
+        for cleaned_name, RegulatedEntityId in name_to_id.items():
+            matches = process.extract(cleaned_name,
+                                      name_to_id.keys(),
+                                      scorer=fuzz.ratio,
+                                      limit=5)
+            for match_name, score, _ in matches:
+                if score >= threshold and match_name != cleaned_name:
+                    match_id = name_to_id[match_name]
+                    potential_duplicates[RegulatedEntityId].add(match_id)
+                    potential_duplicates[match_id].add(RegulatedEntityId)
 
-    # Apply fuzzy matching
-    for cleaned_name, donor_id in name_to_id.items():
-        matches = process.extract(cleaned_name,
-                                  name_to_id.keys(),
-                                  scorer=fuzz.ratio,
-                                  limit=5)
-        for match_name, score, _ in matches:
-            if score >= threshold and match_name != cleaned_name:
-                match_id = name_to_id[match_name]
-                potential_duplicates[donor_id].add(match_id)
-                potential_duplicates[match_id].add(donor_id)
+        # Convert sets to lists
+        potential_duplicates = {k: list(v) for k,
+                                v in potential_duplicates.items()}
 
-    # Convert sets to lists
-    potential_duplicates = {k: list(v) for k,
-                            v in potential_duplicates.items()}
+        # Save results or display
+        # Show sample of results
+        # print(list(potential_duplicates.items())[:10])
 
-    # Save results or display
-    # print(list(potential_duplicates.items())[:10])  # Show sample of results
+        # Save results to a CSV file
+        output_df = (
+            pd.DataFrame(potential_duplicates.items(),
+                         columns=["RegulatedEntityId",
+                                  "Potential Duplicates"])
+            )
+        output_df.to_csv("potential_regentity_duplicates.csv", index=False)
 
-    # Save results to a CSV file
-    output_df = (
-        pd.DataFrame(potential_duplicates.items(),
-                     columns=["DonorId",
-                              "Potential Duplicates"])
-        )
-    output_df.to_csv("potential_duplicates.csv", index=False)
+        # using potential_duplicates to merge the data
+        # potential_duplicates = pd.read_csv("potential_duplicates.csv")
 
-    # using potential_duplicates to merge the data
-    # potential_duplicates = pd.read_csv("potential_duplicates.csv")
+        # Create mappings for cleansed ID and Name
+        id_to_cleansed = {}
+        name_to_cleansed = {}
 
-    # Create mappings for cleansed ID and Name
-    id_to_cleansed = {}
-    name_to_cleansed = {}
+        for main_id, duplicate_ids in potential_duplicates.items():
+            all_ids = [main_id] + duplicate_ids
+            cleansed_id = min(all_ids)  # Choose the smallest RegulatedEntityId
 
-    for main_id, duplicate_ids in potential_duplicates.items():
-        all_ids = [main_id] + duplicate_ids
-        cleansed_id = min(all_ids)  # Choose the smallest DonorId
+            # Get all names corresponding to these IDs
+            matching_names = (
+                df[df["RegulatedEntityId"]
+                   .isin(all_ids)]["RegulatedEntityName"]
+            )
 
-        # Get all names corresponding to these IDs
-        matching_names = df[df["DonorId"].isin(all_ids)]["DonorName"]
+            # Choose the most frequent name
+            cleansed_name = matching_names.value_counts().idxmax()
 
-        # Choose the most frequent name
-        cleansed_name = matching_names.value_counts().idxmax()
+            # Store mappings
+            for RegulatedEntity_id in all_ids:
+                id_to_cleansed[RegulatedEntityId] = cleansed_id
+                name_to_cleansed[RegulatedEntityId] = cleansed_name
 
-        # Store mappings
-        for donor_id in all_ids:
-            id_to_cleansed[donor_id] = cleansed_id
-            name_to_cleansed[donor_id] = cleansed_name
+        # convert Id = "" to null
+        df['RegulatedEntityrId'] = df['RegulatedEntityId'].replace("", pd.NA)
 
-    # convert DonorId = "" to null
-    df['DonorId'] = df['DonorId'].replace("", pd.NA)
+        # Apply mappings to the dataset
+        df["Cleansed RegulatedEntityID"] = (
+            df["RegulatedEntityId"]
+            .map(id_to_cleansed)
+            .fillna(df["RegulatedEntityId"])
+            )
+        df["Cleansed RegulatedEntityName"] = (
+            df["RegulatedEntityId"]
+            .map(name_to_cleansed)
+            .fillna(df["RegulatedEntityName"])
+            )
+        # rename Id to Original Id and Name to Original Name
+        df.rename(
+            columns={"RegulatedEntityId": "Original RegulatedEntityId",
+                     "RegulatedEntityName": "Original RegulatedEntityName"},
+            inplace=True
+                  )
+        # rema,e Cleansed ID to Id and Cleansed Name to Name
+        df.rename(
+            columns={"Cleansed RegulatedEntityID": "RegulatedEntityId",
+                     "RegulatedEntityName": "RegulatedEntityName"},
+            inplace=True
+            )
 
-    # Apply mappings to the dataset
-    df["Cleansed Donor ID"] = (
-        df["DonorId"].map(id_to_cleansed).fillna(df["DonorId"])
-        )
-    df["Cleansed Donor Name"] = (
-        df["DonorId"].map(name_to_cleansed).fillna(df["DonorName"])
-        )
-    # rename DonorId to Original DonorId and DonorName to Original DonorName
-    df.rename(columns={"DonorId": "Original DonorId",
-                       "DonorName": "Original DonorName"}, inplace=True)
-    # rema,e Cleansed Donor ID to DonorId and Cleansed Donor Name to DonorName
-    df.rename(columns={"Cleansed Donor ID": "DonorId",
-                       "Cleansed Donor Name": "DonorName"}, inplace=True)
+    if dedupe_donors:
+        # Extract donor names and IDs
+        donor_names = df[['DonorId', 'DonorName']].drop_duplicates()
+
+        # Preprocess donor names (lowercase and remove special characters)
+        donor_names["Cleaned Name"] = (
+            donor_names["DonorName"]
+            .str.lower()
+            .str.replace(r"[^a-z0-9\s]", "", regex=True)
+            )
+
+        # Create a mapping of donor names to IDs
+        name_to_id = donor_names.set_index("Cleaned Name")["DonorId"].to_dict()
+
+        # Dictionary to store potential duplicates
+        potential_duplicates = defaultdict(set)
+        threshold = 85  # Adjust similarity threshold as needed
+
+        # Apply fuzzy matching
+        for cleaned_name, donor_id in name_to_id.items():
+            matches = process.extract(cleaned_name,
+                                      name_to_id.keys(),
+                                      scorer=fuzz.ratio,
+                                      limit=5)
+            for match_name, score, _ in matches:
+                if score >= threshold and match_name != cleaned_name:
+                    match_id = name_to_id[match_name]
+                    potential_duplicates[donor_id].add(match_id)
+                    potential_duplicates[match_id].add(donor_id)
+
+        # Convert sets to lists
+        potential_duplicates = {k: list(v) for k,
+                                v in potential_duplicates.items()}
+
+        # Save results or display
+        # Show sample of results
+        # print(list(potential_duplicates.items())[:10])
+
+        # Save results to a CSV file
+        output_df = (
+            pd.DataFrame(potential_duplicates.items(),
+                         columns=["DonorId",
+                                  "Potential Duplicates"])
+            )
+        output_df.to_csv("potential_duplicates.csv", index=False)
+
+        # using potential_duplicates to merge the data
+        # potential_duplicates = pd.read_csv("potential_duplicates.csv")
+
+        # Create mappings for cleansed ID and Name
+        id_to_cleansed = {}
+        name_to_cleansed = {}
+
+        for main_id, duplicate_ids in potential_duplicates.items():
+            all_ids = [main_id] + duplicate_ids
+            cleansed_id = min(all_ids)  # Choose the smallest DonorId
+
+            # Get all names corresponding to these IDs
+            matching_names = df[df["DonorId"].isin(all_ids)]["DonorName"]
+
+            # Choose the most frequent name
+            cleansed_name = matching_names.value_counts().idxmax()
+
+            # Store mappings
+            for donor_id in all_ids:
+                id_to_cleansed[donor_id] = cleansed_id
+                name_to_cleansed[donor_id] = cleansed_name
+
+        # convert DonorId = "" to null
+        df['DonorId'] = df['DonorId'].replace("", pd.NA)
+
+        # Apply mappings to the dataset
+        df["Cleansed Donor ID"] = (
+            df["DonorId"].map(id_to_cleansed).fillna(df["DonorId"])
+            )
+        df["Cleansed Donor Name"] = (
+            df["DonorId"].map(name_to_cleansed).fillna(df["DonorName"])
+            )
+        # rename DonorId to Original DonorId and DonorName
+        # to Original DonorName
+        df.rename(columns={"DonorId": "Original DonorId",
+                           "DonorName": "Original DonorName"}, inplace=True)
+        # rema,e Cleansed Donor ID to DonorId and Cleansed Donor Name
+        # to DonorName
+        df.rename(columns={"Cleansed Donor ID": "DonorId",
+                           "Cleansed Donor Name": "DonorName"}, inplace=True)
 
     # Remove Northern Ireland register data
     # df = df[df["RegisterName"] != "Northern Ireland"]

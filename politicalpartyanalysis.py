@@ -59,7 +59,10 @@ if 'g_thresholds' not in st.session_state:
 # Load and cache data correctly
 @st.cache_data
 def get_data():
-    return dc.load_data(output_csv=False)
+    return dc.load_data(output_csv=False,
+                        dedupe_donors=True,
+                        dedupe_regentity=False
+                        )
 
 
 @st.cache_data
