@@ -380,3 +380,14 @@ def get_top_donors(df, sort_col, exclude_single_donation=False):
         "No of Donations", "Total Donations £", "Avg Donations",
         "Median Donations", "Avg Value Per Entity"
     ]].head(5)
+
+
+# Function to calculate key values
+def get_metrics(df, filters):
+    return {
+        "unique_reg_entities": get_regentity_ct(df, filters),
+        "unique_donors": get_donors_ct(df, filters),
+        "unique_donations": get_donations_ct(df, filters),
+        "total_value": get_value_total(df, filters),
+        "mean_value": get_value_mean(df, filters),
+    }

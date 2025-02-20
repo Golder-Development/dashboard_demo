@@ -6,7 +6,6 @@ def cashdonationsregentity_body():
     import calculations as ppcalc
     import Visualisations as vis
     import datetime as dt
-    import random
 
     # Load dataset from session state
     cleaned_df = st.session_state.get("data_clean", None)
@@ -33,12 +32,6 @@ def cashdonationsregentity_body():
     start_date = dt.datetime.combine(start_date, dt.datetime.min.time())
     end_date = dt.datetime.combine(end_date, dt.datetime.max.time())
 
-    # # Filter by date range
-    date_filter = (
-        cleaned_df["ReceivedDate"] >= start_date) & (cleaned_df
-                                                     ["ReceivedDate"]
-                                                     <= end_date)
-
     # --- Dropdown for Regulated Entity ---
     # Create a mapping of RegulatedEntityName -> RegulatedEntityId
     entity_mapping = dict(zip(cleaned_df["RegulatedEntityName"], cleaned_df
@@ -51,243 +44,666 @@ def cashdonationsregentity_body():
 
     # Get the corresponding ID for filtering
     selected_entity_id = entity_mapping.get(selected_entity_name, None)
-
-    # Apply filters
-    filters = {"RegulatedEntityId": selected_entity_id} if selected_entity_name != "All" else {}
-
-    # Create dataframe for chosen date range
-    cleaned_d_df = cleaned_df[date_filter] if date_filter.any() else cleaned_df
-
-    # Create dataframe for chosen entity
-    if filters:
-        cleaned_r_d_df = cleaned_d_df[
-            cleaned_d_df["RegulatedEntityId"] == filters["RegulatedEntityId"]
-            if filters else True  # If no filters, return all rows
-        ]
-    else:
-        cleaned_r_d_df = cleaned_d_df
-    # Create dataframe for chosen entity all time
-    # cleaned_r_df = cleaned_df[
-    #     cleaned_df["RegulatedEntityId"] == filters["RegulatedEntityId"]
-    # ]
     # Define filter condition
     current_target = 'DonationType == "Cash"'
-
-    # Ensure relevant column exists in the dataframe before filtering
-    if 'DonationType' in cleaned_r_d_df.columns:
-        cleaned_c_r_d_df = cleaned_r_d_df.query(current_target)
+    target_label = "Cash Donation"
+    # Apply filters
+    filters = ({"RegulatedEntityId": selected_entity_id}
+               if selected_entity_name != "All" else {}
+               )
+    # # Filter by date range
+    date_filter = (
+        cleaned_df["ReceivedDate"] >= start_date) & (cleaned_df
+                                                     ["ReceivedDate"]
+                                                     <= end_date)
+    # Create dataframe for chosen date range
+    cleaned_d_df = cleaned_df[date_filter] if date_filter.any() else cleaned_df
+    # Create dataframe for chosen target
+    if filters:
+        cleaned_c_df = cleaned_df = cleaned_df.query(current_target)
     else:
-        raise KeyError("Column 'DonationType' not found in cleaned_r_d_df")
-
-    if 'DonationType' in cleaned_d_df.columns:
-        cleaned_c_d_df = cleaned_d_df.query(current_target)
+        cleaned_c_df = cleaned_df
+    # Create dataframe for chosen entity
+    if filters:
+        cleaned_r_df = (
+            cleaned_df[
+                cleaned_df["RegulatedEntityId"] == filters["RegulatedEntityId"]
+                if filters else True  # If no filters, return all rows
+                      ]
+                       )
     else:
-        raise KeyError("Column 'DonationType' not found in cleaned_d_df")
+        cleaned_r_df = cleaned_df
+    # Create dataframe for chosen entity and date range
+    cleaned_r_d_df = (
+        cleaned_r_df[date_filter] if date_filter.any() else cleaned_r_df
+        )
+    # Create dataframe for chosen target and date range
+    cleaned_c_d_df = cleaned_d_df.query(current_target)
+    # Create dataframe for chosen target and entity
+    cleaned_c_r_df = cleaned_r_df.query(current_target)
+    # Create dataframe for chosen target, entity and date range
+    cleaned_c_r_d_df = cleaned_r_d_df.query(current_target)
 
     # Values for all entities, all time and all donations
-    unique_donations_pop = ppcalc.get_donations_ct(cleaned_df, filters)
-    unique_donations_c = ppcalc.get_donations_ct(cleaned_df, {"DonationType":
-                                                 "Cash"})
-    unique_donors_pop = ppcalc.get_donors_ct(cleaned_df, filters)
-    total_value_pop = ppcalc.get_value_total(cleaned_df, filters)
-    mean_value_pop = ppcalc.get_value_mean(cleaned_df, filters)
-    # Values for all entities, chosen date range and current target
-    unique_donors_c_d = ppcalc.get_donors_ct(cleaned_c_d_df, filters)
-    total_value_donations_c_d = ppcalc.get_value_total(cleaned_c_d_df, filters)
-    mean_value_donations_c_d = ppcalc.get_value_mean(cleaned_c_d_df, filters)
-    unique_donations_c_d = ppcalc.get_donations_ct(cleaned_c_d_df, filters)
-    unique_regulated_entities_c_d = ppcalc.get_regentity_ct(cleaned_c_d_df,
-                                                            filters)
+    unique_reg_ent_pop = (
+        ppcalc.get_regentity_ct(cleaned_df, filters)
+        )
+    unique_dono_pop = ppcalc.get_donors_ct(cleaned_df, filters)
+    unique_dona_pop = ppcalc.get_donations_ct(cleaned_df, filters)
+    total_val_pop = ppcalc.get_value_total(cleaned_df, filters)
+    mean_val_pop = ppcalc.get_value_mean(cleaned_df, filters)
     # Values for all entities, chosen date range and all donations
-    unique_donations_d = ppcalc.get_donations_ct(cleaned_d_df, filters)
-    unique_donors_d = ppcalc.get_donors_ct(cleaned_d_df, filters)
-    total_value_donations_d = ppcalc.get_value_total(cleaned_d_df, filters)
-    mean_value_donations_d = ppcalc.get_value_mean(cleaned_d_df, filters)
+    unique_reg_ent_d = (
+        ppcalc.get_regentity_ct(cleaned_d_df, filters)
+        )
+    unique_dono_d = ppcalc.get_donors_ct(cleaned_d_df, filters)
+    unique_dona_d = ppcalc.get_donations_ct(cleaned_d_df, filters)
+    total_val_d = ppcalc.get_value_total(cleaned_d_df, filters)
+    mean_val_d = ppcalc.get_value_mean(cleaned_d_df, filters)
+    # Values for all entities, all date range and target
+    unique_reg_ent_c = (
+        ppcalc.get_regentity_ct(cleaned_c_df, filters)
+        )
+    unique_dono_c = ppcalc.get_donors_ct(cleaned_c_df, filters)
+    unique_dona_c = ppcalc.get_donations_ct(cleaned_c_df, filters)
+    total_val_c = ppcalc.get_value_total(cleaned_c_df, filters)
+    mean_val_c = ppcalc.get_value_mean(cleaned_c_df, filters)
+    # Values for chosen entity, all date range and all Donations
+    unique_reg_ent_r = (
+        ppcalc.get_regentity_ct(cleaned_r_df, filters)
+        )
+    unique_dono_r = ppcalc.get_donors_ct(cleaned_r_df, filters)
+    unique_dona_r = ppcalc.get_donations_ct(cleaned_r_df, filters)
+    total_val_r = ppcalc.get_value_total(cleaned_r_df, filters)
+    mean_val_r = ppcalc.get_value_mean(cleaned_r_df, filters)
+    # Values for all entities, chosen date range and current target
+    unique_reg_ent_c_d = (
+        ppcalc.get_regentity_ct(cleaned_c_d_df, filters)
+        )
+    unique_dono_c_d = ppcalc.get_donors_ct(cleaned_c_d_df, filters)
+    unique_dona_c_d = ppcalc.get_donations_ct(cleaned_c_d_df, filters)
+    total_val_c_d = ppcalc.get_value_total(cleaned_c_d_df, filters)
+    mean_val_c_d = ppcalc.get_value_mean(cleaned_c_d_df, filters)
     # Values for chosen entity, date range and all donations
-    unique_donations_r_d = ppcalc.get_donations_ct(cleaned_r_d_df, filters)
-    unique_donors_r_d = ppcalc.get_donors_ct(cleaned_r_d_df, filters)
-    total_value_donations_r_d = ppcalc.get_value_total(cleaned_r_d_df, filters)
-    mean_value_donations_r_d = ppcalc.get_value_mean(cleaned_r_d_df, filters)  
+    unique_reg_ent_r_d = (
+        ppcalc.get_regentity_ct(cleaned_r_d_df, filters)
+        )
+    unique_dono_r_d = ppcalc.get_donors_ct(cleaned_r_d_df, filters)
+    unique_dona_r_d = ppcalc.get_donations_ct(cleaned_r_d_df, filters)
+    total_val_r_d = ppcalc.get_value_total(cleaned_r_d_df, filters)
+    mean_val_r_d = ppcalc.get_value_mean(cleaned_r_d_df, filters)
+    # Values for chosen entity, date range and all donations
+    unique_reg_ent_c_r = (
+        ppcalc.get_regentity_ct(cleaned_c_r_df, filters)
+        )
+    unique_dono_c_r = ppcalc.get_donors_ct(cleaned_c_r_df, filters)
+    unique_dona_c_r = ppcalc.get_donations_ct(cleaned_c_r_df, filters)
+    total_val_c_r = ppcalc.get_value_total(cleaned_c_r_df, filters)
+    mean_val_c_r = ppcalc.get_value_mean(cleaned_c_r_df, filters)
     # Values for chosen entity, date range and current target
-    unique_donations_c_r_d = ppcalc.get_donations_ct(cleaned_c_r_d_df, filters)
-    unique_donors_c_r_d = ppcalc.get_donors_ct(cleaned_c_r_d_df, filters)
-    total_value_donations_c_r_d = ppcalc.get_value_total(cleaned_c_r_d_df,
-                                                         filters)
-    mean_value_donations_c_r_d = ppcalc.get_value_mean(cleaned_c_r_d_df,
-                                                       filters)
-    # Relative relationship calculations
-    perc_cash_donations_all = (
-        (unique_donations_c / unique_donations_pop) * 100
-        if unique_donations_pop > 0 else 0
+    unique_reg_ent_c_r_d = (
+        ppcalc.get_regentity_ct(cleaned_c_r_d_df, filters)
         )
-    perc_value_share_all = (
-        (total_value_donations_d / total_value_pop) * 100
-        if total_value_pop > 0 else 0
+    unique_dono_c_r_d = ppcalc.get_donors_ct(cleaned_c_r_d_df, filters)
+    unique_dona_c_r_d = ppcalc.get_donations_ct(cleaned_c_r_d_df, filters)
+    total_val_c_r_d = (
+        ppcalc.get_value_total(cleaned_c_r_d_df, filters)
     )
-    perc_cash_donations_c_d = (
-        (unique_donations_c_d / unique_donations_d) * 100
-        if unique_donations_d > 0 else 0
-        )
-    perc_value_share_c_d = (
-        (total_value_donations_c_d / total_value_pop) * 100
-        if total_value_pop > 0 else 0
-        )
-    perc_cash_donations_c_r_d = (
-        (unique_donations_c_r_d / unique_donations_c) * 100
-        if unique_donations_c > 0 else 0
-        )
-    perc_donations_c_r = (unique_donations_c_r_d / unique_donations_d) * 100\
-        if unique_donations_d > 0 else 0
-    perc_donations_d = (unique_donations_d / unique_donations_pop) * 100\
-        if unique_donations_d > 0 else 0
+    mean_val_c_r_d = (
+        ppcalc.get_value_mean(cleaned_c_r_d_df, filters)
+    )
+    # Relative relationship calculations
+    create_donation_comparisons = True
+    create_value_comparisons = True
+    create_donor_comparisons = True
+    create_reg_entity_comparisons = True
+    # Donation comparisons
+    if create_donation_comparisons:
+        # percent of target donations for all entities and all time period
+        # to all donations for all entries and all time period
+        perc_dona_c_V_pop = (
+            (total_val_c / unique_dona_pop) * 100
+            if unique_dona_pop > 0 else 0
+            )
+        # Percent of all donations for chosen entity
+        # to all donations for all entities and all time period
+        perc_dona_r_V_pop = (
+            (unique_dona_r / unique_dona_pop) * 100
+            if unique_dona_pop > 0 else 0
+            )
+        # Percent of all donations for all entities in time period
+        # to all donations for all entities and all time period
+        perc_dona_d_V_pop = (
+            (unique_dona_d / unique_dona_pop) * 100
+            if unique_dona_pop > 0 else 0
+            )
+        # Percent of target donations for chosen entity all time period
+        # to all donations for all entity all time period
+        perc_dona_c_r_V_pop = (
+            (unique_dona_c_d / unique_dona_pop) * 100
+            if unique_dona_pop > 0 else 0
+            )
+        # Percent of target donations for chosen entity all time period
+        # to all donations for all entity all time period
+        perc_dona_c_d_V_pop = (
+            (unique_dona_c_d / unique_dona_pop) * 100
+            if unique_dona_pop > 0 else 0
+            )
+        # Percent of target donations for chosen entity all time period
+        # to all donations for all entity all time period
+        perc_dona_r_d_V_pop = (
+            (unique_dona_r_d / unique_dona_pop) * 100
+            if unique_dona_pop > 0 else 0
+            )
+        # Percent of target donations for chosen entity all time period
+        # to all donations for all entity all time period
+        perc_dona_c_r_d_V_pop = (
+            (unique_dona_c_r_d / unique_dona_pop) * 100
+            if unique_dona_pop > 0 else 0
+            )
+        # Percent of target donations in time period
+        # to all donations for all entity in time period
+        perc_dona_c_d_V_d = (
+            (unique_dona_c_d / unique_dona_d) * 100
+            if unique_dona_d > 0 else 0
+            )
+        # Percent of all donations in time period for chosen entity
+        # to all donations for all entity in time period
+        perc_dona_r_d_V_d = (
+            (unique_dona_r_d / unique_dona_d) * 100
+            if unique_dona_d > 0 else 0
+            )
+        # Percent of all donations for chosen entity in time period
+        # to all donations for chosen entity all time period
+        perc_dona_r_d_V_r = (
+            (unique_dona_r_d / unique_dona_r) * 100
+            if unique_dona_r > 0 else 0
+            )
+        # Percent of targets for chosen entity all time
+        # to all donations for chosen entity all time period
+        perc_dona_c_r_V_r = (
+            (unique_dona_c_r / unique_dona_r) * 100
+            if unique_dona_r > 0 else 0
+            )
+        # Percent of target donations in time period for chosen entity
+        # to target donations for all entities and all time period
+        perc_dona_c_r_d_V_c = (
+            (unique_dona_c_r_d / unique_dona_c) * 100
+            if unique_dona_c > 0 else 0
+            )
+        # Percent of target donations in time period for chosen entity
+        # to all donations for all entities and targetted time period
+        perc_dona_c_r_d_V_d = (
+            (unique_dona_c_r_d / unique_dona_d) * 100
+            if unique_dona_d > 0 else 0
+            )
+        # Percent of target donations in time period for chosen entity
+        # to all donations for chosen entity and all time period
+        perc_dona_c_r_d_V_r = (
+            (unique_dona_c_r_d / unique_dona_r) * 100
+            if unique_dona_r > 0 else 0
+            )
+        # Percent of target donations in time period for chosen entity
+        # to all donations for chosen entity and targetted time period
+        perc_dona_c_r_d_V_r_d = (
+            (unique_dona_c_r_d / unique_dona_r_d) * 100
+            if unique_dona_r_d > 0 else 0
+            )
+        # Percent of target donations in time period for chosen entity
+        # to target donations for all entities and targetted time period
+        perc_dona_c_r_d_V_c_d = (
+            (unique_dona_c_r_d / unique_dona_c_d) * 100
+            if unique_dona_c_d > 0 else 0
+            )
+        # Percent of target donations in time period for chosen entity
+        # to all donations for chosen entities and all time period
+        perc_dona_c_r_d_V_c_r = (
+            (unique_dona_c_r_d / unique_dona_c_r) * 100
+            if unique_dona_c_r > 0 else 0
+            )
+
+    # Value comparisons
+    if create_value_comparisons:
+        # percent of value of target donations for all entities
+        # and all time period
+        # to all donations for all entries and all time period
+        perc_val_c_V_pop = (
+            (total_val_c / total_val_pop) * 100
+            if total_val_pop > 0 else 0
+            )
+        # Percent of value of all donations for chosen entity
+        # to all donations for all entities and all time period
+        perc_val_r_V_pop = (
+            (total_val_r / total_val_pop) * 100
+            if total_val_pop > 0 else 0
+            )
+        # Percent of value of all donations for all entities in time period
+        # to all donations for all entities and all time period
+        perc_val_d_V_pop = (
+            (total_val_d / total_val_pop) * 100
+            if total_val_pop > 0 else 0
+            )
+        # Percent of value of target donations for chosen entity
+        # all time period
+        # to all donations for all entity all time period
+        perc_val_c_r_V_pop = (
+            (total_val_c_d / total_val_pop) * 100
+            if total_val_pop > 0 else 0
+            )
+        # Percent of value of target donations for chosen entity
+        # all time period
+        # to all donations for all entity all time period
+        perc_val_c_d_V_pop = (
+            (total_val_c_d / total_val_pop) * 100
+            if total_val_pop > 0 else 0
+            )
+        # Percent of value of target donations for chosen entity
+        # all time period
+        # to all donations for all entity all time period
+        perc_val_r_d_V_pop = (
+            (total_val_r_d / total_val_pop) * 100
+            if total_val_pop > 0 else 0
+            )
+        # Percent of value of target donations for chosen entity
+        # all time period
+        # to all donations for all entity all time period
+        perc_val_c_r_d_V_pop = (
+            (total_val_c_r_d / total_val_pop) * 100
+            if total_val_pop > 0 else 0
+            )
+        # Percent of value of target donations in time period
+        # to all donations for all entity in time period
+        perc_val_c_d_V_d = (
+            (total_val_c_d / total_val_d) * 100
+            if total_val_d > 0 else 0
+            )
+        # Percent of value of all donations in time period for chosen entity
+        # to all donations for all entity in time period
+        perc_val_r_d_V_d = (
+            (total_val_r_d / total_val_d) * 100
+            if total_val_d > 0 else 0
+            )
+        # Percent of value of all donations for chosen entity in time period
+        # to all donations for chosen entity all time period
+        perc_val_r_d_V_r = (
+            (total_val_r_d / total_val_r) * 100
+            if total_val_r > 0 else 0
+            )
+        # Percent of value of targets for chosen entity all time
+        # to all donations for chosen entity all time period
+        perc_val_c_r_V_r = (
+            (total_val_c_r / total_val_r) * 100
+            if total_val_r > 0 else 0
+            )
+        # Percent of value of target donations in time period for chosen entity
+        # to target donations for all entities and all time period
+        perc_val_c_r_d_V_c = (
+            (total_val_c_r_d / total_val_c) * 100
+            if total_val_c > 0 else 0
+            )
+        # Percent of value of target donations in time period for chosen entity
+        # to all donations for all entities and targetted time period
+        perc_val_c_r_d_V_d = (
+            (total_val_c_r_d / total_val_d) * 100
+            if total_val_d > 0 else 0
+            )
+        # Percent of value of target donations in time period for chosen entity
+        # to all donations for chosen entity and all time period
+        perc_val_c_r_d_V_r = (
+            (total_val_c_r_d / total_val_r) * 100
+            if total_val_r > 0 else 0
+            )
+        # Percent of value of target donations in time period for chosen entity
+        # to all donations for chosen entity and targetted time period
+        perc_val_c_r_d_V_r_d = (
+            (total_val_c_r_d / total_val_r_d) * 100
+            if total_val_r_d > 0 else 0
+            )
+        # Percent of value of target donations in time period for chosen entity
+        # to target donations for all entities and targetted time period
+        perc_val_c_r_d_V_c_d = (
+            (total_val_c_r_d / total_val_c_d) * 100
+            if total_val_c_d > 0 else 0
+            )
+        # Percent of value of target donations in time period for chosen entity
+        # to all donations for chosen entities and all time period
+        perc_val_c_r_d_V_c_r = (
+            (total_val_c_r_d / total_val_c_r) * 100
+            if total_val_c_r > 0 else 0
+            )
+
+    # Donor comparisons
+    if create_donor_comparisons:
+        # percent of donors of target donations for all entities
+        # and all time period
+        # to all donations for all entries and all time period
+        perc_dono_c_V_pop = (
+            (total_val_c / unique_dono_pop) * 100
+            if unique_dono_pop > 0 else 0
+            )
+        # Percent of donors of all donations for chosen entity
+        # to all donations for all entities and all time period
+        perc_dono_r_V_pop = (
+            (unique_dono_r / unique_dono_pop) * 100
+            if unique_dono_pop > 0 else 0
+            )
+        # Percent of donors of all donations for all entities in time period
+        # to all donations for all entities and all time period
+        perc_dono_d_V_pop = (
+            (unique_dono_d / unique_dono_pop) * 100
+            if unique_dono_pop > 0 else 0
+            )
+        # Percent of donors of target donations for chosen entity
+        # all time period
+        # to all donations for all entity all time period
+        perc_dono_c_r_V_pop = (
+            (unique_dono_c_d / unique_dono_pop) * 100
+            if unique_dono_pop > 0 else 0
+            )
+        # Percent of donors of target donations for chosen entity
+        # all time period
+        # to all donations for all entity all time period
+        perc_dono_c_d_V_pop = (
+            (unique_dono_c_d / unique_dono_pop) * 100
+            if unique_dono_pop > 0 else 0
+            )
+        # Percent of donors of target donations for chosen entity
+        # all time period
+        # to all donations for all entity all time period
+        perc_dono_r_d_V_pop = (
+            (unique_dono_r_d / unique_dono_pop) * 100
+            if unique_dono_pop > 0 else 0
+            )
+        # Percent of donors of target donations for chosen entity
+        # all time period
+        # to all donations for all entity all time period
+        perc_dono_c_r_d_V_pop = (
+            (unique_dono_c_r_d / unique_dono_pop) * 100
+            if unique_dono_pop > 0 else 0
+            )
+        # Percent of donors of target donations in time period
+        # to all donations for all entity in time period
+        perc_dono_c_d_V_d = (
+            (unique_dono_c_d / unique_dono_d) * 100
+            if unique_dono_d > 0 else 0
+            )
+        # Percent of donors of all donations in time period for chosen entity
+        # to all donations for all entity in time period
+        perc_dono_r_d_V_d = (
+            (unique_dono_r_d / unique_dono_d) * 100
+            if unique_dono_d > 0 else 0
+            )
+        # Percent of donors of all donations for chosen entity in time period
+        # to all donations for chosen entity all time period
+        perc_dono_r_d_V_r = (
+            (unique_dono_r_d / unique_dono_r) * 100
+            if unique_dono_r > 0 else 0
+            )
+        # Percent of donors of targets for chosen entity all time
+        # to all donations for chosen entity all time period
+        perc_dono_c_r_V_r = (
+            (unique_dono_c_r / unique_dono_r) * 100
+            if unique_dono_r > 0 else 0
+            )
+        # Percent of donors of target donations in time period for
+        # chosen entity
+        # to target donations for all entities and all time period
+        perc_dono_c_r_d_V_c = (
+            (unique_dono_c_r_d / unique_dono_c) * 100
+            if unique_dono_c > 0 else 0
+            )
+        # Percent of donors of target donations in time period for
+        # chosen entity
+        # to all donations for all entities and targetted time period
+        perc_dono_c_r_d_V_d = (
+            (unique_dono_c_r_d / unique_dono_d) * 100
+            if unique_dono_d > 0 else 0
+            )
+        # Percent of donors of target donations in time period for
+        # chosen entity
+        # to all donations for chosen entity and all time period
+        perc_dono_c_r_d_V_r = (
+            (unique_dono_c_r_d / unique_dono_r) * 100
+            if unique_dono_r > 0 else 0
+            )
+        # Percent of donors of target donations in time period for
+        # chosen entity
+        # to all donations for chosen entity and targetted time period
+        perc_dono_c_r_d_V_r_d = (
+            (unique_dono_c_r_d / unique_dono_r_d) * 100
+            if unique_dono_r_d > 0 else 0
+            )
+        # Percent of donors of target donations in time period for
+        # chosen entity
+        # to target donations for all entities and targetted time period
+        perc_dono_c_r_d_V_c_d = (
+            (unique_dono_c_r_d / unique_dono_c_d) * 100
+            if unique_dono_c_d > 0 else 0
+            )
+        # Percent of donors of target donations in time period for
+        # chosen entity
+        # to all donations for chosen entities and all time period
+        perc_dono_c_r_d_V_c_r = (
+            (unique_dono_c_r_d / unique_dono_c_r) * 100
+            if unique_dono_c_r > 0 else 0
+            )
+
+    # Regulated Entity comparisons
+    if create_reg_entity_comparisons:
+        # percent of regulated entitied of target donations for
+        # all entities and all time period
+        # to all donations for all entries and all time period
+        perc_reg_ent_c_V_pop = (
+            (unique_reg_ent_c / unique_reg_ent_pop) * 100
+            if unique_reg_ent_pop > 0 else 0
+            )
+        # Percent of regulated entitied of all donations for chosen entity
+        # to all donations for all entities and all time period
+        perc_reg_ent_r_V_pop = (
+            (unique_reg_ent_r / unique_reg_ent_pop) * 100
+            if unique_reg_ent_pop > 0 else 0
+            )
+        # Percent of regulated entitied of all donations for
+        # all entities in time period
+        # to all donations for all entities and all time period
+        perc_reg_ent_d_V_pop = (
+            (unique_reg_ent_d / unique_reg_ent_pop) * 100
+            if unique_reg_ent_pop > 0 else 0
+            )
+        # Percent of regulated entitied of target donations for
+        # chosen entity all time period
+        # to all donations for all entity all time period
+        perc_reg_ent_c_r_V_pop = (
+            (unique_reg_ent_c_d / unique_reg_ent_pop) * 100
+            if unique_reg_ent_pop > 0 else 0
+            )
+        # Percent of regulated entitied of target donations for
+        # chosen entity all time period
+        # to all donations for all entity all time period
+        perc_reg_ent_c_d_V_pop = (
+            (unique_reg_ent_c_d / unique_reg_ent_pop) * 100
+            if unique_reg_ent_pop > 0 else 0
+            )
+        # Percent of regulated entitied of target donations for
+        # chosen entity all time period
+        # to all donations for all entity all time period
+        perc_reg_ent_r_d_V_pop = (
+            (unique_reg_ent_r_d / unique_reg_ent_pop) * 100
+            if unique_reg_ent_pop > 0 else 0
+            )
+        # Percent of regulated entitied of target donations for
+        # chosen entity all time period
+        # to all donations for all entity all time period
+        perc_reg_ent_c_r_d_V_pop = (
+            (unique_reg_ent_c_r_d / unique_reg_ent_pop) * 100
+            if unique_reg_ent_pop > 0 else 0
+            )
+        # Percent of regulated entitied of target donations in time period
+        # to all donations for all entity in time period
+        perc_reg_ent_c_d_V_d = (
+            (unique_reg_ent_c_d / unique_reg_ent_d) * 100
+            if unique_reg_ent_d > 0 else 0
+            )
+        # Percent of regulated entitied of all donations in
+        # time period for chosen entity
+        # to all donations for all entity in time period
+        perc_reg_ent_r_d_V_d = (
+            (unique_reg_ent_r_d / unique_reg_ent_d) * 100
+            if unique_reg_ent_d > 0 else 0
+            )
+        # Percent of regulated entitied of all donations for
+        # chosen entity in time period
+        # to all donations for chosen entity all time period
+        perc_reg_ent_r_d_V_r = (
+            (unique_reg_ent_r_d / unique_reg_ent_r) * 100
+            if unique_reg_ent_r > 0 else 0
+            )
+        # Percent of regulated entitied of targets for chosen entity all time
+        # to all donations for chosen entity all time period
+        perc_reg_ent_c_r_V_r = (
+            (unique_reg_ent_c_r / unique_reg_ent_r) * 100
+            if unique_reg_ent_r > 0 else 0
+            )
+        # Percent of regulated entitied of target donations
+        # in time period for chosen entity
+        # to target donations for all entities and all time period
+        perc_reg_ent_c_r_d_V_c = (
+            (unique_reg_ent_c_r_d / unique_reg_ent_c) * 100
+            if unique_reg_ent_c > 0 else 0
+            )
+        # Percent of regulated entitied of target donations in
+        # time period for chosen entity
+        # to all donations for all entities and targetted time period
+        perc_reg_ent_c_r_d_V_d = (
+            (unique_reg_ent_c_r_d / unique_reg_ent_d) * 100
+            if unique_reg_ent_d > 0 else 0
+            )
+        # Percent of regulated entitied of target donations in
+        # time period for chosen entity
+        # to all donations for chosen entity and all time period
+        perc_reg_ent_c_r_d_V_r = (
+            (unique_reg_ent_c_r_d / unique_reg_ent_r) * 100
+            if unique_reg_ent_r > 0 else 0
+            )
+        # Percent of regulated entitied of target donations in
+        # time period for chosen entity
+        # to all donations for chosen entity and targetted time period
+        perc_reg_ent_c_r_d_V_r_d = (
+            (unique_reg_ent_c_r_d / unique_reg_ent_r_d) * 100
+            if unique_reg_ent_r_d > 0 else 0
+            )
+        # Percent of regulated entitied of target donations in
+        # time period for chosen entity
+        # to target donations for all entities and targetted time period
+        perc_reg_ent_c_r_d_V_c_d = (
+            (unique_reg_ent_c_r_d / unique_reg_ent_c_d) * 100
+            if unique_reg_ent_c_d > 0 else 0
+            )
+        # Percent of regulated entitied of target donations in
+        # time period for chosen entity
+        # to all donations for chosen entities and all time period
+        perc_reg_ent_c_r_d_V_c_r = (
+            (unique_reg_ent_c_r_d / unique_reg_ent_c_r) * 100
+            if unique_reg_ent_c_r > 0 else 0
+            )
     # Format selected dates for inclusion in text
     min_date_df = start_date.date()
     max_date_df = end_date.date()
 
-    st.write(f"## Topline Figures for Cash Donations to {selected_entity_name}"
+    st.write(f"## Topline Figures for {target_label} to {selected_entity_name}"
              f" between {min_date_df} and {max_date_df}")
     st.write(f"* During the period between {min_date_df} and {max_date_df}, "
-             f"there were {unique_donations_c_d:,.0f} cash donations made to "
+             f"there were {unique_dona_c_d:,.0f} {target_label}s made to "
              f"{selected_entity_name}.  These had an average value of "
-             f"£{ppcalc.format_number(mean_value_donations_c_d)} "
-             f"and were made by {ppcalc.format_number(unique_donors_c_d)} "
+             f"£{ppcalc.format_number(mean_val_c_d)} "
+             f"and were made by {ppcalc.format_number(unique_dono_c_d)} "
              "unique donors. These donations totalled "
-             f"£{ppcalc.format_number(total_value_donations_c_d)}"
-             f" and represented {perc_cash_donations_c_d:.2f}% of"
+             f"£{ppcalc.format_number(total_val_c_d)}"
+             f" and represented {perc_dona_c_r_d_V_r_d:.2f}% of"
              f" all donations made "
              f" to {selected_entity_name}"
              " during the period selected.")
-    
-    if unique_donations_c_d < unique_donations_r_d:
-             st.write("* During the period they received a total of"
-                      f" {unique_donations_r_d:,.0f} donations with a total value of"
-                      f" £{ppcalc.format_number(total_value_donations_r_d)} and an"
-                      " average value of "
-                      f"£{ppcalc.format_number(mean_value_donations_r_d)}"
-                      f" from {unique_donors_r_d:,.0f} unique donors.")
-             
-    # Compare percentage of cash donations to chosen entity vs avergage
+
+    if unique_dona_c_d < unique_dona_r_d:
+        st.write("* During the period they received a total of"
+                 f" {unique_dona_r_d:,.0f} donations"
+                 " with a total value of"
+                 f" £{ppcalc.format_number(total_val_r_d)} and an"
+                 " average value of "
+                 f"£{ppcalc.format_number(mean_val_r_d)}"
+                 f" from {unique_dono_r_d:,.0f} unique donors.")
+
+    # Compare percentage of target donations to chosen entity vs avergage
     # percentage cash donations for all entities
-    if perc_cash_donations_c_r_d > perc_cash_donations_all:
-        st.write("* The percentage of cash donations made"
-                 f" to {selected_entity_name} "
-                 f"({perc_cash_donations_c_r_d:.2f}%) is "
-                 "higher than the average"
-                 "percentage of cash donations made to all entities"
-                 f" ({perc_cash_donations_all:.2f}%)")
-    elif perc_cash_donations_c_r_d < perc_cash_donations_all:
-        st.write("* The percentage of cash donations made "
+    if perc_dona_c_V_pop > 0:
+        if perc_dona_c_r_V_pop > perc_dona_c_V_pop:
+            changetext = "higher than"
+        elif perc_dona_c_r_V_pop < perc_dona_c_V_pop:
+            changetext = "lower than"
+        else:
+            changetext = "the same as"
+        st.write(f"* The percentage of {target_label}s made "
                  f"to {selected_entity_name} "
-                 f"({perc_cash_donations_c_r_d:.2f}%) is lower than the"
-                 " average percentage of cash donations made to all entities"
-                 f" ({perc_cash_donations_all:.2f}%)")
-    else:
-        st.write("* The percentage of cash donations made to "
-                 f"{selected_entity_name} "
-                 f"({perc_cash_donations_c_r_d:.2f}%) is "
-                 "the same as the average"
-                 " percentage of cash donations made to all entities"
-                 f" ({perc_cash_donations_all:.2f}%)")
-    # Compare value share of cash donations to value of all chosen entity
-    # donations vs avergage value share of cash donations for all entities
-    if perc_value_share_c_d > perc_value_share_all:
-        st.write("* The value of cash donations "
+                 f"was {perc_dona_c_r_V_pop:.2f}% and is {changetext} "
+                 "the average "
+                 f"percentage of {target_label}s made to all entities"
+                 f" ({perc_dona_c_V_pop:.2f}%)")
+    # Compare total value share of {target_label}s to value
+    # of all chosen entity
+    # donations vs total value share of {target_label}s for all entities
+    if perc_val_c_V_pop > 0:
+        if perc_val_c_r_V_pop > perc_val_c_V_pop:
+            changetext = "higher than"
+        elif perc_val_c_r_V_pop < perc_val_c_V_pop:
+            changetext = "lower than"
+        else:
+            changetext = "the same as"
+        st.write(f"* The value of {target_label}s "
                  " as a percentage of all donations made to "
                  f"{selected_entity_name} "
-                 f"({perc_value_share_c_d:.2f}%) is higher than the average"
-                 " value of cash donations made to all entities"
-                 f" ({perc_value_share_all:.2f}%)")
-    elif perc_value_share_c_d < perc_value_share_all:
-        st.write("* The value of cash donations made to"
-                 f"{selected_entity_name} "
-                 f"({perc_value_share_c_d:.2f}%) is lower than the average"
-                 " value of cash donations made to all entities"
-                 f" ({perc_value_share_all:.2f}%)")
-    else:
-        st.write("* The value of cash donations made "
-                 f"to {selected_entity_name} "
-                 f"({perc_value_share_c_d:.2f}%) is the same as the average"
-                 f" value of cash donations made to all entities"
-                 f" ({perc_value_share_all:.2f}%)")
+                 f"({perc_val_c_r_V_pop:.2f}%) is {changetext} the average"
+                 f" value of {target_label}s made to all entities"
+                 f" ({perc_val_c_V_pop:.2f}%)")
     # Compare number of donors to chosen entity vs
     # avergage number of donors for all entities
-    if unique_donors_c_d > unique_donors_pop:
-        st.write(f"* The number of unique donors to {selected_entity_name} "
-                 f"({ppcalc.format_number(unique_donors_c_d)}) is higher than"
-                 f" the average number of unique donors to all entities"
-                 f" ({ppcalc.format_number(unique_donors_pop)})")
-    elif unique_donors_c_d < unique_donors_pop:
-        st.write(f"* The number of unique donors to {selected_entity_name} "
-                 f"({ppcalc.format_number(unique_donors_c_d)}) is lower than"
-                 f"the average number of unique donors to all entities"
-                 f" ({ppcalc.format_number(unique_donors_pop)})")
-    else:
-        st.write(f"* The number of unique donors to {selected_entity_name} "
-                 f"({ppcalc.format_number(unique_donors_c_d)}) is the same"
-                 f" as the average number of unique donors to all entities"
-                 f" ({ppcalc.format_number(unique_donors_pop)})")
-    # Compare average value of donations to chosen entity vs
-    # avergage average value of donations for all entities
-    if mean_value_donations_c_d > mean_value_pop:
-        st.write(f"* The average value of donations to {selected_entity_name} "
-                 f"(£{ppcalc.format_number(mean_value_donations_c_d)}) is"
-                 f" higher than the average average value of donations to"
-                 f" all entities (£{ppcalc.format_number(mean_value_pop)})")
-    elif mean_value_donations_c_d < mean_value_pop:
-        st.write(f"* The average value of donations to {selected_entity_name} "
-                 f"(£{ppcalc.format_number(mean_value_donations_c_d)}) is"
-                 f" lower than the average average value of donations to all "
-                 f"entities (£{ppcalc.format_number(mean_value_pop)})")
-    else:
-        st.write(f"* The average value of donations to {selected_entity_name} "
-                 f"(£{ppcalc.format_number(mean_value_donations_c_d)}) is the"
-                 f" same as the average average value of donations to all"
-                 f" entities (£{ppcalc.format_number(mean_value_pop)})")
+    if perc_val_c_V_pop > 0:
+        if perc_val_c_r_V_pop > perc_val_c_V_pop:
+            changetext = "higher than"
+        elif perc_val_c_r_V_pop < perc_val_c_V_pop:
+            changetext = "lower than"
+        else:
+            changetext = "the same as"
+        st.write(f"* The value of {target_label}s "
+                 " as a percentage of all donations made to "
+                 f"{selected_entity_name} "
+                 f"({perc_val_c_r_V_pop:.2f}%) is {changetext} the average"
+                 " value of {target_label}s made to all entities"
+                 f" ({perc_val_c_V_pop:.2f}%)")
     if min_date_df != min_date or max_date_df != max_date:
-        # Compare percentage of cash donations to chosen entity vs
-        # percentage of all donations
-        st.write("---")
-        st.write(f"#### Comparison of activity between {min_date_df} and"
-                 f" {max_date_df} to activity between {min_date} and {max_date}")
-        st.write("---")
-        st.write(f"* The percentage of cash donations to {selected_entity_name} "
-                f"({perc_cash_donations_c_r_d:.2f}%) compared to the"
-                " percentage of all donations "
-                f"({perc_donations_d:.2f}%) during the selected date range.")
-
-        # Compare value share of cash donations to chosen entity vs
-        # value share of all donations
-        st.write(f"* The value share of cash donations to {selected_entity_name} "
-                f"({perc_value_share_c_d:.2f}%) compared to the value"
-                " share of all donations "
-                f"({perc_value_share_all:.2f}%) during the selected date range.")
-
-        # Compare number of unique donors to chosen entity vs
-        # number of unique donors for all entities
-        st.write(f"* The number of unique donors to {selected_entity_name} "
-                f"({unique_donors_c_r_d}) compared to the number of "
-                "unique donors for all entities "
-                f"({unique_donors_pop}) during the selected date range.")
-
-        # Compare average value of donations to chosen entity vs
-        # average value of donations for all entities
-        st.write(f"* The average value of donations to {selected_entity_name} "
-                f"(£{ppcalc.format_number(mean_value_donations_c_r_d)}) compared"
-                " to the average value of donations for all entities "
-                f"(£{ppcalc.format_number(mean_value_pop)}) during the"
-                " selected date range.")
+        if perc_val_c_d_V_pop > 0:
+            if perc_val_c_r_d_V_pop > perc_val_c_d_V_pop:
+                changetext = "higher than"
+            elif perc_val_c_r_d_V_pop < perc_val_c_d_V_pop:
+                changetext = "lower than"
+            else:
+                changetext = "the same as"
+            st.write(f"* The value of {target_label}s "
+                     " as a percentage of all donations made to "
+                     f"{selected_entity_name} "
+                     f"({perc_val_c_r_V_pop:.2f}%) is {changetext} the average"
+                     " value of {target_label}s made to all entities"
+                     f" ({perc_val_c_V_pop:.2f}%)")
     else:
         "No date range selected."
         st.write("---")
 
-    st.write("### Topline Visuals for Cash Donations"
+    st.write(f"### Topline Visuals for {target_label}"
              f" to {selected_entity_name}"
              f" between {min_date_df} and {max_date_df}")
     st.write("#### Click on any Visualisation to view it full screen.")
     left, right = st.columns(2)
     with left:
         # visualisation of donations by party over time
-
         if cleaned_c_d_df.empty:
             st.write("No data available for the selected filters.")
             return

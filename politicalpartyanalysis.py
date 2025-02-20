@@ -41,7 +41,7 @@ app.add_page("Paid Visits", visits_body)
 # app.add_page("Regulated Entities", regulatedentitypage_body)
 # app.add_page("Donor is a Political Party", donationsbypoliticalpartys_body)
 app.add_page("Donors Head Lines", donorsheadlinespage_body)
-app.add_page("Donors Per Donor", donorspage_body)
+app.add_page("Donorations Per Donor", donorspage_body)
 app.add_page("Notes on Data and Manipulations", notesondataprep_body)
 
 app.run()  # Run the  app
