@@ -338,7 +338,7 @@ def create_thresholds(use_streamlit=True):
         1000: "Medium Entity",
         float('inf'): "Large Entity"
     }
-    
+
     if use_streamlit:
         if 'g_thresholds' not in st.session_state:
             st.session_state.g_thresholds = thresholds
@@ -347,19 +347,23 @@ def create_thresholds(use_streamlit=True):
         return thresholds
 
 
-def calculate_reg_entity_group(donation_events, entity_name, use_streamlit=True):
+def calculate_reg_entity_group(donation_events,
+                               entity_name,
+                               use_streamlit=True):
     thresholds = create_thresholds(use_streamlit=use_streamlit).copy()
-    
+
     # Add the new threshold with entity_name
     thresholds[float("inf")] = entity_name
-    
+
     # Loop through the thresholds to find the corresponding category
     for limit, category in thresholds.items():
         if donation_events <= limit:
             return category
 
 
-def load_party_summary_data(datafile=None, streamlitrun=True, output_csv=False):
+def load_party_summary_data(datafile=None,
+                            streamlitrun=True,
+                            output_csv=False):
     if streamlitrun:
         df = st.session_state.get("data", None)
         if df is None:

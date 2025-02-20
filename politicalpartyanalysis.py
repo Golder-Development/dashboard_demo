@@ -61,7 +61,7 @@ if 'g_thresholds' not in st.session_state:
 def get_data():
     return dc.load_data(output_csv=False,
                         dedupe_donors=True,
-                        dedupe_regentity=False
+                        dedupe_regentity=True
                         )
 
 
