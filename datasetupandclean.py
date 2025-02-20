@@ -101,7 +101,8 @@ def load_data(output_csv=False):
     # to "Aggregated Donation" in DonationType
     df['DonationType'] = (
         df['DonationType'].replace(
-            {"Total value of donations not reported individually": "Aggregated Donation",
+            {"Total value of donations not reported individually":
+                "Aggregated Donation",
              "Permissible Donor Exempt Trust": "P.D. Exempt Trust"}
             )
         )
