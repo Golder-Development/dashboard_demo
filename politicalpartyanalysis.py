@@ -72,14 +72,14 @@ def get_cleaned_data():
     return dc.load_cleaned_data(output_csv=False)
 
 
-# @st.cache_data
-# def get_donor_data():
-#     return dc.load_donorList_data(output_csv=True)
+@st.cache_data
+def get_donor_data():
+    return dc.load_donorList_data(output_csv=False)
 
 
-# @st.cache_data
-# def get_regentity_data():
-#     return dc.load_regulated_entity_data(output_csv=True)
+@st.cache_data
+def get_regentity_data():
+    return dc.load_regulated_entity_data(output_csv=False)
 
 
 if "data" not in st.session_state:
@@ -94,12 +94,12 @@ if "data_clean" not in st.session_state:
     st.session_state["data_clean"] = get_cleaned_data()
 
 
-# if "data_donor" not in st.session_state:
-#     st.session_state["data_donor"] = get_donor_data()
+if "data_donor" not in st.session_state:
+    st.session_state["data_donor"] = get_donor_data()
 
 
-# if "data_regentity" not in st.session_state:
-#     st.session_state["data_regentity"] = get_regentity_data()
+if "data_regentity" not in st.session_state:
+    st.session_state["data_regentity"] = get_regentity_data()
 
 
 # Remove the loading message

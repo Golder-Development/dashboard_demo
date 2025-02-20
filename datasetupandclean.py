@@ -59,8 +59,14 @@ def load_data(output_csv=False):
     # remove leading and trailing spaces from AccountingUnitName and
     # ReportingPeriodName
     columns_to_strip = [
-        'DonorName', 'RegulatedEntityName', 'DonorId', 'RegulatedEntityId',
-        'CampaigningName', 'PurposeOfVisit', 'AccountingUnitName', 'ReportingPeriodName'
+        'DonorName',
+        'RegulatedEntityName',
+        'DonorId',
+        'RegulatedEntityId',
+        'CampaigningName',
+        'PurposeOfVisit',
+        'AccountingUnitName',
+        'ReportingPeriodName'
     ]
     df[columns_to_strip] = df[columns_to_strip].apply(lambda x: x.str.strip())
 
@@ -68,26 +74,37 @@ def load_data(output_csv=False):
     # CampaignName,
     # AccountingUnitName, ReportingPeriodName and PurposeOfVisit
     columns_to_clean = [
-        'DonorName', 'RegulatedEntityName', 'PurposeOfVisit', 'CampaigningName',
-        'AccountingUnitName', 'ReportingPeriodName'
+        'DonorName',
+        'RegulatedEntityName',
+        'PurposeOfVisit',
+        'CampaigningName',
+        'AccountingUnitName',
+        'ReportingPeriodName'
     ]
-    df[columns_to_clean] = df[columns_to_clean].replace({',': '', '\n': ' '}, regex=True)
-
+    df[columns_to_clean] = (
+        df[columns_to_clean].replace({',': '', '\n': ' '}, regex=True)
+        )
     # standardise capitalisation of DonorName, RegulatedEntityName,
     # CampaignName,
     # AccountingUnitName, ReportingPeriodName and PurposeOfVisit
     columns_to_title = [
-        'DonorName', 'RegulatedEntityName', 'PurposeOfVisit', 
-        'CampaigningName', 'AccountingUnitName', 'ReportingPeriodName'
+        'DonorName',
+        'RegulatedEntityName',
+        'PurposeOfVisit',
+        'CampaigningName',
+        'AccountingUnitName',
+        'ReportingPeriodName'
     ]
     df[columns_to_title] = df[columns_to_title].apply(lambda x: x.str.title())
 
     # rename "Total value of donations not reported individually"
     # to "Aggregated Donation" in DonationType
-    df['DonationType'] = df['DonationType'].replace(
-        {"Total value of donations not reported individually": "Aggregated Donation",
-         "Permissible Donor Exempt Trust": "P.D. Exempt Trust"}
-    )
+    df['DonationType'] = (
+        df['DonationType'].replace(
+            {"Total value of donations not reported individually": "Aggregated Donation",
+             "Permissible Donor Exempt Trust": "P.D. Exempt Trust"}
+            )
+        )
     # update Blank DonorName to "Anonymous Donor"
     df['DonorName'] = df['DonorName'].replace("", "Unidentified Donor")
     # update Blank DonorId to "1000001"
@@ -272,7 +289,7 @@ def load_cleaned_data(output_csv=False):
     df = orig_df.copy()
 
     # convert DonorId = "" to null
-    df['DonorId'] = df['DonorId'].replace("", pd.NA)    
+    df['DonorId'] = df['DonorId'].replace("", pd.NA)
     # Fill missing text fields with empty strings
     columns_to_fill = [
                 "ReceivedDate",
@@ -281,7 +298,7 @@ def load_cleaned_data(output_csv=False):
                 "DonationAction",
                 "DonationType"
             ]
-    df[columns_to_fill] = df[columns_to_fill].replace("", pd.NA)    
+    df[columns_to_fill] = df[columns_to_fill].replace("", pd.NA)
 
     # # Fill blank ReceivedDate with ReportedDate
     df['ReceivedDate'] = df['ReceivedDate'].fillna(df['ReportedDate'])
