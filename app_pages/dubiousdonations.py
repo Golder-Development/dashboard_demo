@@ -36,7 +36,7 @@ def dubiousdonations_body():
         ppcalc.get_dubious_donation_actions(filtered_df2)
         )
     total_value_dubious_donations = (
-        ppcalc.get_total_value_dubious_donations(filtered_df2)
+        ppcalc.get_dubious_donation_value(filtered_df2)
         )
     dubious_donors_percent_of_value = (
         ((dubious_donors_value / total_value_of_donations) * 100)

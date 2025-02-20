@@ -329,38 +329,47 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
     return df
 
 
-def create_thresholds():
-    if 'g_thresholds' not in st.session_state:
-        st.session_state.g_thresholds = {
-            0: "No Relevant Donations",
-            1: "Single Donation Entity",
-            50: "Very Small Entity",
-            100: "Small Entity",
-            1000: "Medium Entity",
-            float('inf'): "Large Entity"
-        }
+def create_thresholds(use_streamlit=True):
+    thresholds = {
+        0: "No Relevant Donations",
+        1: "Single Donation Entity",
+        50: "Very Small Entity",
+        100: "Small Entity",
+        1000: "Medium Entity",
+        float('inf'): "Large Entity"
+    }
+    
+    if use_streamlit:
+        if 'g_thresholds' not in st.session_state:
+            st.session_state.g_thresholds = thresholds
+        return st.session_state.g_thresholds
+    else:
+        return thresholds
 
 
-def calculate_reg_entity_group(donation_events, entity_name):
-    if 'g_thresholds' not in st.session_state:
-        create_thresholds()
-    # Copy g_thresholds and add the new entity_name to the thresholds
-    # dictionary
-    # Make a copy to avoid modifying the global dictionary
-    thresholds = st.session_state.g_thresholds.copy()
+def calculate_reg_entity_group(donation_events, entity_name, use_streamlit=True):
+    thresholds = create_thresholds(use_streamlit=use_streamlit).copy()
+    
     # Add the new threshold with entity_name
     thresholds[float("inf")] = entity_name
+    
     # Loop through the thresholds to find the corresponding category
     for limit, category in thresholds.items():
         if donation_events <= limit:
             return category
 
 
-def load_party_summary_data(output_csv=False):
-    df = st.session_state.get("data", None)
-    if df is None:
-        st.error("No data found in session state!")
-        return None
+def load_party_summary_data(datafile=None, streamlitrun=True, output_csv=False):
+    if streamlitrun:
+        df = st.session_state.get("data", None)
+        if df is None:
+            st.error("No data found in session state!")
+            return None
+    else:
+        if datafile is None:
+            df = df
+        else:
+            df = datafile
     # Create a DataFrame with the sum, count and mean of the donations
     # for each RegulatedEntityName
     RegulatedEntity_df = (

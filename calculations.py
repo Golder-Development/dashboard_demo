@@ -20,172 +20,108 @@ def apply_filters(df, filters=None):
     return df
 
 
+# Convert placeholder date to datetime once
+PLACEHOLDER_DATE = pd.Timestamp("1900-01-01 00:00:00")
+PLACEHOLDER_ID = 1000001
+
+
+def count_unique_donors(df, donation_type, filters=None):
+    """Counts unique donors based on a specific DonationType."""
+    df = apply_filters(df, filters)
+    return df[df["DonationType"].eq(donation_type)]["DonorId"].nunique()
+
+
+def count_missing_values(df, column, missing_value, filters=None):
+    """Counts donations where a specific column has a given missing value."""
+    df = apply_filters(df, filters)
+    return df[df[column].eq(missing_value)].shape[0]
+
+
+def count_null_values(df, column, filters=None):
+    """Counts donations where a specific column has null (NaN) values."""
+    df = apply_filters(df, filters)
+    return df[column].isna().sum()
+
+
+# Specific functions using the generic ones
 def get_impermissible_donors_ct(df, filters=None):
-    """Counts unique donors labeled as 'Impermissible Donor'."""
-    df = apply_filters(df, filters)
-    return df[df["DonationType"] == "Impermissible Donor"]["DonorId"].nunique()
-
-
-def get_dubious_donation_actions_ct(df, filters=None):
-    """Counts the number of unique actions marked as dubious."""
-    df = apply_filters(df, filters)
-    return df[df["DonationAction"].notnull()].index.nunique()
-
-
-def get_blank_received_date_ct(df, filters=None):
-    """Counts donations that have a missing received date."""
-    df = apply_filters(df, filters)
-    return df[df["ReceivedDate"] == '1900-01-01 00:00:00'].index.nunique()
-
-
-def get_blank_regulated_entity_id_ct(df, filters=None):
-    """Counts donations with missing regulated entity ID."""
-    df = apply_filters(df, filters)
-    return df[df["RegulatedEntityId"] == 1000001].index.nunique()
-
-
-def get_blank_donor_id_ct(df, filters=None):
-    """Counts donations with missing donor ID."""
-    df = apply_filters(df, filters)
-    return df[df["DonorId"] == 1000001].index.nunique()
-
-
-def get_blank_donor_name_ct(df, filters=None):
-    """Counts donations with missing donor name."""
-    df = apply_filters(df, filters)
-    return df[df["DonorName"].isnull()].index.nunique()
+    return count_unique_donors(df, "Impermissible Donor", filters)
 
 
 def get_unidentified_donors_ct(df, filters=None):
-    """Counts unique donors labeled as 'unidentified Donor'."""
-    df = apply_filters(df, filters)
-    return df[df["DonationType"] == "Unidentified Donor"]["DonorId"].nunique()
+    return count_unique_donors(df, "Unidentified Donor", filters)
+
+
+def get_blank_received_date_ct(df, filters=None):
+    return count_missing_values(df, "ReceivedDate",
+                                PLACEHOLDER_DATE,
+                                filters)
+
+
+def get_blank_regulated_entity_id_ct(df, filters=None):
+    return count_missing_values(df, "RegulatedEntityId",
+                                PLACEHOLDER_ID,
+                                filters)
+
+
+def get_blank_donor_id_ct(df, filters=None):
+    return count_missing_values(df, "DonorId", PLACEHOLDER_ID, filters)
+
+
+def get_blank_donor_name_ct(df, filters=None):
+    return count_null_values(df, "DonorName", filters)
+
+
+def get_dubious_donors(df, filters=None):
+    dubious_conditions = (
+        (df["DonationType"].isin([
+            "Impermissible Donor", "Unidentified Donor",
+            "Total value of donations not reported individually",
+            "Aggregated Donation"
+        ])) |
+        (df["NatureOfDonation"] == "Aggregated Donation") |
+        (df["IsAggregation"] == "True") |
+        (df["DonorId"] == PLACEHOLDER_ID) |
+        (df["DonorName"] == 'Unidentified Donor')
+    )
+    return apply_filters(df[dubious_conditions], filters)
 
 
 def get_dubious_donors_ct(df, filters=None):
     """Calculates total dubious donors (impermissible + missing ID/name)."""
-    df = apply_filters(df, filters)
-    return df[
-        (df["DonationType"] == "Impermissible Donor") |
-        (df["DonationType"] == "Unidentified Donor") |
-        (df["DonationType"] == "Total value of donations not reported\
-            individually") |
-        (df["DonationType"] == "Aggregated Donation") |
-        # (df["DonationType"] == "Visit") |
-        # (df["DonationAction"] != "Accepted") |
-        (df["NatureOfDonation"] == "Aggregated Donation") |
-        (df["IsAggregation"] == "True") |
-        # (df["ReceivedDate"] == '1900-01-01 00:00:00') |
-        # (df["RegulatedEntityId"] == "1000001") |
-        # (df["RegulatedEntityName"] == 'Unidentified Entity') |
-        (df["DonorId"] == "1000001") |
-        (df["DonorName"] == 'Unidentified Donor')
-    ]["EventCount"].sum()
+    return get_dubious_donors(df, filters)["EventCount"].sum()
 
 
 def get_dubious_donors_value(df, filters=None):
     """Calculates total dubious donors (impermissible + missing ID/name)."""
-    df = apply_filters(df, filters)
-    return df[
-        (df["DonationType"] == "Impermissible Donor") |
-        (df["DonationType"] == "Unidentified Donor") |
-        (df["DonationType"] == "Total value of donations not reported\
-            individually") |
-        (df["DonationType"] == "Aggregated Donation") |
-        (df["DonationType"] == "Visit") |
+    return get_dubious_donors(df, filters)["Value"].sum()
+
+
+def get_dubious_donations(df, filters=None):
+    dubious_conditions = (
+        (df["DonationType"].isin([
+            "Impermissible Donor", "Unidentified Donor",
+            "Total value of donations not reported individually",
+            "Aggregated Donation"
+        ])) |
         (df["DonationAction"] != "Accepted") |
         (df["NatureOfDonation"] == "Aggregated Donation") |
         (df["IsAggregation"] == "True") |
-        (df["ReceivedDate"] == '1900-01-01 00:00:00') |
-        (df["RegulatedEntityId"] == "1000001") |
+        (df["ReceivedDate"] == PLACEHOLDER_DATE) |
+        (df["RegulatedEntityId"] == PLACEHOLDER_ID) |
         (df["RegulatedEntityName"] == 'Unidentified Entity') |
-        (df["DonorId"] == "1000001") |
+        (df["DonorId"] == PLACEHOLDER_ID) |
         (df["DonorName"] == 'Unidentified Donor')
-    ]["Value"].sum()
+    )
+    return apply_filters(df[dubious_conditions], filters)
 
 
 def get_dubious_donation_actions(df, filters=None):
-    """Calculates total dubious donation actions."""
-    df = apply_filters(df, filters)
-    return df[
-        (df["DonationType"] == "Impermissible Donor") |
-        (df["DonationType"] == "Unidentified Donor") |
-        (df["DonationType"] == "Total value of donations not reported\
-            individually") |
-        (df["DonationType"] == "Aggregated Donation") |
-        (df["DonationType"] == "Visit") |
-        (df["DonationAction"] != "Accepted") |
-        (df["NatureOfDonation"] == "Aggregated Donation") |
-        (df["IsAggregation"] == "True") |
-        (df["ReceivedDate"] == '1900-01-01 00:00:00') |
-        (df["RegulatedEntityId"] == "1000001") |
-        (df["RegulatedEntityName"] == 'Unidentified Entity') |
-        (df["DonorId"] == "1000001") |
-        (df["DonorName"] == 'Unidentified Donor')
-    ]["EventCount"].sum()
+    return get_dubious_donations(df, filters)["EventCount"].sum()
 
 
 def get_dubious_donation_value(df, filters=None):
-    """Calculates total value of dubious donation actions."""
-    df = apply_filters(df, filters)
-    return df[
-        (df["DonationType"] == "Impermissible Donor") |
-        (df["DonationType"] == "Unidentified Donor") |
-        (df["DonationType"] == "Total value of donations not reported\
-            individually") |
-        (df["DonationType"] == "Aggregated Donation") |
-        (df["DonationType"] == "Visit") |
-        (df["DonationAction"] != "Accepted") |
-        (df["NatureOfDonation"] == "Aggregated Donation") |
-        (df["IsAggregation"] == "True") |
-        (df["ReceivedDate"] == '1900-01-01 00:00:00') |
-        (df["RegulatedEntityId"] == "1000001") |
-        (df["RegulatedEntityName"] == 'Unidentified Entity') |
-        (df["DonorId"] == "1000001") |
-        (df["DonorName"] == 'Unidentified Donor')
-    ]["Value"].sum()
-
-
-def get_total_value_dubious_donations(df, filters=None):
-    """Calculates the total value of all dubious donations."""
-    df = apply_filters(df, filters)
-    return df[
-        (df["DonationType"] == "Impermissible Donor") |
-        (df["DonationType"] == "Unidentified Donor") |
-        (df["DonationType"] == "Total value of donations not reported\
-            individually") |
-        (df["DonationType"] == "Aggregated Donation") |
-        (df["DonationType"] == "Visit") |
-        (df["DonationAction"] != "Accepted") |
-        (df["NatureOfDonation"] == "Aggregated Donation") |
-        (df["IsAggregation"] == "True") |
-        (df["ReceivedDate"] == '1900-01-01 00:00:00') |
-        (df["RegulatedEntityId"] == "1000001") |
-        (df["RegulatedEntityName"] == 'Unidentified Entity') |
-        (df["DonorId"] == "1000001") |
-        (df["DonorName"] == 'Unidentified Donor')
-    ]["Value"].sum()
-
-
-def get_total_ct_dubious_donations(df, filters=None):
-    """Calculates the total value of all dubious donations."""
-    df = apply_filters(df, filters)
-    return df[
-        (df["DonationType"] == "Impermissible Donor") |
-        (df["DonationType"] == "Unidentified Donor") |
-        (df["DonationType"] == "Total value of donations not reported\
-            individually") |
-        (df["DonationType"] == "Aggregated Donation") |
-        (df["DonationType"] == "Visit") |
-        (df["DonationAction"] != "Accepted") |
-        (df["NatureOfDonation"] == "Aggregated Donation") |
-        (df["IsAggregation"] == "True") |
-        (df["ReceivedDate"] == '1900-01-01 00:00:00') |
-        (df["RegulatedEntityId"] == "1000001") |
-        (df["RegulatedEntityName"] == 'Unidentified Entity') |
-        (df["DonorId"] == "1000001") |
-        (df["DonorName"] == 'Unidentified Donor')
-    ]["EventCount"].sum()
+    return get_dubious_donations(df, filters)["Value"].sum()
 
 
 def get_donors_ct(df, filters=None):
@@ -221,7 +157,7 @@ def get_regentity_ct(df, filters=None):
 def get_mindate(df, filters=None):
     """Earliest date from data subset"""
     df = apply_filters(df, filters)
-    df = df[df["ReceivedDate"] != pd.to_datetime('1900-01-01 00:00:00')]
+    df = df[df["ReceivedDate"] != pd.to_datetime(PLACEHOLDER_DATE)]
     return df["ReceivedDate"].min()
 
 
@@ -265,7 +201,7 @@ def get_returned_donations_value(df, filters=None):
 def get_datamindate():
     """Earliest date from full data"""
     df = st.session_state.get("data_clean", None)
-    df = df[df["ReceivedDate"] != pd.to_datetime('1900-01-01 00:00:00')]
+    df = df[df["ReceivedDate"] != pd.to_datetime(PLACEHOLDER_DATE)]
     return df["ReceivedDate"].min()
 
 
@@ -288,13 +224,13 @@ def get_donationtype_value(df, filters=None):
 
 
 def get_donation_isanaggregate_ct(df, filters=None):
-    """Counts donations that have been returned."""
+    """Counts donations are aggregated donations"""
     df = apply_filters(df, filters)
     return df["IsAnAggregate"]["EventCount"].sum()
 
 
 def get_donation_isanaggregate_value(df, filters=None):
-    """Calculates the total value of all returned donations."""
+    """Calculates the total value of all aggregated donations."""
     df = apply_filters(df, filters)
     return df.groupby("IsAnAggregate")["Value"].sum()
 

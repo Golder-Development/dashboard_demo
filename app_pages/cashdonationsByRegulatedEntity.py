@@ -92,6 +92,31 @@ def cashdonationsregentity_body():
     unique_dona_pop = ppcalc.get_donations_ct(cleaned_df, filters)
     total_val_pop = ppcalc.get_value_total(cleaned_df, filters)
     mean_val_pop = ppcalc.get_value_mean(cleaned_df, filters)
+    # calculate average number of donations per regulated entity
+    avg_dona_pop = (
+        cleaned_df.groupby('RegulatedEntityId').size().mean()
+    )
+    # calculate average value of donations per regulated entity
+    avg_val_pop = (
+        cleaned_df.groupby('RegulatedEntityId')['Value'].mean().mean()
+    )
+    # calculate average number of donors per regulated entity
+    avg_dono_pop = (
+        cleaned_df.groupby('RegulatedEntityId')['DonorId'].nunique().mean()
+    )
+    # stdev of average number of donations per regulated entity
+    std_dona_pop = (
+        cleaned_df.groupby('RegulatedEntityId').size().std()
+    )
+    # stdev of average value of donations per regulated entity
+    std_val_pop = (
+        cleaned_df.groupby('RegulatedEntityId')['Value'].mean().std()
+    )
+    # stdev of average number of donors per regulated entity
+    std_dono_pop = (
+        cleaned_df.groupby('RegulatedEntityId')['DonorId'].nunique().std()
+    )
+
     # Values for all entities, chosen date range and all donations
     unique_reg_ent_d = (
         ppcalc.get_regentity_ct(cleaned_d_df, filters)
@@ -100,6 +125,12 @@ def cashdonationsregentity_body():
     unique_dona_d = ppcalc.get_donations_ct(cleaned_d_df, filters)
     total_val_d = ppcalc.get_value_total(cleaned_d_df, filters)
     mean_val_d = ppcalc.get_value_mean(cleaned_d_df, filters)
+    avg_dona_pop_d = cleaned_d_df.groupby('RegulatedEntityId').size().mean()
+    avg_val_pop_d = cleaned_d_df.groupby('RegulatedEntityId')['Value'].mean().mean()
+    avg_dono_pop_d = cleaned_d_df.groupby('RegulatedEntityId')['DonorId'].nunique().mean()
+    std_dona_pop_d = cleaned_d_df.groupby('RegulatedEntityId').size().std()
+    std_val_pop_d = cleaned_d_df.groupby('RegulatedEntityId')['Value'].mean().std()
+    std_dono_pop_d = cleaned_d_df.groupby('RegulatedEntityId')['DonorId'].nunique().std()
     # Values for all entities, all date range and target
     unique_reg_ent_c = (
         ppcalc.get_regentity_ct(cleaned_c_df, filters)
@@ -108,6 +139,12 @@ def cashdonationsregentity_body():
     unique_dona_c = ppcalc.get_donations_ct(cleaned_c_df, filters)
     total_val_c = ppcalc.get_value_total(cleaned_c_df, filters)
     mean_val_c = ppcalc.get_value_mean(cleaned_c_df, filters)
+    avg_dona_pop_c = cleaned_c_df.groupby('RegulatedEntityId').size().mean()
+    avg_val_pop_c = cleaned_c_df.groupby('RegulatedEntityId')['Value'].mean().mean()
+    avg_dono_pop_c = cleaned_c_df.groupby('RegulatedEntityId')['DonorId'].nunique().mean()
+    std_dona_pop_c = cleaned_c_df.groupby('RegulatedEntityId').size().std()
+    std_val_pop_c = cleaned_c_df.groupby('RegulatedEntityId')['Value'].mean().std()
+    std_dono_pop_c = cleaned_c_df.groupby('RegulatedEntityId')['DonorId'].nunique().std()
     # Values for chosen entity, all date range and all Donations
     unique_reg_ent_r = (
         ppcalc.get_regentity_ct(cleaned_r_df, filters)
@@ -116,6 +153,12 @@ def cashdonationsregentity_body():
     unique_dona_r = ppcalc.get_donations_ct(cleaned_r_df, filters)
     total_val_r = ppcalc.get_value_total(cleaned_r_df, filters)
     mean_val_r = ppcalc.get_value_mean(cleaned_r_df, filters)
+    avg_dona_pop_r = cleaned_r_df.groupby('RegulatedEntityId').size().mean()
+    avg_val_pop_r = cleaned_r_df.groupby('RegulatedEntityId')['Value'].mean().mean()
+    avg_dono_pop_r = cleaned_r_df.groupby('RegulatedEntityId')['DonorId'].nunique().mean()
+    std_dona_pop_r = cleaned_r_df.groupby('RegulatedEntityId').size().std()
+    std_val_pop_r = cleaned_r_df.groupby('RegulatedEntityId')['Value'].mean().std()
+    std_dono_pop_r = cleaned_r_df.groupby('RegulatedEntityId')['DonorId'].nunique().std()
     # Values for all entities, chosen date range and current target
     unique_reg_ent_c_d = (
         ppcalc.get_regentity_ct(cleaned_c_d_df, filters)
@@ -124,6 +167,12 @@ def cashdonationsregentity_body():
     unique_dona_c_d = ppcalc.get_donations_ct(cleaned_c_d_df, filters)
     total_val_c_d = ppcalc.get_value_total(cleaned_c_d_df, filters)
     mean_val_c_d = ppcalc.get_value_mean(cleaned_c_d_df, filters)
+    avg_dona_pop_c_d = cleaned_c_d_df.groupby('RegulatedEntityId').size().mean()
+    avg_val_pop_c_d = cleaned_c_d_df.groupby('RegulatedEntityId')['Value'].mean().mean()
+    avg_dono_pop_c_d = cleaned_c_d_df.groupby('RegulatedEntityId')['DonorId'].nunique().mean()
+    std_dona_pop_c_d = cleaned_c_d_df.groupby('RegulatedEntityId').size().std()
+    std_val_pop_c_d = cleaned_c_d_df.groupby('RegulatedEntityId')['Value'].mean().std()
+    std_dono_pop_c_d = cleaned_c_d_df.groupby('RegulatedEntityId')['DonorId'].nunique().std()
     # Values for chosen entity, date range and all donations
     unique_reg_ent_r_d = (
         ppcalc.get_regentity_ct(cleaned_r_d_df, filters)
@@ -132,6 +181,12 @@ def cashdonationsregentity_body():
     unique_dona_r_d = ppcalc.get_donations_ct(cleaned_r_d_df, filters)
     total_val_r_d = ppcalc.get_value_total(cleaned_r_d_df, filters)
     mean_val_r_d = ppcalc.get_value_mean(cleaned_r_d_df, filters)
+    avg_dona_pop_r_d = cleaned_r_d_df.groupby('RegulatedEntityId').size().mean()
+    avg_val_pop_r_d = cleaned_r_d_df.groupby('RegulatedEntityId')['Value'].mean().mean()
+    avg_dono_pop_r_d = cleaned_r_d_df.groupby('RegulatedEntityId')['DonorId'].nunique().mean()
+    std_dona_pop_r_d = cleaned_r_d_df.groupby('RegulatedEntityId').size().std()
+    std_val_pop_r_d = cleaned_r_d_df.groupby('RegulatedEntityId')['Value'].mean().std()
+    std_dono_pop_r_d = cleaned_r_d_df.groupby('RegulatedEntityId')['DonorId'].nunique().std()
     # Values for chosen entity, date range and all donations
     unique_reg_ent_c_r = (
         ppcalc.get_regentity_ct(cleaned_c_r_df, filters)
@@ -140,6 +195,12 @@ def cashdonationsregentity_body():
     unique_dona_c_r = ppcalc.get_donations_ct(cleaned_c_r_df, filters)
     total_val_c_r = ppcalc.get_value_total(cleaned_c_r_df, filters)
     mean_val_c_r = ppcalc.get_value_mean(cleaned_c_r_df, filters)
+    avg_dona_pop_c_r = cleaned_c_r_df.groupby('RegulatedEntityId').size().mean()
+    avg_val_pop_c_r = cleaned_c_r_df.groupby('RegulatedEntityId')['Value'].mean().mean()
+    avg_dono_pop_c_r = cleaned_c_r_df.groupby('RegulatedEntityId')['DonorId'].nunique().mean()
+    std_dona_pop_c_r = cleaned_c_r_df.groupby('RegulatedEntityId').size().std()
+    std_val_pop_c_r = cleaned_c_r_df.groupby('RegulatedEntityId')['Value'].mean().std()
+    std_dono_pop_c_r = cleaned_c_r_df.groupby('RegulatedEntityId')['DonorId'].nunique().std()
     # Values for chosen entity, date range and current target
     unique_reg_ent_c_r_d = (
         ppcalc.get_regentity_ct(cleaned_c_r_d_df, filters)
@@ -152,6 +213,12 @@ def cashdonationsregentity_body():
     mean_val_c_r_d = (
         ppcalc.get_value_mean(cleaned_c_r_d_df, filters)
     )
+    avg_dona_pop_c_r_d = cleaned_c_r_d_df.groupby('RegulatedEntityId').size().mean()
+    avg_val_pop_c_r_d = cleaned_c_r_d_df.groupby('RegulatedEntityId')['Value'].mean().mean()
+    avg_dono_pop_c_r_d = cleaned_c_r_d_df.groupby('RegulatedEntityId')['DonorId'].nunique().mean()
+    std_dona_pop_c_r_d = cleaned_c_r_d_df.groupby('RegulatedEntityId').size().std()
+    std_val_pop_c_r_d = cleaned_c_r_d_df.groupby('RegulatedEntityId')['Value'].mean().std()
+    std_dono_pop_c_r_d = cleaned_c_r_d_df.groupby('RegulatedEntityId')['DonorId'].nunique().std()
     # Relative relationship calculations
     create_donation_comparisons = True
     create_value_comparisons = True
@@ -606,6 +673,7 @@ def cashdonationsregentity_body():
             (unique_reg_ent_c_r_d / unique_reg_ent_c_r) * 100
             if unique_reg_ent_c_r > 0 else 0
             )
+
     # Format selected dates for inclusion in text
     min_date_df = start_date.date()
     max_date_df = end_date.date()

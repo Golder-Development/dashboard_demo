@@ -24,3 +24,4 @@ or  -   https://dashboard-demo2.onrender.com/
 4. Click Create
 5. Wait for the workspace to open. This can take a few minutes.
 6. Open a new terminal and `pip3 install -r requirements.txt`
+7. Once requirements are all installed - use type 'streamlit run politicalpartyanalysis.py'
