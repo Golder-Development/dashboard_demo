@@ -21,4 +21,5 @@ patsy
 statsmodels
 rapidfuzz
 # levenshein
+rapidfuzz
 streamlit
