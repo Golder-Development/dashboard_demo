@@ -75,8 +75,10 @@ def visits_body():
         cleaned_r_df = cleaned_df
     # Create dataframe for chosen entity and date range
     cleaned_r_d_df = (
-        cleaned_r_df[date_filter] if date_filter.any() else cleaned_r_df
-        )
+        cleaned_r_df[date_filter.reindex(cleaned_r_df.index, fill_value=False)]
+        if date_filter.any()
+        else cleaned_r_df
+    )
     # Create dataframe for chosen target and date range
     cleaned_c_d_df = cleaned_d_df.query(current_target)
     # Create dataframe for chosen target and entity

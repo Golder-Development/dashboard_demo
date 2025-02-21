@@ -226,7 +226,7 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
         # rema,e Cleansed ID to Id and Cleansed Name to Name
         df.rename(
             columns={"Cleansed RegulatedEntityID": "RegulatedEntityId",
-                     "RegulatedEntityName": "RegulatedEntityName"},
+                     "Cleansed RegulatedEntityName": "RegulatedEntityName"},
             inplace=True
             )
 
