@@ -208,7 +208,9 @@ def cashdonationsregentity_body():
     avg_val_pop_c_d = (
         cleaned_c_d_df.groupby('RegulatedEntityId')['Value'].mean().mean())
     avg_dono_pop_c_d = (
-        cleaned_c_d_df.groupby('RegulatedEntityId')['DonorId'].nunique().mean())
+        cleaned_c_d_df.groupby('RegulatedEntityId')['DonorId']
+                      .nunique().mean()
+                        )
     std_dona_pop_c_d = (
         cleaned_c_d_df.groupby('RegulatedEntityId').size().std())
     std_val_pop_c_d = (
@@ -228,7 +230,8 @@ def cashdonationsregentity_body():
     avg_val_pop_r_d = (
         cleaned_r_d_df.groupby('RegulatedEntityId')['Value'].mean().mean())
     avg_dono_pop_r_d = (
-        cleaned_r_d_df.groupby('RegulatedEntityId')['DonorId'].nunique().mean())
+        cleaned_r_d_df.groupby('RegulatedEntityId')['DonorId']
+        .nunique().mean())
     std_dona_pop_r_d = (
         cleaned_r_d_df.groupby('RegulatedEntityId').size().std())
     std_val_pop_r_d = (
@@ -280,7 +283,8 @@ def cashdonationsregentity_body():
         cleaned_c_r_d_df.groupby('RegulatedEntityId')['Value'].mean().mean()
     )
     avg_dono_pop_c_r_d = (
-        cleaned_c_r_d_df.groupby('RegulatedEntityId')['DonorId'].nunique().mean()
+        cleaned_c_r_d_df.groupby('RegulatedEntityId')['DonorId']
+        .nunique().mean()
     )
     std_dona_pop_c_r_d = (
         cleaned_c_r_d_df.groupby('RegulatedEntityId').size().std()
@@ -289,7 +293,8 @@ def cashdonationsregentity_body():
         cleaned_c_r_d_df.groupby('RegulatedEntityId')['Value'].mean().std()
     )
     std_dono_pop_c_r_d = (
-        cleaned_c_r_d_df.groupby('RegulatedEntityId')['DonorId'].nunique().std()
+        cleaned_c_r_d_df.groupby('RegulatedEntityId')['DonorId']
+        .nunique().std()
     )
     # Relative relationship calculations
     create_donation_comparisons = True
@@ -301,103 +306,103 @@ def cashdonationsregentity_body():
         # percent of target donations for all entities and all time period
         # to all donations for all entries and all time period
         perc_dona_c_V_pop = (
-            (unique_dona_r / unique_dona_pop) 
+            (unique_dona_r / unique_dona_pop) * 100
             if unique_dona_pop > 0 else 0
             )
         # Percent of all donations for chosen entity
         # to all donations for all entities and all time period
         perc_dona_r_V_pop = (
-            (unique_dona_r / unique_dona_pop)
+            (unique_dona_r / unique_dona_pop) * 100
             if unique_dona_pop > 0 else 0
             )
         # Percent of all donations for all entities in time period
         # to all donations for all entities and all time period
         perc_dona_d_V_pop = (
-            (unique_dona_d / unique_dona_pop)
+            (unique_dona_d / unique_dona_pop) * 100
             if unique_dona_pop > 0 else 0
             )
         # Percent of target donations for chosen entity all time period
         # to all donations for all entity all time period
         perc_dona_c_r_V_pop = (
-            (unique_dona_c_d / unique_dona_pop)
+            (unique_dona_c_d / unique_dona_pop) * 100
             if unique_dona_pop > 0 else 0
             )
         # Percent of target donations for chosen entity all time period
         # to all donations for all entity all time period
         perc_dona_c_d_V_pop = (
-            (unique_dona_c_d / unique_dona_pop)
+            (unique_dona_c_d / unique_dona_pop) * 100
             if unique_dona_pop > 0 else 0
             )
         # Percent of target donations for chosen entity all time period
         # to all donations for all entity all time period
         perc_dona_r_d_V_pop = (
-            (unique_dona_r_d / unique_dona_pop)
+            (unique_dona_r_d / unique_dona_pop) * 100
             if unique_dona_pop > 0 else 0
             )
         # Percent of target donations for chosen entity all time period
         # to all donations for all entity all time period
         perc_dona_c_r_d_V_pop = (
-            (unique_dona_c_r_d / unique_dona_pop)
+            (unique_dona_c_r_d / unique_dona_pop) * 100
             if unique_dona_pop > 0 else 0
             )
         # Percent of target donations in time period
         # to all donations for all entity in time period
         perc_dona_c_d_V_d = (
-            (unique_dona_c_d / unique_dona_d)
+            (unique_dona_c_d / unique_dona_d) * 100
             if unique_dona_d > 0 else 0
             )
         # Percent of all donations in time period for chosen entity
         # to all donations for all entity in time period
         perc_dona_r_d_V_d = (
-            (unique_dona_r_d / unique_dona_d)
+            (unique_dona_r_d / unique_dona_d) * 100
             if unique_dona_d > 0 else 0
             )
         # Percent of all donations for chosen entity in time period
         # to all donations for chosen entity all time period
         perc_dona_r_d_V_r = (
-            (unique_dona_r_d / unique_dona_r)
+            (unique_dona_r_d / unique_dona_r) * 100
             if unique_dona_r > 0 else 0
             )
         # Percent of targets for chosen entity all time
         # to all donations for chosen entity all time period
         perc_dona_c_r_V_r = (
-            (unique_dona_c_r / unique_dona_r)
+            (unique_dona_c_r / unique_dona_r) * 100
             if unique_dona_r > 0 else 0
             )
         # Percent of target donations in time period for chosen entity
         # to target donations for all entities and all time period
         perc_dona_c_r_d_V_c = (
-            (unique_dona_c_r_d / unique_dona_c)
+            (unique_dona_c_r_d / unique_dona_c) * 100
             if unique_dona_c > 0 else 0
             )
         # Percent of target donations in time period for chosen entity
         # to all donations for all entities and targetted time period
         perc_dona_c_r_d_V_d = (
-            (unique_dona_c_r_d / unique_dona_d)
+            (unique_dona_c_r_d / unique_dona_d) * 100
             if unique_dona_d > 0 else 0
             )
         # Percent of target donations in time period for chosen entity
         # to all donations for chosen entity and all time period
         perc_dona_c_r_d_V_r = (
-            (unique_dona_c_r_d / unique_dona_r)
+            (unique_dona_c_r_d / unique_dona_r) * 100
             if unique_dona_r > 0 else 0
             )
         # Percent of target donations in time period for chosen entity
         # to all donations for chosen entity and targetted time period
         perc_dona_c_r_d_V_r_d = (
-            (unique_dona_c_r_d / unique_dona_r_d)
+            (unique_dona_c_r_d / unique_dona_r_d) * 100
             if unique_dona_r_d > 0 else 0
             )
         # Percent of target donations in time period for chosen entity
         # to target donations for all entities and targetted time period
         perc_dona_c_r_d_V_c_d = (
-            (unique_dona_c_r_d / unique_dona_c_d)
+            (unique_dona_c_r_d / unique_dona_c_d) * 100
             if unique_dona_c_d > 0 else 0
             )
         # Percent of target donations in time period for chosen entity
         # to all donations for chosen entities and all time period
         perc_dona_c_r_d_V_c_r = (
-            (unique_dona_c_r_d / unique_dona_c_r)
+            (unique_dona_c_r_d / unique_dona_c_r) * 100
             if unique_dona_c_r > 0 else 0
             )
 
@@ -407,65 +412,65 @@ def cashdonationsregentity_body():
         # and all time period
         # to all donations for all entries and all time period
         perc_val_c_V_pop = (
-            (total_val_c / total_val_pop)
+            (total_val_c / total_val_pop) * 100
             if total_val_pop > 0 else 0
             )
         # Percent of value of all donations for chosen entity
         # to all donations for all entities and all time period
         perc_val_r_V_pop = (
-            (total_val_r / total_val_pop)
+            (total_val_r / total_val_pop) * 100
             if total_val_pop > 0 else 0
             )
         # Percent of value of all donations for all entities in time period
         # to all donations for all entities and all time period
         perc_val_d_V_pop = (
-            (total_val_d / total_val_pop)
+            (total_val_d / total_val_pop) * 100
             if total_val_pop > 0 else 0
             )
         # Percent of value of target donations for chosen entity
         # all time period
         # to all donations for all entity all time period
         perc_val_c_r_V_pop = (
-            (total_val_c_d / total_val_pop)
+            (total_val_c_d / total_val_pop) * 100
             if total_val_pop > 0 else 0
             )
         # Percent of value of target donations for chosen entity
         # all time period
         # to all donations for all entity all time period
         perc_val_c_d_V_pop = (
-            (total_val_c_d / total_val_pop)
+            (total_val_c_d / total_val_pop) * 100
             if total_val_pop > 0 else 0
             )
         # Percent of value of target donations for chosen entity
         # all time period
         # to all donations for all entity all time period
         perc_val_r_d_V_pop = (
-            (total_val_r_d / total_val_pop)
+            (total_val_r_d / total_val_pop) * 100
             if total_val_pop > 0 else 0
             )
         # Percent of value of target donations for chosen entity
         # all time period
         # to all donations for all entity all time period
         perc_val_c_r_d_V_pop = (
-            (total_val_c_r_d / total_val_pop)
+            (total_val_c_r_d / total_val_pop) * 100
             if total_val_pop > 0 else 0
             )
         # Percent of value of target donations in time period
         # to all donations for all entity in time period
         perc_val_c_d_V_d = (
-            (total_val_c_d / total_val_d)
+            (total_val_c_d / total_val_d) * 100
             if total_val_d > 0 else 0
             )
         # Percent of value of all donations in time period for chosen entity
         # to all donations for all entity in time period
         perc_val_r_d_V_d = (
-            (total_val_r_d / total_val_d)
+            (total_val_r_d / total_val_d) * 100
             if total_val_d > 0 else 0
             )
         # Percent of value of all donations for chosen entity in time period
         # to all donations for chosen entity all time period
         perc_val_r_d_V_r = (
-            (total_val_r_d / total_val_r)
+            (total_val_r_d / total_val_r) * 100
             if total_val_r > 0 else 0
             )
         # Percent of value of targets for chosen entity all time
@@ -477,37 +482,37 @@ def cashdonationsregentity_body():
         # Percent of value of target donations in time period for chosen entity
         # to target donations for all entities and all time period
         perc_val_c_r_d_V_c = (
-            (total_val_c_r_d / total_val_c)
+            (total_val_c_r_d / total_val_c) * 100
             if total_val_c > 0 else 0
             )
         # Percent of value of target donations in time period for chosen entity
         # to all donations for all entities and targetted time period
         perc_val_c_r_d_V_d = (
-            (total_val_c_r_d / total_val_d)
+            (total_val_c_r_d / total_val_d) * 100
             if total_val_d > 0 else 0
             )
         # Percent of value of target donations in time period for chosen entity
         # to all donations for chosen entity and all time period
         perc_val_c_r_d_V_r = (
-            (total_val_c_r_d / total_val_r)
+            (total_val_c_r_d / total_val_r) * 100
             if total_val_r > 0 else 0
             )
         # Percent of value of target donations in time period for chosen entity
         # to all donations for chosen entity and targetted time period
         perc_val_c_r_d_V_r_d = (
-            (total_val_c_r_d / total_val_r_d)
+            (total_val_c_r_d / total_val_r_d) * 100
             if total_val_r_d > 0 else 0
             )
         # Percent of value of target donations in time period for chosen entity
         # to target donations for all entities and targetted time period
         perc_val_c_r_d_V_c_d = (
-            (total_val_c_r_d / total_val_c_d)
+            (total_val_c_r_d / total_val_c_d) * 100
             if total_val_c_d > 0 else 0
             )
         # Percent of value of target donations in time period for chosen entity
         # to all donations for chosen entities and all time period
         perc_val_c_r_d_V_c_r = (
-            (total_val_c_r_d / total_val_c_r)
+            (total_val_c_r_d / total_val_c_r) * 100
             if total_val_c_r > 0 else 0
             )
 
@@ -517,113 +522,113 @@ def cashdonationsregentity_body():
         # and all time period
         # to all donations for all entries and all time period
         perc_dono_c_V_pop = (
-            (unique_dono_r / unique_dono_pop)
+            (unique_dono_r / unique_dono_pop) * 100
             if unique_dono_pop > 0 else 0
             )
         # Percent of donors of all donations for chosen entity
         # to all donations for all entities and all time period
         perc_dono_r_V_pop = (
-            (unique_dono_r / unique_dono_pop)
+            (unique_dono_r / unique_dono_pop) * 100
             if unique_dono_pop > 0 else 0
             )
         # Percent of donors of all donations for all entities in time period
         # to all donations for all entities and all time period
         perc_dono_d_V_pop = (
-            (unique_dono_d / unique_dono_pop)
+            (unique_dono_d / unique_dono_pop) * 100
             if unique_dono_pop > 0 else 0
             )
         # Percent of donors of target donations for chosen entity
         # all time period
         # to all donations for all entity all time period
         perc_dono_c_r_V_pop = (
-            (unique_dono_c_d / unique_dono_pop)
+            (unique_dono_c_d / unique_dono_pop) * 100
             if unique_dono_pop > 0 else 0
             )
         # Percent of donors of target donations for chosen entity
         # all time period
         # to all donations for all entity all time period
         perc_dono_c_d_V_pop = (
-            (unique_dono_c_d / unique_dono_pop)
+            (unique_dono_c_d / unique_dono_pop) * 100
             if unique_dono_pop > 0 else 0
             )
         # Percent of donors of target donations for chosen entity
         # all time period
         # to all donations for all entity all time period
         perc_dono_r_d_V_pop = (
-            (unique_dono_r_d / unique_dono_pop)
+            (unique_dono_r_d / unique_dono_pop) * 100
             if unique_dono_pop > 0 else 0
             )
         # Percent of donors of target donations for chosen entity
         # all time period
         # to all donations for all entity all time period
         perc_dono_c_r_d_V_pop = (
-            (unique_dono_c_r_d / unique_dono_pop)
+            (unique_dono_c_r_d / unique_dono_pop) * 100
             if unique_dono_pop > 0 else 0
             )
         # Percent of donors of target donations in time period
         # to all donations for all entity in time period
         perc_dono_c_d_V_d = (
-            (unique_dono_c_d / unique_dono_d)
+            (unique_dono_c_d / unique_dono_d) * 100
             if unique_dono_d > 0 else 0
             )
         # Percent of donors of all donations in time period for chosen entity
         # to all donations for all entity in time period
         perc_dono_r_d_V_d = (
-            (unique_dono_r_d / unique_dono_d)
+            (unique_dono_r_d / unique_dono_d) * 100
             if unique_dono_d > 0 else 0
             )
         # Percent of donors of all donations for chosen entity in time period
         # to all donations for chosen entity all time period
         perc_dono_r_d_V_r = (
-            (unique_dono_r_d / unique_dono_r)
+            (unique_dono_r_d / unique_dono_r) * 100
             if unique_dono_r > 0 else 0
             )
         # Percent of donors of targets for chosen entity all time
         # to all donations for chosen entity all time period
         perc_dono_c_r_V_r = (
-            (unique_dono_c_r / unique_dono_r)
+            (unique_dono_c_r / unique_dono_r) * 100
             if unique_dono_r > 0 else 0
             )
         # Percent of donors of target donations in time period for
         # chosen entity
         # to target donations for all entities and all time period
         perc_dono_c_r_d_V_c = (
-            (unique_dono_c_r_d / unique_dono_c)
+            (unique_dono_c_r_d / unique_dono_c) * 100
             if unique_dono_c > 0 else 0
             )
         # Percent of donors of target donations in time period for
         # chosen entity
         # to all donations for all entities and targetted time period
         perc_dono_c_r_d_V_d = (
-            (unique_dono_c_r_d / unique_dono_d)
+            (unique_dono_c_r_d / unique_dono_d) * 100
             if unique_dono_d > 0 else 0
             )
         # Percent of donors of target donations in time period for
         # chosen entity
         # to all donations for chosen entity and all time period
         perc_dono_c_r_d_V_r = (
-            (unique_dono_c_r_d / unique_dono_r)
+            (unique_dono_c_r_d / unique_dono_r) * 100
             if unique_dono_r > 0 else 0
             )
         # Percent of donors of target donations in time period for
         # chosen entity
         # to all donations for chosen entity and targetted time period
         perc_dono_c_r_d_V_r_d = (
-            (unique_dono_c_r_d / unique_dono_r_d)
+            (unique_dono_c_r_d / unique_dono_r_d) * 100
             if unique_dono_r_d > 0 else 0
             )
         # Percent of donors of target donations in time period for
         # chosen entity
         # to target donations for all entities and targetted time period
         perc_dono_c_r_d_V_c_d = (
-            (unique_dono_c_r_d / unique_dono_c_d)
+            (unique_dono_c_r_d / unique_dono_c_d) * 100
             if unique_dono_c_d > 0 else 0
             )
         # Percent of donors of target donations in time period for
         # chosen entity
         # to all donations for chosen entities and all time period
         perc_dono_c_r_d_V_c_r = (
-            (unique_dono_c_r_d / unique_dono_c_r)
+            (unique_dono_c_r_d / unique_dono_c_r) * 100
             if unique_dono_c_r > 0 else 0
             )
 
@@ -633,116 +638,116 @@ def cashdonationsregentity_body():
         # all entities and all time period
         # to all donations for all entries and all time period
         perc_reg_ent_c_V_pop = (
-            (unique_reg_ent_c / unique_reg_ent_pop)
+            (unique_reg_ent_c / unique_reg_ent_pop) * 100
             if unique_reg_ent_pop > 0 else 0
             )
         # Percent of regulated entitied of all donations for chosen entity
         # to all donations for all entities and all time period
         perc_reg_ent_r_V_pop = (
-            (unique_reg_ent_r / unique_reg_ent_pop)
+            (unique_reg_ent_r / unique_reg_ent_pop) * 100
             if unique_reg_ent_pop > 0 else 0
             )
         # Percent of regulated entitied of all donations for
         # all entities in time period
         # to all donations for all entities and all time period
         perc_reg_ent_d_V_pop = (
-            (unique_reg_ent_d / unique_reg_ent_pop)
+            (unique_reg_ent_d / unique_reg_ent_pop) * 100
             if unique_reg_ent_pop > 0 else 0
             )
         # Percent of regulated entitied of target donations for
         # chosen entity all time period
         # to all donations for all entity all time period
         perc_reg_ent_c_r_V_pop = (
-            (unique_reg_ent_c_d / unique_reg_ent_pop)
+            (unique_reg_ent_c_d / unique_reg_ent_pop) * 100
             if unique_reg_ent_pop > 0 else 0
             )
         # Percent of regulated entitied of target donations for
         # chosen entity all time period
         # to all donations for all entity all time period
         perc_reg_ent_c_d_V_pop = (
-            (unique_reg_ent_c_d / unique_reg_ent_pop)
+            (unique_reg_ent_c_d / unique_reg_ent_pop) * 100
             if unique_reg_ent_pop > 0 else 0
             )
         # Percent of regulated entitied of target donations for
         # chosen entity all time period
         # to all donations for all entity all time period
         perc_reg_ent_r_d_V_pop = (
-            (unique_reg_ent_r_d / unique_reg_ent_pop)
+            (unique_reg_ent_r_d / unique_reg_ent_pop) * 100
             if unique_reg_ent_pop > 0 else 0
             )
         # Percent of regulated entitied of target donations for
         # chosen entity all time period
         # to all donations for all entity all time period
         perc_reg_ent_c_r_d_V_pop = (
-            (unique_reg_ent_c_r_d / unique_reg_ent_pop)
+            (unique_reg_ent_c_r_d / unique_reg_ent_pop) * 100
             if unique_reg_ent_pop > 0 else 0
             )
         # Percent of regulated entitied of target donations in time period
         # to all donations for all entity in time period
         perc_reg_ent_c_d_V_d = (
-            (unique_reg_ent_c_d / unique_reg_ent_d)
+            (unique_reg_ent_c_d / unique_reg_ent_d) * 100
             if unique_reg_ent_d > 0 else 0
             )
         # Percent of regulated entitied of all donations in
         # time period for chosen entity
         # to all donations for all entity in time period
         perc_reg_ent_r_d_V_d = (
-            (unique_reg_ent_r_d / unique_reg_ent_d)
+            (unique_reg_ent_r_d / unique_reg_ent_d) * 100
             if unique_reg_ent_d > 0 else 0
             )
         # Percent of regulated entitied of all donations for
         # chosen entity in time period
         # to all donations for chosen entity all time period
         perc_reg_ent_r_d_V_r = (
-            (unique_reg_ent_r_d / unique_reg_ent_r)
+            (unique_reg_ent_r_d / unique_reg_ent_r) * 100
             if unique_reg_ent_r > 0 else 0
             )
         # Percent of regulated entitied of targets for chosen entity all time
         # to all donations for chosen entity all time period
         perc_reg_ent_c_r_V_r = (
-            (unique_reg_ent_c_r / unique_reg_ent_r)
+            (unique_reg_ent_c_r / unique_reg_ent_r) * 100
             if unique_reg_ent_r > 0 else 0
             )
         # Percent of regulated entitied of target donations
         # in time period for chosen entity
         # to target donations for all entities and all time period
         perc_reg_ent_c_r_d_V_c = (
-            (unique_reg_ent_c_r_d / unique_reg_ent_c)
+            (unique_reg_ent_c_r_d / unique_reg_ent_c) * 100
             if unique_reg_ent_c > 0 else 0
             )
         # Percent of regulated entitied of target donations in
         # time period for chosen entity
         # to all donations for all entities and targetted time period
         perc_reg_ent_c_r_d_V_d = (
-            (unique_reg_ent_c_r_d / unique_reg_ent_d)
+            (unique_reg_ent_c_r_d / unique_reg_ent_d) * 100
             if unique_reg_ent_d > 0 else 0
             )
         # Percent of regulated entitied of target donations in
         # time period for chosen entity
         # to all donations for chosen entity and all time period
         perc_reg_ent_c_r_d_V_r = (
-            (unique_reg_ent_c_r_d / unique_reg_ent_r)
+            (unique_reg_ent_c_r_d / unique_reg_ent_r) * 100
             if unique_reg_ent_r > 0 else 0
             )
         # Percent of regulated entitied of target donations in
         # time period for chosen entity
         # to all donations for chosen entity and targetted time period
         perc_reg_ent_c_r_d_V_r_d = (
-            (unique_reg_ent_c_r_d / unique_reg_ent_r_d)
+            (unique_reg_ent_c_r_d / unique_reg_ent_r_d) * 100
             if unique_reg_ent_r_d > 0 else 0
             )
         # Percent of regulated entitied of target donations in
         # time period for chosen entity
         # to target donations for all entities and targetted time period
         perc_reg_ent_c_r_d_V_c_d = (
-            (unique_reg_ent_c_r_d / unique_reg_ent_c_d)
+            (unique_reg_ent_c_r_d / unique_reg_ent_c_d) * 100
             if unique_reg_ent_c_d > 0 else 0
             )
         # Percent of regulated entitied of target donations in
         # time period for chosen entity
         # to all donations for chosen entities and all time period
         perc_reg_ent_c_r_d_V_c_r = (
-            (unique_reg_ent_c_r_d / unique_reg_ent_c_r)
+            (unique_reg_ent_c_r_d / unique_reg_ent_c_r) * 100
             if unique_reg_ent_c_r > 0 else 0
             )
 
@@ -751,200 +756,295 @@ def cashdonationsregentity_body():
     max_date_df = end_date.date()
 
     # Create a table of the results
-    st.write("### Comparison Table")
-    comparison_data = {
-        "Metric": [
-            "Unique Regulated Entities",
-            "Unique Donors",
-            "Unique Donations",
-            "Total Value",
-            "Mean Value",
-            "Avg Donations per Entity",
-            "Avg Value per Entity",
-            "Avg Donors per Entity",
-            "Std Dev Donations per Entity",
-            "Std Dev Value per Entity",
-            "Std Dev Donors per Entity"
-        ],
-        f"All Donations:\n{min_date} to {max_date}": [
-            unique_reg_ent_pop, unique_dono_pop, unique_dona_pop,
-            total_val_pop,
-            mean_val_pop,
-            avg_dona_pop,
-            avg_val_pop,
-            avg_dono_pop,
-            std_dona_pop,
-            std_val_pop,
-            std_dono_pop
-        ],
-        f"{target_label}s:\n{min_date} to {max_date}": [
-            unique_reg_ent_c, unique_dono_c, unique_dona_c,
-            total_val_c,
-            mean_val_c,
-            avg_dona_pop_c,
-            avg_val_pop_c,
-            avg_dono_pop_c,
-            std_dona_pop_c,
-            std_val_pop_c,
-            std_dono_pop_c
-        ],
-        f"{selected_entity_name}:\n{min_date} to {max_date}": [
-            unique_reg_ent_r, unique_dono_r, unique_dona_r,
-            total_val_r,
-            mean_val_r,
-            avg_dona_pop_r,
-            avg_val_pop_r,
-            avg_dono_pop_r,
-            std_dona_pop_r,
-            std_val_pop_r,
-            std_dono_pop_r
-        ],
-        f"{selected_entity_name},\n{target_label}s:\n{min_date} to {max_date}": [
-            unique_reg_ent_c_r, unique_dono_c_r, unique_dona_c_r,
-            total_val_c_r,
-            mean_val_c_r,
-            avg_dona_pop_c_r,
-            avg_val_pop_c_r,
-            avg_dono_pop_c_r,
-            std_dona_pop_c_r,
-            std_val_pop_c_r,
-            std_dono_pop_c_r
-        ],
-        f"All donations:\n{min_date_df} to {max_date_df}": [
-            unique_reg_ent_d, unique_dono_d, unique_dona_d,
-            total_val_d,
-            mean_val_d,
-            avg_dona_pop_d,
-            avg_val_pop_d,
-            avg_dono_pop_d,
-            std_dona_pop_d,
-            std_val_pop_d,
-            std_dono_pop_d
-        ],
-        f"{target_label}s:\n{min_date_df} to {max_date_df}": [
-            unique_reg_ent_c_d, unique_dono_c_d, unique_dona_c_d,
-            total_val_c_d,
-            mean_val_c_d,
-            avg_dona_pop_c_d,
-            avg_val_pop_c_d,
-            avg_dono_pop_c_d,
-            std_dona_pop_c_d,
-            std_val_pop_c_d,
-            std_dono_pop_c_d
-        ],
-        f"{selected_entity_name}:\n{min_date_df} to {max_date_df}": [
-            unique_reg_ent_r_d, unique_dono_r_d, unique_dona_r_d,
-            total_val_r_d,
-            mean_val_r_d,
-            avg_dona_pop_r_d,
-            avg_val_pop_r_d,
-            avg_dono_pop_r_d,
-            std_dona_pop_r_d,
-            std_val_pop_r_d,
-            std_dono_pop_r_d
-        ],
-        f"{selected_entity_name},\n{target_label}s:\n{min_date_df} to {max_date_df}": [
-            unique_reg_ent_c_r_d, unique_dono_c_r_d, unique_dona_c_r_d,
-            total_val_c_r_d,
-            mean_val_c_r_d,
-            avg_dona_pop_c_r_d,
-            avg_val_pop_c_r_d,
-            avg_dono_pop_c_r_d,
-            std_dona_pop_c_r_d,
-            std_val_pop_c_r_d,
-            std_dono_pop_c_r_d
-        ]
+    st.write(f"### Comparison Table: Donation Values"
+             f"({min_date} to {max_date})")
+    # Set variables to contain column names
+    column_names = ["Total Value",
+                    "Mean Value",
+                    "Avg Value per Entity",
+                    "Std Dev Value per Entity"]
+    # Metrics
+    metrics = [
+        f"All Donations: \n{min_date} to {max_date}",
+        f"{target_label}s: \n{min_date} to {max_date}",
+        f"{selected_entity_name}: \n{min_date} to {max_date}",
+        f"{selected_entity_name},\n{target_label}s:"
+        f" {min_date} to {max_date}",
+        f"All donations: \n{min_date_df} to {max_date_df}",
+        f"{target_label}s: \n{min_date_df} to {max_date_df}",
+        f"{selected_entity_name}: \n{min_date_df} to {max_date_df}",
+        f"{selected_entity_name},\n{target_label}s:"
+        f" {min_date_df} to {max_date_df}"
+    ]
+    # Corresponding data values for each column
+    comparison_data_a = {
+        "Metric": metrics,
+        column_names[0]: [total_val_pop, total_val_c, total_val_r,
+                          total_val_c_r, total_val_d, total_val_c_d,
+                          total_val_r_d, total_val_c_r_d],
+        column_names[1]: [mean_val_pop, mean_val_c, mean_val_r, mean_val_c_r,
+                          mean_val_d, mean_val_c_d, mean_val_r_d,
+                          mean_val_c_r_d],
+        column_names[2]: [avg_val_pop, avg_val_pop_c, avg_val_pop_r,
+                          avg_val_pop_c_r, avg_val_pop_d, avg_val_pop_c_d,
+                          avg_val_pop_r_d, avg_val_pop_c_r_d],
+        column_names[3]: [std_val_pop, std_val_pop_c, std_val_pop_r,
+                          std_val_pop_c_r, std_val_pop_d, std_val_pop_c_d,
+                          std_val_pop_r_d, std_val_pop_c_r_d]
     }
-
-    comparison_df = pd.DataFrame(comparison_data)
+    comparison_df_a = pd.DataFrame(comparison_data_a)
+    # Display in Streamlit
     st.dataframe(
-        comparison_df.style
-        .format(
-            {
-                f"All Donations: {min_date} to {max_date}": "{:.2f}",
-                f"{target_label}s: {min_date} to {max_date}": "{:.2f}",
-                f"{selected_entity_name}: {min_date} to {max_date}": "{:.2f}",
-                f"{selected_entity_name}, {target_label}s: {min_date} to {max_date}": "{:.2f}",
-                f"All Donations: {min_date_df} to {max_date_df}": "{:.2f}",
-                f"{target_label}s: {min_date_df} to {max_date_df}": "{:.2f}",
-                f"{selected_entity_name}: {min_date_df} to {max_date_df}": "{:.2f}",
-                f"{selected_entity_name}, {target_label}s: {min_date_df} to {max_date_df}": "{:.2f}",
-                "Total Value": "£{:.2f}",
-                "Mean Value": "£{:.2f}",
-                "Avg Value per Entity": "£{:.2f}",
-                "Std Dev Value per Entity": "£{:.2f}",
-            }
-        )
-        .set_properties(**{"width": "150px"})
+        comparison_df_a,
+        column_config={col: st.column_config.NumberColumn(format="£ %.0f")
+                       for col in column_names},
+        hide_index=True,
+        use_container_width=False
+    )
+    # table 2
+    st.write("### Comparison Table: of Donations and Donors")
+    # set variable to contain column names
+    column_names2 = [
+            "Regulated Entities",
+            "Donors",
+            "Donations",
+            "Avg. Donations per Entity",
+            "Avg. Donors per Entity",
+            "S.Dev Donations per Entity",
+            "S.Dev Donors per Entity"
+            ]
+
+    # Metrics
+    metrics = [
+        f"All Donations: \n{min_date} to {max_date}",
+        f"{target_label}s: \n{min_date} to {max_date}",
+        f"{selected_entity_name}: \n{min_date} to {max_date}",
+        f"{selected_entity_name},\n{target_label}s:"
+        f" {min_date} to {max_date}",
+        f"All donations: \n{min_date_df} to {max_date_df}",
+        f"{target_label}s: \n{min_date_df} to {max_date_df}",
+        f"{selected_entity_name}: \n{min_date_df} to {max_date_df}",
+        f"{selected_entity_name},\n{target_label}s:"
+        f" {min_date_df} to {max_date_df}"
+    ]
+    # Corresponding data values for each column
+    comparison_data2 = {
+        "Metric": metrics,
+        column_names2[0]: [unique_reg_ent_pop, unique_reg_ent_c,
+                           unique_reg_ent_r, unique_reg_ent_c_r,
+                           unique_reg_ent_d, unique_reg_ent_c_d,
+                           unique_reg_ent_r_d, unique_reg_ent_c_r_d],
+        column_names2[1]: [unique_dono_pop, unique_dono_c, unique_dono_r,
+                           unique_dono_c_r, unique_dono_d, unique_dono_c_d,
+                           unique_dono_r_d, unique_dono_c_r_d],
+        column_names2[2]: [unique_dona_pop, unique_dona_c, unique_dona_r,
+                           unique_dona_c_r, unique_dona_d, unique_dona_c_d,
+                           unique_dona_r_d, unique_dona_c_r_d],
+        column_names2[3]: [avg_dona_pop, avg_dona_pop_c, avg_dona_pop_r,
+                           avg_dona_pop_c_r, avg_dona_pop_d, avg_dona_pop_c_d,
+                           avg_dona_pop_r_d, avg_dona_pop_c_r_d],
+        column_names2[4]: [avg_dono_pop, avg_dono_pop_c, avg_dono_pop_r,
+                           avg_dono_pop_c_r, avg_dono_pop_d, avg_dono_pop_c_d,
+                           avg_dono_pop_r_d, avg_dono_pop_c_r_d],
+        column_names2[5]: [std_dona_pop, std_dona_pop_c, std_dona_pop_r,
+                           std_dona_pop_c_r, std_dona_pop_d, std_dona_pop_c_d,
+                           std_dona_pop_r_d, std_dona_pop_c_r_d],
+        column_names2[6]: [std_dono_pop, std_dono_pop_c, std_dono_pop_r,
+                           std_dono_pop_c_r, std_dono_pop_d, std_dono_pop_c_d,
+                           std_dono_pop_r_d, std_dono_pop_c_r_d]
+    }
+    # Create a table of the results
+    comparison_df2_2 = pd.DataFrame(comparison_data2)
+    # Display in Streamlit
+    st.dataframe(
+        comparison_df2_2,
+        column_config={col: st.column_config.NumberColumn(format="%.0f")
+                       for col in column_names2},
+        hide_index=True,
+        use_container_width=False
     )
 
-    # Create a table of percentage comparisons
-    st.write("### Percentage Comparison Table")
-
-    # Define percentage comparison data
-    percentage_comparison_data = {
-        "Metric": [
-            f"{target_label}s vs All Donations: {min_date} to {max_date}",
-            f"{selected_entity_name} vs All Donations: {min_date} to {max_date}",
-            f"All Donations: {min_date_df} to {max_date_df} vs {min_date} to {max_date}",
-            f"{selected_entity_name} {target_label}s vs All Donations: {min_date} to {max_date}",
-            f"{target_label}: {min_date_df} to {max_date_df} vs All Donations: {min_date} to {max_date}",
-            f"{selected_entity_name}: {min_date_df} to {max_date_df} vs All Donations: {min_date} to {max_date}",
-            f"{selected_entity_name} {target_label}s: {min_date_df} to {max_date_df} vs All Donations: {min_date} to {max_date}",
-        ],
-        "Percentage Of Donations": [
-            perc_dona_c_V_pop,
-            perc_dona_r_V_pop,
-            perc_dona_d_V_pop,
-            perc_dona_c_r_V_pop,
-            perc_dona_c_d_V_pop,
-            perc_dona_r_d_V_pop,
-            perc_dona_c_r_d_V_pop
-        ],
-        "Percentage Of Value": [
-            perc_val_c_V_pop,
-            perc_val_r_V_pop,
-            perc_val_d_V_pop,
-            perc_val_c_r_V_pop,
-            perc_val_c_d_V_pop,
-            perc_val_r_d_V_pop,
-            perc_val_c_r_d_V_pop
-        ],
-        "Percentage Of Donors": [
-            perc_dono_c_V_pop,
-            perc_dono_r_V_pop,
-            perc_dono_d_V_pop,
-            perc_dono_c_r_V_pop,
-            perc_dono_c_d_V_pop,
-            perc_dono_r_d_V_pop,
-            perc_dono_c_r_d_V_pop
-        ],
-        "Percentage Of Entities": [
-            perc_reg_ent_c_V_pop,
-            perc_reg_ent_r_V_pop,
-            perc_reg_ent_d_V_pop,
-            perc_reg_ent_c_r_V_pop,
-            perc_reg_ent_c_d_V_pop,
-            perc_reg_ent_r_d_V_pop,
-            perc_reg_ent_c_r_d_V_pop
-        ]
+    # Table 3: Percentage Comparison vs All Donations
+    # (Between min_date and max_date)
+    st.write(f"### Percentage Comparison Table: vs All Donations"
+             f" Activity between {min_date} and {max_date}")
+    # Define row names
+    metrics3 = [
+        f"{target_label}s vs All Donations: {min_date} to {max_date}",
+        f"{selected_entity_name} vs All Donations:"
+        f" {min_date} to {max_date}",
+        f"All Donations: {min_date_df} to {max_date_df} vs"
+        f" {min_date} to {max_date}",
+        f"{selected_entity_name} {target_label}s vs All Donations:"
+        f" {min_date} to {max_date}",
+        f"{target_label}: {min_date_df} to {max_date_df} vs All Donations:"
+        f" {min_date} to {max_date}",
+        f"{selected_entity_name}: {min_date_df} to {max_date_df} vs"
+        f" All Donations: {min_date} to {max_date}",
+        f"{selected_entity_name} {target_label}s: {min_date_df}"
+        f" to {max_date_df} vs All Donations: {min_date} to {max_date}",
+    ]
+    # Define column names
+    column_names3 = ["Percentage Of Donations", "Percentage Of Value",
+                     "Percentage Of Donors", "Percentage Of Entities"]
+    # Data for percentage comparisons
+    percentage_comparison_data3 = {
+        "Metric": metrics3,  # Keeping metrics as the first column
+        column_names3[0]: [perc_dona_c_V_pop, perc_dona_r_V_pop,
+                           perc_dona_d_V_pop, perc_dona_c_r_V_pop,
+                           perc_dona_c_d_V_pop, perc_dona_r_d_V_pop,
+                           perc_dona_c_r_d_V_pop
+                           ],
+        column_names3[1]: [perc_val_c_V_pop,
+                           perc_val_r_V_pop, perc_val_d_V_pop,
+                           perc_val_c_r_V_pop, perc_val_c_d_V_pop,
+                           perc_val_r_d_V_pop, perc_val_c_r_d_V_pop],
+        column_names3[2]: [perc_dono_c_V_pop,
+                           perc_dono_r_V_pop, perc_dono_d_V_pop,
+                           perc_dono_c_r_V_pop, perc_dono_c_d_V_pop,
+                           perc_dono_r_d_V_pop, perc_dono_c_r_d_V_pop],
+        column_names3[3]: [perc_reg_ent_c_V_pop,
+                           perc_reg_ent_r_V_pop, perc_reg_ent_d_V_pop,
+                           perc_reg_ent_c_r_V_pop, perc_reg_ent_c_d_V_pop,
+                           perc_reg_ent_r_d_V_pop, perc_reg_ent_c_r_d_V_pop]
     }
 
-    # Convert data to DataFrame
-    percentage_comparison_df = pd.DataFrame(percentage_comparison_data)
-
-    # Format percentage columns to display as percentages
+    # Create DataFrame
+    percentage_comparison_df_3 = pd.DataFrame(percentage_comparison_data3)
+    # Display formatted percentage comparison table in Streamlit
     st.dataframe(
-        percentage_comparison_df.style
-        .format({
-            "Percentage Of Donations": "{:.2%}",
-            "Percentage Of Value": "{:.2%}",
-            "Percentage Of Donors": "{:.2%}",
-            "Percentage Of Entities": "{:.2%}",
-        })
-        .set_properties(**{"width": "150px"})
+        percentage_comparison_df_3,
+        column_config={col: st.column_config.NumberColumn(format="%.2f%%")
+                       for col in column_names3},
+        hide_index=True,
+        use_container_width=False
     )
 
+    # Table 4: Percentage Comparison vs All Donations
+    # (Between min_date_df and max_date_df)
+    st.write(f"### Percentage Comparison Table: vs All Donations"
+             f" Activity between {min_date_df} and {max_date_df}")
+    # Define row names
+    metrics4 = [
+        f"{target_label}s: {min_date_df} to {max_date_df} vs All Donations:"
+        f" {min_date_df} to {max_date_df}",
+        f"{selected_entity_name}: {min_date_df} to {max_date_df} vs"
+        " All Donations:"
+        f" {min_date_df} to {max_date_df}",
+        f"{selected_entity_name} {target_label}s: {min_date_df} to"
+        f" {max_date_df} vs All Donations:"
+        f" {min_date_df} to {max_date_df}",
+        f"{selected_entity_name} {target_label}s: {min_date_df} to"
+        f" {max_date_df} vs All {target_label}:"
+        f" {min_date_df} to {max_date_df}",
+        f"{selected_entity_name} {target_label}s: {min_date_df} to"
+        f" {max_date_df} vs {selected_entity_name} all Donations:"
+        f" {min_date_df} to {max_date_df}"
+    ]
+    # Data for percentage comparisons
+    percentage_comparison_data4 = {
+        "Metric": metrics4,  # Keeping metrics as the first column
+        column_names3[0]: [perc_dona_c_d_V_d,
+                           perc_dona_r_d_V_d,
+                           perc_dona_c_r_d_V_d,
+                           perc_dona_c_r_d_V_c_d,
+                           perc_dona_c_r_d_V_r_d
+                           ],
+        column_names3[1]: [perc_val_c_d_V_d, perc_val_r_d_V_d,
+                           perc_val_c_r_d_V_d, perc_val_c_r_d_V_c_d,
+                           perc_val_c_r_d_V_r_d
+                           ],
+        column_names3[2]: [perc_dono_c_d_V_d,
+                           perc_dono_r_d_V_d,
+                           perc_dono_c_r_d_V_d,
+                           perc_dono_c_r_d_V_c_d,
+                           perc_dono_c_r_d_V_r_d
+                           ],
+        column_names3[3]: [perc_reg_ent_c_d_V_d,
+                           perc_reg_ent_r_d_V_d,
+                           perc_reg_ent_c_r_d_V_d,
+                           perc_reg_ent_c_r_d_V_c_d,
+                           perc_reg_ent_c_r_d_V_r_d
+                           ]
+    }
+    # Create DataFrame
+    percentage_comparison_df4 = pd.DataFrame(percentage_comparison_data4)
+    # Display formatted percentage comparison table in Streamlit
+    st.dataframe(
+        percentage_comparison_df4,
+        column_config={col: st.column_config.NumberColumn(format="%.2f%%")
+                       for col in column_names3},
+        hide_index=True,
+        use_container_width=False
+    )
+
+    # table 5
+    # Data for percentage comparisons (structured without transposing)
+    # Define row names
+    metrics5 = [
+        f"{target_label}s: {min_date_df} to {max_date_df} vs All"
+        f" {selected_entity_name} Donations:"
+        f" {min_date} to {max_date}",
+        f"{selected_entity_name} {target_label}s: {min_date} to {max_date} vs"
+        f" All {selected_entity_name} Donations:"
+        f" {min_date} to {max_date}",
+        f"{selected_entity_name} {target_label}s: {min_date_df}"
+        f" to {max_date_df} vs All {selected_entity_name} Donations:"
+        f" {min_date} to {max_date}",
+        f"{selected_entity_name} {target_label}s: {min_date_df}"
+        f" to {max_date_df} vs All {target_label}:"
+        f" {min_date} to {max_date}",
+        f"{selected_entity_name} {target_label}s: {min_date_df}"
+        f" to {max_date_df} vs {selected_entity_name} {target_label}s:"
+        f" {min_date} to {max_date}"
+        f" to {max_date_df} vs all {target_label} Donations:"
+        f" {min_date} to {max_date}"
+    ]
+    # Data for percentage comparisons
+    percentage_comparison_data5 = {
+        "Metric": metrics5,  # Keeping metrics as the first column
+        column_names3[0]: [perc_dona_r_d_V_r,
+                           perc_dona_c_r_V_r,
+                           perc_dona_c_r_d_V_r,
+                           perc_dona_c_r_d_V_c_r,
+                           perc_dona_c_r_d_V_c
+                           ],
+        column_names3[1]: [perc_val_r_d_V_r,
+                           perc_val_c_r_V_r,
+                           perc_val_c_r_d_V_r,
+                           perc_val_c_r_d_V_c_r,
+                           perc_val_c_r_d_V_c
+                           ],
+        column_names3[2]: [perc_dono_r_d_V_r,
+                           perc_dono_c_r_V_r,
+                           perc_dono_c_r_d_V_r,
+                           perc_dono_c_r_d_V_c_r,
+                           perc_dono_c_r_d_V_c
+                           ],
+        column_names3[3]: [perc_reg_ent_r_d_V_r,
+                           perc_reg_ent_c_r_V_r,
+                           perc_reg_ent_c_r_d_V_r,
+                           perc_reg_ent_c_r_d_V_c_r,
+                           perc_reg_ent_c_r_d_V_c
+                           ]
+    }
+
+    # Create DataFrame
+    percentage_comparison_df_5 = pd.DataFrame(percentage_comparison_data5)
+
+    # Display formatted percentage comparison table in Streamlit
+    st.write(f"### Percentage Comparison Table: vs {selected_entity_name}"
+             " Donor Activity")
+
+    st.dataframe(
+        percentage_comparison_df_5,
+        column_config={col: st.column_config.NumberColumn(format="%.2f%%")
+                       for col in column_names3},
+        hide_index=True,
+        use_container_width=False
+    )
+
+    # Text Discription and visuals
     st.write(f"## Topline Figures for {target_label} to {selected_entity_name}"
              f" between {min_date_df} and {max_date_df}")
     st.write(f"* During the period between {min_date_df} and {max_date_df}, "
