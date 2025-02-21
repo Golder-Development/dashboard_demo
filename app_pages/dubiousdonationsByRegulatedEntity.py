@@ -3,9 +3,9 @@ def dubiousdonationsByDonor_body():
     Displays the content of the Donations by Political Party page.
     """
     import streamlit as st
-    import calculations as ppcalc
+    import components.calculations as ppcalc
     import datetime as dt
-    import Visualisations as vis
+    import components.Visualisations as vis
     import pandas as pd
 
     # Page Title

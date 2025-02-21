@@ -3,8 +3,8 @@ def cashdonationsregentity_body():
     Displays the content of the Cash Donations to Political Party page.
     """
     import streamlit as st
-    import calculations as ppcalc
-    import Visualisations as vis
+    import components.calculations as ppcalc
+    import components.Visualisations as vis
     import datetime as dt
 
 

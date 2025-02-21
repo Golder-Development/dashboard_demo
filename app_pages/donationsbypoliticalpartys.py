@@ -3,7 +3,7 @@ def donationsbypoliticalpartys_body():
     Displays the content of the Donations by Political Party page.
     """
     import streamlit as st
-    import calculations as ppcalc
+    import components.calculations as ppcalc
 
     df = st.session_state.get("data", None)
     if df is None:

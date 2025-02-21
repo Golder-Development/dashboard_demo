@@ -3,8 +3,8 @@ def dubiousdonations_body():
     Displays the content of the Donations by Political Party page.
     """
     import streamlit as st
-    import calculations as ppcalc
-    import Visualisations as vis
+    import components.calculations as ppcalc
+    import components.Visualisations as vis
 
     # Page Title
     st.write("## Dubious Donations to ")

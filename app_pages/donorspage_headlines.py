@@ -1,6 +1,6 @@
 import streamlit as st
-import calculations as ppcalc
-import Visualisations as vis
+import components.calculations as ppcalc
+import components.Visualisations as vis
 
 
 def donorsheadlinespage_body():

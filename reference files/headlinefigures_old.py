@@ -3,7 +3,7 @@ def hlf_body():
     This function displays the content of Page two.
     """
     import streamlit as st
-    import calculations as ppcalc
+    import components.calculations as ppcalc
     import matplotlib.pyplot as plt
 
     df = st.session_state.get("data_clean", None)

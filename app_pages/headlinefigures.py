@@ -3,8 +3,8 @@ def hlf_body():
     This function displays the content of Page two.
     """
     import streamlit as st
-    import calculations as ppcalc
-    import Visualisations as vis
+    import components.calculations as ppcalc
+    import components.Visualisations as vis
 
     df = st.session_state.get("data_clean", None)
     # sum_df = st.session_state.get("data_party_sum", None)

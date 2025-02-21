@@ -1,5 +1,5 @@
 import streamlit as st
-import datasetupandclean as dc
+import data.datasetupandclean as dc
 
 # Set up multipage navigation and reference pages.
 from app_pages.multi_page import MultiPage
