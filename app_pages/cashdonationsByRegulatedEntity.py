@@ -215,83 +215,151 @@ def cashdonationsregentity_body():
     create_reg_entity_comparisons = True
     # Donation comparisons
     if create_donation_comparisons:
-        perc_dona_c_V_pop = ppcalc.calculate_percentage(unique_dona_r, unique_dona_pop)
-        perc_dona_r_V_pop = ppcalc.calculate_percentage(unique_dona_r, unique_dona_pop)
-        perc_dona_d_V_pop = ppcalc.calculate_percentage(unique_dona_d, unique_dona_pop)
-        perc_dona_c_r_V_pop = ppcalc.calculate_percentage(unique_dona_c_d, unique_dona_pop)
-        perc_dona_c_d_V_pop = ppcalc.calculate_percentage(unique_dona_c_d, unique_dona_pop)
-        perc_dona_r_d_V_pop = ppcalc.calculate_percentage(unique_dona_r_d, unique_dona_pop)
-        perc_dona_c_r_d_V_pop = ppcalc.calculate_percentage(unique_dona_c_r_d, unique_dona_pop)
-        perc_dona_c_d_V_d = ppcalc.calculate_percentage(unique_dona_c_d, unique_dona_d)
-        perc_dona_r_d_V_d = ppcalc.calculate_percentage(unique_dona_r_d, unique_dona_d)
-        perc_dona_r_d_V_r = ppcalc.calculate_percentage(unique_dona_r_d, unique_dona_r)
-        perc_dona_c_r_V_r = ppcalc.calculate_percentage(unique_dona_c_r, unique_dona_r)
-        perc_dona_c_r_d_V_c = ppcalc.calculate_percentage(unique_dona_c_r_d, unique_dona_c)
-        perc_dona_c_r_d_V_d = ppcalc.calculate_percentage(unique_dona_c_r_d, unique_dona_d)
-        perc_dona_c_r_d_V_r = ppcalc.calculate_percentage(unique_dona_c_r_d, unique_dona_r)
-        perc_dona_c_r_d_V_r_d = ppcalc.calculate_percentage(unique_dona_c_r_d, unique_dona_r_d)
-        perc_dona_c_r_d_V_c_d = ppcalc.calculate_percentage(unique_dona_c_r_d, unique_dona_c_d)
-        perc_dona_c_r_d_V_c_r = ppcalc.calculate_percentage(unique_dona_c_r_d, unique_dona_c_r)
+        perc_dona_c_V_pop = ppcalc.calculate_percentage(unique_dona_r,
+                                                        unique_dona_pop)
+        perc_dona_r_V_pop = ppcalc.calculate_percentage(unique_dona_r,
+                                                        unique_dona_pop)
+        perc_dona_d_V_pop = ppcalc.calculate_percentage(unique_dona_d,
+                                                        unique_dona_pop)
+        perc_dona_c_r_V_pop = ppcalc.calculate_percentage(unique_dona_c_d,
+                                                          unique_dona_pop)
+        perc_dona_c_d_V_pop = ppcalc.calculate_percentage(unique_dona_c_d,
+                                                          unique_dona_pop)
+        perc_dona_r_d_V_pop = ppcalc.calculate_percentage(unique_dona_r_d,
+                                                          unique_dona_pop)
+        perc_dona_c_r_d_V_pop = ppcalc.calculate_percentage(unique_dona_c_r_d,
+                                                            unique_dona_pop)
+        perc_dona_c_d_V_d = ppcalc.calculate_percentage(unique_dona_c_d,
+                                                        unique_dona_d)
+        perc_dona_r_d_V_d = ppcalc.calculate_percentage(unique_dona_r_d,
+                                                        unique_dona_d)
+        perc_dona_r_d_V_r = ppcalc.calculate_percentage(unique_dona_r_d,
+                                                        unique_dona_r)
+        perc_dona_c_r_V_r = ppcalc.calculate_percentage(unique_dona_c_r,
+                                                        unique_dona_r)
+        perc_dona_c_r_d_V_c = ppcalc.calculate_percentage(unique_dona_c_r_d,
+                                                          unique_dona_c)
+        perc_dona_c_r_d_V_d = ppcalc.calculate_percentage(unique_dona_c_r_d,
+                                                          unique_dona_d)
+        perc_dona_c_r_d_V_r = ppcalc.calculate_percentage(unique_dona_c_r_d,
+                                                          unique_dona_r)
+        perc_dona_c_r_d_V_r_d = ppcalc.calculate_percentage(unique_dona_c_r_d,
+                                                            unique_dona_r_d)
+        perc_dona_c_r_d_V_c_d = ppcalc.calculate_percentage(unique_dona_c_r_d,
+                                                            unique_dona_c_d)
+        perc_dona_c_r_d_V_c_r = ppcalc.calculate_percentage(unique_dona_c_r_d,
+                                                            unique_dona_c_r)
 
     # Value comparisons
     if create_value_comparisons:
-        perc_val_c_V_pop = ppcalc.calculate_percentage(total_val_c, total_val_pop)
-        perc_val_r_V_pop = ppcalc.calculate_percentage(total_val_r, total_val_pop)
-        perc_val_d_V_pop = ppcalc.calculate_percentage(total_val_d, total_val_pop)
-        perc_val_c_r_V_pop = ppcalc.calculate_percentage(total_val_c_d, total_val_pop)
-        perc_val_c_d_V_pop = ppcalc.calculate_percentage(total_val_c_d, total_val_pop)
-        perc_val_r_d_V_pop = ppcalc.calculate_percentage(total_val_r_d, total_val_pop)
-        perc_val_c_r_d_V_pop = ppcalc.calculate_percentage(total_val_c_r_d, total_val_pop)
-        perc_val_c_d_V_d = ppcalc.calculate_percentage(total_val_c_d, total_val_d)
-        perc_val_r_d_V_d = ppcalc.calculate_percentage(total_val_r_d, total_val_d)
-        perc_val_r_d_V_r = ppcalc.calculate_percentage(total_val_r_d, total_val_r)
-        perc_val_c_r_V_r = ppcalc.calculate_percentage(total_val_c_r, total_val_r)
-        perc_val_c_r_d_V_c = ppcalc.calculate_percentage(total_val_c_r_d, total_val_c)
-        perc_val_c_r_d_V_d = ppcalc.calculate_percentage(total_val_c_r_d, total_val_d)
-        perc_val_c_r_d_V_r = ppcalc.calculate_percentage(total_val_c_r_d, total_val_r)
-        perc_val_c_r_d_V_r_d = ppcalc.calculate_percentage(total_val_c_r_d, total_val_r_d)
-        perc_val_c_r_d_V_c_d = ppcalc.calculate_percentage(total_val_c_r_d, total_val_c_d)
-        perc_val_c_r_d_V_c_r = ppcalc.calculate_percentage(total_val_c_r_d, total_val_c_r)
+        perc_val_c_V_pop = ppcalc.calculate_percentage(total_val_c,
+                                                       total_val_pop)
+        perc_val_r_V_pop = ppcalc.calculate_percentage(total_val_r,
+                                                       total_val_pop)
+        perc_val_d_V_pop = ppcalc.calculate_percentage(total_val_d,
+                                                       total_val_pop)
+        perc_val_c_r_V_pop = ppcalc.calculate_percentage(total_val_c_d,
+                                                         total_val_pop)
+        perc_val_c_d_V_pop = ppcalc.calculate_percentage(total_val_c_d,
+                                                         total_val_pop)
+        perc_val_r_d_V_pop = ppcalc.calculate_percentage(total_val_r_d,
+                                                         total_val_pop)
+        perc_val_c_r_d_V_pop = ppcalc.calculate_percentage(total_val_c_r_d,
+                                                           total_val_pop)
+        perc_val_c_d_V_d = ppcalc.calculate_percentage(total_val_c_d,
+                                                       total_val_d)
+        perc_val_r_d_V_d = ppcalc.calculate_percentage(total_val_r_d,
+                                                       total_val_d)
+        perc_val_r_d_V_r = ppcalc.calculate_percentage(total_val_r_d,
+                                                       total_val_r)
+        perc_val_c_r_V_r = ppcalc.calculate_percentage(total_val_c_r,
+                                                       total_val_r)
+        perc_val_c_r_d_V_c = ppcalc.calculate_percentage(total_val_c_r_d,
+                                                         total_val_c)
+        perc_val_c_r_d_V_d = ppcalc.calculate_percentage(total_val_c_r_d,
+                                                         total_val_d)
+        perc_val_c_r_d_V_r = ppcalc.calculate_percentage(total_val_c_r_d,
+                                                         total_val_r)
+        perc_val_c_r_d_V_r_d = ppcalc.calculate_percentage(total_val_c_r_d,
+                                                           total_val_r_d)
+        perc_val_c_r_d_V_c_d = ppcalc.calculate_percentage(total_val_c_r_d,
+                                                           total_val_c_d)
+        perc_val_c_r_d_V_c_r = ppcalc.calculate_percentage(total_val_c_r_d,
+                                                           total_val_c_r)
 
     # Donor comparisons
     if create_donor_comparisons:
-        perc_dono_c_V_pop = ppcalc.calculate_percentage(unique_dono_r, unique_dono_pop)
-        perc_dono_r_V_pop = ppcalc.calculate_percentage(unique_dono_r, unique_dono_pop)
-        perc_dono_d_V_pop = ppcalc.calculate_percentage(unique_dono_d, unique_dono_pop)
-        perc_dono_c_r_V_pop = ppcalc.calculate_percentage(unique_dono_c_d, unique_dono_pop)
-        perc_dono_c_d_V_pop = ppcalc.calculate_percentage(unique_dono_c_d, unique_dono_pop)
-        perc_dono_r_d_V_pop = ppcalc.calculate_percentage(unique_dono_r_d, unique_dono_pop)
-        perc_dono_c_r_d_V_pop = ppcalc.calculate_percentage(unique_dono_c_r_d, unique_dono_pop)
-        perc_dono_c_d_V_d = ppcalc.calculate_percentage(unique_dono_c_d, unique_dono_d)
-        perc_dono_r_d_V_d = ppcalc.calculate_percentage(unique_dono_r_d, unique_dono_d)
-        perc_dono_r_d_V_r = ppcalc.calculate_percentage(unique_dono_r_d, unique_dono_r)
-        perc_dono_c_r_V_r = ppcalc.calculate_percentage(unique_dono_c_r, unique_dono_r)
-        perc_dono_c_r_d_V_c = ppcalc.calculate_percentage(unique_dono_c_r_d, unique_dono_c)
-        perc_dono_c_r_d_V_d = ppcalc.calculate_percentage(unique_dono_c_r_d, unique_dono_d)
-        perc_dono_c_r_d_V_r = ppcalc.calculate_percentage(unique_dono_c_r_d, unique_dono_r)
-        perc_dono_c_r_d_V_r_d = ppcalc.calculate_percentage(unique_dono_c_r_d, unique_dono_r_d)
-        perc_dono_c_r_d_V_c_d = ppcalc.calculate_percentage(unique_dono_c_r_d, unique_dono_c_d)
-        perc_dono_c_r_d_V_c_r = ppcalc.calculate_percentage(unique_dono_c_r_d, unique_dono_c_r)
+        perc_dono_c_V_pop = ppcalc.calculate_percentage(unique_dono_r,
+                                                        unique_dono_pop)
+        perc_dono_r_V_pop = ppcalc.calculate_percentage(unique_dono_r,
+                                                        unique_dono_pop)
+        perc_dono_d_V_pop = ppcalc.calculate_percentage(unique_dono_d,
+                                                        unique_dono_pop)
+        perc_dono_c_r_V_pop = ppcalc.calculate_percentage(unique_dono_c_d,
+                                                          unique_dono_pop)
+        perc_dono_c_d_V_pop = ppcalc.calculate_percentage(unique_dono_c_d,
+                                                          unique_dono_pop)
+        perc_dono_r_d_V_pop = ppcalc.calculate_percentage(unique_dono_r_d,
+                                                          unique_dono_pop)
+        perc_dono_c_r_d_V_pop = ppcalc.calculate_percentage(unique_dono_c_r_d,
+                                                            unique_dono_pop)
+        perc_dono_c_d_V_d = ppcalc.calculate_percentage(unique_dono_c_d,
+                                                        unique_dono_d)
+        perc_dono_r_d_V_d = ppcalc.calculate_percentage(unique_dono_r_d,
+                                                        unique_dono_d)
+        perc_dono_r_d_V_r = ppcalc.calculate_percentage(unique_dono_r_d,
+                                                        unique_dono_r)
+        perc_dono_c_r_V_r = ppcalc.calculate_percentage(unique_dono_c_r,
+                                                        unique_dono_r)
+        perc_dono_c_r_d_V_c = ppcalc.calculate_percentage(unique_dono_c_r_d,
+                                                          unique_dono_c)
+        perc_dono_c_r_d_V_d = ppcalc.calculate_percentage(unique_dono_c_r_d,
+                                                          unique_dono_d)
+        perc_dono_c_r_d_V_r = ppcalc.calculate_percentage(unique_dono_c_r_d,
+                                                          unique_dono_r)
+        perc_dono_c_r_d_V_r_d = ppcalc.calculate_percentage(unique_dono_c_r_d,
+                                                            unique_dono_r_d)
+        perc_dono_c_r_d_V_c_d = ppcalc.calculate_percentage(unique_dono_c_r_d,
+                                                            unique_dono_c_d)
+        perc_dono_c_r_d_V_c_r = ppcalc.calculate_percentage(unique_dono_c_r_d,
+                                                            unique_dono_c_r)
 
     # Regulated Entity comparisons
     if create_reg_entity_comparisons:
-        perc_reg_ent_c_V_pop = ppcalc.calculate_percentage(unique_reg_ent_c, unique_reg_ent_pop)
-        perc_reg_ent_r_V_pop = ppcalc.calculate_percentage(unique_reg_ent_r, unique_reg_ent_pop)
-        perc_reg_ent_d_V_pop = ppcalc.calculate_percentage(unique_reg_ent_d, unique_reg_ent_pop)
-        perc_reg_ent_c_r_V_pop = ppcalc.calculate_percentage(unique_reg_ent_c_d, unique_reg_ent_pop)
-        perc_reg_ent_c_d_V_pop = ppcalc.calculate_percentage(unique_reg_ent_c_d, unique_reg_ent_pop)
-        perc_reg_ent_r_d_V_pop = ppcalc.calculate_percentage(unique_reg_ent_r_d, unique_reg_ent_pop)
-        perc_reg_ent_c_r_d_V_pop = ppcalc.calculate_percentage(unique_reg_ent_c_r_d, unique_reg_ent_pop)
-        perc_reg_ent_c_d_V_d = ppcalc.calculate_percentage(unique_reg_ent_c_d, unique_reg_ent_d)
-        perc_reg_ent_r_d_V_d = ppcalc.calculate_percentage(unique_reg_ent_r_d, unique_reg_ent_d)
-        perc_reg_ent_r_d_V_r = ppcalc.calculate_percentage(unique_reg_ent_r_d, unique_reg_ent_r)
-        perc_reg_ent_c_r_V_r = ppcalc.calculate_percentage(unique_reg_ent_c_r, unique_reg_ent_r)
-        perc_reg_ent_c_r_d_V_c = ppcalc.calculate_percentage(unique_reg_ent_c_r_d, unique_reg_ent_c)
-        perc_reg_ent_c_r_d_V_d = ppcalc.calculate_percentage(unique_reg_ent_c_r_d, unique_reg_ent_d)
-        perc_reg_ent_c_r_d_V_r = ppcalc.calculate_percentage(unique_reg_ent_c_r_d, unique_reg_ent_r)
-        perc_reg_ent_c_r_d_V_r_d = ppcalc.calculate_percentage(unique_reg_ent_c_r_d, unique_reg_ent_r_d)
-        perc_reg_ent_c_r_d_V_c_d = ppcalc.calculate_percentage(unique_reg_ent_c_r_d, unique_reg_ent_c_d)
-        perc_reg_ent_c_r_d_V_c_r = ppcalc.calculate_percentage(unique_reg_ent_c_r_d, unique_reg_ent_c_r)
+        perc_reg_ent_c_V_pop = ppcalc.calculate_percentage(unique_reg_ent_c,
+                                                           unique_reg_ent_pop)
+        perc_reg_ent_r_V_pop = ppcalc.calculate_percentage(unique_reg_ent_r,
+                                                           unique_reg_ent_pop)
+        perc_reg_ent_d_V_pop = ppcalc.calculate_percentage(unique_reg_ent_d,
+                                                           unique_reg_ent_pop)
+        perc_reg_ent_c_r_V_pop = ppcalc.calculate_percentage(
+            unique_reg_ent_c_d, unique_reg_ent_pop)
+        perc_reg_ent_c_d_V_pop = ppcalc.calculate_percentage(
+            unique_reg_ent_c_d, unique_reg_ent_pop)
+        perc_reg_ent_r_d_V_pop = ppcalc.calculate_percentage(
+            unique_reg_ent_r_d, unique_reg_ent_pop)
+        perc_reg_ent_c_r_d_V_pop = ppcalc.calculate_percentage(
+            unique_reg_ent_c_r_d, unique_reg_ent_pop)
+        perc_reg_ent_c_d_V_d = ppcalc.calculate_percentage(unique_reg_ent_c_d,
+                                                           unique_reg_ent_d)
+        perc_reg_ent_r_d_V_d = ppcalc.calculate_percentage(unique_reg_ent_r_d,
+                                                           unique_reg_ent_d)
+        perc_reg_ent_r_d_V_r = ppcalc.calculate_percentage(unique_reg_ent_r_d,
+                                                           unique_reg_ent_r)
+        perc_reg_ent_c_r_V_r = ppcalc.calculate_percentage(unique_reg_ent_c_r,
+                                                           unique_reg_ent_r)
+        perc_reg_ent_c_r_d_V_c = ppcalc.calculate_percentage(
+            unique_reg_ent_c_r_d, unique_reg_ent_c)
+        perc_reg_ent_c_r_d_V_d = ppcalc.calculate_percentage(
+            unique_reg_ent_c_r_d, unique_reg_ent_d)
+        perc_reg_ent_c_r_d_V_r = ppcalc.calculate_percentage(
+            unique_reg_ent_c_r_d, unique_reg_ent_r)
+        perc_reg_ent_c_r_d_V_r_d = ppcalc.calculate_percentage(
+            unique_reg_ent_c_r_d, unique_reg_ent_r_d)
+        perc_reg_ent_c_r_d_V_c_d = ppcalc.calculate_percentage(
+            unique_reg_ent_c_r_d, unique_reg_ent_c_d)
+        perc_reg_ent_c_r_d_V_c_r = ppcalc.calculate_percentage(
+            unique_reg_ent_c_r_d, unique_reg_ent_c_r)
 
     # Format selected dates for inclusion in text
     min_date_df = start_date.date()
@@ -570,14 +638,11 @@ def cashdonationsregentity_body():
                            perc_reg_ent_c_r_d_V_c
                            ]
     }
-
     # Create DataFrame
     percentage_comparison_df_5 = pd.DataFrame(percentage_comparison_data5)
-
     # Display formatted percentage comparison table in Streamlit
     st.write(f"### Percentage Comparison Table: vs {selected_entity_name}"
              " Donor Activity")
-
     st.dataframe(
         percentage_comparison_df_5,
         column_config={col: st.column_config.NumberColumn(format="%.2f%%")
