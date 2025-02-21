@@ -3,9 +3,9 @@ def dubiousdonationsByDonor_body():
     Displays the content of the Donations by Political Party page.
     """
     import streamlit as st
-    import calculations as ppcalc
+    import components.calculations as ppcalc
     import datetime as dt
-    import Visualisations as vis
+    import components.Visualisations as vis
     import pandas as pd
 
     # Page Title
@@ -51,7 +51,7 @@ def dubiousdonationsByDonor_body():
         ppcalc.get_dubious_donation_actions(filtered_df)
     )
     bm_total_value_dubious_donations = (
-        ppcalc.get_total_value_dubious_donations(filtered_df)
+        ppcalc.get_dubious_donation_value(filtered_df)
     )
     bm_dubious_percent_of_value = (
         (bm_total_value_dubious_donations / ppcalc.get_value_total(filtered_df)
@@ -165,7 +165,7 @@ def dubiousdonationsByDonor_body():
         ppcalc.get_dubious_donation_actions(filtered_df2)
     )
     total_value_dubious_donations = (
-        ppcalc.get_total_value_dubious_donations(filtered_df2)
+        ppcalc.get_dubious_donation_value(filtered_df2)
     )
     dubious_percent_of_value = (
         ((total_value_dubious_donations / total_value_of_donations) * 100)

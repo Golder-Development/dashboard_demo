@@ -3,7 +3,7 @@ def donationsbypoliticalpartys_body():
     Displays the content of the Donations by Political Party page.
     """
     import streamlit as st
-    import calculations as ppcalc
+    import components.calculations as ppcalc
 
     df = st.session_state.get("data", None)
     if df is None:
@@ -26,7 +26,7 @@ def donationsbypoliticalpartys_body():
     # blank_donor_name_ct = ppcalc.get_blank_donor_name_ct(df, filters)
     dubious_donors = ppcalc.get_dubious_donors_ct(df, filters)
     dubious_donation_actions = ppcalc.get_dubious_donation_actions(df, filters)
-    total_value_dubious_donations = ppcalc.get_total_value_dubious_donations(df, filters)
+    total_value_dubious_donations = ppcalc.get_dubious_donation_value(df, filters)
 
     st.write("# Donations Where a Political Party is the Donor")
     st.write("## Explaination")

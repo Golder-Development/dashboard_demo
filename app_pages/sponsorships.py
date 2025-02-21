@@ -3,8 +3,8 @@ def sponsorships_body():
     Displays the content of the Cash Donations to Political Party page.
     """
     import streamlit as st
-    import calculations as ppcalc
-    import Visualisations as vis
+    import components.calculations as ppcalc
+    import components.Visualisations as vis
     import datetime as dt
 
     # Load dataset from session state
@@ -75,8 +75,10 @@ def sponsorships_body():
         cleaned_r_df = cleaned_df
     # Create dataframe for chosen entity and date range
     cleaned_r_d_df = (
-        cleaned_r_df[date_filter] if date_filter.any() else cleaned_r_df
-        )
+        cleaned_r_df[date_filter.reindex(cleaned_r_df.index, fill_value=False)]
+        if date_filter.any()
+        else cleaned_r_df
+    )
     # Create dataframe for chosen target and date range
     cleaned_c_d_df = cleaned_d_df.query(current_target)
     # Create dataframe for chosen target and entity

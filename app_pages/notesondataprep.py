@@ -1,5 +1,5 @@
 import streamlit as st
-import calculations as ppcalc
+import components.calculations as ppcalc
 
 
 def notesondataprep_body():
