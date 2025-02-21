@@ -13,7 +13,7 @@ from app_pages.dubiousdonationsByRegulatedEntity\
     import dubiousdonationsByDonor_body
 from app_pages.sponsorships import sponsorships_body
 from app_pages.notesondataprep import notesondataprep_body
-from app_pages.cashdonations import cashdonations_body
+from app_pages.cashdonations import cash_donations_page
 from app_pages.cashdonationsByRegulatedEntity\
     import cashdonationsregentity_body
 from app_pages.donorspage_headlines import donorsheadlinespage_body
@@ -32,7 +32,7 @@ app.add_page("Head Line Figures", hlf_body)
 app.add_page("Dubious Donations", dubiousdonations_body)
 app.add_page("Dubious Donations by Regulated Entity",
              dubiousdonationsByDonor_body)
-app.add_page("Cash Donations", cashdonations_body)
+app.add_page("Cash Donations", cash_donations_page)
 app.add_page("Cash Donations by Regulated Entity",
              cashdonationsregentity_body)
 app.add_page("Sponsorships", sponsorships_body)
@@ -60,8 +60,8 @@ if 'g_thresholds' not in st.session_state:
 @st.cache_data
 def get_data():
     return dc.load_data(output_csv=False,
-                        dedupe_donors=True,
-                        dedupe_regentity=True
+                        dedupe_donors=False,
+                        dedupe_regentity=False
                         )
 
 

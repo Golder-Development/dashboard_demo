@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-from filters import filter_by_date, filter_by_entity, filter_by_donation_type
+from components.filters import filter_by_date, filter_by_entity, filter_by_donation_type
 
 
 def get_filtered_data(df, entity_id, start_date, end_date):
