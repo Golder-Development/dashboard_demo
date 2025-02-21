@@ -318,6 +318,41 @@ def get_top_donors(df, sort_col, exclude_single_donation=False):
     ]].head(5)
 
 
+def calculate_percentage(numerator, denominator):
+    """ Calculate the percentage of a numerator to a denominator """
+    return (numerator / denominator) * 100 if denominator > 0 else 0
+
+
+def get_avg_donations_per_entity(df, filters=None):
+    """Calculates the average number of donations per entity."""
+    return df.groupby('RegulatedEntityId').size().mean()
+
+
+def get_avg_value_per_entity(df, filters=None):
+    """Calculates the average value of donations per entity."""
+    return df.groupby('RegulatedEntityId')['Value'].mean().mean()
+
+
+def get_avg_donors_per_entity(df, filters=None):
+    """Calculates the average number of donors per entity."""
+    return df.groupby('RegulatedEntityId')['DonorId'].nunique().mean()
+
+
+def get_donors_stdev(df, filters=None):
+    """Calculates the standard deviation of donors per entity."""
+    return df.groupby('RegulatedEntityId').size().std()
+
+
+def get_value_stdev(df, filters=None):
+    """Calculates the standard deviation of value per entity."""
+    return df.groupby('RegulatedEntityId')['Value'].mean().std()
+
+
+def get_noofdonors_per_ent_stdev(df, filters=None):
+    """Calculates the standard deviation of donors per entity."""
+    return df.groupby('RegulatedEntityId')['DonorId'].nunique().std()
+
+
 # Function to calculate key values
 def get_metrics(df, filters):
     return {
@@ -326,4 +361,10 @@ def get_metrics(df, filters):
         "unique_donations": get_donations_ct(df, filters),
         "total_value": get_value_total(df, filters),
         "mean_value": get_value_mean(df, filters),
+        "avg_donations_per_entity": get_avg_donations_per_entity(df, filters),
+        "avg_value_per_entity": get_avg_value_per_entity(df, filters),
+        "avg_donors_per_entity": get_avg_donors_per_entity(df, filters),
+        "donors_stdev": get_donors_stdev(df, filters),
+        "value_stdev": get_value_stdev(df, filters),
+        "noofdonors_per_ent_stdev": get_noofdonors_per_ent_stdev(df, filters)
     }
