@@ -1,0 +1,1387 @@
+,RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,Donation Events,Donation Mean
+0,17.0,English Democrats,Very Small Entity,99000.0,11,9000.0
+1,19.0,Legalise Cannabis Alliance [De-Registered 21/11/06],Very Small Entity,35500.0,13,2730.769230769231
+2,30.0,Upminster And Cranham Residents Association,Single Donation Entity,10000.0,1,10000.0
+3,44.0,Independent Kidderminster Hospital And Health Concern,Very Small Entity,31949.0,8,3993.625
+4,46.0,Scottish Socialist Party,Medium Entity,431512.91,124,3479.942822580645
+5,52.0,Conservative And Unionist Party,Conservative And Unionist Party,372290123.46,20171,18456.701376233206
+6,53.0,Labour Party,Labour Party,285004466.06,17973,15857.367499026317
+7,54.0,The Liberal Party,Very Small Entity,15076.32,14,1076.8799999999999
+8,58.0,Mebyon Kernow - The Party For Cornwall,Very Small Entity,9410.9,4,2352.725
+9,63.0,Green Party,Medium Entity,3969318.85,920,4314.477010869566
+10,66.0,Official Monster Raving Loony Party,Single Donation Entity,350.0,1,350.0
+11,67.0,Alliance For Green Socialism,Single Donation Entity,9217.0,1,9217.0
+12,69.0,The Democratic Party [De-Registered 17/06/10],Single Donation Entity,100000.0,1,100000.0
+13,73.0,Socialist Labour Party,Very Small Entity,60200.0,2,30100.0
+14,77.0,Plaid Cymru - The Party Of Wales,Medium Entity,2672230.03,130,20555.615615384613
+15,78.0,Communist Party Of Britain,Very Small Entity,210166.46,15,14011.097333333333
+16,79.0,Christian Peoples Alliance,Small Entity,145808.49,85,1715.3939999999998
+17,85.0,Uk Independence Party (Ukip),Uk Independence Party (Ukip),17524378.76,1808,9692.687367256638
+18,90.0,Liberal Democrats,Liberal Democrats,73972852.99,11891,6220.911024304095
+19,102.0,Scottish National Party (Snp),Medium Entity,12747914.19,334,38167.40775449102
+20,106.0,British National Party [De-Registered 08/01/16],Medium Entity,1406959.32,142,9908.164225352113
+21,110.0,The Socialist Party Of Great Britain,Very Small Entity,1196654.92,19,62981.83789473684
+22,115.0,Prolife [De-Registered 24/12/04],Very Small Entity,65828.6,8,8228.575
+23,116.0,The Progressive Democratic Party [De-Registered 15/02/12],Very Small Entity,13000.0,2,6500.0
+24,117.0,National Front [De-Registered 01/11/14],Single Donation Entity,6169.91,1,6169.91
+25,119.0,Co-Operative Party,Medium Entity,14922375.07,534,27944.522602996254
+26,130.0,Scottish Green Party,Small Entity,417210.25,72,5794.586805555556
+27,133.0,The Peace Party - Non-Violence Justice Environment,Single Donation Entity,6000.0,1,6000.0
+28,243.0,Social Democratic Party,Very Small Entity,12705.6,4,3176.4
+29,250.0,Better Bedford Independent Party [De-Registered 20/09/11],Very Small Entity,27676.0,3,9225.333333333334
+30,285.0,The People'S Alliance [De-Registered 14/07/04],Very Small Entity,669125.57,24,27880.232083333332
+31,331.0,Forward Wales [De-Registered 16/03/10],Very Small Entity,55662.5,11,5060.227272727273
+32,352.0,The New Party [De-Registered 01/07/10],Medium Entity,1382819.88,146,9471.36904109589
+33,362.0,The Respect Party [De-Registered 18/08/16],Very Small Entity,80482.95,16,5030.184375
+34,375.0,Common Good,Single Donation Entity,14000.0,1,14000.0
+35,387.0,The Blair Must Go Party [De-Registered 29/05/07],Single Donation Entity,8200.0,1,8200.0
+36,392.0,"Christian Party ""Proclaiming Christ'S Lordship"" [De-Registered 26/07/12]",Very Small Entity,835937.49,34,24586.39676470588
+37,424.0,Veritas [De-Registered 05/05/16],Very Small Entity,23087.14,5,4617.428
+38,532.0,Mums' Army [De-Registered 13/03/12],Very Small Entity,144161.8,16,9010.1125
+39,559.0,Socialist Alliance,Single Donation Entity,101166.0,1,101166.0
+40,582.0,The Blah Party [De-Registered 11/09/08],Very Small Entity,244335.95,25,9773.438
+41,595.0,East Herts People [De-Registered 05/11/13],Very Small Entity,22047.71,2,11023.855
+42,605.0,Mums4Justice [De-Registered 16/05/11],Very Small Entity,105869.75,12,8822.479166666666
+43,617.0,Scottish Voice [De-Registered 12/11/15],Very Small Entity,125000.0,6,20833.333333333332
+44,623.0,Women4Theworld [De-Registered 08/06/09],Very Small Entity,53835.0,6,8972.5
+45,695.0,Left List [De-Registered 20/04/10],Very Small Entity,15200.0,9,1688.888888888889
+46,730.0,Yes 2 Europe,Very Small Entity,12000.0,4,3000.0
+47,736.0,United Kingdom First [De-Registered 12/04/10],Very Small Entity,25440.5,8,3180.0625
+48,742.0,Pro Democracy: Libertas.Eu [De-Registered 02/11/10],Very Small Entity,107991.0,21,5142.428571428572
+49,744.0,No2Eu:Yes To Democracy [De-Registered 02/11/10],Very Small Entity,97995.44,26,3769.055384615385
+50,746.0,Jury Team [De-Registered 09/05/11],Very Small Entity,69500.29000000001,5,13900.058
+51,750.0,Fair Pay Fair Trade Party [De-Registered 27/07/09],Very Small Entity,16040.0,2,8020.0
+52,770.0,Pirate Party Uk,Single Donation Entity,210.0,1,210.0
+53,786.0,The Buckinghamshire Campaign For Democracy [De-Registered 01/07/10],Very Small Entity,50000.0,3,16666.666666666668
+54,804.0,Trade Unionist And Socialist Coalition,Very Small Entity,81000.0,7,11571.42857142857
+55,827.0,Freedom And Responsibility [De-Registered 07/06/11],Very Small Entity,28286.11,10,2828.611
+56,840.0,Solihull And Meriden Residents Association,Single Donation Entity,11582.0,1,11582.0
+57,849.0,Trust [De-Registered 12/04/11],Very Small Entity,140000.0,4,35000.0
+58,882.0,We Demand A Referendum Now [De-Registered 03/11/16],Very Small Entity,110326.84,22,5014.856363636363
+59,909.0,Yes Campaign Ltd,Single Donation Entity,668.0,1,668.0
+60,911.0,British Declaration Of Independence [The],Very Small Entity,16098.0,2,8049.0
+61,914.0,Charter 88,Very Small Entity,164031.96000000002,3,54677.32000000001
+62,916.0,Campaign For An Independent Britain,Single Donation Entity,1450.0,1,1450.0
+63,920.0,Working Hound Defence Campaign,Single Donation Entity,470.0,1,470.0
+64,922.0,Hope Not Hate Ltd,Very Small Entity,554893.0,21,26423.47619047619
+65,924.0,Unite Against Fascism,Very Small Entity,203361.13,14,14525.795
+66,928.0,Waging Peace,Very Small Entity,52224.0,4,13056.0
+67,930.0,Howard'S End Ltd,Single Donation Entity,8000.0,1,8000.0
+68,935.0,Conservative Rural Action Group,Very Small Entity,588911.0,6,98151.83333333333
+69,936.0,Uncaged Campaigns Ltd - Lapsed 01/07/2006,Single Donation Entity,2100.0,1,2100.0
+70,937.0,Vote-Ok,Very Small Entity,37250.0,5,7450.0
+71,938.0,Muslim Friends Of Labour,Very Small Entity,44810.0,3,14936.666666666666
+72,939.0,The League Against Cruel Sports,Very Small Entity,81250.0,9,9027.777777777777
+73,941.0,Tmvo Ltd,Single Donation Entity,9737.17,1,9737.17
+74,954.0,Vote Cruelty Free,Very Small Entity,31905.0,5,6381.0
+75,956.0,Vote For A Change Ltd,Very Small Entity,539016.6799999999,7,77002.38285714285
+76,957.0,Uncaged Campaigns Ltd,Single Donation Entity,5361.0,1,5361.0
+77,958.0,The Democratic Reform Company,Very Small Entity,599721.66,9,66635.74
+78,968.0,A Minority Pastime Limited,Single Donation Entity,6612.0,1,6612.0
+79,969.0,The Young Britons' Foundation,Very Small Entity,54999.0,2,27499.5
+80,974.0,Yes4Thenortheast,Very Small Entity,220307.72,11,20027.974545454545
+81,979.0,County Durham Council Supporters Club,Very Small Entity,5710.0,2,2855.0
+82,983.0,North East Says No Ltd,Very Small Entity,60327.31,4,15081.8275
+83,988.0,Friends Of Northumberland County (Fonc),Single Donation Entity,5000.0,1,5000.0
+84,991.0,South East Northumberland Unitary Council,Single Donation Entity,3247.75,1,3247.75
+85,1015.0,Yes In May 2011 Ltd,Very Small Entity,2228114.19,49,45471.71816326531
+86,1017.0,No Campaign Limited,Small Entity,2518299.66,82,30710.971463414637
+87,1018.0,Labour No To Av,Very Small Entity,192083.95,1,192083.95
+88,1022.0,The Rt Hon Charles Kennedy Mp,Very Small Entity,219600.0,33,6654.545454545455
+89,1023.0,Ms Imelda Mary Read,Very Small Entity,37877.65,20,1893.8825000000002
+90,1024.0,Mr Brian Simpson,Very Small Entity,25758.9,12,2146.5750000000003
+91,1025.0,Christian Socialist Movement,Very Small Entity,5400.0,2,2700.0
+92,1026.0,Mr Roger Casale Mp,Very Small Entity,18770.309999999998,9,2085.5899999999997
+93,1027.0,Mr Roy Perry,Very Small Entity,6933.9,2,3466.95
+94,1028.0,Mr Edward Davey Mp,Very Small Entity,14607.0,6,2434.5
+95,1029.0,The Rt Hon Andrew Lansley Mp,Very Small Entity,46245.2,4,11561.3
+96,1030.0,Mr Robert Laxton,Very Small Entity,13897.48,3,4632.493333333333
+97,1031.0,Liberal Democrats Parliamentary Party,Very Small Entity,135495.39,6,22582.565000000002
+98,1032.0,Lord Richard Inglewood,Very Small Entity,9102.9,2,4551.45
+99,1033.0,The Rt Hon Gillian Shephard,Single Donation Entity,5245.2,1,5245.2
+100,1034.0,The Rt Hon Desmond Swayne Mp,Very Small Entity,13745.2,3,4581.733333333334
+101,1035.0,The Rt Hon Dr Liam Fox Mp,Small Entity,758032.34,78,9718.363333333333
+102,1036.0,Mr Michael Fabricant Mp,Very Small Entity,10345.2,2,5172.6
+103,1037.0,Mr Struan Stevenson,Single Donation Entity,3933.9,1,3933.9
+104,1038.0,Mr Christopher Heaton-Harris Mep,Single Donation Entity,3933.9,1,3933.9
+105,1039.0,The Rt Hon Michael Denzil Xavier Portillo Mp,Very Small Entity,96080.0,27,3558.5185185185187
+106,1040.0,Mr David Clelland Mp,Very Small Entity,6845.2,2,3422.6
+107,1041.0,Dame Anne Begg Mp,Very Small Entity,9754.33,3,3251.443333333333
+108,1042.0,Mr John Whittingdale Mp,Very Small Entity,27914.27,10,2791.427
+109,1043.0,Mrs Barbara Follett Mp,Single Donation Entity,5245.2,1,5245.2
+110,1044.0,Mr Nicholas John Gibb Mp,Single Donation Entity,5245.2,1,5245.2
+111,1045.0,Mr John Greenway,Single Donation Entity,5245.2,1,5245.2
+112,1046.0,Mr Robert Walter Mp,Very Small Entity,18490.2,6,3081.7000000000003
+113,1047.0,The Rt Hon James Paice Mp,Single Donation Entity,5245.2,1,5245.2
+114,1048.0,Mr Jonathan Sayeed Mp,Single Donation Entity,5245.2,1,5245.2
+115,1049.0,The Rt Hon Dominic Grieve Qc Mp,Very Small Entity,8245.2,2,4122.6
+116,1050.0,The Rt Hon Caroline Spelman Mp,Very Small Entity,26513.7,6,4418.95
+117,1051.0,Dr Rudi Vis,Single Donation Entity,5245.2,1,5245.2
+118,1052.0,Mr Bill Newton Dunn Mep,Very Small Entity,3933.9,1,3933.9
+119,1053.0,Mr Chris Huhne Mp,Very Small Entity,42290.56,14,3020.7542857142857
+120,1054.0,Lord Nicholas Bethell Mep,Single Donation Entity,3933.9,1,3933.9
+121,1055.0,Mr Philip Bradbourne Mep,Single Donation Entity,3933.9,1,3933.9
+122,1056.0,Mr Andrew Duff Mep,Single Donation Entity,3933.9,1,3933.9
+123,1057.0,Mr Graham Watson Mep,Single Donation Entity,3933.9,1,3933.9
+124,1059.0,Mrs Jacqueline Foster Mep,Very Small Entity,7758.9,2,3879.45
+125,1060.0,Mr David Sumberg Mep,Very Small Entity,7758.9,2,3879.45
+126,1061.0,Mr Crispin Jeremy Rupert Blunt Mp,Very Small Entity,132516.11,34,3897.532647058823
+127,1062.0,Mr Richard Balfe Mep,Single Donation Entity,3933.9,1,3933.9
+128,1063.0,Mr Tom Harris Mp,Single Donation Entity,5245.2,1,5245.2
+129,1064.0,Dr Robert Spink,Very Small Entity,15006.5,4,3751.625
+130,1065.0,Mr Bill Newton Dunn Mep,Very Small Entity,3933.9,1,3933.9
+131,1066.0,Mr Tim Boswell Mp,Very Small Entity,13859.2,2,6929.6
+132,1067.0,Mr Thomas Mcavoy,Single Donation Entity,5245.2,1,5245.2
+133,1068.0,Mr Stephen S. Hughes,Single Donation Entity,3933.9,1,3933.9
+134,1069.0,Mr Fraser Kemp Mp,Very Small Entity,6653.4,2,3326.7
+135,1070.0,Mr Syd Rapson,Single Donation Entity,5245.2,1,5245.2
+136,1071.0,Sir Peter Bottomley Mp,Very Small Entity,10345.2,2,5172.6
+137,1072.0,The Rt Hon Sir Tony Baldry Mp,Very Small Entity,12345.2,3,4115.066666666667
+138,1073.0,Ms Ann Mckechin Mp,Very Small Entity,6329.2,2,3164.6
+139,1074.0,Mr Howard Flight,Single Donation Entity,5245.2,1,5245.2
+140,1075.0,Mr Stephen Hesford,Single Donation Entity,5245.2,1,5245.2
+141,1076.0,Mr Malcolm Moss Mp,Very Small Entity,14758.2,3,4919.400000000001
+142,1077.0,Mr James Bovan Mep,Single Donation Entity,3933.9,1,3933.9
+143,1078.0,Alex Salmond Mp,Very Small Entity,27431.97,4,6857.9925
+144,1079.0,The Rt Hon David Lammy Mp,Small Entity,490241.35,78,6285.1455128205125
+145,1080.0,Mr Tim Collins Mp,Very Small Entity,16888.2,2,8444.1
+146,1081.0,Mr Jimmy Hood Mp,Very Small Entity,13645.2,3,4548.400000000001
+147,1082.0,Mr Gary Titley,Very Small Entity,15258.9,4,3814.725
+148,1083.0,Mr Roger Godsiff Mp,Very Small Entity,31389.0,10,3138.9
+149,1084.0,Ms Claire Ward Mp,Very Small Entity,9745.2,2,4872.6
+150,1085.0,Lord Richard Inglewood,Very Small Entity,3933.9,1,3933.9
+151,1086.0,Mr Philip Bushill-Matthews Mep,Single Donation Entity,3933.9,1,3933.9
+152,1087.0,The Rt Hon John Redwood Mp,Single Donation Entity,5245.2,1,5245.2
+153,1088.0,Mr George Iain Duncan-Smith,Very Small Entity,100007.5,18,5555.972222222223
+154,1089.0,Sir Hugh Bayley Mp,Very Small Entity,17345.2,3,5781.733333333334
+155,1090.0,Mr John Cummings Mp,Single Donation Entity,5245.2,1,5245.2
+156,1091.0,Mr John Corrie Mep,Single Donation Entity,3933.9,1,3933.9
+157,1092.0,Mr Piara Khabra,Single Donation Entity,5245.2,1,5245.2
+158,1093.0,Mr Nigel Evans Mp,Very Small Entity,94135.2,26,3620.584615384615
+159,1094.0,Dr Gavin Strang,Single Donation Entity,5245.2,1,5245.2
+160,1095.0,Mr Andrew Dismore Mp,Very Small Entity,6445.2,2,3222.6
+161,1096.0,Mr Nigel Farage,Very Small Entity,62107.9,16,3881.74375
+162,1097.0,Mr David Hamilton Mp,Very Small Entity,18241.2,5,3648.2400000000002
+163,1098.0,The Rt Hon David Lidington Mp,Very Small Entity,40652.25,12,3387.6875
+164,1099.0,Mr Alan Meale Mp,Very Small Entity,12245.2,2,6122.6
+165,1100.0,Mr Ian Hudghton,Single Donation Entity,3933.9,1,3933.9
+166,1101.0,Mr Roger Helmer,Single Donation Entity,3933.9,1,3933.9
+167,1102.0,Mr Jonathan Evans Mep,Very Small Entity,8933.9,2,4466.95
+168,1103.0,The Rt Hon Virginia Bottomley Mp,Single Donation Entity,5245.2,1,5245.2
+169,1104.0,Mrs Jacqui Lait Mp,Single Donation Entity,5245.2,1,5245.2
+170,1105.0,Dr Howard Stoate Mp,Very Small Entity,10745.2,2,5372.6
+171,1106.0,Mr John Robertson Mp,Very Small Entity,33401.37,10,3340.137
+172,1107.0,Dr Charles Tannock Mep,Very Small Entity,17584.87,5,3516.9739999999997
+173,1108.0,Mr James Provan Mep,Single Donation Entity,3933.9,1,3933.9
+174,1109.0,Mr Daniel Hannan,Single Donation Entity,3933.9,1,3933.9
+175,1110.0,The Rt Hon Cheryl Gillan Mp,Single Donation Entity,5245.2,1,5245.2
+176,1111.0,Mr Bill Tynan,Single Donation Entity,5245.2,1,5245.2
+177,1112.0,Sir Edward Garnier Qc Mp,Very Small Entity,24817.41,8,3102.17625
+178,1113.0,The Rt Hon Peter Lilley Mp,Very Small Entity,13770.71,5,2754.142
+179,1114.0,Mr Michael Clapham Mp,Very Small Entity,10345.2,2,5172.6
+180,1115.0,The Rt Hon George Osborne Mp,Very Small Entity,360414.51,31,11626.274516129033
+181,1116.0,Mr Frank Roy Mp,Very Small Entity,11770.2,3,3923.4
+182,1117.0,Ms Julie Kirkbride,Very Small Entity,12302.05,2,6151.025
+183,1118.0,Mr Brian White Mp,Single Donation Entity,5245.2,1,5245.2
+184,1119.0,Mr James Chapman Mp,Single Donation Entity,5245.2,1,5245.2
+185,1120.0,Mr David Chaytor Mp,Very Small Entity,15345.2,3,5115.066666666667
+186,1121.0,Dr Lynne Jones Mp,Very Small Entity,6415.2,2,3207.6
+187,1122.0,Mr Charles Hendry Mp,Very Small Entity,9845.2,4,2461.3
+188,1123.0,Dr Brian Iddon Mp,Very Small Entity,10345.2,2,5172.6
+189,1124.0,Mr Robert Goodwill Mp,Very Small Entity,7758.3,2,3879.15
+190,1125.0,Mr Keith Simpson Mp,Very Small Entity,42224.49,10,4222.449
+191,1126.0,Mr Martyn Jones,Very Small Entity,10345.2,2,5172.6
+192,1127.0,Ms Rosemary Mckenna,Single Donation Entity,5245.2,1,5245.2
+193,1128.0,The Rt Hon Sir Gerald Kaufman Mp,Single Donation Entity,5245.2,1,5245.2
+194,1129.0,Mr Michael Cashman Mep,Single Donation Entity,3933.9,1,3933.9
+195,1130.0,Sir Oliver Heald Qc Mp,Single Donation Entity,5245.2,1,5245.2
+196,1131.0,Mr Quentin Davies Mp,Very Small Entity,6545.2,2,3272.6
+197,1132.0,Ms Linda Mcavan,Very Small Entity,7758.9,2,3879.45
+198,1133.0,The Rt Hon David Davis Mp,Very Small Entity,328655.43,35,9390.155142857142
+199,1134.0,The Rt Hon Theresa Villiers Mp,Very Small Entity,13847.65,6,2307.9416666666666
+200,1135.0,The Rt Hon Adam Ingram,Single Donation Entity,5245.2,1,5245.2
+201,1136.0,Mr Archy Kirkwood,Single Donation Entity,5245.2,1,5245.2
+202,1137.0,The Rt Hon David Cameron Mp,Very Small Entity,5245.2,1,5245.2
+203,1138.0,Ms Bridget Prentice,Single Donation Entity,5245.2,1,5245.2
+204,1139.0,Mr Tony Worthington Mp,Single Donation Entity,5245.2,1,5245.2
+205,1140.0,Mr Kevin Mcnamara,Single Donation Entity,5245.2,1,5245.2
+206,1141.0,Mr Nigel Jones,Single Donation Entity,5245.2,1,5245.2
+207,1142.0,Mr Peter Viggers Mp,Very Small Entity,14245.2,3,4748.400000000001
+208,1143.0,The Rt Hon Sir Menzies Campbell Cbe Qc Mp,Very Small Entity,25995.2,4,6498.8
+209,1144.0,Mr Patrick Mercer Mp,Very Small Entity,6322.9,2,3161.45
+210,1145.0,Mr Roger Berry Mp,Single Donation Entity,5245.2,1,5245.2
+211,1146.0,Mr John Austin Mp,Very Small Entity,10845.2,3,3615.066666666667
+212,1147.0,Mr Nigel Waterson Mp,Very Small Entity,6245.2,2,3122.6
+213,1148.0,Mr Ian Davidson Mp,Very Small Entity,8545.2,2,4272.6
+214,1149.0,Mr Paul Tyler,Single Donation Entity,5245.2,1,5245.2
+215,1150.0,Mr Matthew Taylor Mp,Very Small Entity,13245.2,3,4415.066666666667
+216,1151.0,Mr Bob Blizzard Mp,Very Small Entity,17445.2,6,2907.5333333333333
+217,1152.0,The Rt Hon Terence Anthony Gordon Davis,Single Donation Entity,5245.2,1,5245.2
+218,1153.0,The Rt Hon Paul Burstow Mp,Single Donation Entity,5245.2,1,5245.2
+219,1154.0,Mr Robert Jackson Mp,Single Donation Entity,5245.2,1,5245.2
+220,1155.0,Ms Laura Moffatt Mp,Very Small Entity,6943.2699999999995,2,3471.6349999999998
+221,1156.0,The Rt Hon John Thurso Mp,Single Donation Entity,5245.2,1,5245.2
+222,1157.0,Mr Julian Brazier Mp,Very Small Entity,6509.75,2,3254.875
+223,1158.0,Mr Iain Stewart Mp,Very Small Entity,24563.8,8,3070.475
+224,1159.0,Mr Eric Illsley,Very Small Entity,10245.2,2,5122.6
+225,1160.0,Sir Sydney Chapman Mp,Single Donation Entity,5245.2,1,5245.2
+226,1161.0,Mr Clive Betts Mp,Very Small Entity,10345.2,2,5172.6
+227,1162.0,Mr James Gray Mp,Very Small Entity,13118.2,5,2623.6400000000003
+228,1163.0,Ms Sandra Osborne Mp,Single Donation Entity,5245.2,1,5245.2
+229,1164.0,The Rt Hon Elfyn Llwyd Mp,Very Small Entity,15977.189999999999,5,3195.4379999999996
+230,1165.0,Mr Henry Bellingham Mp,Single Donation Entity,5245.2,1,5245.2
+231,1166.0,Mr Bill Rammell,Very Small Entity,10345.2,2,5172.6
+232,1167.0,Mr Gary Nicholas Streeter Mp,Very Small Entity,18033.2,4,4508.3
+233,1168.0,Mr Chris Pond,Single Donation Entity,5245.2,1,5245.2
+234,1169.0,Mr Nicholas Palmer,Very Small Entity,8245.2,3,2748.4
+235,1170.0,Mr Michael Connarty Mp,Very Small Entity,16446.7,5,3289.34
+236,1171.0,Mr Frank Cook Mp,Very Small Entity,8245.2,2,4122.6
+237,1172.0,The Rt Hon Chris Smith Mp,Single Donation Entity,5245.2,1,5245.2
+238,1173.0,Mr Stephen Pound Mp,Very Small Entity,21602.2,6,3600.366666666667
+239,1174.0,The Rt Hon Denis Macshane Mp,Very Small Entity,16764.41,5,3352.882
+240,1175.0,The Rt Hon John Gummer Mp,Single Donation Entity,5245.2,1,5245.2
+241,1176.0,Mr Michael Weir Mp,Very Small Entity,6322.2,2,3161.1
+242,1177.0,The Rt Hon Michael Ancram Qc Mp,Very Small Entity,33000.0,5,6600.0
+243,1178.0,The Rt Hon Hugh Robertson Mp,Very Small Entity,7920.2,3,2640.0666666666666
+244,1179.0,Mr Colin Edward Breed Mp,Very Small Entity,11595.2,3,3865.066666666667
+245,1180.0,Mr Matthew Green,Single Donation Entity,5245.2,1,5245.2
+246,1181.0,Mr Kevin Brennan Mp,Very Small Entity,6945.2,2,3472.6
+247,1182.0,The Rt Hon David Hanson Mp,Very Small Entity,10345.2,2,5172.6
+248,1183.0,Mr Dan Norris,Very Small Entity,9484.2,2,4742.1
+249,1184.0,The Rt Hon Stephen R O'Brien Mp,Very Small Entity,350160.28,26,13467.703076923079
+250,1185.0,Mr David Chidgey Mp,Single Donation Entity,5245.2,1,5245.2
+251,1186.0,Mr Richard Ottoway,Single Donation Entity,5245.2,1,5245.2
+252,1187.0,Sir Teddy Taylor,Single Donation Entity,5245.2,1,5245.2
+253,1188.0,Mr Mark Oaten Mp,Very Small Entity,29467.28,7,4209.611428571428
+254,1189.0,Sir David Amess Mp,Very Small Entity,87063.27,21,4145.87
+255,1190.0,Mr David Marshall Mp,Very Small Entity,10345.2,2,5172.6
+256,1191.0,Mr Douglas Henderson Mp,Very Small Entity,6246.2,2,3123.1
+257,1192.0,Mr Christopher Beazley Mep,Single Donation Entity,3933.9,1,3933.9
+258,1193.0,Mr James Elles,Single Donation Entity,3933.9,1,3933.9
+259,1194.0,Ms Arlene Mccarthy,Single Donation Entity,3933.9,1,3933.9
+260,1195.0,Mr Jeffrey Titford,Single Donation Entity,3933.9,1,3933.9
+261,1196.0,Mr Edward Mcmillan-Scott Mep,Single Donation Entity,3933.9,1,3933.9
+262,1197.0,Mr John C. Bowis Mep,Single Donation Entity,3933.9,1,3933.9
+263,1198.0,Mr Bashir Khanbhai,Single Donation Entity,3933.9,1,3933.9
+264,1199.0,Mr David Martin,Single Donation Entity,3933.9,1,3933.9
+265,1200.0,Mr John Purvis,Single Donation Entity,3933.9,1,3933.9
+266,1201.0,Mr Robert Sturdy,Single Donation Entity,3933.9,1,3933.9
+267,1202.0,Mr Frank Doran Mp,Single Donation Entity,5245.2,1,5245.2
+268,1203.0,Leeds Liberal Democrat Federation,Single Donation Entity,3000.0,1,3000.0
+269,1204.0,Mr Christopher Ruane Mp,Very Small Entity,12045.2,3,4015.066666666667
+270,1205.0,Mr Tim Loughton Mp,Very Small Entity,181996.07,27,6740.595185185185
+271,1206.0,Mr Robert N Wareing Mp,Very Small Entity,10345.2,2,5172.6
+272,1207.0,Mr John Mcfall Mp,Very Small Entity,21901.72,6,3650.286666666667
+273,1208.0,The Rt Hon Michael Ancram Qc Mp,Very Small Entity,51806.47,13,3985.113076923077
+274,1209.0,Mr Mike Gapes Mp,Very Small Entity,45451.2,10,4545.12
+275,1210.0,Mr John Barrett Mp,Single Donation Entity,5245.2,1,5245.2
+276,1211.0,Mr Michael Thomas Hancock,Very Small Entity,7245.2,2,3622.6
+277,1212.0,Ms Helen Jones Mp,Very Small Entity,10121.51,3,3373.8366666666666
+278,1213.0,Mr Jeff Ennis Mp,Very Small Entity,6845.2,2,3422.6
+279,1214.0,Mr Greg Pope Mp,Single Donation Entity,5100.0,1,5100.0
+280,1215.0,Ms Jackie Lawrence Mp,Single Donation Entity,5245.2,1,5245.2
+281,1216.0,The Rt Hon Dame Joan Ruddock Mp,Very Small Entity,7996.82,2,3998.41
+282,1217.0,Mr Michael Mayes Mp,Single Donation Entity,5245.2,1,5245.2
+283,1218.0,Ms Diana Wallis Mep,Single Donation Entity,3825.0,1,3825.0
+284,1219.0,Mr Paul Keetch Mp,Very Small Entity,13245.2,2,6622.6
+285,1220.0,Mr Barry Gardiner Mp,Very Small Entity,536896.48,50,10737.9296
+286,1221.0,Mr Wayne David Mp,Very Small Entity,18191.739999999998,7,2598.8199999999997
+287,1222.0,Mr Bill Miller,Single Donation Entity,3933.9,1,3933.9
+288,1223.0,Mr Mark Fisher Mp,Very Small Entity,16280.0,4,4070.0
+289,1224.0,Mr Adam Price Mp,Very Small Entity,13345.2,3,4448.400000000001
+290,1225.0,Mr Archie Norman,Very Small Entity,10345.2,2,5172.6
+291,1226.0,Ms Lorna Fitzsimons,Very Small Entity,10345.2,2,5172.6
+292,1227.0,Mr Tim Yeo Mp,Very Small Entity,53110.96,15,3540.730666666667
+293,1228.0,Mr Andrew Miller Mp,Very Small Entity,16753.2,5,3350.6400000000003
+294,1229.0,The Rt Hon Sir Alan Beith Mp,Very Small Entity,10645.2,4,2661.3
+295,1230.0,Ms Caroline Jackson,Single Donation Entity,3933.9,1,3933.9
+296,1231.0,Mr John Lyons Mp,Single Donation Entity,5245.2,1,5245.2
+297,1232.0,Ms Jean Lambert Mep,Single Donation Entity,369.24,1,369.24
+298,1233.0,Mr Lembit Opik,Very Small Entity,5100.0,1,5100.0
+299,1234.0,Mr Jim Cousins Mp,Single Donation Entity,5245.2,1,5245.2
+300,1235.0,The Rt Hon Francis Maude Mp,Very Small Entity,6246.2,2,3123.1
+301,1236.0,Mrs Eluned Morgan,Single Donation Entity,3933.9,1,3933.9
+302,1237.0,Mr Barry Sheerman Mp,Very Small Entity,15107.849999999999,4,3776.9624999999996
+303,1238.0,The Rt Hon Andrew Mackay Mp,Very Small Entity,13536.2,3,4512.066666666667
+304,1239.0,Mr Ian Taylor Mbe Mp,Very Small Entity,13855.2,5,2771.04
+305,1240.0,Mr Martin Salter,Single Donation Entity,5245.2,1,5245.2
+306,1241.0,Mr Richard Page,Single Donation Entity,5245.2,1,5245.2
+307,1242.0,Mr Ben Chapman Mp,Very Small Entity,9139.0,3,3046.3333333333335
+308,1243.0,Ms Diana Mary Organ,Single Donation Entity,5245.2,1,5245.2
+309,1244.0,Ms Liz Lynne,Very Small Entity,10394.4,2,5197.2
+310,1245.0,The Rt Hon Sir Malcolm Bruce Mp,Very Small Entity,27203.91,10,2720.391
+311,1246.0,Socialist Environment And Resources Association,Very Small Entity,10155.0,2,5077.5
+312,1247.0,Mrs Helen Jackson Mp,Single Donation Entity,5100.0,1,5100.0
+313,1248.0,Mr John Mann Mp,Very Small Entity,82860.82,30,2762.0273333333334
+314,1249.0,Mr David Cairns Mp,Very Small Entity,11338.52,5,2267.704
+315,1250.0,Ms Vera Baird Qc Mp,Single Donation Entity,5245.2,1,5245.2
+316,1251.0,Mr Laurence Robertson Mp,Very Small Entity,38453.79,12,3204.4825
+317,1252.0,Gwyn Prosser Mp,Single Donation Entity,5245.2,1,5245.2
+318,1253.0,Mr Paul Goggins,Single Donation Entity,5100.0,1,5100.0
+319,1254.0,Mr Simon Murphy,Single Donation Entity,6460.5,1,6460.5
+320,1255.0,Mr Keith Bradley Mp,Single Donation Entity,5100.0,1,5100.0
+321,1256.0,Mr Geoffrey Van Orden,Single Donation Entity,3933.9,1,3933.9
+322,1257.0,Ms Angela Browning Mp,Single Donation Entity,5245.2,1,5245.2
+323,1258.0,Mr Dave Watts Mp,Very Small Entity,20167.370000000003,4,5041.842500000001
+324,1259.0,Dr Lewis Moonie,Single Donation Entity,5245.2,1,5245.2
+325,1260.0,The Rt Hon Peter Hain Mp,Very Small Entity,39144.2,6,6524.033333333333
+326,1261.0,The Rt Hon James Purnell Mp,Very Small Entity,22913.53,8,2864.19125
+327,1262.0,Mr Peter Kilfoyle,Single Donation Entity,5245.2,1,5245.2
+328,1263.0,Ms Gisela Stuart Mp,Very Small Entity,25848.13,9,2872.0144444444445
+329,1264.0,The Rt Hon Michael Moore Mp,Very Small Entity,14211.0,3,4737.0
+330,1265.0,Mrs Eryl Mcnally,Single Donation Entity,3933.3,1,3933.3
+331,1266.0,The Rt Hon Bruce George,Very Small Entity,9885.1,3,3295.0333333333333
+332,1267.0,Mr Tony Lloyd Mp,Very Small Entity,22050.91,9,2450.101111111111
+333,1268.0,The Rt Hon Phillip Hammond Mp,Very Small Entity,6945.2,2,3472.6
+334,1269.0,Mr George Foulkes,Single Donation Entity,5245.2,1,5245.2
+335,1270.0,The Rt Hon Kenneth Clarke Qc Mp,Very Small Entity,28790.82,5,5758.164
+336,1271.0,The Rt Hon Kenneth Clarke Qc Mp,Very Small Entity,190226.09,31,6136.325483870967
+337,1274.0,The Rt Hon David Davis Mp,Very Small Entity,110642.6,13,8510.969230769231
+338,1275.0,Mr Paul Flynn Mp,Single Donation Entity,5245.2,1,5245.2
+339,1276.0,Mr Peter Duncan,Single Donation Entity,5245.2,1,5245.2
+340,1277.0,Tory Reform Group,Very Small Entity,155087.0,47,3299.723404255319
+341,1278.0,Parliamentary Mainstream,Very Small Entity,97087.0,44,2206.5227272727275
+342,1279.0,Conservatives For Change Ltd,Very Small Entity,189000.0,14,13500.0
+343,1280.0,The Rt Hon Thomas Clarke Mp,Single Donation Entity,5245.2,1,5245.2
+344,1281.0,Conservative Group For Europe,Small Entity,188587.0,51,3697.7843137254904
+345,1282.0,Mr Harry Cohen Mp,Single Donation Entity,5245.2,1,5245.2
+346,1283.0,Mr Andrew Rosindell Mp,Small Entity,182416.24,63,2895.495873015873
+347,1284.0,Mr Richard Burden Mp,Very Small Entity,27874.65,10,2787.465
+348,1285.0,Mr Glyn Ford Mep,Very Small Entity,29000.0,5,5800.0
+349,1286.0,The Rt Hon James Arbuthnot Mp,Very Small Entity,23382.1,9,2598.011111111111
+350,1287.0,Miss Anne Mcintosh Mp,Single Donation Entity,5245.2,1,5245.2
+351,1288.0,The Rt Hon Simon Burns Mp,Very Small Entity,55055.2,16,3440.95
+352,1289.0,Mr Humfrey Malins Cbe Mp,Single Donation Entity,5245.2,1,5245.2
+353,1290.0,Ms Wendy Alexander Msp,Very Small Entity,12950.0,3,4316.666666666667
+354,1291.0,Mr Richard Spring Mp,Very Small Entity,38548.15,12,3212.3458333333333
+355,1292.0,Graham Brady Mp,Very Small Entity,42945.42,7,6135.0599999999995
+356,1293.0,Ms Margaret Moran,Very Small Entity,8733.2,2,4366.6
+357,1294.0,Mr Robin Cook Mp,Single Donation Entity,5245.2,1,5245.2
+358,1295.0,Sir Peter Luff Mp,Very Small Entity,22379.2,6,3729.866666666667
+359,1296.0,The Rt Hon Theresa May Mp,Very Small Entity,281445.2,20,14072.26
+360,1297.0,Mr David Laurie Ruffley Mp,Very Small Entity,68450.89,12,5704.240833333333
+361,1298.0,The Rt Hon John Spellar Mp,Very Small Entity,40916.46,14,2922.6042857142857
+362,1299.0,Mr John Maples,Single Donation Entity,5245.2,1,5245.2
+363,1300.0,Mrs Nicky Gavron,Very Small Entity,12446.1,4,3111.525
+364,1301.0,The Rt Hon Michael Martin Mp,Single Donation Entity,5245.2,1,5245.2
+365,1302.0,Mr Richard Corbett Mep,Very Small Entity,8694.42,2,4347.21
+366,1303.0,Cllr A. A. Craig,Very Small Entity,12100.0,11,1100.0
+367,1304.0,Mr R Shannon,Single Donation Entity,3618.94,1,3618.94
+368,1305.0,Conservative Christian Fellowship,Very Small Entity,1123627.54,33,34049.3193939394
+369,1306.0,Progress Ltd,Medium Entity,4706893.16,114,41288.53649122807
+370,1307.0,Mr Robert Key,Single Donation Entity,5245.2,1,5245.2
+371,1308.0,Kevan Jones Mp,Very Small Entity,32611.25,7,4658.75
+372,1309.0,Ms Nicolla Page,Single Donation Entity,10912.16,1,10912.16
+373,1310.0,Norris For London Campaign,Very Small Entity,493400.0,33,14951.515151515152
+374,1311.0,The Rt Hon David A Laws Mp,Single Donation Entity,4000.0,1,4000.0
+375,1312.0,The Rt Hon Michael Howard Mp,Very Small Entity,75001.0,19,3947.4210526315787
+376,1313.0,The Rt Hon Steve Webb Mp,Very Small Entity,3900.0,2,1950.0
+377,1314.0,Ms Karen Buck Mp,Very Small Entity,38225.0,5,7645.0
+378,1315.0,Dr Ashok Kumar Mp,Very Small Entity,18882.8,7,2697.542857142857
+379,1316.0,Mr John Grogan Mp,Very Small Entity,17002.0,6,2833.6666666666665
+380,1317.0,Mr Bill Wiggin Mp,Very Small Entity,12000.0,3,4000.0
+381,1318.0,Mr Adam Holloway Mp,Very Small Entity,12250.0,4,3062.5
+382,1319.0,Mr Mark Field Mp,Very Small Entity,44690.0,12,3724.1666666666665
+383,1320.0,The Rt Hon Harriet Harman Qc Mp,Very Small Entity,20416.8,6,3402.7999999999997
+384,1321.0,Mr Michael Russell,Very Small Entity,8250.0,2,4125.0
+385,1322.0,Mr Ross Cranston Qc,Single Donation Entity,2346.43,1,2346.43
+386,1323.0,Mr Colin Challen Mp,Very Small Entity,7630.0,4,1907.5
+387,1324.0,Mr Ken Purchase Mp,Very Small Entity,7800.0,5,1560.0
+388,1325.0,Mr Paul Clark Mp,Single Donation Entity,5000.0,1,5000.0
+389,1326.0,Mr Dennis Turner,Single Donation Entity,1500.0,1,1500.0
+390,1327.0,Constituency Campaigning Services Board,Very Small Entity,1976631.99,36,54906.44416666667
+391,1328.0,Mr Anthony Rowlands,Single Donation Entity,1250.0,1,1250.0
+392,1329.0,The Rt Hon Nicholas Brown Mp,Very Small Entity,9604.35,3,3201.4500000000003
+393,1330.0,Ms Sarah Teather Mp,Very Small Entity,16341.55,6,2723.5916666666667
+394,1331.0,Mrs Joan Humble,Single Donation Entity,3000.0,1,3000.0
+395,1332.0,The Rt Hon Jeremy Hunt Mp,Small Entity,542919.34,52,10440.756538461537
+396,1333.0,The Rt Hon Christopher Grayling Mp,Very Small Entity,362227.3,23,15749.01304347826
+397,1334.0,Mr Andrew Mitchell Mp,Small Entity,626163.24,86,7280.967906976744
+398,1335.0,The Rt Hon Nick Herbert Mp,Very Small Entity,243376.76,36,6760.4655555555555
+399,1336.0,The Rt Hon Sir Malcolm Rifkind Qc Mp,Very Small Entity,50000.0,1,50000.0
+400,1337.0,The Rt Hon David Cameron Mp,Very Small Entity,509985.0,48,10624.6875
+401,1338.0,The Rt Hon Dr Liam Fox Mp,Small Entity,66500.0,10,6650.0
+402,1339.0,Mr Graham Stuart Mp,Very Small Entity,39602.04,13,3046.3107692307694
+403,1340.0,The Rt Hon Greg Clark Mp,Very Small Entity,15000.0,4,3750.0
+404,1341.0,The Rt Hon Sir Menzies Campbell Qc,Very Small Entity,47638.99,14,3402.785
+405,1342.0,Mr Denis Murphy Mp,Very Small Entity,15500.0,3,5166.666666666667
+406,1343.0,Ms Mary Creagh Mp,Very Small Entity,8850.0,3,2950.0
+407,1344.0,Mr Chris Huhne Mp,Very Small Entity,87900.0,20,4395.0
+408,1345.0,The Rt Hon Stephen Byers Mp,Very Small Entity,36621.090000000004,15,2441.4060000000004
+409,1346.0,The Rt Hon Simon Hughes Mp,Very Small Entity,26000.0,3,8666.666666666666
+410,1347.0,Mr James Brokenshire Mp,Single Donation Entity,7500.0,1,7500.0
+411,1348.0,Mr David Anderson Mp,Very Small Entity,25812.6,10,2581.2599999999998
+412,1349.0,The Rt Hon Clare Short Mp,Very Small Entity,60373.96,25,2414.9584
+413,1350.0,The Rt Hon John Bercow Mp,Very Small Entity,63951.91,15,4263.460666666667
+414,1351.0,Sir Stuart Bell Mp,Very Small Entity,7162.0,2,3581.0
+415,1352.0,Mr Andrew George Mp,Very Small Entity,11441.22,5,2288.2439999999997
+416,1353.0,Mr Jim Dowd,Single Donation Entity,3000.0,1,3000.0
+417,1354.0,Mrs Janet Anderson,Single Donation Entity,3000.0,1,3000.0
+418,1355.0,The Rt Hon Mark Simmonds Mp,Very Small Entity,36645.76,9,4071.751111111111
+419,1356.0,Mr Paul Goodman,Very Small Entity,8855.0,3,2951.6666666666665
+420,1357.0,The Rt Hon Norman Baker Mp,Single Donation Entity,2400.0,1,2400.0
+421,1358.0,The Rt Hon Nick Clegg Mp,Very Small Entity,208857.0,20,10442.85
+422,1359.0,Mr Phil Willis,Single Donation Entity,1323.5,1,1323.5
+423,1360.0,Mr Mohammed Sarwar,Single Donation Entity,3286.26,1,3286.26
+424,1361.0,Mr Edward Vaizey Mp,Very Small Entity,16274.79,5,3254.958
+425,1362.0,Mrs Jessica Morden Mp,Very Small Entity,5594.469999999999,2,2797.2349999999997
+426,1363.0,Mr James Duddridge Mp,Very Small Entity,24615.1,7,3516.442857142857
+427,1364.0,The Rt Hon Paul Murphy Mp,Single Donation Entity,2357.0,1,2357.0
+428,1365.0,Quality Of Life Policy Group,Very Small Entity,258281.3,14,18448.664285714283
+429,1366.0,Mr Mark Prisk Mp,Very Small Entity,12334.0,3,4111.333333333333
+430,1367.0,The Rt Hon Sir John Stanley Mp,Very Small Entity,21765.8,6,3627.633333333333
+431,1368.0,Mr Tobias Ellwood Mp,Very Small Entity,26358.34,10,2635.834
+432,1369.0,The Rt Hon Sir Alan Duncan Mp,Very Small Entity,41067.52,15,2737.8346666666666
+433,1370.0,Mr Brooks Newmark Mp,Very Small Entity,9070.33,3,3023.443333333333
+434,1371.0,The Rt Hon Michael Fallon Mp,Very Small Entity,18767.989999999998,5,3753.5979999999995
+435,1372.0,The Rt Hon Keith Vaz Mp,Very Small Entity,13649.89,3,4549.963333333333
+436,1373.0,Mr Geoffrey Clifton-Brown Mp,Very Small Entity,31185.69,9,3465.0766666666664
+437,1374.0,The Rt Hon Annette Brooke Mp,Very Small Entity,3398.0,2,1699.0
+438,1375.0,Mr John Mcdonnell Mp,Very Small Entity,7000.0,2,3500.0
+439,1376.0,Mr Brian Donohoe Mp,Very Small Entity,34866.130000000005,9,3874.014444444445
+440,1377.0,Mr Jonathan Cruddas Mp,Very Small Entity,156472.33000000002,11,14224.757272727275
+441,1378.0,The Rt Hon Peter Hain Mp,Very Small Entity,172756.75,30,5758.558333333333
+442,1379.0,Ms Kerry Mccarthy Mp,Very Small Entity,25016.45,9,2779.605555555556
+443,1380.0,Mr Andrew Tyrie Mp,Very Small Entity,21800.0,3,7266.666666666667
+444,1381.0,The Rt Hon Hazel Blears Mp,Very Small Entity,86115.78,13,6624.290769230769
+445,1382.0,The Rt Hon Alan Johnson Mp,Very Small Entity,67209.0,22,3054.9545454545455
+446,1383.0,The Rt Hon Geoff Hoon Mp,Very Small Entity,5039.0,2,2519.5
+447,1384.0,The Rt Hon Hilary Benn Mp,Very Small Entity,33925.0,9,3769.4444444444443
+448,1385.0,Ms Rosie Cooper Mp,Very Small Entity,22123.0,4,5530.75
+449,1386.0,The Rt Hon Harriet Harman Qc Mp,Very Small Entity,48351.0,20,2417.55
+450,1387.0,The Rt Hon Frank Dobson Mp,Very Small Entity,13235.0,4,3308.75
+451,1388.0,The Rt Hon Charles Clarke Mp,Very Small Entity,23574.8,8,2946.85
+452,1389.0,The Rt Hon Gordon Brown Mp,Very Small Entity,215705.0,24,8987.708333333334
+453,1390.0,Conservative Middle East Council,Small Entity,1551393.51,69,22483.963913043477
+454,1391.0,The Rt Hon Alan Milburn Mp,Very Small Entity,37213.13,7,5316.161428571429
+455,1392.0,Mr Andy Slaughter Mp,Very Small Entity,18569.52,5,3713.904
+456,1393.0,Dame Angela Watkinson Mp,Very Small Entity,13465.8,5,2693.16
+457,1394.0,Mr Mark Lancaster Mp,Very Small Entity,38216.35,12,3184.695833333333
+458,1395.0,Ms Emily Thornberry Mp,Very Small Entity,3229.0,4,807.25
+459,1396.0,The Rt Hon Owen Paterson Mp,Very Small Entity,59580.45,14,4255.746428571429
+460,1397.0,Mr Floyd Millen,Very Small Entity,1500.0,2,750.0
+461,1398.0,Ms Glenis Willmott Mep,Very Small Entity,31000.0,5,6200.0
+462,1399.0,The Rt Hon Lynne Featherstone Mp,Single Donation Entity,3507.25,1,3507.25
+463,1400.0,Dr Stephen Ladyman Mp,Very Small Entity,14100.0,4,3525.0
+464,1401.0,The Rt Hon Hugo Swire Mp,Very Small Entity,34048.49,10,3404.8489999999997
+465,1402.0,Mr Boris Johnson Mp,Medium Entity,992047.09,102,9725.951862745098
+466,1403.0,Ms Sally Keeble Mp,Very Small Entity,7400.0,2,3700.0
+467,1404.0,South Ribble Westminster Fund,Very Small Entity,35000.0,3,11666.666666666666
+468,1405.0,Mr Philip Dunne Mp,Very Small Entity,13273.09,4,3318.2725
+469,1406.0,Mr Andy Reed Mp,Very Small Entity,3757.08,2,1878.54
+470,1407.0,Ms Julie Morgan Mp,Very Small Entity,8942.1,4,2235.525
+471,1408.0,The Rt Hon Nick Clegg Mp,Very Small Entity,95000.0,18,5277.777777777777
+472,1409.0,Rachel Reeves Mp,Very Small Entity,84619.5,13,6509.192307692308
+473,1410.0,Mr Jonathan Cruddas Mp,Very Small Entity,10000.0,1,10000.0
+474,1411.0,The Rt Hon Mark Francois Mp,Very Small Entity,13391.29,4,3347.8225
+475,1412.0,Mr Derek Wyatt Mp,Very Small Entity,44255.39,15,2950.3593333333333
+476,1413.0,Mr Shahid Malik Mp,Very Small Entity,15000.0,2,7500.0
+477,1414.0,Mr Richard Howitt Mep,Very Small Entity,14402.55,5,2880.5099999999998
+478,1415.0,Mr Colin Burgon Mp,Very Small Entity,3674.35,3,1224.7833333333333
+479,1416.0,Mr Alistair Carmichael Mp,Very Small Entity,82394.34999999999,12,6866.195833333332
+480,1417.0,Ms Katy Clark Mp,Very Small Entity,28854.45,12,2404.5375
+481,1418.0,Conservative Muslim Forum,Very Small Entity,127910.0,13,9839.23076923077
+482,1419.0,Mr Mark Hendrick Mp,Very Small Entity,60382.16,15,4025.4773333333337
+483,1420.0,Mr Andrew Selous Mp,Single Donation Entity,8000.0,1,8000.0
+484,1421.0,The Rt Hon Sir Andrew Stunell Mp,Very Small Entity,5000.0,2,2500.0
+485,1422.0,The Rt Hon David Willetts Mp,Very Small Entity,67335.79000000001,11,6121.435454545455
+486,1423.0,The Rt Hon Andrew Robathan Mp,Very Small Entity,11762.0,4,2940.5
+487,1424.0,Mr Jim Fitzpatrick Mp,Very Small Entity,18180.0,4,4545.0
+488,1425.0,Mr Boris Johnson Mp,Medium Entity,522000.04,39,13384.616410256409
+489,1426.0,Mr Daniel Kawczynski Mp,Very Small Entity,62387.78,18,3465.987777777778
+490,1427.0,The Rt Hon Michael Howard Mp,Very Small Entity,7000.0,1,7000.0
+491,1428.0,Mr Mark Adrian Clarke,Very Small Entity,9000.0,3,3000.0
+492,1429.0,The Rt Hon Don Foster Mp,Very Small Entity,11260.44,2,5630.22
+493,1430.0,Mr Virendra Kumar Sharma Mp,Very Small Entity,101001.2,26,3884.6615384615384
+494,1431.0,Conservative/Unionist Members 1922 Committee,Very Small Entity,103500.0,10,10350.0
+495,1432.0,Women2Win,Very Small Entity,182050.0,16,11378.125
+496,1433.0,Ms Celia Barlow Mp,Very Small Entity,18179.0,6,3029.8333333333335
+497,1434.0,Mr James Devine Mp,Very Small Entity,7396.0,2,3698.0
+498,1435.0,The Rt Hon Simon Hughes Mp,Very Small Entity,17250.54,5,3450.108
+499,1436.0,Mr Martin Linton Mp,Single Donation Entity,1200.0,1,1200.0
+500,1437.0,Ms Anne Milton Mp,Very Small Entity,3482.5,3,1160.8333333333333
+501,1438.0,Ms Harriett Baldwin Mp,Very Small Entity,2000.0,1,2000.0
+502,1439.0,Ms Roberta Blackman-Woods Mp,Very Small Entity,18612.61,4,4653.1525
+503,1440.0,The Rt Hon David Blunkett Mp,Very Small Entity,9074.0,3,3024.6666666666665
+504,1441.0,Ms Angie Bray Mp,Single Donation Entity,2000.0,1,2000.0
+505,1442.0,Mr Chris Bryant Mp,Very Small Entity,12759.0,6,2126.5
+506,1443.0,Mr Richard Cook,Single Donation Entity,2000.0,1,2000.0
+507,1444.0,The Rt Hon Stephen Crabb Mp,Very Small Entity,20500.0,8,2562.5
+508,1445.0,Mr David Davies Mp,Very Small Entity,4199.98,2,2099.99
+509,1446.0,Mr Paul Davies,Single Donation Entity,3000.0,1,3000.0
+510,1447.0,Mr Parmjit Dhanda Mp,Very Small Entity,13536.0,5,2707.2
+511,1448.0,Mr Andrew Gwynne Mp,Very Small Entity,50019.36,14,3572.8114285714287
+512,1449.0,Mr Fabian Hamilton Mp,Very Small Entity,4535.68,2,2267.84
+513,1450.0,Mr Mark Harper Mp,Very Small Entity,22500.0,7,3214.285714285714
+514,1451.0,Ms Barbara Keeley Mp,Single Donation Entity,1425.0,1,1425.0
+515,1452.0,Mr Simon Kirby Mp,Single Donation Entity,2000.0,1,2000.0
+516,1453.0,Mr Ivan Lewis Mp,Very Small Entity,112463.43,26,4325.516538461538
+517,1454.0,Ms Siobhain Mcdonagh Mp,Very Small Entity,9360.0,3,3120.0
+518,1455.0,Mr Chris Mole Mp,Single Donation Entity,1425.0,1,1425.0
+519,1456.0,Ms Madeleine Moon Mp,Very Small Entity,17756.260000000002,6,2959.376666666667
+520,1457.0,Ms Caroline Nokes,Very Small Entity,4000.0,2,2000.0
+521,1458.0,Ms Linda Riordan Mp,Very Small Entity,11500.0,2,5750.0
+522,1459.0,Ms Anne Snelgrove Mp,Single Donation Entity,1425.0,1,1425.0
+523,1460.0,Ms Daria Jean Taylor Mp,Very Small Entity,3780.13,2,1890.065
+524,1461.0,Mr Iain Wright Mp,Very Small Entity,19828.64,7,2832.662857142857
+525,1462.0,Mr Mark Robert Timothy Garnier Mp,Very Small Entity,10159.49,4,2539.8725
+526,1463.0,Sharon Hodgson Mp,Very Small Entity,35418.93,8,4427.36625
+527,1464.0,Ms Sian James Mp,Single Donation Entity,7500.0,1,7500.0
+528,1465.0,Mr Tom Levitt Mp,Very Small Entity,8598.0,2,4299.0
+529,1466.0,Ms Sarah Mccarthy-Fry Mp,Single Donation Entity,3573.0,1,3573.0
+530,1467.0,Mr Shailesh Vara Mp,Very Small Entity,19739.0,5,3947.8
+531,1468.0,Mr Robert Buckland Mp,Very Small Entity,10000.0,3,3333.3333333333335
+532,1469.0,The Rt Hon Andy Burnham Mp,Small Entity,310718.12,46,6754.741739130434
+533,1470.0,Dr Laurence Carmichael,Single Donation Entity,2000.0,1,2000.0
+534,1471.0,Mr Neil Carmichael Mp,Single Donation Entity,2000.0,1,2000.0
+535,1472.0,Mr Jim Sheridan Mp,Very Small Entity,40908.29,10,4090.829
+536,1473.0,Siôn Simon,Very Small Entity,25630.91,7,3661.558571428571
+537,1474.0,The Rt Hon Sir Nicholas Soames Mp,Very Small Entity,32790.2,8,4098.775
+538,1475.0,Mr Douglas Carswell Mp,Single Donation Entity,2000.0,1,2000.0
+539,1476.0,Ms Linda Gilroy Mp,Single Donation Entity,3000.0,1,3000.0
+540,1477.0,Mr Jim Knight Mp,Single Donation Entity,1366.0,1,1366.0
+541,1478.0,Mr Jason Alexander Mccartney,Single Donation Entity,2000.0,1,2000.0
+542,1479.0,Mr Paul Maynard,Single Donation Entity,2000.0,1,2000.0
+543,1480.0,Maggie Throup Mp,Very Small Entity,9232.58,4,2308.145
+544,1481.0,Mr Michael Richard Weatherley,Very Small Entity,13537.43,4,3384.3575
+545,1482.0,Mr David Gold,Single Donation Entity,2000.0,1,2000.0
+546,1483.0,Mr Mark Coote,Single Donation Entity,2000.0,1,2000.0
+547,1484.0,Sir Tony Cunningham Mp,Very Small Entity,2949.0,2,1474.5
+548,1485.0,Dame Louise Ellman Mp,Very Small Entity,11992.56,7,1713.222857142857
+549,1486.0,Ms Lorraine Fullbrook Mp,Very Small Entity,10629.45,4,2657.3625
+550,1487.0,Mr Benjamin Charles Tudor Jeffreys,Single Donation Entity,2000.0,1,2000.0
+551,1488.0,Ms Diana Ruth Johnson Mp,Very Small Entity,9650.92,4,2412.73
+552,1489.0,Mr Christopher Pincher,Very Small Entity,7143.0,3,2381.0
+553,1490.0,Mr Eric Joyce Mp,Very Small Entity,14031.970000000001,5,2806.3940000000002
+554,1491.0,The Rt Hon David Mundell Mp,Very Small Entity,58502.0,19,3079.0526315789475
+555,1492.0,Ms Jo Swinson Mp,Very Small Entity,5743.8,3,1914.6000000000001
+556,1493.0,Cllr Derek Vaughan,Very Small Entity,3000.0,2,1500.0
+557,1494.0,Mr Iain Stewart,Very Small Entity,5202.0,3,1734.0
+558,1495.0,Mr Andrew Griffiths Mp,Very Small Entity,12000.0,2,6000.0
+559,1496.0,Ms Penny Mordaunt Mp,Very Small Entity,14600.0,3,4866.666666666667
+560,1497.0,Ms Theresa Griffin,Very Small Entity,48909.95,3,16303.316666666666
+561,1498.0,Mr Jeremy Browne Mp,Single Donation Entity,2634.0,1,2634.0
+562,1499.0,Mr David Heath Mp,Very Small Entity,5353.0,2,2676.5
+563,1500.0,The Rt Hon Ann Widdecombe Mp,Single Donation Entity,1500.0,1,1500.0
+564,1501.0,Mr Nicholas Bourne Am,Single Donation Entity,1563.05,1,1563.05
+565,1502.0,Mr Graham Stringer Mp,Very Small Entity,9779.08,4,2444.77
+566,1503.0,Ann Winterton Mp,Very Small Entity,4001.0,2,2000.5
+567,1504.0,Mr Bill Olner Mp,Very Small Entity,4234.0,2,2117.0
+568,1505.0,Mrs Claire Curtis-Thomas Mp,Very Small Entity,4037.45,2,2018.725
+569,1506.0,Sir Nicholas Winteron Mp,Single Donation Entity,3000.0,1,3000.0
+570,1507.0,Ms Susan Kramer Mp,Very Small Entity,5290.09,3,1763.3633333333335
+571,1508.0,Mr Graham Allen Mp,Single Donation Entity,2634.0,1,2634.0
+572,1509.0,Mr Philip Andrew Davies Mp,Single Donation Entity,2000.0,1,2000.0
+573,1510.0,The Rt Hon Mike Penning Mp,Very Small Entity,218535.0,15,14569.0
+574,1511.0,Mr Brian Binley Mp,Very Small Entity,7324.92,3,2441.64
+575,1512.0,The Rt Hon Patricia Hewitt Mp,Very Small Entity,10909.0,3,3636.3333333333335
+576,1513.0,Ms Mary Macleod Mp,Very Small Entity,67750.0,18,3763.8888888888887
+577,1514.0,Mr Mark Pritchard Mp,Very Small Entity,84789.0,31,2735.1290322580644
+578,1515.0,Sir Robert Smith Mp,Very Small Entity,32312.77,9,3590.307777777778
+579,1516.0,Dr Phyllis Starkey Mp,Single Donation Entity,2000.0,1,2000.0
+580,1517.0,Mr Iain Gray Msp,Very Small Entity,3500.0,2,1750.0
+581,1518.0,Ms Cathy Jamieson Mp,Very Small Entity,7000.0,3,2333.3333333333335
+582,1519.0,Mr Michael Ellis Mp,Very Small Entity,43871.75,10,4387.175
+583,1520.0,Mr Neil Hudson,Very Small Entity,2856.4,2,1428.2
+584,1521.0,Mr Andrew Palmer Kerr Msp,Very Small Entity,9880.0,4,2470.0
+585,1522.0,Mr Bill Butler Msp,Single Donation Entity,1500.0,1,1500.0
+586,1523.0,Mr Lewis Macdonald Msp,Single Donation Entity,2355.13,1,2355.13
+587,1524.0,Ms Andrea Leadsom Mp,Very Small Entity,1800.0,1,1800.0
+588,1525.0,Ms Annunziata Rees-Mogg,Single Donation Entity,1800.0,1,1800.0
+589,1526.0,Mr Nick Ainger Mp,Single Donation Entity,1300.0,1,1300.0
+590,1527.0,Mr Keith Hill Mp,Very Small Entity,2750.0,2,1375.0
+591,1528.0,The Rt Hon John Battle Mp,Single Donation Entity,1500.0,1,1500.0
+592,1529.0,Mr Charlie Elphicke,Very Small Entity,1800.0,1,1800.0
+593,1530.0,Ms Rosalind Scott,Single Donation Entity,5000.0,1,5000.0
+594,1531.0,Mr Jonathan Djanogly Mp,Very Small Entity,247866.36,12,20655.53
+595,1532.0,Mr Michael German,Single Donation Entity,3374.15,1,3374.15
+596,1533.0,Mr Mark Todd Mp,Single Donation Entity,4119.41,1,4119.41
+597,1534.0,Mr Stephen Barclay Mp,Single Donation Entity,1305.0,1,1305.0
+598,1535.0,The Rt Hon Jennifer Willott Mp,Very Small Entity,6740.0,2,3370.0
+599,1536.0,Joan Ryan Mp,Very Small Entity,58966.6,14,4211.9
+600,1537.0,Ms Julie Elliott,Single Donation Entity,1800.0,1,1800.0
+601,1538.0,The Rt Hon Hilary Armstrong,Single Donation Entity,1543.98,1,1543.98
+602,1539.0,The Rt Hon Jack Straw Mp,Very Small Entity,28828.600000000002,5,5765.72
+603,1540.0,Mr Paul Blomfield Mp,Single Donation Entity,2485.0,1,2485.0
+604,1541.0,The Rt Hon Liam Byrne Mp,Very Small Entity,64747.34,15,4316.489333333333
+605,1542.0,The Rt Hon John Prescott Mp,Very Small Entity,35524.17,9,3947.1299999999997
+606,1543.0,Ms Jenny Randerson Am,Very Small Entity,5000.0,2,2500.0
+607,1544.0,Focus On Scotland,Very Small Entity,649240.0,34,19095.29411764706
+608,1545.0,Sir Edward Leigh Mp,Single Donation Entity,2000.0,1,2000.0
+609,1546.0,The Rt Hon Oliver Letwin Mp,Very Small Entity,7550.0,2,3775.0
+610,1547.0,Mr Lembit Opik,Very Small Entity,3730.3,2,1865.15
+611,1548.0,Mr Anthony Wright,Very Small Entity,6167.0,2,3083.5
+612,1549.0,The Rt Hon Gregory Barker Mp,Very Small Entity,12319.79,5,2463.958
+613,1550.0,The Rt Hon Dr Vincent Cable Mp,Very Small Entity,35822.0,6,5970.333333333333
+614,1551.0,Mr James Mcgovern Mp,Very Small Entity,6811.0,3,2270.3333333333335
+615,1552.0,Mr Edward Timpson Mp,Very Small Entity,862423.03,15,57494.86866666667
+616,1553.0,The Rt Hon Margaret Beckett Mp,Single Donation Entity,16000.0,1,16000.0
+617,1554.0,Dawn Butler Mp,Very Small Entity,17147.0,3,5715.666666666667
+618,1555.0,Mr Wilfred Emmanuel-Jones,Very Small Entity,10000.0,2,5000.0
+619,1556.0,The Rt Hon Ian Mccartney Mp,Very Small Entity,3543.8,2,1771.9
+620,1557.0,Mr Damian Collins Mp,Very Small Entity,13940.0,4,3485.0
+621,1558.0,Mr Doug Naysmith Mp,Single Donation Entity,3595.4,1,3595.4
+622,1559.0,Ms Isabel Owen,Single Donation Entity,5179.0,1,5179.0
+623,1560.0,Ms Lyn Brown Mp,Very Small Entity,5481.0,2,2740.5
+624,1561.0,The Rt Hon Des Browne Mp,Single Donation Entity,1505.82,1,1505.82
+625,1562.0,Mrs Meg Munn Mp,Very Small Entity,19068.0,7,2724.0
+626,1563.0,Mr Mark Hunter Mp,Single Donation Entity,1155.0,1,1155.0
+627,1564.0,Mr Robert Goodwill Mp,Very Small Entity,12133.0,3,4044.3333333333335
+628,1565.0,Mr Philip Allott,Single Donation Entity,2000.0,1,2000.0
+629,1566.0,Ms Mary Jane Senior,Single Donation Entity,1215.51,1,1215.51
+630,1567.0,Ms Philippa Stroud,Very Small Entity,51500.0,14,3678.5714285714284
+631,1568.0,Mr Timothy Kirkhope Mep,Single Donation Entity,3044.98,1,3044.98
+632,1569.0,Mr Conor Burns Mp,Very Small Entity,9798.65,4,2449.6625
+633,1570.0,Mr David Gauke Mp,Single Donation Entity,22704.67,1,22704.67
+634,1571.0,The Rt Hon Greg Hands Mp,Very Small Entity,92688.53,16,5793.033125
+635,1572.0,Mr Mark Hoban Mp,Very Small Entity,26504.67,3,8834.89
+636,1573.0,The Rt Hon John Reid Mp,Very Small Entity,7500.0,2,3750.0
+637,1574.0,Mr Lindsay Roy Mp,Single Donation Entity,1077.0,1,1077.0
+638,1575.0,Mr Stephen Hammond Mp,Very Small Entity,34963.61,7,4994.801428571429
+639,1576.0,Mr Nick Griffin,Single Donation Entity,5000.0,1,5000.0
+640,1577.0,Mr Jamieson Ronald Reed Mp,Single Donation Entity,1528.0,1,1528.0
+641,1578.0,The Rt Hon Malcolm Wicks Mp,Very Small Entity,13322.86,4,3330.715
+642,1579.0,Ms Karen Lumley Mp,Very Small Entity,6100.0,2,3050.0
+643,1580.0,Mr Carwyn Jones Am,Very Small Entity,6367.53,4,1591.8825
+644,1581.0,Mr Robert Halfon Mp,Very Small Entity,57909.0,9,6434.333333333333
+645,1582.0,Mr Gordon Henderson Mp,Single Donation Entity,2000.0,1,2000.0
+646,1583.0,Ms Emma Reynolds Mp,Very Small Entity,5665.0,2,2832.5
+647,1584.0,Ms Edwina Hart Am,Single Donation Entity,1625.0,1,1625.0
+648,1585.0,Ms Jane Kennedy Mp,Single Donation Entity,1528.0,1,1528.0
+649,1586.0,Mr Michael Gove Mp,Small Entity,493621.48,52,9492.72076923077
+650,1587.0,Mr Damian Green Mp,Single Donation Entity,1563.5,1,1563.5
+651,1588.0,The Rt Hon Douglas Hogg Mp,Single Donation Entity,1700.0,1,1700.0
+652,1589.0,The Rt Hon Anne Mcguire Mp,Very Small Entity,3114.56,2,1557.28
+653,1590.0,The Rt Hon David Miliband Mp,Small Entity,49408.520000000004,10,4940.852000000001
+654,1591.0,Mr Robert Neill Mp,Very Small Entity,20547.68,5,4109.536
+655,1592.0,Ms Christine Russell Mp,Very Small Entity,8000.0,2,4000.0
+656,1593.0,The Rt Hon Grant Shapps Mp,Very Small Entity,6938.0,3,2312.6666666666665
+657,1594.0,Sir William Cash Mp,Single Donation Entity,1199.69,1,1199.69
+658,1595.0,Mr Ian Liddell-Grainger Mp,Very Small Entity,8634.41,2,4317.205
+659,1596.0,The Rt Hon Patrick Mcloughlin Mp,Very Small Entity,3700.0,2,1850.0
+660,1597.0,The Rt Hon Alun Michael Mp,Very Small Entity,15103.0,5,3020.6
+661,1598.0,Mr John Pugh Mp,Single Donation Entity,3000.0,1,3000.0
+662,1599.0,Ms Chloe Smith Mp,Very Small Entity,39156.62,6,6526.1033333333335
+663,1600.0,Mr Jeremy Corbyn Mp,Very Small Entity,336415.63,30,11213.854333333333
+664,1601.0,Ms Gillian Merron Mp,Single Donation Entity,1221.13,1,1221.13
+665,1602.0,The Rt Hon Sir Malcolm Rifkind Qc Mp,Very Small Entity,18146.0,5,3629.2
+666,1603.0,Ms Margot James Mp,Very Small Entity,2000.0,1,2000.0
+667,1604.0,Mr Huw Lewis Am,Single Donation Entity,10000.0,1,10000.0
+668,1605.0,The Rt Hon David Heathcoat-Amory Mp,Very Small Entity,24850.0,9,2761.1111111111113
+669,1606.0,Dr Andrew Murrison Mp,Very Small Entity,24850.0,9,2761.1111111111113
+670,1607.0,The Rt Hon William Hague Mp,Very Small Entity,194875.24,40,4871.880999999999
+671,1608.0,Dr Alasdair Mcdonnell Mp,Single Donation Entity,3500.0,1,3500.0
+672,1609.0,Mr David Borrow Mp,Single Donation Entity,1199.69,1,1199.69
+673,1610.0,Sir Roger Gale Mp,Very Small Entity,2569.86,2,1284.93
+674,1611.0,The Rt Hon Michael Jack Mp,Single Donation Entity,2150.0,1,2150.0
+675,1612.0,Mr Andrew Love Mp,Very Small Entity,10733.0,4,2683.25
+676,1613.0,Miss Christine Mccafferty Mp,Single Donation Entity,4811.98,1,4811.98
+677,1614.0,Dr Desmond Turner Mp,Single Donation Entity,2342.39,1,2342.39
+678,1615.0,Conservative Friends Of Poland,Single Donation Entity,10000.0,1,10000.0
+679,1616.0,The Rt Hon Douglas Alexander Mp,Very Small Entity,26723.59,7,3817.655714285714
+680,1617.0,Sir Gerald Howarth Mp,Very Small Entity,23996.0,7,3428.0
+681,1618.0,Islington Labour Group,Very Small Entity,24000.0,2,12000.0
+682,1619.0,United & Cecil Club,Very Small Entity,124181.78,13,9552.444615384615
+683,1620.0,Mr Bernard Jenkin Mp,Very Small Entity,49185.94,3,16395.313333333335
+684,1621.0,The Spring Lunch,Very Small Entity,182976.0,16,11436.0
+685,1622.0,The Rt Hon Edward Miliband Mp,Small Entity,391663.08,59,6638.357288135593
+686,1623.0,The Rt Hon Edward Balls Mp,Very Small Entity,182634.14,18,10146.341111111113
+687,1624.0,The Rt Hon David Miliband Mp,Small Entity,634568.75,51,12442.524509803921
+688,1625.0,Nigel Adams Mp,Very Small Entity,47231.36,11,4293.76
+689,1626.0,Mr Tom Blenkinsop Mp,Very Small Entity,12000.0,2,6000.0
+690,1627.0,Nigel Adams Mp,Very Small Entity,220075.78,33,6668.96303030303
+691,1628.0,Mr Jason Mccartney Mp,Very Small Entity,14665.0,5,2933.0
+692,1629.0,Mr Grahame Morris Mp,Very Small Entity,7200.110000000001,3,2400.036666666667
+693,1630.0,Mr Andrew Perry Mp,Single Donation Entity,4000.0,1,4000.0
+694,1631.0,Mr Julian Sturdy Mp,Single Donation Entity,4000.0,1,4000.0
+695,1632.0,The Rt Hon John Hayes Mp,Single Donation Entity,1909.64,1,1909.64
+696,1633.0,Mr Kenneth Livingstone,Very Small Entity,38500.0,8,4812.5
+697,1634.0,Ms Oona King,Very Small Entity,56500.0,13,4346.153846153846
+698,1635.0,The Rt Hon Andy Burnham Mp,Small Entity,113770.24,19,5987.9073684210525
+699,1636.0,Mr Alex Cunningham Mp,Single Donation Entity,5000.0,1,5000.0
+700,1637.0,Mr Charlie Elphicke,Very Small Entity,3900.0,2,1950.0
+701,1638.0,Dr Matthew Offord Mp,Very Small Entity,24749.7,10,2474.9700000000003
+702,1639.0,Mr Rory Stewart Mp,Very Small Entity,184101.7,34,5414.755882352942
+703,1640.0,Mr Andrew Bridgen Mp,Very Small Entity,7500.0,3,2500.0
+704,1641.0,The Rt Hon Gordon Brown Mp,Very Small Entity,39996.33,5,7999.2660000000005
+705,1642.0,Mr Chris Kelly Mp,Very Small Entity,16586.66,6,2764.443333333333
+706,1643.0,Mr Ian Lucas Mp,Very Small Entity,32231.97,10,3223.197
+707,1644.0,Mr Dominic Raab Mp,Very Small Entity,254478.37,30,8482.612333333333
+708,1645.0,Mr Nick Boles Mp,Very Small Entity,18089.16,6,3014.86
+709,1646.0,Lgbtory,Single Donation Entity,10000.0,1,10000.0
+710,1647.0,Liberal Democrat Friends Of Israel,Very Small Entity,43000.0,5,8600.0
+711,1648.0,Ms Diane Abbott Mp,Very Small Entity,45979.65,11,4179.968181818182
+712,1649.0,Ms Heidi Alexander Mp,Very Small Entity,11690.02,2,5845.01
+713,1650.0,Mr Michael Ellis Mp,Very Small Entity,2200.0,1,2200.0
+714,1651.0,Mr Adam Holloway Mp,Very Small Entity,19091.0,7,2727.285714285714
+715,1652.0,Mr Tristram Hunt Mp,Very Small Entity,129893.17,15,8659.544666666667
+716,1653.0,Dr Julian Huppert Mp,Very Small Entity,43034.0,3,14344.666666666666
+717,1654.0,Mr John Leech Mp,Very Small Entity,9270.0,3,3090.0
+718,1655.0,Mark Menzies Mp,Very Small Entity,89791.21,23,3903.9656521739134
+719,1656.0,Ms Emma Reynolds Mp,Very Small Entity,9733.0,3,3244.3333333333335
+720,1657.0,Mr Ian Swales Mp,Single Donation Entity,4300.0,1,4300.0
+721,1658.0,Mr James Wharton Mp,Very Small Entity,202645.9,38,5332.786842105263
+722,1659.0,Mr Chris White Mp,Single Donation Entity,2200.0,1,2200.0
+723,1660.0,Mr Craig Whittaker Mp,Very Small Entity,22240.73,7,3177.247142857143
+724,1661.0,Ms Harriett Baldwin Mp,Very Small Entity,4500.0,1,4500.0
+725,1662.0,Mr Gordon Birtwistle Mp,Very Small Entity,13471.59,3,4490.53
+726,1663.0,Mr Conor Burns Mp,Very Small Entity,14936.1,5,2987.2200000000003
+727,1664.0,Lorely Burt Mp,Single Donation Entity,3430.0,1,3430.0
+728,1665.0,Mr Daniel Byles Mp,Very Small Entity,5921.469999999999,2,2960.7349999999997
+729,1666.0,Mr Kris Hopkins Mp,Single Donation Entity,4000.0,1,4000.0
+730,1667.0,Mr Huw Irranca-Davies Mp,Single Donation Entity,2421.47,1,2421.47
+731,1668.0,The Rt Hon Tessa Jowell Mp,Very Small Entity,189355.53,22,8607.069545454546
+732,1669.0,Ms Mary Macleod Mp,Very Small Entity,51311.93,8,6413.99125
+733,1670.0,Ms Priti Patel Mp,Very Small Entity,20779.0,6,3463.1666666666665
+734,1671.0,Ms Yasmin Qureshi Mp,Very Small Entity,24054.69,8,3006.83625
+735,1672.0,Ms Heather Wheeler Mp,Very Small Entity,36802.71,12,3066.8925
+736,1673.0,Ms Rushanara Ali Mp,Very Small Entity,53529.380000000005,13,4117.6446153846155
+737,1674.0,Mr Peter Bone Mp,Very Small Entity,5800.0,2,2900.0
+738,1675.0,Mr Thomas Docherty Mp,Single Donation Entity,3279.0,1,3279.0
+739,1676.0,Mr Jonathan Edwards Mp,Single Donation Entity,4680.0,1,4680.0
+740,1677.0,The Rt Hon Matthew Hancock Mp,Very Small Entity,288990.0,43,6720.697674418605
+741,1678.0,Ms Kate Hoey Mp,Very Small Entity,43421.0,5,8684.2
+742,1679.0,Ms Margot James Mp,Very Small Entity,9526.64,3,3175.5466666666666
+743,1680.0,Mr Robert Halfon Mp,Very Small Entity,31953.48,10,3195.348
+744,1681.0,Mr Chris Heaton-Harris Mp,Very Small Entity,13697.55,4,3424.3875
+745,1682.0,Dr Phillip Lee Mp,Very Small Entity,50853.479999999996,11,4623.043636363636
+746,1683.0,Charlotte Leslie Mp,Very Small Entity,48681.43,14,3477.245
+747,1684.0,Ms Pamela Nash Mp,Very Small Entity,10226.94,3,3408.98
+748,1685.0,Mr Kenneth Livingstone,Very Small Entity,10000.0,3,3333.3333333333335
+749,1686.0,Ms Andrea Leadsom Mp,Very Small Entity,70500.0,4,17625.0
+750,1687.0,Ms Catherine Mckinnell Mp,Very Small Entity,5500.0,2,2750.0
+751,1688.0,Mr Nadhim Zahawi Mp,Very Small Entity,31789.97,7,4541.424285714286
+752,1696.0,Mr Austin Mitchell Mp,Single Donation Entity,4000.0,1,4000.0
+753,1707.0,Ms Lisa Nandy Mp,Very Small Entity,13075.0,4,3268.75
+754,1710.0,No To Av Yes To Pr,Single Donation Entity,21149.67,1,21149.67
+755,1728.0,Pauline Latham Mp,Very Small Entity,109077.68,9,12119.742222222221
+756,1729.0,Mr Stephen Mcpartland Mp,Very Small Entity,10123.1,4,2530.775
+757,1730.0,Labour Women'S Network,Very Small Entity,51090.0,7,7298.571428571428
+758,1731.0,Movement For Change,Very Small Entity,1503953.6,44,34180.76363636364
+759,1739.0,Labour No To Av,Very Small Entity,8911.54,2,4455.77
+760,1762.0,Liverpool Labour Group,Very Small Entity,30000.0,2,15000.0
+761,1763.0,Mr Julian Smith Mp,Very Small Entity,5821.75,2,2910.875
+762,1771.0,Mr David Campbell Bannerman,Single Donation Entity,1501.0,1,1501.0
+763,1772.0,Project Umubano,Single Donation Entity,50000.0,1,50000.0
+764,1773.0,The Rt Hon Bob Ainsworth Mp,Single Donation Entity,4500.0,1,4500.0
+765,1774.0,Mr Bill Esterson Mp,Very Small Entity,38900.0,7,5557.142857142857
+766,1775.0,Mr Mike Freer Mp,Very Small Entity,12664.34,5,2532.868
+767,1776.0,Mr Duncan Hames Mp,Very Small Entity,6003.0,2,3001.5
+768,1777.0,Ms Sheryll Murray Mp,Very Small Entity,28674.0,10,2867.4
+769,1778.0,Mr Andrew Percy Mp,Very Small Entity,29239.0,11,2658.090909090909
+770,1779.0,Mr Simon Reevell Mp,Single Donation Entity,2000.0,1,2000.0
+771,1780.0,Henry Smith Mp,Very Small Entity,37084.8,9,4120.533333333334
+772,1781.0,Mr Gerry Sutcliffe Mp,Single Donation Entity,3500.0,1,3500.0
+773,1782.0,Mr Justin Tomlinson Mp,Single Donation Entity,3600.0,1,3600.0
+774,1792.0,Mr Bob Blackman Mp,Very Small Entity,88130.83,24,3672.1179166666666
+775,1793.0,Mr Simon Danczuk Mp,Very Small Entity,14673.0,3,4891.0
+776,1794.0,Mr Philip Davies Mp,Very Small Entity,14472.0,4,3618.0
+777,1795.0,Mr Michael Dugher Mp,Very Small Entity,20680.46,7,2954.3514285714286
+778,1796.0,The Rt Hon John Healey Mp,Very Small Entity,84019.56,7,12002.794285714286
+779,1797.0,The Rt Hon Sajid Javid Mp,Very Small Entity,303669.63,24,12652.90125
+780,1798.0,Mr Angus Macneil Mp,Very Small Entity,21796.48,5,4359.296
+781,1799.0,The Rt Hon Ed Miliband,Very Small Entity,52835.8,4,13208.95
+782,1800.0,Mr Stephen Mosley Mp,Very Small Entity,10679.45,5,2135.8900000000003
+783,1801.0,Ms Bridget Phillipson Mp,Single Donation Entity,2123.4,1,2123.4
+784,1802.0,The Rt Hon Jim Murphy Mp,Very Small Entity,82770.99,11,7524.635454545455
+785,1806.0,Ms Luciana Berger Mp,Very Small Entity,62929.18,11,5720.834545454545
+786,1807.0,Mr Christopher Pincher Mp,Very Small Entity,10775.0,3,3591.6666666666665
+787,1808.0,Mr Stephen Twigg Mp,Very Small Entity,15846.42,5,3169.284
+788,1814.0,Steve Baker Mp,Very Small Entity,21390.0,2,10695.0
+789,1815.0,Ms Nadine Dorries Mp,Single Donation Entity,8130.0,1,8130.0
+790,1816.0,Kwasi Kwarteng Mp,Very Small Entity,47253.74,16,2953.35875
+791,1817.0,Mr Greg Mulholland Mp,Very Small Entity,4043.59,2,2021.795
+792,1818.0,Ms Caroline Nokes Mp,Very Small Entity,18935.0,3,6311.666666666667
+793,1819.0,Mr Gareth R Thomas Mp,Very Small Entity,15301.0,3,5100.333333333333
+794,1820.0,Mr Murdo Fraser Msp,Very Small Entity,14700.0,4,3675.0
+795,1823.0,The Rt Hon Iain Duncan Smith Mp,Very Small Entity,10667.279999999999,2,5333.639999999999
+796,1824.0,Mr Tim Farron Mp,Very Small Entity,155077.0,17,9122.176470588236
+797,1825.0,Mr Stephen Hepburn Mp,Very Small Entity,17140.3,7,2448.6142857142854
+798,1826.0,The Rt Hon Greg Knight Mp,Single Donation Entity,3000.0,1,3000.0
+799,1827.0,Mr Paul Maynard Mp,Very Small Entity,10267.4,5,2053.48
+800,1828.0,Mr Iain Stewart Mp,Very Small Entity,4129.32,2,2064.66
+801,1835.0,Ms Ruth Davidson Msp,Very Small Entity,29500.0,4,7375.0
+802,1836.0,The Rt Hon John Denham Mp,Very Small Entity,9355.66,2,4677.83
+803,1837.0,Ms Caroline Dinenage Mp,Single Donation Entity,8000.0,1,8000.0
+804,1838.0,Ms Helen Grant Mp,Very Small Entity,19532.13,5,3906.4260000000004
+805,1839.0,The Rt Hon Alan Johnson Mp,Very Small Entity,2000.0,1,2000.0
+806,1840.0,The Rt Hon Nicky Morgan Mp,Single Donation Entity,6000.0,1,6000.0
+807,1841.0,Ms Anne Marie Morris Mp,Very Small Entity,47275.72,18,2626.428888888889
+808,1842.0,Mr Jesse Norman Mp,Very Small Entity,8196.0,2,4098.0
+809,1843.0,Mr Alok Sharma Mp,Very Small Entity,17827.57,5,3565.514
+810,1844.0,Mr Chuka Umunna Mp,Very Small Entity,286778.16,33,8690.247272727273
+811,1845.0,Mr Paul Uppal Mp,Very Small Entity,9925.0,2,4962.5
+812,1846.0,Tom Watson Mp,Small Entity,529333.63,58,9126.441896551723
+813,1850.0,Ms Johann Lamont Msp,Single Donation Entity,5000.0,1,5000.0
+814,1851.0,Mr Stuart Andrew Mp,Very Small Entity,14715.0,5,2943.0
+815,1852.0,Mr Jim Dobbin Mp,Very Small Entity,4265.0,2,2132.5
+816,1853.0,Dr Gregg Mcclymont Mp,Single Donation Entity,2025.0,1,2025.0
+817,1854.0,Mr Ian Murray Mp,Very Small Entity,6310.1,2,3155.05
+818,1862.0,Mr Rehman Chishti Mp,Very Small Entity,19368.91,6,3228.1516666666666
+819,1863.0,Ms Gemma Doyle Mp,Very Small Entity,10360.11,4,2590.0275
+820,1864.0,Dr Caroline Lucas Mp,Very Small Entity,200740.0,21,9559.047619047618
+821,1865.0,The Rt Hon Richard Ottaway Mp,Very Small Entity,3212.0,2,1606.0
+822,1866.0,Mr David Rutley Mp,Single Donation Entity,2490.0,1,2490.0
+823,1867.0,Mr Anas Sarwar Mp,Very Small Entity,171191.43,11,15562.857272727271
+824,1868.0,Mr Ken Macintosh Msp,Very Small Entity,13025.0,5,2605.0
+825,1869.0,Conservative Friends Of International Development,Single Donation Entity,10000.0,1,10000.0
+826,1877.0,Mr Chris Skidmore Mp,Single Donation Entity,3600.0,1,3600.0
+827,1878.0,Mr Nick Smith Mp,Single Donation Entity,2654.48,1,2654.48
+828,1879.0,Mr David Tredinnick Mp,Single Donation Entity,3025.0,1,3025.0
+829,1880.0,Mr Richard Graham Mp,Very Small Entity,39374.5,11,3579.5
+830,1883.0,Mr Patrick Harvie Msp,Single Donation Entity,5316.0,1,5316.0
+831,1893.0,Mr Stephen Metcalfe Mp,Very Small Entity,25302.0,5,5060.4
+832,1894.0,Mr George Hollingbery Mp,Single Donation Entity,3000.0,1,3000.0
+833,1895.0,The Fabian Society,Very Small Entity,86753.0,9,9639.222222222223
+834,1896.0,Ms Rhoda Grant Msp,Single Donation Entity,1763.26,1,1763.26
+835,1898.0,The Rt Hon Ben Bradshaw Mp,Very Small Entity,19929.47,7,2847.067142857143
+836,1900.0,Mr Robert Flello Mp,Very Small Entity,39675.0,8,4959.375
+837,1901.0,Mr Philip Hollobone Mp,Very Small Entity,32960.74,9,3662.304444444444
+838,1902.0,Mr Hanzala Malik Msp,Single Donation Entity,6500.0,1,6500.0
+839,1909.0,Mr Nick De Bois Mp,Very Small Entity,7200.0,2,3600.0
+840,1914.0,Conservative Friends Of India,Very Small Entity,62301.0,8,7787.625
+841,1916.0,Mr Richard Baker Msp,Very Small Entity,14900.0,2,7450.0
+842,1920.0,Fulham Group [De-Registered 04/11/15],Single Donation Entity,25000.0,1,25000.0
+843,1921.0,Ms Nicola Blackwood Mp,Very Small Entity,6851.09,2,3425.545
+844,1922.0,Mr Richard Harrington Mp,Very Small Entity,52696.0,6,8782.666666666666
+845,1923.0,Ms Meg Hillier Mp,Very Small Entity,11116.25,3,3705.4166666666665
+846,1924.0,Ms Chinyelu Onwurah Mp,Very Small Entity,9909.19,4,2477.2975
+847,1925.0,The Rt Hon Yvette Cooper Mp,Very Small Entity,545172.3099999999,49,11125.96551020408
+848,1926.0,The Rt Hon Caroline Flint Mp,Very Small Entity,76843.58,20,3842.179
+849,1927.0,Rebecca Harris Mp,Very Small Entity,6537.0,2,3268.5
+850,1928.0,Ms Amber Rudd Mp,Very Small Entity,3381.91,2,1690.955
+851,1929.0,Mr Andrew Stephenson Mp,Very Small Entity,34307.21,8,4288.40125
+852,1930.0,Cllr Clive Grunshaw,Very Small Entity,5000.0,2,2500.0
+853,1935.0,Dan Jarvis Mp,Very Small Entity,245617.19,24,10234.049583333333
+854,1936.0,Mr George Mudie Mp,Single Donation Entity,4500.0,1,4500.0
+855,1937.0,Ms Claire Perry Mp,Single Donation Entity,9939.39,1,9939.39
+856,1938.0,Sir Bob Russell Mp,Single Donation Entity,5222.0,1,5222.0
+857,1939.0,The Rt Hon Shaun Woodward Mp,Very Small Entity,18550.0,3,6183.333333333333
+858,1941.0,Mr Aidan Burley Mp,Very Small Entity,11400.0,3,3800.0
+859,1942.0,Mr Nigel Mills Mp,Single Donation Entity,1558.0,1,1558.0
+860,1943.0,Ms Laura Sandys Mp,Single Donation Entity,3691.93,1,3691.93
+861,1944.0,David Morris Mp,Very Small Entity,84893.67,24,3537.23625
+862,1959.0,Mr Gareth Johnson Mp,Very Small Entity,3920.0,2,1960.0
+863,1962.0,Democracy 2015 [De-Registered 01/11/14],Very Small Entity,19114.739999999998,4,4778.6849999999995
+864,1972.0,Don'T Cook Party [De-Registered 20/06/14],Very Small Entity,75000.0,2,37500.0
+865,1980.0,Carlton Club Political Dinner,Single Donation Entity,600.0,1,600.0
+866,1985.0,Mr David Burrowes Mp,Single Donation Entity,2276.0,1,2276.0
+867,1986.0,Life,Very Small Entity,12569.02,3,4189.673333333333
+868,1996.0,Ms Jessica Lee Mp,Single Donation Entity,1511.0,1,1511.0
+869,1997.0,Mr Alun Cairns Mp,Very Small Entity,35420.95,8,4427.61875
+870,1998.0,Ms Gloria De Piero Mp,Very Small Entity,6000.0,3,2000.0
+871,1999.0,Ms Helen Goodman Mp,Very Small Entity,40590.23,5,8118.046
+872,2000.0,Mr George Galloway Mp,Very Small Entity,4782.35,2,2391.175
+873,2001.0,Mr John Howell Mp,Very Small Entity,15660.46,5,3132.0919999999996
+874,2002.0,Mr Adrian Bailey Mp,Single Donation Entity,4973.39,1,4973.39
+875,2003.0,Ms Lucy Powell Mp,Very Small Entity,13004.0,2,6502.0
+876,2004.0,Mr Jonathan Reynolds Mp,Very Small Entity,25402.920000000002,6,4233.820000000001
+877,2005.0,The Rt Hon Stephen Timms Mp,Very Small Entity,28509.0,9,3167.6666666666665
+878,2018.0,Mr Oliver Colvile Mp,Very Small Entity,13074.0,4,3268.5
+879,2021.0,Dr Stella Creasy Mp,Very Small Entity,14832.0,4,3708.0
+880,2022.0,Jack Lopresti Mp,Very Small Entity,41933.26,11,3812.114545454546
+881,2023.0,Mr Andy Mcdonald Mp,Very Small Entity,106485.5,8,13310.6875
+882,2039.0,Mr Richard Bacon Mp,Very Small Entity,15891.19,5,3178.2380000000003
+883,2040.0,Mr Duncan Hames,Single Donation Entity,5000.0,1,5000.0
+884,2041.0,Mr Jeremy Lefroy Mp,Very Small Entity,22189.85,11,2017.2590909090907
+885,2055.0,The Yorkshire Party,Single Donation Entity,1000.0,1,1000.0
+886,2059.0,Mr Graham Jones Mp,Very Small Entity,16125.0,5,3225.0
+887,2060.0,Mr Guy Opperman Mp,Very Small Entity,28184.239999999998,9,3131.582222222222
+888,2061.0,Mr John Lamont Msp,Very Small Entity,14858.0,4,3714.5
+889,2070.0,Mr Graham Evans Mp,Very Small Entity,16319.92,3,5439.973333333333
+890,2072.0,Mr Martin Vickers Mp,Very Small Entity,24791.12,7,3541.5885714285714
+891,2073.0,Mr Nic Dakin Mp,Single Donation Entity,2390.0,1,2390.0
+892,2074.0,Conservative Councillors' Association,Very Small Entity,53150.0,7,7592.857142857143
+893,2080.0,Mr Tom Greatrex Mp,Very Small Entity,9859.439999999999,3,3286.4799999999996
+894,2081.0,The Rt Hon Norman Lamb Mp,Very Small Entity,76750.5,23,3336.978260869565
+895,2082.0,Mr John Biggs,Very Small Entity,6000.0,2,3000.0
+896,2093.0,The Rt Hon Margaret Hodge Mp,Very Small Entity,17173.17,3,5724.389999999999
+897,2094.0,Mr Brandon Lewis Mp,Very Small Entity,268390.38,46,5834.57347826087
+898,2096.0,Mr Ben Wallace Mp,Single Donation Entity,3500.0,1,3500.0
+899,2097.0,Ms Alexandra Mayer,Single Donation Entity,11692.0,1,11692.0
+900,2098.0,Ms Lucy Anderson,Very Small Entity,19710.0,4,4927.5
+901,2099.0,Ms Vicky Foxcroft,Very Small Entity,8349.44,2,4174.72
+902,2102.0,The Rt Hon Frank Field Mp,Very Small Entity,66909.7,6,11151.616666666667
+903,2103.0,Mr Ben Gummer Mp,Very Small Entity,7289.19,2,3644.595
+904,2104.0,The Rt Hon Sadiq Khan Mp,Very Small Entity,363956.0,41,8876.975609756097
+905,2105.0,Mrs Emma Lewell-Buck Mp,Very Small Entity,3154.78,2,1577.39
+906,2106.0,Mr Gavin Shuker Mp,Single Donation Entity,2950.0,1,2950.0
+907,2109.0,Cllr Sanchia Alasia,Very Small Entity,3520.0,2,1760.0
+908,2110.0,Mr Sebastian Dance,Single Donation Entity,2500.0,1,2500.0
+909,2111.0,Ms Judith Kirton-Darling,Very Small Entity,16275.54,2,8137.77
+910,2112.0,Ms Jayne Shotton,Single Donation Entity,8728.87,1,8728.87
+911,2114.0,Catherine West Mp,Very Small Entity,13737.17,5,2747.434
+912,2128.0,Mr Mick Antoniw,Very Small Entity,23000.0,3,7666.666666666667
+913,2129.0,Ms Ivana Bartoletti,Single Donation Entity,4125.0,1,4125.0
+914,2130.0,Conservative Friends Of Pakistan,Very Small Entity,18900.0,3,6300.0
+915,2131.0,Ms Margaret Hughes,Very Small Entity,17817.82,2,8908.91
+916,2132.0,Mr Kamaljeet Jandu,Single Donation Entity,17357.0,1,17357.0
+917,2133.0,Ms Nancy Platts,Very Small Entity,2737.37,2,1368.685
+918,2134.0,Ms Angela Rayner Mp,Very Small Entity,39937.0,8,4992.125
+919,2135.0,Stevenage First,Single Donation Entity,8000.0,1,8000.0
+920,2136.0,Independent Labour Group [De-Registered 03/11/16],Single Donation Entity,8000.0,1,8000.0
+921,2137.0,All People'S Party,Very Small Entity,116899.47,16,7306.216875
+922,2145.0,Dr Thérèse Coffey Mp,Very Small Entity,33574.09,4,8393.5225
+923,2146.0,Mr Paul Brannen,Single Donation Entity,2000.0,1,2000.0
+924,2147.0,Mr Lutfur Rahman,Very Small Entity,6000.0,2,3000.0
+925,2148.0,Mr Siôn Simon,Single Donation Entity,5760.0,1,5760.0
+926,2149.0,Policy Network And Communications Ltd,Very Small Entity,291349.5,4,72837.375
+927,2150.0,Mr James Watkins,Single Donation Entity,12993.8,1,12993.8
+928,2151.0,Ms Clare Moody,Single Donation Entity,12455.87,1,12455.87
+929,2155.0,Tower Hamlets First [De-Registered 29/04/15],Single Donation Entity,36975.39,1,36975.39
+930,2157.0,Michelle Donelan Mp,Very Small Entity,125383.14,23,5451.440869565217
+931,2158.0,Ms Linda Woodings,Single Donation Entity,6704.0,1,6704.0
+932,2164.0,No2Eu [De-Registered 01/11/14],Very Small Entity,55739.89,8,6967.48625
+933,2173.0,Mr Jake Berry Mp,Very Small Entity,7500.0,2,3750.0
+934,2174.0,Mr Ronnie Campbell Mp,Single Donation Entity,3810.0,1,3810.0
+935,2175.0,Mr Mike Crockart Mp,Single Donation Entity,3810.0,1,3810.0
+936,2188.0,Mr Jim Eadie,Single Donation Entity,3108.0,1,3108.0
+937,2189.0,Ms Margaret Mitchell,Single Donation Entity,3108.0,1,3108.0
+938,2190.0,Society Of Conservative Lawyers,Very Small Entity,439454.71,6,73242.45166666668
+939,2192.0,Ms Anne-Marie Trevelyan,Very Small Entity,47805.82,22,2172.991818181818
+940,2209.0,Yes Scotland Limited,Very Small Entity,2431000.0,25,97240.0
+941,2217.0,Mr Ian Austin Mp,Very Small Entity,63783.0,13,4906.384615384615
+942,2218.0,Ms Jackie Doyle-Price Mp,Single Donation Entity,3500.0,1,3500.0
+943,2220.0,Ms Lucy Allan,Single Donation Entity,2000.0,1,2000.0
+944,2221.0,Mr Mohammad Asghar,Very Small Entity,4000.0,2,2000.0
+945,2222.0,Mr Steve Bell,Single Donation Entity,2000.0,1,2000.0
+946,2223.0,Mr James Heappy,Very Small Entity,9802.0,2,4901.0
+947,2224.0,Mr Royston Smith,Single Donation Entity,2000.0,1,2000.0
+948,2225.0,Mr David Warburton,Very Small Entity,144516.0,19,7606.105263157895
+949,2249.0,Mr Vernon Coaker Mp,Very Small Entity,4663.42,2,2331.71
+950,2250.0,The Rt Hon Stephen Dorrell Mp,Single Donation Entity,5000.0,1,5000.0
+951,2251.0,Mr Michael Mccann Mp,Single Donation Entity,3000.0,1,3000.0
+952,2252.0,Mr Adrian Sanders Mp,Very Small Entity,5500.0,2,2750.0
+953,2254.0,Mr Mike Weatherley Mp,Very Small Entity,18674.0,4,4668.5
+954,2256.0,Mr Matthew Pennycook,Single Donation Entity,2885.35,1,2885.35
+955,2257.0,Mr Anthony Cox,Very Small Entity,12500.0,2,6250.0
+956,2258.0,Mr Christopher Green,Very Small Entity,34216.82,4,8554.205
+957,2259.0,Ms Rowenna Davis,Very Small Entity,21500.0,5,4300.0
+958,2296.0,Ms Helen Hayes,Single Donation Entity,2000.0,1,2000.0
+959,2298.0,Mr George Ferguson,Very Small Entity,4589.0,2,2294.5
+960,2304.0,No Borders Campaign,Very Small Entity,125000.0,5,25000.0
+961,2307.0,The Campaign For British Influence In Europe Limited,Very Small Entity,563000.0,15,37533.333333333336
+962,2321.0,The Rt Hon Kevin Barron Mp,Very Small Entity,6470.0,2,3235.0
+963,2322.0,The Rt Hon Alistair Burt Mp,Very Small Entity,58650.0,12,4887.5
+964,2323.0,Mr James Clappison Mp,Single Donation Entity,2000.0,1,2000.0
+965,2326.0,Ms Rebecca Pow,Very Small Entity,50454.74,12,4204.5616666666665
+966,2329.0,Better Together 2012 Ltd,Very Small Entity,2477746.0,47,52718.0
+967,2354.0,Business For Scotland Ltd,Very Small Entity,209120.0,8,26140.0
+968,2360.0,Mr John Woodcock Mp,Very Small Entity,28296.67,7,4042.3814285714284
+969,2361.0,Mr Guto Bebb Mp,Very Small Entity,30984.66,8,3873.0825
+970,2362.0,The Rt Hon Alistair Darling Mp,Single Donation Entity,7312.42,1,7312.42
+971,2363.0,Ms Sarah Newtonn Mp,Very Small Entity,9699.22,3,3233.0733333333333
+972,2364.0,Ms Anna Soubry Mp,Single Donation Entity,5000.0,1,5000.0
+973,2365.0,Mr William Goodhand,Very Small Entity,29500.0,7,4214.285714285715
+974,2383.0,Christians For Independence,Single Donation Entity,100000.0,1,100000.0
+975,2392.0,Mr Angus Macdonald,Very Small Entity,25000.0,1,25000.0
+976,2402.0,Mr Neil Parish Mp,Very Small Entity,4675.0,2,2337.5
+977,2403.0,Redbridge Labour Group,Very Small Entity,19850.0,7,2835.714285714286
+978,2416.0,Wfs2014 Ltd,Very Small Entity,30000.0,3,10000.0
+979,2420.0,The Scottish Research Society,Single Donation Entity,74747.47,1,74747.47
+980,2423.0,Mr Stephen Mccabe Mp,Very Small Entity,8513.17,4,2128.2925
+981,2427.0,Cumbria Broadband Rural And Community Projects Limited,Very Small Entity,20145.0,3,6715.0
+982,2429.0,Let'S Stay Together,Very Small Entity,111501.0,8,13937.625
+983,2431.0,Better With Scotland,Single Donation Entity,20723.5,1,20723.5
+984,2435.0,Political Animal Lobby Ltd,Very Small Entity,17636.21,2,8818.105
+985,2450.0,Mr James Heappey,Very Small Entity,113407.41,17,6671.024117647059
+986,2451.0,Mr Rhun Ap Iorwerth,Very Small Entity,5221.32,2,2610.66
+987,2452.0,Mr Alun Craig Williams,Single Donation Entity,1600.0,1,1600.0
+988,2453.0,Mr Afzal Amin,Single Donation Entity,1600.0,1,1600.0
+989,2455.0,Ms Tracey Crouch Mp,Very Small Entity,5800.0,2,2900.0
+990,2456.0,Mr John Glen Mp,Very Small Entity,14581.27,3,4860.423333333333
+991,2459.0,Ms Tessa Munt Mp,Single Donation Entity,3000.0,1,3000.0
+992,2460.0,Mr Albert Owen Mp,Single Donation Entity,2453.15,1,2453.15
+993,2471.0,Mr Martin Horwood Mp,Single Donation Entity,2400.0,1,2400.0
+994,2489.0,Campaign For Nuclear Disarmament,Single Donation Entity,16184.0,1,16184.0
+995,2489.0,Scottish Campaign For Nuclear Disarmament,Very Small Entity,27700.0,1,27700.0
+996,2521.0,Ms Seema Louise Ghiassi Kennedy,Very Small Entity,34250.0,6,5708.333333333333
+997,2522.0,Mr Ian Lavery Mp,Very Small Entity,10604.14,3,3534.713333333333
+998,2523.0,Deep Blue,Single Donation Entity,2500.0,1,2500.0
+999,2547.0,Hope Not Hate Ltd,Very Small Entity,11950.0,1,11950.0
+1000,2549.0,Conservative Muslim Forum,Very Small Entity,2500.0,2,1250.0
+1001,2552.0,Cannabis Is Safer Than Alcohol [De-Registered 03/11/16],Small Entity,216115.54,69,3132.109275362319
+1002,2555.0,Sarah Champion Mp,Very Small Entity,15930.52,4,3982.63
+1003,2559.0,Ms Kezia Dugdale Msp,Very Small Entity,31579.260000000002,7,4511.322857142857
+1004,2570.0,Centre For Labour & Social Studies (Class),Very Small Entity,93240.0,4,23310.0
+1005,2578.0,Fabian Society,Very Small Entity,14300.0,2,7150.0
+1006,2585.0,Angela Eagle Mp,Very Small Entity,194891.42,14,13920.815714285714
+1007,2586.0,Daniel Poulter Mp,Single Donation Entity,12500.0,1,12500.0
+1008,2587.0,The Rt Hon Tom Brake Mp,Very Small Entity,49701.0,11,4518.272727272727
+1009,2588.0,George Eustice Mp,Single Donation Entity,2000.0,1,2000.0
+1010,2590.0,Shabana Mahmood Mp,Very Small Entity,4685.9400000000005,2,2342.9700000000003
+1011,2591.0,Mr Mark Reckless Mp,Single Donation Entity,13000.0,1,13000.0
+1012,2592.0,Carlton Club,Single Donation Entity,11500.0,1,11500.0
+1013,2593.0,Raymond Finch,Single Donation Entity,7500.0,1,7500.0
+1014,2594.0,Neil Findlay Msp,Very Small Entity,38919.16,13,2993.7815384615387
+1015,2598.0,Johnny Mercer Mp,Very Small Entity,35062.8,13,2697.138461538462
+1016,2599.0,Britain Yearly Meeting Of The Religious Society Of Friends (Quakers),Very Small Entity,28000.0,3,9333.333333333334
+1017,2623.0,Cruelty Free International,Single Donation Entity,600.0,1,600.0
+1018,2652.0,The Radical Party,Very Small Entity,36852.0,13,2834.769230769231
+1019,2657.0,Scottish Campaign For Nuclear Disarmament,Very Small Entity,4000.0,1,4000.0
+1020,2679.0,Cllr Simon Marcus,Single Donation Entity,2000.0,1,2000.0
+1021,2736.0,British Institute Of Human Rights,Single Donation Entity,5573.0,1,5573.0
+1022,2739.0,Ms Karen Bradley Mp,Single Donation Entity,5000.0,1,5000.0
+1023,2740.0,Mr John Stevenson Mp,Very Small Entity,44750.0,8,5593.75
+1024,2745.0,Network For Animals Ltd,Very Small Entity,36271.8,3,12090.6
+1025,2747.0,Cllr Mark Bradshaw,Single Donation Entity,5000.0,1,5000.0
+1026,2755.0,Women'S Equality Party,Small Entity,1155408.46,51,22655.067843137254
+1027,2786.0,Labour People Ltd,Very Small Entity,70000.0,7,10000.0
+1028,2796.0,Mr Michael Dugher,Single Donation Entity,2000.0,1,2000.0
+1029,2797.0,Stephen Greenhalgh,Very Small Entity,17276.0,5,3455.2
+1030,2799.0,No Balls Ball,Very Small Entity,25450.0,2,12725.0
+1031,2809.0,Mr David Stewart,Single Donation Entity,1620.0,1,1620.0
+1032,2810.0,Nusrat Ghani,Very Small Entity,32589.0,6,5431.5
+1033,2814.0,Melanie Onn,Very Small Entity,16300.0,2,8150.0
+1034,2815.0,David Mackintosh Mp,Very Small Entity,8037.0,3,2679.0
+1035,2816.0,Tulip Siddiq,Single Donation Entity,10000.0,1,10000.0
+1036,2817.0,Derek Thomas,Very Small Entity,17821.0,2,8910.5
+1037,2818.0,Tom Tugendhat,Very Small Entity,115870.0,10,11587.0
+1038,2819.0,Craig Williams,Very Small Entity,7852.0599999999995,3,2617.353333333333
+1039,2821.0,Dr Tania Mathias,Very Small Entity,19500.0,4,4875.0
+1040,2828.0,Gordon Matheson,Very Small Entity,26045.89,3,8681.963333333333
+1041,2829.0,Liz Kendall Mp,Very Small Entity,174075.0,27,6447.222222222223
+1042,2831.0,Kevin Foster Mp,Very Small Entity,14080.39,3,4693.463333333333
+1043,2839.0,Ms Justine Greening Mp,Single Donation Entity,3354.83,1,3354.83
+1044,2842.0,Mr Clive Lewis Mp,Very Small Entity,121033.0,17,7119.588235294118
+1045,2843.0,Ms Holly Lynch Mp,Very Small Entity,7921.0,4,1980.25
+1046,2844.0,Sir Eric Pickles Mp,Very Small Entity,15800.0,4,3950.0
+1047,2845.0,Ms Mary Robinson Mp,Very Small Entity,23494.14,5,4698.8279999999995
+1048,2846.0,Mr Alex Rowley Msp,Very Small Entity,7000.0,2,3500.0
+1049,2855.0,Gareth Thomas Mp,Very Small Entity,8500.0,3,2833.3333333333335
+1050,2856.0,Paul Scully Mp,Very Small Entity,25576.07,8,3197.00875
+1051,2857.0,Will Quince Mp,Very Small Entity,36449.59,15,2429.9726666666666
+1052,2858.0,Kate Osamor Mp,Very Small Entity,12200.33,4,3050.0825
+1053,2859.0,Alan Mak Mp,Very Small Entity,27693.61,9,3077.067777777778
+1054,2860.0,Andrea Jenkyns Mp,Very Small Entity,66307.86,13,5100.6046153846155
+1055,2861.0,Suella Fernandes Mp,Very Small Entity,17400.0,5,3480.0
+1056,2862.0,Byron Davies Mp,Very Small Entity,11946.0,2,5973.0
+1057,2863.0,James Cleverly Mp,Very Small Entity,31969.35,8,3996.16875
+1058,2864.0,Dr Lisa Cameron Mp,Very Small Entity,25181.78,7,3597.3971428571426
+1059,2865.0,Hannah Bardell Mp,Very Small Entity,7437.09,2,3718.545
+1060,2866.0,Caroline Ansell Mp,Very Small Entity,59176.45,5,11835.289999999999
+1061,2867.0,Tasmina Ahmed-Sheikh Mp,Very Small Entity,10377.09,3,3459.03
+1062,2868.0,John Bell,Single Donation Entity,1600.0,1,1600.0
+1063,2869.0,Zac Goldsmith Mp,Single Donation Entity,50000.0,1,50000.0
+1064,2885.0,Robert Jenrick Mp,Very Small Entity,14998.65,3,4999.55
+1065,2887.0,Anne Main Mp,Very Small Entity,4260.0,2,2130.0
+1066,2889.0,Mark Pawsey Mp,Very Small Entity,9444.07,3,3148.023333333333
+1067,2890.0,Tom Pursglove Mp,Very Small Entity,3424.0,2,1712.0
+1068,2891.0,Jamie Reed Mp,Very Small Entity,4539.5,2,2269.75
+1069,2892.0,Daniel Zeichner Mp,Single Donation Entity,2998.65,1,2998.65
+1070,3902.0,Ashfield Independents,Very Small Entity,8400.0,2,4200.0
+1071,3908.0,Helen Whately Mp,Very Small Entity,9954.0,3,3318.0
+1072,3909.0,Natalie Mcgarry Mp,Single Donation Entity,1977.11,1,1977.11
+1073,3910.0,Alison Mcgovern Mp,Very Small Entity,15677.09,8,1959.63625
+1074,3911.0,Mark Garnier Mp,Very Small Entity,22267.09,5,4453.418
+1075,3912.0,Labour Together,Very Small Entity,206000.0,8,25750.0
+1076,3930.0,Gary Godden,Single Donation Entity,5211.72,1,5211.72
+1077,3931.0,Peter Kyle Mp,Very Small Entity,76803.8,11,6982.163636363636
+1078,3932.0,Jo Stevens Mp,Single Donation Entity,3800.0,1,3800.0
+1079,3933.0,Karl Turner Mp,Very Small Entity,9846.0,4,2461.5
+1080,3942.0,The In Campaign Ltd,Medium Entity,24228109.1,206,117612.18009708739
+1081,3945.0,Vote Leave Limited,Medium Entity,19671643.0,251,78373.0796812749
+1082,3950.0,Conservatives In Ltd,Small Entity,1798815.76,75,23984.210133333334
+1083,3953.0,Grassroots Out Ltd,Very Small Entity,2611474.76,18,145081.9311111111
+1084,3960.0,British National Party,Very Small Entity,266529.92,6,44421.65333333333
+1085,3963.0,Mhairi Black Mp,Single Donation Entity,2851.0,1,2851.0
+1086,3964.0,Jess Phillips Mp,Very Small Entity,46656.75,5,9331.35
+1087,3965.0,Conservative Friends Of The Chinese,Single Donation Entity,11250.0,1,11250.0
+1088,3966.0,Mark Macmillan,Single Donation Entity,2000.0,1,2000.0
+1089,3974.0,Leave.Eu Group Ltd,Very Small Entity,6400599.0,3,2133533.0
+1090,3979.0,Global Britain Limited,Very Small Entity,470520.89,3,156840.29666666666
+1091,3989.0,Wagtv Limited,Very Small Entity,290000.0,10,29000.0
+1092,3999.0,Another Europe Is Possible,Very Small Entity,15320.0,2,7660.0
+1093,4001.0,Go Movement Ltd,Very Small Entity,45025.92,5,9005.184
+1094,4003.0,The Campaign For An Independent Britain Limited,Very Small Entity,95000.0,9,10555.555555555555
+1095,4010.0,Northumberland Dining Club,Very Small Entity,79477.86,10,7947.786
+1096,4011.0,James Morris Mp,Very Small Entity,67200.0,6,11200.0
+1097,4012.0,Bob Stewart Mp,Very Small Entity,18781.32,5,3756.264
+1098,4013.0,Chris Evans Mp,Single Donation Entity,4837.0,1,4837.0
+1099,4014.0,David Jones Mp,Very Small Entity,14770.26,4,3692.565
+1100,4015.0,Chris Leslie Mp,Very Small Entity,44614.81,9,4957.201111111111
+1101,4016.0,Karl Mccartney Mp,Single Donation Entity,10397.0,1,10397.0
+1102,4018.0,Stephen Phillips Mp,Single Donation Entity,4837.0,1,4837.0
+1103,4019.0,Naz Shah Mp,Very Small Entity,5281.97,3,1760.6566666666668
+1104,4022.0,European Movement Of The Uk Ltd,Small Entity,546239.0,54,10115.537037037036
+1105,4027.0,Trade Unionists Against The European Union,Very Small Entity,168000.0,16,10500.0
+1106,4031.0,Mr Darren Grimes,Very Small Entity,1350630.3599999999,8,168828.79499999998
+1107,4045.0,Imaginexit Limited,Very Small Entity,50000.0,5,10000.0
+1108,4046.0,Friends Of The Earth Trust,Very Small Entity,60000.0,2,30000.0
+1109,4050.0,London First,Single Donation Entity,10000.0,1,10000.0
+1110,4065.0,Scientists For Eu Limited,Very Small Entity,460000.0,4,115000.0
+1111,4079.0,The Bruges Group,Very Small Entity,100000.0,6,16666.666666666668
+1112,4092.0,Edward Argar Mp,Very Small Entity,13217.0,4,3304.25
+1113,4093.0,Jonathan Ashworth Mp,Very Small Entity,9050.0,2,4525.0
+1114,4094.0,Chris Davies Mp,Very Small Entity,16749.9,3,5583.3
+1115,4095.0,Simon Hart Mp,Very Small Entity,58231.66,9,6470.184444444445
+1116,4096.0,Craig Mackinlay Mp,Very Small Entity,4500.0,2,2250.0
+1117,4097.0,Amanda Milling Mp,Single Donation Entity,2000.0,1,2000.0
+1118,4098.0,David Nuttall Mp,Single Donation Entity,2179.18,1,2179.18
+1119,4099.0,Paula Sherriff Mp,Very Small Entity,28524.14,7,4074.8771428571426
+1120,4100.0,Craig Tracey Mp,Single Donation Entity,2000.0,1,2000.0
+1121,4101.0,Martyn Underhill,Single Donation Entity,30000.0,1,30000.0
+1122,4102.0,Peter Dowd Mp,Single Donation Entity,3114.84,1,3114.84
+1123,4103.0,Oliver Dowden Mp,Very Small Entity,14867.0,2,7433.5
+1124,4104.0,Lucy Frazer Mp,Single Donation Entity,10867.0,1,10867.0
+1125,4105.0,Kate Green Mp,Very Small Entity,49005.0,5,9801.0
+1126,4106.0,Julian Knight Mp,Single Donation Entity,10867.0,1,10867.0
+1127,4107.0,Christian Matheson Mp,Very Small Entity,5685.0,2,2842.5
+1128,4108.0,Callum Mccaig Mp,Single Donation Entity,2075.0,1,2075.0
+1129,4109.0,Jeff Smith Mp,Very Small Entity,15168.82,3,5056.2733333333335
+1130,4110.0,Royston Smith Mp,Very Small Entity,6486.0,2,3243.0
+1131,4114.0,Veterans For Britain,Very Small Entity,200000.0,3,66666.66666666667
+1132,4120.0,Michelle Ovens Ltd,Very Small Entity,195000.0,3,65000.0
+1133,4130.0,Democracy Movement,Very Small Entity,845614.52,4,211403.63
+1134,4135.0,Social Market Foundation,Single Donation Entity,12500.0,1,12500.0
+1135,4139.0,We Are Europe,Very Small Entity,685000.0,23,29782.608695652172
+1136,4142.0,Mr Wolfgang Tillmans,Very Small Entity,18000.0,2,9000.0
+1137,4144.0,Labour Leave Limited,Very Small Entity,375000.0,9,41666.666666666664
+1138,4154.0,Mr Paul Dennett,Single Donation Entity,5000.0,1,5000.0
+1139,4155.0,Paul Bell,Single Donation Entity,10000.0,1,10000.0
+1140,4156.0,Jeremy Peter Middleton,Single Donation Entity,2000.0,1,2000.0
+1141,4157.0,Flick Drummond Mp,Single Donation Entity,2800.0,1,2800.0
+1142,4158.0,Stephen Kinnock Mp,Very Small Entity,34760.0,7,4965.714285714285
+1143,4160.0,Mark Spencer Mp,Single Donation Entity,3000.0,1,3000.0
+1144,4164.0,Green-Leaves,Very Small Entity,20000.0,2,10000.0
+1145,4171.0,Wake Up And Vote,Very Small Entity,200000.0,2,100000.0
+1146,4173.0,Ddb Uk Limited,Very Small Entity,191000.0,7,27285.714285714286
+1147,4174.0,Best For Our Future Ltd,Very Small Entity,848000.0,12,70666.66666666667
+1148,4177.0,Mr Edward Izzard,Very Small Entity,16500.0,2,8250.0
+1149,4184.0,Economists For Brexit,Very Small Entity,60000.0,4,15000.0
+1150,4185.0,Muslims For Gb Limited,Very Small Entity,20000.0,2,10000.0
+1151,4188.0,Brexit Express,Very Small Entity,1256032.54,7,179433.22
+1152,4189.0,Virgin Management Limited,Very Small Entity,420000.0,2,210000.0
+1153,4200.0,Proud Robinson Ltd,Very Small Entity,76000.0,2,38000.0
+1154,4202.0,Paul Monaghan Mp,Single Donation Entity,3820.44,1,3820.44
+1155,4203.0,Rebecca Bailey,Single Donation Entity,2200.0,1,2200.0
+1156,4212.0,Economists For Remain,Single Donation Entity,22565.0,1,22565.0
+1157,4236.0,Pat Mcfadden Mp,Very Small Entity,23000.0,5,4600.0
+1158,4237.0,Conor Mcginn Mp,Very Small Entity,8431.1,4,2107.775
+1159,4238.0,Maria Caulfield Mp,Very Small Entity,4500.0,2,2250.0
+1160,4239.0,James Davies Mp,Single Donation Entity,2500.0,1,2500.0
+1161,4240.0,Stuart Blair Donaldson Mp,Very Small Entity,5871.0,2,2935.5
+1162,4241.0,Yvonne Fovargue Mp,Very Small Entity,6758.0599999999995,2,3379.0299999999997
+1163,4242.0,Ranil Jayawardena Mp,Very Small Entity,52567.56,6,8761.26
+1164,4243.0,Steve Rotheram Mp,Very Small Entity,33900.0,4,8475.0
+1165,4244.0,Angela Smith Mp,Single Donation Entity,2958.06,1,2958.06
+1166,4247.0,Labour Tomorrow Ltd,Very Small Entity,335400.0,9,37266.666666666664
+1167,5253.0,Momentum,Very Small Entity,18000.0,2,9000.0
+1168,5254.0,Steve Double Mp,Very Small Entity,43400.0,5,8680.0
+1169,5255.0,Steve Bedser,Single Donation Entity,2341.64,1,2341.64
+1170,5263.0,Rupa Huq Mp,Very Small Entity,15181.92,5,3036.384
+1171,5264.0,Mike Wood Mp,Single Donation Entity,2500.0,1,2500.0
+1172,5265.0,William Wragg Mp,Single Donation Entity,2500.0,1,2500.0
+1173,5266.0,Jamie Greene Msp,Very Small Entity,8000.0,2,4000.0
+1174,5267.0,Maurice Golden Msp,Single Donation Entity,2000.0,1,2000.0
+1175,5268.0,Douglas Ross Msp,Single Donation Entity,2000.0,1,2000.0
+1176,5269.0,Ross Thomson,Very Small Entity,10579.26,2,5289.63
+1177,5270.0,Jenny Gilruth Msp,Single Donation Entity,8579.26,1,8579.26
+1178,5271.0,Annie Wells Msp,Single Donation Entity,2000.0,1,2000.0
+1179,5277.0,Conservative Voice Limited,Very Small Entity,50000.0,3,16666.666666666668
+1180,5279.0,Saving Labour,Very Small Entity,157460.0,7,22494.285714285714
+1181,5280.0,Mr Martyn Day Mp,Single Donation Entity,4634.66,1,4634.66
+1182,5281.0,Nigel Huddleston Mp,Very Small Entity,17652.4,6,2942.066666666667
+1183,5282.0,Chris Law Mp,Single Donation Entity,4634.68,1,4634.68
+1184,5283.0,Owen Smith Mp,Small Entity,866905.12,62,13982.34064516129
+1185,5284.0,Andrew Turner Mp,Single Donation Entity,2500.0,1,2500.0
+1186,5285.0,Rachael Hamilton Msp,Single Donation Entity,2000.0,1,2000.0
+1187,5286.0,Oliver Mundell Msp,Single Donation Entity,2000.0,1,2000.0
+1188,6304.0,Alec Shelbrooke,Very Small Entity,4860.0,2,2430.0
+1189,6305.0,Glyn Davies Mp,Single Donation Entity,1768.0,1,1768.0
+1190,6306.0,Ian Mearns Mp,Very Small Entity,68082.0,4,17020.5
+1191,6308.0,Michael Tomlinson Mp,Very Small Entity,15573.91,3,5191.303333333333
+1192,6309.0,Scott Mann Mp,Very Small Entity,6800.0,2,3400.0
+1193,6310.0,Stephen Gethins Mp,Very Small Entity,9244.130000000001,3,3081.376666666667
+1194,6311.0,Alexander Stewart Msp,Single Donation Entity,6000.0,1,6000.0
+1195,6312.0,Clare Haughey Msp,Very Small Entity,8453.0,2,4226.5
+1196,6326.0,Mr Steven Paterson,Single Donation Entity,3800.0,1,3800.0
+1197,6327.0,Ms Michelle Thomson Mp,Single Donation Entity,1685.94,1,1685.94
+1198,6328.0,Dame Rosie Winterton Mp,Very Small Entity,9600.0,3,3200.0
+1199,6329.0,Chris Stephens Mp,Very Small Entity,63336.0,3,21112.0
+1200,6340.0,Ms Tracy Brabin,Single Donation Entity,3400.0,1,3400.0
+1201,6341.0,Mr Ben Howlett,Single Donation Entity,3042.5,1,3042.5
+1202,6345.0,Sir Keir Starmer,Very Small Entity,10547.45,2,5273.725
+1203,6346.0,Wes Streeting,Very Small Entity,46055.06,8,5756.8825
+1204,6348.0,Hope Not Hate Ltd,Very Small Entity,4500.0,1,4500.0
+1205,6375.0,Louise Haigh Mp,Single Donation Entity,2900.0,1,2900.0
+1206,6376.0,Liz Mcinnes Mp,Single Donation Entity,2439.0,1,2439.0
+1207,6377.0,Richard Fuller Mp,Single Donation Entity,10000.0,1,10000.0
+1208,6378.0,Ruth Smeeth Mp,Single Donation Entity,3000.0,1,3000.0
+1209,6397.0,Alan Brown,Single Donation Entity,5100.0,1,5100.0
+1210,6398.0,Gavin Newlands Mp,Single Donation Entity,5100.0,1,5100.0
+1211,6399.0,Jack Dromey Mp,Single Donation Entity,5000.0,1,5000.0
+1212,6400.0,Kate Hollern Mp,Very Small Entity,14359.0,2,7179.5
+1213,6417.0,Mr Sean Anstee,Very Small Entity,100838.77,20,5041.9385
+1214,6422.0,Sion Simon Mep,Single Donation Entity,4321.0,1,4321.0
+1215,6423.0,Andrew Bingham Mp,Single Donation Entity,1840.0,1,1840.0
+1216,6424.0,Jo Churchill Mp,Single Donation Entity,5100.0,1,5100.0
+1217,6425.0,Steve Reed Mp,Very Small Entity,17052.23,4,4263.0575
+1218,6427.0,Karin Smyth Mp,Single Donation Entity,3124.55,1,3124.55
+1219,6440.0,Uk-Eu Open Policy Limited (Campaign Name: Best For Britain),Very Small Entity,140000.0,6,23333.333333333332
+1220,6452.0,Momentum,Very Small Entity,30258.46,2,15129.23
+1221,6462.0,Open Britain Ltd,Very Small Entity,88298.23,2,44149.115
+1222,6464.0,The World Transformed,Single Donation Entity,30232.76,1,30232.76
+1223,6467.0,Referendum Facts Ltd (Campaign Name: Infacts),Very Small Entity,125870.0,9,13985.555555555555
+1224,6468.0,People'S Assembly Against Austerity,Very Small Entity,141540.06,18,7863.336666666666
+1225,6470.0,Represent Us Limited,Single Donation Entity,4233.33,1,4233.33
+1226,6484.0,Mr Henry Porter,Very Small Entity,53350.0,5,10670.0
+1227,6485.0,Labour Campaign For Human Rights,Very Small Entity,58334.0,5,11666.8
+1228,6487.0,Mr Simon Day,Single Donation Entity,1650.0,1,1650.0
+1229,6489.0,Ms Marie Rimmer,Very Small Entity,12073.0,3,4024.3333333333335
+1230,6490.0,Mr John Penrose,Single Donation Entity,5190.14,1,5190.14
+1231,6494.0,League Against Cruel Sports (Uk) Limited,Very Small Entity,10500.0,17,617.6470588235294
+1232,6501.0,Britain Yearly Meeting Of The Religious Society Of Friends (Quakers),Very Small Entity,500.0,1,500.0
+1233,6502.0,Compass,Very Small Entity,64000.0,5,12800.0
+1234,6537.0,Abisola Ifasawo,Single Donation Entity,1650.0,1,1650.0
+1235,6538.0,Mr Andrew Milligan,Single Donation Entity,1650.0,1,1650.0
+1236,6539.0,Gareth Wallace,Single Donation Entity,1650.0,1,1650.0
+1237,6540.0,Beth Prescott,Single Donation Entity,1650.0,1,1650.0
+1238,6541.0,Labour Tribune Mps Group,Very Small Entity,35000.0,3,11666.666666666666
+1239,6542.0,European Research Group (Erg),Single Donation Entity,10000.0,1,10000.0
+1240,6543.0,Bleddyn William Vaughan Rees,Single Donation Entity,1650.0,1,1650.0
+1241,6545.0,Sheena Tranter,Single Donation Entity,1650.0,1,1650.0
+1242,6546.0,Robert Brian Hamill,Single Donation Entity,10000.0,1,10000.0
+1243,6550.0,Deidre Brock,Very Small Entity,4400.0,2,2200.0
+1244,6551.0,Lilian Greenwood,Very Small Entity,6767.62,4,1691.905
+1245,6552.0,Simon Hoare,Very Small Entity,14787.0,3,4929.0
+1246,6553.0,Mr Imran Hussain Mp,Very Small Entity,9397.24,4,2349.31
+1247,6554.0,Ms Seema Kennedy,Very Small Entity,5687.0,2,2843.5
+1248,6555.0,Brendan O'Hara,Very Small Entity,9783.19,4,2445.7975
+1249,6556.0,Antoinette Sandbach,Very Small Entity,5748.0,2,2874.0
+1250,6557.0,Mr Mark Williams,Single Donation Entity,1600.0,1,1600.0
+1251,6590.0,Mr Joseph Johnson,Very Small Entity,29295.64,7,4185.091428571429
+1252,6591.0,Mr Ross Thomson,Very Small Entity,15458.49,2,7729.245
+1253,6592.0,Rosena Allin-Khan,Very Small Entity,33958.28,7,4851.182857142857
+1254,6593.0,Dan Carden,Very Small Entity,19412.75,3,6470.916666666667
+1255,6595.0,Renew,Very Small Entity,429395.36,18,23855.297777777778
+1256,6603.0,Hatch Connect Uk Ltd,Very Small Entity,70000.0,6,11666.666666666666
+1257,6620.0,Ms Mary Glindon,Very Small Entity,51013.5,10,5101.35
+1258,6621.0,Angela Burns,Single Donation Entity,2000.0,1,2000.0
+1259,6622.0,Mr Darren Millar,Very Small Entity,6186.0,3,2062.0
+1260,6623.0,Mr Mark Isherwood,Single Donation Entity,2000.0,1,2000.0
+1261,6624.0,Russell George,Very Small Entity,4431.71,2,2215.855
+1262,6626.0,Mr Richard Minshull,Single Donation Entity,2000.0,1,2000.0
+1263,6627.0,Mr Mohammad Yasin,Single Donation Entity,1586.5,1,1586.5
+1264,6628.0,Ms Suzy Davies,Single Donation Entity,2000.0,1,2000.0
+1265,6630.0,Mr Damien Egan,Single Donation Entity,4000.0,1,4000.0
+1266,6633.0,Mr Lloyd Russell-Moyle,Very Small Entity,16209.1,6,2701.516666666667
+1267,6644.0,Tomos Davies,Single Donation Entity,2000.0,1,2000.0
+1268,6645.0,Alex Burghart,Single Donation Entity,7800.0,1,7800.0
+1269,6646.0,Leo Docherty,Very Small Entity,33974.85,6,5662.474999999999
+1270,6647.0,Mr Damien Moore,Very Small Entity,20772.82,5,4154.564
+1271,6648.0,Chris Thorne,Single Donation Entity,2000.0,1,2000.0
+1272,6668.0,Simon Clarke,Very Small Entity,49900.0,10,4990.0
+1273,6669.0,Claire Clay,Single Donation Entity,8940.0,1,8940.0
+1274,6670.0,Labour Network In England Ltd,Single Donation Entity,10000.0,1,10000.0
+1275,6674.0,Daniel Johnson,Single Donation Entity,6400.0,1,6400.0
+1276,6675.0,Jeremy Balfour,Single Donation Entity,6500.0,1,6500.0
+1277,6691.0,Preet Kaur Gill,Very Small Entity,8262.45,3,2754.15
+1278,6692.0,David Linden,Single Donation Entity,1989.48,1,1989.48
+1279,6694.0,The Rt Hon Philippa Whitford,Very Small Entity,6451.16,3,2150.3866666666668
+1280,6695.0,Anna Mcmorrin,Very Small Entity,9232.43,2,4616.215
+1281,6696.0,Gavin Williamson,Very Small Entity,30000.0,2,15000.0
+1282,6697.0,Richard Leonard,Very Small Entity,63130.0,7,9018.57142857143
+1283,6713.0,Aspire,Very Small Entity,9872.880000000001,2,4936.4400000000005
+1284,6719.0,Veterans And People’S Party,Single Donation Entity,1000.0,1,1000.0
+1285,6737.0,Ms Valerie Wise,Single Donation Entity,1973.62,1,1973.62
+1286,6739.0,Duma Polska = Polish Pride,Very Small Entity,58600.0,22,2663.6363636363635
+1287,6756.0,Mr Jonathan Lord,Single Donation Entity,1819.0,1,1819.0
+1288,6776.0,Mr Neil Bibby Msp,Single Donation Entity,5000.0,1,5000.0
+1289,6777.0,Mr Andrew Bowie,Very Small Entity,4650.0,2,2325.0
+1290,6778.0,Mr Richard Burgon Mp,Single Donation Entity,1735.78,1,1735.78
+1291,6779.0,Ms Gill Furniss Mp,Single Donation Entity,4600.0,1,4600.0
+1292,6780.0,Mr Hugh Gaffney,Single Donation Entity,3000.0,1,3000.0
+1293,6781.0,Mr Khalid Mahmood,Very Small Entity,6600.0,2,3300.0
+1294,6782.0,Mr Paul Masterton,Single Donation Entity,2600.0,1,2600.0
+1295,6783.0,Mr Faisal Rashid,Very Small Entity,7022.17,2,3511.085
+1296,6784.0,Ms Thelma Walker,Single Donation Entity,1721.69,1,1721.69
+1297,6785.0,Miss Kate Forbes,Single Donation Entity,1700.0,1,1700.0
+1298,6799.0,Mr Iain Carter,Single Donation Entity,2500.0,1,2500.0
+1299,6800.0,Mr Alan Waltham,Single Donation Entity,2500.0,1,2500.0
+1300,6801.0,Mr Franklin Roe,Single Donation Entity,2500.0,1,2500.0
+1301,6811.0,Mr Bob Seely,Single Donation Entity,2950.0,1,2950.0
+1302,6812.0,Christine Jardine,Single Donation Entity,1891.21,1,1891.21
+1303,6813.0,Judith Cummins,Very Small Entity,3033.5,2,1516.75
+1304,6814.0,Liz Saville Roberts,Very Small Entity,38665.4,7,5523.628571428571
+1305,6815.0,Paul Williams,Single Donation Entity,8762.0,1,8762.0
+1306,6822.0,Stephen Morgan,Very Small Entity,5600.0,2,2800.0
+1307,6842.0,Ms Janet Daby,Very Small Entity,5235.0,2,2617.5
+1308,6843.0,Mr Dean Lockhart,Single Donation Entity,2000.0,1,2000.0
+1309,6846.0,Mr Ben Houchen,Very Small Entity,23300.0,6,3883.3333333333335
+1310,6853.0,Mr Darren Jones,Very Small Entity,49992.65,5,9998.53
+1311,6854.0,Mr Stephen Kerr,Single Donation Entity,1600.57,1,1600.57
+1312,6859.0,Mr Jackson Carlaw,Single Donation Entity,2200.0,1,2200.0
+1313,6862.0,Mr Bill Bowman,Single Donation Entity,2200.0,1,2200.0
+1314,6863.0,Mr Maurice Corry,Single Donation Entity,2200.0,1,2200.0
+1315,6864.0,Ms Michelle Ballantyne,Single Donation Entity,3675.0,1,3675.0
+1316,6865.0,Mr Tom Arthur,Single Donation Entity,6000.0,1,6000.0
+1317,6870.0,Mr Richard Lyle Msp,Single Donation Entity,2200.0,1,2200.0
+1318,6871.0,Mary Fee Msp,Single Donation Entity,2200.0,1,2200.0
+1319,6890.0,Ms Joy Morrissey,Single Donation Entity,5000.0,1,5000.0
+1320,6893.0,Gillian Keegan,Single Donation Entity,1948.13,1,1948.13
+1321,6894.0,Suella Braverman,Very Small Entity,8404.21,3,2801.403333333333
+1322,6896.0,Stephen Lloyd,Single Donation Entity,1600.57,1,1600.57
+1323,6897.0,Layla Moran,Single Donation Entity,1948.13,1,1948.13
+1324,6898.0,Shaun Bailey,Very Small Entity,210750.0,11,19159.090909090908
+1325,6899.0,Mr Vaughan Gething,Very Small Entity,91200.0,10,9120.0
+1326,6901.0,Carlton Club Political Committee,Single Donation Entity,750.0,1,750.0
+1327,6914.0,Mr Patrick Grady,Single Donation Entity,4678.0,1,4678.0
+1328,7916.0,Remain Labour Ltd,Very Small Entity,20000.0,3,6666.666666666667
+1329,7917.0,Ben Bradley,Very Small Entity,36000.0,3,12000.0
+1330,7931.0,The Brexit Party,Very Small Entity,1068902.01,34,31438.294411764706
+1331,7933.0,Mr Mark Drakeford,Very Small Entity,11379.0,3,3793.0
+1332,7934.0,Andrew Lewin,Single Donation Entity,5000.0,1,5000.0
+1333,7935.0,Steve Brine,Single Donation Entity,2500.0,1,2500.0
+1334,7936.0,Marcus Fysh,Single Donation Entity,2574.0,1,2574.0
+1335,7940.0,Mrs Carolyn Harris,Single Donation Entity,2600.0,1,2600.0
+1336,7941.0,Mr Neil Coyle,Very Small Entity,10300.11,2,5150.055
+1337,7942.0,Mr Tanmanjeet Singh Dhesi,Single Donation Entity,3595.0,1,3595.0
+1338,7943.0,Ms Trudy Harrison,Very Small Entity,12191.11,2,6095.555
+1339,7944.0,Ms Sue Hayman,Single Donation Entity,9559.83,1,9559.83
+1340,7945.0,Ms Wera Hobhouse,Very Small Entity,14000.0,2,7000.0
+1341,7969.0,Mr John Baron,Single Donation Entity,6048.02,1,6048.02
+1342,8015.0,Mr Andy Street,Small Entity,483773.33,75,6450.311066666667
+1343,8019.0,Ms Rosie Duffield,Very Small Entity,2333.4,2,1166.7
+1344,8020.0,Ms Seema Malhotra,Single Donation Entity,3147.0,1,3147.0
+1345,8021.0,Labour For A Public-Vote,Very Small Entity,205375.0,13,15798.076923076924
+1346,8025.0,Mr Eddie Hughes,Very Small Entity,7277.5,2,3638.75
+1347,9050.0,Brexit Express (Be),Very Small Entity,8851.2,3,2950.4
+1348,9054.0,Mr Stephen Doughty,Very Small Entity,14750.0,8,1843.75
+1349,9055.0,Mr Afzal Khan,Very Small Entity,4323.0,2,2161.5
+1350,9056.0,Mr Angus Macdonald,Very Small Entity,3780.0,1,3780.0
+1351,9077.0,The Independent Group For Change,Very Small Entity,267220.0,9,29691.11111111111
+1352,9108.0,Ms Elizabeth Truss,Single Donation Entity,8200.54,1,8200.54
+1353,9109.0,Mandy Jones Am,Single Donation Entity,2431.71,1,2431.71
+1354,9110.0,Jenny Rathbone,Single Donation Entity,2431.71,1,2431.71
+1355,9111.0,Llyr Gruffydd Am,Single Donation Entity,2431.71,1,2431.71
+1356,9112.0,Alun Davies,Single Donation Entity,2431.71,1,2431.71
+1357,9118.0,Right To Vote,Very Small Entity,300000.0,11,27272.727272727272
+1358,9144.0,Mr Bim Afolami,Single Donation Entity,2000.0,1,2000.0
+1359,9150.0,Alex Sobel,Single Donation Entity,1502.46,1,1502.46
+1360,9153.0,Mr Michael Tomlinson,Single Donation Entity,7000.0,1,7000.0
+1361,9183.0,Mr Bambos Charalambous,Very Small Entity,4429.58,2,2214.79
+1362,9186.0,London And Northern Dining Club,Single Donation Entity,10000.0,1,10000.0
+1363,9201.0,Blue Collar Conservatism Ltd,Very Small Entity,39000.0,5,7800.0
+1364,9203.0,The Rt Hon Esther Mcvey,Very Small Entity,15550.0,4,3887.5
+1365,9204.0,Mr Sam Gyimah,Very Small Entity,15064.0,4,3766.0
+1366,9205.0,Heidi Allen,Single Donation Entity,5000.0,1,5000.0
+1367,9206.0,Elizabeth Savage,Single Donation Entity,2187.55,1,2187.55
+1368,9216.0,Kieran Mullan,Single Donation Entity,5000.0,1,5000.0
+1369,9221.0,Mr Toby Perkins,Single Donation Entity,3000.0,1,3000.0
+1370,9222.0,Mr Jack Rankin,Single Donation Entity,2000.0,1,2000.0
+1371,9223.0,Mr Mario Creatura,Single Donation Entity,2000.0,1,2000.0
+1372,10227.0,Mr Matthew Barber,Single Donation Entity,2000.0,1,2000.0
+1373,10228.0,Mr Tom Hunt,Single Donation Entity,2000.0,1,2000.0
+1374,10229.0,Miriam Cates,Single Donation Entity,2000.0,1,2000.0
+1375,10230.0,Peter Gibson,Single Donation Entity,2000.0,1,2000.0
+1376,10231.0,Laura Evans,Single Donation Entity,2000.0,1,2000.0
+1377,10233.0,Matthew Vickers,Single Donation Entity,2000.0,1,2000.0
+1378,10234.0,Scott Benton,Single Donation Entity,2500.0,1,2500.0
+1379,10235.0,Siobhan Baillie,Single Donation Entity,2000.0,1,2000.0
+1380,10262.0,Mr Resham Kotecha,Single Donation Entity,2500.0,1,2500.0
+1381,10263.0,Mr Jonathan Gullis,Single Donation Entity,2500.0,1,2500.0
+1382,10264.0,Mr Robert Largan,Single Donation Entity,2000.0,1,2000.0
+1383,10265.0,Jane Dodds,Very Small Entity,3529.41,2,1764.705
+1384,10266.0,Phil Wilson,Single Donation Entity,2000.0,1,2000.0
+1385,10267.0,Scottish Unionist Association Trust,Very Small Entity,218870.07,3,72956.69

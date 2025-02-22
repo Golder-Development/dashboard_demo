@@ -48,7 +48,6 @@ app.run()  # Run the  app
 
 # Assuming data_loader is a module or class that needs to be imported
 
-
 firstload()  # Load the data
 
 # The app is now ready to be run. To run the app, open a terminal

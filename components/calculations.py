@@ -300,8 +300,13 @@ def get_top_donors(df, sort_col, exclude_single_donation=False):
     ]].head(5)
 
 
-def calculate_percentage(numerator, denominator):
+def calculate_percentage(numerator=0, denominator=0):
     """ Calculate the percentage of a numerator to a denominator """
+    try:
+        numerator = float(numerator)
+        denominator = float(denominator)
+    except (ValueError, TypeError):
+        return 0
     return (numerator / denominator) * 100 if denominator > 0 else 0
 
 
@@ -344,16 +349,31 @@ def get_noofdonors_per_ent_stdev(df, filters=None):
 # Function to calculate key values
 def compute_summary_statistics(df, filters):
     """Compute key statistics like total donations, mean, std, etc."""
+    if df.empty:
+        return {}
+
+    regentity_ct = get_regentity_ct(df, filters)
+    donors_ct = get_donors_ct(df, filters)
+    donations_ct = get_donations_ct(df, filters)
+    value_total = get_value_total(df, filters)
+    value_mean = get_value_mean(df, filters)
+    avg_donations_per_entity = get_avg_donations_per_entity(df, filters)
+    avg_value_per_entity = get_avg_value_per_entity(df, filters)
+    avg_donors_per_entity = get_avg_donors_per_entity(df, filters)
+    donors_stdev = get_donors_stdev(df, filters)
+    value_stdev = get_value_stdev(df, filters)
+    noofdonors_per_ent_stdev = get_noofdonors_per_ent_stdev(df, filters)
+
     return {
-        "unique_reg_entities": get_regentity_ct(df, filters),
-        "unique_donors": get_donors_ct(df, filters),
-        "unique_donations": get_donations_ct(df, filters),
-        "total_value": get_value_total(df, filters),
-        "mean_value": get_value_mean(df, filters),
-        "avg_donations_per_entity": get_avg_donations_per_entity(df, filters),
-        "avg_value_per_entity": get_avg_value_per_entity(df, filters),
-        "avg_donors_per_entity": get_avg_donors_per_entity(df, filters),
-        "donors_stdev": get_donors_stdev(df, filters),
-        "value_stdev": get_value_stdev(df, filters),
-        "noofdonors_per_ent_stdev": get_noofdonors_per_ent_stdev(df, filters)
+        "regentity_ct": regentity_ct,
+        "donors_ct": donors_ct,
+        "donations_ct": donations_ct,
+        "value_total": value_total,
+        "value_mean": value_mean,
+        "avg_donations_per_entity": avg_donations_per_entity,
+        "avg_value_per_entity": avg_value_per_entity,
+        "avg_donors_per_entity": avg_donors_per_entity,
+        "donors_stdev": donors_stdev,
+        "value_stdev": value_stdev,
+        "noofdonors_per_ent_stdev": noofdonors_per_ent_stdev
     }
