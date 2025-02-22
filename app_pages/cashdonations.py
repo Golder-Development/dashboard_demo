@@ -28,16 +28,15 @@ def cash_donations_page():
         dt.datetime.combine(max_date, dt.datetime.max.time())
         )
     # Define filter condition
-    current_target = "DonationType"
-    target_filter = "Cash"
+    current_target = {"DonationType": "Cash"}
     target_label = "Cash Donation"
-    filters = None
+    filters = {}
 
     # Apply filters apply date filter
     cleaned_d_df = filter_by_date(cleaned_df, start_date, end_date)
     # limit to target type of donation
     cleaned_c_d_df = apply_filters(cleaned_d_df,
-                                   filters={current_target: target_filter})
+                                   current_target)
 
     # Compute Statistics
     min_date_df = get_mindate(cleaned_c_d_df, filters).date()

@@ -1,3 +1,8 @@
 __pycache__
 *.ipynb
 .venv/
+tests/
+Wireframes/
+refernce files/
+.pytest_cache/
+.devcontainer/

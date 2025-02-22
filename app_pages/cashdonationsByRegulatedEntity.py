@@ -1,13 +1,15 @@
+import streamlit as st
+import components.calculations as ppcalc
+import components.Visualisations as vis
+import datetime as dt
+import pandas as pd
+from components.filters import apply_filters
+
+
 def cashdonationsregentity_body():
     """
     Displays the content of the Cash Donations to Political Party page.
     """
-    import streamlit as st
-    import components.calculations as ppcalc
-    import components.Visualisations as vis
-    import datetime as dt
-    import pandas as pd
-
     # Load dataset from session state
     cleaned_df = st.session_state.get("data_clean", None)
 
@@ -46,10 +48,11 @@ def cashdonationsregentity_body():
     # Get the corresponding ID for filtering
     selected_entity_id = entity_mapping.get(selected_entity_name, None)
     # Define filter condition
-    current_target = 'DonationType == "Cash"'
+    current_target = {"DonationType": "Cash"}
     target_label = "Cash Donation"
-    filters = None
+    filters = {}
     # Apply filters
+    entity_filter = {}
     entity_filter = (
         {"RegulatedEntityId": selected_entity_id}
         if selected_entity_name != "All" else {}
@@ -66,18 +69,12 @@ def cashdonationsregentity_body():
         cleaned_d_df = cleaned_df
     # Create dataframe for chosen target all date range and all entities
     if current_target:
-        cleaned_c_df = cleaned_df.query(current_target)
+        cleaned_c_df = apply_filters(cleaned_df, current_target)
     else:
         cleaned_c_df = cleaned_df
     # Create dataframe for chosen entity all date range and all entities
     if entity_filter:
-        cleaned_r_df = (
-            cleaned_df[
-                cleaned_df["RegulatedEntityId"]
-                == entity_filter["RegulatedEntityId"]
-                if entity_filter else True  # If no filters, return all rows
-                      ]
-                       )
+        cleaned_r_df = apply_filters(cleaned_df, entity_filter)
     else:
         cleaned_r_df = cleaned_df
     # Create dataframe for chosen entity and date range all measures
@@ -85,11 +82,11 @@ def cashdonationsregentity_body():
         cleaned_r_df[date_filter] if date_filter.any() else cleaned_r_df
         )
     # Create dataframe for chosen target and date range all entities
-    cleaned_c_d_df = cleaned_d_df.query(current_target)
+    cleaned_c_d_df = apply_filters(cleaned_d_df, current_target)
     # Create dataframe for chosen target and entity all dates
-    cleaned_c_r_df = cleaned_r_df.query(current_target)
+    cleaned_c_r_df = apply_filters(cleaned_r_df, current_target)
     # Create dataframe for chosen target, entity and date range
-    cleaned_c_r_d_df = cleaned_r_d_df.query(current_target)
+    cleaned_c_r_d_df = apply_filters(cleaned_r_d_df, current_target)
 
     # Values for all entities, all time and all donations
     unique_reg_ent_pop = ppcalc.get_regentity_ct(cleaned_df, filters)
