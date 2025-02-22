@@ -1,42 +1,6 @@
 import pandas as pd
 import streamlit as st
-from components.filters import filter_by_date, filter_by_entity, filter_by_donation_type
-
-
-def get_filtered_data(df, entity_id, start_date, end_date):
-    """Apply all necessary filters and return filtered DataFrame."""
-    df = filter_by_date(df, start_date, end_date)
-    df = filter_by_donation_type(df)
-    df = filter_by_entity(df, entity_id)
-    return df
-
-
-def compute_summary_statistics(df):
-    """Compute key statistics like total donations, mean, std, etc."""
-    return {
-        "total_value": df["Value"].sum(),
-        "mean_value": df["Value"].mean(),
-        "num_donations": len(df),
-        "num_donors": df["DonorId"].nunique(),
-    }
-
-
-def apply_filters(df, filters=None):
-    """
-    Apply filtering conditions to the DataFrame.
-
-    Parameters:
-        df (pd.DataFrame): The dataset.
-        filters (dict, optional): Dictionary where keys are column names
-        and values are filter conditions.
-
-    Returns:
-        pd.DataFrame: Filtered DataFrame.
-    """
-    if filters:
-        for column, value in filters.items():
-            df = df[df[column] == value]
-    return df
+from components.filters import apply_filters
 
 
 # Convert placeholder date to datetime once
@@ -373,7 +337,8 @@ def get_noofdonors_per_ent_stdev(df, filters=None):
 
 
 # Function to calculate key values
-def get_metrics(df, filters):
+def compute_summary_statistics(df, filters):
+    """Compute key statistics like total donations, mean, std, etc."""
     return {
         "unique_reg_entities": get_regentity_ct(df, filters),
         "unique_donors": get_donors_ct(df, filters),

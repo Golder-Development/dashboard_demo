@@ -1,5 +1,8 @@
 import streamlit as st
 import data.datasetupandclean as dc
+from data.data_loader import (get_data, get_party_summary_data,
+                              get_cleaned_data, get_donor_data,
+                              get_regentity_data)
 
 # Set up multipage navigation and reference pages.
 from app_pages.multi_page import MultiPage
@@ -57,33 +60,6 @@ if 'g_thresholds' not in st.session_state:
 
 
 # Load and cache data correctly
-@st.cache_data
-def get_data():
-    return dc.load_data(output_csv=False,
-                        dedupe_donors=False,
-                        dedupe_regentity=False
-                        )
-
-
-@st.cache_data
-def get_party_summary_data():
-    return dc.load_party_summary_data(output_csv=False)
-
-
-@st.cache_data
-def get_cleaned_data():
-    return dc.load_cleaned_data(output_csv=False)
-
-
-@st.cache_data
-def get_donor_data():
-    return dc.load_donorList_data(output_csv=False)
-
-
-@st.cache_data
-def get_regentity_data():
-    return dc.load_regulated_entity_data(output_csv=False)
-
 
 if "data" not in st.session_state:
     st.session_state["data"] = get_data()

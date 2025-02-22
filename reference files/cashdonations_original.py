@@ -31,7 +31,6 @@ def cashdonations_body():
     filters = None
     # Apply filters to the dataset
     cleaned_d_df = cleaned_df[date_filter]
-
     cleaned_c_d_df = cleaned_d_df[cleaned_d_df['DonationType'] == 'Cash']
     # Call each function separately with the selected filter
     unique_donors_c_d = ppcalc.get_donors_ct(cleaned_c_d_df, filters)
@@ -44,8 +43,6 @@ def cashdonations_body():
     unique_donations_pop = ppcalc.get_donations_ct(cleaned_df, filters)
     unique_donations_c = ppcalc.get_donations_ct(cleaned_df, {"DonationType":
                                                               "Cash"})
-    perc_cash_donations = (unique_donations_c / unique_donations_pop) * 100 \
-        if unique_donations_pop > 0 else 0
     perc_cash_donations_d = (unique_donations_c_d / unique_donations_d) * 100 \
         if unique_donations_d > 0 else 0
     min_date_df = ppcalc.get_mindate(cleaned_c_d_df, filters).date()

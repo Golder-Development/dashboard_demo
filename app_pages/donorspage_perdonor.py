@@ -207,7 +207,7 @@ def donorspage_body():
                                     barmode='stack',
                                     x_scale='category',
                                     y_scale='log',
-                                    key='avg_donation_donation_type',
+                                    widget_key='avg_donation_donation_type',
                                     use_container_width=True
                                 )
     with mid:

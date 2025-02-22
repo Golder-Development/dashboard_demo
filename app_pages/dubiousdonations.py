@@ -1,110 +1,122 @@
+import streamlit as st
+import datetime as dt
+from data.data_loader import load_cleaned_data
+from components.filters import filter_by_date, apply_filters
+from components.calculations import (compute_summary_statistics,
+                                     get_mindate,
+                                     get_maxdate,
+                                     calculate_percentage,
+                                     PLACEHOLDER_DATE,
+                                     PLACEHOLDER_ID,
+                                     format_number)
+from components.Visualisations import (
+                                       plot_bar_line_by_year)
+
+
 def dubiousdonations_body():
     """
     Displays the content of the Donations by Political Party page.
     """
-    import streamlit as st
-    import components.calculations as ppcalc
-    import components.Visualisations as vis
-
     # Page Title
-    st.write("## Dubious Donations to ")
-    st.write("## UK Regulated Political Entities")
-    # Load dataset from session state
-    df = st.session_state.get("data_clean", None)
-    # filters = {}
+    st.write("---")
+    st.write("## Dubious Donations to "
+             "UK Regulated Political Entities")
+    st.write("---")
+    # Load dataset
+    cleaned_df = load_cleaned_data()
+    if cleaned_df is None:
+        st.error("No data found. Please upload a dataset.")
+        return
+    # Define filter condition
+    current_target = "DubiousData"
+    target_filter = 1
+    target_label = "Dubious Donations"
+    filters = {}
     # Get min and max dates from the dataset
-    min_date = ppcalc.get_mindate(df).date()
-    max_date = ppcalc.get_maxdate(df).date()
-
+    min_date = dt.datetime.combine(get_mindate(cleaned_df), dt.datetime.min.time())
+    max_date = dt.datetime.combine(get_maxdate(cleaned_df), dt.datetime.min.time())
     # Extract start and end dates from the slider
-    start_date = min_date
-    end_date = max_date
+    start_date, end_date = (
+        dt.datetime.combine(min_date, dt.datetime.min.time()),
+        dt.datetime.combine(max_date, dt.datetime.max.time())
+        )
+    # Apply filters apply date filter
+    cleaned_d_df = filter_by_date(cleaned_df, start_date, end_date)
+    # limit to target type of donation
+    cleaned_c_d_df = apply_filters(cleaned_d_df,
+                                   filters={current_target: target_filter})
+    # all dubious donations
+    tstats = compute_summary_statistics(cleaned_c_d_df, filters)
+    # aggregated donations
+    adstats = compute_summary_statistics(
+        cleaned_c_d_df,
+        filters={"DonationType": "Aggregated donations"})
+    # visits
+    dvstats = compute_summary_statistics(
+        cleaned_c_d_df,
+        filters={"DonationType": "Visit"})
+    # returned and forfeited donations
+    rdstats = compute_summary_statistics(
+        cleaned_c_d_df.query("DonationAction == 'Returned' or "
+                             "DonationAction == 'Forfeited'"),
+        filters)
+    # blank received date
+    brdstats = compute_summary_statistics(
+        cleaned_c_d_df,
+        filters={"ReceivedDate": PLACEHOLDER_DATE})
+    # blank regulated entity data
+    bredstats = compute_summary_statistics(
+        cleaned_c_d_df,
+        filters={"RegulatedEntityId": PLACEHOLDER_ID})
+    # all data
+    ostats = compute_summary_statistics(cleaned_d_df, filters)
+    # Calculate the percentage of donations that are cash donations
+    dubious_donors_percent_of_value = calculate_percentage(
+        tstats["unique_donors"], ostats["unique_donors"])
+    dubious_percent_of_value = calculate_percentage(
+        tstats["total_value"], ostats["total_value"])
+    dubious_percent_of_donors = calculate_percentage(
+        tstats['unique_donors'], ostats["unique_donors"])
+    dubious_percent_of_donation_actions = calculate_percentage(
+        tstats["unique_donations"], ostats["unique_donations"])
+    returned_donations_percent_value = calculate_percentage(
+        rdstats["total_value"], tstats["total_value"])
+    returned_donations_percent_donations = calculate_percentage(
+        rdstats["unique_donations"], tstats["unique_donations"])
+    aggregated_percent_of_donation_actions = calculate_percentage(
+        adstats['unique_donations'], ostats['unique_donations'])
+    aggregated_percent_of_value = calculate_percentage(
+        adstats['total_value'], ostats['total_value'])
+    donated_visits_percent_of_donation_actions = calculate_percentage(
+        dvstats['unique_donations'], ostats['unique_donations'])
+    donated_visits_percent_of_value = calculate_percentage(
+        dvstats['total_value'], ostats['total_value'])
+    min_date = get_mindate(cleaned_d_df).date()
+    max_date = get_maxdate(cleaned_d_df).date()
 
-    # Apply entity filter to dataset
-    filtered_df2 = df
-    # Call each function separately with the selected date and entity filter
-    total_value_of_donations = ppcalc.get_value_total(filtered_df2)
-    total_count_of_donors = ppcalc.get_donors_ct(filtered_df2)
-    total_count_of_donations = ppcalc.get_donations_ct(filtered_df2)
-    blank_received_date_ct = ppcalc.get_blank_received_date_ct(filtered_df2)
-    blank_regulated_entity_id_ct = (
-        ppcalc.get_blank_regulated_entity_id_ct(filtered_df2)
-        )
-    dubious_donors = ppcalc.get_dubious_donors_ct(filtered_df2)
-    dubious_donors_value = ppcalc.get_dubious_donors_value(filtered_df2)
-    dubious_donation_actions = (
-        ppcalc.get_dubious_donation_actions(filtered_df2)
-        )
-    total_value_dubious_donations = (
-        ppcalc.get_dubious_donation_value(filtered_df2)
-        )
-    dubious_donors_percent_of_value = (
-        ((dubious_donors_value / total_value_of_donations) * 100)
-        if total_value_of_donations > 0 else 0
-        )
-    dubious_percent_of_value = (
-        ((total_value_dubious_donations / total_value_of_donations) * 100)
-        if total_value_of_donations > 0 else 0
-        )
-    dubious_percent_of_donors = (
-        ((dubious_donors / total_count_of_donors) * 100)
-        if total_count_of_donors > 0 else 0
-        )
-    dubious_percent_of_donation_actions = (
-        ((dubious_donation_actions / total_count_of_donations) * 100)
-        if total_count_of_donations > 0 else 0
-        )
-    returned_donations = ppcalc.get_returned_donations_ct(filtered_df2)
-    returned_donations_value = (
-        ppcalc.get_returned_donations_value(filtered_df2)
-        )
-    returned_donations_percent_value = (
-        ((returned_donations_value / total_value_dubious_donations) * 100)
-        if total_value_dubious_donations > 0 else 0
-        )
-    returned_donations_percent_donations = (
-        ((returned_donations / dubious_donation_actions) * 100)
-        if dubious_donation_actions > 0 else 0
-        )
-    aggregated_donations = (
-        ppcalc.get_donations_ct(
-            filtered_df2,
-            filters={"DonationType": "Aggregated donations"})
-    )
-    aggregated_donations_value = (
-        ppcalc.get_value_total(
-            filtered_df2,
-            filters={"DonationType": "Aggregated donations"})
-    )
-    aggregated_percent_of_donation_actions = (
-        ((aggregated_donations / total_count_of_donations) * 100)
-        if total_count_of_donations > 0
-        else 0
-    )
-    aggregated_percent_of_value = (
-        ((aggregated_donations_value / total_value_of_donations) * 100)
-        if total_value_of_donations > 0
-        else 0
-    )
-    donated_visits = (
-        ppcalc.get_donations_ct(
-            filtered_df2,
-            filters={"DonationType": "Visit"})
-    )
-    donated_visits_value = (
-        ppcalc.get_value_total(filtered_df2, filters={"DonationType": "Visit"})
-    )
-    donated_visits_percent_of_donation_actions = (
-        ((donated_visits / total_count_of_donations) * 100)
-        if total_count_of_donations > 0
-        else 0
-    )
-    donated_visits_percent_of_value = (
-        ((donated_visits_value / total_value_of_donations) * 100)
-        if total_value_of_donations > 0
-        else 0
-    )
     # Format text
+    st.write(f"## Summary Statistics for {target_label},"
+             f" from {min_date} to {max_date}")
+    left, a, b, mid, c, right = st.columns(6)
+    with left:
+        st.metric(label=f"Total {target_label}",
+                  value=f"£{tstats['total_value']:,.0f}")
+    with a:
+        st.metric(label=f"{target_label}%",
+                  value=f"{dubious_percent_of_value:.2f}%")
+    with b:
+        st.metric(label=f"{target_label}",
+                  value=f"{tstats['unique_donations']:,}")
+    with mid:
+        st.metric(label=f"Mean {target_label} Value",
+                  value=f"£{tstats['mean_value']:,.0f}")
+    with c:
+        st.metric(label=f"Political Entities receiving {target_label}",
+                  value=f"{tstats['unique_reg_entities']:,}")
+    with right:
+        st.metric(label=f"Total {target_label} Donors",
+                  value=f"{tstats['unique_donors']:,}")
+    st.write("---")
     st.write("### Explanation")
     st.write(
         "* Certain Political Donations represent funds either donated "
@@ -123,66 +135,69 @@ def dubiousdonations_body():
              "lack of transparency means that they represent a risk "
              "to the integrity of the political system.")
     st.write("### Topline Figures")
-    if dubious_donors >= 1:
-        st.write(
-            f"* Between {start_date} and {end_date},"
-            f" there were {dubious_donors} donors identified as dubious."
-            f" These donors represented {dubious_percent_of_donors:.2f}%"
-            " of donors to regulated entities,"
-            f" and includes Impremissible Donors, Unidentified Donors "
-            f" and Aggregated Donors.  They donated a total of "
-            f"£{ppcalc.format_number(dubious_donors_value)},"
-            f" which represented {dubious_donors_percent_of_value:.2f}%"
-            " of the total value of donations made in the period.")
+    if tstats["unique_donors"] >= 1:
+        st.write(f"From {min_date} to {max_date}"
+                 f" there were {tstats['unique_donors']:,.0f} donors"
+                 "  identified as dubious."
+                 f" These donors represented {dubious_percent_of_donors:.2f}%"
+                 " of donors to regulated entities,"
+                 f" and includes Impremissible Donors, Unidentified Donors "
+                 f" and Aggregated Donors.  They donated a total of "
+                 f"£{format_number(tstats['total_value'])},"
+                 f" which represented {dubious_donors_percent_of_value:.2f}%"
+                 " of the total value of donations made in the period.")
     else:
         st.write("* No donations from dubious donors were identified.")
-    if dubious_donation_actions >= 1:
+    if tstats["unique_donations"] >= 1:
         st.write(
-            f"* There were {dubious_donation_actions:,.0f} donations that were"
-            " identified as of questionable nature."
+            f"* There were {tstats['unique_donations']:,.0f} donations that"
+            " were identified as of questionable nature."
             f" These donations represented"
             f" {dubious_percent_of_donation_actions:.2f}% "
             "of all donations made in the period.")
-    if blank_received_date_ct >= 1:
-        st.write(f"* {blank_received_date_ct} donations had no recorded date.")
-    if blank_regulated_entity_id_ct >= 1:
-        st.write(f"* {blank_regulated_entity_id_ct} donations had no recorded "
+    if brdstats['unique_donations'] >= 1:
+        st.write(f"* {brdstats['unique_donations']} "
+                 "donations had no recorded date.")
+    if bredstats["unique_donations"] >= 1:
+        st.write(f"* {bredstats['unique_donations']} "
+                 "donations had no recorded "
                  "regulated entity.")
-    if total_value_dubious_donations >= 1:
+    if rdstats["total_value"] >= 1:
         st.write(
-            f"* Of these donations {returned_donations} or"
+            f"* Of these donations {rdstats['unique_donations']} or"
             f" {returned_donations_percent_donations:.2f}% "
             "were returned to the donor,"
-            f"representing £{ppcalc.format_number(returned_donations_value)}"
+            f"representing £{format_number(rdstats['total_value'])} or"
             f" or {returned_donations_percent_value:.2f}% of the total "
             "value of dubious donations.")
-    if aggregated_donations >= 1:
+    if adstats["unique_donations"] >= 1:
         st.write(
-            f"* There were {aggregated_donations} aggregated donations,"
+            f"* There were {adstats['unique_donations']} aggregated donations,"
             f" representing {aggregated_percent_of_donation_actions:.2f}%"
             "of all donation actions."
             f" The total value of these aggregated donations was"
-            f" £{ppcalc.format_number(aggregated_donations_value)},"
+            f" £{format_number(adstats['total_value'])},"
             f" representing {aggregated_percent_of_value:.2f}% of "
             "the total value of all donations.")
-    if donated_visits >= 1:
+    if dvstats["unique_donations"] >= 1:
         st.write(
-            f"* There were {donated_visits:,.0f} visits donated to regulated"
+            f"* There were {dvstats['unique_donations']:,.0f} "
+            "visits donated to regulated"
             " entities, representing "
             f"{donated_visits_percent_of_donation_actions:.2f}% of all "
             "donation actions. The total value of these visits was "
-            f" £{ppcalc.format_number(donated_visits_value)}, representing "
+            f" £{format_number(dvstats['total_value'])}, representing "
             f" {donated_visits_percent_of_value:.2f}% of the total value of "
             "all donations.")
     st.write("---")
     st.write("### Visuals")
     # Display the filtered data (Optional)
+    st.write("---")
     col1, col2 = st.columns(2)
     with col1:
-        if not filtered_df2.empty:
-            filtered_df3 = filtered_df2.query("DubiousData >= 1")
-            vis.plot_bar_line_by_year(
-                filtered_df3,
+        if not cleaned_c_d_df.empty:
+            plot_bar_line_by_year(
+                Data=cleaned_c_d_df,
                 XValues="YearReceived",
                 YValue="Value",
                 GGroup="DonationType",
@@ -194,10 +209,9 @@ def dubiousdonations_body():
         else:
             st.write("No data to display")
     with col2:
-        if not filtered_df2.empty:
-            filtered_df3 = filtered_df2.query("DubiousData >= 1")
-            vis.plot_bar_line_by_year(
-                filtered_df3,
+        if not cleaned_c_d_df.empty:
+            plot_bar_line_by_year(
+                Data=cleaned_c_d_df,
                 XValues="YearReceived",
                 YValue="Value",
                 GGroup="RegEntity_Group",
@@ -210,27 +224,66 @@ def dubiousdonations_body():
                 widget_key="dubious_donations_by_year_and_entity")
         else:
             st.write("No data to display")
-    if not filtered_df2.empty:
+    st.write("---")
+    left, mid, right = st.columns(3)
+    with left:
+        if not cleaned_c_d_df.empty:
+            st.write("### Top 5\n ##### Regulated Entities: Share of Total Donations")
+            filtered_df2 = cleaned_c_d_df.groupby(
+                "RegulatedEntityName")["Value"].sum().reset_index()
+            filtered_df2["Perc_of_total"] = filtered_df2["Value"] / \
+                filtered_df2["Value"].sum()
+            filtered_df2 = filtered_df2.sort_values(
+                by="Perc_of_total", ascending=False)
+            st.write(filtered_df2.head(5))
+        else:
+            st.write("No data to display")
+    with mid:
+        if not cleaned_c_d_df.empty:
+            st.write("### Top 5\n ##### Donors of Dubious Donations")
+            filtered_df2 = cleaned_c_d_df.groupby(
+                "DonorName")["Value"].sum().reset_index()
+            filtered_df2 = filtered_df2.sort_values(
+                by="Value", ascending
+                =False)
+            st.write(filtered_df2.head(5))
+        else:
+            st.write("No data to display")
+    with right:
+        if not cleaned_c_d_df.empty:
+            st.write("### Top 5\n ##### Nature of Donations by value")
+            filtered_df2 = cleaned_c_d_df.groupby(
+                "NatureOfDonation")["Value"].sum().reset_index()
+            filtered_df2 = filtered_df2.sort_values(
+                by="Value", ascending=False)
+            st.write(filtered_df2.head(5))
+        else:
+            st.write("No data to display")
+    st.write("---")
+    if not cleaned_c_d_df.empty:
         st.write("### Scrollable table of identified donations")
-        filtered_df3 = filtered_df3[["ReceivedDate",
-                                     "RegulatedEntityName",
-                                     "DonorName",
-                                     "Value",
-                                     "DonationAction",
-                                     "DonationType",
-                                     "RegulatedDoneeType",
-                                     "NatureOfDonation",
-                                     "DonorStatus",
-                                     "DubiousData"]].query("DubiousData >= 1")
+        filtered_df3 = cleaned_c_d_df[["ReceivedDate",
+                                       "RegulatedEntityName",
+                                       "DonorName",
+                                       "Value",
+                                       "DonationAction",
+                                       "DonationType",
+                                       "RegulatedDoneeType",
+                                       "NatureOfDonation",
+                                       "DonorStatus",
+                                       "DubiousData"]]
         st.write(filtered_df3)
+    st.write("---")
     st.write("### Click on Visuals to expand the graphs."
-             "Tables are scrollable")
+             " Tables are scrollable")
     # add a link to the streamlit dubiousdonationsbyDonor screen to allow
     # users to explore the data further
     st.write("### Explore the data further using the Dubious Donations by"
              " Donor link in the menu")
+    st.write("---")
     st.write(
         "### or Check out Transparency International's"
         "[Recent Publication]"
         "(https://www.transparency.org.uk/news/new-research-reveals-almost-ps1-every-ps10-political-donations-comes-unknown-or-questionable)"
         "for more information on donations to UK Political Parties.")
+    st.write("---")

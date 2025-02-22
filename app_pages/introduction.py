@@ -7,7 +7,9 @@ def introduction_body():
     """
 
     # format text
+    st.write("---")
     st.write("## Political Donation Analysis")
+    st.write("---")
     st.write('### Introduction')
     st.write("* This dashboard is a simple tool to provide insights into "
              "Political donations in the United Kingdom.")
@@ -25,14 +27,15 @@ def introduction_body():
     st.write("* The Fourth section provides a summary of sponsorships made "
              "to Political Partys.")
     st.write("* The Fifth section provides a look at the paid visits donated"
-                " to Political Parties.")
+             " to Political Parties.")
     st.write("* The Sixth section provides a look at the activity levels of"
-                " donors to Political Parties, and offers a way to look at"
-                " the activity levels of particular donors to different parties.")
+             " donors to Political Parties, and offers a way to look at"
+             " the activity levels of particular donors to different parties.")
     st.write("* The Seventh section provides details on the data sources used"
-                " how it was cleaned and prepared for analysis/visualization."
-                " It also provides a link to the original data source,"
-                " and outlines any assumptions made in the data preparation "
-                " and analysis.")
+             " how it was cleaned and prepared for analysis/visualization."
+             " It also provides a link to the original data source,"
+             " and outlines any assumptions made in the data preparation "
+             " and analysis.")
     st.write("* You should be able to access the code through the github link"
-                " at the top of the page.")
+             " at the top of the page.")
+    st.write("---")

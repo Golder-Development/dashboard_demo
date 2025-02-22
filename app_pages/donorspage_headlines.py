@@ -135,9 +135,9 @@ def donorsheadlinespage_body():
                                     orientation='v',  # Vertical bars
                                     barmode='stack',  # Grouped bars
                                     x_scale='category',
-                                    y_scale='log',
+                                    y_scale='linear',
                                     # color_palette='Set1',  # Color palette for bars
-                                    key='avg_donation_donation_type',  # Streamlit widget key
+                                    widget_key='donation_donation_type',  # Streamlit widget key
                                     use_container_width=True  # Ensures chart fits container width
                                 )
         vis.plot_custom_bar_chart(
@@ -154,7 +154,7 @@ def donorsheadlinespage_body():
                                     x_scale='log',
                                     y_scale='log',
                                     color_palette='Viridis',  # Color palette for bars
-                                    key='reg_ent_don_name',  # Streamlit widget key
+                                    widget_key='reg_ent_don_name',  # Streamlit widget key
                                     use_container_width=True  # Ensures chart fits container width
                                 )
     with mid:
