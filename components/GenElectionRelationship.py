@@ -1,7 +1,7 @@
-## Original Code https://github.com/Hysnap/ElectionDateDifferentialCalc/
-## Module to calculate the difference in a definable period between a given 
-## date and the nearest election date, for a set period defined in Days
-## Direction can be "DaysTill" or "DaysSince"
+# Original Code https://github.com/Hysnap/ElectionDateDifferentialCalc/
+# Module to calculate the difference in a definable period between a given 
+# date and the nearest election date, for a set period defined in Days
+# Direction can be "DaysTill" or "DaysSince"
 
 import math
 import datetime as dt
@@ -22,7 +22,7 @@ def load_election_dates():
         ElectionDates.append(ElectionDates_dict[key])
 
     ## List of Election Dates
-    """
+    
     ElectionDates_old = ['2001/06/07 00:00:00',
                     '2005/05/05 00:00:00',
                     '2010/06/05 00:00:00',
@@ -32,7 +32,7 @@ def load_election_dates():
                     '2024/07/04 00:00:00']
     
     return elections.get_general_elections_dict()
-    """
+    
     return ElectionDates
     
 
@@ -62,11 +62,10 @@ def GenElectionRelation2(R_Date,
         ElectionDates = load_election_dates()
         st.session_state.ElectionDates = ElectionDates
 
-
     # Pre-sorted lists of election dates
         ElectionDatesAscend = sorted(ElectionDates)
         ElectionDatesDescend = sorted(ElectionDates, reverse=True)
-    
+
     try:
         # Convert the reference date to datetime
         R_Date2 = dt.datetime.strptime(R_Date, date_format)

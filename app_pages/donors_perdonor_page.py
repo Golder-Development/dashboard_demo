@@ -172,7 +172,7 @@ def donorspage_body():
     st.write(f"# Analysis of Political Donations for {selected_entity_name}"
              f" \n ## between {min_date_f} and {max_date_f}")
     if selected_entity_name == "All":
-        st.write("### Use dropdown to filter by Donor")    
+        st.write("### Use dropdown to filter by Donor")
     st.write("---")
     st.write(f"## Headline Figures for {selected_entity_name}")
     st.write("---")

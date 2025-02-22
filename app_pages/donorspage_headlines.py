@@ -42,7 +42,7 @@ def donorsheadlinespage_body():
     donors_summary['Average Value per Regulated Entity'] =\
         donors_summary['Total Value'] / donors_summary['Regulated Entities']
     donors_summary['Average Number Donations per Entity'] = (
-        donors_summary['No of Donations'] / 
+        donors_summary['No of Donations'] /
         donors_summary['Regulated Entities'])
     donors_topline_summary = donors_df.groupby(['DonorName'])\
         .agg({'Value': ['count',
@@ -120,83 +120,104 @@ def donorsheadlinespage_body():
                  ' few who make donations to multiple regulated entities.'
                  ' These donations are generally larger in value.')
         st.write('* From the charts below, we can see that on average, donors'
-                 ' donated more using cash than other methods.  We can also see that'
-                 ' quite a few donors made donations to multiple regulated entities.'
+                 ' donated more using cash than other methods.  We can also '
+                 'see that'
+                 ' quite a few donors made donations to multiple regulated'
+                 ' entities.'
                  ' with BAA being the most promiscuous donor.')
-        st.write('* The top 3 most generous donors overall where all Trade Unions, '
-                 ' as were all 5 of the most active donors by number of donations. ')
-        st.write('* The top 5 most generous on average donors were all individuals,'
-                 ' and apart from 2 they each made a single donation. When we exclude'
-                 ' donors who only made a single donation, the top 5 most generous'
+        st.write('* The top 3 most generous donors overall where all Trade'
+                 ' Unions, '
+                 ' as were all 5 of the most active donors by number of'
+                 ' donations. ')
+        st.write('* The top 5 most generous on average donors were all'
+                 ' individuals,'
+                 ' and apart from 2 they each made a single donation. When we'
+                 ' exclude'
+                 ' donors who only made a single donation, the top 5 most'
+                 ' generous'
                  ' on average donors were all except 1 still individuals.')
-        st.write('* When we look at the Average value of donations per regulated entity'
-                 ' and the number of Entities donated to, we see as the number of Entities'
-                 ' donated to increased, the average donation per entity decreased.')
-        st.write('* Unsurprisingly, the more Entities donated to more donations made.')
+        st.write('* When we look at the Average value of donations per'
+                 ' regulated entity'
+                 ' and the number of Entities donated to, we see as the number'
+                 ' of Entities'
+                 ' donated to increased, the average donation per entity'
+                 ' decreased.')
+        st.write('* Unsurprisingly, the more Entities donated to more'
+                 ' donations made.')
     st.write("---")
     left, mid = st.columns(2)
     with left:
         vis.plot_custom_bar_chart(
-                                    df=donors_df,  # DataFrame to plot
-                                    x_column='DonorStatus',  # Column for the x-axis (categorical)
-                                    y_column='Value',  # Column for the y-axis (numerical)
-                                    group_column='DonationType',  # No grouping by another column
+                                    df=donors_df,
+                                    x_column='DonorStatus',
+                                    y_column='Value',
+                                    group_column='DonationType',
                                     agg_func='sum',
-                                    title='Total Donations by Donation Type',  # Title of the chart
-                                    x_label='Donation Type',  # X-axis label
-                                    y_label='Donation £',  # Y-axis label
-                                    orientation='v',  # Vertical bars
-                                    barmode='stack',  # Grouped bars
+                                    title='Total Donations by Donation Type',
+                                    x_label='Donation Type',
+                                    y_label='Donation £',
+                                    orientation='v',
+                                    barmode='stack',
                                     x_scale='category',
                                     y_scale='linear',
-                                    # color_palette='Set1',  # Color palette for bars
-                                    widget_key='donation_donation_type',  # Streamlit widget key
-                                    use_container_width=True  # Ensures chart fits container width
+                                    # color_palette='Set1',
+                                    widget_key='donation_donation_type',
+                                    use_container_width=True
                                 )
         vis.plot_custom_bar_chart(
-                                    df=donors_topline_summary,  # DataFrame to plot
-                                    x_column='Regulated Entities',  # Column for the x-axis (categorical)
-                                    y_column='Donor Name',  # Column for the y-axis (numerical)
-                                    group_column=None,  # No grouping by another column
+                                    df=donors_topline_summary,
+                                    x_column='Regulated Entities',
+                                    y_column='Donor Name',
+                                    group_column=None,
                                     agg_func='count',
-                                    title='Count of Donors vs No of Regulated Entities',  # Title of the chart
-                                    x_label='No of Regulated Entities',  # X-axis label
-                                    y_label='No of Donors',  # Y-axis label
+                                    title='Count of Donors vs'
+                                    ' No of Regulated Entities',
+                                    x_label='No of Regulated Entities',
+                                    y_label='No of Donors',
                                     orientation='v',
                                     barmode='stack',
                                     x_scale='log',
                                     y_scale='log',
-                                    color_palette='Viridis',  # Color palette for bars
-                                    widget_key='reg_ent_don_name',  # Streamlit widget key
-                                    use_container_width=True  # Ensures chart fits container width
+                                    color_palette='Viridis',
+                                    widget_key='reg_ent_don_name',
+                                    use_container_width=True
                                 )
     with mid:
         vis.plot_regressionplot(donors_topline_summary,
                                 y_column='No of Donations',
                                 x_column='Regulated Entities',
-                                size_column='Average Value per Regulated Entity',
-                                title='Average Value vs No. of Regulated Entities Donated to',
+                                size_column='Average Value per Regulated'
+                                ' Entity',
+                                title='Average Value vs No. of Regulated'
+                                ' Entities Donated to',
                                 y_label='No. of Donations',
                                 x_label='No. of Entities Donated to',
                                 size_label='Avg Donated Value £',
                                 size_scale=0.5
                                 )
-        st.write("<div style='text-align: center;'><b>Size of circles represent the Total Value in GBP.</b></div>", unsafe_allow_html=True)
+        st.write("<div style='text-align: center;'><b>Size of circles"
+                 " represent the Total Value in GBP.</b></div>",
+                 unsafe_allow_html=True)
         vis.plot_regressionplot(donors_topline_summary,
                                 y_column='Total Value',
                                 x_column='Regulated Entities',
-                                size_column='Average Value per Regulated Entity',
-                                title='Total Value vs No. of Regulated Entities Donated to',
+                                size_column='Average Value per Regulated'
+                                ' Entity',
+                                title='Total Value vs No. of Regulated'
+                                ' Entities Donated to',
                                 y_label='Total Donations £',
                                 x_label='No. of Entities Donated to',
                                 size_label='Avg Donated Value £',
                                 size_scale=0.5
                                 )
-        st.write("<div style='text-align: center;'><b>Size of circles represent the Average Value in GBP per entity.</b></div>", unsafe_allow_html=True)
+        st.write("<div style='text-align: center;'><b>Size of circles "
+                 "represent the Average Value in GBP per entity.</b></div>",
+                 unsafe_allow_html=True)
     st.write("---")
     st.write("### Top 5 Most Promiscuous Donors: Entities Donated to")
     st.write("---")
-    donors_summary2 = donors_topline_summary.sort_values('Regulated Entities', ascending=False)
+    donors_summary2 = donors_topline_summary.sort_values('Regulated Entities',
+                                                         ascending=False)
     donors_summary2 = donors_summary2[['Donor Name',
                                        'Regulated Entities',
                                        'Avg No. Donations Per Entity',
@@ -215,7 +236,8 @@ def donorsheadlinespage_body():
     st.write("---")
     st.write("### Top 5 Most Generous Overall Donors")
     st.write("---")
-    donors_summary2 = donors_topline_summary.sort_values('Total Value', ascending=False)
+    donors_summary2 = donors_topline_summary.sort_values('Total Value',
+                                                         ascending=False)
     donors_summary2 = donors_summary2[['Donor Name',
                                        'Regulated Entities',
                                        'Avg No. Donations Per Entity',
@@ -234,7 +256,8 @@ def donorsheadlinespage_body():
     st.write("---")
     st.write("### Top 5 Most Generous on Average Donors")
     st.write("---")
-    donors_summary2 = donors_topline_summary.sort_values('Average Donation', ascending=False)
+    donors_summary2 = donors_topline_summary.sort_values('Average Donation',
+                                                         ascending=False)
     donors_summary2 = donors_summary2[['Donor Name',
                                        'Regulated Entities',
                                        'Avg No. Donations Per Entity',
@@ -254,7 +277,8 @@ def donorsheadlinespage_body():
     st.write("### Top 5 Most Generous on Average Donors")
     st.write("#### Excluding donors who only made a single donation")
     st.write("---")
-    donors_summary2 = donors_topline_summary.sort_values('Average Donation', ascending=False)
+    donors_summary2 = donors_topline_summary.sort_values('Average Donation',
+                                                         ascending=False)
     donors_summary2 = donors_summary2[donors_summary2['No of Donations'] > 1]
     donors_summary2 = donors_summary2[['Donor Name',
                                        'Regulated Entities',
@@ -273,7 +297,8 @@ def donorsheadlinespage_body():
     st.dataframe(donors_summary2_styled)
     st.write("---")
     st.write("### Top 5 Most Active Donors by No of Donations")
-    donors_summary2 = donors_topline_summary.sort_values('No of Donations', ascending=False)
+    donors_summary2 = donors_topline_summary.sort_values('No of Donations',
+                                                         ascending=False)
     donors_summary2 = donors_summary2[['Donor Name',
                                        'Regulated Entities',
                                        'Avg No. Donations Per Entity',

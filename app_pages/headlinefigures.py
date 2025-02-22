@@ -2,6 +2,7 @@ import streamlit as st
 import components.calculations as ppcalc
 import components.Visualisations as vis
 
+
 def hlf_body():
     """
     This function displays the content of Page two.

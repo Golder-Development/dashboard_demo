@@ -1,4 +1,6 @@
+import streamlit as st
 from data.data_loader import firstload
+
 
 # Set up multipage navigation and reference pages.
 from app_pages.multi_page import MultiPage
@@ -25,6 +27,12 @@ from app_pages.visits import visits_body_page
 # from app_pages.regulatedentitypage import regulatedentitypage_body
 from app_pages.notesondataprep import notesondataprep_body
 app = MultiPage(app_name="UK Political Donations")  # Create an instance
+# Display a loading message
+loading_message = st.empty()
+loading_message.markdown("<h3 style='text-align: center; color: blue;'>"
+                         "Please wait while the data sets are being "
+                         "calculated...</h3>", unsafe_allow_html=True)
+
 
 # Add your app pages here using .add_page()
 app.add_page("Introduction", introduction_body)
@@ -49,6 +57,8 @@ app.run()  # Run the  app
 # Assuming data_loader is a module or class that needs to be imported
 
 firstload()  # Load the data
+
+loading_message.empty()
 
 # The app is now ready to be run. To run the app, open a terminal
 # and run the following command streamlit run politicalpartyanalysis.py

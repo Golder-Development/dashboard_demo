@@ -365,11 +365,11 @@ def compute_summary_statistics(df, filters):
     noofdonors_per_ent_stdev = get_noofdonors_per_ent_stdev(df, filters)
 
     return {
-        "regentity_ct": regentity_ct,
-        "donors_ct": donors_ct,
-        "donations_ct": donations_ct,
-        "value_total": value_total,
-        "value_mean": value_mean,
+        "unique_reg_entities": regentity_ct,
+        "unique_donors": donors_ct,
+        "unique_donations": donations_ct,
+        "total_value": value_total,
+        "mean_value": value_mean,
         "avg_donations_per_entity": avg_donations_per_entity,
         "avg_value_per_entity": avg_value_per_entity,
         "avg_donors_per_entity": avg_donors_per_entity,

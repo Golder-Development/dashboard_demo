@@ -21,17 +21,19 @@ def donationsbypoliticalpartys_body():
     # dubious_donation_actions_ct = ppcalc.get_dubious_donation_actions_ct(df,
     # filters)
     blank_received_date_ct = ppcalc.get_blank_received_date_ct(df, filters)
-    blank_regulated_entity_id_ct = ppcalc.get_blank_regulated_entity_id_ct(df, filters)
+    blank_regulated_entity_id_ct = (
+        ppcalc.get_blank_regulated_entity_id_ct(df, filters))
     # blank_donor_id_ct = ppcalc.get_blank_donor_id_ct(df, filters)
     # blank_donor_name_ct = ppcalc.get_blank_donor_name_ct(df, filters)
     dubious_donors = ppcalc.get_dubious_donors_ct(df, filters)
     dubious_donation_actions = ppcalc.get_dubious_donation_actions(df, filters)
-    total_value_dubious_donations = ppcalc.get_dubious_donation_value(df, filters)
+    total_value_dubious_donations = (
+        ppcalc.get_dubious_donation_value(df, filters))
 
     st.write("# Donations Where a Political Party is the Donor")
     st.write("## Explaination")
     st.write("* Certain Political Donations represent funds either "
-             "donated to other Political Parties or to regional Party Branche.")
+             "donated to other Political Parties or regional Party Branches.")
     st.write("* These are identified by the regulator and marked in the data. "
              "These in part artificially inflate the value of donations made,"
              "and as such need to be looked at seperately.")
