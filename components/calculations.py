@@ -2,7 +2,6 @@ import pandas as pd
 import streamlit as st
 from components.filters import apply_filters
 
-
 # Convert placeholder date to datetime once
 PLACEHOLDER_DATE = pd.Timestamp("1900-01-01 00:00:00")
 PLACEHOLDER_ID = 1000001
@@ -308,31 +307,37 @@ def calculate_percentage(numerator, denominator):
 
 def get_avg_donations_per_entity(df, filters=None):
     """Calculates the average number of donations per entity."""
+    df = apply_filters(df, filters)
     return df.groupby('RegulatedEntityId').size().mean()
 
 
 def get_avg_value_per_entity(df, filters=None):
     """Calculates the average value of donations per entity."""
+    df = apply_filters(df, filters)
     return df.groupby('RegulatedEntityId')['Value'].mean().mean()
 
 
 def get_avg_donors_per_entity(df, filters=None):
     """Calculates the average number of donors per entity."""
+    df = apply_filters(df, filters)
     return df.groupby('RegulatedEntityId')['DonorId'].nunique().mean()
 
 
 def get_donors_stdev(df, filters=None):
     """Calculates the standard deviation of donors per entity."""
+    df = apply_filters(df, filters)
     return df.groupby('RegulatedEntityId').size().std()
 
 
 def get_value_stdev(df, filters=None):
     """Calculates the standard deviation of value per entity."""
+    df = apply_filters(df, filters)
     return df.groupby('RegulatedEntityId')['Value'].mean().std()
 
 
 def get_noofdonors_per_ent_stdev(df, filters=None):
     """Calculates the standard deviation of donors per entity."""
+    df = apply_filters(df, filters)
     return df.groupby('RegulatedEntityId')['DonorId'].nunique().std()
 
 

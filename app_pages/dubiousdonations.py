@@ -28,13 +28,14 @@ def dubiousdonations_body():
         st.error("No data found. Please upload a dataset.")
         return
     # Define filter condition
-    current_target = "DubiousData"
-    target_filter = 1
-    target_label = "Dubious Donations"
+    current_target = {"DubiousData": [0, 1, 2, 3, 4, 5]}
+    target_label = "Dubious Donation"
     filters = {}
     # Get min and max dates from the dataset
-    min_date = dt.datetime.combine(get_mindate(cleaned_df), dt.datetime.min.time())
-    max_date = dt.datetime.combine(get_maxdate(cleaned_df), dt.datetime.min.time())
+    min_date = dt.datetime.combine(get_mindate(cleaned_df),
+                                   dt.datetime.min.time())
+    max_date = dt.datetime.combine(get_maxdate(cleaned_df),
+                                   dt.datetime.min.time())
     # Extract start and end dates from the slider
     start_date, end_date = (
         dt.datetime.combine(min_date, dt.datetime.min.time()),
@@ -44,30 +45,33 @@ def dubiousdonations_body():
     cleaned_d_df = filter_by_date(cleaned_df, start_date, end_date)
     # limit to target type of donation
     cleaned_c_d_df = apply_filters(cleaned_d_df,
-                                   filters={current_target: target_filter})
+                                   current_target)
     # all dubious donations
-    tstats = compute_summary_statistics(cleaned_c_d_df, filters)
+    tstats = compute_summary_statistics(cleaned_c_d_df,
+                                        filters)
     # aggregated donations
     adstats = compute_summary_statistics(
         cleaned_c_d_df,
-        filters={"DonationType": "Aggregated donations"})
+        {"DonationType": "Aggregated donations"})
     # visits
     dvstats = compute_summary_statistics(
         cleaned_c_d_df,
-        filters={"DonationType": "Visit"})
+        {"DonationType": "Visit"})
     # returned and forfeited donations
+    return_filters = {}
+    return_filters = {"DonationAction": "Returned"}
     rdstats = compute_summary_statistics(
-        cleaned_c_d_df.query("DonationAction == 'Returned' or "
-                             "DonationAction == 'Forfeited'"),
-        filters)
+        cleaned_c_d_df, {"DonationAction": "Returned"}),
     # blank received date
+    blank_date_filters = {}
+    blank_date_filters = {"ReceivedDate": PLACEHOLDER_DATE}
     brdstats = compute_summary_statistics(
-        cleaned_c_d_df,
-        filters={"ReceivedDate": PLACEHOLDER_DATE})
+        cleaned_c_d_df, {"ReceivedDate": PLACEHOLDER_DATE})
     # blank regulated entity data
+    blank_reg_entity_filters = {}
+    blank_reg_entity_filters = {"RegulatedEntityId": PLACEHOLDER_ID}
     bredstats = compute_summary_statistics(
-        cleaned_c_d_df,
-        filters={"RegulatedEntityId": PLACEHOLDER_ID})
+        cleaned_c_d_df, {"RegulatedEntityId": PLACEHOLDER_ID})
     # all data
     ostats = compute_summary_statistics(cleaned_d_df, filters)
     # Calculate the percentage of donations that are cash donations
@@ -155,14 +159,14 @@ def dubiousdonations_body():
             f" These donations represented"
             f" {dubious_percent_of_donation_actions:.2f}% "
             "of all donations made in the period.")
-    if brdstats['unique_donations'] >= 1:
+    if brdstats:
         st.write(f"* {brdstats['unique_donations']} "
                  "donations had no recorded date.")
-    if bredstats["unique_donations"] >= 1:
+    if bredstats:
         st.write(f"* {bredstats['unique_donations']} "
                  "donations had no recorded "
                  "regulated entity.")
-    if rdstats["total_value"] >= 1:
+    if rdstats:
         st.write(
             f"* Of these donations {rdstats['unique_donations']} or"
             f" {returned_donations_percent_donations:.2f}% "
@@ -170,7 +174,7 @@ def dubiousdonations_body():
             f"representing £{format_number(rdstats['total_value'])} or"
             f" or {returned_donations_percent_value:.2f}% of the total "
             "value of dubious donations.")
-    if adstats["unique_donations"] >= 1:
+    if adstats:
         st.write(
             f"* There were {adstats['unique_donations']} aggregated donations,"
             f" representing {aggregated_percent_of_donation_actions:.2f}%"

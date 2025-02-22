@@ -1,21 +1,37 @@
+import streamlit as st
+import components.calculations as ppcalc
+import datetime as dt
+import components.Visualisations as vis
+import pandas as pd
+from data.data_loader import load_cleaned_data
+
+
 def dubiousdonationsByDonor_body():
     """
     Displays the content of the Donations by Political Party page.
     """
-    import streamlit as st
-    import components.calculations as ppcalc
-    import datetime as dt
-    import components.Visualisations as vis
-    import pandas as pd
-
     # Page Title
     st.write("## Investigate Dubious Donations by Period and Regulated Entity")
     # Load dataset from session state
-    df = st.session_state.get("data_clean", None)
+    cleaned_df = load_cleaned_data()
+    if cleaned_df is None:
+        st.error("No data found. Please upload a dataset.")
+        return
+    # Define filter condition
+    current_target = {"DubiousData": [1, 2, 3, 4, 5]}
+    target_label = "Dubious Donation"
+    filters = {}
 
     # Get min and max dates from the dataset
-    min_date = ppcalc.get_mindate(df).date()
-    max_date = ppcalc.get_maxdate(df).date()
+    min_date = dt.datetime.combine(ppcalc.get_mindate(cleaned_df),
+                                   dt.datetime.min.time())
+    max_date = dt.datetime.combine(ppcalc.get_maxdate(cleaned_df),
+                                   dt.datetime.min.time())
+    # Extract start and end dates from the slider
+    start_date, end_date = (
+        dt.datetime.combine(min_date, dt.datetime.min.time()),
+        dt.datetime.combine(max_date, dt.datetime.max.time())
+        )
 
     # Add a date range slider to filter by received date
     date_range = st.slider(
@@ -33,12 +49,12 @@ def dubiousdonationsByDonor_body():
 
     # Filter by date range
     date_filter = (
-        ((df["ReceivedDate"] >= start_date)
-         & (df["ReceivedDate"] <= end_date)) |
-        (df["ReceivedDate"] == "1900-01-01 00:00:00")
+        ((cleaned_df["ReceivedDate"] >= start_date)
+         & (cleaned_df["ReceivedDate"] <= end_date)) |
+        (cleaned_df["ReceivedDate"] == "1900-01-01 00:00:00")
         )
     # Apply filters to the dataset
-    filtered_df = df[date_filter]
+    filtered_df = cleaned_df[date_filter]
     total_value_of_donations = ppcalc.get_value_total(filtered_df)
     total_count_of_donors = ppcalc.get_donors_ct(filtered_df)
     total_count_of_donations = ppcalc.get_donations_ct(filtered_df)
@@ -127,8 +143,8 @@ def dubiousdonationsByDonor_body():
     max_date = ppcalc.get_maxdate(filtered_df).date()
 
     # Create a mapping of RegulatedEntityName -> RegulatedEntityId
-    entity_mapping = dict(zip(df["RegulatedEntityName"],
-                              df["RegulatedEntityId"]))
+    entity_mapping = dict(zip(cleaned_df["RegulatedEntityName"],
+                              cleaned_df["RegulatedEntityId"]))
 
     # Add "All" as an option and create a dropdown that displays names but
     selected_entity_name = (
@@ -245,8 +261,8 @@ def dubiousdonationsByDonor_body():
     else:
         st.write("* No donations from dubious donors were identified.")
     if dubious_donation_actions >= 1:
-        st.write(f"* There were {dubious_donation_actions:,.0f} donations that were"
-                 " identified as of questionable nature. These donations "
+        st.write(f"* There were {dubious_donation_actions:,.0f} donations that"
+                 " were identified as of questionable nature. These donations "
                  "represented "
                  f"{dubious_percent_of_donation_actions:.2f}% of all donations"
                  " made in the period. These had a combined value of "

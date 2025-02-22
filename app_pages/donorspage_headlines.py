@@ -1,13 +1,18 @@
 import streamlit as st
 import components.calculations as ppcalc
 import components.Visualisations as vis
+from data.data_loader import load_cleaned_data
 
 
 def donorsheadlinespage_body():
     """
     This function displays the content of Page two.
     """
-    donors_df = st.session_state.get("data_clean", None)
+    cleaned_df = load_cleaned_data()
+    if cleaned_df is None:
+        st.error("No data found. Please upload a dataset.")
+        return
+    donors_df = cleaned_df.copy()
     donors_df = donors_df[donors_df["DonorStatus"] != "Registered Political\
         Party"]
     donors = ppcalc.get_donors_ct(donors_df)
@@ -75,7 +80,8 @@ def donorsheadlinespage_body():
     avg_donations = f"{avg_donations:.2f}"
     median_donation = ppcalc.format_number(median_donation)
     st.write("---")
-    st.write("# Analysis of Political Donations by Donor")
+    st.write("# Analysis of Political Donations by Donor"
+             f"\n ## between {min_date} and {max_date}")
     st.write("---")
     st.write("## Headline Figures")
     st.write("---")
