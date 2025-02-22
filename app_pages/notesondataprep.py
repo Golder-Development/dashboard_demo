@@ -13,7 +13,9 @@ def notesondataprep_body():
     wmca = "https://www.wmca.org.uk/"
     datalink = "https://www.kaggle.com/robertjacobson/uk-political-donations"
     # use markdown to create headers and sub headers
+    st.write("---")
     st.write("## Notes on Data, Data Preperation and Assumptions")
+    st.write("---")
     st.write("### Notes on Data Source")
     st.write(f"* The data covers the period from {min_date} to {max_date}")
     st.write("* The data was sourced from the "
@@ -21,6 +23,7 @@ def notesondataprep_body():
              "Having been initially extracted and "
              "compiled by https://data.world/vizwiz.")
     st.write("* The data is a snapshot of donations made to Political Parties")
+    st.write("---")
     st.write("### Data Cleansing and Assumptions")
     st.write("This was built using Streamlit and Python following training "
              "from the [Code Institute](%s)." % "https://codeinstitute.net/"
@@ -61,7 +64,6 @@ def notesondataprep_body():
              "Reporting Period.  If the value was still blank"
              " then the value was set to 1900-01-01.  All time values were set"
              "to 00:00:00.")
-
     st.write("The Nature of Donation field was then populated based on the"
              "values in the dataset.  The following rules were used:")
     st.markdown(" *  If the Nature of Donation was already populated then it"
@@ -86,7 +88,9 @@ def notesondataprep_body():
     st.write("Regulated Entities were then analysed and categorised based on"
              "the number of donations received. The table below"
              " shows the categories used.")
+    st.write("---")
     st.write("## Entity Classification Based on Donations")
     col1, col2 = st.columns(2)
     with col1:
         ppcalc.display_thresholds_table()
+    st.write("---")

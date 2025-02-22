@@ -1,8 +1,4 @@
 import streamlit as st
-import data.datasetupandclean as dc
-from data.data_loader import (get_data, get_party_summary_data,
-                              get_cleaned_data, get_donor_data,
-                              get_regentity_data)
 
 # Set up multipage navigation and reference pages.
 from app_pages.multi_page import MultiPage
@@ -44,45 +40,15 @@ app.add_page("Paid Visits", visits_body)
 # app.add_page("Regulated Entities", regulatedentitypage_body)
 # app.add_page("Donor is a Political Party", donationsbypoliticalpartys_body)
 app.add_page("Donors Head Lines", donorsheadlinespage_body)
-app.add_page("Donorations Per Donor", donorspage_body)
+app.add_page("Donations Per Donor", donorspage_body)
 app.add_page("Notes on Data and Manipulations", notesondataprep_body)
 
 app.run()  # Run the  app
 
-loading_message = st.empty()
-loading_message.markdown("<h3 style='text-align: center; color: blue;'>"
-                         "Please wait while the data sets are being "
-                         "calculated...</h3>", unsafe_allow_html=True)
+# Assuming data_loader is a module or class that needs to be imported
+from data.data_loader import firstload
 
-# Ensure g_thresholds is available as a global dictionary
-if 'g_thresholds' not in st.session_state:
-    dc.create_thresholds()
-
-
-# Load and cache data correctly
-
-if "data" not in st.session_state:
-    st.session_state["data"] = get_data()
-
-
-if "data_party_sum" not in st.session_state:
-    st.session_state["data_party_sum"] = get_party_summary_data()
-
-
-if "data_clean" not in st.session_state:
-    st.session_state["data_clean"] = get_cleaned_data()
-
-
-if "data_donor" not in st.session_state:
-    st.session_state["data_donor"] = get_donor_data()
-
-
-if "data_regentity" not in st.session_state:
-    st.session_state["data_regentity"] = get_regentity_data()
-
-
-# Remove the loading message
-loading_message.empty()
+firstload()  # Load the data
 
 # The app is now ready to be run. To run the app, open a terminal
 # and run the following command streamlit run politicalpartyanalysis.py

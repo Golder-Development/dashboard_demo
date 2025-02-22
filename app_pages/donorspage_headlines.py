@@ -74,8 +74,11 @@ def donorsheadlinespage_body():
     totaldonations = ppcalc.format_number(totaldonations)
     avg_donations = f"{avg_donations:.2f}"
     median_donation = ppcalc.format_number(median_donation)
+    st.write("---")
     st.write("# Analysis of Political Donations by Donor")
+    st.write("---")
     st.write("## Headline Figures")
+    st.write("---")
     col1, col2 = st.columns(2)
     with col1:
         st.write("* For this analysis, any donations made by Political Parties"
@@ -121,6 +124,7 @@ def donorsheadlinespage_body():
                  ' and the number of Entities donated to, we see as the number of Entities'
                  ' donated to increased, the average donation per entity decreased.')
         st.write('* Unsurprisingly, the more Entities donated to more donations made.')
+    st.write("---")
     left, mid = st.columns(2)
     with left:
         vis.plot_custom_bar_chart(
@@ -180,7 +184,9 @@ def donorsheadlinespage_body():
                                 size_scale=0.5
                                 )
         st.write("<div style='text-align: center;'><b>Size of circles represent the Average Value in GBP per entity.</b></div>", unsafe_allow_html=True)
+    st.write("---")
     st.write("### Top 5 Most Promiscuous Donors: Entities Donated to")
+    st.write("---")
     donors_summary2 = donors_topline_summary.sort_values('Regulated Entities', ascending=False)
     donors_summary2 = donors_summary2[['Donor Name',
                                        'Regulated Entities',
@@ -197,7 +203,9 @@ def donorsheadlinespage_body():
     )
     # Display the styled dataframe
     st.dataframe(donors_summary2_styled)
+    st.write("---")
     st.write("### Top 5 Most Generous Overall Donors")
+    st.write("---")
     donors_summary2 = donors_topline_summary.sort_values('Total Value', ascending=False)
     donors_summary2 = donors_summary2[['Donor Name',
                                        'Regulated Entities',
@@ -214,7 +222,9 @@ def donorsheadlinespage_body():
     )
     # Display the styled dataframe
     st.dataframe(donors_summary2_styled)
+    st.write("---")
     st.write("### Top 5 Most Generous on Average Donors")
+    st.write("---")
     donors_summary2 = donors_topline_summary.sort_values('Average Donation', ascending=False)
     donors_summary2 = donors_summary2[['Donor Name',
                                        'Regulated Entities',
@@ -231,8 +241,10 @@ def donorsheadlinespage_body():
     )
     # Display the styled dataframe
     st.dataframe(donors_summary2_styled)
+    st.write("---")
     st.write("### Top 5 Most Generous on Average Donors")
     st.write("#### Excluding donors who only made a single donation")
+    st.write("---")
     donors_summary2 = donors_topline_summary.sort_values('Average Donation', ascending=False)
     donors_summary2 = donors_summary2[donors_summary2['No of Donations'] > 1]
     donors_summary2 = donors_summary2[['Donor Name',
@@ -250,7 +262,7 @@ def donorsheadlinespage_body():
     )
     # Display the styled dataframe
     st.dataframe(donors_summary2_styled)
-
+    st.write("---")
     st.write("### Top 5 Most Active Donors by No of Donations")
     donors_summary2 = donors_topline_summary.sort_values('No of Donations', ascending=False)
     donors_summary2 = donors_summary2[['Donor Name',
@@ -268,5 +280,6 @@ def donorsheadlinespage_body():
     )
     # Display the styled dataframe
     st.dataframe(donors_summary2_styled)
-
+    st.write("---")
     st.write("## Individual Donor Analysis and Data")
+    st.write("---")

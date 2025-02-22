@@ -100,7 +100,7 @@ def cash_donations_page():
     with left:
         st.write("## Topline Visuals")
     with right:
-        st.write("## Click on any Visualisation to view it full screen.")
+        st.write("### Click on any Visualisation to view it full screen.")
     st.write("---")
     left_column, right_column = st.columns(2)
     with left_column:
@@ -203,11 +203,10 @@ def cash_donations_page():
                                   widget_key='donation_donation_type',
                                   use_container_width=True
                                   )
-        st.write("---")
         st.write("The majority of cash donations are from individuals. "
                  "These are followed by donations from companies and "
                  "trade unions.")
         st.write("The pattern of donations by donor type is consistent "
                  "over time. This is not surprising as the majority of "
                  "donations are from individuals.")
-        st.write("---")
+    st.write("---")

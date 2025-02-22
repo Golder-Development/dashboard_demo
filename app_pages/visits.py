@@ -611,7 +611,9 @@ def visits_body():
     # Format selected dates for inclusion in text
     min_date_df = start_date.date()
     max_date_df = end_date.date()
-
+    st.write("---")
+    st.write("# {target_label}: Political Entity and Date Range")
+    st.write("---")
     st.write(f"## Topline Figures for {target_label} to {selected_entity_name}"
              f" between {min_date_df} and {max_date_df}")
     st.write(f"* During the period between {min_date_df} and {max_date_df}, "

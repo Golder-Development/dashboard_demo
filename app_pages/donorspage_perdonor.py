@@ -170,8 +170,11 @@ def donorspage_body():
     totaldonations = ppcalc.format_number(totaldonations)
     avg_donations = f"{avg_donations:.2f}"
     median_donation = ppcalc.format_number(median_donation)
+    st.write("---")
     st.write("# Analysis of Political Donations by Donor")
+    st.write("---")
     st.write("## Headline Figures")
+    st.write("---")
     col1, col2 = st.columns(2)
     with col1:
         st.write("* For this analysis, any donations made by Political Parties"
@@ -191,7 +194,7 @@ def donorspage_body():
                  ' number of donors who only make a single donation. These'
                  ' donations are generally under £1M and are made to a'
                  ' single regulated entity.')
-
+    st.write("---")
     left, mid = st.columns(2)
     with left:
         vis.plot_custom_bar_chart(
@@ -217,6 +220,7 @@ def donorspage_body():
                  unsafe_allow_html=True)
 
     # Display the styled dataframe
+    st.write("---")
     st.dataframe(donors_summary.style.format(
         {"Total Value": "£{:.2f}",
          "Average Donation": "£{:.2f}",
@@ -245,3 +249,4 @@ def donorspage_body():
     # st.dataframe(ppcalc.get_top_donors(donors_entity_summary,
     #                                    "No of Donations",
     #                                    exclude_single_donation=False))
+st.write("---")
