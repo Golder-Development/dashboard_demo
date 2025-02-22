@@ -41,8 +41,9 @@ def donorsheadlinespage_body():
                               'Regulated Entities']
     donors_summary['Average Value per Regulated Entity'] =\
         donors_summary['Total Value'] / donors_summary['Regulated Entities']
-    donors_summary['Average Number Donations per Entity'] =\
-        donors_summary['No of Donations'] / donors_summary['Regulated Entities']
+    donors_summary['Average Number Donations per Entity'] = (
+        donors_summary['No of Donations'] / 
+        donors_summary['Regulated Entities'])
     donors_topline_summary = donors_df.groupby(['DonorName'])\
         .agg({'Value': ['count',
                         'sum',
@@ -69,10 +70,12 @@ def donorsheadlinespage_body():
         'Average Donation'].apply(lambda x: f"£{ppcalc.format_number(x)}")
     donors_topline_summary['Median Donations'] = donors_topline_summary[
         'Median Donation'].apply(lambda x: f"£{ppcalc.format_number(x)}")
-    donors_topline_summary['Avg Value Per Entity'] = donors_topline_summary[
-        'Average Value per Regulated Entity'].apply(lambda x: f"£{ppcalc.format_number(x)}")
-    donors_topline_summary['Avg No. Donations Per Entity'] = \
-        donors_topline_summary['Average Number Donations per Entity'].apply(lambda x: f"{x:.2f}")
+    donors_topline_summary['Avg Value Per Entity'] = (donors_topline_summary[
+        'Average Value per Regulated Entity']
+        .apply(lambda x: f"£{ppcalc.format_number(x)}"))
+    donors_topline_summary['Avg No. Donations Per Entity'] = (
+        donors_topline_summary['Average Number Donations per Entity']
+        .apply(lambda x: f"{x:.2f}"))
     # Apply formating to values
     donors = ppcalc.format_number(donors)
     donations = ppcalc.format_number(donations)
@@ -101,7 +104,7 @@ def donorsheadlinespage_body():
                                 y_column='Average Donation',
                                 x_column='No of Donations',
                                 size_column='Regulated Entities',
-                                title='Avg. Donation vs No. of Donations per Donor',
+                                title='Avg. Value vs No. Donations per Donor',
                                 y_label='Average Donation £',
                                 x_label='Number of Donations',
                                 x_scale='linear',
@@ -114,8 +117,8 @@ def donorsheadlinespage_body():
                  ' donations are generally under £1M and are made to a'
                  ' single regulated entity.')
         st.write('* There are a few donors who make multiple donations, and a '
-                 ' few who make donations to multiple regulated entities. These'
-                 ' donations are generally larger in value.')
+                 ' few who make donations to multiple regulated entities.'
+                 ' These donations are generally larger in value.')
         st.write('* From the charts below, we can see that on average, donors'
                  ' donated more using cash than other methods.  We can also see that'
                  ' quite a few donors made donations to multiple regulated entities.'
