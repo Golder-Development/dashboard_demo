@@ -17,38 +17,32 @@ def get_data():
 @st.cache_data
 def get_party_summary_data():
     return load_party_summary_data(datafile=None,
-                                   output_csv=True,
+                                   output_csv=False,
                                    streamlitrun=True)
 
 
 @st.cache_data
 def get_cleaned_data():
     return load_cleaned_data(datafile=None,
-                             output_csv=True,
+                             output_csv=False,
                              streamlitrun=True)
 
 
 @st.cache_data
 def get_donor_data():
     return load_donorList_data(datafile=None,
-                               output_csv=True,
+                               output_csv=False,
                                streamlitrun=True)
 
 
 @st.cache_data
 def get_regentity_data():
     return load_regulated_entity_data(datafile=None,
-                                      output_csv=True,
+                                      output_csv=False,
                                       streamlitrun=True)
 
 
 def firstload():
-    # Display a loading message
-    loading_message = st.empty()
-    loading_message.markdown("<h3 style='text-align: center; color: blue;'>"
-                             "Please wait while the data sets are being "
-                             "calculated...</h3>", unsafe_allow_html=True)
-
     # Ensure g_thresholds is available as a global dictionary
     if 'g_thresholds' not in st.session_state:
         create_thresholds()
@@ -70,4 +64,4 @@ def firstload():
         st.session_state["data_regentity"] = get_regentity_data()
 
     # Remove the loading message
-    loading_message.empty()
+

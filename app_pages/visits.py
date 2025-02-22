@@ -73,33 +73,33 @@ def visits_body_page():
     left, right = st.columns(2)
     with left:
         st.write("## Explaination")
-        st.write("* The most donations to political parties are in cash."
-                 "These vary from small donations from individuals, to larger "
-                 "aggregated donations from multiple donors, and include "
-                 "donations from trade unions,business and bequests.")
-        st.write("* These are identified by the regulator and marked in the"
-                 " data. "
-                 "This page provides a summary of the cash donations to "
-                 "political parties and other regulated political."
-                 " organisations and entities.")
+        st.write("* Political Entities also get support from donors in the"
+                 " form of funded visits. These are identified by the regulator and"
+                 " marked in the data. This page provides a summary of the"
+                 " visits funded for political parties and other regulated"
+                 " political organisations and entities.")
+        st.write("* Over the years there have been occurances where the"
+                 " funding of visits has been used as a source of dubious"
+                 " funding. This page provides a summary of the visits funded"
+                 f" between {min_date_df} and {max_date_df}.")
     with right:
-        st.write("## Topline Figures")
+        st.write(f"## Topline Figures for {target_label}s")
         st.write(f"* During the period between {min_date_df} to {max_date_df},"
                  f" there were {tstats['unique_donations']:,.0f} "
-                 "cash donations made to "
+                 f"{target_label}s made to "
                  f"{tstats['unique_reg_entities']} regulated entities.")
         st.write(f"* These had a mean value of £"
                  f"{format_number(tstats['mean_value'])} "
                  f"and were made by {format_number(tstats['unique_donors'])} "
                  "unique donors.")
-        st.write(f"* Cash donations were {perc_cash_donations_d:.2f}% of "
+        st.write(f"* {target_label}s were {perc_cash_donations_d:.2f}% of "
                  f"all donations made to political parties between {min_date}"
                  f"and {max_date}. All these had a total value of £ "
                  f"{format_number(tstats['total_value'])}")
     st.write("---")
     left, right = st.columns(2)
     with left:
-        st.write("## Topline Visuals")
+        st.write(f"## Topline Visuals for {target_label}s")
     with right:
         st.write("### Click on any Visualisation to view it full screen.")
     st.write("---")
@@ -116,7 +116,7 @@ def visits_body_page():
                                   GGroup="RegulatedEntityType",
                                   XLabel="Year",
                                   YLabel="Value of Donations £",
-                                  Title="Value of Donations by Year and"
+                                  Title=f"Value of {target_label}s by Year and"
                                         " Entity",
                                   CalcType='sum',
                                   use_custom_colors=True,
@@ -125,8 +125,8 @@ def visits_body_page():
                                   LegendTitle="Political Entity Type",
                                   percentbars=True,
                                   use_container_width=True)
-        st.write("Most donations are made to Political Parties, this"
-                 " changeed in 2016 with the Brexit Referendum. "
+        st.write(f"Most {target_label}s are provided to Political Parties,"
+                 " this changeed in 2016 with the Brexit Referendum. "
                  "Medium size political entities such as 'Vote Leave' and"
                  " 'Leave.EU' were very active, but were not"
                  " Political Parties."
@@ -143,7 +143,7 @@ def visits_body_page():
                                   GGroup="RegEntity_Group",
                                   XLabel="Year",
                                   YLabel="Value of Donations £",
-                                  Title="Value of Donations by Year and"
+                                  Title=f"Value of {target_label}s by Year and"
                                         " Entity",
                                   CalcType='sum',
                                   use_custom_colors=True,
@@ -152,17 +152,11 @@ def visits_body_page():
                                   LegendTitle="Political Entity",
                                   percentbars=False,
                                   use_container_width=True)
-        st.write("The top 3 political entities by value of donations are "
-                 "the Conservative Party, the Labour Party and the "
-                 "Liberal Democrats. This is not surprising as these are "
-                 "the three main political parties in the UK.")
-        st.write("This pattern changes in 2016 to coincide with the EU "
-                 "Referendum.  Here Medium size political entities such "
-                 "as 'Vote Leave' and 'Leave.EU' were very active.")
+        st.write("some insights here")
     st.write("---")
     left, right = st.columns(2)
     with left:
-        st.write('#### Cash Donations by Donor Type')
+        st.write(f'#### {target_label}s by Donor Type')
         if cleaned_c_d_df.empty:
             st.write("No data available for the selected filters.")
             return
@@ -173,18 +167,13 @@ def visits_body_page():
                                   GGroup="DonorStatus",
                                   XLabel="Year",
                                   YLabel="Total Value (£)",
-                                  Title="Donations Value by Donor Types",
+                                  Title=f"{target_label}s Value by Donor Types",
                                   CalcType='sum',
                                   widget_key="Value by type",
                                   use_container_width=True)
-        st.write("The majority of cash donations are from individuals. "
-                 "These are followed by donations from companies and "
-                 "trade unions.")
-        st.write("The pattern of donations by donor type is consistent "
-                 "over time. This is not surprising as the majority of "
-                 "donations are from individuals.")
+        st.write("some insights.")
     with right:
-        st.write('#### Average Donation Value by Donor Type')
+        st.write(f'#### Average {target_label}s Value by Donor Type')
         if cleaned_c_d_df.empty:
             st.write("No data available for the selected filters.")
             return
@@ -193,21 +182,16 @@ def visits_body_page():
                                   x_column='DonorStatus',
                                   y_column='Value',
                                   group_column='DonationType',
-                                  agg_func='sum',
-                                  title='Total Donations by Donation Type',
+                                  agg_func='avg',
+                                  title=f'Avg {target_label}s Value by Donation Type',
                                   x_label='Donation Type',  # X-axis label
                                   y_label='Donation £',  # Y-axis label
                                   orientation='v',  # Vertical bars
-                                  barmode='stack',  # Grouped bars
+                                  barmode='group',  # Grouped bars
                                   x_scale='category',
                                   y_scale='linear',
                                   widget_key='donation_donation_type',
                                   use_container_width=True
                                   )
-        st.write("The majority of cash donations are from individuals. "
-                 "These are followed by donations from companies and "
-                 "trade unions.")
-        st.write("The pattern of donations by donor type is consistent "
-                 "over time. This is not surprising as the majority of "
-                 "donations are from individuals.")
+        st.write("some wonderful insights here.")
     st.write("---")

@@ -1,5 +1,5 @@
-import pandas as pd
 import numpy as np
+
 
 def filter_by_date(df, start_date, end_date, date_column="ReceivedDate"):
     """Filter the DataFrame by a given date range."""
@@ -12,25 +12,25 @@ def apply_filters(df, providedfilters=None, logical_operator="or"):
 
     Parameters:
         df (pd.DataFrame): The dataset.
-        providedfilters (dict, optional): Dictionary where keys are column names 
-                                          and values are filter conditions (single value or list).
-        logical_operator (str, optional): Logical operator to combine 
-                                          conditions ("and" or "or"). Default is "or".
+        providedfilters (dict, optional): Dictionary where keys
+            are column names and values are filter conditions
+            (single value or list).
+        logical_operator (str, optional): Logical operator to combine
+                                          conditions ("and" or "or").
+                                          Default is "or".
 
     Returns:
         pd.DataFrame: Filtered DataFrame.
     """
-    # if providedfilters is not None and not isinstance(providedfilters, dict):
-    #     raise TypeError("filters must be a dictionary")
-
-    if not providedfilters:  # If no filters provided, return original DataFrame
+    # If no filters provided, return original DataFrame
+    if not providedfilters:
         return df
 
     conditions = []
     for column, value in providedfilters.items():
         if value is None or value == []:  # Skip empty filters
             continue
-        if isinstance(value, (list, tuple, set)):  # Multiple options for a column
+        if isinstance(value, (list, tuple, set)):
             conditions.append(df[column].isin(value))
         else:  # Single value filtering
             conditions.append(df[column] == value)

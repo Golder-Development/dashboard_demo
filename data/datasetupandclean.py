@@ -126,8 +126,14 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
     # update Blank RegulatedEntityId to "1000001"
     df['RegulatedEntityId'] = df['RegulatedEntityId'].replace("", "1000001")
 
+    # update Blank RegulatedEntityId to "1000001"
+    df['RegisterName'] = df['RegisterName'].replace("", "Other")
+
     # update Blank DonationAction to "Accepted"
     df['DonationAction'] = df['DonationAction'].replace("", "Accepted")
+
+    # update DonorStatus to Unidentified Donor if blank
+    df['DonorStatus'] = df['DonorStatus'].replace("", "Unidentified Donor")
 
     if dedupe_regentity:
         # Extract donor names and IDs
@@ -203,7 +209,7 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
                 name_to_cleansed[RegulatedEntityId] = cleansed_name
 
         # convert Id = "" to null
-        df['RegulatedEntityrId'] = df['RegulatedEntityId'].replace("", pd.NA)
+        df['RegulatedEntityId'] = df['RegulatedEntityId'].replace("", pd.NA)
 
         # Apply mappings to the dataset
         df["Cleansed RegulatedEntityID"] = (
@@ -319,7 +325,6 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
     # generate CSV file of original data
     if output_csv:
         df.to_csv('original_donations.csv')
-
     return df
 
 
@@ -454,6 +459,11 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
                 df["RegulatedDoneeType"].map(lambda x: f"Donation to {x}"
                                              if pd.notna(x) else None)
             ))
+        df["NatureOfDonation"] = (
+            df["NatureOfDonation"].fillna(
+                df["RegulatedEntityType"].map(lambda x: f"Donation to {x}"
+                                             if pd.notna(x) else None)
+            ))
         df["NatureOfDonation"] = df["NatureOfDonation"].replace(
             {"Donation to nan": "Other", "Other Payment": "Other"}
         )
@@ -463,6 +473,11 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
         df["NatureOfDonation"] = df["NatureOfDonation"].fillna(
             df["DonationType"].map(lambda x: f"{x}" if pd.notna(x) else None)
         )
+        df["NatureOfDonation"] = df["NatureOfDonation"].fillna(
+            df["DonationType"].map(lambda x: f"{x}" if pd.notna(x) else None)
+        )
+        df['NatureOfDonation'] = df['NatureOfDonation'].replace("Donation to ",
+                                                                "Other")
 
     # Create a DubiousData flag for problematic records
     df["DubiousData"] = (
@@ -480,6 +495,14 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
         (df["RegulatedEntityName"] == 'Unidentified Entity').astype(int) +
         (df["DonorId"] == "1000001").astype(int) +
         (df["DonorName"] == 'Unidentified Donor').astype(int)
+        )
+
+    df["DubiousDonor"] = (
+        (df["DonorId"] == "1000001").astype(int) +
+        (df["DonorName"] == 'Unidentified Donor').astype(int) +
+        (df["DonorName"] == 'Anonymous Donor').astype(int) +
+        (df["DonationType"] == 'Unidentified Donor').astype(int) +
+        (df["DonationType"] == 'Impermissible Donor').astype(int)
         )
 
     # Create simple column to enable count of events using sum
@@ -560,7 +583,7 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
     # )
     # Save cleaned data
     if output_csv:
-        df.to_csv('cleaned_donations.csv')
+        df.to_csv('cleaned_data.csv')
 
     return df
 
@@ -589,7 +612,7 @@ def load_donorList_data(datafile=None, streamlitrun=True, output_csv=False):
                        'Donation Events',
                        'Donation Mean']
     if output_csv:
-        orig_df.to_csv('cleaned_donations.csv')
+        orig_df.to_csv('cleaned_donorslist.csv')
     return orig_df
 
 

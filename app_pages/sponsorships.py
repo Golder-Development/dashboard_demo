@@ -79,28 +79,29 @@ def sponsorships_body_page():
     left, right = st.columns(2)
     with left:
         st.write("## Explaination")
-        st.write("* The most donations to political parties are in cash."
-                 "These vary from small donations from individuals, to larger "
-                 "aggregated donations from multiple donors, and include "
-                 "donations from trade unions,business and bequests.")
+        st.write("* Some Donors support political entities by sponsoring"
+                 " events, activities or projects. These are known as"
+                 " sponsorships.  There have been several occurances in"
+                 " history where sponsorships have been used to influence"
+                 " political entities.")
         st.write("* These are identified by the regulator and marked in the"
                  " data. "
-                 "This page provides a summary of the cash donations to "
+                 "This page provides a summary of the {target_label}s to "
                  "political parties and other regulated political."
                  " organisations and entities.")
     with right:
         st.write("## Topline Figures")
         st.write(f"* During the period between {min_date_df} to {max_date_df},"
                  f" there were {tstats['unique_donations']:,.0f} "
-                 "cash donations made to "
+                 "{target_label}s made to "
                  f"{tstats['unique_reg_entities']} regulated entities.")
         st.write(f"* These had a mean value of £"
                  f"{format_number(tstats['mean_value'])} "
                  f"and were made by {format_number(tstats['unique_donors'])} "
                  "unique donors.")
-        st.write(f"* Cash donations were {perc_cash_donations_d:.2f}% of "
+        st.write(f"* {target_label}s were {perc_cash_donations_d:.2f}% of "
                  f"all donations made to political parties between {min_date}"
-                 f"and {max_date}. All these had a total value of £ "
+                 f"and {max_date} and had a combined value of £ "
                  f"{format_number(tstats['total_value'])}")
     st.write("---")
     left, right = st.columns(2)
@@ -122,7 +123,7 @@ def sponsorships_body_page():
                                   GGroup="RegulatedEntityType",
                                   XLabel="Year",
                                   YLabel="Value of Donations £",
-                                  Title="Value of Donations by Year and"
+                                  Title=f"Value of {target_label}s by Year and"
                                         " Entity",
                                   CalcType='sum',
                                   use_custom_colors=True,
@@ -131,7 +132,7 @@ def sponsorships_body_page():
                                   LegendTitle="Political Entity Type",
                                   percentbars=True,
                                   use_container_width=True)
-        st.write("Most donations are made to Political Parties, this"
+        st.write(f"Most {target_label} are made to Political Parties, this"
                  " changeed in 2016 with the Brexit Referendum. "
                  "Medium size political entities such as 'Vote Leave' and"
                  " 'Leave.EU' were very active, but were not"
@@ -149,7 +150,7 @@ def sponsorships_body_page():
                                   GGroup="RegEntity_Group",
                                   XLabel="Year",
                                   YLabel="Value of Donations £",
-                                  Title="Value of Donations by Year and"
+                                  Title=f"Value of {target_label}s by Year and"
                                         " Entity",
                                   CalcType='sum',
                                   use_custom_colors=True,
@@ -168,7 +169,7 @@ def sponsorships_body_page():
     st.write("---")
     left, right = st.columns(2)
     with left:
-        st.write('#### Cash Donations by Donor Type')
+        st.write(f'#### {target_label}s by Donor Type')
         if cleaned_c_d_df.empty:
             st.write("No data available for the selected filters.")
             return
@@ -179,18 +180,18 @@ def sponsorships_body_page():
                                   GGroup="DonorStatus",
                                   XLabel="Year",
                                   YLabel="Total Value (£)",
-                                  Title="Donations Value by Donor Types",
+                                  Title=f"{target_label}s Value by Donor Types",
                                   CalcType='sum',
                                   widget_key="Value by type",
                                   use_container_width=True)
-        st.write("The majority of cash donations are from individuals. "
+        st.write(f"The majority of {target_label}s are from individuals. "
                  "These are followed by donations from companies and "
                  "trade unions.")
         st.write("The pattern of donations by donor type is consistent "
                  "over time. This is not surprising as the majority of "
                  "donations are from individuals.")
     with right:
-        st.write('#### Average Donation Value by Donor Type')
+        st.write(f'#### Average {target_label}s Value by Donor Type')
         if cleaned_c_d_df.empty:
             st.write("No data available for the selected filters.")
             return
@@ -200,17 +201,17 @@ def sponsorships_body_page():
                                   y_column='Value',
                                   group_column='DonationType',
                                   agg_func='sum',
-                                  title='Total Donations by Donation Type',
+                                  title=f'Avg {target_label}s by Donor Type',
                                   x_label='Donation Type',  # X-axis label
                                   y_label='Donation £',  # Y-axis label
                                   orientation='v',  # Vertical bars
-                                  barmode='stack',  # Grouped bars
+                                  barmode='group',  # Grouped bars
                                   x_scale='category',
                                   y_scale='linear',
                                   widget_key='donation_donation_type',
                                   use_container_width=True
                                   )
-        st.write("The majority of cash donations are from individuals. "
+        st.write(f"The majority of {target_label}s are from individuals. "
                  "These are followed by donations from companies and "
                  "trade unions.")
         st.write("The pattern of donations by donor type is consistent "

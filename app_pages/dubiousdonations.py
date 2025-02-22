@@ -51,7 +51,11 @@ def dubiousdonations_body():
     # aggregated donations
     adstats = compute_summary_statistics(
         cleaned_c_d_df,
-        {"DonationType": "Aggregated donations"})
+        {"DonationType": "Aggregated"})
+    # Unidentified Donors
+    udstats = compute_summary_statistics(
+        cleaned_c_d_df,
+        {"DubiousDonor": [1, 2, 3, 4, 5]})
     # visits
     dvstats = compute_summary_statistics(
         cleaned_c_d_df,
@@ -90,28 +94,29 @@ def dubiousdonations_body():
         st.write('brdstats', brdstats)
         st.write('bredstats', bredstats)
         st.write('sponstats', sponstats)
+        st.write('udstats', udstats)
         st.write("---")
     # Calculate the percentage of donations that are cash donations
     dubious_donors_percent_of_value = calculate_percentage(
-        tstats["donors_ct"], ostats["donors_ct"])
+        tstats["unique_donors"], ostats["unique_donors"])
     dubious_percent_of_value = calculate_percentage(
-        tstats["value_total"], ostats["value_total"])
+        tstats["total_value"], ostats["total_value"])
     dubious_percent_of_donors = calculate_percentage(
-        tstats['donors_ct'], ostats["donors_ct"])
+        tstats['unique_donors'], ostats["unique_donors"])
     dubious_percent_of_donation_actions = calculate_percentage(
-        tstats["donations_ct"], ostats["donations_ct"])
+        tstats["unique_donations"], ostats["unique_donations"])
     returned_donations_percent_value = calculate_percentage(
-          rfdstats["value_total"], tstats["value_total"])
+          rfdstats["total_value"], tstats["total_value"])
     returned_donations_percent_donations = calculate_percentage(
-          rfdstats["donations_ct"], tstats["donations_ct"])
+          rfdstats["unique_donations"], tstats["unique_donations"])
     aggregated_percent_of_donation_actions = calculate_percentage(
-        adstats['donations_ct'], ostats['donations_ct'])
+        adstats['unique_donations'], ostats['unique_donations'])
     aggregated_percent_of_value = calculate_percentage(
-        adstats['value_total'], ostats['value_total'])
+        adstats['total_value'], ostats['total_value'])
     donated_visits_percent_of_donation_actions = calculate_percentage(
-        dvstats['donations_ct'], ostats['donations_ct'])
+        dvstats['unique_donations'], ostats['unique_donations'])
     donated_visits_percent_of_value = calculate_percentage(
-        dvstats['value_total'], ostats['value_total'])
+        dvstats['total_value'], ostats['total_value'])
     min_date = get_mindate(cleaned_d_df).date()
     max_date = get_maxdate(cleaned_d_df).date()
 
@@ -121,22 +126,22 @@ def dubiousdonations_body():
     left, a, b, mid, c, right = st.columns(6)
     with left:
         st.metric(label=f"Total {target_label}",
-                  value=f"£{tstats['value_total']:,.0f}")
+                  value=f"£{tstats['total_value']:,.0f}")
     with a:
         st.metric(label=f"{target_label}%",
                   value=f"{dubious_percent_of_value:.2f}%")
     with b:
         st.metric(label=f"{target_label}",
-                  value=f"{tstats['donations_ct']:,}")
+                  value=f"{tstats['unique_donations']:,}")
     with mid:
         st.metric(label=f"Mean {target_label} Value",
-                  value=f"£{tstats['value_mean']:,.0f}")
+                  value=f"£{tstats['mean_value']:,.0f}")
     with c:
         st.metric(label=f"Political Entities receiving {target_label}",
-                  value=f"{tstats['regentity_ct']:,}")
+                  value=f"{tstats['unique_reg_entities']:,}")
     with right:
         st.metric(label=f"Total {target_label} Donors",
-                  value=f"{tstats['donors_ct']:,}")
+                  value=f"{tstats['unique_donors']:,}")
     st.write("---")
     st.write("### Explanation")
     st.write(
@@ -156,77 +161,90 @@ def dubiousdonations_body():
              "lack of transparency means that they represent a risk "
              "to the integrity of the political system.")
     st.write("### Topline Figures")
-    if tstats["donors_ct"] >= 1:
+    if tstats["unique_donors"] >= 1:
         st.write(f"From {min_date} to {max_date}"
-                 f" there were {tstats['donors_ct']:,.0f} donors"
+                 f" there were {tstats['unique_donors']:,.0f} donors"
+                 "  identified being involved with dubious donations."
+                 f" These donors represented {dubious_percent_of_donors:.2f}%"
+                 " of donors to regulated entities,"
+                 f" and includes Impremissible Donors, Unidentified Donors "
+                 f" and Aggregated Donors.  They donated a total of "
+                 f"£{format_number(tstats['total_value'])},"
+                 f" which represented {dubious_donors_percent_of_value:.2f}%"
+                 " of the total value of donations made in the period.")
+    else:
+        st.write("* No donations from dubious donors were identified.")
+    if tstats["unique_donations"] >= 1:
+        st.write(
+            f"* There were {tstats['unique_donations']:,.0f} donations that"
+            " were identified as of questionable nature."
+            f" These donations represented"
+            f" {dubious_percent_of_donation_actions:.2f}% "
+            "of all donations made in the period.")
+    if brdstats["unique_donations"] >= 1:
+        st.write(f"* {brdstats['unique_donations']} "
+                 "donations had no recorded date.")
+    else:
+        st.write("* All donations had an identifiable date.")
+    if udstats["unique_donors"] >= 1:
+        st.write(f"From {min_date} to {max_date}"
+                 f" there were {udstats['unique_donors']:,.0f} donors"
                  "  identified as dubious."
                  f" These donors represented {dubious_percent_of_donors:.2f}%"
                  " of donors to regulated entities,"
                  f" and includes Impremissible Donors, Unidentified Donors "
                  f" and Aggregated Donors.  They donated a total of "
-                 f"£{format_number(tstats['value_total'])},"
+                 f"£{format_number(udstats['total_value'])},"
                  f" which represented {dubious_donors_percent_of_value:.2f}%"
                  " of the total value of donations made in the period.")
     else:
         st.write("* No donations from dubious donors were identified.")
-    if tstats["donations_ct"] >= 1:
-        st.write(
-            f"* There were {tstats['donations_ct']:,.0f} donations that"
-            " were identified as of questionable nature."
-            f" These donations represented"
-            f" {dubious_percent_of_donation_actions:.2f}% "
-            "of all donations made in the period.")
-    if brdstats["donations_ct"] >= 1:
-        st.write(f"* {brdstats['donations_ct']} "
-                 "donations had no recorded date.")
-    else:
-        st.write("* All donations had an identifiable date.")
-    if bredstats["donations_ct"] >= 1:
-        st.write(f"* {bredstats['donations_ct']} "
+    if bredstats["unique_donations"] >= 1:
+        st.write(f"* {bredstats['unique_donations']} "
                  "donations had no recorded "
                  "regulated entity.")
     else:
         st.write("* All donations had an identifiable regulated entity.")
-    if rfdstats["donations_ct"] >= 1:
+    if rfdstats["unique_donations"] >= 1:
         st.write(
-            f"* Of these donations {rfdstats['donations_ct']} or"
+            f"* Of these donations {rfdstats['unique_donations']} or"
             f" {returned_donations_percent_donations:.2f}% "
             "were returned to the donor,"
-            f"representing £{format_number(rfdstats['value_total'])} or"
+            f"representing £{format_number(rfdstats['total_value'])} or"
             f" or {returned_donations_percent_value:.2f}% of the total "
             "value of dubious donations.")
     else:
         st.write("* No donations were returned or forfeited.")
-    if adstats["donations_ct"] >= 1:
+    if adstats["unique_donations"] >= 1:
         st.write(
-            f"* There were {adstats['donations_ct']} aggregated donations,"
+            f"* There were {adstats['unique_donations']} aggregated donations,"
             f" representing {aggregated_percent_of_donation_actions:.2f}%"
             "of all donation actions."
             f" The total value of these aggregated donations was"
-            f" £{format_number(adstats['value_total'])},"
+            f" £{format_number(adstats['total_value'])},"
             f" representing {aggregated_percent_of_value:.2f}% of "
             "the total value of all donations.")
     else:
         st.write("* No aggregated donations were identified.")
-    if dvstats["donations_ct"] >= 1:
+    if dvstats["unique_donations"] >= 1:
         st.write(
-            f"* There were {dvstats['donations_ct']:,.0f} "
+            f"* There were {dvstats['unique_donations']:,.0f} "
             "visits donated to regulated"
             " entities, representing "
             f"{donated_visits_percent_of_donation_actions:.2f}% of all "
             "donation actions. The total value of these visits was "
-            f" £{format_number(dvstats['value_total'])}, representing "
+            f" £{format_number(dvstats['total_value'])}, representing "
             f" {donated_visits_percent_of_value:.2f}% of the total value of "
             "all donations.")
     else:
         st.write("* No visits were donated.")
-    if sponstats["donations_ct"] >= 1:
+    if sponstats["unique_donations"] >= 1:
         st.write(
-            f"* There were {sponstats['donations_ct']:,.0f} sponsorships"
+            f"* There were {sponstats['unique_donations']:,.0f} sponsorships"
             " donated to regulated entities, representing "
-            f"{sponstats['donations_ct']:,.0f} of all donation actions."
+            f"{sponstats['unique_donations']:,.0f} of all donation actions."
             f" The total value of these sponsorships was"
-            f" £{format_number(sponstats['value_total'])}.")
+            f" £{format_number(sponstats['total_value'])}.")
     else:
         st.write("* No sponsorships were donated.")
     st.write("---")
