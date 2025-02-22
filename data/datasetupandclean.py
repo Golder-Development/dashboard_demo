@@ -38,9 +38,11 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
         'RegisterName': 'object',
         'IsIrishSource': 'object'
         }, index_col="index")  # Load the data
+
     # Remove Currency sign of Value and convert to Float
     df['Value'] = df['Value'].replace({'£': '', ',': ''},
                                       regex=True).astype(float)
+
     # Fill missing text fields with empty strings
     columns_to_fill = [
         "PurposeOfVisit", "DonorName", "CampaigningName", "AccountingUnitName",
@@ -84,6 +86,7 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
     df[columns_to_clean] = (
         df[columns_to_clean].replace({',': '', '\n': ' '}, regex=True)
         )
+
     # standardise capitalisation of DonorName, RegulatedEntityName,
     # CampaignName,
     # AccountingUnitName, ReportingPeriodName and PurposeOfVisit
@@ -116,16 +119,15 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
     df['RegulatedEntityId'] = pd.to_numeric(df['RegulatedEntityId'],
                                             errors='coerce')
 
-    # update Blank RegulatedEntityName to "Anonymous Entity"
+    # update Blank RegulatedEntityName to "Unidentified Entity"
     df['RegulatedEntityName'] = (
         df['RegulatedEntityName'].replace("", "Unidentified Entity")
         )
     # update Blank RegulatedEntityId to "1000001"
     df['RegulatedEntityId'] = df['RegulatedEntityId'].replace("", "1000001")
+
+    # update Blank DonationAction to "Accepted"
     df['DonationAction'] = df['DonationAction'].replace("", "Accepted")
-    # Load the dataset
-    # file_path = "cleaned_donations.csv"  # Adjust path as needed
-    # df = pd.read_csv(file_path)
 
     if dedupe_regentity:
         # Extract donor names and IDs
@@ -178,9 +180,6 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
             )
         output_df.to_csv("potential_regentity_duplicates.csv", index=False)
 
-        # using potential_duplicates to merge the data
-        # potential_duplicates = pd.read_csv("potential_duplicates.csv")
-
         # Create mappings for cleansed ID and Name
         id_to_cleansed = {}
         name_to_cleansed = {}
@@ -217,13 +216,15 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
             .map(name_to_cleansed)
             .fillna(df["RegulatedEntityName"])
             )
+
         # rename Id to Original Id and Name to Original Name
         df.rename(
             columns={"RegulatedEntityId": "Original RegulatedEntityId",
                      "RegulatedEntityName": "Original RegulatedEntityName"},
             inplace=True
                   )
-        # rema,e Cleansed ID to Id and Cleansed Name to Name
+
+        # rename Cleansed ID to Id and Cleansed Name to Name
         df.rename(
             columns={"Cleansed RegulatedEntityID": "RegulatedEntityId",
                      "Cleansed RegulatedEntityName": "RegulatedEntityName"},
@@ -264,10 +265,6 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
         potential_duplicates = {k: list(v) for k,
                                 v in potential_duplicates.items()}
 
-        # Save results or display
-        # Show sample of results
-        # print(list(potential_duplicates.items())[:10])
-
         # Save results to a CSV file
         output_df = (
             pd.DataFrame(potential_duplicates.items(),
@@ -275,9 +272,6 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
                                   "Potential Duplicates"])
             )
         output_df.to_csv("potential_duplicates.csv", index=False)
-
-        # using potential_duplicates to merge the data
-        # potential_duplicates = pd.read_csv("potential_duplicates.csv")
 
         # Create mappings for cleansed ID and Name
         id_to_cleansed = {}
@@ -312,15 +306,15 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
         # to Original DonorName
         df.rename(columns={"DonorId": "Original DonorId",
                            "DonorName": "Original DonorName"}, inplace=True)
-        # rema,e Cleansed Donor ID to DonorId and Cleansed Donor Name
+        # rename Cleansed Donor ID to DonorId and Cleansed Donor Name
         # to DonorName
         df.rename(columns={"Cleansed Donor ID": "DonorId",
                            "Cleansed Donor Name": "DonorName"}, inplace=True)
 
     # Remove Northern Ireland register data
-    # df = df[df["RegisterName"] != "Northern Ireland"]
+    df = df[df["RegisterName"] != "Northern Ireland"]
     # Remove Public Funds
-    # df = df[df["DonationType"] != "Public Funds"]
+    df = df[df["DonationType"] != "Public Funds"]
 
     # generate CSV file of original data
     if output_csv:
@@ -345,20 +339,6 @@ def create_thresholds(use_streamlit=True):
         return st.session_state.g_thresholds
     else:
         return thresholds
-
-
-def calculate_reg_entity_group(donation_events,
-                               entity_name,
-                               use_streamlit=True):
-    thresholds = create_thresholds(use_streamlit=use_streamlit).copy()
-
-    # Add the new threshold with entity_name
-    thresholds[float("inf")] = entity_name
-
-    # Loop through the thresholds to find the corresponding category
-    for limit, category in thresholds.items():
-        if donation_events <= limit:
-            return category
 
 
 def load_party_summary_data(datafile=None,
@@ -400,15 +380,20 @@ def load_party_summary_data(datafile=None,
     return RegulatedEntity_df
 
 
-def load_cleaned_data(output_csv=False):
-    # orig_df = df
-    orig_df = st.session_state.get("data", None)
-    if orig_df is None:
-        st.error("No data found in session state!")
-        return None
+def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
+    if streamlitrun:
+        orig_df = st.session_state.get("data", None)
+        if orig_df is None:
+            st.error("No data found in session state!")
+            return None
+    else:
+        if datafile is None:
+            orig_df = orig_df
+        else:
+            orig_df = datafile
 
+    # create a copy of the original data
     df = orig_df.copy()
-
     # convert DonorId = "" to null
     df['DonorId'] = df['DonorId'].replace("", pd.NA)
     # Fill missing text fields with empty strings
@@ -580,49 +565,75 @@ def load_cleaned_data(output_csv=False):
     return df
 
 
-def load_donorList_data(output_csv=False):
-    orig_df = st.session_state.get("data_clean", None)
-    if orig_df is None:
-        st.error("No data found in session state!")
-        return None
+def load_donorList_data(datafile=None, streamlitrun=True, output_csv=False):
+    if streamlitrun:
+        orig_df = st.session_state.get("data_clean", None)
+        if orig_df is None:
+            st.error("No data found in session state!")
+            return None
     else:
-        orig_df = (
-            orig_df.groupby(['DonorId',
-                             'DonorName'])
-                   .agg({'Value': ['sum',
-                                   'count',
-                                   'mean']}).reset_index()
-        )
-        orig_df.columns = ['DonorId',
-                           'Donor Name',
-                           'Donations Value',
-                           'Donation Events',
-                           'Donation Mean']
-        if output_csv:
-            orig_df.to_csv('cleaned_donations.csv')
-        return orig_df
+        if datafile is None:
+            orig_df = orig_df
+        else:
+            orig_df = datafile
+    orig_df = (
+        orig_df.groupby(['DonorId',
+                         'DonorName'])
+               .agg({'Value': ['sum',
+                               'count',
+                               'mean']}).reset_index()
+    )
+    orig_df.columns = ['DonorId',
+                       'Donor Name',
+                       'Donations Value',
+                       'Donation Events',
+                       'Donation Mean']
+    if output_csv:
+        orig_df.to_csv('cleaned_donations.csv')
+    return orig_df
 
 
-def load_regulated_entity_data(output_csv=False):
-    orig_df = st.session_state.get("data_clean", None)
-    if orig_df is None:
-        st.error("No data found in session state!")
-        return None
+def load_regulated_entity_data(datafile=None,
+                               streamlitrun=True,
+                               output_csv=False):
+    if streamlitrun:
+        orig_df = st.session_state.get("data_clean", None)
+        if orig_df is None:
+            st.error("No data found in session state!")
+            return None
     else:
-        orig_df = (
-            orig_df.groupby(['RegulatedEntityId',
-                             'RegulatedEntityName',
-                             'RegEntity_Group'])
-                   .agg({'Value': ['sum',
-                                   'count',
-                                   'mean']}).reset_index()
-        )
-        orig_df.columns = ['RegulatedEntityId',
-                           'Regulated Entity Name',
-                           'Regulated Entity Group',
-                           'Donations Value',
-                           'Donation Events',
-                           'Donation Mean']
-        if output_csv:
-            orig_df.to_csv('cleaned_regentity.csv')
-        return orig_df
+        if datafile is None:
+            orig_df = orig_df
+        else:
+            orig_df = datafile
+    orig_df = (
+        orig_df.groupby(['RegulatedEntityId',
+                         'RegulatedEntityName',
+                         'RegEntity_Group'])
+               .agg({'Value': ['sum',
+                               'count',
+                               'mean']}).reset_index()
+    )
+    orig_df.columns = ['RegulatedEntityId',
+                       'Regulated Entity Name',
+                       'Regulated Entity Group',
+                       'Donations Value',
+                       'Donation Events',
+                       'Donation Mean']
+    if output_csv:
+        orig_df.to_csv('cleaned_regentity.csv')
+    return orig_df
+
+
+def calculate_reg_entity_group(donation_events,
+                               entity_name,
+                               use_streamlit=True):
+    thresholds = create_thresholds(use_streamlit=use_streamlit).copy()
+
+    # Add the new threshold with entity_name
+    thresholds[float("inf")] = entity_name
+
+    # Loop through the thresholds to find the corresponding category
+    for limit, category in thresholds.items():
+        if donation_events <= limit:
+            return category

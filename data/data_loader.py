@@ -9,29 +9,37 @@ from data.datasetupandclean import (load_cleaned_data, load_data,
 @st.cache_data
 def get_data():
     return load_data(output_csv=False,
-                     dedupe_donors=False,
-                     dedupe_regentity=False
+                     dedupe_donors=True,
+                     dedupe_regentity=True
                      )
 
 
 @st.cache_data
 def get_party_summary_data():
-    return load_party_summary_data(output_csv=False)
+    return load_party_summary_data(datafile=None,
+                                   output_csv=True,
+                                   streamlitrun=True)
 
 
 @st.cache_data
 def get_cleaned_data():
-    return load_cleaned_data(output_csv=False)
+    return load_cleaned_data(datafile=None,
+                             output_csv=True,
+                             streamlitrun=True)
 
 
 @st.cache_data
 def get_donor_data():
-    return load_donorList_data(output_csv=False)
+    return load_donorList_data(datafile=None,
+                               output_csv=True,
+                               streamlitrun=True)
 
 
 @st.cache_data
 def get_regentity_data():
-    return load_regulated_entity_data(output_csv=False)
+    return load_regulated_entity_data(datafile=None,
+                                      output_csv=True,
+                                      streamlitrun=True)
 
 
 def firstload():
