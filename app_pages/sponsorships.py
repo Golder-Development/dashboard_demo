@@ -17,7 +17,7 @@ def sponsorships_body():
     min_date = ppcalc.get_mindate(cleaned_df).date()
     max_date = ppcalc.get_maxdate(cleaned_df).date()
 
-    st.write("# Cash Donations: Political Entity and Date Range")
+
     # # Add a date range slider to filter by received date
     date_range2 = st.slider(
         "Select Date Range",
@@ -611,9 +611,12 @@ def sponsorships_body():
     # Format selected dates for inclusion in text
     min_date_df = start_date.date()
     max_date_df = end_date.date()
-
+    st.write("---")
+    st.write("# {target_label}: Political Entity and Date Range")
+    st.write("---")
     st.write(f"## Topline Figures for {target_label} to {selected_entity_name}"
              f" between {min_date_df} and {max_date_df}")
+    st.write("---")
     st.write(f"* During the period between {min_date_df} and {max_date_df}, "
              f"there were {unique_dona_c_d:,.0f} {target_label}s made to "
              f"{selected_entity_name}.  These had an average value of "

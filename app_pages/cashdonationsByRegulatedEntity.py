@@ -365,6 +365,165 @@ def cashdonationsregentity_body():
     min_date_df = start_date.date()
     max_date_df = end_date.date()
 
+    # Text Discription and visuals
+    st.write("---")
+    st.write(f"## Topline Figures for {target_label} to {selected_entity_name}"
+             f" between {min_date_df} and {max_date_df}")
+    st.write("---")
+    st.write(f"* During the period between {min_date_df} and {max_date_df}, "
+             f"there were {unique_dona_c_d:,.0f} {target_label}s made to "
+             f"{selected_entity_name}.  These had an average value of "
+             f"£{ppcalc.format_number(mean_val_c_d)} "
+             f"and were made by {ppcalc.format_number(unique_dono_c_d)} "
+             "unique donors. These donations totalled "
+             f"£{ppcalc.format_number(total_val_c_d)}"
+             f" and represented {perc_dona_c_r_d_V_r_d:.2f}% of"
+             f" all donations made "
+             f" to {selected_entity_name}"
+             " during the period selected.")
+    if unique_dona_c_d < unique_dona_r_d:
+        st.write(" During the period they received a total of"
+                 f" {unique_dona_r_d:,.0f} donations"
+                 " with a total value of"
+                 f" £{ppcalc.format_number(total_val_r_d)} and an"
+                 " average value of "
+                 f"£{ppcalc.format_number(mean_val_r_d)}"
+                 f" from {unique_dono_r_d:,.0f} unique donors.")
+
+    # Compare percentage of target donations to chosen entity vs avergage
+    # percentage cash donations for all entities
+    if perc_dona_c_V_pop > 0:
+        if perc_dona_c_r_V_pop > perc_dona_c_V_pop:
+            changetext = "higher than"
+        elif perc_dona_c_r_V_pop < perc_dona_c_V_pop:
+            changetext = "lower than"
+        else:
+            changetext = "the same as"
+        st.write(f"* The percentage of {target_label}s made "
+                 f"to {selected_entity_name} "
+                 f"was {perc_dona_c_r_V_pop:.2f}% and is {changetext} "
+                 "the average "
+                 f"percentage of {target_label}s made to all entities"
+                 f" ({perc_dona_c_V_pop:.2f}%)")
+    # Compare total value share of {target_label}s to value
+    # of all chosen entity
+    # donations vs total value share of {target_label}s for all entities
+    if perc_val_c_V_pop > 0:
+        if perc_val_c_r_V_pop > perc_val_c_V_pop:
+            changetext = "higher than"
+        elif perc_val_c_r_V_pop < perc_val_c_V_pop:
+            changetext = "lower than"
+        else:
+            changetext = "the same as"
+        st.write(f"* The value of {target_label}s "
+                 " as a percentage of all donations made to "
+                 f"{selected_entity_name} "
+                 f"({perc_val_c_r_V_pop:.2f}%) is {changetext} the average"
+                 f" value of {target_label}s made to all entities"
+                 f" ({perc_val_c_V_pop:.2f}%)")
+    # Compare number of donors to chosen entity vs
+    # avergage number of donors for all entities
+    if perc_val_c_V_pop > 0:
+        if perc_val_c_r_V_pop > perc_val_c_V_pop:
+            changetext = "higher than"
+        elif perc_val_c_r_V_pop < perc_val_c_V_pop:
+            changetext = "lower than"
+        else:
+            changetext = "the same as"
+        st.write(f"* The value of {target_label}s "
+                 " as a percentage of all donations made to "
+                 f"{selected_entity_name} "
+                 f"({perc_val_c_r_V_pop:.2f}%) is {changetext} the average"
+                 " value of {target_label}s made to all entities"
+                 f" ({perc_val_c_V_pop:.2f}%)")
+    if min_date_df != min_date or max_date_df != max_date:
+        if perc_val_c_d_V_pop > 0:
+            if perc_val_c_r_d_V_pop > perc_val_c_d_V_pop:
+                changetext = "higher than"
+            elif perc_val_c_r_d_V_pop < perc_val_c_d_V_pop:
+                changetext = "lower than"
+            else:
+                changetext = "the same as"
+            st.write(f"* The value of {target_label}s "
+                     " as a percentage of all donations made to "
+                     f"{selected_entity_name} "
+                     f"({perc_val_c_r_d_V_pop:.2f}%) "
+                     f"is {changetext} the average"
+                     " value of {target_label}s made to all entities"
+                     f" ({perc_val_c_d_V_pop:.2f}%)")
+    else:
+        "No date range selected."
+    st.write("---")
+    st.write(f"### Topline Visuals for {target_label}"
+             f" to {selected_entity_name}"
+             f" between {min_date_df} and {max_date_df}")
+    st.write("#### Click on any Visualisation to view it full screen.")
+    st.write("---")
+    left, right = st.columns(2)
+    with left:
+        # visualisation of donations by party over time
+        if cleaned_c_d_df.empty:
+            st.write("No data available for the selected filters.")
+            return
+        else:
+            vis.plot_bar_line_by_year(cleaned_c_d_df,
+                                      XValues="YearReceived",
+                                      YValue="EventCount",
+                                      GGroup="RegulatedEntityType",
+                                      XLabel="Year", YLabel="Donations",
+                                      Title="Donations by Year and Entity "
+                                      "Type",
+                                      CalcType='sum',
+                                      widget_key="cash_dons_by_party")
+        st.write('As can  be seen from the chart to the left'
+                 'most cash donations are made to Political Parties.'
+                 'This is not surprising as this is true for all '
+                 'donations.')
+    with right:
+        if cleaned_c_d_df.empty:
+            st.write("No data available for the selected filters.")
+            return
+        else:
+            vis.plot_bar_line_by_year(cleaned_c_d_df,
+                                      XValues="YearReceived",
+                                      YValue="Value",
+                                      GGroup="RegEntity_Group",
+                                      XLabel="Year",
+                                      YLabel="Value of Donations £",
+                                      Title="Value of Donations by Year "
+                                      "and Entity",
+                                      CalcType='count',
+                                      use_custom_colors=True,
+                                      widget_key="cash_dons_by_reg_entity")
+        # write code to return analysis of the graph above highlighting
+        # interesting factors that will refresh when the input changes.
+
+        st.write("### description")
+    st.write("---")
+    left, right = st.columns(2)
+    with left:
+        if cleaned_c_d_df.empty:
+            st.write("No data available for the selected filters.")
+            return
+        else:
+            vis.plot_bar_line_by_year(cleaned_c_d_df,
+                                      XValues="YearReceived",
+                                      YValue="Value",
+                                      GGroup="DonationType",
+                                      XLabel="Year",
+                                      YLabel="Total Value (£)",
+                                      Title="Value of Donations Types "
+                                      "by Year",
+                                      CalcType='sum',
+                                      widget_key="cash_dons_by_type")
+    with right:
+        if cleaned_c_d_df.empty:
+            st.write("No data available for the selected filters.")
+            return
+        else:
+            "analysis of the graph above highlighting interesting factors"
+            "that will refresh when the input changes."
+    st.write("---")
     # Create a table of the results
     st.write(f"### Comparison Table: Donation Values"
              f"({min_date} to {max_date})")
@@ -650,159 +809,4 @@ def cashdonationsregentity_body():
         hide_index=True,
         use_container_width=False
     )
-
-    # Text Discription and visuals
-    st.write(f"## Topline Figures for {target_label} to {selected_entity_name}"
-             f" between {min_date_df} and {max_date_df}")
-    st.write(f"* During the period between {min_date_df} and {max_date_df}, "
-             f"there were {unique_dona_c_d:,.0f} {target_label}s made to "
-             f"{selected_entity_name}.  These had an average value of "
-             f"£{ppcalc.format_number(mean_val_c_d)} "
-             f"and were made by {ppcalc.format_number(unique_dono_c_d)} "
-             "unique donors. These donations totalled "
-             f"£{ppcalc.format_number(total_val_c_d)}"
-             f" and represented {perc_dona_c_r_d_V_r_d:.2f}% of"
-             f" all donations made "
-             f" to {selected_entity_name}"
-             " during the period selected.")
-    if unique_dona_c_d < unique_dona_r_d:
-        st.write(" During the period they received a total of"
-                 f" {unique_dona_r_d:,.0f} donations"
-                 " with a total value of"
-                 f" £{ppcalc.format_number(total_val_r_d)} and an"
-                 " average value of "
-                 f"£{ppcalc.format_number(mean_val_r_d)}"
-                 f" from {unique_dono_r_d:,.0f} unique donors.")
-
-    # Compare percentage of target donations to chosen entity vs avergage
-    # percentage cash donations for all entities
-    if perc_dona_c_V_pop > 0:
-        if perc_dona_c_r_V_pop > perc_dona_c_V_pop:
-            changetext = "higher than"
-        elif perc_dona_c_r_V_pop < perc_dona_c_V_pop:
-            changetext = "lower than"
-        else:
-            changetext = "the same as"
-        st.write(f"* The percentage of {target_label}s made "
-                 f"to {selected_entity_name} "
-                 f"was {perc_dona_c_r_V_pop:.2f}% and is {changetext} "
-                 "the average "
-                 f"percentage of {target_label}s made to all entities"
-                 f" ({perc_dona_c_V_pop:.2f}%)")
-    # Compare total value share of {target_label}s to value
-    # of all chosen entity
-    # donations vs total value share of {target_label}s for all entities
-    if perc_val_c_V_pop > 0:
-        if perc_val_c_r_V_pop > perc_val_c_V_pop:
-            changetext = "higher than"
-        elif perc_val_c_r_V_pop < perc_val_c_V_pop:
-            changetext = "lower than"
-        else:
-            changetext = "the same as"
-        st.write(f"* The value of {target_label}s "
-                 " as a percentage of all donations made to "
-                 f"{selected_entity_name} "
-                 f"({perc_val_c_r_V_pop:.2f}%) is {changetext} the average"
-                 f" value of {target_label}s made to all entities"
-                 f" ({perc_val_c_V_pop:.2f}%)")
-    # Compare number of donors to chosen entity vs
-    # avergage number of donors for all entities
-    if perc_val_c_V_pop > 0:
-        if perc_val_c_r_V_pop > perc_val_c_V_pop:
-            changetext = "higher than"
-        elif perc_val_c_r_V_pop < perc_val_c_V_pop:
-            changetext = "lower than"
-        else:
-            changetext = "the same as"
-        st.write(f"* The value of {target_label}s "
-                 " as a percentage of all donations made to "
-                 f"{selected_entity_name} "
-                 f"({perc_val_c_r_V_pop:.2f}%) is {changetext} the average"
-                 " value of {target_label}s made to all entities"
-                 f" ({perc_val_c_V_pop:.2f}%)")
-    if min_date_df != min_date or max_date_df != max_date:
-        if perc_val_c_d_V_pop > 0:
-            if perc_val_c_r_d_V_pop > perc_val_c_d_V_pop:
-                changetext = "higher than"
-            elif perc_val_c_r_d_V_pop < perc_val_c_d_V_pop:
-                changetext = "lower than"
-            else:
-                changetext = "the same as"
-            st.write(f"* The value of {target_label}s "
-                     " as a percentage of all donations made to "
-                     f"{selected_entity_name} "
-                     f"({perc_val_c_r_d_V_pop:.2f}%) "
-                     f"is {changetext} the average"
-                     " value of {target_label}s made to all entities"
-                     f" ({perc_val_c_d_V_pop:.2f}%)")
-    else:
-        "No date range selected."
-        st.write("---")
-
-    st.write(f"### Topline Visuals for {target_label}"
-             f" to {selected_entity_name}"
-             f" between {min_date_df} and {max_date_df}")
-    st.write("#### Click on any Visualisation to view it full screen.")
-    left, right = st.columns(2)
-    with left:
-        # visualisation of donations by party over time
-        if cleaned_c_d_df.empty:
-            st.write("No data available for the selected filters.")
-            return
-        else:
-            vis.plot_bar_line_by_year(cleaned_c_d_df,
-                                      XValues="YearReceived",
-                                      YValue="EventCount",
-                                      GGroup="RegulatedEntityType",
-                                      XLabel="Year", YLabel="Donations",
-                                      Title="Donations by Year and Entity "
-                                      "Type",
-                                      CalcType='sum',
-                                      widget_key="cash_dons_by_party")
-        st.write('As can  be seen from the chart to the left'
-                 'most cash donations are made to Political Parties.'
-                 'This is not surprising as this is true for all '
-                 'donations.')
-    with right:
-        if cleaned_c_d_df.empty:
-            st.write("No data available for the selected filters.")
-            return
-        else:
-            vis.plot_bar_line_by_year(cleaned_c_d_df,
-                                      XValues="YearReceived",
-                                      YValue="Value",
-                                      GGroup="RegEntity_Group",
-                                      XLabel="Year",
-                                      YLabel="Value of Donations £",
-                                      Title="Value of Donations by Year "
-                                      "and Entity",
-                                      CalcType='count',
-                                      use_custom_colors=True,
-                                      widget_key="cash_dons_by_reg_entity")
-        # write code to return analysis of the graph above highlighting
-        # interesting factors that will refresh when the input changes.
-
-        st.write("### description")
-    left, right = st.columns(2)
-    with left:
-        if cleaned_c_d_df.empty:
-            st.write("No data available for the selected filters.")
-            return
-        else:
-            vis.plot_bar_line_by_year(cleaned_c_d_df,
-                                      XValues="YearReceived",
-                                      YValue="Value",
-                                      GGroup="DonationType",
-                                      XLabel="Year",
-                                      YLabel="Total Value (£)",
-                                      Title="Value of Donations Types "
-                                      "by Year",
-                                      CalcType='sum',
-                                      widget_key="cash_dons_by_type")
-    with right:
-        if cleaned_c_d_df.empty:
-            st.write("No data available for the selected filters.")
-            return
-        else:
-            "analysis of the graph above highlighting interesting factors"
-            "that will refresh when the input changes."
+    st.write("---")
