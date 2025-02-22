@@ -6,7 +6,7 @@ from collections import defaultdict
 
 def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
     # Load the data
-    df = pd.read_csv('data\\Donations_accepted_by_political_parties.csv', dtype={
+    df = pd.read_csv('Donations_accepted_by_political_parties.csv', dtype={
         'index': 'int64',
         'ECRef': 'object',
         'RegulatedEntityName': 'object',
