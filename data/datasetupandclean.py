@@ -454,8 +454,9 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
             ))
         df["NatureOfDonation"] = (
             df["NatureOfDonation"].fillna(
-                df["RegulatedEntityType"].map(lambda x: f"Donation to {x}"
-                                             if pd.notna(x) else None)
+                df["RegulatedEntityType"]
+                .map(lambda x: f"Donation to {x}"
+                     if pd.notna(x) else None)
             ))
         df["NatureOfDonation"] = df["NatureOfDonation"].replace(
             {"Donation to nan": "Other", "Other Payment": "Other"}
