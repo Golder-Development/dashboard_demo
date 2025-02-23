@@ -223,17 +223,10 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
             .fillna(df["RegulatedEntityName"])
             )
 
-        # rename Id to Original Id and Name to Original Name
-        df.rename(
-            columns={"RegulatedEntityId": "Original RegulatedEntityId",
-                     "RegulatedEntityName": "Original RegulatedEntityName"},
-            inplace=True
-                  )
-
         # rename Cleansed ID to Id and Cleansed Name to Name
         df.rename(
-            columns={"Cleansed RegulatedEntityID": "RegulatedEntityId",
-                     "Cleansed RegulatedEntityName": "RegulatedEntityName"},
+            columns={"Cleansed RegulatedEntityID": "ParentRegulatedEntityId",
+                     "Cleansed RegulatedEntityName": "ParentRegulatedEntityName"},
             inplace=True
             )
 
