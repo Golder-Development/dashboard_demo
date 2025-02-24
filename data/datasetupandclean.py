@@ -476,11 +476,11 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
                                inplace=True)
 
     # Remove Northern Ireland register data
-    # loaddata_df = (
-        # loaddata_df[loaddata_df["RegisterName"] != "Northern Ireland"])
+    loaddata_df = (
+         loaddata_df[loaddata_df["RegisterName"] != "Northern Ireland"])
     # Remove Public Funds
-    # loaddata_df = (
-        # loaddata_df[loaddata_df["DonationType"] != "Public Funds"])
+    loaddata_df = (
+        loaddata_df[loaddata_df["DonationType"] != "Public Funds"])
 
     # generate CSV file of original data
     if output_csv:
@@ -518,11 +518,18 @@ def load_entity_summary_data(datafile=None,
                                   'DonationEvents',
                                   'DonationMean']
 
-    # Add RegEntity_Group column
+    # Add RegEntity_Group column based on thresholds
+    def determine_group(row):
+        if row['DonationEvents'] > 2500:
+            return row['RegulatedEntityName']
+        else:
+            return st.session_state.thresholds.get(row['DonationEvents'],
+                                                   "Unknown")
+
     RegulatedEntity_df['RegEntity_Group'] = (
-        RegulatedEntity_df['DonationEvents'].apply(
-            lambda x: st.session_state.thresholds.get(x, "Unknown")
-        ))
+        RegulatedEntity_df.apply(determine_group, axis=1)
+    )
+
     # generate CSV file of summary data
     if output_csv:
         output_dir = st.session_state.directories["output_dir"]
@@ -711,6 +718,9 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
          (loadclean_df["DonorStatus"].isin(st.session_state.safe_donor_types)))
          .astype(int))  # Fixing subtraction
     )
+
+    # if "DubiousData" is less than 0, set it to 0
+    loadclean_df["DubiousData"] = loadclean_df["DubiousData"].clip(lower=0)
 
     # Create simple column to enable count of events using sum
     loadclean_df["EventCount"] = 1

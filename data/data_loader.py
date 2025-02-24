@@ -8,7 +8,7 @@ from data.datasetupandclean import (load_cleaned_data, load_data,
 @st.cache_data
 def get_data():
     return load_data(output_csv=True,
-                     dedupe_donors=False,
+                     dedupe_donors=True,
                      dedupe_regentity=True
                      )
 
@@ -16,8 +16,8 @@ def get_data():
 @st.cache_data
 def get_party_summary_data():
     return load_entity_summary_data(datafile=None,
-                                   output_csv=True,
-                                   streamlitrun=True)
+                                    output_csv=True,
+                                    streamlitrun=True)
 
 
 @st.cache_data

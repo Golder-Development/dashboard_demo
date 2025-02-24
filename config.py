@@ -57,8 +57,9 @@ THRESHOLDS = {
     0: "No Relevant Donations",
     1: "Single Donation Entity",
     50: "Very Small Entity",
-    100: "Small Entity",
-    1000: "Medium Entity"
+    150: "Small Entity",
+    1500: "Medium Entity",
+    2500: "Large Entity"
 }
 
 # PartyParent RegulatedEntityId's

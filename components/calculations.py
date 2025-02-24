@@ -75,7 +75,7 @@ def get_dubious_donors_value(df, filters=None):
 
 
 def get_dubious_donations(df, filters=None):
-    filters = {"DubiousData": [1, 2, 3, 4, 5, 6]}
+    filters = {"DubiousData": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
     return apply_filters(df, filters)
 
 
@@ -134,8 +134,10 @@ def display_thresholds_table():
     """Creates and displays a table showing the threshold logic."""
     # Convert the dictionary into a DataFrame
     thresholds = st.session_state.get("thresholds", {})
-    thresholds_df = pd.DataFrame(list(thresholds.items()), columns=["Donation Event Threshold", "Entity Category"])
-    
+    thresholds_df = (pd.DataFrame(list(thresholds.items()),
+                                  columns=["Donation Event Threshold",
+                                           "Entity Category"]))
+
     st.write("### Threshold Logic Table")
     st.table(thresholds_df)
 
