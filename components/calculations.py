@@ -3,14 +3,14 @@ import streamlit as st
 from components.filters import apply_filters
 
 # Convert placeholder date to datetime once
-PLACEHOLDER_DATE = pd.Timestamp("1900-01-01 00:00:00")
-PLACEHOLDER_ID = 1000001
+PLACEHOLDER_DATE = st.session_state.PLACEHOLDER_DATE
+PLACEHOLDER_ID = st.session_state.PLACEHOLDER_ID
 
 
-def count_unique_donors(df, donation_type, filters=None):
+def count_unique_records(df, column, filters=None):
     """Counts unique donors based on a specific DonationType."""
     df = apply_filters(df, filters)
-    return df[df["DonationType"].eq(donation_type)]["DonorId"].nunique()
+    return df[column].nunique()
 
 
 def count_missing_values(df, column, missing_value, filters=None):
@@ -26,6 +26,11 @@ def count_null_values(df, column, filters=None):
 
 
 # Specific functions using the generic ones
+def count_unique_donors(df, filters=None):
+    """Counts unique donors based on a specific DonationType."""
+    return count_unique_records(df, "DonorId", filters)
+
+
 def get_impermissible_donors_ct(df, filters=None):
     return count_unique_donors(df, "Impermissible Donor", filters)
 
@@ -55,18 +60,8 @@ def get_blank_donor_name_ct(df, filters=None):
 
 
 def get_dubious_donors(df, filters=None):
-    dubious_conditions = (
-        (df["DonationType"].isin([
-            "Impermissible Donor", "Unidentified Donor",
-            "Total value of donations not reported individually",
-            "Aggregated Donation"
-        ])) |
-        (df["NatureOfDonation"] == "Aggregated Donation") |
-        (df["IsAggregation"] == "True") |
-        (df["DonorId"] == PLACEHOLDER_ID) |
-        (df["DonorName"] == 'Unidentified Donor')
-    )
-    return apply_filters(df[dubious_conditions], filters)
+    filters = {"DubiousDonor": [1, 2, 3, 4, 5, 6]}
+    return apply_filters(df, filters)
 
 
 def get_dubious_donors_ct(df, filters=None):
@@ -80,22 +75,8 @@ def get_dubious_donors_value(df, filters=None):
 
 
 def get_dubious_donations(df, filters=None):
-    dubious_conditions = (
-        (df["DonationType"].isin([
-            "Impermissible Donor", "Unidentified Donor",
-            "Total value of donations not reported individually",
-            "Aggregated Donation"
-        ])) |
-        (df["DonationAction"] != "Accepted") |
-        (df["NatureOfDonation"] == "Aggregated Donation") |
-        (df["IsAggregation"] == "True") |
-        (df["ReceivedDate"] == PLACEHOLDER_DATE) |
-        (df["RegulatedEntityId"] == PLACEHOLDER_ID) |
-        (df["RegulatedEntityName"] == 'Unidentified Entity') |
-        (df["DonorId"] == PLACEHOLDER_ID) |
-        (df["DonorName"] == 'Unidentified Donor')
-    )
-    return apply_filters(df[dubious_conditions], filters)
+    filters = {"DubiousData": [1, 2, 3, 4, 5, 6]}
+    return apply_filters(df, filters)
 
 
 def get_dubious_donation_actions(df, filters=None):

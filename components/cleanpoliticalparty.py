@@ -1,5 +1,4 @@
 import pandas as pd
-import requests
 import re
 import os
 import pdpy
@@ -86,22 +85,6 @@ def extract_status_and_clean_name(name):
     return name, status
 
 
-# # Function to query UK Parliament API
-# def get_party_from_parliament(name):
-#     url = f"https://members.parliament.uk/api/Members/Search?Name={name}"
-#     response = requests.get(url)
-
-#     if response.status_code == 200:
-#         data = response.json()
-#         if "items" in data and data["items"]:
-#             party = (
-#                 data["items"][0]["value"]["latestParty"]
-#                 .get("name", "Unknown")
-#             )
-#             return party, 100
-#     return "Unknown", 50
-
-
 # Function to query PdPy api
 def get_party_df_from_pdpy(from_date="2001-01-01",
                            to_date="2024-12-31",
@@ -173,7 +156,7 @@ df["PoliticalParty_pdpy"] = df.apply(
     lambda row: get_party_from_pdpy_df(pdpydf, row["CleanedName"]),
     axis=1,
 )
-testdata = True
+testdata = False
 if testdata:
     print("sample of original file")
     print(df[['OriginalRegulatedEntityName',
