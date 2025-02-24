@@ -1,26 +1,29 @@
 import streamlit as st
+from components.global_variables import initialize_session_state
 from data.data_loader import firstload
 
 
 # Set up multipage navigation and reference pages.
 from app_pages.multi_page import MultiPage
-
+initialize_session_state()
 # load pages scripts
 from app_pages.introduction import introduction_body
+# Highlight figures
 from app_pages.headlinefigures import hlf_body
-
+# Dubious donations
 from app_pages.dubiousdonations import dubiousdonations_body
 from app_pages.dubiousdonationsByRegulatedEntity\
      import dubiousdonationsByDonor_body
-
+# cash donations
 from app_pages.cashdonations import cash_donations_page
 from app_pages.cashdonationsByRegulatedEntity\
      import cashdonationsregentity_body
-
+# sponsorships
 from app_pages.sponsorships import sponsorships_body_page
-
+# donors
 from app_pages.donorspage_headlines import donorsheadlinespage_body
 from app_pages.donors_perdonor_page import donorspage_body
+# visits
 from app_pages.visits import visits_body_page
 # from app_pages.donationsbypoliticalpartys import
 # donationsbypoliticalpartys_body

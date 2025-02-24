@@ -1,12 +1,19 @@
 import pandas as pd
 import streamlit as st
+import os
 from rapidfuzz import process, fuzz
 from collections import defaultdict
 
 
+
 def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
     # Load the data
-    df = pd.read_csv('Donations_accepted_by_political_parties.csv', dtype={
+    base_dir = st.session_state.base_dir
+    originaldatafilename = st.session_state.filenames["ec_donations_fname"]
+    originaldatafilepath = os.path.join(base_dir,
+                                        originaldatafilename)
+
+    df = pd.read_csv(originaldatafilepath, dtype={
         'index': 'int64',
         'ECRef': 'object',
         'RegulatedEntityName': 'object',
@@ -174,17 +181,19 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
         potential_duplicates = {k: list(v) for k,
                                 v in potential_duplicates.items()}
 
-        # Save results or display
-        # Show sample of results
-        # print(list(potential_duplicates.items())[:10])
-
         # Save results to a CSV file
-        output_df = (
-            pd.DataFrame(potential_duplicates.items(),
+        if output_csv:
+            potential_regentity_duplicates_filemane = st.session_state.filenames["potential_regentity_duplicates_fname"]
+            potential_regentity_duplicates_filemane = os.path.join(base_dir,
+                                        potential_regentity_duplicates_filemane)
+        
+            output_df = (
+                pd.DataFrame(potential_duplicates.items(),
                          columns=["RegulatedEntityId",
                                   "Potential Duplicates"])
-            )
-        output_df.to_csv("potential_regentity_duplicates.csv", index=False)
+                )
+        
+            output_df.to_csv(potential_regentity_duplicates_filemane, index=False)
 
         # Create mappings for cleansed ID and Name
         id_to_cleansed = {}
@@ -223,17 +232,10 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
             .fillna(df["RegulatedEntityName"])
             )
 
-        # rename Id to Original Id and Name to Original Name
-        df.rename(
-            columns={"RegulatedEntityId": "Original RegulatedEntityId",
-                     "RegulatedEntityName": "Original RegulatedEntityName"},
-            inplace=True
-                  )
-
         # rename Cleansed ID to Id and Cleansed Name to Name
         df.rename(
-            columns={"Cleansed RegulatedEntityID": "RegulatedEntityId",
-                     "Cleansed RegulatedEntityName": "RegulatedEntityName"},
+            columns={"Cleansed RegulatedEntityID": "ParentRegEntityId",
+                     "Cleansed RegulatedEntityName": "ParentRegEntityName"},
             inplace=True
             )
 
@@ -272,12 +274,16 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
                                 v in potential_duplicates.items()}
 
         # Save results to a CSV file
-        output_df = (
-            pd.DataFrame(potential_duplicates.items(),
+        if output_csv:
+            potential_donor_duplicates_filename = st.session_state.filenames["potential_donor_duplicates_fname"]
+            potential_donor_duplicates_filename = os.path.join(base_dir,
+                                        potential_donor_duplicates_filename)
+            output_df = (
+                pd.DataFrame(potential_duplicates.items(),
                          columns=["DonorId",
                                   "Potential Duplicates"])
-            )
-        output_df.to_csv("potential_duplicates.csv", index=False)
+                )
+            output_df.to_csv(potential_donor_duplicates_filename, index=False)
 
         # Create mappings for cleansed ID and Name
         id_to_cleansed = {}
@@ -324,7 +330,12 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
 
     # generate CSV file of original data
     if output_csv:
-        df.to_csv('original_donations.csv')
+        original_data_filename = (
+            st.session_state.filenames["original_data_fname"]
+        )
+        originaldatafilepath = os.path.join(base_dir,
+                                            original_data_filename)
+        df.to_csv(originaldatafilepath)
     return df
 
 
@@ -380,7 +391,13 @@ def load_party_summary_data(datafile=None,
                                 ))
     # generate CSV file of summary data
     if output_csv:
-        RegulatedEntity_df.to_csv('party_summary.csv')
+        base_dir = st.session_state.base_dir
+        party_filename = (
+            st.session_state.filenames["party_summary_fname"]
+        )
+        party_filename = os.path.join(base_dir,
+                                            party_filename)
+        RegulatedEntity_df.to_csv(party_filename)
 
     return RegulatedEntity_df
 
@@ -461,8 +478,9 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
             ))
         df["NatureOfDonation"] = (
             df["NatureOfDonation"].fillna(
-                df["RegulatedEntityType"].map(lambda x: f"Donation to {x}"
-                                             if pd.notna(x) else None)
+                df["RegulatedEntityType"]
+                .map(lambda x: f"Donation to {x}"
+                     if pd.notna(x) else None)
             ))
         df["NatureOfDonation"] = df["NatureOfDonation"].replace(
             {"Donation to nan": "Other", "Other Payment": "Other"}
@@ -480,30 +498,43 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
                                                                 "Other")
 
     # Create a DubiousData flag for problematic records
-    df["DubiousData"] = (
-        (df["DonationType"] == "Impermissible Donor").astype(int) +
-        (df["DonationType"] == "Unidentified Donor").astype(int) +
-        (df["DonationType"] == "Total value of donations not reported\
-            individually").astype(int) +
-        (df["DonationType"] == "Aggregated Donation").astype(int) +
-        (df["DonationType"] == "Visit").astype(int) +
-        (df["DonationAction"] != "Accepted").astype(int) +
-        (df["NatureOfDonation"] == "Aggregated Donation").astype(int) +
-        (df["IsAggregation"] == "True").astype(int) +
-        (df["ReceivedDate"] == '1900-01-01 00:00:00').astype(int) +
-        (df["RegulatedEntityId"] == "1000001").astype(int) +
-        (df["RegulatedEntityName"] == 'Unidentified Entity').astype(int) +
-        (df["DonorId"] == "1000001").astype(int) +
-        (df["DonorName"] == 'Unidentified Donor').astype(int)
-        )
+    if "PLACEHOLDER_DATE" not in st.session_state or "PLACEHOLDER_ID" not in st.session_state:
+        raise ValueError("Session state variables PLACEHOLDER_DATE and PLACEHOLDER_ID must be initialized before use.")
 
+    if "dubious_donation_types" not in st.session_state:
+        raise ValueError("Session state variable dubious_donation_types must be initialized before use.")
+
+    if "safe_donor_types" not in st.session_state:
+        raise ValueError("Session state variables PLACEHOLDER_DATE and PLACEHOLDER_ID must be initialized before use.")
+
+    # Extend dubious donor criteria using session state variables
     df["DubiousDonor"] = (
-        (df["DonorId"] == "1000001").astype(int) +
-        (df["DonorName"] == 'Unidentified Donor').astype(int) +
-        (df["DonorName"] == 'Anonymous Donor').astype(int) +
-        (df["DonationType"] == 'Unidentified Donor').astype(int) +
-        (df["DonationType"] == 'Impermissible Donor').astype(int)
-        )
+        df["DonorId"].eq(st.session_state.PLACEHOLDER_ID).astype(int) +
+        (df["DonorName"]
+         .isin(["Unidentified Donor", "Anonymous Donor"])
+         .astype(int)) +
+        (df["DonationType"]
+         .isin(["Unidentified Donor", "Impermissible Donor"])
+         .astype(int))
+    )
+
+    # Use session state variables
+# Use session state variables
+    df["DubiousData"] = (
+        df["DubiousDonor"] +
+        df["DonationType"].isin(st.session_state.dubious_donation_types).astype(int) +
+        df["DonationAction"].ne("Accepted").astype(int) +
+        df["IsAggregation"].eq("True").astype(int) +
+        df["NatureOfDonation"].eq("Aggregated Donation").astype(int) +
+        df["ReceivedDate"].eq(st.session_state.PLACEHOLDER_DATE).astype(int) +
+        df["RegulatedEntityId"].eq(st.session_state.PLACEHOLDER_ID).astype(int) +
+        df["RegulatedEntityName"].eq("Unidentified Entity").astype(int) +
+        df["DonorId"].eq(st.session_state.PLACEHOLDER_ID).astype(int) +
+        df["DonorName"].eq("Unidentified Donor").astype(int) -
+        df["DonorStatus"].isin(st.session_state.safe_donor_types).astype(int) -  # Safe donors should be excluded
+        ((df["IsAggregation"].eq("True")) & df["DonorStatus"].isin(st.session_state.safe_donor_types)).astype(int)  # Fixing subtraction
+    )
+
 
     # Create simple column to enable count of events using sum
     df["EventCount"] = 1
@@ -583,7 +614,14 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
     # )
     # Save cleaned data
     if output_csv:
-        df.to_csv('cleaned_data.csv')
+        base_dir = st.session_state.base_dir
+        cleaned_data_filename = (
+            st.session_state.filenames["cleaned_data_fname"]
+        )
+        cleaned_data_filename = (
+            os.path.join(base_dir, cleaned_data_filename)
+        )
+        RegulatedEntity_df.to_csv(cleaned_data_filename)
 
     return df
 
@@ -612,7 +650,14 @@ def load_donorList_data(datafile=None, streamlitrun=True, output_csv=False):
                        'Donation Events',
                        'Donation Mean']
     if output_csv:
-        orig_df.to_csv('cleaned_donorslist.csv')
+        base_dir = st.session_state.base_dir
+        cleaned_donor_filename = (
+            st.session_state.filenames["cleaned_donorlist_fname"]
+        )
+        cleaned_donor_filename = os.path.join(base_dir,
+                                              cleaned_donor_filename)
+        orig_df.to_csv(cleaned_donor_filename)
+
     return orig_df
 
 
@@ -644,7 +689,15 @@ def load_regulated_entity_data(datafile=None,
                        'Donation Events',
                        'Donation Mean']
     if output_csv:
-        orig_df.to_csv('cleaned_regentity.csv')
+        base_dir = st.session_state.base_dir
+        cleaned_regentity_filename = (
+            st.session_state.filenames["cleaned_regentity_fname"]
+        )
+        cleaned_regentity_filename = (
+            os.path.join(base_dir, cleaned_regentity_filename)
+        )
+        orig_df.to_csv(cleaned_regentity_filename)
+
     return orig_df
 
 

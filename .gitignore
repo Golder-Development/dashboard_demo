@@ -3,6 +3,6 @@ __pycache__
 .venv/
 tests/
 Wireframes/
-refernce files/
+devfiles/
 .pytest_cache/
 .devcontainer/

@@ -1,4 +1,5 @@
 import streamlit as st
+from components.global_variables import initialize_session_state
 from data.datasetupandclean import (load_cleaned_data, load_data,
                                     load_donorList_data,
                                     load_regulated_entity_data,
@@ -43,6 +44,8 @@ def get_regentity_data():
 
 
 def firstload():
+    initialize_session_state()
+
     # Ensure g_thresholds is available as a global dictionary
     if 'g_thresholds' not in st.session_state:
         create_thresholds()
