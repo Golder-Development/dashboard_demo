@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 # Define a class for managing multiple pages in a Streamlit app
 
 
@@ -15,6 +16,7 @@ class MultiPage:
             page_icon=":computer:",
             layout="wide"
         )
+
 
     # Method to add a new page to the app
     def add_page(self, title, func) -> None:

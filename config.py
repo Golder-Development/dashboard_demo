@@ -6,6 +6,16 @@ import pandas as pd
 # Base directory
 BASE_DIR = os.path.dirname(__file__)
 
+DIRECTORIES = {
+    "data_dir": os.path.join(BASE_DIR, "data"),
+    "output_dir": os.path.join(BASE_DIR, "output"),
+    "logs_dir": os.path.join(BASE_DIR, "logs"),
+    "reference_dir": os.path.join(BASE_DIR, "reference_files"),
+    "components_dir": os.path.join(BASE_DIR, "components"),
+    "app_pages_dir": os.path.join(BASE_DIR, "app_pages"),
+    "utils_dir": os.path.join(BASE_DIR, "utils")
+}
+
 # File paths
 FILENAMES = {
     "ec_donations_fname": "Donations_accepted_by_political_parties.csv",
@@ -47,7 +57,19 @@ THRESHOLDS = {
     0: "No Relevant Donations",
     1: "Single Donation Entity",
     50: "Very Small Entity",
-    100: "Small Entity",
-    1000: "Medium Entity",
-    float('inf'): "Large Entity"
+    150: "Small Entity",
+    1500: "Medium Entity",
+    2500: "Large Entity"
+}
+
+# PartyParent RegulatedEntityId's
+PARTYPARENTS = {
+    "Conservative": 52,
+    "Liberal Democrat": 90,
+    "Labour": 53,
+    "Scottish National Party": 102,
+    "Green Party": 63,
+    "Plaid Cymru": 77,
+    "UK Independence Party (UKIP)": 85,
+    "Unknown": 0
 }
