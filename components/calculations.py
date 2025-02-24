@@ -133,19 +133,10 @@ def get_maxdate(df, filters=None):
 def display_thresholds_table():
     """Creates and displays a table showing the threshold logic."""
     # Convert the dictionary into a DataFrame
-    thresholds_df = pd.DataFrame(list(st.session_state.g_thresholds.items()),
-                                 columns=["Donation Event Threshold",
-                                          "Entity Category"])
-    # format the table change Donation event Threshold column to Integer and
-    # add bold to header
-    thresholds_df = thresholds_df.style.format(
-        {"Donation Event Threshold": "{:.0f}"}
-    ).set_table_styles(
-        [{'selector': 'th', 'props': [('font-size', '1.2em'),
-                                      ('text-align', 'center')]}]
-    )
+    thresholds = st.session_state.get("thresholds", {})
+    thresholds_df = pd.DataFrame(list(thresholds.items()), columns=["Donation Event Threshold", "Entity Category"])
+    
     st.write("### Threshold Logic Table")
-    # Static table (can use `st.dataframe()` for interactive table)
     st.table(thresholds_df)
 
 

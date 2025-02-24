@@ -5,15 +5,17 @@ from rapidfuzz import process, fuzz
 from collections import defaultdict
 
 
-
 def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
     # Load the data
     base_dir = st.session_state.base_dir
+    ref_dir = st.session_state.directories["reference_dir"]
+    output_dir = st.session_state.directories["output_dir"]
+
     originaldatafilename = st.session_state.filenames["ec_donations_fname"]
     originaldatafilepath = os.path.join(base_dir,
                                         originaldatafilename)
 
-    df = pd.read_csv(originaldatafilepath, dtype={
+    loaddata_df = pd.read_csv(originaldatafilepath, dtype={
         'index': 'int64',
         'ECRef': 'object',
         'RegulatedEntityName': 'object',
@@ -47,9 +49,10 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
         }, index_col="index")  # Load the data
 
     # Remove Currency sign of Value and convert to Float
-    df['Value'] = df['Value'].replace({'£': '', ',': ''},
-                                      regex=True).astype(float)
-
+    loaddata_df['Value'] = (
+        loaddata_df['Value'].replace({'£': '', ',': ''},
+                                     regex=True).astype(float)
+    )
     # Fill missing text fields with empty strings
     columns_to_fill = [
         "PurposeOfVisit", "DonorName", "CampaigningName", "AccountingUnitName",
@@ -60,8 +63,9 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
         "IsIrishSource", "DonorId", "RegulatedEntityId", "AccountingUnitId",
         "ECRef"
     ]
-    df[columns_to_fill] = df[columns_to_fill].fillna("").astype(str)
-
+    loaddata_df[columns_to_fill] = (
+        loaddata_df[columns_to_fill].fillna("").astype(str)
+    )
     # remove leading and trailing spaces from DonorName, RegulatedEntityName
     # remove leading and trailing spaces from DonorID and RegulatedEntityID
     # remove leading and trailing spaces from CampaignName and PurposeOfVisit
@@ -77,8 +81,9 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
         'AccountingUnitName',
         'ReportingPeriodName'
     ]
-    df[columns_to_strip] = df[columns_to_strip].apply(lambda x: x.str.strip())
-
+    loaddata_df[columns_to_strip] = (
+        loaddata_df[columns_to_strip].apply(lambda x: x.str.strip())
+    )
     # remove line returns and commas from DonorName, RegulatedEntityName,
     # CampaignName,
     # AccountingUnitName, ReportingPeriodName and PurposeOfVisit
@@ -90,8 +95,8 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
         'AccountingUnitName',
         'ReportingPeriodName'
     ]
-    df[columns_to_clean] = (
-        df[columns_to_clean].replace({',': '', '\n': ' '}, regex=True)
+    loaddata_df[columns_to_clean] = (
+        loaddata_df[columns_to_clean].replace({',': '', '\n': ' '}, regex=True)
         )
 
     # standardise capitalisation of DonorName, RegulatedEntityName,
@@ -105,275 +110,406 @@ def load_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
         'AccountingUnitName',
         'ReportingPeriodName'
     ]
-    df[columns_to_title] = df[columns_to_title].apply(lambda x: x.str.title())
-
+    loaddata_df[columns_to_title] = (
+        loaddata_df[columns_to_title].apply(lambda x: x.str.title())
+    )
     # rename "Total value of donations not reported individually"
     # to "Aggregated Donation" in DonationType
-    df['DonationType'] = (
-        df['DonationType'].replace(
+    loaddata_df['DonationType'] = (
+        loaddata_df['DonationType'].replace(
             {"Total value of donations not reported individually":
                 "Aggregated Donation",
              "Permissible Donor Exempt Trust": "P.D. Exempt Trust"}
             )
         )
     # update Blank DonorName to "Anonymous Donor"
-    df['DonorName'] = df['DonorName'].replace("", "Unidentified Donor")
+    loaddata_df['DonorName'] = (
+        loaddata_df['DonorName'].replace("", "Unidentified Donor")
+    )
     # update Blank DonorId to "1000001"
-    df['DonorId'] = df['DonorId'].replace("", "1000001")
-
+    loaddata_df['DonorId'] = (
+        loaddata_df['DonorId'].replace("", "1000001")
+    )
     # make donorid and regulatedentityid numeric
-    df['DonorId'] = pd.to_numeric(df['DonorId'], errors='coerce')
-    df['RegulatedEntityId'] = pd.to_numeric(df['RegulatedEntityId'],
-                                            errors='coerce')
-
+    loaddata_df['DonorId'] = (
+        pd.to_numeric(loaddata_df['DonorId'], errors='coerce')
+    )
+    loaddata_df['RegulatedEntityId'] = (
+        pd.to_numeric(loaddata_df['RegulatedEntityId'], errors='coerce')
+    )
     # update Blank RegulatedEntityName to "Unidentified Entity"
-    df['RegulatedEntityName'] = (
-        df['RegulatedEntityName'].replace("", "Unidentified Entity")
+    loaddata_df['RegulatedEntityName'] = (
+        loaddata_df['RegulatedEntityName'].replace("", "Unidentified Entity")
         )
     # update Blank RegulatedEntityId to "1000001"
-    df['RegulatedEntityId'] = df['RegulatedEntityId'].replace("", "1000001")
-
+    loaddata_df['RegulatedEntityId'] = (
+        loaddata_df['RegulatedEntityId'].replace("", "1000001")
+    )
     # update Blank RegulatedEntityId to "1000001"
-    df['RegisterName'] = df['RegisterName'].replace("", "Other")
-
+    loaddata_df['RegisterName'] = (
+        loaddata_df['RegisterName'].replace("", "Other")
+    )
     # update Blank DonationAction to "Accepted"
-    df['DonationAction'] = df['DonationAction'].replace("", "Accepted")
-
+    loaddata_df['DonationAction'] = (
+        loaddata_df['DonationAction'].replace("", "Accepted")
+    )
     # update DonorStatus to Unidentified Donor if blank
-    df['DonorStatus'] = df['DonorStatus'].replace("", "Unidentified Donor")
-
+    loaddata_df['DonorStatus'] = (
+        loaddata_df['DonorStatus'].replace("", "Unidentified Donor")
+    )
     if dedupe_regentity:
-        # Extract donor names and IDs
-        entity_names = (
-            df[['RegulatedEntityId', 'RegulatedEntityName']].drop_duplicates()
+        # check that reentity_deduped file exists using global variables
+        if "regentity_map_fname" not in st.session_state.filenames:
+            raise ValueError("regentity_map_fname not found"
+                             " in session state filenames")
+        # check that file exists at identified path from global var
+        if os.path.exists(os.path.join(ref_dir,
+                                       st.session_state
+                                       .filenames["regentity_map_fname"])):
+            # load regentity_map_fname file using global variables
+            regentity_dedupedfilename = (
+                st.session_state.filenames["regentity_map_fname"])
+            regentity_dedupedfilepath = os.path.join(ref_dir,
+                                                     regentity_dedupedfilename)
+            re_dedupe_df = pd.read_csv(regentity_dedupedfilepath)
+            # merge re_dedupe_df with original data
+            loaddata_df = pd.merge(loaddata_df,
+                                   re_dedupe_df,
+                                   how='left',
+                                   on='RegulatedEntityId')
+            # rename RegulatedEntityName_x to RegulatedEntityName
+            # and RegulatedEntityName_y to OriginalRegulatedEntityName
+            loaddata_df.rename(
+                columns={"RegulatedEntityName_x": "RegulatedEntityName",
+                         "RegulatedEntityName_y": "OriginalRegulatedEntityName"
+                         }, inplace=True)
+            # use the RegulatedEntityId and RegulatedEntityName columns
+            # to update the original data with new columns called
+            # parententityid and parententityname - in no match exists
+            # the original data will be used
+            loaddata_df['ParentEntityId'] = (
+                loaddata_df['CleanedRegulatedEntityId'].replace("", pd.NA)
             )
-
-        # Preprocess donor names (lowercase and remove special characters)
-        entity_names["Cleaned Name"] = (
-            entity_names["RegulatedEntityName"]
-            .str.lower()
-            .str.replace(r"[^a-z0-9\s]", "", regex=True)
+            loaddata_df['ParentEntityName'] = (
+                loaddata_df['CleanedRegulatedEntityName'].replace("", pd.NA)
             )
+            loaddata_df['ParentEntityId'] = (
+                loaddata_df['ParentEntityId']
+                .fillna(loaddata_df['RegulatedEntityId'])
+            )
+            loaddata_df['ParentEntityName'] = (
+                loaddata_df['ParentEntityName']
+                .fillna(loaddata_df['RegulatedEntityName'])
+            )
+            loaddata_df.rename(
+                columns={"RegulatedEntityId": "OriginalRegEntityId",
+                         "RegulatedEntityName": "OriginalRegEntityName",
+                         "ParentEntityId": "RegulatedEntityId",
+                         "ParentEntityName": "RegulatedEntityName"},
+                inplace=True)
+        else:
+            # Run dedupe logic if PoliticalDonorsDeduped.csv file does not
+            # exist
 
-        # Create a mapping of donor names to IDs
-        name_to_id = (
-            entity_names.set_index("Cleaned Name")["RegulatedEntityId"]
-            .to_dict()
-        )
-
-        # Dictionary to store potential duplicates
-        potential_duplicates = defaultdict(set)
-        threshold = 85  # Adjust similarity threshold as needed
-
-        # Apply fuzzy matching
-        for cleaned_name, RegulatedEntityId in name_to_id.items():
-            matches = process.extract(cleaned_name,
-                                      name_to_id.keys(),
-                                      scorer=fuzz.ratio,
-                                      limit=5)
-            for match_name, score, _ in matches:
-                if score >= threshold and match_name != cleaned_name:
-                    match_id = name_to_id[match_name]
-                    potential_duplicates[RegulatedEntityId].add(match_id)
-                    potential_duplicates[match_id].add(RegulatedEntityId)
-
-        # Convert sets to lists
-        potential_duplicates = {k: list(v) for k,
-                                v in potential_duplicates.items()}
-
-        # Save results to a CSV file
-        if output_csv:
-            potential_regentity_duplicates_filemane = st.session_state.filenames["potential_regentity_duplicates_fname"]
-            potential_regentity_duplicates_filemane = os.path.join(base_dir,
-                                        potential_regentity_duplicates_filemane)
-        
-            output_df = (
-                pd.DataFrame(potential_duplicates.items(),
-                         columns=["RegulatedEntityId",
-                                  "Potential Duplicates"])
+            # Extract donor names and IDs
+            entity_names = (
+                loaddata_df[['RegulatedEntityId',
+                             'RegulatedEntityName']].drop_duplicates()
                 )
-        
-            output_df.to_csv(potential_regentity_duplicates_filemane, index=False)
 
-        # Create mappings for cleansed ID and Name
-        id_to_cleansed = {}
-        name_to_cleansed = {}
+            # Preprocess donor names (lowercase and remove special characters)
+            entity_names["Cleaned Name"] = (
+                entity_names["RegulatedEntityName"]
+                .str.lower()
+                .str.replace(r"[^a-z0-9\s]", "", regex=True)
+                )
 
-        for main_id, duplicate_ids in potential_duplicates.items():
-            all_ids = [main_id] + duplicate_ids
-            cleansed_id = min(all_ids)  # Choose the smallest RegulatedEntityId
-
-            # Get all names corresponding to these IDs
-            matching_names = (
-                df[df["RegulatedEntityId"]
-                   .isin(all_ids)]["RegulatedEntityName"]
+            # Create a mapping of donor names to IDs
+            name_to_id = (
+                entity_names.set_index("Cleaned Name")["RegulatedEntityId"]
+                .to_dict()
             )
 
-            # Choose the most frequent name
-            cleansed_name = matching_names.value_counts().idxmax()
+            # Dictionary to store potential duplicates
+            potential_duplicates = defaultdict(set)
+            threshold = 85  # Adjust similarity threshold as needed
 
-            # Store mappings
-            for RegulatedEntity_id in all_ids:
-                id_to_cleansed[RegulatedEntityId] = cleansed_id
-                name_to_cleansed[RegulatedEntityId] = cleansed_name
+            # Apply fuzzy matching
+            for cleaned_name, RegulatedEntityId in name_to_id.items():
+                matches = process.extract(cleaned_name,
+                                          name_to_id.keys(),
+                                          scorer=fuzz.ratio,
+                                          limit=5)
+                for match_name, score, _ in matches:
+                    if score >= threshold and match_name != cleaned_name:
+                        match_id = name_to_id[match_name]
+                        potential_duplicates[RegulatedEntityId].add(match_id)
+                        potential_duplicates[match_id].add(RegulatedEntityId)
 
-        # convert Id = "" to null
-        df['RegulatedEntityId'] = df['RegulatedEntityId'].replace("", pd.NA)
+            # Convert sets to lists
+            potential_duplicates = {k: list(v) for k,
+                                    v in potential_duplicates.items()}
 
-        # Apply mappings to the dataset
-        df["Cleansed RegulatedEntityID"] = (
-            df["RegulatedEntityId"]
-            .map(id_to_cleansed)
-            .fillna(df["RegulatedEntityId"])
+            # Save results to a CSV file
+            if output_csv:
+                potential_regentity_duplicates_filemane = (
+                    st.session_state
+                    .filenames["potential_regentity_duplicates_fname"]
+                )
+                potential_regentity_duplicates_filemane = (
+                    os.path.join(output_dir,
+                                 potential_regentity_duplicates_filemane)
+                )
+                output_df = (
+                    pd.DataFrame(potential_duplicates.items(),
+                                 columns=["RegulatedEntityId",
+                                          "Potential Duplicates"])
+                    )
+
+                output_df.to_csv(potential_regentity_duplicates_filemane,
+                                 index=False)
+
+            # Create mappings for cleansed ID and Name
+            id_to_cleansed = {}
+            name_to_cleansed = {}
+
+            for main_id, duplicate_ids in potential_duplicates.items():
+                all_ids = [main_id] + duplicate_ids
+                # Choose the smallest RegulatedEntityId
+                cleansed_id = min(all_ids)
+
+                # Get all names corresponding to these IDs
+                matching_names = (
+                    loaddata_df[loaddata_df["RegulatedEntityId"]
+                                .isin(all_ids)]["RegulatedEntityName"]
+                )
+
+                # Choose the most frequent name
+                cleansed_name = matching_names.value_counts().idxmax()
+
+                # Store mappings
+                for RegulatedEntityId in all_ids:
+                    id_to_cleansed[RegulatedEntityId] = cleansed_id
+                    name_to_cleansed[RegulatedEntityId] = cleansed_name
+
+            # convert Id = "" to null
+            loaddata_df['RegulatedEntityId'] = (
+                loaddata_df['RegulatedEntityId'].replace("", pd.NA)
             )
-        df["Cleansed RegulatedEntityName"] = (
-            df["RegulatedEntityId"]
-            .map(name_to_cleansed)
-            .fillna(df["RegulatedEntityName"])
-            )
+            # Apply mappings to the dataset
+            loaddata_df["Cleansed RegulatedEntityID"] = (
+                loaddata_df["RegulatedEntityId"]
+                .map(id_to_cleansed)
+                .fillna(loaddata_df["RegulatedEntityId"])
+                )
+            loaddata_df["Cleansed RegulatedEntityName"] = (
+                loaddata_df["RegulatedEntityId"]
+                .map(name_to_cleansed)
+                .fillna(loaddata_df["RegulatedEntityName"])
+                )
 
-        # rename Cleansed ID to Id and Cleansed Name to Name
-        df.rename(
-            columns={"Cleansed RegulatedEntityID": "ParentRegEntityId",
-                     "Cleansed RegulatedEntityName": "ParentRegEntityName"},
-            inplace=True
-            )
+            # rename Cleansed ID to Id and Cleansed Name to Name
+            loaddata_df.rename(
+                columns={"Cleansed RegulatedEntityID": "ParentRegEntityId",
+                         "Cleansed RegulatedEntityName":
+                         "ParentRegEntityName"},
+                inplace=True
+                )
+    # if ListOfPoliticalPeople_Final.csv file does not exist:
+    #     # import ListOfPoliticalPeople_Final.csv file
+    #     base_dir = st.session_state.base_dir
+    #     politician_party_filename = st.session_state.filenames["politician_party_fname"]
+    #     politician_party_filepath = os.path.join(base_dir, politician_party_filename)
+    #     politician_party_df = pd.read_csv(politician_party_filepath)
+    #     # merge ListOfPoliticalPeople_Final.csv file with original data
+    #     loaddata_df = pd.merge(df, politician_party_df, how='left', on='RegulatedEntityID')
+    #     # update blank PartyName to "Unidentified Party"
+    #     loaddata_df['PartyName'] = loaddata_df['PartyName'].replace("", RegulatedEntityName)
+    #     # update blank PartyId to "1000001"
+    #     loaddata_df['PartyId'] = loaddata_df['PartyId'].replace("", RegulatedEntityId)
+    #     # update blank PoliticianName to "Unidentified Politician"
+    #     loaddata_df['PoliticianName'] = loaddata_df['PoliticianName'].replace("", "Unidentified Politician")
+    #     # update blank PoliticianId to "1000001"
+    #     loaddata_df['PoliticianId'] = loaddata_df['PoliticianId'].replace("", "1000001")
 
     if dedupe_donors:
-        # Extract donor names and IDs
-        donor_names = df[['DonorId', 'DonorName']].drop_duplicates()
-
-        # Preprocess donor names (lowercase and remove special characters)
-        donor_names["Cleaned Name"] = (
-            donor_names["DonorName"]
-            .str.lower()
-            .str.replace(r"[^a-z0-9\s]", "", regex=True)
+        # check that politicaldonoprsdedupedfile exists using global variables
+        if "donor_map_fname" not in st.session_state.filenames:
+            raise ValueError("donor_map_fname not found in"
+                             " session state filenames")
+        # check that file exists at identified path from global var
+        if os.path.exists(os.path.join(ref_dir,
+                                       st.session_state
+                                       .filenames["donor_map_fname"])):
+            # load PoliticalDonorsDeduped.csv file using global variables
+            politicaldonorsdedupedfilename = (
+                st.session_state.filenames["donor_map_fname"]
             )
-
-        # Create a mapping of donor names to IDs
-        name_to_id = donor_names.set_index("Cleaned Name")["DonorId"].to_dict()
-
-        # Dictionary to store potential duplicates
-        potential_duplicates = defaultdict(set)
-        threshold = 85  # Adjust similarity threshold as needed
-
-        # Apply fuzzy matching
-        for cleaned_name, donor_id in name_to_id.items():
-            matches = process.extract(cleaned_name,
-                                      name_to_id.keys(),
-                                      scorer=fuzz.ratio,
-                                      limit=5)
-            for match_name, score, _ in matches:
-                if score >= threshold and match_name != cleaned_name:
-                    match_id = name_to_id[match_name]
-                    potential_duplicates[donor_id].add(match_id)
-                    potential_duplicates[match_id].add(donor_id)
-
-        # Convert sets to lists
-        potential_duplicates = {k: list(v) for k,
-                                v in potential_duplicates.items()}
-
-        # Save results to a CSV file
-        if output_csv:
-            potential_donor_duplicates_filename = st.session_state.filenames["potential_donor_duplicates_fname"]
-            potential_donor_duplicates_filename = os.path.join(base_dir,
-                                        potential_donor_duplicates_filename)
-            output_df = (
-                pd.DataFrame(potential_duplicates.items(),
-                         columns=["DonorId",
-                                  "Potential Duplicates"])
+            politicaldonorsdedupedfilepath = (
+                os.path.join(ref_dir, politicaldonorsdedupedfilename)
+            )
+            donors_df = pd.read_csv(politicaldonorsdedupedfilepath)
+            # merge donors_df with original data
+            loaddata_df = pd.merge(loaddata_df,
+                                   donors_df,
+                                   how='left',
+                                   on='DonorId')
+            # use the DonorId and DonorName columns to update the original
+            # data with new columns called parentdonorid and parentdonorname
+            # - in no match exists the original data will be used
+            loaddata_df['ParentDonorId'] = (
+                loaddata_df['ParentDonorId'].replace("", pd.NA)
+            )
+            loaddata_df['ParentDonorName'] = (
+                loaddata_df['ParentDonorName'].replace("", pd.NA)
+            )
+            loaddata_df['ParentDonorId'] = (
+                loaddata_df['ParentDonorId'].fillna(loaddata_df['DonorId'])
+            )
+            loaddata_df['ParentDonorName'] = (
+                loaddata_df['ParentDonorName'].fillna(loaddata_df['DonorName'])
+            )
+            loaddata_df.rename(columns={"DonorId": "ChildDonorId",
+                                        "DonorName": "ChildDonorName",
+                                        "ParentDonorId": "DonorId",
+                                        "ParentDonorName": "DonorName"},
+                               inplace=True)
+        else:
+            # Run dedupe logic if PoliticalDonorsDeduped.csv file
+            # does not exist  Extract donor names and IDs
+            donor_names = (
+                loaddata_df[['DonorId', 'DonorName']].drop_duplicates()
+            )
+            # Preprocess donor names (lowercase and remove special characters)
+            donor_names["CleanedName"] = (
+                donor_names["DonorName"]
+                .str.lower()
+                .str.replace(r"[^a-z0-9\s]", "", regex=True)
                 )
-            output_df.to_csv(potential_donor_duplicates_filename, index=False)
 
-        # Create mappings for cleansed ID and Name
-        id_to_cleansed = {}
-        name_to_cleansed = {}
-
-        for main_id, duplicate_ids in potential_duplicates.items():
-            all_ids = [main_id] + duplicate_ids
-            cleansed_id = min(all_ids)  # Choose the smallest DonorId
-
-            # Get all names corresponding to these IDs
-            matching_names = df[df["DonorId"].isin(all_ids)]["DonorName"]
-
-            # Choose the most frequent name
-            cleansed_name = matching_names.value_counts().idxmax()
-
-            # Store mappings
-            for donor_id in all_ids:
-                id_to_cleansed[donor_id] = cleansed_id
-                name_to_cleansed[donor_id] = cleansed_name
-
-        # convert DonorId = "" to null
-        df['DonorId'] = df['DonorId'].replace("", pd.NA)
-
-        # Apply mappings to the dataset
-        df["Cleansed Donor ID"] = (
-            df["DonorId"].map(id_to_cleansed).fillna(df["DonorId"])
+            # Create a mapping of donor names to IDs
+            name_to_id = (
+                donor_names.set_index("CleanedName")["DonorId"].to_dict()
             )
-        df["Cleansed Donor Name"] = (
-            df["DonorId"].map(name_to_cleansed).fillna(df["DonorName"])
-            )
-        # rename DonorId to Original DonorId and DonorName
-        # to Original DonorName
-        df.rename(columns={"DonorId": "Original DonorId",
-                           "DonorName": "Original DonorName"}, inplace=True)
-        # rename Cleansed Donor ID to DonorId and Cleansed Donor Name
-        # to DonorName
-        df.rename(columns={"Cleansed Donor ID": "DonorId",
-                           "Cleansed Donor Name": "DonorName"}, inplace=True)
+            # Dictionary to store potential duplicates
+            potential_duplicates = defaultdict(set)
+            threshold = 85  # Adjust similarity threshold as needed
+
+            # Apply fuzzy matching
+            for cleaned_name, donor_id in name_to_id.items():
+                matches = process.extract(cleaned_name,
+                                          name_to_id.keys(),
+                                          scorer=fuzz.ratio,
+                                          limit=5)
+                for match_name, score, _ in matches:
+                    if score >= threshold and match_name != cleaned_name:
+                        match_id = name_to_id[match_name]
+                        potential_duplicates[donor_id].add(match_id)
+                        potential_duplicates[match_id].add(donor_id)
+
+            # Convert sets to lists
+            potential_duplicates = {k: list(v) for k,
+                                    v in potential_duplicates.items()}
+
+            # Save results to a CSV file
+            if output_csv:
+                potential_donor_duplicates_filename = (
+                    st.session_state
+                    .filenames["potential_donor_duplicates_fname"]
+                )
+                potential_donor_duplicates_filename = (
+                    os.path.join(output_dir,
+                                 potential_donor_duplicates_filename)
+                )
+                output_df = (
+                    pd.DataFrame(potential_duplicates.items(),
+                                 columns=["DonorId",
+                                          "Potential Duplicates"])
+                    )
+                output_df.to_csv(potential_donor_duplicates_filename,
+                                 index=False)
+
+            # Create mappings for cleansed ID and Name
+            id_to_cleansed = {}
+            name_to_cleansed = {}
+
+            for main_id, duplicate_ids in potential_duplicates.items():
+                all_ids = [main_id] + duplicate_ids
+                cleansed_id = min(all_ids)  # Choose the smallest DonorId
+
+                # Get all names corresponding to these IDs
+                matching_names = (
+                    loaddata_df[loaddata_df["DonorId"]
+                                .isin(all_ids)]["DonorName"]
+                )
+                # Choose the most frequent name
+                cleansed_name = matching_names.value_counts().idxmax()
+
+                # Store mappings
+                for donor_id in all_ids:
+                    id_to_cleansed[donor_id] = cleansed_id
+                    name_to_cleansed[donor_id] = cleansed_name
+
+            # convert DonorId = "" to null
+            loaddata_df['DonorId'] = loaddata_df['DonorId'].replace("", pd.NA)
+
+            # Apply mappings to the dataset
+            loaddata_df["CleansedDonorID"] = (
+                loaddata_df["DonorId"]
+                .map(id_to_cleansed)
+                .fillna(loaddata_df["DonorId"])
+                )
+            loaddata_df["CleansedDonorName"] = (
+                loaddata_df["DonorId"]
+                .map(name_to_cleansed)
+                .fillna(loaddata_df["DonorName"])
+                )
+            # rename DonorId to Original DonorId and DonorName
+            # to Original DonorName
+            loaddata_df.rename(columns={"DonorId": "OriginalDonorId",
+                               "DonorName": "OriginalDonorName"},
+                               inplace=True)
+            # rename Cleansed Donor ID to DonorId and Cleansed Donor Name
+            # to DonorName
+            loaddata_df.rename(columns={"CleansedDonorID": "DonorId",
+                               "CleansedDonorName": "DonorName"},
+                               inplace=True)
 
     # Remove Northern Ireland register data
-    df = df[df["RegisterName"] != "Northern Ireland"]
+    # loaddata_df = (
+        # loaddata_df[loaddata_df["RegisterName"] != "Northern Ireland"])
     # Remove Public Funds
-    df = df[df["DonationType"] != "Public Funds"]
+    # loaddata_df = (
+        # loaddata_df[loaddata_df["DonationType"] != "Public Funds"])
 
     # generate CSV file of original data
     if output_csv:
-        original_data_filename = (
-            st.session_state.filenames["original_data_fname"]
+        cleaned_donations = (
+            st.session_state.filenames["cleaned_donations_fname"]
         )
-        originaldatafilepath = os.path.join(base_dir,
-                                            original_data_filename)
-        df.to_csv(originaldatafilepath)
-    return df
+        cleaned_donations = os.path.join(output_dir,
+                                         cleaned_donations)
+        loaddata_df.to_csv(cleaned_donations)
+    return loaddata_df
 
 
-def create_thresholds(use_streamlit=True):
-    thresholds = {
-        0: "No Relevant Donations",
-        1: "Single Donation Entity",
-        50: "Very Small Entity",
-        100: "Small Entity",
-        1000: "Medium Entity",
-        float('inf'): "Large Entity"
-    }
-
-    if use_streamlit:
-        if 'g_thresholds' not in st.session_state:
-            st.session_state.g_thresholds = thresholds
-        return st.session_state.g_thresholds
-    else:
-        return thresholds
-
-
-def load_party_summary_data(datafile=None,
-                            streamlitrun=True,
-                            output_csv=False):
+def load_entity_summary_data(datafile=None,
+                             streamlitrun=True,
+                             output_csv=False):
     if streamlitrun:
-        df = st.session_state.get("data", None)
-        if df is None:
+        entitysummary_df = st.session_state.get("data", None)
+        if entitysummary_df is None:
             st.error("No data found in session state!")
             return None
     else:
         if datafile is None:
-            df = df
+            st.error("No data found in session state!")
         else:
-            df = datafile
+            entitysummary_df = datafile
     # Create a DataFrame with the sum, count and mean of the donations
     # for each RegulatedEntityName
     RegulatedEntity_df = (
-        df.groupby(['RegulatedEntityName'])
+        entitysummary_df.groupby(['RegulatedEntityName'])
         .agg({'Value': ['sum', 'count', 'mean']}).reset_index()
     )
     # Rename columns
@@ -384,19 +520,17 @@ def load_party_summary_data(datafile=None,
 
     # Add RegEntity_Group column
     RegulatedEntity_df['RegEntity_Group'] = (
-        RegulatedEntity_df.apply(
-            lambda row: calculate_reg_entity_group(row['DonationEvents'],
-                                                   row['RegulatedEntityName']),
-            axis=1
-                                ))
+        RegulatedEntity_df['DonationEvents'].apply(
+            lambda x: st.session_state.thresholds.get(x, "Unknown")
+        ))
     # generate CSV file of summary data
     if output_csv:
-        base_dir = st.session_state.base_dir
+        output_dir = st.session_state.directories["output_dir"]
         party_filename = (
             st.session_state.filenames["party_summary_fname"]
         )
-        party_filename = os.path.join(base_dir,
-                                            party_filename)
+        party_filename = os.path.join(output_dir,
+                                      party_filename)
         RegulatedEntity_df.to_csv(party_filename)
 
     return RegulatedEntity_df
@@ -415,9 +549,9 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
             orig_df = datafile
 
     # create a copy of the original data
-    df = orig_df.copy()
+    loadclean_df = orig_df.copy()
     # convert DonorId = "" to null
-    df['DonorId'] = df['DonorId'].replace("", pd.NA)
+    loadclean_df['DonorId'] = loadclean_df['DonorId'].replace("", pd.NA)
     # Fill missing text fields with empty strings
     columns_to_fill = [
                 "ReceivedDate",
@@ -426,123 +560,165 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
                 "DonationAction",
                 "DonationType"
             ]
-    df[columns_to_fill] = df[columns_to_fill].replace("", pd.NA)
-
+    loadclean_df[columns_to_fill] = (
+        loadclean_df[columns_to_fill].replace("", pd.NA)
+    )
     # # Fill blank ReceivedDate with ReportedDate
-    df['ReceivedDate'] = df['ReceivedDate'].fillna(df['ReportedDate'])
+    loadclean_df['ReceivedDate'] = (
+        loadclean_df['ReceivedDate'].fillna(loadclean_df['ReportedDate'])
+    )
     # # Fill blank ReceivedDate with AcceptedDate
-    df['ReceivedDate'] = df['ReceivedDate'].fillna(df['AcceptedDate'])
+    loadclean_df['ReceivedDate'] = (
+        loadclean_df['ReceivedDate'].fillna(loadclean_df['AcceptedDate'])
+    )
     # # Convert 'ReportingPeriodName' to datetime if it contains dates at the e
-    df['ReportingPeriodName_Date'] = pd.to_datetime(
-         df['ReportingPeriodName'].str.strip().str[-10:],
+    loadclean_df['ReportingPeriodName_Date'] = pd.to_datetime(
+         loadclean_df['ReportingPeriodName'].str.strip().str[-10:],
          dayfirst=True,
          format='mixed',
          errors='coerce'
     ).dt.normalize()
     # # convert Received date to Date Format
-    df['ReceivedDate'] = pd.to_datetime(df['ReceivedDate'],
-                                        dayfirst=True,
-                                        format='mixed',
-                                        errors='coerce').dt.normalize()
+    loadclean_df['ReceivedDate'] = (
+        pd.to_datetime(loadclean_df['ReceivedDate'],
+                       dayfirst=True,
+                       format='mixed',
+                       errors='coerce').dt.normalize()
+    )
     # # Fill missing 'ReceivedDate' with dates from 'ReportingPeriodName'
-    df['ReceivedDate'] = df['ReceivedDate'].fillna(
-        df['ReportingPeriodName_Date'])
+    loadclean_df['ReceivedDate'] = (
+        loadclean_df['ReceivedDate']
+        .fillna(loadclean_df['ReportingPeriodName_Date'])
+    )
     # Set any remaining missing dates to 1900-01-01
-    # df["ReceivedDate"] = df["ReceivedDate"].fillna(dt.datetime(1900, 1, 1))
+    filldate = st.session_state.PLACEHOLDER_DATE
+    loadclean_df["ReceivedDate"] = (
+        loadclean_df["ReceivedDate"].fillna(filldate))
     # Create Year and Month columns
-    df["YearReceived"] = df["ReceivedDate"].dt.year
-    df["MonthReceived"] = df["ReceivedDate"].dt.month
-    df["YearMonthReceived"] = df["YearReceived"] * 100 + df["MonthReceived"]
-
+    loadclean_df["YearReceived"] = loadclean_df["ReceivedDate"].dt.year
+    loadclean_df["MonthReceived"] = loadclean_df["ReceivedDate"].dt.month
+    loadclean_df["YearMonthReceived"] = (
+        loadclean_df["YearReceived"] * 100 + loadclean_df["MonthReceived"]
+    )
     # Handle NatureOfDonation based on other fields
-    if "NatureOfDonation" in df.columns:
-        df["NatureOfDonation"] = (
-            df["NatureOfDonation"].fillna(
-                df["IsBequest"].map(lambda x: "Is A Bequest"
-                                    if str(x).lower() == "true" else None)
+    if "NatureOfDonation" in loadclean_df.columns:
+        loadclean_df["NatureOfDonation"] = (
+            loadclean_df["NatureOfDonation"].fillna(
+                loadclean_df["IsBequest"]
+                .map(lambda x: "Is A Bequest"
+                     if str(x).lower() == "true" else None)
                                    ))
-        df["NatureOfDonation"] = (
-            df["NatureOfDonation"].fillna(
-                df["IsAggregation"].map(lambda x: "Aggregated Donation"
-                                        if str(x).lower() == "true" else None)
+        loadclean_df["NatureOfDonation"] = (
+            loadclean_df["NatureOfDonation"].fillna(
+                loadclean_df["IsAggregation"]
+                .map(lambda x: "Aggregated Donation"
+                     if str(x).lower() == "true" else None)
                                     ))
-        df["NatureOfDonation"] = (
-            df["NatureOfDonation"].fillna(
-                df["IsSponsorship"].map(lambda x: "Sponsorship"
-                                        if str(x).lower() == "true" else None)
+        loadclean_df["NatureOfDonation"] = (
+            loadclean_df["NatureOfDonation"].fillna(
+                loadclean_df["IsSponsorship"]
+                .map(lambda x: "Sponsorship"
+                     if str(x).lower() == "true" else None)
             ))
-        df["NatureOfDonation"] = (
-            df["NatureOfDonation"].fillna(
-                df["RegulatedDoneeType"].map(lambda x: f"Donation to {x}"
-                                             if pd.notna(x) else None)
-            ))
-        df["NatureOfDonation"] = (
-            df["NatureOfDonation"].fillna(
-                df["RegulatedEntityType"]
+        loadclean_df["NatureOfDonation"] = (
+            loadclean_df["NatureOfDonation"].fillna(
+                loadclean_df["RegulatedDoneeType"]
                 .map(lambda x: f"Donation to {x}"
                      if pd.notna(x) else None)
             ))
-        df["NatureOfDonation"] = df["NatureOfDonation"].replace(
-            {"Donation to nan": "Other", "Other Payment": "Other"}
-        )
-        df["NatureOfDonation"] = df["NatureOfDonation"].fillna(
-            df["DonationAction"].map(lambda x: f"{x}" if pd.notna(x) else None)
-        )
-        df["NatureOfDonation"] = df["NatureOfDonation"].fillna(
-            df["DonationType"].map(lambda x: f"{x}" if pd.notna(x) else None)
-        )
-        df["NatureOfDonation"] = df["NatureOfDonation"].fillna(
-            df["DonationType"].map(lambda x: f"{x}" if pd.notna(x) else None)
-        )
-        df['NatureOfDonation'] = df['NatureOfDonation'].replace("Donation to ",
-                                                                "Other")
+        loadclean_df["NatureOfDonation"] = (
+            loadclean_df["NatureOfDonation"].fillna(
+                loadclean_df["RegulatedEntityType"]
+                .map(lambda x: f"Donation to {x}"
+                     if pd.notna(x) else None)
+            ))
+        loadclean_df["NatureOfDonation"] = (
+            loadclean_df["NatureOfDonation"].replace(
+                {"Donation to nan": "Other", "Other Payment": "Other"}
+            ))
+        loadclean_df["NatureOfDonation"] = (
+            loadclean_df["NatureOfDonation"].fillna(
+                loadclean_df["DonationAction"].map(lambda x: f"{x}"
+                                                   if pd.notna(x) else None)
+            ))
+        loadclean_df["NatureOfDonation"] = (
+            loadclean_df["NatureOfDonation"].fillna(
+                loadclean_df["DonationType"].map(lambda x: f"{x}"
+                                                 if pd.notna(x) else None)
+            ))
+        loadclean_df["NatureOfDonation"] = (
+            loadclean_df["NatureOfDonation"].fillna(
+                loadclean_df["DonationType"].map(lambda x: f"{x}"
+                                                 if pd.notna(x) else None)
+            ))
+        loadclean_df['NatureOfDonation'] = (
+            loadclean_df['NatureOfDonation'].replace("Donation to ", "Other"))
 
     # Create a DubiousData flag for problematic records
-    if "PLACEHOLDER_DATE" not in st.session_state or "PLACEHOLDER_ID" not in st.session_state:
-        raise ValueError("Session state variables PLACEHOLDER_DATE and PLACEHOLDER_ID must be initialized before use.")
+    if (("PLACEHOLDER_DATE" not in st.session_state) or
+            ("PLACEHOLDER_ID" not in st.session_state)):
+        raise ValueError("Session state variables PLACEHOLDER_DATE "
+                         "and PLACEHOLDER_ID must be initialized before use.")
 
     if "dubious_donation_types" not in st.session_state:
-        raise ValueError("Session state variable dubious_donation_types must be initialized before use.")
+        raise ValueError("Session state variable dubious_donation_types must"
+                         " be initialized before use.")
 
     if "safe_donor_types" not in st.session_state:
-        raise ValueError("Session state variables PLACEHOLDER_DATE and PLACEHOLDER_ID must be initialized before use.")
+        raise ValueError("Session state variables PLACEHOLDER_DATE and"
+                         " PLACEHOLDER_ID must be initialized before use.")
 
     # Extend dubious donor criteria using session state variables
-    df["DubiousDonor"] = (
-        df["DonorId"].eq(st.session_state.PLACEHOLDER_ID).astype(int) +
-        (df["DonorName"]
+    loadclean_df["DubiousDonor"] = (
+        (loadclean_df["DonorId"]
+         .eq(st.session_state.PLACEHOLDER_ID)
+         .astype(int)) +
+        (loadclean_df["DonorName"]
          .isin(["Unidentified Donor", "Anonymous Donor"])
          .astype(int)) +
-        (df["DonationType"]
+        (loadclean_df["DonationType"]
          .isin(["Unidentified Donor", "Impermissible Donor"])
          .astype(int))
     )
 
     # Use session state variables
 # Use session state variables
-    df["DubiousData"] = (
-        df["DubiousDonor"] +
-        df["DonationType"].isin(st.session_state.dubious_donation_types).astype(int) +
-        df["DonationAction"].ne("Accepted").astype(int) +
-        df["IsAggregation"].eq("True").astype(int) +
-        df["NatureOfDonation"].eq("Aggregated Donation").astype(int) +
-        df["ReceivedDate"].eq(st.session_state.PLACEHOLDER_DATE).astype(int) +
-        df["RegulatedEntityId"].eq(st.session_state.PLACEHOLDER_ID).astype(int) +
-        df["RegulatedEntityName"].eq("Unidentified Entity").astype(int) +
-        df["DonorId"].eq(st.session_state.PLACEHOLDER_ID).astype(int) +
-        df["DonorName"].eq("Unidentified Donor").astype(int) -
-        df["DonorStatus"].isin(st.session_state.safe_donor_types).astype(int) -  # Safe donors should be excluded
-        ((df["IsAggregation"].eq("True")) & df["DonorStatus"].isin(st.session_state.safe_donor_types)).astype(int)  # Fixing subtraction
+    loadclean_df["DubiousData"] = (
+        loadclean_df["DubiousDonor"] +
+        (loadclean_df["DonationType"]
+         .isin(st.session_state
+               .dubious_donation_types).astype(int)) +
+        loadclean_df["DonationAction"].ne("Accepted").astype(int) +
+        loadclean_df["IsAggregation"].eq("True").astype(int) +
+        (loadclean_df["NatureOfDonation"]
+         .eq("Aggregated Donation")
+         .astype(int)) +
+        (loadclean_df["ReceivedDate"]
+         .eq(st.session_state.PLACEHOLDER_DATE)
+         .astype(int)) +
+        (loadclean_df["RegulatedEntityId"]
+         .eq(st.session_state.PLACEHOLDER_ID).astype(int)) +
+        (loadclean_df["RegulatedEntityName"]
+         .eq("Unidentified Entity")
+         .astype(int)) +
+        (loadclean_df["DonorId"]
+         .eq(st.session_state.PLACEHOLDER_ID)
+         .astype(int)) +
+        loadclean_df["DonorName"].eq("Unidentified Donor").astype(int) -
+        (loadclean_df["DonorStatus"].isin(st.session_state.safe_donor_types)
+            .astype(int)) -  # Safe donors should be excluded
+        (((loadclean_df["IsAggregation"].eq("True")) &
+         (loadclean_df["DonorStatus"].isin(st.session_state.safe_donor_types)))
+         .astype(int))  # Fixing subtraction
     )
 
-
     # Create simple column to enable count of events using sum
-    df["EventCount"] = 1
+    loadclean_df["EventCount"] = 1
 
     # Load party summary data to get RegEntity_Group
     RegulatedEntity_df = st.session_state.get("data_party_sum", None)
     if RegulatedEntity_df is None:
-        RegulatedEntity_df = load_party_summary_data()
+        RegulatedEntity_df = load_entity_summary_data()
         st.session_state["data_party_sum"] = RegulatedEntity_df
 
     # Create a dictionary to map RegulatedEntityName to RegEntity_Group
@@ -553,32 +729,32 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
         )
 
     # Apply dictionary to populate RegEntity_Group
-    if "RegulatedEntityName" in df.columns:
-        df["RegEntity_Group"] = (
-            df["RegulatedEntityName"]
+    if "RegulatedEntityName" in loadclean_df.columns:
+        loadclean_df["RegEntity_Group"] = (
+            loadclean_df["RegulatedEntityName"]
             .map(lambda x: reg_entity_dict.get(x, {})
                  .get("RegEntity_Group", "Unknown"))
         )
     # Ensure all columns that are in data are also in data_clean
     for col in orig_df.columns:
-        if col not in df.columns:
-            df[col] = orig_df[col]
+        if col not in loadclean_df.columns:
+            loadclean_df[col] = orig_df[col]
 
     # Drop Columns that are not needed
-    df = df.drop(['ReportingPeriodName_Date',
-                  'IsIrishSource',
-                  'AccountingUnitsAsCentralParty',
-                  'AccountingUnitName',
-                  'AcceptedDate',
-                  'ReportedDate',
-                  'IsReportedPrePoll',
-                  'AccountingUnitId',
-                  'Postcode',
-                  'CompanyRegistrationNumber',
-                  'CampaigningName'
-                  ],
-                 axis=1)
-
+    loadclean_df = (
+        loadclean_df.drop(['ReportingPeriodName_Date',
+                           'IsIrishSource',
+                           'AccountingUnitsAsCentralParty',
+                           'AccountingUnitName',
+                           'AcceptedDate',
+                           'ReportedDate',
+                           'IsReportedPrePoll',
+                           'AccountingUnitId',
+                           'Postcode',
+                           'CompanyRegistrationNumber',
+                           'CampaigningName'
+                           ], axis=1)
+        )
     # # Calculate the number of days to the next election
     # df["DaysTillNextElection"] = df["ReceivedDate"].map(
     #     lambda x: ger.GenElectionRelation2(x,
@@ -614,102 +790,89 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
     # )
     # Save cleaned data
     if output_csv:
-        base_dir = st.session_state.base_dir
+        output_dir = st.session_state.directories["output_dir"]
         cleaned_data_filename = (
             st.session_state.filenames["cleaned_data_fname"]
         )
         cleaned_data_filename = (
-            os.path.join(base_dir, cleaned_data_filename)
+            os.path.join(output_dir, cleaned_data_filename)
         )
-        RegulatedEntity_df.to_csv(cleaned_data_filename)
+        # Save the cleaned data to a CSV file for further analysis or reporting
+        loadclean_df.to_csv(cleaned_data_filename)
 
-    return df
+    return loadclean_df
 
 
 def load_donorList_data(datafile=None, streamlitrun=True, output_csv=False):
     if streamlitrun:
-        orig_df = st.session_state.get("data_clean", None)
-        if orig_df is None:
+        donorlist_df = st.session_state.get("data_clean", None)
+        if donorlist_df is None:
             st.error("No data found in session state!")
             return None
     else:
         if datafile is None:
-            orig_df = orig_df
+            donorlist_df = donorlist_df
         else:
-            orig_df = datafile
-    orig_df = (
-        orig_df.groupby(['DonorId',
-                         'DonorName'])
-               .agg({'Value': ['sum',
-                               'count',
-                               'mean']}).reset_index()
+            donorlist_df = datafile
+    donorlist_df = (
+        donorlist_df.groupby(['DonorId',
+                              'DonorName'])
+                    .agg({'Value': ['sum',
+                                    'count',
+                                    'mean']}).reset_index()
     )
-    orig_df.columns = ['DonorId',
-                       'Donor Name',
-                       'Donations Value',
-                       'Donation Events',
-                       'Donation Mean']
+    donorlist_df.columns = ['DonorId',
+                            'Donor Name',
+                            'Donations Value',
+                            'Donation Events',
+                            'Donation Mean']
     if output_csv:
-        base_dir = st.session_state.base_dir
+        output_dir = st.session_state.directories["output_dir"]
         cleaned_donor_filename = (
             st.session_state.filenames["cleaned_donorlist_fname"]
         )
-        cleaned_donor_filename = os.path.join(base_dir,
+        cleaned_donor_filename = os.path.join(output_dir,
                                               cleaned_donor_filename)
-        orig_df.to_csv(cleaned_donor_filename)
+        donorlist_df.to_csv(cleaned_donor_filename)
 
-    return orig_df
+    return donorlist_df
 
 
 def load_regulated_entity_data(datafile=None,
                                streamlitrun=True,
                                output_csv=False):
     if streamlitrun:
-        orig_df = st.session_state.get("data_clean", None)
-        if orig_df is None:
+        regent_df = st.session_state.get("data_clean", None)
+        if regent_df is None:
             st.error("No data found in session state!")
             return None
     else:
         if datafile is None:
-            orig_df = orig_df
+            regent_df = regent_df
         else:
-            orig_df = datafile
-    orig_df = (
-        orig_df.groupby(['RegulatedEntityId',
-                         'RegulatedEntityName',
-                         'RegEntity_Group'])
-               .agg({'Value': ['sum',
-                               'count',
-                               'mean']}).reset_index()
+            regent_df = datafile
+    regent_df = (
+        regent_df.groupby(['RegulatedEntityId',
+                           'RegulatedEntityName',
+                           'RegEntity_Group'])
+                 .agg({'Value': ['sum',
+                                 'count',
+                                 'mean']}).reset_index()
     )
-    orig_df.columns = ['RegulatedEntityId',
-                       'Regulated Entity Name',
-                       'Regulated Entity Group',
-                       'Donations Value',
-                       'Donation Events',
-                       'Donation Mean']
+    regent_df.columns = ['RegulatedEntityId',
+                         'Regulated Entity Name',
+                         'Regulated Entity Group',
+                         'Donations Value',
+                         'Donation Events',
+                         'Donation Mean']
     if output_csv:
-        base_dir = st.session_state.base_dir
+        output_dir = st.session_state.directories["output_dir"]
         cleaned_regentity_filename = (
             st.session_state.filenames["cleaned_regentity_fname"]
         )
         cleaned_regentity_filename = (
-            os.path.join(base_dir, cleaned_regentity_filename)
+            os.path.join(output_dir, cleaned_regentity_filename)
         )
-        orig_df.to_csv(cleaned_regentity_filename)
+        regent_df.to_csv(cleaned_regentity_filename)
 
-    return orig_df
-
-
-def calculate_reg_entity_group(donation_events,
-                               entity_name,
-                               use_streamlit=True):
-    thresholds = create_thresholds(use_streamlit=use_streamlit).copy()
-
-    # Add the new threshold with entity_name
-    thresholds[float("inf")] = entity_name
-
-    # Loop through the thresholds to find the corresponding category
-    for limit, category in thresholds.items():
-        if donation_events <= limit:
-            return category
+    return regent_df

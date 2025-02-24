@@ -2,6 +2,7 @@
 
 import streamlit as st
 import config  # Import the config file
+import os
 
 """
  To use the session_state object, you need to define the global variables
@@ -38,7 +39,20 @@ def initialize_session_state():
 
     if "PLACEHOLDER_ID" not in st.session_state:
         st.session_state.PLACEHOLDER_ID = config.PLACEHOLDER_ID
-    
+
     # Initialize thresholds
     if "thresholds" not in st.session_state:
         st.session_state.thresholds = config.THRESHOLDS
+
+    # Initialize partyparents
+    if "partyparents" not in st.session_state:
+        st.session_state.partyparents = config.PARTYPARENTS
+
+    # Initialize directories
+    if "directories" not in st.session_state:
+        st.session_state.directories = config.DIRECTORIES
+
+    # ensure directories exist
+    for key, value in st.session_state.directories.items():
+        if not os.path.exists(value):
+            os.makedirs(value)  # create the directory if it does not exist

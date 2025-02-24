@@ -167,10 +167,10 @@ if testdata:
     print(df[['OriginalRegulatedEntityName',
               'CleanedName',
               'PoliticalParty_pdpy']].head())
-    #print count of records by party
+    # print count of records by party
     print("count of records by party")
     print(df['PoliticalParty_pdpy'].value_counts())
-    
+
 # Save final dataset
 final_file_path = os.path.join(base_dir, "ListOfPoliticalPeople_Final.csv")
 df.to_csv(final_file_path, index=False)
