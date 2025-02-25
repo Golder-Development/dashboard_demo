@@ -1,4 +1,5 @@
 import streamlit as st
+from utils.version import get_git_version as get_git_version
 
 
 # Define a class for managing multiple pages in a Streamlit app
@@ -22,10 +23,13 @@ class MultiPage:
     def add_page(self, title, func) -> None:
         self.pages.append({"title": title, "function": func})
 
+
     # Method to run the app
     def run(self):
         st.title(self.app_name)  # Display the app title
-        page = st.sidebar.radio("Menu",
+        st.text(f"Version: {get_git_version()}")  # Display the app version
+        page = (st.sidebar.radio("Menu",
                                 self.pages,
                                 format_func=lambda page: page["title"])
+                )
         page["function"]()  # Run the selected page's function

@@ -375,7 +375,7 @@ def dubiousdonationsByDonor_body():
                  " so variance to average is not relevant.")
     st.write("### Visuals")
     if not filtered_df2.empty:
-        filtered_df2 = filtered_df2.query("DubiousData >=1")
+        filtered_df2 = ppcalc.get_dubious_donations(filtered_df2)
         vis.plot_bar_line_by_year(
             filtered_df2,
             XValues="YearReceived",

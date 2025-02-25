@@ -351,3 +351,50 @@ def compute_summary_statistics(df, filters):
         "value_stdev": value_stdev,
         "noofdonors_per_ent_stdev": noofdonors_per_ent_stdev
     }
+
+
+def determine_groups_optimized(df, entity, measure, thresholds_dict):
+    """
+    Optimized version of group determination.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing entity and measure columns.
+        entity (str): Column name representing the entity.
+        measure (str): Column name representing the numeric measure.
+        thresholds_dict (dict): Dictionary mapping (low, high)
+        tuples to group labels.
+
+    Returns:
+        pd.Series: A Series containing assigned groups for each row.
+    """
+    # Step 1: Compute total measure per entity
+    # (avoiding duplicate calculations)
+    entity_totals = df.groupby(entity)[measure].sum().to_dict()
+
+    # Step 2: Convert entity totals into a DataFrame for fast merging
+    total_df = pd.DataFrame(list(entity_totals.items()),
+                            columns=[entity,
+                                     "total_measure"])
+
+    # Step 3: Assign groups based on thresholds
+    def assign_group(total):
+        """Assigns a group based on thresholds or
+        returns the entity name if above max threshold."""
+        for (low, high), group_name in thresholds_dict.items():
+            if low <= total <= high:
+                return group_name
+        return None  # If no group matches, will be handled later
+
+    # Apply the threshold mapping
+    total_df["group"] = total_df["total_measure"].apply(assign_group)
+
+    # Step 4: Ensure entities above the max threshold
+    # are assigned their entity name
+    max_threshold = max(high for (_, high) in thresholds_dict.keys())
+    total_df.loc[total_df["total_measure"] >
+                 max_threshold, "group"] = total_df[entity]
+
+    # Step 5: Merge back into the original DataFrame
+    df = df.merge(total_df[[entity, "group"]], on=entity, how="left")
+
+    return df["group"]
