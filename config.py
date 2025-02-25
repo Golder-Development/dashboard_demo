@@ -59,7 +59,9 @@ THRESHOLDS = {
     (2, 5): "Very Small Entity",
     (6, 15): "Small Entity",
     (16, 100): "Small Medium Entity",
-    (101, 200): "Medium Entity"
+    (101, 200): "Medium Entity",
+    (201, 500): "Medium Large Entity",
+    (501, 1000): "Large Entity"
 }
 
 # PartyParent RegulatedEntityId's

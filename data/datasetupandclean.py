@@ -224,10 +224,11 @@ def load_entity_summary_data(datafile=None,
 
     # Add RegEntity_Group column based on thresholds
     thresholds = st.session_state.thresholds
-    RegulatedEntity_df['RegEntity_Group'] = calc.determine_groups_optimized(RegulatedEntity_df,
-                       'RegulatedEntityName',
-                       "DonationEvents",
-                       thresholds)
+    RegulatedEntity_df['RegEntity_Group'] = (
+        calc.determine_groups_optimized(RegulatedEntity_df,
+                                        'RegulatedEntityName',
+                                        "DonationEvents",
+                                        thresholds))
 
     # generate CSV file of summary data
     if output_csv:
