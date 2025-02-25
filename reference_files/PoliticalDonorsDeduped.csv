@@ -1,4 +1,4 @@
-ParentDonorId,DonorId,ParentDonorName,OriginalDonorName,DonorStatus2
+CleanedDonorId,DonorId,ParentDonorName,CleanedDonorName,DonorStatus2
 87184,87184,@Unbound,@Unbound,Company
 44568,44568,11 Kbw,11 Kbw,Other
 67391,67391,1900 Club,1900 Club,Unincorporated Association

@@ -54,12 +54,12 @@ PLACEHOLDER_ID = 1000001
 
 # Threshold for donations
 THRESHOLDS = {
-    0: "No Relevant Donations",
-    1: "Single Donation Entity",
-    50: "Very Small Entity",
-    150: "Small Entity",
-    1500: "Medium Entity",
-    2500: "Large Entity"
+    (0, 0): "No Relevant Donations",
+    (1, 1): "Single Donation Entity",
+    (2, 5): "Very Small Entity",
+    (6, 15): "Small Entity",
+    (16, 100): "Small Medium Entity",
+    (101, 200): "Medium Entity"
 }
 
 # PartyParent RegulatedEntityId's
@@ -72,4 +72,31 @@ PARTYPARENTS = {
     "Plaid Cymru": 77,
     "UK Independence Party (UKIP)": 85,
     "Unknown": 0
+}
+
+# Data remappings
+DATA_REMAPPINGS = {
+    "NatureOfDonation": {
+        "IsBequest": "Is A Bequest",
+        "IsAggregation": "Aggregated Donation",
+        "IsSponsorship": "Sponsorship",
+        "Donation to nan": "Other",
+        "Other Payment": "Other"
+    },
+    "DonationAction": {
+        "Donation to Political Party": "Donation to Political Party",
+        "Donation to Regulated Donee": "Donation to Regulated Donee",
+        "Donation to Regulated Entity": "Donation to Regulated Entity",
+        "Donation to Unregulated Entity": "Donation to Unregulated Entity",
+        "Donation to Individual": "Donation to Individual",
+        "Donation to Other": "Donation to Other"
+    },
+    "DonationType": {
+        "Donation to Political Party": "Donation to Political Party",
+        "Donation to Regulated Donee": "Donation to Regulated Donee",
+        "Donation to Regulated Entity": "Donation to Regulated Entity",
+        "Donation to Unregulated Entity": "Donation to Unregulated Entity",
+        "Donation to Individual": "Donation to Individual",
+        "Donation to Other": "Donation to Other"
+    }
 }

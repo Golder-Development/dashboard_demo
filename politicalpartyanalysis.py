@@ -1,9 +1,9 @@
 import streamlit as st
-from data.data_loader import firstload
 from components.global_variables import initialize_session_state
-
-# initializations
 initialize_session_state()
+from data.data_loader import firstload
+# initializations
+
 
 from app_pages.multi_page import MultiPage
 from app_pages.introduction import introduction_body

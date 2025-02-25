@@ -1,16 +1,16 @@
 import streamlit as st
-from data.datasetupandclean import (load_cleaned_data, load_data,
+from data.datasetupandclean import (load_cleaned_data, load_raw_data,
                                     load_donorList_data,
                                     load_regulated_entity_data,
                                     load_entity_summary_data)
 
 
 @st.cache_data
-def get_data():
-    return load_data(output_csv=True,
-                     dedupe_donors=True,
-                     dedupe_regentity=True
-                     )
+def get_raw_data():
+    return load_raw_data(output_csv=True,
+                         dedupe_donors=True,
+                         dedupe_regentity=True
+                         )
 
 
 @st.cache_data
@@ -47,14 +47,14 @@ def firstload():
     #     create_thresholds()
 
     # Load and cache data correctly
-    if "data" not in st.session_state:
-        st.session_state["data"] = get_data()
-
-    if "data_party_sum" not in st.session_state:
-        st.session_state["data_party_sum"] = get_party_summary_data()
+    if "raw_data" not in st.session_state:
+        st.session_state["raw_data"] = get_raw_data()
 
     if "data_clean" not in st.session_state:
         st.session_state["data_clean"] = get_cleaned_data()
+
+    if "data_party_sum" not in st.session_state:
+        st.session_state["data_party_sum"] = get_party_summary_data()
 
     if "data_donor" not in st.session_state:
         st.session_state["data_donor"] = get_donor_data()
@@ -62,4 +62,3 @@ def firstload():
     if "data_regentity" not in st.session_state:
         st.session_state["data_regentity"] = get_regentity_data()
 
-    # Remove the loading message

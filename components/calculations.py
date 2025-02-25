@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 from components.filters import apply_filters
+import numpy as np
 
 # Convert placeholder date to datetime once
 PLACEHOLDER_DATE = st.session_state.PLACEHOLDER_DATE
@@ -351,3 +352,41 @@ def compute_summary_statistics(df, filters):
         "value_stdev": value_stdev,
         "noofdonors_per_ent_stdev": noofdonors_per_ent_stdev
     }
+
+
+def determine_groups_optimized(df, entity, measure, thresholds_dict):
+    """
+    Optimized version of group determination.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing entity and measure columns.
+        entity (str): Column name representing the entity.
+        measure (str): Column name representing the numeric measure.
+        thresholds_dict (dict): Dictionary mapping (low, high) tuples to group labels.
+
+    Returns:
+        pd.Series: A Series containing assigned groups for each row.
+    """
+    # Step 1: Compute total measure per entity (avoiding duplicate calculations)
+    entity_totals = df.groupby(entity)[measure].sum().to_dict()
+
+    # Step 2: Convert entity totals into a DataFrame for fast merging
+    total_df = pd.DataFrame(list(entity_totals.items()), columns=[entity, "total_measure"])
+
+    # Step 3: Vectorized threshold assignment using NumPy
+    bins = np.array([low for (low, high) in thresholds_dict.keys()]
+                    + [max(high for (_, high) in thresholds_dict.keys()) + 1])
+    labels = list(thresholds_dict.values())
+
+    total_df["group"] = pd.cut(total_df["total_measure"],
+                               bins=bins,
+                               labels=labels,
+                               include_lowest=True,
+                               right=True)
+
+    # Step 4: Merge back into the original DataFrame
+    df = df.merge(total_df[[entity, "group"]], on=entity, how="left")
+
+    return df["group"]
+
+

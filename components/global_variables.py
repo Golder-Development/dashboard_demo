@@ -48,6 +48,10 @@ def initialize_session_state():
     if "partyparents" not in st.session_state:
         st.session_state.partyparents = config.PARTYPARENTS
 
+    # Initialize data_mappings
+    if "data_remappings" not in st.session_state:
+        st.session_state.mappings = config.DATA_REMAPPINGS
+
     # Initialize directories
     if "directories" not in st.session_state:
         st.session_state.directories = config.DIRECTORIES

@@ -41,7 +41,7 @@ def plot_bar_line_by_year(
         CalcType = 'sum'
 
     grouped_data = (
-        Data.groupby([XValues, GGroup])[YValue]
+        Data.groupby([XValues, GGroup], observed=True)[YValue]
             .agg(aggregation_methods[CalcType])
             .reset_index()
     )
@@ -328,7 +328,7 @@ def plot_pie_chart(
 
     # Determine aggregation method
     if value_column:
-        data = df.groupby(category_column, as_index=False)[value_column].sum()
+        data = df.groupby(category_column, observed=True, as_index=False)[value_column].sum()
     else:
         data = df[category_column].value_counts().reset_index()
         data.columns = [category_column, "count"]
