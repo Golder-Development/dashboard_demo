@@ -1,8 +1,8 @@
 import streamlit as st
-from data.datasetupandclean import (load_cleaned_data, load_raw_data,
-                                    load_donorList_data,
-                                    load_regulated_entity_data,
-                                    load_entity_summary_data)
+from data.datasetupandclean import load_raw_data
+from data.clean_and_enhance import load_cleaned_data
+from data.data_utils import load_entity_summary_data
+from data.load_donor_regent_lists import load_donorList_data, load_regulated_entity_data
 
 
 @st.cache_data
@@ -61,4 +61,3 @@ def firstload():
 
     if "data_regentity" not in st.session_state:
         st.session_state["data_regentity"] = get_regentity_data()
-
