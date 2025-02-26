@@ -32,22 +32,6 @@ FILENAMES = {
     "original_data_fname": "original_data.csv"
 }
 
-# Safe Donors
-SAFE_DONORS = [
-    "Trade Union",
-    "Registered Political Party",
-    "Friendly Society",
-    "Public Fund"
-]
-
-# Dubious Donations
-DUBIOUS_DONATION_TYPES = [
-    "Impermissible Donor",
-    "Unidentified Donor",
-    "Total value of donations not reported individually",
-    "Aggregated Donation"
-]
-
 # Placeholder values
 PLACEHOLDER_DATE = pd.Timestamp("1900-01-01 00:00:00")
 PLACEHOLDER_ID = 1000001
@@ -64,18 +48,6 @@ THRESHOLDS = {
     (501, 1000): "Large Entity"
 }
 
-# PartyParent RegulatedEntityId's
-PARTYPARENTS = {
-    "Conservative": 52,
-    "Liberal Democrat": 90,
-    "Labour": 53,
-    "Scottish National Party": 102,
-    "Green Party": 63,
-    "Plaid Cymru": 77,
-    "UK Independence Party (UKIP)": 85,
-    "Unknown": 0
-}
-
 # Data remappings
 DATA_REMAPPINGS = {
     "NatureOfDonation": {
@@ -85,20 +57,58 @@ DATA_REMAPPINGS = {
         "Donation to nan": "Other",
         "Other Payment": "Other"
     },
-    "DonationAction": {
-        "Donation to Political Party": "Donation to Political Party",
-        "Donation to Regulated Donee": "Donation to Regulated Donee",
-        "Donation to Regulated Entity": "Donation to Regulated Entity",
-        "Donation to Unregulated Entity": "Donation to Unregulated Entity",
-        "Donation to Individual": "Donation to Individual",
-        "Donation to Other": "Donation to Other"
-    },
-    "DonationType": {
-        "Donation to Political Party": "Donation to Political Party",
-        "Donation to Regulated Donee": "Donation to Regulated Donee",
-        "Donation to Regulated Entity": "Donation to Regulated Entity",
-        "Donation to Unregulated Entity": "Donation to Unregulated Entity",
-        "Donation to Individual": "Donation to Individual",
-        "Donation to Other": "Donation to Other"
+    # Mapping of party name to RegulatedEntityId
+    "PartyParents": {
+        "Conservatives": 52,
+        "Labour": 53,
+        "Liberal Democrats": 90,
+        "Scottish National Party": 102,
+        "Green Party": 63,
+        "Plaid Cymru": 77,
+        "UKIP": 85,
+        "Unknown": 0
     }
 }
+
+# category filter definitions
+FILTER_DEF = {
+    "Sponsorships_ftr": {
+        "DonationType": "Sponsorship",
+        "NatureOfDonation": "Sponsorship",
+        "IsSponsorship": True
+        },
+    "ReturnedDonations_ftr": {
+        "DonationAction": ["Returned", "Forfeited", "returned", "forfeited"],
+        "DubiousData": list(range(1, 10))
+        },
+    "DubiousDonors_ftr": {
+        "DubiousDonor": list(range(1, 10))
+        },
+    "AggregatedDonations_ftr": {
+        "IsAggregation": True,
+        "DonationType": "Aggregated Donation"
+        },
+    "SafeDonors_ftr": {
+        "DonorType": ["Trade Union", "Registered Political Party",
+                      "Friendly Society", "Public Fund"]
+        },
+    "DubiousDonationType_ftr": {
+        "NatureOfDonation": ["Impermissible Donor",
+                             "Unidentified Donor",
+                             "Total value of donations not reported individually",
+                             "Aggregated Donation"]
+        },
+    "BlankDate_ftr": {
+        "ReceivedDate": [PLACEHOLDER_DATE, None]
+        },
+    "BlankDonor_ftr": {
+        "DonorId": ["1000001", None]
+        },
+    "BlankRegEntity_ftr": {
+        "RegulatedEntityId": ["1000001", None]
+        },
+    "DonatedVisits_ftr": {
+        "DonationType": "Visit",
+        "NatureOfDonation": "Visit"
+        },
+    }

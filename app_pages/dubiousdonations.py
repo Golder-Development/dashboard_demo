@@ -6,8 +6,6 @@ from components.calculations import (compute_summary_statistics,
                                      get_mindate,
                                      get_maxdate,
                                      calculate_percentage,
-                                     PLACEHOLDER_DATE,
-                                     PLACEHOLDER_ID,
                                      format_number)
 from components.Visualisations import (
                                        plot_bar_line_by_year)
@@ -28,7 +26,7 @@ def dubiousdonations_body():
         st.error("No data found. Please upload a dataset.")
         return
     # Define filter condition
-    current_target = {"DubiousData": [1, 2, 3, 4, 5]}
+    current_target = st.session_state["filter_def"].get("DubiousDonations_ftr")
     target_label = "Dubious Donation"
     filters = {}
     # Get min and max dates from the dataset
@@ -51,35 +49,30 @@ def dubiousdonations_body():
     # aggregated donations
     adstats = compute_summary_statistics(
         cleaned_c_d_df,
-        {"DonationType": "Aggregated"})
+        st.session_state["filter_def"].get("AggregatedDonations_ftr"))
     # Unidentified Donors
     udstats = compute_summary_statistics(
         cleaned_c_d_df,
-        {"DubiousDonor": [1, 2, 3, 4, 5]})
+        st.session_state["filter_def"].get("DubiousDonors_ftr"))
     # visits
     dvstats = compute_summary_statistics(
         cleaned_c_d_df,
-        {"DonationType": ["Visit", "visit"]})
+        st.session_state["filter_def"].get("DonatedVisits_ftr"))
     # returned and forfeited donations
-    return_filters = {"DonationAction": ["Returned",
-                                         "Forfeited",
-                                         "returned",
-                                         "forfeited"]}
+    return_filters = st.session_state["filter_def"].get("ReturnedDonations_ftr")
     rfdstats = compute_summary_statistics(
         cleaned_c_d_df, return_filters)
     # blank received date
-    blank_date_filters = {"ReceivedDate": PLACEHOLDER_DATE}
+    blank_date_filters = st.session_state["filter_def"].get("BlankDate_ftr")
     brdstats = compute_summary_statistics(
         cleaned_c_d_df, blank_date_filters)
     # blank regulated entity data
-    blank_reg_entity_filters = {"RegulatedEntityId": PLACEHOLDER_ID}
+    blank_reg_entity_filters = st.session_state["filter_def"].get("BlankRegEntity_ftr")
     bredstats = compute_summary_statistics(
         cleaned_c_d_df, blank_reg_entity_filters)
     # donated sponsorships
-    sponsorship_filters = {"DonationType": ["Sponsorship", "sponsorship"],
-                           "IsSponsorship": True}
     sponstats = compute_summary_statistics(
-        cleaned_c_d_df, sponsorship_filters)
+        cleaned_c_d_df, st.session_state["filter_def"].get("Sponsorships_ftr"))
     # all data
     ostats = compute_summary_statistics(cleaned_d_df, filters)
     # output stats
