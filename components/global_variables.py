@@ -26,13 +26,6 @@ def initialize_session_state():
     if "filenames" not in st.session_state:
         st.session_state.filenames = config.FILENAMES
 
-    # Initialize safe donors & dubious donation types
-    if "safe_donor_types" not in st.session_state:
-        st.session_state.safe_donor_types = config.SAFE_DONORS
-
-    if "dubious_donation_types" not in st.session_state:
-        st.session_state.dubious_donation_types = config.DUBIOUS_DONATION_TYPES
-
     # Initialize placeholders
     if "PLACEHOLDER_DATE" not in st.session_state:
         st.session_state.PLACEHOLDER_DATE = config.PLACEHOLDER_DATE
@@ -44,10 +37,6 @@ def initialize_session_state():
     if "thresholds" not in st.session_state:
         st.session_state.thresholds = config.THRESHOLDS
 
-    # Initialize partyparents
-    if "partyparents" not in st.session_state:
-        st.session_state.partyparents = config.PARTYPARENTS
-
     # Initialize data_mappings
     if "data_remappings" not in st.session_state:
         st.session_state.mappings = config.DATA_REMAPPINGS
@@ -55,6 +44,9 @@ def initialize_session_state():
     # Initialize directories
     if "directories" not in st.session_state:
         st.session_state.directories = config.DIRECTORIES
+
+    if "filter_def" not in st.session_state:
+        st.session_state.filter_def = config.FILTER_DEF
 
     # ensure directories exist
     for key, value in st.session_state.directories.items():

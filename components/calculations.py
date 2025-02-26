@@ -3,8 +3,8 @@ import streamlit as st
 from components.filters import apply_filters
 
 # Convert placeholder date to datetime once
-PLACEHOLDER_DATE = st.session_state.PLACEHOLDER_DATE
-PLACEHOLDER_ID = st.session_state.PLACEHOLDER_ID
+PLACEHOLDER_DATE = st.session_state.get("PLACEHOLDER_DATE")
+PLACEHOLDER_ID = st.session_state.get("PLACEHOLDER_ID")
 
 
 def count_unique_records(df, column, filters=None):
@@ -23,6 +23,12 @@ def count_null_values(df, column, filters=None):
     """Counts donations where a specific column has null (NaN) values."""
     df = apply_filters(df, filters)
     return df[column].isna().sum()
+
+def count_records_values(df, column, filters=None):
+    """Counts donations where a specific column has null (NaN) values."""
+    df = apply_filters(df, filters)
+    return df[column]["EventCount"].sum()
+
 
 
 # Specific functions using the generic ones
@@ -60,7 +66,7 @@ def get_blank_donor_name_ct(df, filters=None):
 
 
 def get_dubious_donors(df, filters=None):
-    filters = {"DubiousDonor": [1, 2, 3, 4, 5, 6]}
+    filters = st.session_state["filter_def"].get("DubiousDonor_ftr")
     return apply_filters(df, filters)
 
 
@@ -75,7 +81,7 @@ def get_dubious_donors_value(df, filters=None):
 
 
 def get_dubious_donations(df, filters=None):
-    filters = {"DubiousData": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+    filters = st.session_state["filter_def"].get("DubiousDonor_ftr")
     return apply_filters(df, filters)
 
 
@@ -144,8 +150,9 @@ def display_thresholds_table():
 
 def get_returned_donations_ct(df, filters=None):
     """Counts donations that have been returned."""
+    filter= {st.session_state["filter_def"].get("ReturnedDonation_ftr")}
     df = apply_filters(df, filters)
-    return df[df["DonationAction"] == "Returned"]["EventCount"].sum()
+    return df["EventCount"].sum()
 
 
 def get_returned_donations_value(df, filters=None):
