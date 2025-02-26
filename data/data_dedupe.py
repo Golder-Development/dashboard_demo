@@ -3,8 +3,7 @@ import streamlit as st
 import os
 from rapidfuzz import process, fuzz
 from collections import defaultdict
-from components import mappings as mp
-from components import calculations as calc
+
 
 def dedupe_entity_file(loaddata_dd_df,
                        entity,
