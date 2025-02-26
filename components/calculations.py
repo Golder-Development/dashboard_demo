@@ -24,11 +24,11 @@ def count_null_values(df, column, filters=None):
     df = apply_filters(df, filters)
     return df[column].isna().sum()
 
+
 def count_records_values(df, column, filters=None):
     """Counts donations where a specific column has null (NaN) values."""
     df = apply_filters(df, filters)
     return df[column]["EventCount"].sum()
-
 
 
 # Specific functions using the generic ones
@@ -150,8 +150,8 @@ def display_thresholds_table():
 
 def get_returned_donations_ct(df, filters=None):
     """Counts donations that have been returned."""
-    filter= {st.session_state["filter_def"].get("ReturnedDonation_ftr")}
-    df = apply_filters(df, filters)
+    retfilters = st.session_state["filter_def"].get("ReturnedDonation_ftr")
+    df = apply_filters(df, retfilters)
     return df["EventCount"].sum()
 
 

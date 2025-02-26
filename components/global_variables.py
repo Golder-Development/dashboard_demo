@@ -19,36 +19,55 @@ import os
 
 def initialize_session_state():
     """Load global variables into session_state if they are not already set."""
-    if "base_dir" not in st.session_state:
-        st.session_state.base_dir = config.BASE_DIR
+    # Define a helper function to initialize values from config
+    def init_state_var(var_name, config_value):
+        if var_name not in st.session_state:
+            st.session_state[var_name] = config_value
 
-    # Initialize filenames
-    if "filenames" not in st.session_state:
-        st.session_state.filenames = config.FILENAMES
-
-    # Initialize placeholders
-    if "PLACEHOLDER_DATE" not in st.session_state:
-        st.session_state.PLACEHOLDER_DATE = config.PLACEHOLDER_DATE
-
-    if "PLACEHOLDER_ID" not in st.session_state:
-        st.session_state.PLACEHOLDER_ID = config.PLACEHOLDER_ID
-
-    # Initialize thresholds
-    if "thresholds" not in st.session_state:
-        st.session_state.thresholds = config.THRESHOLDS
-
-    # Initialize data_mappings
-    if "data_remappings" not in st.session_state:
-        st.session_state.mappings = config.DATA_REMAPPINGS
+    # Initialize simple configuration values
+    init_state_var("BASE_DIR", config.BASE_DIR)
+    init_state_var("filenames", config.FILENAMES)
+    init_state_var("PLACEHOLDER_DATE", config.PLACEHOLDER_DATE)
+    init_state_var("PLACEHOLDER_ID", config.PLACEHOLDER_ID)
+    init_state_var("thresholds", config.THRESHOLDS)
+    init_state_var("data_remappings", config.DATA_REMAPPINGS)
+    init_state_var("filter_def", config.FILTER_DEF)
 
     # Initialize directories
-    if "directories" not in st.session_state:
-        st.session_state.directories = config.DIRECTORIES
+    init_state_var("directories", config.DIRECTORIES)
+    
+    # Ensure directories exist
+    for key, path in st.session_state.directories.items():
+        os.makedirs(path, exist_ok=True)  # Creates if not exists
 
-    if "filter_def" not in st.session_state:
-        st.session_state.filter_def = config.FILTER_DEF
+    # Initialize directory references
+    for dir_key in [
+        "reference_dir",
+        "data_dir",
+        "output_dir",
+        "logs_dir",
+        "components_dir",
+        "app_pages_dir",
+        "utils_dir"
+        ]:
+        init_state_var(dir_key, st.session_state["directories"].get(dir_key))
 
-    # ensure directories exist
-    for key, value in st.session_state.directories.items():
-        if not os.path.exists(value):
-            os.makedirs(value)  # create the directory if it does not exist
+
+    # Initialize directories
+    init_state_var("directories", config.DIRECTORIES)
+
+    # Ensure directories exist
+    for key, path in st.session_state.directories.items():
+        os.makedirs(path, exist_ok=True)  # Create directory if it doesn't exist
+
+    # Initialize filenames using correct directory mapping
+    for dir_key, filenames in config.FILENAMES.items():
+        if isinstance(filenames, dict):  # Ensure we only process dictionary entries
+            for fname_key, filename in filenames.items():
+                file_path = os.path.join(st.session_state["directories"].get(dir_key, ""), filename)
+                init_state_var(fname_key, file_path)
+
+    # Handle `base_data` separately (since it's stored as a tuple)
+    base_data_key, base_data_filename = config.FILENAMES["BASE_DIR"]
+    base_data_path = os.path.join(st.session_state["BASE_DIR"], base_data_filename)
+    init_state_var(base_data_key, base_data_path)

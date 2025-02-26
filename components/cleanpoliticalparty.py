@@ -4,13 +4,13 @@ import os
 import pdpy 
 
 # Define the base directory (can be adjusted if needed)
-base_dir = os.path.dirname(__file__)  # Gets the directory of the script
+BASE_DIR = os.path.dirname(__file__)  # Gets the directory of the script
 # change the directory to the parent directory and then to the data directory
-base_dir = os.path.join(base_dir, "..", "reference_files")
+BASE_DIR = os.path.join(BASE_DIR, "..", "reference_files")
 # Construct file paths dynamically
-file_path = os.path.join(base_dir, "ListOfPoliticalPeople.csv")
-mppartymemb_pypd_path = os.path.join(base_dir, "mppartymemb_pypd.csv")
-final_file_path = os.path.join(base_dir, "ListOfPoliticalPeople_Final.csv")
+file_path = os.path.join(BASE_DIR, "ListOfPoliticalPeople.csv")
+mppartymemb_pypd_path = os.path.join(BASE_DIR, "mppartymemb_pypd.csv")
+final_file_path = os.path.join(BASE_DIR, "ListOfPoliticalPeople_Final.csv")
 # Load dataset
 df = pd.read_csv(file_path)
 
@@ -173,7 +173,7 @@ if testdata:
 
 # Save final dataset
 ref_dir
-final_file_path = os.path.join(base_dir, "ListOfPoliticalPeople_Final.csv")
+final_file_path = os.path.join(BASE_DIR, "ListOfPoliticalPeople_Final.csv")
 df.to_csv(final_file_path, index=False)
 
 print(f"Processed file saved as: {final_file_path}")

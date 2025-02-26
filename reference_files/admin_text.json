@@ -1,0 +1,12 @@
+{
+    "Page1": {
+        "graph_explanation": {
+            "text": "This is the explanation for the graph.",
+            "is_deleted": false
+        },
+        "key_insight": {
+            "text": "Key insight for Page 1.",
+            "is_deleted": true
+        }
+    }
+}

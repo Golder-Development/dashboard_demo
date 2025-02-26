@@ -146,6 +146,11 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
         if col not in loadclean_df.columns:
             loadclean_df[col] = orig_df[col]
 
+    # change IsBequest, IsAggregation, IsSponsorship to boolean
+    loadclean_df["IsBequest"] = loadclean_df["IsBequest"].astype(bool)
+    loadclean_df["IsAggregation"] = loadclean_df["IsAggregation"].astype(bool)
+    loadclean_df["IsSponsorship"] = loadclean_df["IsSponsorship"].astype(bool)
+
     # Drop Columns that are not needed
     loadclean_df = (
         loadclean_df.drop([

@@ -3,6 +3,23 @@ import os
 from components import calculations as calc
 
 
+@st.cache_data
+def initialise_data():
+    """
+    initialises data for the app
+    """
+
+    loading_message = st.empty()
+    loading_message.markdown("<h3 style='text-align: center; color: blue;'>"
+                            "Please wait while the data sets are being "
+                            "calculated...</h3>", unsafe_allow_html=True)
+    from data.data_loader import firstload
+    firstload()  # Load the data
+
+    loading_message.empty()
+
+
+@st.cache_data
 def load_entity_summary_data(datafile=None,
                              streamlitrun=True,
                              output_csv=False):

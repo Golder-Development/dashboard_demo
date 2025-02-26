@@ -1,6 +1,13 @@
 import streamlit as st
-import components.calculations as ppcalc
 import components.Visualisations as vis
+from components.calculations import (format_number,
+                                     get_donors_ct,
+                                     get_donations_ct,
+                                     get_value_total,
+                                     get_median_donation,
+                                     get_mindate,
+                                     get_maxdate)
+
 from data.data_loader import load_cleaned_data
 
 
@@ -8,19 +15,19 @@ def donorsheadlinespage_body():
     """
     This function displays the content of Page two.
     """
-    cleaned_df = load_cleaned_data()
+    cleaned_df = st.session_state.get("data_clean", None)
     if cleaned_df is None:
         st.error("No data found. Please upload a dataset.")
         return
     donors_df = cleaned_df.copy()
     donors_df = donors_df[donors_df["DonorStatus"] != "Registered Political\
         Party"]
-    donors = ppcalc.get_donors_ct(donors_df)
-    donations = ppcalc.get_donations_ct(donors_df)
-    totaldonations = ppcalc.get_value_total(donors_df)
-    median_donation = ppcalc.get_median_donation(donors_df)
-    min_date = ppcalc.get_mindate(donors_df).date()
-    max_date = ppcalc.get_maxdate(donors_df).date()
+    donors = get_donors_ct(donors_df)
+    donations = get_donations_ct(donors_df)
+    totaldonations = get_value_total(donors_df)
+    median_donation = get_median_donation(donors_df)
+    min_date = get_mindate(donors_df).date()
+    max_date = get_maxdate(donors_df).date()
     avg_donations = donations/donors
     # create a summary dataframe of donors, count of donations, total value of
     # donations, median donation size, average donation size, number of
@@ -65,28 +72,26 @@ def donorsheadlinespage_body():
     donors_topline_summary['Regulated Entities_f'] = donors_topline_summary[
         'Average Number Donations per Entity'].apply(lambda x: f"{x:.0f}")
     donors_topline_summary['Total Donations £'] = donors_topline_summary[
-        'Total Value'].apply(lambda x: f"£{ppcalc.format_number(x)}")
+        'Total Value'].apply(lambda x: f"£{format_number(x)}")
     donors_topline_summary['Avg Donations'] = donors_topline_summary[
-        'Average Donation'].apply(lambda x: f"£{ppcalc.format_number(x)}")
+        'Average Donation'].apply(lambda x: f"£{format_number(x)}")
     donors_topline_summary['Median Donations'] = donors_topline_summary[
-        'Median Donation'].apply(lambda x: f"£{ppcalc.format_number(x)}")
+        'Median Donation'].apply(lambda x: f"£{format_number(x)}")
     donors_topline_summary['Avg Value Per Entity'] = (donors_topline_summary[
         'Average Value per Regulated Entity']
-        .apply(lambda x: f"£{ppcalc.format_number(x)}"))
+        .apply(lambda x: f"£{format_number(x)}"))
     donors_topline_summary['Avg No. Donations Per Entity'] = (
         donors_topline_summary['Average Number Donations per Entity']
         .apply(lambda x: f"{x:.2f}"))
     # Apply formating to values
-    donors = ppcalc.format_number(donors)
-    donations = ppcalc.format_number(donations)
-    totaldonations = ppcalc.format_number(totaldonations)
-    avg_donations = f"{avg_donations:.2f}"
-    median_donation = ppcalc.format_number(median_donation)
+    donors = format_number(donors)
+    donations = format_number(donations)
+    totaldonations = f"£{format_number(totaldonations)}"
+    avg_donations = f"£{avg_donations:.2f}"
+    median_donation = f"£{format_number(median_donation)}"
     st.write("---")
-    st.write("# Analysis of Political Donations by Donor"
-             f"\n ## between {min_date} and {max_date}")
-    st.write("---")
-    st.write("## Headline Figures")
+    st.write("### Analysis of Political Donations by Donor"
+             f"### between {min_date} and {max_date}")
     st.write("---")
     col1, col2 = st.columns(2)
     with col1:
@@ -315,5 +320,5 @@ def donorsheadlinespage_body():
     # Display the styled dataframe
     st.dataframe(donors_summary2_styled)
     st.write("---")
-    st.write("## Individual Donor Analysis and Data")
+    st.write("For more detailed analysis of individual donors, please visit the [Donors Per Donor Page](donors_per_donor_page.py).")
     st.write("---")

@@ -1,6 +1,5 @@
 import streamlit as st
 import datetime as dt
-from data.data_loader import load_cleaned_data
 from components.filters import filter_by_date, apply_filters
 from components.calculations import (compute_summary_statistics,
                                      get_mindate,
@@ -17,16 +16,13 @@ def dubiousdonations_body():
     """
     # Page Title
     st.write("---")
-    st.write("## Dubious Donations to "
-             "UK Regulated Political Entities")
-    st.write("---")
     # Load dataset
-    cleaned_df = load_cleaned_data()
+    cleaned_df = st.session_state.get("data_clean", None)
     if cleaned_df is None:
         st.error("No data found. Please upload a dataset.")
         return
     # Define filter condition
-    current_target = st.session_state["filter_def"].get("DubiousDonations_ftr")
+    current_target = {"DubiousData": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
     target_label = "Dubious Donation"
     filters = {}
     # Get min and max dates from the dataset
@@ -59,7 +55,9 @@ def dubiousdonations_body():
         cleaned_c_d_df,
         st.session_state["filter_def"].get("DonatedVisits_ftr"))
     # returned and forfeited donations
-    return_filters = st.session_state["filter_def"].get("ReturnedDonations_ftr")
+    return_filters = (
+        st.session_state["filter_def"].get("ReturnedDonations_ftr")
+    )
     rfdstats = compute_summary_statistics(
         cleaned_c_d_df, return_filters)
     # blank received date
@@ -67,7 +65,9 @@ def dubiousdonations_body():
     brdstats = compute_summary_statistics(
         cleaned_c_d_df, blank_date_filters)
     # blank regulated entity data
-    blank_reg_entity_filters = st.session_state["filter_def"].get("BlankRegEntity_ftr")
+    blank_reg_entity_filters = (
+        st.session_state["filter_def"].get("BlankRegEntity_ftr")
+    )
     bredstats = compute_summary_statistics(
         cleaned_c_d_df, blank_reg_entity_filters)
     # donated sponsorships
@@ -114,15 +114,15 @@ def dubiousdonations_body():
     max_date = get_maxdate(cleaned_d_df).date()
 
     # Format text
-    st.write(f"## Summary Statistics for {target_label},"
-             f" from {min_date} to {max_date}")
+    st.write(f"### Summary Statistics for {target_label}s,"
+             f"### from {min_date} to {max_date}")
     left, a, b, mid, c, right = st.columns(6)
     with left:
         st.metric(label=f"Total {target_label}",
                   value=f"£{tstats['total_value']:,.0f}")
     with a:
         st.metric(label=f"{target_label}%",
-                  value=f"{dubious_percent_of_value:.2f}%")
+                  value=f"{dubious_percent_of_value:.0f}%")
     with b:
         st.metric(label=f"{target_label}",
                   value=f"{tstats['unique_donations']:,}")
@@ -158,12 +158,12 @@ def dubiousdonations_body():
         st.write(f"From {min_date} to {max_date}"
                  f" there were {tstats['unique_donors']:,.0f} donors"
                  "  identified being involved with dubious donations."
-                 f" These donors represented {dubious_percent_of_donors:.2f}%"
+                 f" These donors represented {dubious_percent_of_donors:,.0f}%"
                  " of donors to regulated entities,"
                  f" and includes Impremissible Donors, Unidentified Donors "
                  f" and Aggregated Donors.  They donated a total of "
                  f"£{format_number(tstats['total_value'])},"
-                 f" which represented {dubious_donors_percent_of_value:.2f}%"
+                 f" which represented {dubious_donors_percent_of_value:.0f}%"
                  " of the total value of donations made in the period.")
     else:
         st.write("* No donations from dubious donors were identified.")
@@ -172,7 +172,7 @@ def dubiousdonations_body():
             f"* There were {tstats['unique_donations']:,.0f} donations that"
             " were identified as of questionable nature."
             f" These donations represented"
-            f" {dubious_percent_of_donation_actions:.2f}% "
+            f" {dubious_percent_of_donation_actions:.0f}% "
             "of all donations made in the period.")
     if brdstats["unique_donations"] >= 1:
         st.write(f"* {brdstats['unique_donations']} "
@@ -335,6 +335,7 @@ def dubiousdonations_body():
     st.write(
         "### or Check out Transparency International's"
         "[Recent Publication]"
-        "(https://www.transparency.org.uk/news/new-research-reveals-almost-ps1-every-ps10-political-donations-comes-unknown-or-questionable)"
+        "(https://www.transparency.org.uk/news/new-research-reveals-almost-ps1"
+        "-every-ps10-political-donations-comes-unknown-or-questionable)"
         "for more information on donations to UK Political Parties.")
     st.write("---")

@@ -28,8 +28,7 @@ def sponsorships_body_page():
         dt.datetime.combine(max_date, dt.datetime.max.time())
         )
     # Define filter condition
-    current_target = {"DonationType": ["sponsorship", "Sponsorship"],
-                      "IsSponsorship": "True"}
+    current_target = st.session_state["filter_def"].get("Sponsorships_ftr")
     target_label = "Sponsorship"
     filters = {}
 
@@ -86,14 +85,14 @@ def sponsorships_body_page():
                  " political entities.")
         st.write("* These are identified by the regulator and marked in the"
                  " data. "
-                 "This page provides a summary of the {target_label}s to "
+                 f"This page provides a summary of the {target_label}s to "
                  "political parties and other regulated political."
                  " organisations and entities.")
     with right:
         st.write("## Topline Figures")
         st.write(f"* During the period between {min_date_df} to {max_date_df},"
                  f" there were {tstats['unique_donations']:,.0f} "
-                 "{target_label}s made to "
+                 f"{target_label}s made to "
                  f"{tstats['unique_reg_entities']} regulated entities.")
         st.write(f"* These had a mean value of £"
                  f"{format_number(tstats['mean_value'])} "
@@ -126,7 +125,7 @@ def sponsorships_body_page():
                                   Title=f"Value of {target_label}s by Year and"
                                         " Entity",
                                   CalcType='sum',
-                                  use_custom_colors=True,
+                                  use_custom_colors=False,
                                   widget_key="Value_by_entity",
                                   ChartType='Bar',
                                   LegendTitle="Political Entity Type",

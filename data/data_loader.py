@@ -42,6 +42,7 @@ def get_regentity_data():
                                       streamlitrun=True)
 
 
+@st.cache_data
 def firstload():
     # Ensure g_thresholds is available as a global dictionary
     # if 'g_thresholds' not in st.session_state:
