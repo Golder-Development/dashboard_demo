@@ -24,6 +24,4 @@ rapidfuzz
 rapidfuzz
 streamlit
 pytest
-streamlit-multipage
 bcrypt
-json

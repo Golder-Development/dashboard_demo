@@ -125,14 +125,20 @@ def raw_data_cleanup(
     )
     if dedupe_regentity:
         loaddata_df = dedupe_entity_file(
-            loaddata_df, "RegulatedEntity", "regentity_map_fname", output_csv=True
+            loaddata_dd_df=loaddata_df,
+            entity="RegulatedEntity", 
+            map_filename="regentity_map_fname",
+            output_csv=True
         )
     else:
         st.write("Deduping of Regulated Entities not selected")
 
     if dedupe_donors:
         loaddata_df = dedupe_entity_file(
-            loaddata_df, "Donor", "donor_map_fname", output_csv=True
+            loaddata_dd_df=loaddata_df,
+            entity="Donor", 
+            map_filename="donor_map_fname",
+            output_csv=True
         )
     else:
         st.write("Deduping of Donors Entities not selected")

@@ -22,7 +22,7 @@ def dubiousdonations_body():
         st.error("No data found. Please upload a dataset.")
         return
     # Define filter condition
-    current_target = st.session_state.filter.get("DubiousDonations_ftr")
+    current_target = st.session_state.filter_def.get("DubiousDonations_ftr")
     target_label = "Dubious Donation"
     filters = {}
     # Get min and max dates from the dataset

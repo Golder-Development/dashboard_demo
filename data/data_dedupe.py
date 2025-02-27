@@ -8,8 +8,12 @@ from utils.decorators import log_function_call  # Import decorator
 
 
 def dedupe_entity_file(
-    loaddata_dd_df, entity, map_filename, threshold=85, output_csv=False
-):
+    loaddata_dd_df,
+    entity,
+    map_filename,
+    threshold=85,
+    output_csv=False
+    ):
     """
     loads a dedupe mapping file from reference folder and
     merges it with the original data.  Merges on field named
@@ -29,11 +33,14 @@ def dedupe_entity_file(
     # check that reentity_deduped file exists using global variables
     if map_filename not in st.session_state:
         raise ValueError(f"{map_filename} not found in session state filenames")
+        logger.info(f"map_filename: {map_filename}")
     else:
         # check that join on field exists in the data
         if entityid not in loaddata_dd_df.columns:
             raise ValueError(f"{entityid} not found in data")
+            logger.info(f"entityid filededupe: {enitytid}")
     # check that file exists at identified path from global var
+    logger.info(f"map_filename: {map_filename}")
     if os.path.exists(map_filename):
         logger.info("Dedupe by file")
         # load regentity_map_fname file using global variables
@@ -80,6 +87,8 @@ def dedupe_entity_file(
         return loaddata_dd_df
     else:
         # Run dedupe logic if file does not exist
+        logger.info(f"File {map_filename} not found, deduping by logic")
+        logger.info(f"dedupe_entity_fuzzy: {entityid}")
         loaddata_dd_df = dedupe_entity_fuzzy(
             loaddata_dd_df, entity, threshold=85, output_csv=output_csv
         )

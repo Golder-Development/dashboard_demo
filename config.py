@@ -38,7 +38,8 @@ FILENAMES = {
         "cleaned_regentity_fname": "cleaned_regentity.csv",
         "party_summary_fname": "party_summary.csv",
     },
-    "BASE_DIR": {"ec_donations_fname", "Donations_accepted_by_political_parties.csv"},
+    "BASE_DIR": {"ec_donations_fname",
+                 "Donations_accepted_by_political_parties.csv"},
 }
 
 # Placeholder values
