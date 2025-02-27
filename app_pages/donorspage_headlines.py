@@ -114,7 +114,7 @@ def donorsheadlinespage_body():
     st.write("---")
     st.write(
         "### Analysis of Political Donations by Donor"
-        f"### between {min_date} and {max_date}"
+        f" between {min_date} and {max_date}"
     )
     st.write("---")
     col1, col2 = st.columns(2)

@@ -104,12 +104,6 @@ def hlf_body():
         st.metric(label="Total Donors",
                   value=f"{format_number(unique_donors)}")
     st.write("---")
-    left, right = st.columns(2)
-    with left:
-        st.write("### Topline Visuals")
-    with right:
-        st.write("### Click on any Visualisation to view it full screen.")
-    st.write("---")
     mid, right = st.columns(2)
     with mid:
         if filtered_df.empty:

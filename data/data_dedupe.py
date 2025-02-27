@@ -28,7 +28,7 @@ def dedupe_entity_file(
     cleanedentityid = f"Cleaned{entity}Id"
     # check that reentity_deduped file exists using global variables
     if map_filename not in st.session_state:
-        raise ValueError(f"{map_filename} not found" " in session state filenames")
+        raise ValueError(f"{map_filename} not found in session state filenames")
     else:
         # check that join on field exists in the data
         if entityid not in loaddata_dd_df.columns:
