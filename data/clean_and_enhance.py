@@ -224,5 +224,5 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
         cleaned_data_filename = os.path.join(output_dir, cleaned_data_filename)
         # Save the cleaned data to a CSV file for further analysis or reporting
         loadclean_df.to_csv(cleaned_data_filename)
-
+    logger.info(f"Cleaned Data completed, shape: {loadclean_df.shape}")
     return loadclean_df

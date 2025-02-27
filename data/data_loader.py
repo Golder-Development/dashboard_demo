@@ -41,15 +41,16 @@ def firstload():
     # Load and cache data correctly
     if "raw_data" not in st.session_state:
         st.session_state["raw_data"] = get_raw_data()
-
+        logger.info("Load raw data complete")
     if "data_clean" not in st.session_state:
         st.session_state["data_clean"] = get_cleaned_data()
-
+        logger.info("Clean raw data complete")
     if "data_party_sum" not in st.session_state:
         st.session_state["data_party_sum"] = get_party_summary_data()
-
+        logger.info("Create data_party complete")
     if "data_donor" not in st.session_state:
         st.session_state["data_donor"] = get_donor_data()
-
+        logger.info("Create data_donorcomplete")
     if "data_regentity" not in st.session_state:
         st.session_state["data_regentity"] = get_regentity_data()
+        logger.info("Create Data regentity complete")

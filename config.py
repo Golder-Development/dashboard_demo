@@ -84,7 +84,7 @@ FILTER_DEF = {
     "Sponsorships_ftr": {
         "DonationType": "Sponsorship",
         "NatureOfDonation": "Sponsorship",
-        "IsSponsorship": True,
+        "IsSponsorship": "True",
     },
     "ReturnedDonations_ftr": {
         "DonationAction": ["Returned", "Forfeited"],
@@ -93,7 +93,7 @@ FILTER_DEF = {
     "DubiousDonors_ftr": {"DubiousDonor": list(range(1, 11))},
     "DubiousDonations_ftr": {"DubiousData": list(range(1, 11))},
     "AggregatedDonations_ftr": {
-        "IsAggregation": True,
+        "IsAggregation": "True",
         "DonationType": "Aggregated Donation",
     },
     "SafeDonors_ftr": {
@@ -116,7 +116,7 @@ FILTER_DEF = {
     "BlankDonor_ftr": {"DonorId": ["1000001", None, 1000001]},
     "BlankRegEntity_ftr": {"RegulatedEntityId": ["1000001", None, 1000001]},
     "DonatedVisits_ftr": {"DonationType": "Visit", "NatureOfDonation": "Visit"},
-    "Bequests_ftr": {"IsBequest": True},  # Changed from string to boolean
+    "Bequests_ftr": {"IsBequest": "True"},  # Changed from string to boolean
     "CorporateDonations_ftr": {
         "DonorStatus": ["Company", "Partnership", "Limited Liability Partnership"]
     },

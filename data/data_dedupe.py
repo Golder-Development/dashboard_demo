@@ -20,7 +20,6 @@ def dedupe_entity_file(
     and return the new data in loaddata_dd_df
     """
     # Load the data
-    ref_dir = st.session_state.directories["reference_dir"]
     originalentityname = f"Original{entity}Name"
     originalentityid = f"Original{entity}Id"
     entityname = f"{entity}Name"
@@ -36,6 +35,7 @@ def dedupe_entity_file(
             raise ValueError(f"{entityid} not found in data")
     # check that file exists at identified path from global var
     if os.path.exists(map_filename):
+        logger.info("Dedupe by file")
         # load regentity_map_fname file using global variables
         dedupedfilename = st.session_state[map_filename]
         dedupedfilepath = dedupedfilename
@@ -76,6 +76,7 @@ def dedupe_entity_file(
             },
             inplace=True,
         )
+        logger.info(f"Dedupe by file, shape: {loaddata_dd_df.shape}")
         return loaddata_dd_df
     else:
         # Run dedupe logic if file does not exist
@@ -87,7 +88,7 @@ def dedupe_entity_file(
 
 def dedupe_entity_fuzzy(deupedf, entity, threshold=85, output_csv=False):
     # Load the data
-    output_dir = st.session_state.output_dir
+    logger.info(f"Dedupe by logic")
     originalentityname = f"Original{entity}Name"
     originalentityid = f"Original{entity}Id"
     entityname = f"{entity}Name"
@@ -194,4 +195,5 @@ def dedupe_entity_fuzzy(deupedf, entity, threshold=85, output_csv=False):
         },
         inplace=True,
     )
+    logger.info(f"Dedupe by logic, shape: {loaddata_dd_df.shape}")
     return loaddata_dd_df

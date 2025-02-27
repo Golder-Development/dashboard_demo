@@ -25,17 +25,31 @@ def display_data_page(filter_key=None, target_label="default", entity="Donor"):
         cleaned_r_d_df,
         cleaned_c_r_df,
         cleaned_c_r_d_df,
-    ) = load_and_filter_pergroup(entity, filter_key, pageref_label)
-    perc_target = st.session_state.get("perc_target", 0.5)
+    ) = load_and_filter_pergroup(
+        groupentity=entity, filter_key=filter_key, pageref_label=pageref_label
+    )
+
     if cleaned_df is None:
         return
+
     (min_date, max_date, tstats, ostats, perc_target) = display_summary_statistics(
-        cleaned_c_r_d_df, cleaned_df, target_label, pageref_label
+        filtered_df=cleaned_c_r_d_df,
+        overall_df=cleaned_df,
+        target_label=target_label,
+        pageref_label=pageref_label,
     )
 
     display_textual_insights(
-        target_label, min_date, max_date, tstats, ostats, perc_target
+        pageref_label=pageref_label,
+        target_label=target_label,
+        min_date=min_date,
+        max_date=max_date,
+        tstats=tstats,
+        ostats=ostats,
+        perc_target=perc_target,
     )
 
     st.write("---")
-    display_visualizations(cleaned_c_r_d_df, target_label)
+    display_visualizations(
+        cleaned_c_r_d_df, target_label=target_label, pageref_label=pageref_label
+    )
