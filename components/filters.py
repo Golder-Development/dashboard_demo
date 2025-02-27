@@ -1,4 +1,6 @@
 import numpy as np
+from utils.logger import logger
+from utils.decorators import log_function_call  # Import decorator
 
 
 def filter_by_date(df, start_date, end_date, date_column="ReceivedDate"):
@@ -18,7 +20,6 @@ def apply_filters(df, providedfilters=None, logical_operator="or"):
         logical_operator (str, optional): Logical operator to combine
                                           conditions ("and" or "or").
                                           Default is "or".
-
     Returns:
         pd.DataFrame: Filtered DataFrame.
     """
@@ -42,7 +43,11 @@ def apply_filters(df, providedfilters=None, logical_operator="or"):
         final_condition = np.logical_and.reduce(conditions)
     elif logical_operator == "or":
         final_condition = np.logical_or.reduce(conditions)
+    elif logical_operator == "nor":
+        final_condition = ~np.logical_or.reduce(conditions)
+    elif logical_operator == "except":
+        final_condition = ~np.logical_and.reduce(conditions)
     else:
-        raise ValueError("logical_operator must be 'and' or 'or'")
+        raise ValueError("logical_operator must be " " 'and', 'or', 'nor', or 'except'")
 
     return df[final_condition]

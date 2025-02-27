@@ -7,9 +7,6 @@ def introduction_body():
     """
 
     # format text
-    st.write("---")
-    st.write("## Political Donation Analysis")
-    st.write("---")
     st.write('### Introduction')
     st.write("* This dashboard is a simple tool to provide insights into "
              "Political donations in the United Kingdom.")

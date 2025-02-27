@@ -7,7 +7,8 @@ from components.calculations import (compute_summary_statistics, get_mindate,
                                      format_number)
 from components.Visualisations import (plot_custom_bar_chart,
                                        plot_bar_line_by_year)
-
+from utils.logger import logger
+from utils.decorators import log_function_call  # Import decorator
 
 def cash_donations_page():
     """Displays the Cash Donations page in Streamlit."""

@@ -1,10 +1,13 @@
+from utils.logger import logger
+from utils.decorators import log_function_call  # Import decorator
+
+
 def map_mp_to_party():
     # if ListOfPoliticalPeople_Final.csv file does not exist:
     #     # import ListOfPoliticalPeople_Final.csv file
-    #     base_dir = st.session_state.base_dir
-    #     politician_party_filename = st.session_state.filenames
-    # ["politician_party_fname"]
-    #     politician_party_filepath = os.path.join(base_dir,
+    #     BASE_DIR = st.session_state.BASE_DIR
+    #     politician_party_filename = st.session_state.politician_party_fname
+    #     politician_party_filepath = os.path.join(BASE_DIR,
     # politician_party_filename)
     #     politician_party_df = pd.read_csv(politician_party_filepath)
     #     # merge ListOfPoliticalPeople_Final.csv file with original data

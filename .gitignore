@@ -6,3 +6,5 @@ Wireframes/
 devfiles/
 .pytest_cache/
 .devcontainer/
+app.log
+logs/

@@ -18,7 +18,7 @@ def dubiousdonationsByDonor_body():
         st.error("No data found. Please upload a dataset.")
         return
     # Define filter condition
-    current_target = {"DubiousData": [1, 2, 3, 4, 5]}
+    current_target = st.session_state.filter_def["DubiousDonations_ftr"]
     target_label = "Dubious Donation"
     filters = {}
 
@@ -62,33 +62,33 @@ def dubiousdonationsByDonor_body():
     #     ppcalc.get_blank_received_date_ct(filtered_df))
     # bm_blank_regulated_entity_id_ct = (
     #     ppcalc.get_blank_regulated_entity_id_ct(filtered_df))
-    bm_dubious_donors = ppcalc.get_dubious_donors_ct(filtered_df)
+    bm_dubious_donors = ppcalc.get_dubious_donors_ct(filtered_df, current_target)
     bm_dubious_donation_actions = (
-        ppcalc.get_dubious_donation_actions(filtered_df)
+        ppcalc.get_dubious_donation_actions(filtered_df, current_target)
     )
     bm_total_value_dubious_donations = (
-        ppcalc.get_dubious_donation_value(filtered_df)
+        ppcalc.get_dubious_donation_value(filtered_df, current_target)
     )
     bm_dubious_percent_of_value = (
         (bm_total_value_dubious_donations / ppcalc.get_value_total(filtered_df)
          * 100)
-        if ppcalc.get_value_total(filtered_df) > 0
+        if ppcalc.get_value_total(filtered_df, current_target) > 0
         else 0
     )
     bm_dubious_percent_of_donors = (
         ((bm_dubious_donors / ppcalc.get_donors_ct(filtered_df)) * 100)
-        if ppcalc.get_donors_ct(filtered_df) > 0
+        if ppcalc.get_donors_ct(filtered_df, current_target) > 0
         else 0
     )
     bm_dubious_percent_of_donation_actions = (
         ((bm_dubious_donation_actions / ppcalc.get_donations_ct(filtered_df))
          * 100)
-        if ppcalc.get_donations_ct(filtered_df) > 0
+        if ppcalc.get_donations_ct(filtered_df, current_target) > 0
         else 0
     )
     bm_returned_donations = ppcalc.get_returned_donations_ct(filtered_df)
     bm_returned_donations_value = (
-        ppcalc.get_returned_donations_value(filtered_df)
+        ppcalc.get_returned_donations_value(filtered_df, current_target)
     )
     bm_returned_donations_percent_value = (
         ((bm_returned_donations_value / bm_total_value_dubious_donations)
@@ -104,12 +104,12 @@ def dubiousdonationsByDonor_body():
     bm_aggregated_donations = (
         ppcalc.get_donations_ct(
             filtered_df,
-            filters={"DonationType": "Aggregated donations"})
+            filters={"DonationType": "Aggregated Donations"})
     )
     bm_aggregated_donations_value = (
         ppcalc.get_value_total(
             filtered_df,
-            filters={"DonationType": "Aggregated donations"})
+            filters={"DonationType": "Aggregated Donations"})
     )
     bm_aggregated_percent_of_donation_actions = (
         ((bm_aggregated_donations / total_count_of_donations) * 100)
@@ -215,12 +215,12 @@ def dubiousdonationsByDonor_body():
     aggregated_donations = (
         ppcalc.get_donations_ct(
             filtered_df2,
-            filters={"DonationType": "Aggregated donations"})
+            filters={"DonationType": "Aggregated Donations"})
     )
     aggregated_donations_value = (
         ppcalc.get_value_total(
             filtered_df2,
-            filters={"DonationType": "Aggregated donations"})
+            filters={"DonationType": "Aggregated Donations"})
     )
     aggregated_percent_of_donation_actions = (
         ((aggregated_donations / total_count_of_donations) * 100)
@@ -255,7 +255,7 @@ def dubiousdonationsByDonor_body():
     if dubious_donors >= 1:
         st.write(f"* Between {min_date} and {max_date}, there were"
                  f" {dubious_donors:,.0f} donors identified as dubious."
-                 f" These donors represented {dubious_percent_of_donors:.2f}%"
+                 f" These donors represented {dubious_percent_of_donors:.0f}%"
                  " of donors to regulated entities,"
                  " and includes Impremissible Donors and Unidentified Donors.")
     else:
@@ -264,10 +264,10 @@ def dubiousdonationsByDonor_body():
         st.write(f"* There were {dubious_donation_actions:,.0f} donations that"
                  " were identified as of questionable nature. These donations "
                  "represented "
-                 f"{dubious_percent_of_donation_actions:.2f}% of all donations"
+                 f"{dubious_percent_of_donation_actions:.0f}% of all donations"
                  " made in the period. These had a combined value of "
                  f"£{ppcalc.format_number(total_value_dubious_donations)} and "
-                 f"represented {dubious_percent_of_value:.2f}% in value of all"
+                 f"represented {dubious_percent_of_value:.0f}% in value of all"
                  " donations.")
     if blank_received_date_ct >= 1:
         st.write(f"* {blank_received_date_ct} donations had no recorded date.")
@@ -276,28 +276,28 @@ def dubiousdonationsByDonor_body():
                  "regulated entity.")
     if total_value_dubious_donations >= 1:
         st.write(f"* Of these donations {returned_donations:,.0f} or"
-                 f" {returned_donations_percent_donations:.2f}% were returned"
+                 f" {returned_donations_percent_donations:.0f}% were returned"
                  " to the donor, representing "
                  f"£{ppcalc.format_number(returned_donations_value)} or "
-                 f"{returned_donations_percent_value:.2f}% of the total value"
+                 f"{returned_donations_percent_value:.0f}% of the total value"
                  " of dubious donations.")
     if aggregated_donations >= 1:
         st.write(
             f"* There were {aggregated_donations:,.0f} aggregated donations, "
-            f" representing {aggregated_percent_of_donation_actions:.2f}%"
+            f" representing {aggregated_percent_of_donation_actions:.0f}%"
             " of all donation actions. The total value of these aggregated"
             " donations was "
             f"£{ppcalc.format_number(aggregated_donations_value)},"
-            f" representing {aggregated_percent_of_value:.2f}% of the total"
+            f" representing {aggregated_percent_of_value:.0f}% of the total"
             " value of all donations.")
     if donated_visits >= 1:
         st.write(
-            f"* There were {donated_visits:,.0f} visits donated to regulated"
-            "entities, representing"
-            f" {donated_visits_percent_of_donation_actions:.2f}%"
+            f"* There were {donated_visits:,.0f} visits donated to "
+            f"{selected_entity_name}, representing"
+            f" {donated_visits_percent_of_donation_actions:.0f}%"
             " of all donation actions. The total value of these visits was"
             f" £{ppcalc.format_number(donated_visits_value)}, representing"
-            f" {donated_visits_percent_of_value:.2f}% of the total value of"
+            f" {donated_visits_percent_of_value:.0f}% of the total value of"
             " all donations.")
     st.write("---")
     st.write("### Benchmarked Figures")

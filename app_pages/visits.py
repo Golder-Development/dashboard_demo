@@ -29,7 +29,7 @@ def visits_body_page():
         )
 
     # Define filter condition
-    current_target = {"DonationType": ["Visit", "visit"]}
+    current_target = st.session_state["filter_def"].get("DonatedVisits_ftr")
     target_label = "Donated Visit"
     filters = {}
 
@@ -119,7 +119,7 @@ def visits_body_page():
                                   Title=f"Value of {target_label}s by Year and"
                                         " Entity",
                                   CalcType='sum',
-                                  use_custom_colors=True,
+                                  use_custom_colors=False,
                                   widget_key="Value_by_entity",
                                   ChartType='Bar',
                                   LegendTitle="Political Entity Type",
@@ -156,7 +156,6 @@ def visits_body_page():
     st.write("---")
     left, right = st.columns(2)
     with left:
-        st.write(f'#### {target_label}s by Donor Type')
         if cleaned_c_d_df.empty:
             st.write("No data available for the selected filters.")
             return
@@ -173,7 +172,6 @@ def visits_body_page():
                                   use_container_width=True)
         st.write("some insights.")
     with right:
-        st.write(f'#### Average {target_label}s Value by Donor Type')
         if cleaned_c_d_df.empty:
             st.write("No data available for the selected filters.")
             return
@@ -181,15 +179,15 @@ def visits_body_page():
             plot_custom_bar_chart(df=cleaned_c_d_df,
                                   x_column='DonorStatus',
                                   y_column='Value',
-                                  group_column='DonationType',
                                   agg_func='avg',
-                                  title=f'Avg {target_label}s Value by Donation Type',
-                                  x_label='Donation Type',  # X-axis label
+                                  title=f'Avg {target_label}s Value by Donor Types',
+                                  x_label='Donor',  # X-axis label
                                   y_label='Donation £',  # Y-axis label
                                   orientation='v',  # Vertical bars
-                                  barmode='group',  # Grouped bars
+                                  barmode='stack',  # Grouped bars
                                   x_scale='category',
                                   y_scale='linear',
+                                  color_palette='Set1',
                                   widget_key='donation_donation_type',
                                   use_container_width=True
                                   )

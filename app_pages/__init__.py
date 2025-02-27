@@ -1,6 +1,8 @@
-"""
---version-- = 0.1.0
---author-- = "Paul Golder"
---author_github-- = "https://github.com/Hysnap" 
---description-- = "Streamlit Page definitions for the project."
-"""
+from utils.version import get_git_version
+import os
+MODULE_DIR = os.path.dirname(__file__)
+
+__version__ = get_git_version(MODULE_DIR)
+__author__ = "Paul Golder"
+__author_github__ = "https://github.com/Hysnap"
+__description_ = "Streamlit Page definitions for the project."
