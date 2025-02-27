@@ -1,6 +1,8 @@
 import pandas as pd
 import streamlit as st
 from components.filters import apply_filters
+from utils.logger import logger
+from utils.decorators import log_function_call  # Import decorator
 
 # Convert placeholder date to datetime once
 PLACEHOLDER_DATE = st.session_state.get("PLACEHOLDER_DATE")
@@ -46,15 +48,11 @@ def get_unidentified_donors_ct(df, filters=None):
 
 
 def get_blank_received_date_ct(df, filters=None):
-    return count_missing_values(df, "ReceivedDate",
-                                PLACEHOLDER_DATE,
-                                filters)
+    return count_missing_values(df, "ReceivedDate", PLACEHOLDER_DATE, filters)
 
 
 def get_blank_regulated_entity_id_ct(df, filters=None):
-    return count_missing_values(df, "RegulatedEntityId",
-                                PLACEHOLDER_ID,
-                                filters)
+    return count_missing_values(df, "RegulatedEntityId", PLACEHOLDER_ID, filters)
 
 
 def get_blank_donor_id_ct(df, filters=None):
@@ -102,13 +100,13 @@ def get_donors_ct(df, filters=None):
 def get_value_total(df, filters=None):
     """Sums total value of donations"""
     df = apply_filters(df, filters)
-    return df['Value'].sum()
+    return df["Value"].sum()
 
 
 def get_value_mean(df, filters=None):
     """Mean of value of donations"""
     df = apply_filters(df, filters)
-    return df['Value'].mean()
+    return df["Value"].mean()
 
 
 def get_donations_ct(df, filters=None):
@@ -140,9 +138,10 @@ def display_thresholds_table():
     """Creates and displays a table showing the threshold logic."""
     # Convert the dictionary into a DataFrame
     thresholds = st.session_state.get("thresholds", {})
-    thresholds_df = (pd.DataFrame(list(thresholds.items()),
-                                  columns=["Donation Event Threshold",
-                                           "Entity Category"]))
+    thresholds_df = pd.DataFrame(
+        list(thresholds.items()),
+        columns=["Donation Event Threshold", "Entity Category"],
+    )
 
     st.write("### Threshold Logic Table")
     st.table(thresholds_df)
@@ -274,15 +273,22 @@ def get_top_donors(df, sort_col, exclude_single_donation=False):
     """Returns top 5 donors sorted by a specific column."""
     if exclude_single_donation:
         df = df[df["No of Donations"] > 1]
-    return df.sort_values(sort_col, ascending=False)[[
-        "Donor Name", "Regulated Entities", "Avg No. Donations Per Entity",
-        "No of Donations", "Total Donations £", "Avg Donations",
-        "Median Donations", "Avg Value Per Entity"
-    ]].head(5)
+    return df.sort_values(sort_col, ascending=False)[
+        [
+            "Donor Name",
+            "Regulated Entities",
+            "Avg No. Donations Per Entity",
+            "No of Donations",
+            "Total Donations £",
+            "Avg Donations",
+            "Median Donations",
+            "Avg Value Per Entity",
+        ]
+    ].head(5)
 
 
 def calculate_percentage(numerator=0, denominator=0):
-    """ Calculate the percentage of a numerator to a denominator """
+    """Calculate the percentage of a numerator to a denominator"""
     try:
         numerator = float(numerator)
         denominator = float(denominator)
@@ -294,37 +300,37 @@ def calculate_percentage(numerator=0, denominator=0):
 def get_avg_donations_per_entity(df, filters=None):
     """Calculates the average number of donations per entity."""
     df = apply_filters(df, filters)
-    return df.groupby('RegulatedEntityId').size().mean()
+    return df.groupby("RegulatedEntityId").size().mean()
 
 
 def get_avg_value_per_entity(df, filters=None):
     """Calculates the average value of donations per entity."""
     df = apply_filters(df, filters)
-    return df.groupby('RegulatedEntityId')['Value'].mean().mean()
+    return df.groupby("RegulatedEntityId")["Value"].mean().mean()
 
 
 def get_avg_donors_per_entity(df, filters=None):
     """Calculates the average number of donors per entity."""
     df = apply_filters(df, filters)
-    return df.groupby('RegulatedEntityId')['DonorId'].nunique().mean()
+    return df.groupby("RegulatedEntityId")["DonorId"].nunique().mean()
 
 
 def get_donors_stdev(df, filters=None):
     """Calculates the standard deviation of donors per entity."""
     df = apply_filters(df, filters)
-    return df.groupby('RegulatedEntityId').size().std()
+    return df.groupby("RegulatedEntityId").size().std()
 
 
 def get_value_stdev(df, filters=None):
     """Calculates the standard deviation of value per entity."""
     df = apply_filters(df, filters)
-    return df.groupby('RegulatedEntityId')['Value'].mean().std()
+    return df.groupby("RegulatedEntityId")["Value"].mean().std()
 
 
 def get_noofdonors_per_ent_stdev(df, filters=None):
     """Calculates the standard deviation of donors per entity."""
     df = apply_filters(df, filters)
-    return df.groupby('RegulatedEntityId')['DonorId'].nunique().std()
+    return df.groupby("RegulatedEntityId")["DonorId"].nunique().std()
 
 
 # Function to calculate key values
@@ -356,7 +362,7 @@ def compute_summary_statistics(df, filters):
         "avg_donors_per_entity": avg_donors_per_entity,
         "donors_stdev": donors_stdev,
         "value_stdev": value_stdev,
-        "noofdonors_per_ent_stdev": noofdonors_per_ent_stdev
+        "noofdonors_per_ent_stdev": noofdonors_per_ent_stdev,
     }
 
 
@@ -379,9 +385,9 @@ def determine_groups_optimized(df, entity, measure, thresholds_dict):
     entity_totals = df.groupby(entity)[measure].sum().to_dict()
 
     # Step 2: Convert entity totals into a DataFrame for fast merging
-    total_df = pd.DataFrame(list(entity_totals.items()),
-                            columns=[entity,
-                                     "total_measure"])
+    total_df = pd.DataFrame(
+        list(entity_totals.items()), columns=[entity, "total_measure"]
+    )
 
     # Step 3: Assign groups based on thresholds
     def assign_group(total):
@@ -398,8 +404,7 @@ def determine_groups_optimized(df, entity, measure, thresholds_dict):
     # Step 4: Ensure entities above the max threshold
     # are assigned their entity name
     max_threshold = max(high for (_, high) in thresholds_dict.keys())
-    total_df.loc[total_df["total_measure"] >
-                 max_threshold, "group"] = total_df[entity]
+    total_df.loc[total_df["total_measure"] > max_threshold, "group"] = total_df[entity]
 
     # Step 5: Merge back into the original DataFrame
     df = df.merge(total_df[[entity, "group"]], on=entity, how="left")

@@ -1,18 +1,20 @@
 import streamlit as st
 import components.Visualisations as vis
+from utils.logger import logger  # Import the logger
+from utils.decorators import log_function_call  # Import decorator
 from components.calculations import (format_number,
                                      calculate_percentage,
-                                        get_donors_ct,
-                                        get_value_total,
-                                        get_value_mean,
-                                        get_donations_ct,
-                                        get_regentity_ct,
-                                        get_donationtype_ct,
-                                        get_mindate,
-                                        get_maxdate,
-                                        get_top_entity_by_value,
-                                        get_top_entity_by_donations,
-                                        get_top_donType_by_don,
+                                     get_donors_ct,
+                                     get_value_total,
+                                     get_value_mean,
+                                     get_donations_ct,
+                                     get_regentity_ct,
+                                     get_donationtype_ct,
+                                     get_mindate,
+                                     get_maxdate,
+                                     get_top_entity_by_value,
+                                     get_top_entity_by_donations,
+                                     get_top_donType_by_don,
                                      )
 
 def hlf_body():

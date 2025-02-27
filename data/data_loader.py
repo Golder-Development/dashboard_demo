@@ -2,44 +2,34 @@ import streamlit as st
 from data.datasetupandclean import load_raw_data
 from data.clean_and_enhance import load_cleaned_data
 from data.data_utils import load_entity_summary_data
-from data.load_donor_regent_lists import (
-    load_donorList_data, load_regulated_entity_data)
+from data.load_donor_regent_lists import load_donorList_data, load_regulated_entity_data
+from utils.logger import logger
+from utils.decorators import log_function_call  # Import decorator
 
 
 @st.cache_data
 def get_raw_data():
-    return load_raw_data(output_csv=True,
-                         dedupe_donors=True,
-                         dedupe_regentity=True
-                         )
+    return load_raw_data(output_csv=True, dedupe_donors=True, dedupe_regentity=True)
 
 
 @st.cache_data
 def get_party_summary_data():
-    return load_entity_summary_data(datafile=None,
-                                    output_csv=True,
-                                    streamlitrun=True)
+    return load_entity_summary_data(datafile=None, output_csv=True, streamlitrun=True)
 
 
 @st.cache_data
 def get_cleaned_data():
-    return load_cleaned_data(datafile=None,
-                             output_csv=True,
-                             streamlitrun=True)
+    return load_cleaned_data(datafile=None, output_csv=True, streamlitrun=True)
 
 
 @st.cache_data
 def get_donor_data():
-    return load_donorList_data(datafile=None,
-                               output_csv=True,
-                               streamlitrun=True)
+    return load_donorList_data(datafile=None, output_csv=True, streamlitrun=True)
 
 
 @st.cache_data
 def get_regentity_data():
-    return load_regulated_entity_data(datafile=None,
-                                      output_csv=True,
-                                      streamlitrun=True)
+    return load_regulated_entity_data(datafile=None, output_csv=True, streamlitrun=True)
 
 
 @st.cache_data

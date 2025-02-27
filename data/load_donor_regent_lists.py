@@ -5,6 +5,8 @@ from rapidfuzz import process, fuzz
 from collections import defaultdict
 from components import mappings as mp
 from components import calculations as calc
+from utils.logger import logger
+from utils.decorators import log_function_call  # Import decorator
 
 
 def load_donorList_data(datafile=None, streamlitrun=True, output_csv=False):
@@ -22,32 +24,27 @@ def load_donorList_data(datafile=None, streamlitrun=True, output_csv=False):
         else:
             donorlist_df = datafile
     donorlist_df = (
-        donorlist_df.groupby(['DonorId',
-                              'DonorName'])
-                    .agg({'Value': ['sum',
-                                    'count',
-                                    'mean']}).reset_index()
+        donorlist_df.groupby(["DonorId", "DonorName"])
+        .agg({"Value": ["sum", "count", "mean"]})
+        .reset_index()
     )
-    donorlist_df.columns = ['DonorId',
-                            'Donor Name',
-                            'Donations Value',
-                            'Donation Events',
-                            'Donation Mean']
+    donorlist_df.columns = [
+        "DonorId",
+        "Donor Name",
+        "Donations Value",
+        "Donation Events",
+        "Donation Mean",
+    ]
     if output_csv:
         output_dir = st.session_state.directories["output_dir"]
-        cleaned_donor_filename = (
-            st.session_state.filenames["cleaned_donorlist_fname"]
-        )
-        cleaned_donor_filename = os.path.join(output_dir,
-                                              cleaned_donor_filename)
+        cleaned_donor_filename = st.session_state.cleaned_donorlist_fname
+        cleaned_donor_filename = os.path.join(output_dir, cleaned_donor_filename)
         donorlist_df.to_csv(cleaned_donor_filename)
 
     return donorlist_df
 
 
-def load_regulated_entity_data(datafile=None,
-                               streamlitrun=True,
-                               output_csv=False):
+def load_regulated_entity_data(datafile=None, streamlitrun=True, output_csv=False):
     # Load the data
     output_dir = st.session_state.directories["output_dir"]
     if streamlitrun:
@@ -61,26 +58,26 @@ def load_regulated_entity_data(datafile=None,
         else:
             regent_df = datafile
     regent_df = (
-        regent_df.groupby(['RegulatedEntityId',
-                           'RegulatedEntityName',
-                           'RegEntity_Group'], observed=True)
-                 .agg({'Value': ['sum',
-                                 'count',
-                                 'mean']}).reset_index()
+        regent_df.groupby(
+            ["RegulatedEntityId", "RegulatedEntityName", "RegEntity_Group"],
+            observed=True,
+        )
+        .agg({"Value": ["sum", "count", "mean"]})
+        .reset_index()
     )
-    regent_df.columns = ['RegulatedEntityId',
-                         'Regulated Entity Name',
-                         'Regulated Entity Group',
-                         'Donations Value',
-                         'Donation Events',
-                         'Donation Mean']
+    regent_df.columns = [
+        "RegulatedEntityId",
+        "Regulated Entity Name",
+        "Regulated Entity Group",
+        "Donations Value",
+        "Donation Events",
+        "Donation Mean",
+    ]
     if output_csv:
         output_dir = st.session_state.directories["output_dir"]
-        cleaned_regentity_filename = (
-            st.session_state.filenames["cleaned_regentity_fname"]
-        )
-        cleaned_regentity_filename = (
-            os.path.join(output_dir, cleaned_regentity_filename)
+        cleaned_regentity_filename = st.session_state.cleaned_regentity_fname
+        cleaned_regentity_filename = os.path.join(
+            output_dir, cleaned_regentity_filename
         )
         regent_df.to_csv(cleaned_regentity_filename)
 

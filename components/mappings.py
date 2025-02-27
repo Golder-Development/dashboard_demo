@@ -2,7 +2,10 @@
 File to store all the mappings for the project
 1. Mappings for the data cleansing
 """
+
 import pandas as pd
+from utils.logger import logger
+from utils.decorators import log_function_call  # Import decorator
 
 
 def map_nature_of_donation(row):
@@ -14,11 +17,9 @@ def map_nature_of_donation(row):
         return "IsAggregatedDonation"
     if str(row["IsSponsorship"]).lower() == "true":
         return "IsSponsorship"
-    if (pd.notna(row["RegulatedDoneeType"])
-            and row["RegulatedDoneeType"] != ""):
+    if pd.notna(row["RegulatedDoneeType"]) and row["RegulatedDoneeType"] != "":
         return f"Donation to {row['RegulatedDoneeType']}"
-    if (pd.notna(row["RegulatedEntityType"])
-            and row["RegulatedEntityType"] != ""):
+    if pd.notna(row["RegulatedEntityType"]) and row["RegulatedEntityType"] != "":
         return f"Donation to {row['RegulatedEntityType']}"
     if pd.notna(row["DonationAction"]):
         return row["DonationAction"]

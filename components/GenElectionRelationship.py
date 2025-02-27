@@ -1,10 +1,11 @@
 # Original Code https://github.com/Hysnap/ElectionDateDifferentialCalc/
-# Module to calculate the difference in a definable period between a given 
+# Module to calculate the difference in a definable period between a given
 # date and the nearest election date, for a set period defined in Days
 # Direction can be "DaysTill" or "DaysSince"
-
 import math
 import datetime as dt
+from utils.logger import logger
+from utils.decorators import log_function_call  # Import decorator
 
 
 def load_election_dates():
@@ -17,52 +18,53 @@ def load_election_dates():
     ElectionDates_dict = elections.get_general_elections_dict()
 
     # Create List of Election Dates from ElectionDates_dict
-    ElectionDates = [] 
+    ElectionDates = []
     for key in ElectionDates_dict.keys():
         ElectionDates.append(ElectionDates_dict[key])
 
     ## List of Election Dates
-    
-    ElectionDates_old = ['2001/06/07 00:00:00',
-                    '2005/05/05 00:00:00',
-                    '2010/06/05 00:00:00',
-                    '2015/07/05 00:00:00',
-                    '2017/07/05 00:00:00',
-                    '2019/12/12 00:00:00', 
-                    '2024/07/04 00:00:00']
-    
-    return elections.get_general_elections_dict()
-    
-    return ElectionDates
-    
 
-def GenElectionRelation2(R_Date,
-                         divisor=1,
-                         direction="DaysTill",
-                         date_format='%Y/%m/%d %H:%M:%S'):
+    ElectionDates_old = [
+        "2001/06/07 00:00:00",
+        "2005/05/05 00:00:00",
+        "2010/06/05 00:00:00",
+        "2015/07/05 00:00:00",
+        "2017/07/05 00:00:00",
+        "2019/12/12 00:00:00",
+        "2024/07/04 00:00:00",
+    ]
+
+    return elections.get_general_elections_dict()
+
+    return ElectionDates
+
+
+def GenElectionRelation2(
+    R_Date, divisor=1, direction="DaysTill", date_format="%Y/%m/%d %H:%M:%S"
+):
     """
-    Calculate the difference in a definable period between a given date and 
+    Calculate the difference in a definable period between a given date and
     the nearest election date.
 
     Parameters:
         R_Date (str): The reference date in string format.
-        divisor (int): The unit divisor to group days (e.g., 7 for weeks, 
+        divisor (int): The unit divisor to group days (e.g., 7 for weeks,
                         1 for days) defaults to 1 if not provided.
         direction (str): The direction to calculate ("DaysTill" or "DaysSince")
                         , defaults to "DaysTill" if not provided.
-        date_format (str): The date format of the input R_Date string defaults 
+        date_format (str): The date format of the input R_Date string defaults
                         to "%Y/%m/%d %H:%M:%S" is none provided
 
     Returns:
-        int: The calculated difference in the specified period, or 0 if no 
+        int: The calculated difference in the specified period, or 0 if no
               match is found.
     """
     # Load Election Dates
-    if 'ElectionDates' not in st.session_state:
+    if "ElectionDates" not in st.session_state:
         ElectionDates = load_election_dates()
         st.session_state.ElectionDates = ElectionDates
 
-    # Pre-sorted lists of election dates
+        # Pre-sorted lists of election dates
         ElectionDatesAscend = sorted(ElectionDates)
         ElectionDatesDescend = sorted(ElectionDates, reverse=True)
 
@@ -91,6 +93,7 @@ def GenElectionRelation2(R_Date,
         # Handle invalid date formats or other errors
         print(f"Error: {e}")
         return None
+
 
 """
 # Example usage with a DataFrame

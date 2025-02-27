@@ -1,49 +1,55 @@
 import streamlit as st
-# import seaborn as sns
-# import calculations as ppcalc
-# import pandas as pd
 import plotly.express as px
-# import plotly.subplots as sp
 import components.ColorMaps as cm
+from utils.logger import logger
+from utils.decorators import log_function_call  # Import decorator
 
 
 def plot_bar_line_by_year(
-                Data,
-                XValues='YearReceived',
-                YValue='Value',
-                GGroup='RegEntity_Group',
-                XLabel='Year',
-                YLabel='Total Value (£)',
-                Title='Donations by Year and Entity Type',
-                LegendTitle='Regulated Entity Group',
-                CalcType='sum',
-                ChartType='Bar',
-                x_scale='linear',
-                y_scale='linear',
-                use_custom_colors=False,
-                use_container_width=True,
-                percentbars=False,
-                widget_key="graph1",
-                show_filter_box=False
-                ):
+    Data,
+    XValues="YearReceived",
+    YValue="Value",
+    GGroup="RegEntity_Group",
+    XLabel="Year",
+    YLabel="Total Value (£)",
+    Title="Donations by Year and Entity Type",
+    LegendTitle="Regulated Entity Group",
+    CalcType="sum",
+    ChartType="Bar",
+    x_scale="linear",
+    y_scale="linear",
+    use_custom_colors=False,
+    use_container_width=True,
+    percentbars=False,
+    widget_key="graph1",
+    show_filter_box=False,
+):
 
     if Data is None or Data.empty:
         st.warning("No data available to plot.")
         return
 
     aggregation_methods = {
-        'sum': 'sum', 'avg': 'mean', 'count': 'count', 'median': 'median',
-        'max': 'max', 'min': 'min', 'std': 'std', 'var': 'var', 'sem': 'sem',
-        'skew': 'skew', 'kurt': 'kurt'
+        "sum": "sum",
+        "avg": "mean",
+        "count": "count",
+        "median": "median",
+        "max": "max",
+        "min": "min",
+        "std": "std",
+        "var": "var",
+        "sem": "sem",
+        "skew": "skew",
+        "kurt": "kurt",
     }
 
     if CalcType not in aggregation_methods:
-        CalcType = 'sum'
+        CalcType = "sum"
 
     grouped_data = (
         Data.groupby([XValues, GGroup], observed=True)[YValue]
-            .agg(aggregation_methods[CalcType])
-            .reset_index()
+        .agg(aggregation_methods[CalcType])
+        .reset_index()
     )
 
     if show_filter_box:
@@ -54,7 +60,7 @@ def plot_bar_line_by_year(
                 min(year_options),
                 max(year_options),
                 (min(year_options), max(year_options)),
-                key=f"year_slider_{widget_key}"
+                key=f"year_slider_{widget_key}",
             )
 
             entity_options = grouped_data[GGroup].unique()
@@ -62,20 +68,20 @@ def plot_bar_line_by_year(
                 "Select Entity Types",
                 entity_options,
                 default=entity_options,
-                key=f"entity_multiselect_{widget_key}"
+                key=f"entity_multiselect_{widget_key}",
             )
 
             ChartType = st.radio(
                 "Select Chart Type",
                 ["Bar", "Line"],
                 index=0 if ChartType == "Bar" else 1,
-                key=f"chart_type_{widget_key}"
+                key=f"chart_type_{widget_key}",
             )
 
             show_as_percentage = st.checkbox(
                 "Show as 100% stacked (percentage of total)",
                 value=percentbars,
-                key=f"percent_checkbox_{widget_key}"
+                key=f"percent_checkbox_{widget_key}",
             )
     else:
         year_options = sorted(grouped_data[XValues].unique())
@@ -86,66 +92,69 @@ def plot_bar_line_by_year(
 
     # Filter data based on selections
     filtered_data = grouped_data[
-        (grouped_data[XValues].between(*selected_years)) &
-        (grouped_data[GGroup].isin(selected_entities))
+        (grouped_data[XValues].between(*selected_years))
+        & (grouped_data[GGroup].isin(selected_entities))
     ]
 
     if show_as_percentage and ChartType == "Bar":
         # Normalize each year's values to sum to 100%
-        filtered_data[YValue] = (
-            filtered_data.groupby(XValues)[YValue]
-            .transform(lambda x: (x / x.sum()) * 100)
+        filtered_data[YValue] = filtered_data.groupby(XValues)[YValue].transform(
+            lambda x: (x / x.sum()) * 100
         )
         YLabel = "Percentage of Total (%)"
 
     # Define colors
     color_mapping = cm.color_mapping
     if use_custom_colors:
-        color_map = {entity: color_mapping.get(entity, "#636efa")
-                     for entity in entity_options}
+        color_map = {
+            entity: color_mapping.get(entity, "#636efa") for entity in entity_options
+        }
     else:
         color_map = None
 
     # Plot Bar or Line Chart
     if ChartType == "Bar":
         fig = px.bar(
-            filtered_data, x=XValues, y=YValue, color=GGroup,
-            labels={XValues: XLabel, YValue: YLabel}, title=Title,
-            barmode="stack", text_auto=True, color_discrete_map=color_map
+            filtered_data,
+            x=XValues,
+            y=YValue,
+            color=GGroup,
+            labels={XValues: XLabel, YValue: YLabel},
+            title=Title,
+            barmode="stack",
+            text_auto=True,
+            color_discrete_map=color_map,
         )
     else:
         fig = px.line(
-            filtered_data, x=XValues, y=YValue, color=GGroup,
-            labels={XValues: XLabel, YValue: YLabel}, title=Title,
-            markers=True, color_discrete_map=color_map
+            filtered_data,
+            x=XValues,
+            y=YValue,
+            color=GGroup,
+            labels={XValues: XLabel, YValue: YLabel},
+            title=Title,
+            markers=True,
+            color_discrete_map=color_map,
         )
 
     # Update layout
     fig.update_layout(
         xaxis_title=XLabel,
         yaxis_title=YLabel,
-        xaxis={'type': x_scale},
-        yaxis={'type': y_scale if not show_as_percentage else 'linear'},
+        xaxis={"type": x_scale},
+        yaxis={"type": y_scale if not show_as_percentage else "linear"},
         legend_title=LegendTitle,
         hovermode="x unified",
-        legend=dict(
-                orientation="h",
-                yanchor="top",
-                y=-0.1,
-                xanchor="center",
-                x=0.5
-        ),
-        title=dict(
-            xanchor='center',
-            yanchor='top',
-            x=0.5
-        ),
+        legend=dict(orientation="h", yanchor="top", y=-0.1, xanchor="center", x=0.5),
+        title=dict(xanchor="center", yanchor="top", x=0.5),
     )
 
     fig.update_traces(
-        hovertemplate="<b>%{x}</b><br>%{y:.2f}%<br>%{legendgroup}"
-                      if show_as_percentage else
-                      "<b>%{x}</b><br>%{y:,.0f}<br>%{legendgroup}"
+        hovertemplate=(
+            "<b>%{x}</b><br>%{y:.2f}%<br>%{legendgroup}"
+            if show_as_percentage
+            else "<b>%{x}</b><br>%{y:,.0f}<br>%{legendgroup}"
+        )
     )
 
     st.plotly_chart(fig, use_container_width=use_container_width)
@@ -163,12 +172,12 @@ def plot_regressionplot(
     size_label="Regulated Entities",
     size_scale=1,  # Adjusted default for better scaling
     dot_size=50,
-    x_scale='log',
-    y_scale='log',
+    x_scale="log",
+    y_scale="log",
     use_custom_colors=False,
     legend_title=None,
     show_trendline=True,  # New: Option to enable regression trendline
-    use_container_width=True
+    use_container_width=True,
 ):
     """
     Creates an interactive scatter plot with optional regression trendline.
@@ -226,10 +235,10 @@ def plot_regressionplot(
         color=color_column if use_custom_colors else None,
         labels={x_column: x_label, y_column: y_label, size_column: size_label},
         title=title,
-        log_x=(x_scale == 'log'),
-        log_y=(y_scale == 'log'),
+        log_x=(x_scale == "log"),
+        log_y=(y_scale == "log"),
         size_max=dot_size,
-        color_discrete_map=color_discrete_map
+        color_discrete_map=color_discrete_map,
     )
 
     # Optional Trendline
@@ -239,8 +248,8 @@ def plot_regressionplot(
             x=x_column,
             y=y_column,
             trendline="ols",
-            log_x=(x_scale == 'log'),
-            log_y=(y_scale == 'log')
+            log_x=(x_scale == "log"),
+            log_y=(y_scale == "log"),
         )
         trend_trace = trend_fig.data[1]
         fig.add_trace(trend_trace)
@@ -249,23 +258,14 @@ def plot_regressionplot(
     fig.update_layout(
         xaxis_title=x_label,
         yaxis_title=y_label,
-        legend_title=(color_column if color_column
-                      else "Legend"
-                      if legend_title is None
-                      else legend_title),
+        legend_title=(
+            color_column
+            if color_column
+            else "Legend" if legend_title is None else legend_title
+        ),
         hovermode="closest",
-        legend=dict(
-                orientation="h",
-                yanchor="top",
-                y=-0.1,
-                xanchor="center",
-                x=0.5
-            ),
-        title=dict(
-            xanchor='center',
-            yanchor='top',
-            x=0.5
-        )  # Centered title
+        legend=dict(orientation="h", yanchor="top", y=-0.1, xanchor="center", x=0.5),
+        title=dict(xanchor="center", yanchor="top", x=0.5),  # Centered title
     )
 
     # Display in Streamlit
@@ -273,20 +273,20 @@ def plot_regressionplot(
 
 
 def plot_pie_chart(
-        df,
-        category_column,
-        value_column=None,
-        title="Pie Chart",
-        category_label="Category",
-        value_label="Value",
-        color_label="Group",
-        color_column=None,
-        use_custom_colors=False,  # Flag to enable color mapping
-        hole=0.4,
-        widget_key=None,
-        legend_title=None,
-        use_container_width=True
-        ):
+    df,
+    category_column,
+    value_column=None,
+    title="Pie Chart",
+    category_label="Category",
+    value_label="Value",
+    color_label="Group",
+    color_column=None,
+    use_custom_colors=False,  # Flag to enable color mapping
+    hole=0.4,
+    widget_key=None,
+    legend_title=None,
+    use_container_width=True,
+):
     """
     Creates an interactive pie chart in Streamlit using Plotly Express.
 
@@ -328,17 +328,16 @@ def plot_pie_chart(
 
     # Determine aggregation method
     if value_column:
-        data = df.groupby(category_column, observed=True, as_index=False)[value_column].sum()
+        data = df.groupby(category_column, observed=True, as_index=False)[
+            value_column
+        ].sum()
     else:
         data = df[category_column].value_counts().reset_index()
         data.columns = [category_column, "count"]
         value_column = "count"
 
     # Custom labels for tooltips
-    labels = {
-        category_column: category_label,
-        value_column: value_label
-    }
+    labels = {category_column: category_label, value_column: value_label}
 
     if color_column:
         labels[color_column] = color_label
@@ -346,9 +345,8 @@ def plot_pie_chart(
     # Determine color mapping
     if use_custom_colors:
         color_discrete_map = {
-            cat: color_mapping.get(cat, "#636efa")
-            for cat in data[category_column]
-            }
+            cat: color_mapping.get(cat, "#636efa") for cat in data[category_column]
+        }
     else:
         color_discrete_map = None
 
@@ -361,27 +359,18 @@ def plot_pie_chart(
         title=title,
         hole=hole,
         labels=labels,
-        color_discrete_map=color_discrete_map
+        color_discrete_map=color_discrete_map,
     )
 
     # Improve layout
     fig.update_layout(
-        title=dict(
-            xanchor='center',
-            yanchor='top',
-            x=0.5
+        title=dict(xanchor="center", yanchor="top", x=0.5),
+        legend=dict(orientation="h", yanchor="top", y=-0.1, xanchor="center", x=0.5),
+        legend_title=(
+            category_label
+            if category_label
+            else "Legend" if legend_title is None else legend_title
         ),
-        legend=dict(
-            orientation="h",
-            yanchor="top",
-            y=-0.1,
-            xanchor="center",
-            x=0.5
-        ),
-        legend_title=(category_label if category_label
-                      else "Legend"
-                      if legend_title is None
-                      else legend_title)
     )
 
     # Display in Streamlit
@@ -389,24 +378,24 @@ def plot_pie_chart(
 
 
 def plot_custom_bar_chart(
-        df,
-        x_column,
-        y_column,
-        group_column=None,
-        agg_func='count',
-        title="Custom Bar Chart",
-        x_label=None,
-        y_label=None,
-        orientation='v',
-        barmode='group',
-        color_palette='Set1',
-        widget_key=None,
-        x_scale='linear',
-        y_scale='linear',
-        legend_title=None,
-        use_custom_colors=False,  # Added option for custom colors
-        use_container_width=True
-        ):
+    df,
+    x_column,
+    y_column,
+    group_column=None,
+    agg_func="count",
+    title="Custom Bar Chart",
+    x_label=None,
+    y_label=None,
+    orientation="v",
+    barmode="group",
+    color_palette="Set1",
+    widget_key=None,
+    x_scale="linear",
+    y_scale="linear",
+    legend_title=None,
+    use_custom_colors=False,  # Added option for custom colors
+    use_container_width=True,
+):
     """
     Generates an interactive bar chart using Plotly Express
     Parameters:
@@ -443,42 +432,41 @@ def plot_custom_bar_chart(
         return
 
     # Aggregate Data
-    if agg_func == 'sum':
+    if agg_func == "sum":
         df_agg = (
             df.groupby([x_column] + ([group_column] if group_column else []))
-            .agg({y_column: 'sum'})
+            .agg({y_column: "sum"})
             .reset_index()
         )
-    elif agg_func == 'avg':
+    elif agg_func == "avg":
         df_agg = (
             df.groupby([x_column] + ([group_column] if group_column else []))
-            .agg({y_column: 'mean'})
+            .agg({y_column: "mean"})
             .reset_index()
         )
-    elif agg_func == 'count':
+    elif agg_func == "count":
         df_agg = (
             df.groupby([x_column] + ([group_column] if group_column else []))
-            .agg({y_column: 'count'})
+            .agg({y_column: "count"})
             .reset_index()
         )
-    elif agg_func == 'max':
+    elif agg_func == "max":
         df_agg = (
             df.groupby([x_column] + ([group_column] if group_column else []))
-            .agg({y_column: 'max'})
+            .agg({y_column: "max"})
             .reset_index()
         )
-    elif agg_func == 'min':
+    elif agg_func == "min":
         df_agg = (
             df.groupby([x_column] + ([group_column] if group_column else []))
-            .agg({y_column: 'min'})
+            .agg({y_column: "min"})
             .reset_index()
         )
 
     # Determine color mapping
     if use_custom_colors and group_column:
         color_discrete_map = {
-            cat: color_mapping.get(cat, "#636efa")
-            for cat in df_agg[group_column]
+            cat: color_mapping.get(cat, "#636efa") for cat in df_agg[group_column]
         }
     else:
         color_discrete_map = None
@@ -494,31 +482,21 @@ def plot_custom_bar_chart(
         labels={x_column: x_label or x_column, y_column: y_label or y_column},
         color_discrete_map=color_discrete_map,
         color_discrete_sequence=px.colors.qualitative.__dict__.get(
-            color_palette, px.colors.qualitative.Set1),
-        orientation=orientation
-        )
+            color_palette, px.colors.qualitative.Set1
+        ),
+        orientation=orientation,
+    )
 
     # Update layout with axis scale options
     fig.update_layout(
-        xaxis={'type': x_scale},
-        yaxis={'type': y_scale},
-        legend=dict(
-            orientation="h",
-            yanchor="top",
-            y=-0.1,
-            xanchor="center",
-            x=0.5
-            ),
-        legend_title=(legend_title if legend_title
-                      else group_column
-                      if group_column
-                      else "legend"),
-        title=dict(
-            xanchor='center',
-            yanchor='top',
-            x=0.5
-        )
-        )
+        xaxis={"type": x_scale},
+        yaxis={"type": y_scale},
+        legend=dict(orientation="h", yanchor="top", y=-0.1, xanchor="center", x=0.5),
+        legend_title=(
+            legend_title if legend_title else group_column if group_column else "legend"
+        ),
+        title=dict(xanchor="center", yanchor="top", x=0.5),
+    )
 
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=use_container_width)
