@@ -4,7 +4,7 @@ __pycache__/
 .venv/
 .vscode/
 devfiles/
-logs/
+logs/app_logs.log
 tests/
 Wireframes/
 app.log
