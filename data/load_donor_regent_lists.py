@@ -1,14 +1,12 @@
 import pandas as pd
 import streamlit as st
 import os
-from rapidfuzz import process, fuzz
-from collections import defaultdict
 from components import mappings as mp
 from components import calculations as calc
-from utils.logger import logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import logger, log_function_call
 
 
+@log_function_call
 def load_donorList_data(datafile=None, streamlitrun=True, output_csv=False):
     if streamlitrun:
         # Load the data
@@ -44,6 +42,7 @@ def load_donorList_data(datafile=None, streamlitrun=True, output_csv=False):
     return donorlist_df
 
 
+@log_function_call
 def load_regulated_entity_data(datafile=None, streamlitrun=True, output_csv=False):
     # Load the data
     output_dir = st.session_state.directories["output_dir"]

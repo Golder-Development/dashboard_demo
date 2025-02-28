@@ -3,10 +3,10 @@ import streamlit as st
 import os
 from rapidfuzz import process, fuzz
 from collections import defaultdict
-from utils.logger import logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import logger, log_function_call
 
 
+@log_function_call
 def dedupe_entity_file(
     loaddata_dd_df,
     entity,
@@ -31,17 +31,18 @@ def dedupe_entity_file(
     cleanedentityname = f"Cleaned{entity}Name"
     cleanedentityid = f"Cleaned{entity}Id"
     # check that reentity_deduped file exists using global variables
+    logger.info(f"map_filename: {map_filename}")
     if map_filename not in st.session_state:
-        raise ValueError(f"{map_filename} not found in session state filenames")
         logger.info(f"map_filename: {map_filename}")
+        raise ValueError(f"{map_filename} not found in session state filenames")
     else:
         # check that join on field exists in the data
         if entityid not in loaddata_dd_df.columns:
+            logger.info(f"entityid filededupe: {entityid}")
             raise ValueError(f"{entityid} not found in data")
-            logger.info(f"entityid filededupe: {enitytid}")
     # check that file exists at identified path from global var
-    logger.info(f"map_filename: {map_filename}")
-    if os.path.exists(map_filename):
+    if os.path.exists(st.session_state[map_filename]):
+        logger.info(f"map_filename found: {st.session_state[map_filename]}")
         logger.info("Dedupe by file")
         # load regentity_map_fname file using global variables
         dedupedfilename = st.session_state[map_filename]
@@ -95,9 +96,10 @@ def dedupe_entity_file(
     return loaddata_dd_df
 
 
+@log_function_call
 def dedupe_entity_fuzzy(deupedf, entity, threshold=85, output_csv=False):
     # Load the data
-    logger.info(f"Dedupe by logic")
+    logger.info("Dedupe by logic")
     originalentityname = f"Original{entity}Name"
     originalentityid = f"Original{entity}Id"
     entityname = f"{entity}Name"

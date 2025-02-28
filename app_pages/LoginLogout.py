@@ -1,7 +1,7 @@
 import streamlit as st
 from components.modular_page_blocks import (check_password)
 from utils.logger import logger  # Import the logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import log_function_call  # Import decorator
 
 def login_page():
     # Function to load admin credentials

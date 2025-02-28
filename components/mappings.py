@@ -5,7 +5,7 @@ File to store all the mappings for the project
 
 import pandas as pd
 from utils.logger import logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import log_function_call  # Import decorator
 
 
 def map_nature_of_donation(row):

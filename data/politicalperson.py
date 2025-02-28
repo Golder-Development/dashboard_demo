@@ -1,7 +1,7 @@
 from utils.logger import logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import log_function_call  # Import decorator
 
-
+@log_function_call
 def map_mp_to_party():
     # if ListOfPoliticalPeople_Final.csv file does not exist:
     #     # import ListOfPoliticalPeople_Final.csv file

@@ -1,10 +1,10 @@
 import streamlit as st
 import pandas as pd
 from data.data_dedupe import dedupe_entity_file
-from utils.logger import logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import logger, log_function_call # Import decorator
 
 
+@log_function_call
 def raw_data_cleanup(
     loaddata_df, output_csv=False, dedupe_donors=False, dedupe_regentity=False
 ):

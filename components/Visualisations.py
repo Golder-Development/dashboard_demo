@@ -2,9 +2,9 @@ import streamlit as st
 import plotly.express as px
 import components.ColorMaps as cm
 from utils.logger import logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import log_function_call  # Import decorator
 
-
+@log_function_call
 def plot_bar_line_by_year(
     Data,
     XValues="YearReceived",
@@ -84,6 +84,7 @@ def plot_bar_line_by_year(
                 key=f"percent_checkbox_{widget_key}",
             )
     else:
+        year_options = []
         year_options = sorted(grouped_data[XValues].unique())
         selected_years = (min(year_options), max(year_options))
         entity_options = grouped_data[GGroup].unique()
@@ -159,7 +160,7 @@ def plot_bar_line_by_year(
 
     st.plotly_chart(fig, use_container_width=use_container_width)
 
-
+@log_function_call
 def plot_regressionplot(
     sum_df,
     x_column="DonationEvents",
@@ -271,7 +272,7 @@ def plot_regressionplot(
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=use_container_width)
 
-
+@log_function_call
 def plot_pie_chart(
     df,
     category_column,
@@ -376,7 +377,7 @@ def plot_pie_chart(
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=use_container_width)
 
-
+@log_function_call
 def plot_custom_bar_chart(
     df,
     x_column,

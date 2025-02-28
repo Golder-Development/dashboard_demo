@@ -2,11 +2,13 @@ import pandas as pd
 import streamlit as st
 from data.raw_data_clean import raw_data_cleanup
 from utils.global_variables import initialize_session_state
-from utils.logger import logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import logger, log_function_call # Import decorator
 
 
-def load_raw_data(output_csv=False, dedupe_donors=False, dedupe_regentity=False):
+@log_function_call
+def load_raw_data(output_csv=False,
+                  dedupe_donors=False,
+                  dedupe_regentity=False):
     # Load the data
     if (
         "BASE_DIR" not in st.session_state

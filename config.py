@@ -117,10 +117,12 @@ FILTER_DEF = {
     "BlankDonor_ftr": {"DonorId": ["1000001", None, 1000001]},
     "BlankRegEntity_ftr": {"RegulatedEntityId": ["1000001", None, 1000001]},
     "DonatedVisits_ftr": {"DonationType": "Visit", "NatureOfDonation": "Visit"},
-    "Bequests_ftr": {"IsBequest": True, "NatureOfDonation": "Bequest", "DonationType": "Bequest"},  # Changed from string to boolean
+    "Bequests_ftr": {"IsBequestInt": 1, "NatureOfDonation": "Bequest", "DonationType": "Bequest"},  # Changed from string to boolean
     "CorporateDonations_ftr": {
         "DonorStatus": ["Company", "Partnership", "Limited Liability Partnership"]
     },
+    "Cash_ftr": {"DonationType": "Cash"},
+    "NonCash_ftr": {"DonationType": "Non Cash"},
 }
 SECURITY = {
     "is_admin": False,

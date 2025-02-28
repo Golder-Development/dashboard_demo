@@ -1,7 +1,7 @@
 import streamlit as st
 import components.Visualisations as vis
 from utils.logger import logger  # Import the logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import log_function_call  # Import decorator
 from components.calculations import (format_number,
                                      calculate_percentage,
                                      get_donors_ct,

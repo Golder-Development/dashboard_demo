@@ -1,7 +1,7 @@
 # all globel variables and constants are defined here  #
 
 import streamlit as st
-import logging
+from utils.logger import log_function_call, logger
 import config  # Import the config file
 import os
 
@@ -18,9 +18,11 @@ import os
 """
 
 
+@log_function_call
 def initialize_session_state():
     """Load global variables into session_state if they are not already set."""
     # Define a helper function to initialize values from config
+    @log_function_call
     def init_state_var(var_name, config_value):
         if var_name not in st.session_state:
             st.session_state[var_name] = config_value
@@ -53,7 +55,6 @@ def initialize_session_state():
         ]:
         init_state_var(dir_key, st.session_state["directories"].get(dir_key))
 
-
     # Initialize directories
     init_state_var("directories", config.DIRECTORIES)
 
@@ -66,7 +67,7 @@ def initialize_session_state():
         if isinstance(filenames, dict):  # process dictionary entries
             for fname_key, filename in filenames.items():
                 file_path = (
-                    os.path.join(st.session_state["directories"].get(dir_key, ""), filename)
+                    os.path.join(st.session_state["directories"].get(dir_key, " "), filename)
                 )
                 init_state_var(fname_key, file_path)
 
@@ -76,6 +77,9 @@ def initialize_session_state():
                                   base_data_filename)
     init_state_var(base_data_key, base_data_path)
 
-    # write to log
-    logger = logging.getLogger(__name__)    
-    logger.info(st.session_state)
+    # write session state as list to log
+    logger.info("Session_state variables initialized")
+    for key, value in st.session_state.items():
+        logger.info(f"{key}: {value}")
+
+    logger.info("Session state Setup complete")
