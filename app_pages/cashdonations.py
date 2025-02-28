@@ -1,19 +1,12 @@
 import streamlit as st
-from components.modular_page_blocks import (topline_summary_block,
-                                            load_and_filter_data,
+from components.modular_page_blocks import (load_and_filter_data,
                                             display_summary_statistics,
                                             display_textual_insights,
                                             display_visualizations)
-from components.predefined_visualizations import (display_donations_by_entity,
-                                                  display_donations_by_year_and_entity,
-                                                  display_donations_by_donor_type,
+from components.predefined_visualizations import (display_donations_by_donor_type,
                                                   display_donations_by_donor_type_chart)
-from components.calculations import (compute_summary_statistics, get_mindate,
-                                     get_maxdate, calculate_percentage,
+from components.calculations import (calculate_percentage,
                                      format_number)
-from components.Visualisations import (plot_custom_bar_chart,
-                                       plot_bar_line_by_year)
-from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
 
 
