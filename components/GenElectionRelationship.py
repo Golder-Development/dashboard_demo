@@ -4,10 +4,12 @@
 # Direction can be "DaysTill" or "DaysSince"
 import math
 import datetime as dt
+import pdpy
+import streamlit as st
 from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
 
-
+@log_function_call
 def load_election_dates():
     """
     Load the general election dates from the pdpy.elections module.
@@ -15,33 +17,32 @@ def load_election_dates():
     Returns:
         dict: A dictionary of general election dates.
     """
-    ElectionDates_dict = elections.get_general_elections_dict()
-
+    #returns elections name, dissolution date, election date
+    ElectionDates_dict = pdpy.get_general_elections_dict()
+    print(ElectionDates_dict)
     # Create List of Election Dates from ElectionDates_dict
     ElectionDates = []
     for key in ElectionDates_dict.keys():
-        ElectionDates.append(ElectionDates_dict[key])
+        # load key, election date
+        ElectionDates.append(ElectionDates_dict[key, "election_date"])
 
     ## List of Election Dates
+    # ElectionDates_old = [
+    #     "2001/06/07 00:00:00",
+    #     "2005/05/05 00:00:00",
+    #     "2010/06/05 00:00:00",
+    #     "2015/07/05 00:00:00",
+    #     "2017/07/05 00:00:00",
+    #     "2019/12/12 00:00:00",
+    #     "2024/07/04 00:00:00",
+    # ]
+    st.session_state.ElectionDates = ElectionDates
+    logger.info("Election Dates Loaded")
 
-    ElectionDates_old = [
-        "2001/06/07 00:00:00",
-        "2005/05/05 00:00:00",
-        "2010/06/05 00:00:00",
-        "2015/07/05 00:00:00",
-        "2017/07/05 00:00:00",
-        "2019/12/12 00:00:00",
-        "2024/07/04 00:00:00",
-    ]
-
-    return elections.get_general_elections_dict()
-
-    return ElectionDates
-
-
+@log_function_call
 def GenElectionRelation2(
     R_Date, divisor=1, direction="DaysTill", date_format="%Y/%m/%d %H:%M:%S"
-):
+        ):
     """
     Calculate the difference in a definable period between a given date and
     the nearest election date.
@@ -61,12 +62,13 @@ def GenElectionRelation2(
     """
     # Load Election Dates
     if "ElectionDates" not in st.session_state:
-        ElectionDates = load_election_dates()
-        st.session_state.ElectionDates = ElectionDates
+        logger.info("Election Dates not loaded, loading now")
+        load_election_dates()
 
-        # Pre-sorted lists of election dates
-        ElectionDatesAscend = sorted(ElectionDates)
-        ElectionDatesDescend = sorted(ElectionDates, reverse=True)
+    # Pre-sorted lists of election dates
+    logger.info("Sorting Election Dates")
+    ElectionDatesAscend = sorted(st.session_state.ElectionDates)
+    ElectionDatesDescend = sorted(st.session_state.ElectionDates, reverse=True)
 
     try:
         # Convert the reference date to datetime

@@ -2,6 +2,7 @@ import pandas as pd
 import re
 import os
 import pdpy
+import streamlit as st
 from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
 
@@ -98,8 +99,8 @@ def get_party_df_from_pdpy(
     )
     # feedback
     mppartymemb_df = mppartymemb_df.drop(columns=["person_id", "party_id"])
-    print("Fetched data from PdPy sample")
-    print(mppartymemb_df[["given_name", "family_name", "party_name"]].head())
+    logger.info("Fetched data from PdPy sample")
+    logger.info(mppartymemb_df[["given_name", "family_name", "party_name"]].head())
     # Save final dataset
     mppartymemb_df.to_csv(mppartymemb_pypd_path, index=False)
     return mppartymemb_df
@@ -152,8 +153,8 @@ df["PoliticalParty_pdpy"] = df.apply(
 )
 testdata = False
 if testdata:
-    print("sample of original file")
-    print(
+    logger.info("sample of original file")
+    logger.info(
         df[
             [
                 "OriginalRegulatedEntityName",
@@ -163,17 +164,13 @@ if testdata:
             ]
         ].head()
     )
-    print("sample of cleaned file")
-    print(
-        df[["OriginalRegulatedEntityName", "CleanedName", "PoliticalParty_pdpy"]].head()
-    )
+    logger.info("sample of cleaned file"
+    f" {df[['CleanedName', 'Status']].head()} ")
     # print count of records by party
-    print("count of records by party")
-    print(df["PoliticalParty_pdpy"].value_counts())
+    logger.info("count of records by party"
+    f" {df["PoliticalParty_pdpy"].value_counts()} ")# Save final dataset
 
-# Save final dataset
-ref_dir
-final_file_path = os.path.join(BASE_DIR, "ListOfPoliticalPeople_Final.csv")
+final_file_path = st.session_state.mp_party_memberships_file_path
 df.to_csv(final_file_path, index=False)
 
-print(f"Processed file saved as: {final_file_path}")
+logger.info(f"Processed file saved as: {final_file_path}")

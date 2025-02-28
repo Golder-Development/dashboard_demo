@@ -130,17 +130,53 @@ def mod_regulated_entity_per_donors_page():
 def mod_dubious_donors_per_entity_page():
     display_per_group_data_page("DubiousDonors_ftr",
                                  "Dubious Donors by Entity",
-                                 "Regulatedentity")
+                                 "RegulatedEntity")
 
 
 # Dubious Donors
 def mod_dubious_donors_page():
     display_data_page("DubiousDonors_ftr",
-                      "Dubious Donors by Entity",
-                      "Regulatedentity")
+                      "Dubious Donors by Entity")
 
 
+# Cash Donations
+def mod_cash_donations_page():
+    display_data_page("CashDonations_ftr",
+                      "Cash Donation")
 
+
+# Cash Donations per donor
+def mod_cash_donations_per_donor_page():
+    display_per_group_data_page("CashDonations_ftr",
+                                "Cash Donation per Donor",
+                                "Donor")
+
+
+# Cash Donations per entity
+def mod_cash_donations_per_entity_page():
+    display_per_group_data_page("CashDonations_ftr",
+                                "Cash Donation per Regulated Entity",
+                                "RegulatedEntity")
+
+
+# Non Cash Donations
+def mod_non_cash_donations_page():
+    display_data_page("NonCashDonations_ftr",
+                      "Non Cash Donation")
+
+
+# Non Cash Donations per donor
+def mod_non_cash_donations_per_donor_page():
+    display_per_group_data_page("NonCashDonations_ftr",
+                                "Non Cash Donation per Donor",
+                                "Donor")
+
+
+# Non Cash Donations per entity
+def mod_non_cash_donations_per_entity_page():
+    display_per_group_data_page("NonCashDonations_ftr",
+                                "Non Cash Donation per Regulated Entity",
+                                "RegulatedEntity")
 
 #login
 @log_function_call

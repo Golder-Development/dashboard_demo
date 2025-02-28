@@ -1,10 +1,11 @@
 import pandas as pd
 import streamlit as st
 import os
+from data.politicalperson import map_mp_to_party
 from components import mappings as mp
 from components import calculations as calc
 from utils.logger import logger, log_function_call
-
+from components.GenElectionRelationship import GenElectionRelation2
 
 @log_function_call
 def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
@@ -59,7 +60,7 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
             loadclean_df["ReceivedDate"], dayfirst=True, format="mixed", errors="coerce"
         )
         .dt.normalize()
-        .fillna(st.session_state.get("PLACEHOLDER_DATE"))
+        .fillna(st.session_state.PLACEHOLDER_DATE)
     )
     # Create Year and Month columns
     loadclean_df["YearReceived"] = loadclean_df["ReceivedDate"].dt.year
@@ -76,6 +77,10 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
             {"Donation to nan": "Other", "Other Payment": "Other"}
         )
 
+    # apply mapping of MPs to party membership
+    if "RegulatedEntityName" in loadclean_df.columns:
+        loadclean_df = map_mp_to_party(loadclean_df)
+    
     # Create a DubiousData flag for problematic records
     if ("PLACEHOLDER_DATE" not in st.session_state) or (
         "PLACEHOLDER_ID" not in st.session_state
@@ -160,21 +165,7 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
         if col not in loadclean_df.columns:
             loadclean_df[col] = orig_df[col]
 
-    # change IsBequest, IsAggregation, IsSponsorship is NA or null to False
-    loadclean_df["IsBequest"] = loadclean_df["IsBequest"].fillna(False)
-    loadclean_df["IsAggregation"] = loadclean_df["IsAggregation"].fillna(False)
-    loadclean_df["IsSponsorship"] = loadclean_df["IsSponsorship"].fillna(False)
-
-    # change IsBequest, IsAggregation, IsSponsorship to boolean
-    loadclean_df["IsBequest"] = loadclean_df["IsBequest"].astype(bool)
-    loadclean_df["IsAggregation"] = loadclean_df["IsAggregation"].astype(bool)
-    loadclean_df["IsSponsorship"] = loadclean_df["IsSponsorship"].astype(bool)
-
-    # create new columns for IsBequest, IsAggregation, IsSponsorship where True =1 false = 0
-    loadclean_df["IsBequestInt"] = loadclean_df["IsBequest"].astype(int)
-    loadclean_df["IsAggregationInt"] = loadclean_df["IsAggregation"].astype(int)
-    loadclean_df["IsSponsorshipInt"] = loadclean_df["IsSponsorship"].astype(int)
-    
+   
     # Drop Columns that are not needed
     loadclean_df = loadclean_df.drop(
         [
@@ -191,39 +182,62 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
         ],
         axis=1,
     )
-    # # Calculate the number of days to the next election
-    # df["DaysTillNextElection"] = df["ReceivedDate"].map(
-    #     lambda x: ger.GenElectionRelation2(x,
-    #           direction="DaysTill",
-    #           date_format='%Y/%m/%d %H:%M:%S')
-    # )
 
-    # # Calculate the number of days since the last election
-    # df["DaysSinceLastElection"] = df["ReceivedDate"].map(
-    #     lambda x: ger.GenElectionRelation2(x,
-    #           direction="DaysSince",
-    #           date_format='%Y/%m/%d %H:%M:%S')
-    # )
+    # Column encoding DonationType, RegulatedEntityName, DonorName, DonationAction, DonorStatus,
+    # CampaigningName, PurposeOfVisit, AccountingUnitName, ReportingPeriodName, RegulatedDoneeType,
+    # IsIrishSource, IsBequest, IsAggregation, IsSponsorship, NatureOfDonation, RegisterName
+    loadclean_df["DonationTypeInt"] = loadclean_df["DonationType"].astype("category").cat.codes
+    loadclean_df["RegulatedEntityNameInt"] = loadclean_df["RegulatedEntityName"].astype("category").cat.codes
+    loadclean_df["DonorNameInt"] = loadclean_df["DonorName"].astype("category").cat.codes
+    loadclean_df["DonationActionInt"] = loadclean_df["DonationAction"].astype("category").cat.codes
+    loadclean_df["DonorStatusInt"] = loadclean_df["DonorStatus"].astype("category").cat.codes
+    # loadclean_df["CampaigningNameInt"] = loadclean_df["CampaigningName"].astype("category").cat.codes
+    loadclean_df["PurposeOfVisitInt"] = loadclean_df["PurposeOfVisit"].astype("category").cat.codes
+    # loadclean_df["AccountingUnitNameInt"] = loadclean_df["AccountingUnitName"].astype("category").cat.codes
+    # loadclean_df["ReportingPeriodNameInt"] = loadclean_df["ReportingPeriodName"].astype("category").cat.codes
+    loadclean_df["RegulatedDoneeTypeInt"] = loadclean_df["RegulatedDoneeType"].astype("category").cat.codes
+    # loadclean_df["IsIrishSourceInt"] = loadclean_df["IsIrishSource"].astype("category").cat.codes
+    loadclean_df["IsBequestInt"] = loadclean_df["IsBequest"].astype("category").cat.codes
+    loadclean_df["IsAggregationInt"] = loadclean_df["IsAggregation"].astype("category").cat.codes
+    loadclean_df["IsSponsorshipInt"] = loadclean_df["IsSponsorship"].astype("category").cat.codes
+    loadclean_df["NatureOfDonationInt"] = loadclean_df["NatureOfDonation"].astype("category").cat.codes
+    loadclean_df["RegisterNameInt"] = loadclean_df["RegisterName"].astype("category").cat.codes
 
-    # # Apply the function to calculate weeks till the next election
-    # df['WeeksTillNextElection'] = df['ReceivedDate'].apply(
-    #     lambda x: GenElectionRelation2(x, divisor=7, direction="DaysTill")
-    # )
+    # Column encoding PublicFundsInt
+    loadclean_df["PublicFundsInt"] = loadclean_df["DonationType"].apply(lambda x: 0 if x != "Public Funds" else 1)    
+    # Calculate the number of days to the next election
+    loadclean_df["DaysTillNextElection"] = loadclean_df["ReceivedDate"].map(
+        lambda x: GenElectionRelation2(x,
+              direction="DaysTill",
+              date_format='%Y/%m/%d %H:%M:%S')
+    )
 
-    # # Apply the function to calculate weeks since the last election
-    # df['WeeksSinceLastElection'] = df['ReceivedDate'].apply(
-    #     lambda x: GenElectionRelation2(x, divisor=7, direction="DaysSince")
-    # )
+    # Calculate the number of days since the last election
+    loadclean_df["DaysSinceLastElection"] = loadclean_df["ReceivedDate"].map(
+        lambda x: GenElectionRelation2(x,
+              direction="DaysSince",
+              date_format='%Y/%m/%d %H:%M:%S')
+    )
 
-    # # Apply the function to calculate qtrs till the next election
-    # df['WeeksTillNextElection'] = df['ReceivedDate'].apply(
-    #     lambda x: GenElectionRelation2(x, divisor=91, direction="DaysTill")
-    # )
+    # Apply the function to calculate weeks till the next election
+    loadclean_df['WeeksTillNextElection'] = loadclean_df['ReceivedDate'].apply(
+        lambda x: GenElectionRelation2(x, divisor=7, direction="DaysTill")
+    )
 
-    # # Apply the function to calculate qtrs since the last election
-    # df['WeeksSinceLastElection'] = df['ReceivedDate'].apply(
-    #     lambda x: GenElectionRelation2(x, divisor=91, direction="DaysSince")
-    # )
+    # Apply the function to calculate weeks since the last election
+    loadclean_df['WeeksSinceLastElection'] = loadclean_df['ReceivedDate'].apply(
+        lambda x: GenElectionRelation2(x, divisor=7, direction="DaysSince")
+    )
+
+    # Apply the function to calculate qtrs till the next election
+    loadclean_df['WeeksTillNextElection'] = loadclean_df['ReceivedDate'].apply(
+        lambda x: GenElectionRelation2(x, divisor=91, direction="DaysTill")
+    )
+
+    # Apply the function to calculate qtrs since the last election
+    loadclean_df['WeeksSinceLastElection'] = loadclean_df['ReceivedDate'].apply(
+        lambda x: GenElectionRelation2(x, divisor=91, direction="DaysSince")
+    )
     # Save cleaned data
     if output_csv:
         output_dir = st.session_state.directories["output_dir"]
@@ -232,4 +246,8 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
         # Save the cleaned data to a CSV file for further analysis or reporting
         loadclean_df.to_csv(cleaned_data_filename)
     logger.info(f"Cleaned Data completed, shape: {loadclean_df.shape}")
+
+    # apply political party mappings to MPs
+    if st.session_state.RERUN_MP_PARTY_MEMBERSHIP:
+        MP_Party = mp.map_mps_to_party_membership(loadclean_df)
     return loadclean_df

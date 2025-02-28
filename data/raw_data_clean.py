@@ -143,11 +143,6 @@ def raw_data_cleanup(
     else:
         st.write("Deduping of Donors Entities not selected")
 
-    # Remove Northern Ireland register data
-    loaddata_df = loaddata_df[loaddata_df["RegisterName"] != "Northern Ireland"]
-    # Remove Public Funds
-    loaddata_df = loaddata_df[loaddata_df["DonationType"] != "Public Funds"]
-
     logger.info(f"Data cleanup completed, shape: {loaddata_df.shape}")
 
     return loaddata_df

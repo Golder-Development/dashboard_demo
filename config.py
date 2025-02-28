@@ -43,6 +43,9 @@ FILENAMES = {
     },
 }
 
+# ReRun MP Party Membership
+RERUN_MP_PARTY_MEMBERSHIP = False
+
 # Placeholder values
 PLACEHOLDER_DATE = pd.Timestamp("1900-01-01 00:00:00")
 PLACEHOLDER_ID = 1000001
@@ -84,9 +87,8 @@ DATA_REMAPPINGS = {
 # category filter definitions
 FILTER_DEF = {
     "Sponsorships_ftr": {
-        "DonationType": "Sponsorship",
         "NatureOfDonation": "Sponsorship",
-        "IsSponsorship": "True",
+        "IsSponsorshipInt": 1,
     },
     "ReturnedDonations_ftr": {
         "DonationAction": ["Returned", "Forfeited"],
@@ -95,7 +97,8 @@ FILTER_DEF = {
     "DubiousDonors_ftr": {"DubiousDonor": list(range(1, 11))},
     "DubiousDonations_ftr": {"DubiousData": list(range(1, 11))},
     "AggregatedDonations_ftr": {
-        "IsAggregation": "True",
+        "IsAggregationInt": 1,
+        "NatureOfDonation": "Aggregated Donation",
         "DonationType": "Aggregated Donation",
     },
     "SafeDonors_ftr": {
@@ -112,7 +115,12 @@ FILTER_DEF = {
             "Unidentified Donor",
             "Total value of donations not reported individually",
             "Aggregated Donation",
-        ]
+        ],
+        "DonorStatus": ["Impermissible Donor",
+                        "Unidentified Donor",
+                        "Unidentifiable Donor"
+                        ],
+        
     },
     "BlankDate_ftr": {"ReceivedDate": ["PLACEHOLDER_DATE", None]},
     "BlankDonor_ftr": {"DonorId": ["1000001", None, 1000001]},
