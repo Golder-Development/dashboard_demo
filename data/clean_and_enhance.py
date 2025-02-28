@@ -1,20 +1,17 @@
 import pandas as pd
 import streamlit as st
 import os
-from rapidfuzz import process, fuzz
-from collections import defaultdict
 from components import mappings as mp
 from components import calculations as calc
-from utils.logger import logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import logger, log_function_call
 
 
+@log_function_call
 def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
     if streamlitrun:
         # Load the data
         output_dir = st.session_state.directories["output_dir"]
-
-        orig_df = st.session_state.get("raw_data", None)
+        orig_df = st.session_state.raw_data
         if orig_df is None:
             st.error("No data found in session state!")
             return None
@@ -163,11 +160,21 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
         if col not in loadclean_df.columns:
             loadclean_df[col] = orig_df[col]
 
+    # change IsBequest, IsAggregation, IsSponsorship is NA or null to False
+    loadclean_df["IsBequest"] = loadclean_df["IsBequest"].fillna(False)
+    loadclean_df["IsAggregation"] = loadclean_df["IsAggregation"].fillna(False)
+    loadclean_df["IsSponsorship"] = loadclean_df["IsSponsorship"].fillna(False)
+
     # change IsBequest, IsAggregation, IsSponsorship to boolean
     loadclean_df["IsBequest"] = loadclean_df["IsBequest"].astype(bool)
     loadclean_df["IsAggregation"] = loadclean_df["IsAggregation"].astype(bool)
     loadclean_df["IsSponsorship"] = loadclean_df["IsSponsorship"].astype(bool)
 
+    # create new columns for IsBequest, IsAggregation, IsSponsorship where True =1 false = 0
+    loadclean_df["IsBequestInt"] = loadclean_df["IsBequest"].astype(int)
+    loadclean_df["IsAggregationInt"] = loadclean_df["IsAggregation"].astype(int)
+    loadclean_df["IsSponsorshipInt"] = loadclean_df["IsSponsorship"].astype(int)
+    
     # Drop Columns that are not needed
     loadclean_df = loadclean_df.drop(
         [

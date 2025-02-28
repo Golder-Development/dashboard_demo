@@ -1,7 +1,7 @@
 # all globel variables and constants are defined here  #
 
 import streamlit as st
-import logging
+from utils.logger import log_function_call, logger
 import config  # Import the config file
 import os
 
@@ -18,9 +18,11 @@ import os
 """
 
 
+@log_function_call
 def initialize_session_state():
     """Load global variables into session_state if they are not already set."""
     # Define a helper function to initialize values from config
+    @log_function_call
     def init_state_var(var_name, config_value):
         if var_name not in st.session_state:
             st.session_state[var_name] = config_value
@@ -34,6 +36,8 @@ def initialize_session_state():
     init_state_var("data_remappings", config.DATA_REMAPPINGS)
     init_state_var("filter_def", config.FILTER_DEF)
     init_state_var("security", config.SECURITY)
+    init_state_var("perc_target", config.perc_target)  # Add perc_target initialization
+
     # Initialize directories
     init_state_var("directories", config.DIRECTORIES)
 
@@ -50,9 +54,8 @@ def initialize_session_state():
         "components_dir",
         "app_pages_dir",
         "utils_dir"
-        ]:
+            ]:
         init_state_var(dir_key, st.session_state["directories"].get(dir_key))
-
 
     # Initialize directories
     init_state_var("directories", config.DIRECTORIES)
@@ -70,12 +73,22 @@ def initialize_session_state():
                 )
                 init_state_var(fname_key, file_path)
 
-    # Handle `base_data` separately (since it's stored as a tuple)
-    base_data_key, base_data_filename = config.FILENAMES["BASE_DIR"]
-    base_data_path = os.path.join(st.session_state["BASE_DIR"],
-                                  base_data_filename)
+    # Handle `BASE_DIR` separately (since it's stored as a dictionary)
+    for base_key, base_filename in config.FILENAMES["BASE_DIR"].items():
+        base_path = os.path.join(st.session_state["BASE_DIR"], base_filename)
+        init_state_var(base_key, base_path)
+
+    # Handle `base_data` separately (since it's stored as a dictionary)
+    base_data_key, base_data_filename = list(config.FILENAMES["BASE_DIR"].items())[0]
+    base_data_path = os.path.join(st.session_state["BASE_DIR"], base_data_filename)
     init_state_var(base_data_key, base_data_path)
 
-    # write to log
-    logger = logging.getLogger(__name__)    
-    logger.info(st.session_state)
+    # Initialize Cash_ftr filter
+    init_state_var("Cash_ftr", config.FILTER_DEF.get("Cash_ftr"))
+
+    # write session state as list to log
+    logger.info("Session_state variables initialized")
+    for key, value in st.session_state.items():
+        logger.info(f"{key}: {value}")
+
+    logger.info("Session state Setup complete")

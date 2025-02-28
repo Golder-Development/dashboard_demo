@@ -62,7 +62,8 @@ def dubiousdonationsByDonor_body():
     #     ppcalc.get_blank_received_date_ct(filtered_df))
     # bm_blank_regulated_entity_id_ct = (
     #     ppcalc.get_blank_regulated_entity_id_ct(filtered_df))
-    bm_dubious_donors = ppcalc.get_dubious_donors_ct(filtered_df, current_target)
+    bm_dubious_donors = ppcalc.get_dubious_donors_ct(filtered_df,
+                                                     current_target)
     bm_dubious_donation_actions = (
         ppcalc.get_dubious_donation_actions(filtered_df, current_target)
     )

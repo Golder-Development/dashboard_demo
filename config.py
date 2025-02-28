@@ -4,7 +4,7 @@ import os
 import pandas as pd
 
 # Base directory
-BASE_DIR = os.path.dirname(__file__)
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 DIRECTORIES = {
     "data_dir": os.path.join(BASE_DIR, "data"),
@@ -38,7 +38,9 @@ FILENAMES = {
         "cleaned_regentity_fname": "cleaned_regentity.csv",
         "party_summary_fname": "party_summary.csv",
     },
-    "BASE_DIR": {"ec_donations_fname", "Donations_accepted_by_political_parties.csv"},
+    "BASE_DIR": {
+        "ec_donations_fname": "Donations_accepted_by_political_parties.csv"
+    },
 }
 
 # Placeholder values
@@ -116,10 +118,18 @@ FILTER_DEF = {
     "BlankDonor_ftr": {"DonorId": ["1000001", None, 1000001]},
     "BlankRegEntity_ftr": {"RegulatedEntityId": ["1000001", None, 1000001]},
     "DonatedVisits_ftr": {"DonationType": "Visit", "NatureOfDonation": "Visit"},
-    "Bequests_ftr": {"IsBequest": True, "NatureOfDonation": "Bequest", "DonationType": "Bequest"},  # Changed from string to boolean
+    "Bequests_ftr": {"IsBequestInt": 1, "NatureOfDonation": "Bequest", "DonationType": "Bequest"},  # Changed from string to boolean
     "CorporateDonations_ftr": {
         "DonorStatus": ["Company", "Partnership", "Limited Liability Partnership"]
     },
+    "RegulatedEntity_ftr": {"RegulatedEntityType": ["Political Party",
+                                                    "Regulated Donee",
+                                                    "Permitted Participant",
+                                                    "Third Party"
+                                                    ]},
+    "PoliticalParty_ftr": {"DonorType": "Political Party"},
+    "Cash_ftr": {"DonationType": "Cash"},
+    "NonCash_ftr": {"DonationType": "Non Cash"},
 }
 SECURITY = {
     "is_admin": False,

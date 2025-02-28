@@ -4,7 +4,7 @@ import os
 import bcrypt
 from utils.global_variables import initialize_session_state
 from utils.logger import logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import log_function_call  # Import decorator
 
 
 # File paths
@@ -36,7 +36,7 @@ def check_password(username, password):
 # Function to load text for a specific page
 def load_page_text(pageref_label):
     all_texts = load_all_text()
-    return all_texts.get(target_label, {})
+    return all_texts.get(pageref_label, {})
 
 
 # Function to toggle soft delete

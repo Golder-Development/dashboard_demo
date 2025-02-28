@@ -8,7 +8,7 @@ from app_pages.modular_page_per_entity import (
 )
 from components.text_management import load_page_text, check_password
 from utils.logger import logger  # Import the logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import log_function_call  # Import decorator
 
 # Example usage for different pages
 def mod_visits_page():
@@ -60,6 +60,19 @@ def mod_visits_per_donor():
                                 "Donor")
 
 
+def mod_regulated_entity_donors_page():
+    display_per_group_data_page("RegulatedEntity_ftr",
+                                "Donors by Regulated Entity",
+                                "Donor")
+
+
+def mod_donations_by_political_party_page():
+    display_per_entity_data_page("PoliticalParty_ftr",
+                                 "Donations by Political Party",
+                                 "Donor")
+
+
+@log_function_call
 def loginpage():
     page_texts = load_page_text("login")
 
@@ -75,10 +88,16 @@ def loginpage():
             if check_password(username, password):
                 st.session_state.security["is_admin"] = True
                 st.success("Login successful!")
+                logger.info("User is not logged in as admin.")
             else:
                 st.error("Invalid username or password.")
+                st.success("You are not logged in as admin.")
+                logger.info("User is not logged in as admin.")
+    else:
+        st.warning("You are already logged in as admin.")
 
 
+@log_function_call
 def logoutpage():
     page_texts = load_page_text("logout")
 
@@ -89,4 +108,4 @@ def logoutpage():
     if st.session_state.security["is_admin"]:
         if st.button("Logout"):
             st.session_state.security["is_admin"] = False
-            
+            st.success("Logout successful!")

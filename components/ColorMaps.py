@@ -1,5 +1,5 @@
 from utils.logger import logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import log_function_call  # Import decorator
 
 
 color_mapping = {

@@ -7,7 +7,8 @@ from components.calculations import (compute_summary_statistics, get_mindate,
                                      format_number)
 from components.Visualisations import (plot_custom_bar_chart,
                                        plot_bar_line_by_year)
-
+from components.predefined_visualizations import (visit_graph1, visits_graph2,
+                                                   visits_graph3, visits_graph4)
 
 def visits_body_page():
     """Displays the Cash Donations page in Streamlit."""
@@ -110,49 +111,14 @@ def visits_body_page():
             st.write("No data available for the selected filters.")
             return
         else:
-            plot_bar_line_by_year(cleaned_c_d_df,
-                                  XValues="YearReceived",
-                                  YValue="Value",
-                                  GGroup="RegulatedEntityType",
-                                  XLabel="Year",
-                                  YLabel="Value of Donations £",
-                                  Title=f"Value of {target_label}s by Year and"
-                                        " Entity",
-                                  CalcType='sum',
-                                  use_custom_colors=False,
-                                  widget_key="Value_by_entity",
-                                  ChartType='Bar',
-                                  LegendTitle="Political Entity Type",
-                                  percentbars=True,
-                                  use_container_width=True)
-        st.write(f"Most {target_label}s are provided to Political Parties,"
-                 " this changeed in 2016 with the Brexit Referendum. "
-                 "Medium size political entities such as 'Vote Leave' and"
-                 " 'Leave.EU' were very active, but were not"
-                 " Political Parties."
-                 " As such they appear as Permitted Participants.")
+            visit_graph1(target_label, cleaned_c_d_df)
     # Display visualizations
     with right_column:
         if cleaned_c_d_df.empty:
             st.write("No data available for the selected filters.")
             return
         else:
-            plot_bar_line_by_year(cleaned_c_d_df,
-                                  XValues="YearReceived",
-                                  YValue="Value",
-                                  GGroup="RegEntity_Group",
-                                  XLabel="Year",
-                                  YLabel="Value of Donations £",
-                                  Title=f"Value of {target_label}s by Year and"
-                                        " Entity",
-                                  CalcType='sum',
-                                  use_custom_colors=True,
-                                  widget_key="Value_by_entity",
-                                  ChartType='Bar',
-                                  LegendTitle="Political Entity",
-                                  percentbars=False,
-                                  use_container_width=True)
-        st.write("some insights here")
+            visits_graph2(target_label, cleaned_c_d_df)
     st.write("---")
     left, right = st.columns(2)
     with left:
@@ -160,36 +126,12 @@ def visits_body_page():
             st.write("No data available for the selected filters.")
             return
         else:
-            plot_bar_line_by_year(cleaned_c_d_df,
-                                  XValues="YearReceived",
-                                  YValue="Value",
-                                  GGroup="DonorStatus",
-                                  XLabel="Year",
-                                  YLabel="Total Value (£)",
-                                  Title=f"{target_label}s Value by Donor Types",
-                                  CalcType='sum',
-                                  widget_key="Value by type",
-                                  use_container_width=True)
-        st.write("some insights.")
+            visits_graph3(target_label, cleaned_c_d_df)
     with right:
         if cleaned_c_d_df.empty:
             st.write("No data available for the selected filters.")
             return
         else:
-            plot_custom_bar_chart(df=cleaned_c_d_df,
-                                  x_column='DonorStatus',
-                                  y_column='Value',
-                                  agg_func='avg',
-                                  title=f'Avg {target_label}s Value by Donor Types',
-                                  x_label='Donor',  # X-axis label
-                                  y_label='Donation £',  # Y-axis label
-                                  orientation='v',  # Vertical bars
-                                  barmode='stack',  # Grouped bars
-                                  x_scale='category',
-                                  y_scale='linear',
-                                  color_palette='Set1',
-                                  widget_key='donation_donation_type',
-                                  use_container_width=True
-                                  )
+            visits_graph4(target_label, cleaned_c_d_df)
         st.write("some wonderful insights here.")
     st.write("---")

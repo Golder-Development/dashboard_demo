@@ -1,10 +1,14 @@
-__pycache__
-*.ipynb
+__pycache__/
+.devcontainer/
+.pytest_cache/
 .venv/
+.vscode/
+devfiles/
+
+# Ignore logs folder and log files
+logs/
+*.log
+
 tests/
 Wireframes/
-devfiles/
-.pytest_cache/
-.devcontainer/
 app.log
-logs/

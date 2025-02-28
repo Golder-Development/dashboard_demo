@@ -3,7 +3,7 @@ import re
 import os
 import pdpy
 from utils.logger import logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import log_function_call  # Import decorator
 
 # Define the base directory (can be adjusted if needed)
 BASE_DIR = os.path.dirname(__file__)  # Gets the directory of the script

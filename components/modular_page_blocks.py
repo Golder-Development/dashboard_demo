@@ -18,9 +18,9 @@ from components.text_management import (
     permanent_delete,
 )
 from utils.logger import logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import log_function_call  # Import decorator
 
-
+@log_function_call
 def load_and_filter_data(filter_key, pagereflabel):
     """Loads and filters dataset based on filter_key from session state."""
     cleaned_df = load_cleaned_data()
@@ -44,7 +44,7 @@ def load_and_filter_data(filter_key, pagereflabel):
 
     return cleaned_df, filtered_df
 
-
+@log_function_call
 def display_summary_statistics(filtered_df, overall_df, target_label, pageref_label):
     """Displays summary statistics for the given dataset."""
     pageref_label_dss = pageref_label + "_dss"
@@ -79,7 +79,7 @@ def display_summary_statistics(filtered_df, overall_df, target_label, pageref_la
 
     return min_date_df, max_date_df, tstats, ostats, perc_target
 
-
+@log_function_call
 def display_visualizations(filtered_df, target_label, pageref_label):
     pageref_label_vis = pageref_label + "_vis"
     """Displays charts for the given dataset."""
@@ -125,7 +125,7 @@ def display_visualizations(filtered_df, target_label, pageref_label):
             use_container_width=True,
         )
 
-
+@log_function_call
 def display_textual_insights(
     pageref_label, target_label, min_date, max_date, tstats, ostats, perc_target
 ):
@@ -244,6 +244,7 @@ def display_textual_insights(
         st.write("* Funding sources and types of" " donors impact donation trends.")
 
 
+@log_function_call
 def load_and_filter_perentity(groupentity, filter_key, pageref_label):
     """Loads and filters dataset based on filter_key from session state."""
     cleaned_df = load_cleaned_data()
@@ -336,6 +337,7 @@ def load_and_filter_perentity(groupentity, filter_key, pageref_label):
     )
 
 
+@log_function_call
 def load_and_filter_pergroup(groupentity, filter_key, pageref_label):
     """Loads and filters dataset based on filter_key from session state."""
     cleaned_df = load_cleaned_data()
@@ -435,3 +437,29 @@ def load_and_filter_pergroup(groupentity, filter_key, pageref_label):
         cleaned_c_r_df,
         cleaned_c_r_d_df,
     )
+
+
+@log_function_call
+def topline_summary_block(target_label, min_date_df, max_date_df, tstats, perc_cash_donations_d):
+    st.write(f"## Summary Statistics for {target_label},"
+             f" from {min_date_df} to {max_date_df}")
+    left, a, b, mid, c, right = st.columns(6)
+    with left:
+        st.metric(label=f"Total {target_label}",
+                  value=f"£{tstats['total_value']:,.0f}")
+    with a:
+        st.metric(label=f"{target_label} % of Total Donations",
+                  value=f"{perc_cash_donations_d:.2f}%")
+    with b:
+        st.metric(label=f"{target_label} Donations",
+                  value=f"{tstats['unique_donations']:,}")
+    with mid:
+        st.metric(label=f"Mean {target_label} Value",
+                  value=f"£{tstats['mean_value']:,.0f}")
+    with c:
+        st.metric(label=f"Total {target_label} Entities",
+                  value=f"{tstats['unique_reg_entities']:,}")
+    with right:
+        st.metric(label=f"Total {target_label} Donors",
+                  value=f"{tstats['unique_donors']:,}")
+    st.write("---")

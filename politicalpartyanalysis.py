@@ -1,3 +1,6 @@
+from utils.logger import log_function_call
+
+@log_function_call
 def pagesetup():
     # Description: This is the main file to set up the menu
     # from app_pages import introduction
@@ -12,6 +15,7 @@ def pagesetup():
     from app_pages.donorspage_headlines import donorsheadlinespage_body
     from app_pages.donors_perdonor_page import donorspage_body
     from app_pages.visits import visits_body_page
+    from app_pages.dubiousdonationsByDonor import dubiousdonationsbydonor_body
     from app_pages.notesondataprep import notesondataprep_body
     from app_pages.mod_page_calls import (
         mod_bequeths_page,
@@ -42,6 +46,7 @@ def pagesetup():
     app.add_page("Dubious Donors", mod_dubious_donors_page)
     app.add_page("Dubious Donations", dubiousdonations_body)
     app.add_page("Dubious Donations by Regulated Entity", dubiousdonationsByDonor_body)
+    app.add_page("Dubious Donations by Donor", dubiousdonationsbydonor_body)
     app.add_page("Cash Donations by Regulated Entity", cashdonationsregentity_body)
     app.add_page("Sponsorship per entity ", mod_sponsorships_per_entity_page)
     app.add_page("Corporate Donations per entity", mod_corporate_donors_per_entity_page)

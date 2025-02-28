@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 from components.filters import apply_filters
 from utils.logger import logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import log_function_call  # Import decorator
 
 # Convert placeholder date to datetime once
 PLACEHOLDER_DATE = st.session_state.get("PLACEHOLDER_DATE")

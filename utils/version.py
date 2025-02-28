@@ -1,7 +1,8 @@
 import subprocess
 import os
+from utils.logger import log_function_call
 
-
+@log_function_call
 def get_git_version(module_path=None):
     """Get the version based on Git commits and merges.
 
@@ -31,5 +32,5 @@ def get_git_version(module_path=None):
         return "v0.0"  # Fallback version if Git fails
 
 
-if __name__ == "__main__":
-    print(get_git_version())  # Print repo-wide version
+# if __name__ == "__main__":
+#     print(get_git_version())  # Print repo-wide version

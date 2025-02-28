@@ -5,7 +5,7 @@ import datetime as dt
 import pandas as pd
 from components.filters import apply_filters
 from utils.logger import logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import log_function_call  # Import decorator
 
 def cashdonationsregentity_body():
     """

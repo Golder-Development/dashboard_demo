@@ -1,11 +1,11 @@
 import streamlit as st
 import os
 from components import calculations as calc
-from utils.logger import logger
-from utils.decorators import log_function_call  # Import decorator
+from utils.logger import logger, log_function_call
 
 
 @st.cache_data
+@log_function_call
 def initialise_data():
     """
     initialises data for the app
@@ -26,6 +26,7 @@ def initialise_data():
 
 
 @st.cache_data
+@log_function_call
 def load_entity_summary_data(datafile=None, streamlitrun=True, output_csv=False):
     # Load the data
     output_dir = st.session_state.directories["output_dir"]
