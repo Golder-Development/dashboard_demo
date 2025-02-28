@@ -122,6 +122,12 @@ FILTER_DEF = {
     "CorporateDonations_ftr": {
         "DonorStatus": ["Company", "Partnership", "Limited Liability Partnership"]
     },
+    "RegulatedEntity_ftr": {"RegulatedEntityType": ["Political Party",
+                                                    "Regulated Donee",
+                                                    "Permitted Participant",
+                                                    "Third Party"
+                                                    ]},
+    "PoliticalParty_ftr": {"DonorType": "Political Party"},
     "Cash_ftr": {"DonationType": "Cash"},
     "NonCash_ftr": {"DonationType": "Non Cash"},
 }

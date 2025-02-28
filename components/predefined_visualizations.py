@@ -28,6 +28,7 @@ def display_donations_by_entity(cleaned_c_d_df):
                 " Political Parties."
                 " As such they appear as Permitted Participants.")
 
+
 def display_donations_by_year_and_entity(cleaned_c_d_df):
     plot_bar_line_by_year(cleaned_c_d_df,
                             XValues="YearReceived",
@@ -51,6 +52,7 @@ def display_donations_by_year_and_entity(cleaned_c_d_df):
                 "Referendum. Here Medium size political entities such "
                 "as 'Vote Leave' and 'Leave.EU' were very active.")
 
+
 def display_donations_by_donor_type(cleaned_c_d_df):
     plot_bar_line_by_year(cleaned_c_d_df,
                             XValues="YearReceived",
@@ -68,6 +70,7 @@ def display_donations_by_donor_type(cleaned_c_d_df):
     st.write("The pattern of donations by donor type is consistent "
                 "over time. This is not surprising as the majority of "
                 "donations are from individuals.")
+
 
 def display_donations_by_donor_type_chart(df):
     plot_custom_bar_chart(df=df,
@@ -91,3 +94,78 @@ def display_donations_by_donor_type_chart(df):
     st.write("The pattern of donations by donor type is consistent "
                 "over time. This is not surprising as the majority of "
                 "donations are from individuals.")
+
+
+def visit_graph1(target_label, cleaned_c_d_df):
+    plot_bar_line_by_year(cleaned_c_d_df,
+                                  XValues="YearReceived",
+                                  YValue="Value",
+                                  GGroup="RegulatedEntityType",
+                                  XLabel="Year",
+                                  YLabel="Value of Donations £",
+                                  Title=f"Value of {target_label}s by Year and"
+                                        " Entity",
+                                  CalcType='sum',
+                                  use_custom_colors=False,
+                                  widget_key="Value_by_entity",
+                                  ChartType='Bar',
+                                  LegendTitle="Political Entity Type",
+                                  percentbars=True,
+                                  use_container_width=True)
+    st.write(f"Most {target_label}s are provided to Political Parties,"
+                    " this changeed in 2016 with the Brexit Referendum. "
+                    "Medium size political entities such as 'Vote Leave' and"
+                    " 'Leave.EU' were very active, but were not"
+                    " Political Parties."
+                    " As such they appear as Permitted Participants.")
+
+
+def visits_graph2(target_label, cleaned_c_d_df):
+    plot_bar_line_by_year(cleaned_c_d_df,
+                                  XValues="YearReceived",
+                                  YValue="Value",
+                                  GGroup="RegEntity_Group",
+                                  XLabel="Year",
+                                  YLabel="Value of Donations £",
+                                  Title=f"Value of {target_label}s by Year and"
+                                        " Entity",
+                                  CalcType='sum',
+                                  use_custom_colors=True,
+                                  widget_key="Value_by_entity",
+                                  ChartType='Bar',
+                                  LegendTitle="Political Entity",
+                                  percentbars=False,
+                                  use_container_width=True)
+    st.write("some insights here")
+
+
+def visits_graph3(target_label, cleaned_c_d_df):
+    plot_bar_line_by_year(cleaned_c_d_df,
+                                  XValues="YearReceived",
+                                  YValue="Value",
+                                  GGroup="DonorStatus",
+                                  XLabel="Year",
+                                  YLabel="Total Value (£)",
+                                  Title=f"{target_label}s Value by Donor Types",
+                                  CalcType='sum',
+                                  widget_key="Value by type",
+                                  use_container_width=True)
+    st.write("some insights.")
+
+
+def visits_graph4(target_label, cleaned_c_d_df):
+    plot_custom_bar_chart(df=cleaned_c_d_df,
+                                  x_column='DonorStatus',
+                                  y_column='Value',
+                                  agg_func='avg',
+                                  title=f'Avg {target_label}s Value by Donor Types',
+                                  x_label='Donor',  # X-axis label
+                                  y_label='Donation £',  # Y-axis label
+                                  orientation='v',  # Vertical bars
+                                  barmode='stack',  # Grouped bars
+                                  x_scale='category',
+                                  y_scale='linear',
+                                  color_palette='Set1',
+                                  widget_key='donation_donation_type',
+                                  use_container_width=True
+                                  )

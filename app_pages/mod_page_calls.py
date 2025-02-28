@@ -60,6 +60,19 @@ def mod_visits_per_donor():
                                 "Donor")
 
 
+def mod_regulated_entity_donors_page():
+    display_per_group_data_page("RegulatedEntity_ftr",
+                                "Donors by Regulated Entity",
+                                "Donor")
+
+
+def mod_donations_by_political_party_page():
+    display_per_entity_data_page("PoliticalParty_ftr",
+                                 "Donations by Political Party",
+                                 "Donor")
+
+
+@log_function_call
 def loginpage():
     page_texts = load_page_text("login")
 
@@ -83,6 +96,8 @@ def loginpage():
     else:
         st.warning("You are already logged in as admin.")
 
+
+@log_function_call
 def logoutpage():
     page_texts = load_page_text("logout")
 
