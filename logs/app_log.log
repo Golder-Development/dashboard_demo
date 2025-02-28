@@ -5279,3 +5279,1300 @@ index                                              ...
 2025/02/28 12:47:13 PM INFO:firstload executed successfully
 2025/02/28 12:47:13 PM INFO:firstload executed successfully
 2025/02/28 12:47:13 PM INFO:firstload executed successfully
+2025/02/28 12:47:37 PM INFO:Logging is set up correctly!
+2025/02/28 12:47:37 PM INFO:Calling get_git_version with args=('H:\\VScode\\dashboard_demo\\utils',)
+2025/02/28 12:47:37 PM INFO:get_git_version executed successfully
+2025/02/28 12:47:38 PM INFO:Calling get_git_version with args=('H:\\VScode\\dashboard_demo\\data',)
+2025/02/28 12:47:38 PM INFO:get_git_version executed successfully
+2025/02/28 12:47:38 PM INFO:Calling get_git_version with args=('H:\\VScode\\dashboard_demo\\components',)
+2025/02/28 12:47:38 PM INFO:get_git_version executed successfully
+2025/02/28 12:47:38 PM INFO:Current Working Directory: H:\VScode\dashboard_demo
+2025/02/28 12:47:38 PM INFO:Setting up the package
+2025/02/28 12:47:38 PM INFO:Module directory: H:\VScode\dashboard_demo
+2025/02/28 12:47:38 PM INFO:Calling get_git_version with args=('H:\\VScode\\dashboard_demo',)
+2025/02/28 12:47:38 PM INFO:get_git_version executed successfully
+2025/02/28 12:47:38 PM INFO:Version: v2.104
+2025/02/28 12:47:38 PM INFO:Calling initialize_session_state with args=()
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('BASE_DIR', 'H:\\VScode\\dashboard_demo')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('filenames', {'reference_dir': {'Donor_dedupe_cleaned_fname': 'Donor_dedupe_cleaned_data.csv', 'ListofPoliticalPeople_fname': 'ListOfPoliticalPeople.csv', 'mppartymemb_fname': 'mppartymemb_pypd.csv', 'donor_map_fname': 'PoliticalDonorsDeDuped.csv', 'politician_party_fname': 'ListOfPoliticalPeople_Final.csv', 'regentity_map_fname': 'PoliticalEntityDeDuped.csv', 'potential_donor_duplicates_fname': 'potential_donor_duplicates.csv', 'potential_regulatedentity_duplicates_fname': 'potential_regentiity_duplicates.csv', 'original_data_fname': 'original_data.csv', 'CREDENTIALS_FILE': 'admin_credentials.json', 'TEXT_FILE': 'admin_text.json'}, 'output_dir': {'cleaned_data_fname': 'cleaned_data.csv', 'cleaned_donations_fname': 'cleaned_donations.csv', 'cleaned_donorlist_fname': 'cleaned_donorlist.csv', 'cleaned_regentity_fname': 'cleaned_regentity.csv', 'party_summary_fname': 'party_summary.csv'}, 'BASE_DIR': {'ec_donations_fname': 'Donations_accepted_by_political_parties.csv'}})
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('PLACEHOLDER_DATE', Timestamp('1900-01-01 00:00:00'))
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('PLACEHOLDER_ID', 1000001)
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('thresholds', {(0, 0): 'No Relevant Donations', (1, 1): 'Single Donation Entity', (2, 5): 'Very Small Entity', (6, 15): 'Small Entity', (16, 100): 'Small Medium Entity', (101, 200): 'Medium Entity', (201, 500): 'Medium Large Entity', (501, 1000): 'Large Entity'})
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('data_remappings', {'NatureOfDonation': {'IsBequest': 'Is A Bequest', 'IsAggregation': 'Aggregated Donation', 'IsSponsorship': 'Sponsorship', 'Donation to nan': 'Other', 'Other Payment': 'Other'}, 'PartyParents': {'Conservatives': 52, 'Labour': 53, 'Liberal Democrats': 90, 'Scottish National Party': 102, 'Green Party': 63, 'Plaid Cymru': 77, 'UKIP': 85, 'Unknown': 0}})
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('filter_def', {'Sponsorships_ftr': {'DonationType': 'Sponsorship', 'NatureOfDonation': 'Sponsorship', 'IsSponsorship': 'True'}, 'ReturnedDonations_ftr': {'DonationAction': ['Returned', 'Forfeited'], 'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonors_ftr': {'DubiousDonor': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonations_ftr': {'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'AggregatedDonations_ftr': {'IsAggregation': 'True', 'DonationType': 'Aggregated Donation'}, 'SafeDonors_ftr': {'DonorType': ['Trade Union', 'Registered Political Party', 'Friendly Society', 'Public Fund']}, 'DubiousDonationType_ftr': {'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Total value of donations not reported individually', 'Aggregated Donation']}, 'BlankDate_ftr': {'ReceivedDate': ['PLACEHOLDER_DATE', None]}, 'BlankDonor_ftr': {'DonorId': ['1000001', None, 1000001]}, 'BlankRegEntity_ftr': {'RegulatedEntityId': ['1000001', None, 1000001]}, 'DonatedVisits_ftr': {'DonationType': 'Visit', 'NatureOfDonation': 'Visit'}, 'Bequests_ftr': {'IsBequestInt': 1, 'NatureOfDonation': 'Bequest', 'DonationType': 'Bequest'}, 'CorporateDonations_ftr': {'DonorStatus': ['Company', 'Partnership', 'Limited Liability Partnership']}, 'Cash_ftr': {'DonationType': 'Cash'}, 'NonCash_ftr': {'DonationType': 'Non Cash'}})
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('security', {'is_admin': False, 'is_authenticated': False, 'username': '', 'password': ''})
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('directories', {'data_dir': 'H:\\VScode\\dashboard_demo\\data', 'output_dir': 'H:\\VScode\\dashboard_demo\\output', 'logs_dir': 'H:\\VScode\\dashboard_demo\\logs', 'reference_dir': 'H:\\VScode\\dashboard_demo\\reference_files', 'components_dir': 'H:\\VScode\\dashboard_demo\\components', 'app_pages_dir': 'H:\\VScode\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\VScode\\dashboard_demo\\utils'})
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('reference_dir', 'H:\\VScode\\dashboard_demo\\reference_files')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('data_dir', 'H:\\VScode\\dashboard_demo\\data')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('output_dir', 'H:\\VScode\\dashboard_demo\\output')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('logs_dir', 'H:\\VScode\\dashboard_demo\\logs')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('components_dir', 'H:\\VScode\\dashboard_demo\\components')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('app_pages_dir', 'H:\\VScode\\dashboard_demo\\app_pages')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('utils_dir', 'H:\\VScode\\dashboard_demo\\utils')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('directories', {'data_dir': 'H:\\VScode\\dashboard_demo\\data', 'output_dir': 'H:\\VScode\\dashboard_demo\\output', 'logs_dir': 'H:\\VScode\\dashboard_demo\\logs', 'reference_dir': 'H:\\VScode\\dashboard_demo\\reference_files', 'components_dir': 'H:\\VScode\\dashboard_demo\\components', 'app_pages_dir': 'H:\\VScode\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\VScode\\dashboard_demo\\utils'})
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('Donor_dedupe_cleaned_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\Donor_dedupe_cleaned_data.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('ListofPoliticalPeople_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\ListOfPoliticalPeople.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('mppartymemb_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\mppartymemb_pypd.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('donor_map_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\PoliticalDonorsDeDuped.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('politician_party_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\ListOfPoliticalPeople_Final.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('regentity_map_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\PoliticalEntityDeDuped.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('potential_donor_duplicates_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\potential_donor_duplicates.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('potential_regulatedentity_duplicates_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\potential_regentiity_duplicates.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('original_data_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\original_data.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('CREDENTIALS_FILE', 'H:\\VScode\\dashboard_demo\\reference_files\\admin_credentials.json')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('TEXT_FILE', 'H:\\VScode\\dashboard_demo\\reference_files\\admin_text.json')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('cleaned_data_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_data.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('cleaned_donations_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_donations.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('cleaned_donorlist_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_donorlist.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('cleaned_regentity_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_regentity.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('party_summary_fname', 'H:\\VScode\\dashboard_demo\\output\\party_summary.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('ec_donations_fname', 'Donations_accepted_by_political_parties.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('ec_donations_fname', 'H:\\VScode\\dashboard_demo\\Donations_accepted_by_political_parties.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Calling init_state_var with args=('ec_donations_fname', 'H:\\VScode\\dashboard_demo\\Donations_accepted_by_political_parties.csv')
+2025/02/28 12:47:38 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:38 PM INFO:Session_state variables initialized
+2025/02/28 12:47:38 PM INFO:utils_dir: H:\VScode\dashboard_demo\utils
+2025/02/28 12:47:38 PM INFO:mppartymemb_fname: H:\VScode\dashboard_demo\reference_files\mppartymemb_pypd.csv
+2025/02/28 12:47:38 PM INFO:cleaned_donorlist_fname: H:\VScode\dashboard_demo\output\cleaned_donorlist.csv
+2025/02/28 12:47:38 PM INFO:reference_dir: H:\VScode\dashboard_demo\reference_files
+2025/02/28 12:47:38 PM INFO:original_data_fname: H:\VScode\dashboard_demo\reference_files\original_data.csv
+2025/02/28 12:47:38 PM INFO:Donor_dedupe_cleaned_fname: H:\VScode\dashboard_demo\reference_files\Donor_dedupe_cleaned_data.csv
+2025/02/28 12:47:38 PM INFO:app_pages_dir: H:\VScode\dashboard_demo\app_pages
+2025/02/28 12:47:38 PM INFO:TEXT_FILE: H:\VScode\dashboard_demo\reference_files\admin_text.json
+2025/02/28 12:47:38 PM INFO:regentity_map_fname: H:\VScode\dashboard_demo\reference_files\PoliticalEntityDeDuped.csv
+2025/02/28 12:47:38 PM INFO:filter_def: {'Sponsorships_ftr': {'DonationType': 'Sponsorship', 'NatureOfDonation': 'Sponsorship', 'IsSponsorship': 'True'}, 'ReturnedDonations_ftr': {'DonationAction': ['Returned', 'Forfeited'], 'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonors_ftr': {'DubiousDonor': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonations_ftr': {'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'AggregatedDonations_ftr': {'IsAggregation': 'True', 'DonationType': 'Aggregated Donation'}, 'SafeDonors_ftr': {'DonorType': ['Trade Union', 'Registered Political Party', 'Friendly Society', 'Public Fund']}, 'DubiousDonationType_ftr': {'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Total value of donations not reported individually', 'Aggregated Donation']}, 'BlankDate_ftr': {'ReceivedDate': ['PLACEHOLDER_DATE', None]}, 'BlankDonor_ftr': {'DonorId': ['1000001', None, 1000001]}, 'BlankRegEntity_ftr': {'RegulatedEntityId': ['1000001', None, 1000001]}, 'DonatedVisits_ftr': {'DonationType': 'Visit', 'NatureOfDonation': 'Visit'}, 'Bequests_ftr': {'IsBequestInt': 1, 'NatureOfDonation': 'Bequest', 'DonationType': 'Bequest'}, 'CorporateDonations_ftr': {'DonorStatus': ['Company', 'Partnership', 'Limited Liability Partnership']}, 'Cash_ftr': {'DonationType': 'Cash'}, 'NonCash_ftr': {'DonationType': 'Non Cash'}}
+2025/02/28 12:47:38 PM INFO:directories: {'data_dir': 'H:\\VScode\\dashboard_demo\\data', 'output_dir': 'H:\\VScode\\dashboard_demo\\output', 'logs_dir': 'H:\\VScode\\dashboard_demo\\logs', 'reference_dir': 'H:\\VScode\\dashboard_demo\\reference_files', 'components_dir': 'H:\\VScode\\dashboard_demo\\components', 'app_pages_dir': 'H:\\VScode\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\VScode\\dashboard_demo\\utils'}
+2025/02/28 12:47:38 PM INFO:PLACEHOLDER_ID: 1000001
+2025/02/28 12:47:38 PM INFO:ListofPoliticalPeople_fname: H:\VScode\dashboard_demo\reference_files\ListOfPoliticalPeople.csv
+2025/02/28 12:47:38 PM INFO:data_dir: H:\VScode\dashboard_demo\data
+2025/02/28 12:47:38 PM INFO:PLACEHOLDER_DATE: 1900-01-01 00:00:00
+2025/02/28 12:47:38 PM INFO:output_dir: H:\VScode\dashboard_demo\output
+2025/02/28 12:47:38 PM INFO:cleaned_donations_fname: H:\VScode\dashboard_demo\output\cleaned_donations.csv
+2025/02/28 12:47:38 PM INFO:thresholds: {(0, 0): 'No Relevant Donations', (1, 1): 'Single Donation Entity', (2, 5): 'Very Small Entity', (6, 15): 'Small Entity', (16, 100): 'Small Medium Entity', (101, 200): 'Medium Entity', (201, 500): 'Medium Large Entity', (501, 1000): 'Large Entity'}
+2025/02/28 12:47:38 PM INFO:cleaned_regentity_fname: H:\VScode\dashboard_demo\output\cleaned_regentity.csv
+2025/02/28 12:47:38 PM INFO:politician_party_fname: H:\VScode\dashboard_demo\reference_files\ListOfPoliticalPeople_Final.csv
+2025/02/28 12:47:38 PM INFO:donor_map_fname: H:\VScode\dashboard_demo\reference_files\PoliticalDonorsDeDuped.csv
+2025/02/28 12:47:38 PM INFO:filenames: {'reference_dir': {'Donor_dedupe_cleaned_fname': 'Donor_dedupe_cleaned_data.csv', 'ListofPoliticalPeople_fname': 'ListOfPoliticalPeople.csv', 'mppartymemb_fname': 'mppartymemb_pypd.csv', 'donor_map_fname': 'PoliticalDonorsDeDuped.csv', 'politician_party_fname': 'ListOfPoliticalPeople_Final.csv', 'regentity_map_fname': 'PoliticalEntityDeDuped.csv', 'potential_donor_duplicates_fname': 'potential_donor_duplicates.csv', 'potential_regulatedentity_duplicates_fname': 'potential_regentiity_duplicates.csv', 'original_data_fname': 'original_data.csv', 'CREDENTIALS_FILE': 'admin_credentials.json', 'TEXT_FILE': 'admin_text.json'}, 'output_dir': {'cleaned_data_fname': 'cleaned_data.csv', 'cleaned_donations_fname': 'cleaned_donations.csv', 'cleaned_donorlist_fname': 'cleaned_donorlist.csv', 'cleaned_regentity_fname': 'cleaned_regentity.csv', 'party_summary_fname': 'party_summary.csv'}, 'BASE_DIR': {'ec_donations_fname': 'Donations_accepted_by_political_parties.csv'}}
+2025/02/28 12:47:38 PM INFO:potential_regulatedentity_duplicates_fname: H:\VScode\dashboard_demo\reference_files\potential_regentiity_duplicates.csv
+2025/02/28 12:47:38 PM INFO:logs_dir: H:\VScode\dashboard_demo\logs
+2025/02/28 12:47:38 PM INFO:party_summary_fname: H:\VScode\dashboard_demo\output\party_summary.csv
+2025/02/28 12:47:38 PM INFO:potential_donor_duplicates_fname: H:\VScode\dashboard_demo\reference_files\potential_donor_duplicates.csv
+2025/02/28 12:47:38 PM INFO:CREDENTIALS_FILE: H:\VScode\dashboard_demo\reference_files\admin_credentials.json
+2025/02/28 12:47:38 PM INFO:data_remappings: {'NatureOfDonation': {'IsBequest': 'Is A Bequest', 'IsAggregation': 'Aggregated Donation', 'IsSponsorship': 'Sponsorship', 'Donation to nan': 'Other', 'Other Payment': 'Other'}, 'PartyParents': {'Conservatives': 52, 'Labour': 53, 'Liberal Democrats': 90, 'Scottish National Party': 102, 'Green Party': 63, 'Plaid Cymru': 77, 'UKIP': 85, 'Unknown': 0}}
+2025/02/28 12:47:38 PM INFO:ec_donations_fname: Donations_accepted_by_political_parties.csv
+2025/02/28 12:47:38 PM INFO:BASE_DIR: H:\VScode\dashboard_demo
+2025/02/28 12:47:38 PM INFO:security: {'is_admin': False, 'is_authenticated': False, 'username': '', 'password': ''}
+2025/02/28 12:47:38 PM INFO:cleaned_data_fname: H:\VScode\dashboard_demo\output\cleaned_data.csv
+2025/02/28 12:47:38 PM INFO:components_dir: H:\VScode\dashboard_demo\components
+2025/02/28 12:47:38 PM INFO:Session state Setup complete
+2025/02/28 12:47:38 PM INFO:initialize_session_state executed successfully
+2025/02/28 12:47:38 PM INFO:Package setup complete
+2025/02/28 12:47:38 PM INFO:Calling pagesetup with args=()
+2025/02/28 12:47:38 PM INFO:Calling get_git_version with args=('H:\\VScode\\dashboard_demo\\app_pages',)
+2025/02/28 12:47:38 PM INFO:get_git_version executed successfully
+2025/02/28 12:47:39 PM INFO:Calling get_git_version with args=()
+2025/02/28 12:47:39 PM INFO:get_git_version executed successfully
+2025/02/28 12:47:39 PM INFO:App Version: v2.116
+2025/02/28 12:47:39 PM INFO:Switched to page: Introduction
+2025/02/28 12:47:39 PM INFO:pagesetup executed successfully
+2025/02/28 12:47:39 PM INFO:Calling firstload with args=()
+2025/02/28 12:47:39 PM INFO:Calling load_data_to_session with args=('raw_data', <function get_raw_data at 0x000001D824A0AC20>)
+2025/02/28 12:47:39 PM INFO:Calling get_raw_data with args=()
+2025/02/28 12:47:39 PM INFO:Calling load_raw_data with args=()
+2025/02/28 12:47:40 PM INFO:Calling raw_data_cleanup with args=(           ECRef              RegulatedEntityName  ...   RegisterName IsIrishSource
+index                                              ...                             
+0      NC0408174                   Mr Andy Street  ...  Great Britain         False
+1      NC0408173                   Mr Andy Street  ...  Great Britain         False
+2      NC0408177                   Mr Andy Street  ...  Great Britain         False
+3      NC0408176                   Mr Andy Street  ...  Great Britain         False
+4      NC0408170                   Mr Andy Street  ...  Great Britain         False
+...          ...                              ...  ...            ...           ...
+65273   C0242478               Vote Leave Limited  ...            NaN         False
+65274   C0242461               Vote Leave Limited  ...            NaN         False
+65275   C0243560               Vote Leave Limited  ...            NaN         False
+65276   C0319710  Conservative and Unionist Party  ...  Great Britain         False
+65277   C0319727  Conservative and Unionist Party  ...  Great Britain         False
+
+[65278 rows x 29 columns],)
+2025/02/28 12:47:41 PM INFO:Calling dedupe_entity_file with args=()
+2025/02/28 12:47:41 PM INFO:map_filename: regentity_map_fname
+2025/02/28 12:47:41 PM INFO:map_filename found: H:\VScode\dashboard_demo\reference_files\PoliticalEntityDeDuped.csv
+2025/02/28 12:47:41 PM INFO:Dedupe by file
+2025/02/28 12:47:41 PM INFO:Dedupe by file, shape: (65279, 34)
+2025/02/28 12:47:41 PM INFO:dedupe_entity_file executed successfully
+2025/02/28 12:47:41 PM INFO:Calling dedupe_entity_file with args=()
+2025/02/28 12:47:41 PM INFO:map_filename: donor_map_fname
+2025/02/28 12:47:41 PM INFO:map_filename found: H:\VScode\dashboard_demo\reference_files\PoliticalDonorsDeDuped.csv
+2025/02/28 12:47:41 PM INFO:Dedupe by file
+2025/02/28 12:47:41 PM INFO:Dedupe by file, shape: (66011, 40)
+2025/02/28 12:47:41 PM INFO:dedupe_entity_file executed successfully
+2025/02/28 12:47:41 PM INFO:Data cleanup completed, shape: (63939, 40)
+2025/02/28 12:47:41 PM INFO:raw_data_cleanup executed successfully
+2025/02/28 12:47:43 PM INFO:load_raw_data executed successfully
+2025/02/28 12:47:43 PM INFO:get_raw_data executed successfully
+2025/02/28 12:47:43 PM INFO:load_data_to_session executed successfully
+2025/02/28 12:47:43 PM INFO:Calling load_data_to_session with args=('data_clean', <function get_cleaned_data at 0x000001D824A0B370>)
+2025/02/28 12:47:43 PM INFO:Calling get_cleaned_data with args=()
+2025/02/28 12:47:43 PM INFO:Calling load_cleaned_data with args=()
+2025/02/28 12:47:48 PM INFO:Cleaned Data completed, shape: (63939, 40)
+2025/02/28 12:47:48 PM INFO:load_cleaned_data executed successfully
+2025/02/28 12:47:48 PM INFO:get_cleaned_data executed successfully
+2025/02/28 12:47:48 PM INFO:load_data_to_session executed successfully
+2025/02/28 12:47:48 PM INFO:Calling load_data_to_session with args=('data_party_sum', <function get_party_summary_data at 0x000001D824A0B250>)
+2025/02/28 12:47:48 PM INFO:Calling get_party_summary_data with args=()
+2025/02/28 12:47:48 PM INFO:Calling load_entity_summary_data with args=()
+2025/02/28 12:47:49 PM INFO:load_entity_summary_data executed successfully
+2025/02/28 12:47:49 PM INFO:get_party_summary_data executed successfully
+2025/02/28 12:47:49 PM INFO:load_data_to_session executed successfully
+2025/02/28 12:47:49 PM INFO:Calling load_data_to_session with args=('data_donor', <function get_donor_data at 0x000001D824A0B490>)
+2025/02/28 12:47:49 PM INFO:Calling get_donor_data with args=()
+2025/02/28 12:47:49 PM INFO:Calling load_donorList_data with args=()
+2025/02/28 12:47:49 PM INFO:load_donorList_data executed successfully
+2025/02/28 12:47:49 PM INFO:get_donor_data executed successfully
+2025/02/28 12:47:49 PM INFO:load_data_to_session executed successfully
+2025/02/28 12:47:49 PM INFO:Calling load_data_to_session with args=('data_regentity', <function get_regentity_data at 0x000001D824A0B5B0>)
+2025/02/28 12:47:49 PM INFO:Calling get_regentity_data with args=()
+2025/02/28 12:47:49 PM INFO:Calling load_regulated_entity_data with args=()
+2025/02/28 12:47:49 PM INFO:load_regulated_entity_data executed successfully
+2025/02/28 12:47:49 PM INFO:get_regentity_data executed successfully
+2025/02/28 12:47:49 PM INFO:load_data_to_session executed successfully
+2025/02/28 12:47:49 PM INFO:firstload executed successfully
+2025/02/28 12:47:59 PM INFO:Current Working Directory: H:\VScode\dashboard_demo
+2025/02/28 12:47:59 PM INFO:Setting up the package
+2025/02/28 12:47:59 PM INFO:Module directory: H:\VScode\dashboard_demo
+2025/02/28 12:47:59 PM INFO:Calling get_git_version with args=('H:\\VScode\\dashboard_demo',)
+2025/02/28 12:47:59 PM INFO:get_git_version executed successfully
+2025/02/28 12:47:59 PM INFO:Version: v2.104
+2025/02/28 12:47:59 PM INFO:Calling initialize_session_state with args=()
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('BASE_DIR', 'H:\\VScode\\dashboard_demo')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('filenames', {'reference_dir': {'Donor_dedupe_cleaned_fname': 'Donor_dedupe_cleaned_data.csv', 'ListofPoliticalPeople_fname': 'ListOfPoliticalPeople.csv', 'mppartymemb_fname': 'mppartymemb_pypd.csv', 'donor_map_fname': 'PoliticalDonorsDeDuped.csv', 'politician_party_fname': 'ListOfPoliticalPeople_Final.csv', 'regentity_map_fname': 'PoliticalEntityDeDuped.csv', 'potential_donor_duplicates_fname': 'potential_donor_duplicates.csv', 'potential_regulatedentity_duplicates_fname': 'potential_regentiity_duplicates.csv', 'original_data_fname': 'original_data.csv', 'CREDENTIALS_FILE': 'admin_credentials.json', 'TEXT_FILE': 'admin_text.json'}, 'output_dir': {'cleaned_data_fname': 'cleaned_data.csv', 'cleaned_donations_fname': 'cleaned_donations.csv', 'cleaned_donorlist_fname': 'cleaned_donorlist.csv', 'cleaned_regentity_fname': 'cleaned_regentity.csv', 'party_summary_fname': 'party_summary.csv'}, 'BASE_DIR': {'ec_donations_fname': 'Donations_accepted_by_political_parties.csv'}})
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('PLACEHOLDER_DATE', Timestamp('1900-01-01 00:00:00'))
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('PLACEHOLDER_ID', 1000001)
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('thresholds', {(0, 0): 'No Relevant Donations', (1, 1): 'Single Donation Entity', (2, 5): 'Very Small Entity', (6, 15): 'Small Entity', (16, 100): 'Small Medium Entity', (101, 200): 'Medium Entity', (201, 500): 'Medium Large Entity', (501, 1000): 'Large Entity'})
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('data_remappings', {'NatureOfDonation': {'IsBequest': 'Is A Bequest', 'IsAggregation': 'Aggregated Donation', 'IsSponsorship': 'Sponsorship', 'Donation to nan': 'Other', 'Other Payment': 'Other'}, 'PartyParents': {'Conservatives': 52, 'Labour': 53, 'Liberal Democrats': 90, 'Scottish National Party': 102, 'Green Party': 63, 'Plaid Cymru': 77, 'UKIP': 85, 'Unknown': 0}})
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('filter_def', {'Sponsorships_ftr': {'DonationType': 'Sponsorship', 'NatureOfDonation': 'Sponsorship', 'IsSponsorship': 'True'}, 'ReturnedDonations_ftr': {'DonationAction': ['Returned', 'Forfeited'], 'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonors_ftr': {'DubiousDonor': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonations_ftr': {'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'AggregatedDonations_ftr': {'IsAggregation': 'True', 'DonationType': 'Aggregated Donation'}, 'SafeDonors_ftr': {'DonorType': ['Trade Union', 'Registered Political Party', 'Friendly Society', 'Public Fund']}, 'DubiousDonationType_ftr': {'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Total value of donations not reported individually', 'Aggregated Donation']}, 'BlankDate_ftr': {'ReceivedDate': ['PLACEHOLDER_DATE', None]}, 'BlankDonor_ftr': {'DonorId': ['1000001', None, 1000001]}, 'BlankRegEntity_ftr': {'RegulatedEntityId': ['1000001', None, 1000001]}, 'DonatedVisits_ftr': {'DonationType': 'Visit', 'NatureOfDonation': 'Visit'}, 'Bequests_ftr': {'IsBequestInt': 1, 'NatureOfDonation': 'Bequest', 'DonationType': 'Bequest'}, 'CorporateDonations_ftr': {'DonorStatus': ['Company', 'Partnership', 'Limited Liability Partnership']}, 'Cash_ftr': {'DonationType': 'Cash'}, 'NonCash_ftr': {'DonationType': 'Non Cash'}})
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('security', {'is_admin': False, 'is_authenticated': False, 'username': '', 'password': ''})
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('directories', {'data_dir': 'H:\\VScode\\dashboard_demo\\data', 'output_dir': 'H:\\VScode\\dashboard_demo\\output', 'logs_dir': 'H:\\VScode\\dashboard_demo\\logs', 'reference_dir': 'H:\\VScode\\dashboard_demo\\reference_files', 'components_dir': 'H:\\VScode\\dashboard_demo\\components', 'app_pages_dir': 'H:\\VScode\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\VScode\\dashboard_demo\\utils'})
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('reference_dir', 'H:\\VScode\\dashboard_demo\\reference_files')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('data_dir', 'H:\\VScode\\dashboard_demo\\data')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('output_dir', 'H:\\VScode\\dashboard_demo\\output')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('logs_dir', 'H:\\VScode\\dashboard_demo\\logs')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('components_dir', 'H:\\VScode\\dashboard_demo\\components')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('app_pages_dir', 'H:\\VScode\\dashboard_demo\\app_pages')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('utils_dir', 'H:\\VScode\\dashboard_demo\\utils')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('directories', {'data_dir': 'H:\\VScode\\dashboard_demo\\data', 'output_dir': 'H:\\VScode\\dashboard_demo\\output', 'logs_dir': 'H:\\VScode\\dashboard_demo\\logs', 'reference_dir': 'H:\\VScode\\dashboard_demo\\reference_files', 'components_dir': 'H:\\VScode\\dashboard_demo\\components', 'app_pages_dir': 'H:\\VScode\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\VScode\\dashboard_demo\\utils'})
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('Donor_dedupe_cleaned_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\Donor_dedupe_cleaned_data.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('ListofPoliticalPeople_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\ListOfPoliticalPeople.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('mppartymemb_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\mppartymemb_pypd.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('donor_map_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\PoliticalDonorsDeDuped.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('politician_party_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\ListOfPoliticalPeople_Final.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('regentity_map_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\PoliticalEntityDeDuped.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('potential_donor_duplicates_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\potential_donor_duplicates.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('potential_regulatedentity_duplicates_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\potential_regentiity_duplicates.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('original_data_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\original_data.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('CREDENTIALS_FILE', 'H:\\VScode\\dashboard_demo\\reference_files\\admin_credentials.json')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('TEXT_FILE', 'H:\\VScode\\dashboard_demo\\reference_files\\admin_text.json')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('cleaned_data_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_data.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('cleaned_donations_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_donations.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('cleaned_donorlist_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_donorlist.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('cleaned_regentity_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_regentity.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('party_summary_fname', 'H:\\VScode\\dashboard_demo\\output\\party_summary.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('ec_donations_fname', 'Donations_accepted_by_political_parties.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('ec_donations_fname', 'H:\\VScode\\dashboard_demo\\Donations_accepted_by_political_parties.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Calling init_state_var with args=('ec_donations_fname', 'H:\\VScode\\dashboard_demo\\Donations_accepted_by_political_parties.csv')
+2025/02/28 12:47:59 PM INFO:init_state_var executed successfully
+2025/02/28 12:47:59 PM INFO:Session_state variables initialized
+2025/02/28 12:47:59 PM INFO:utils_dir: H:\VScode\dashboard_demo\utils
+2025/02/28 12:47:59 PM INFO:mppartymemb_fname: H:\VScode\dashboard_demo\reference_files\mppartymemb_pypd.csv
+2025/02/28 12:47:59 PM INFO:cleaned_donorlist_fname: H:\VScode\dashboard_demo\output\cleaned_donorlist.csv
+2025/02/28 12:47:59 PM INFO:reference_dir: H:\VScode\dashboard_demo\reference_files
+2025/02/28 12:47:59 PM INFO:original_data_fname: H:\VScode\dashboard_demo\reference_files\original_data.csv
+2025/02/28 12:47:59 PM INFO:Donor_dedupe_cleaned_fname: H:\VScode\dashboard_demo\reference_files\Donor_dedupe_cleaned_data.csv
+2025/02/28 12:47:59 PM INFO:app_pages_dir: H:\VScode\dashboard_demo\app_pages
+2025/02/28 12:47:59 PM INFO:TEXT_FILE: H:\VScode\dashboard_demo\reference_files\admin_text.json
+2025/02/28 12:47:59 PM INFO:raw_data:            ECRef      OriginalRegulatedEntityName  ...  DonorId                        DonorName
+0      NC0408174                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+1      NC0408173                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+2      NC0408177                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+3      NC0408176                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+4      NC0408170                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+...          ...                              ...  ...      ...                              ...
+66006   C0242478               Vote Leave Limited  ...  74198.0          Shaftesbury Investments
+66007   C0242461               Vote Leave Limited  ...  74184.0                Mr Jeremy Hosking
+66008   C0243560               Vote Leave Limited  ...  23556.0                   Anthony Clarke
+66009   C0319710  Conservative And Unionist Party  ...   2146.0                Mr Peter A Dubens
+66010   C0319727  Conservative And Unionist Party  ...  74743.0                 Mr Ravi S Kailas
+
+[63939 rows x 40 columns]
+2025/02/28 12:47:59 PM INFO:regentity_map_fname: H:\VScode\dashboard_demo\reference_files\PoliticalEntityDeDuped.csv
+2025/02/28 12:47:59 PM INFO:filter_def: {'Sponsorships_ftr': {'DonationType': 'Sponsorship', 'NatureOfDonation': 'Sponsorship', 'IsSponsorship': 'True'}, 'ReturnedDonations_ftr': {'DonationAction': ['Returned', 'Forfeited'], 'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonors_ftr': {'DubiousDonor': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonations_ftr': {'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'AggregatedDonations_ftr': {'IsAggregation': 'True', 'DonationType': 'Aggregated Donation'}, 'SafeDonors_ftr': {'DonorType': ['Trade Union', 'Registered Political Party', 'Friendly Society', 'Public Fund']}, 'DubiousDonationType_ftr': {'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Total value of donations not reported individually', 'Aggregated Donation']}, 'BlankDate_ftr': {'ReceivedDate': ['PLACEHOLDER_DATE', None]}, 'BlankDonor_ftr': {'DonorId': ['1000001', None, 1000001]}, 'BlankRegEntity_ftr': {'RegulatedEntityId': ['1000001', None, 1000001]}, 'DonatedVisits_ftr': {'DonationType': 'Visit', 'NatureOfDonation': 'Visit'}, 'Bequests_ftr': {'IsBequestInt': 1, 'NatureOfDonation': 'Bequest', 'DonationType': 'Bequest'}, 'CorporateDonations_ftr': {'DonorStatus': ['Company', 'Partnership', 'Limited Liability Partnership']}, 'Cash_ftr': {'DonationType': 'Cash'}, 'NonCash_ftr': {'DonationType': 'Non Cash'}}
+2025/02/28 12:47:59 PM INFO:directories: {'data_dir': 'H:\\VScode\\dashboard_demo\\data', 'output_dir': 'H:\\VScode\\dashboard_demo\\output', 'logs_dir': 'H:\\VScode\\dashboard_demo\\logs', 'reference_dir': 'H:\\VScode\\dashboard_demo\\reference_files', 'components_dir': 'H:\\VScode\\dashboard_demo\\components', 'app_pages_dir': 'H:\\VScode\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\VScode\\dashboard_demo\\utils'}
+2025/02/28 12:47:59 PM INFO:PLACEHOLDER_ID: 1000001
+2025/02/28 12:47:59 PM INFO:data_regentity:       RegulatedEntityId                Regulated Entity Name  ... Donation Events  Donation Mean
+0                  17.0                    English Democrats  ...               1   10500.000000
+1                  17.0                    English Democrats  ...               5    2700.000000
+2                  17.0                    English Democrats  ...               3   22166.666667
+3                  17.0                    English Democrats  ...               1    1500.000000
+4                  17.0                    English Democrats  ...               1    7000.000000
+...                 ...                                  ...  ...             ...            ...
+3573            10264.0                        Robert Largan  ...               1    2000.000000
+3574            10265.0                           Jane Dodds  ...               2    1764.705000
+3575            10266.0                          Phil Wilson  ...               1    2000.000000
+3576            10267.0  Scottish Unionist Association Trust  ...               2  103675.035000
+3577            10267.0  Scottish Unionist Association Trust  ...               1   11520.000000
+
+[3578 rows x 6 columns]
+2025/02/28 12:47:59 PM INFO:ListofPoliticalPeople_fname: H:\VScode\dashboard_demo\reference_files\ListOfPoliticalPeople.csv
+2025/02/28 12:47:59 PM INFO:PLACEHOLDER_DATE: 1900-01-01 00:00:00
+2025/02/28 12:47:59 PM INFO:cleaned_donations_fname: H:\VScode\dashboard_demo\output\cleaned_donations.csv
+2025/02/28 12:47:59 PM INFO:output_dir: H:\VScode\dashboard_demo\output
+2025/02/28 12:47:59 PM INFO:data_dir: H:\VScode\dashboard_demo\data
+2025/02/28 12:47:59 PM INFO:thresholds: {(0, 0): 'No Relevant Donations', (1, 1): 'Single Donation Entity', (2, 5): 'Very Small Entity', (6, 15): 'Small Entity', (16, 100): 'Small Medium Entity', (101, 200): 'Medium Entity', (201, 500): 'Medium Large Entity', (501, 1000): 'Large Entity'}
+2025/02/28 12:47:59 PM INFO:cleaned_regentity_fname: H:\VScode\dashboard_demo\output\cleaned_regentity.csv
+2025/02/28 12:47:59 PM INFO:politician_party_fname: H:\VScode\dashboard_demo\reference_files\ListOfPoliticalPeople_Final.csv
+2025/02/28 12:47:59 PM INFO:donor_map_fname: H:\VScode\dashboard_demo\reference_files\PoliticalDonorsDeDuped.csv
+2025/02/28 12:47:59 PM INFO:data_party_sum:              RegulatedEntityName  DonationsValue  DonationEvents  DonationMean         RegEntity_Group
+0     A Minority Pastime Limited         6612.00               1   6612.000000  Single Donation Entity
+1                    A. A. Craig        12100.00              11   1100.000000            Small Entity
+2                Abisola Ifasawo         1650.00               1   1650.000000  Single Donation Entity
+3                  Adam Holloway        31341.00              11   2849.181818            Small Entity
+4                    Adam Ingram         5245.20               1   5245.200000  Single Donation Entity
+...                          ...             ...             ...           ...                     ...
+1319             Yorkshire Party         1000.00               1   1000.000000  Single Donation Entity
+1320   Young Britons' Foundation        54999.00               2  27499.500000       Very Small Entity
+1321               Yvette Cooper       545172.31              49  11125.965510     Small Medium Entity
+1322             Yvonne Fovargue         6758.06               2   3379.030000       Very Small Entity
+1323               Zac Goldsmith        50000.00               1  50000.000000  Single Donation Entity
+
+[1324 rows x 5 columns]
+2025/02/28 12:47:59 PM INFO:filenames: {'reference_dir': {'Donor_dedupe_cleaned_fname': 'Donor_dedupe_cleaned_data.csv', 'ListofPoliticalPeople_fname': 'ListOfPoliticalPeople.csv', 'mppartymemb_fname': 'mppartymemb_pypd.csv', 'donor_map_fname': 'PoliticalDonorsDeDuped.csv', 'politician_party_fname': 'ListOfPoliticalPeople_Final.csv', 'regentity_map_fname': 'PoliticalEntityDeDuped.csv', 'potential_donor_duplicates_fname': 'potential_donor_duplicates.csv', 'potential_regulatedentity_duplicates_fname': 'potential_regentiity_duplicates.csv', 'original_data_fname': 'original_data.csv', 'CREDENTIALS_FILE': 'admin_credentials.json', 'TEXT_FILE': 'admin_text.json'}, 'output_dir': {'cleaned_data_fname': 'cleaned_data.csv', 'cleaned_donations_fname': 'cleaned_donations.csv', 'cleaned_donorlist_fname': 'cleaned_donorlist.csv', 'cleaned_regentity_fname': 'cleaned_regentity.csv', 'party_summary_fname': 'party_summary.csv'}, 'BASE_DIR': {'ec_donations_fname': 'Donations_accepted_by_political_parties.csv'}}
+2025/02/28 12:47:59 PM INFO:potential_regulatedentity_duplicates_fname: H:\VScode\dashboard_demo\reference_files\potential_regentiity_duplicates.csv
+2025/02/28 12:47:59 PM INFO:logs_dir: H:\VScode\dashboard_demo\logs
+2025/02/28 12:47:59 PM INFO:party_summary_fname: H:\VScode\dashboard_demo\output\party_summary.csv
+2025/02/28 12:47:59 PM INFO:data_donor:          DonorId                          Donor Name  Donations Value  Donation Events  Donation Mean
+0            1.0               Agents Training Trust         53000.00                2   26500.000000
+1            2.0    Birkenhead North End Labour Club        118680.84                2   59340.420000
+2            3.0                Bord Institute Trust         26625.00                3    8875.000000
+3            4.0        Branksome Liberal Club Trust         74495.89               14    5321.135000
+4            5.0                    Bridgwater Trust          7700.00                3    2566.666667
+...          ...                                 ...              ...              ...            ...
+29493    87482.0  Glasgow Unionist Association Trust         50000.00                1   50000.000000
+29494  1000001.0             Not Recorded 1900-01-01         17500.00                2    8750.000000
+29495  1000001.0             Not Recorded 1961-01-01         11454.00                2    5727.000000
+29496  1000001.0             Not Recorded 1995-05-10         27938.19                2   13969.095000
+29497  1000001.0                  Unidentified Donor        728205.67               92    7915.279022
+
+[29498 rows x 5 columns]
+2025/02/28 12:47:59 PM INFO:potential_donor_duplicates_fname: H:\VScode\dashboard_demo\reference_files\potential_donor_duplicates.csv
+2025/02/28 12:47:59 PM INFO:CREDENTIALS_FILE: H:\VScode\dashboard_demo\reference_files\admin_credentials.json
+2025/02/28 12:47:59 PM INFO:data_remappings: {'NatureOfDonation': {'IsBequest': 'Is A Bequest', 'IsAggregation': 'Aggregated Donation', 'IsSponsorship': 'Sponsorship', 'Donation to nan': 'Other', 'Other Payment': 'Other'}, 'PartyParents': {'Conservatives': 52, 'Labour': 53, 'Liberal Democrats': 90, 'Scottish National Party': 102, 'Green Party': 63, 'Plaid Cymru': 77, 'UKIP': 85, 'Unknown': 0}}
+2025/02/28 12:47:59 PM INFO:data_clean:            ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns]
+2025/02/28 12:47:59 PM INFO:ec_donations_fname: Donations_accepted_by_political_parties.csv
+2025/02/28 12:47:59 PM INFO:menu_selection: {'title': 'Head Line Figures', 'function': <function hlf_body at 0x000001D824AA1BD0>}
+2025/02/28 12:47:59 PM INFO:BASE_DIR: H:\VScode\dashboard_demo
+2025/02/28 12:47:59 PM INFO:security: {'is_admin': False, 'is_authenticated': False, 'username': '', 'password': ''}
+2025/02/28 12:47:59 PM INFO:cleaned_data_fname: H:\VScode\dashboard_demo\output\cleaned_data.csv
+2025/02/28 12:47:59 PM INFO:components_dir: H:\VScode\dashboard_demo\components
+2025/02/28 12:47:59 PM INFO:Session state Setup complete
+2025/02/28 12:47:59 PM INFO:initialize_session_state executed successfully
+2025/02/28 12:47:59 PM INFO:Package setup complete
+2025/02/28 12:47:59 PM INFO:Calling pagesetup with args=()
+2025/02/28 12:47:59 PM INFO:Calling get_git_version with args=()
+2025/02/28 12:48:00 PM INFO:get_git_version executed successfully
+2025/02/28 12:48:00 PM INFO:App Version: v2.116
+2025/02/28 12:48:00 PM INFO:Switched to page: Head Line Figures
+2025/02/28 12:48:00 PM INFO:Calling plot_bar_line_by_year with args=(           ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns],)
+2025/02/28 12:48:00 PM INFO:plot_bar_line_by_year executed successfully
+2025/02/28 12:48:00 PM INFO:Calling plot_bar_line_by_year with args=(           ECRef                OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+65348   U0034053                               Labour Party  ...                1                 1
+65336  TV0036256                           Yes Campaign Ltd  ...                1                 1
+65449  TV0036257  British Declaration Of Independence [The]  ...                1                 1
+65649  TV0036260        Campaign For An Independent Britain  ...                1                 1
+65919  TV0036259                                 Charter 88  ...                1                 1
+...          ...                                        ...  ...              ...               ...
+2176    V0403814                       Mr Damian Collins Mp  ...                1                 1
+2188    V0403838                           Jess Phillips Mp  ...                1                 1
+2615    V0408118                            Preet Kaur Gill  ...                1                 1
+5887    V0403834                              Mr Afzal Khan  ...                1                 1
+5889    V0403400                       Ms Yasmin Qureshi Mp  ...                1                 1
+
+[63939 rows x 40 columns],)
+2025/02/28 12:48:01 PM INFO:plot_bar_line_by_year executed successfully
+2025/02/28 12:48:01 PM INFO:Calling plot_bar_line_by_year with args=(           ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns],)
+2025/02/28 12:48:01 PM INFO:plot_bar_line_by_year executed successfully
+2025/02/28 12:48:01 PM INFO:Calling plot_bar_line_by_year with args=(           ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns],)
+2025/02/28 12:48:01 PM INFO:plot_bar_line_by_year executed successfully
+2025/02/28 12:48:01 PM INFO:Calling plot_pie_chart with args=()
+2025/02/28 12:48:01 PM INFO:plot_pie_chart executed successfully
+2025/02/28 12:48:01 PM INFO:Calling plot_pie_chart with args=()
+2025/02/28 12:48:01 PM INFO:plot_pie_chart executed successfully
+2025/02/28 12:48:01 PM INFO:pagesetup executed successfully
+2025/02/28 12:48:01 PM INFO:Calling firstload with args=()
+2025/02/28 12:48:01 PM INFO:firstload executed successfully
+2025/02/28 12:48:14 PM INFO:Current Working Directory: H:\VScode\dashboard_demo
+2025/02/28 12:48:14 PM INFO:Setting up the package
+2025/02/28 12:48:14 PM INFO:Module directory: H:\VScode\dashboard_demo
+2025/02/28 12:48:14 PM INFO:Calling get_git_version with args=('H:\\VScode\\dashboard_demo',)
+2025/02/28 12:48:14 PM INFO:get_git_version executed successfully
+2025/02/28 12:48:14 PM INFO:Version: v2.104
+2025/02/28 12:48:14 PM INFO:Calling initialize_session_state with args=()
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('BASE_DIR', 'H:\\VScode\\dashboard_demo')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('filenames', {'reference_dir': {'Donor_dedupe_cleaned_fname': 'Donor_dedupe_cleaned_data.csv', 'ListofPoliticalPeople_fname': 'ListOfPoliticalPeople.csv', 'mppartymemb_fname': 'mppartymemb_pypd.csv', 'donor_map_fname': 'PoliticalDonorsDeDuped.csv', 'politician_party_fname': 'ListOfPoliticalPeople_Final.csv', 'regentity_map_fname': 'PoliticalEntityDeDuped.csv', 'potential_donor_duplicates_fname': 'potential_donor_duplicates.csv', 'potential_regulatedentity_duplicates_fname': 'potential_regentiity_duplicates.csv', 'original_data_fname': 'original_data.csv', 'CREDENTIALS_FILE': 'admin_credentials.json', 'TEXT_FILE': 'admin_text.json'}, 'output_dir': {'cleaned_data_fname': 'cleaned_data.csv', 'cleaned_donations_fname': 'cleaned_donations.csv', 'cleaned_donorlist_fname': 'cleaned_donorlist.csv', 'cleaned_regentity_fname': 'cleaned_regentity.csv', 'party_summary_fname': 'party_summary.csv'}, 'BASE_DIR': {'ec_donations_fname': 'Donations_accepted_by_political_parties.csv'}})
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('PLACEHOLDER_DATE', Timestamp('1900-01-01 00:00:00'))
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('PLACEHOLDER_ID', 1000001)
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('thresholds', {(0, 0): 'No Relevant Donations', (1, 1): 'Single Donation Entity', (2, 5): 'Very Small Entity', (6, 15): 'Small Entity', (16, 100): 'Small Medium Entity', (101, 200): 'Medium Entity', (201, 500): 'Medium Large Entity', (501, 1000): 'Large Entity'})
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('data_remappings', {'NatureOfDonation': {'IsBequest': 'Is A Bequest', 'IsAggregation': 'Aggregated Donation', 'IsSponsorship': 'Sponsorship', 'Donation to nan': 'Other', 'Other Payment': 'Other'}, 'PartyParents': {'Conservatives': 52, 'Labour': 53, 'Liberal Democrats': 90, 'Scottish National Party': 102, 'Green Party': 63, 'Plaid Cymru': 77, 'UKIP': 85, 'Unknown': 0}})
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('filter_def', {'Sponsorships_ftr': {'DonationType': 'Sponsorship', 'NatureOfDonation': 'Sponsorship', 'IsSponsorship': 'True'}, 'ReturnedDonations_ftr': {'DonationAction': ['Returned', 'Forfeited'], 'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonors_ftr': {'DubiousDonor': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonations_ftr': {'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'AggregatedDonations_ftr': {'IsAggregation': 'True', 'DonationType': 'Aggregated Donation'}, 'SafeDonors_ftr': {'DonorType': ['Trade Union', 'Registered Political Party', 'Friendly Society', 'Public Fund']}, 'DubiousDonationType_ftr': {'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Total value of donations not reported individually', 'Aggregated Donation']}, 'BlankDate_ftr': {'ReceivedDate': ['PLACEHOLDER_DATE', None]}, 'BlankDonor_ftr': {'DonorId': ['1000001', None, 1000001]}, 'BlankRegEntity_ftr': {'RegulatedEntityId': ['1000001', None, 1000001]}, 'DonatedVisits_ftr': {'DonationType': 'Visit', 'NatureOfDonation': 'Visit'}, 'Bequests_ftr': {'IsBequestInt': 1, 'NatureOfDonation': 'Bequest', 'DonationType': 'Bequest'}, 'CorporateDonations_ftr': {'DonorStatus': ['Company', 'Partnership', 'Limited Liability Partnership']}, 'Cash_ftr': {'DonationType': 'Cash'}, 'NonCash_ftr': {'DonationType': 'Non Cash'}})
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('security', {'is_admin': False, 'is_authenticated': False, 'username': '', 'password': ''})
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('directories', {'data_dir': 'H:\\VScode\\dashboard_demo\\data', 'output_dir': 'H:\\VScode\\dashboard_demo\\output', 'logs_dir': 'H:\\VScode\\dashboard_demo\\logs', 'reference_dir': 'H:\\VScode\\dashboard_demo\\reference_files', 'components_dir': 'H:\\VScode\\dashboard_demo\\components', 'app_pages_dir': 'H:\\VScode\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\VScode\\dashboard_demo\\utils'})
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('reference_dir', 'H:\\VScode\\dashboard_demo\\reference_files')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('data_dir', 'H:\\VScode\\dashboard_demo\\data')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('output_dir', 'H:\\VScode\\dashboard_demo\\output')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('logs_dir', 'H:\\VScode\\dashboard_demo\\logs')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('components_dir', 'H:\\VScode\\dashboard_demo\\components')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('app_pages_dir', 'H:\\VScode\\dashboard_demo\\app_pages')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('utils_dir', 'H:\\VScode\\dashboard_demo\\utils')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('directories', {'data_dir': 'H:\\VScode\\dashboard_demo\\data', 'output_dir': 'H:\\VScode\\dashboard_demo\\output', 'logs_dir': 'H:\\VScode\\dashboard_demo\\logs', 'reference_dir': 'H:\\VScode\\dashboard_demo\\reference_files', 'components_dir': 'H:\\VScode\\dashboard_demo\\components', 'app_pages_dir': 'H:\\VScode\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\VScode\\dashboard_demo\\utils'})
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('Donor_dedupe_cleaned_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\Donor_dedupe_cleaned_data.csv')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('ListofPoliticalPeople_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\ListOfPoliticalPeople.csv')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('mppartymemb_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\mppartymemb_pypd.csv')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('donor_map_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\PoliticalDonorsDeDuped.csv')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('politician_party_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\ListOfPoliticalPeople_Final.csv')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('regentity_map_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\PoliticalEntityDeDuped.csv')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('potential_donor_duplicates_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\potential_donor_duplicates.csv')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('potential_regulatedentity_duplicates_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\potential_regentiity_duplicates.csv')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('original_data_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\original_data.csv')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('CREDENTIALS_FILE', 'H:\\VScode\\dashboard_demo\\reference_files\\admin_credentials.json')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('TEXT_FILE', 'H:\\VScode\\dashboard_demo\\reference_files\\admin_text.json')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('cleaned_data_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_data.csv')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('cleaned_donations_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_donations.csv')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('cleaned_donorlist_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_donorlist.csv')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('cleaned_regentity_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_regentity.csv')
+2025/02/28 12:48:14 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:14 PM INFO:Calling init_state_var with args=('party_summary_fname', 'H:\\VScode\\dashboard_demo\\output\\party_summary.csv')
+2025/02/28 12:48:15 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:15 PM INFO:Calling init_state_var with args=('ec_donations_fname', 'Donations_accepted_by_political_parties.csv')
+2025/02/28 12:48:15 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:15 PM INFO:Calling init_state_var with args=('ec_donations_fname', 'H:\\VScode\\dashboard_demo\\Donations_accepted_by_political_parties.csv')
+2025/02/28 12:48:15 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:15 PM INFO:Calling init_state_var with args=('ec_donations_fname', 'H:\\VScode\\dashboard_demo\\Donations_accepted_by_political_parties.csv')
+2025/02/28 12:48:15 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:15 PM INFO:Session_state variables initialized
+2025/02/28 12:48:15 PM INFO:utils_dir: H:\VScode\dashboard_demo\utils
+2025/02/28 12:48:15 PM INFO:mppartymemb_fname: H:\VScode\dashboard_demo\reference_files\mppartymemb_pypd.csv
+2025/02/28 12:48:15 PM INFO:cleaned_donorlist_fname: H:\VScode\dashboard_demo\output\cleaned_donorlist.csv
+2025/02/28 12:48:15 PM INFO:reference_dir: H:\VScode\dashboard_demo\reference_files
+2025/02/28 12:48:15 PM INFO:original_data_fname: H:\VScode\dashboard_demo\reference_files\original_data.csv
+2025/02/28 12:48:15 PM INFO:Donor_dedupe_cleaned_fname: H:\VScode\dashboard_demo\reference_files\Donor_dedupe_cleaned_data.csv
+2025/02/28 12:48:15 PM INFO:app_pages_dir: H:\VScode\dashboard_demo\app_pages
+2025/02/28 12:48:15 PM INFO:TEXT_FILE: H:\VScode\dashboard_demo\reference_files\admin_text.json
+2025/02/28 12:48:15 PM INFO:raw_data:            ECRef      OriginalRegulatedEntityName  ...  DonorId                        DonorName
+0      NC0408174                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+1      NC0408173                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+2      NC0408177                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+3      NC0408176                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+4      NC0408170                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+...          ...                              ...  ...      ...                              ...
+66006   C0242478               Vote Leave Limited  ...  74198.0          Shaftesbury Investments
+66007   C0242461               Vote Leave Limited  ...  74184.0                Mr Jeremy Hosking
+66008   C0243560               Vote Leave Limited  ...  23556.0                   Anthony Clarke
+66009   C0319710  Conservative And Unionist Party  ...   2146.0                Mr Peter A Dubens
+66010   C0319727  Conservative And Unionist Party  ...  74743.0                 Mr Ravi S Kailas
+
+[63939 rows x 40 columns]
+2025/02/28 12:48:15 PM INFO:regentity_map_fname: H:\VScode\dashboard_demo\reference_files\PoliticalEntityDeDuped.csv
+2025/02/28 12:48:15 PM INFO:filter_def: {'Sponsorships_ftr': {'DonationType': 'Sponsorship', 'NatureOfDonation': 'Sponsorship', 'IsSponsorship': 'True'}, 'ReturnedDonations_ftr': {'DonationAction': ['Returned', 'Forfeited'], 'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonors_ftr': {'DubiousDonor': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonations_ftr': {'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'AggregatedDonations_ftr': {'IsAggregation': 'True', 'DonationType': 'Aggregated Donation'}, 'SafeDonors_ftr': {'DonorType': ['Trade Union', 'Registered Political Party', 'Friendly Society', 'Public Fund']}, 'DubiousDonationType_ftr': {'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Total value of donations not reported individually', 'Aggregated Donation']}, 'BlankDate_ftr': {'ReceivedDate': ['PLACEHOLDER_DATE', None]}, 'BlankDonor_ftr': {'DonorId': ['1000001', None, 1000001]}, 'BlankRegEntity_ftr': {'RegulatedEntityId': ['1000001', None, 1000001]}, 'DonatedVisits_ftr': {'DonationType': 'Visit', 'NatureOfDonation': 'Visit'}, 'Bequests_ftr': {'IsBequestInt': 1, 'NatureOfDonation': 'Bequest', 'DonationType': 'Bequest'}, 'CorporateDonations_ftr': {'DonorStatus': ['Company', 'Partnership', 'Limited Liability Partnership']}, 'Cash_ftr': {'DonationType': 'Cash'}, 'NonCash_ftr': {'DonationType': 'Non Cash'}}
+2025/02/28 12:48:15 PM INFO:directories: {'data_dir': 'H:\\VScode\\dashboard_demo\\data', 'output_dir': 'H:\\VScode\\dashboard_demo\\output', 'logs_dir': 'H:\\VScode\\dashboard_demo\\logs', 'reference_dir': 'H:\\VScode\\dashboard_demo\\reference_files', 'components_dir': 'H:\\VScode\\dashboard_demo\\components', 'app_pages_dir': 'H:\\VScode\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\VScode\\dashboard_demo\\utils'}
+2025/02/28 12:48:15 PM INFO:PLACEHOLDER_ID: 1000001
+2025/02/28 12:48:15 PM INFO:data_regentity:       RegulatedEntityId                Regulated Entity Name  ... Donation Events  Donation Mean
+0                  17.0                    English Democrats  ...               1   10500.000000
+1                  17.0                    English Democrats  ...               5    2700.000000
+2                  17.0                    English Democrats  ...               3   22166.666667
+3                  17.0                    English Democrats  ...               1    1500.000000
+4                  17.0                    English Democrats  ...               1    7000.000000
+...                 ...                                  ...  ...             ...            ...
+3573            10264.0                        Robert Largan  ...               1    2000.000000
+3574            10265.0                           Jane Dodds  ...               2    1764.705000
+3575            10266.0                          Phil Wilson  ...               1    2000.000000
+3576            10267.0  Scottish Unionist Association Trust  ...               2  103675.035000
+3577            10267.0  Scottish Unionist Association Trust  ...               1   11520.000000
+
+[3578 rows x 6 columns]
+2025/02/28 12:48:15 PM INFO:ListofPoliticalPeople_fname: H:\VScode\dashboard_demo\reference_files\ListOfPoliticalPeople.csv
+2025/02/28 12:48:15 PM INFO:PLACEHOLDER_DATE: 1900-01-01 00:00:00
+2025/02/28 12:48:15 PM INFO:cleaned_donations_fname: H:\VScode\dashboard_demo\output\cleaned_donations.csv
+2025/02/28 12:48:15 PM INFO:output_dir: H:\VScode\dashboard_demo\output
+2025/02/28 12:48:15 PM INFO:data_dir: H:\VScode\dashboard_demo\data
+2025/02/28 12:48:15 PM INFO:thresholds: {(0, 0): 'No Relevant Donations', (1, 1): 'Single Donation Entity', (2, 5): 'Very Small Entity', (6, 15): 'Small Entity', (16, 100): 'Small Medium Entity', (101, 200): 'Medium Entity', (201, 500): 'Medium Large Entity', (501, 1000): 'Large Entity'}
+2025/02/28 12:48:15 PM INFO:cleaned_regentity_fname: H:\VScode\dashboard_demo\output\cleaned_regentity.csv
+2025/02/28 12:48:15 PM INFO:politician_party_fname: H:\VScode\dashboard_demo\reference_files\ListOfPoliticalPeople_Final.csv
+2025/02/28 12:48:15 PM INFO:donor_map_fname: H:\VScode\dashboard_demo\reference_files\PoliticalDonorsDeDuped.csv
+2025/02/28 12:48:15 PM INFO:data_party_sum:              RegulatedEntityName  DonationsValue  DonationEvents  DonationMean         RegEntity_Group
+0     A Minority Pastime Limited         6612.00               1   6612.000000  Single Donation Entity
+1                    A. A. Craig        12100.00              11   1100.000000            Small Entity
+2                Abisola Ifasawo         1650.00               1   1650.000000  Single Donation Entity
+3                  Adam Holloway        31341.00              11   2849.181818            Small Entity
+4                    Adam Ingram         5245.20               1   5245.200000  Single Donation Entity
+...                          ...             ...             ...           ...                     ...
+1319             Yorkshire Party         1000.00               1   1000.000000  Single Donation Entity
+1320   Young Britons' Foundation        54999.00               2  27499.500000       Very Small Entity
+1321               Yvette Cooper       545172.31              49  11125.965510     Small Medium Entity
+1322             Yvonne Fovargue         6758.06               2   3379.030000       Very Small Entity
+1323               Zac Goldsmith        50000.00               1  50000.000000  Single Donation Entity
+
+[1324 rows x 5 columns]
+2025/02/28 12:48:15 PM INFO:filenames: {'reference_dir': {'Donor_dedupe_cleaned_fname': 'Donor_dedupe_cleaned_data.csv', 'ListofPoliticalPeople_fname': 'ListOfPoliticalPeople.csv', 'mppartymemb_fname': 'mppartymemb_pypd.csv', 'donor_map_fname': 'PoliticalDonorsDeDuped.csv', 'politician_party_fname': 'ListOfPoliticalPeople_Final.csv', 'regentity_map_fname': 'PoliticalEntityDeDuped.csv', 'potential_donor_duplicates_fname': 'potential_donor_duplicates.csv', 'potential_regulatedentity_duplicates_fname': 'potential_regentiity_duplicates.csv', 'original_data_fname': 'original_data.csv', 'CREDENTIALS_FILE': 'admin_credentials.json', 'TEXT_FILE': 'admin_text.json'}, 'output_dir': {'cleaned_data_fname': 'cleaned_data.csv', 'cleaned_donations_fname': 'cleaned_donations.csv', 'cleaned_donorlist_fname': 'cleaned_donorlist.csv', 'cleaned_regentity_fname': 'cleaned_regentity.csv', 'party_summary_fname': 'party_summary.csv'}, 'BASE_DIR': {'ec_donations_fname': 'Donations_accepted_by_political_parties.csv'}}
+2025/02/28 12:48:15 PM INFO:potential_regulatedentity_duplicates_fname: H:\VScode\dashboard_demo\reference_files\potential_regentiity_duplicates.csv
+2025/02/28 12:48:15 PM INFO:logs_dir: H:\VScode\dashboard_demo\logs
+2025/02/28 12:48:15 PM INFO:party_summary_fname: H:\VScode\dashboard_demo\output\party_summary.csv
+2025/02/28 12:48:15 PM INFO:data_donor:          DonorId                          Donor Name  Donations Value  Donation Events  Donation Mean
+0            1.0               Agents Training Trust         53000.00                2   26500.000000
+1            2.0    Birkenhead North End Labour Club        118680.84                2   59340.420000
+2            3.0                Bord Institute Trust         26625.00                3    8875.000000
+3            4.0        Branksome Liberal Club Trust         74495.89               14    5321.135000
+4            5.0                    Bridgwater Trust          7700.00                3    2566.666667
+...          ...                                 ...              ...              ...            ...
+29493    87482.0  Glasgow Unionist Association Trust         50000.00                1   50000.000000
+29494  1000001.0             Not Recorded 1900-01-01         17500.00                2    8750.000000
+29495  1000001.0             Not Recorded 1961-01-01         11454.00                2    5727.000000
+29496  1000001.0             Not Recorded 1995-05-10         27938.19                2   13969.095000
+29497  1000001.0                  Unidentified Donor        728205.67               92    7915.279022
+
+[29498 rows x 5 columns]
+2025/02/28 12:48:15 PM INFO:potential_donor_duplicates_fname: H:\VScode\dashboard_demo\reference_files\potential_donor_duplicates.csv
+2025/02/28 12:48:15 PM INFO:CREDENTIALS_FILE: H:\VScode\dashboard_demo\reference_files\admin_credentials.json
+2025/02/28 12:48:15 PM INFO:data_remappings: {'NatureOfDonation': {'IsBequest': 'Is A Bequest', 'IsAggregation': 'Aggregated Donation', 'IsSponsorship': 'Sponsorship', 'Donation to nan': 'Other', 'Other Payment': 'Other'}, 'PartyParents': {'Conservatives': 52, 'Labour': 53, 'Liberal Democrats': 90, 'Scottish National Party': 102, 'Green Party': 63, 'Plaid Cymru': 77, 'UKIP': 85, 'Unknown': 0}}
+2025/02/28 12:48:15 PM INFO:data_clean:            ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns]
+2025/02/28 12:48:15 PM INFO:ec_donations_fname: Donations_accepted_by_political_parties.csv
+2025/02/28 12:48:15 PM INFO:menu_selection: {'title': 'Donors Head Lines', 'function': <function donorsheadlinespage_body at 0x000001D824C9D1B0>}
+2025/02/28 12:48:15 PM INFO:BASE_DIR: H:\VScode\dashboard_demo
+2025/02/28 12:48:15 PM INFO:security: {'is_admin': False, 'is_authenticated': False, 'username': '', 'password': ''}
+2025/02/28 12:48:15 PM INFO:cleaned_data_fname: H:\VScode\dashboard_demo\output\cleaned_data.csv
+2025/02/28 12:48:15 PM INFO:components_dir: H:\VScode\dashboard_demo\components
+2025/02/28 12:48:15 PM INFO:Session state Setup complete
+2025/02/28 12:48:15 PM INFO:initialize_session_state executed successfully
+2025/02/28 12:48:15 PM INFO:Package setup complete
+2025/02/28 12:48:15 PM INFO:Calling pagesetup with args=()
+2025/02/28 12:48:15 PM INFO:Calling get_git_version with args=()
+2025/02/28 12:48:15 PM INFO:get_git_version executed successfully
+2025/02/28 12:48:15 PM INFO:App Version: v2.116
+2025/02/28 12:48:15 PM INFO:Switched to page: Donors Head Lines
+2025/02/28 12:48:15 PM INFO:Calling plot_regressionplot with args=(                            Donor Name  No of Donations  ...  Avg Value Per Entity  Avg No. Donations Per Entity
+0                               11 Kbw                1  ...                £14.6k                          1.00
+1                            1900 Club               12  ...                £27.0k                         12.00
+2         1St Machine Tool Accessories                1  ...             £5,000.00                          1.00
+3                         33 Group Ltd                1  ...             £2,000.00                          1.00
+4      3R Construction Development Ltd                2  ...                £10.0k                          2.00
+...                                ...              ...  ...                   ...                           ...
+18717                   Zoe Ashton Ltd                1  ...             £2,000.00                          1.00
+18718                    Zoe Wigan Ltd                1  ...             £2,000.00                          1.00
+18719                         Zouk Ltd                5  ...                £13.8k                          5.00
+18720                     Zulfiqar Ali                2  ...             £6,496.91                          2.00
+18721                     Zyex Limited                1  ...             £1,324.50                          1.00
+
+[18722 rows x 14 columns],)
+2025/02/28 12:48:16 PM INFO:plot_regressionplot executed successfully
+2025/02/28 12:48:16 PM INFO:Calling plot_custom_bar_chart with args=()
+2025/02/28 12:48:16 PM INFO:plot_custom_bar_chart executed successfully
+2025/02/28 12:48:16 PM INFO:Calling plot_custom_bar_chart with args=()
+2025/02/28 12:48:16 PM INFO:plot_custom_bar_chart executed successfully
+2025/02/28 12:48:16 PM INFO:Calling plot_regressionplot with args=(                            Donor Name  No of Donations  ...  Avg Value Per Entity  Avg No. Donations Per Entity
+0                               11 Kbw                1  ...                £14.6k                          1.00
+1                            1900 Club               12  ...                £27.0k                         12.00
+2         1St Machine Tool Accessories                1  ...             £5,000.00                          1.00
+3                         33 Group Ltd                1  ...             £2,000.00                          1.00
+4      3R Construction Development Ltd                2  ...                £10.0k                          2.00
+...                                ...              ...  ...                   ...                           ...
+18717                   Zoe Ashton Ltd                1  ...             £2,000.00                          1.00
+18718                    Zoe Wigan Ltd                1  ...             £2,000.00                          1.00
+18719                         Zouk Ltd                5  ...                £13.8k                          5.00
+18720                     Zulfiqar Ali                2  ...             £6,496.91                          2.00
+18721                     Zyex Limited                1  ...             £1,324.50                          1.00
+
+[18722 rows x 14 columns],)
+2025/02/28 12:48:17 PM INFO:plot_regressionplot executed successfully
+2025/02/28 12:48:17 PM INFO:Calling plot_regressionplot with args=(                            Donor Name  No of Donations  ...  Avg Value Per Entity  Avg No. Donations Per Entity
+0                               11 Kbw                1  ...                £14.6k                          1.00
+1                            1900 Club               12  ...                £27.0k                         12.00
+2         1St Machine Tool Accessories                1  ...             £5,000.00                          1.00
+3                         33 Group Ltd                1  ...             £2,000.00                          1.00
+4      3R Construction Development Ltd                2  ...                £10.0k                          2.00
+...                                ...              ...  ...                   ...                           ...
+18717                   Zoe Ashton Ltd                1  ...             £2,000.00                          1.00
+18718                    Zoe Wigan Ltd                1  ...             £2,000.00                          1.00
+18719                         Zouk Ltd                5  ...                £13.8k                          5.00
+18720                     Zulfiqar Ali                2  ...             £6,496.91                          2.00
+18721                     Zyex Limited                1  ...             £1,324.50                          1.00
+
+[18722 rows x 14 columns],)
+2025/02/28 12:48:17 PM INFO:plot_regressionplot executed successfully
+2025/02/28 12:48:17 PM INFO:pagesetup executed successfully
+2025/02/28 12:48:17 PM INFO:Calling firstload with args=()
+2025/02/28 12:48:17 PM INFO:firstload executed successfully
+2025/02/28 12:48:19 PM INFO:Current Working Directory: H:\VScode\dashboard_demo
+2025/02/28 12:48:19 PM INFO:Setting up the package
+2025/02/28 12:48:19 PM INFO:Module directory: H:\VScode\dashboard_demo
+2025/02/28 12:48:19 PM INFO:Calling get_git_version with args=('H:\\VScode\\dashboard_demo',)
+2025/02/28 12:48:19 PM INFO:get_git_version executed successfully
+2025/02/28 12:48:19 PM INFO:Version: v2.104
+2025/02/28 12:48:19 PM INFO:Calling initialize_session_state with args=()
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('BASE_DIR', 'H:\\VScode\\dashboard_demo')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('filenames', {'reference_dir': {'Donor_dedupe_cleaned_fname': 'Donor_dedupe_cleaned_data.csv', 'ListofPoliticalPeople_fname': 'ListOfPoliticalPeople.csv', 'mppartymemb_fname': 'mppartymemb_pypd.csv', 'donor_map_fname': 'PoliticalDonorsDeDuped.csv', 'politician_party_fname': 'ListOfPoliticalPeople_Final.csv', 'regentity_map_fname': 'PoliticalEntityDeDuped.csv', 'potential_donor_duplicates_fname': 'potential_donor_duplicates.csv', 'potential_regulatedentity_duplicates_fname': 'potential_regentiity_duplicates.csv', 'original_data_fname': 'original_data.csv', 'CREDENTIALS_FILE': 'admin_credentials.json', 'TEXT_FILE': 'admin_text.json'}, 'output_dir': {'cleaned_data_fname': 'cleaned_data.csv', 'cleaned_donations_fname': 'cleaned_donations.csv', 'cleaned_donorlist_fname': 'cleaned_donorlist.csv', 'cleaned_regentity_fname': 'cleaned_regentity.csv', 'party_summary_fname': 'party_summary.csv'}, 'BASE_DIR': {'ec_donations_fname': 'Donations_accepted_by_political_parties.csv'}})
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('PLACEHOLDER_DATE', Timestamp('1900-01-01 00:00:00'))
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('PLACEHOLDER_ID', 1000001)
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('thresholds', {(0, 0): 'No Relevant Donations', (1, 1): 'Single Donation Entity', (2, 5): 'Very Small Entity', (6, 15): 'Small Entity', (16, 100): 'Small Medium Entity', (101, 200): 'Medium Entity', (201, 500): 'Medium Large Entity', (501, 1000): 'Large Entity'})
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('data_remappings', {'NatureOfDonation': {'IsBequest': 'Is A Bequest', 'IsAggregation': 'Aggregated Donation', 'IsSponsorship': 'Sponsorship', 'Donation to nan': 'Other', 'Other Payment': 'Other'}, 'PartyParents': {'Conservatives': 52, 'Labour': 53, 'Liberal Democrats': 90, 'Scottish National Party': 102, 'Green Party': 63, 'Plaid Cymru': 77, 'UKIP': 85, 'Unknown': 0}})
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('filter_def', {'Sponsorships_ftr': {'DonationType': 'Sponsorship', 'NatureOfDonation': 'Sponsorship', 'IsSponsorship': 'True'}, 'ReturnedDonations_ftr': {'DonationAction': ['Returned', 'Forfeited'], 'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonors_ftr': {'DubiousDonor': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonations_ftr': {'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'AggregatedDonations_ftr': {'IsAggregation': 'True', 'DonationType': 'Aggregated Donation'}, 'SafeDonors_ftr': {'DonorType': ['Trade Union', 'Registered Political Party', 'Friendly Society', 'Public Fund']}, 'DubiousDonationType_ftr': {'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Total value of donations not reported individually', 'Aggregated Donation']}, 'BlankDate_ftr': {'ReceivedDate': ['PLACEHOLDER_DATE', None]}, 'BlankDonor_ftr': {'DonorId': ['1000001', None, 1000001]}, 'BlankRegEntity_ftr': {'RegulatedEntityId': ['1000001', None, 1000001]}, 'DonatedVisits_ftr': {'DonationType': 'Visit', 'NatureOfDonation': 'Visit'}, 'Bequests_ftr': {'IsBequestInt': 1, 'NatureOfDonation': 'Bequest', 'DonationType': 'Bequest'}, 'CorporateDonations_ftr': {'DonorStatus': ['Company', 'Partnership', 'Limited Liability Partnership']}, 'Cash_ftr': {'DonationType': 'Cash'}, 'NonCash_ftr': {'DonationType': 'Non Cash'}})
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('security', {'is_admin': False, 'is_authenticated': False, 'username': '', 'password': ''})
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('directories', {'data_dir': 'H:\\VScode\\dashboard_demo\\data', 'output_dir': 'H:\\VScode\\dashboard_demo\\output', 'logs_dir': 'H:\\VScode\\dashboard_demo\\logs', 'reference_dir': 'H:\\VScode\\dashboard_demo\\reference_files', 'components_dir': 'H:\\VScode\\dashboard_demo\\components', 'app_pages_dir': 'H:\\VScode\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\VScode\\dashboard_demo\\utils'})
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('reference_dir', 'H:\\VScode\\dashboard_demo\\reference_files')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('data_dir', 'H:\\VScode\\dashboard_demo\\data')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('output_dir', 'H:\\VScode\\dashboard_demo\\output')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('logs_dir', 'H:\\VScode\\dashboard_demo\\logs')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('components_dir', 'H:\\VScode\\dashboard_demo\\components')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('app_pages_dir', 'H:\\VScode\\dashboard_demo\\app_pages')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('utils_dir', 'H:\\VScode\\dashboard_demo\\utils')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('directories', {'data_dir': 'H:\\VScode\\dashboard_demo\\data', 'output_dir': 'H:\\VScode\\dashboard_demo\\output', 'logs_dir': 'H:\\VScode\\dashboard_demo\\logs', 'reference_dir': 'H:\\VScode\\dashboard_demo\\reference_files', 'components_dir': 'H:\\VScode\\dashboard_demo\\components', 'app_pages_dir': 'H:\\VScode\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\VScode\\dashboard_demo\\utils'})
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('Donor_dedupe_cleaned_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\Donor_dedupe_cleaned_data.csv')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('ListofPoliticalPeople_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\ListOfPoliticalPeople.csv')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('mppartymemb_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\mppartymemb_pypd.csv')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('donor_map_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\PoliticalDonorsDeDuped.csv')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('politician_party_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\ListOfPoliticalPeople_Final.csv')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('regentity_map_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\PoliticalEntityDeDuped.csv')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('potential_donor_duplicates_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\potential_donor_duplicates.csv')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('potential_regulatedentity_duplicates_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\potential_regentiity_duplicates.csv')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('original_data_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\original_data.csv')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('CREDENTIALS_FILE', 'H:\\VScode\\dashboard_demo\\reference_files\\admin_credentials.json')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('TEXT_FILE', 'H:\\VScode\\dashboard_demo\\reference_files\\admin_text.json')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:19 PM INFO:Calling init_state_var with args=('cleaned_data_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_data.csv')
+2025/02/28 12:48:19 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:20 PM INFO:Calling init_state_var with args=('cleaned_donations_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_donations.csv')
+2025/02/28 12:48:20 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:20 PM INFO:Calling init_state_var with args=('cleaned_donorlist_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_donorlist.csv')
+2025/02/28 12:48:20 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:20 PM INFO:Calling init_state_var with args=('cleaned_regentity_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_regentity.csv')
+2025/02/28 12:48:20 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:20 PM INFO:Calling init_state_var with args=('party_summary_fname', 'H:\\VScode\\dashboard_demo\\output\\party_summary.csv')
+2025/02/28 12:48:20 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:20 PM INFO:Calling init_state_var with args=('ec_donations_fname', 'Donations_accepted_by_political_parties.csv')
+2025/02/28 12:48:20 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:20 PM INFO:Calling init_state_var with args=('ec_donations_fname', 'H:\\VScode\\dashboard_demo\\Donations_accepted_by_political_parties.csv')
+2025/02/28 12:48:20 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:20 PM INFO:Calling init_state_var with args=('ec_donations_fname', 'H:\\VScode\\dashboard_demo\\Donations_accepted_by_political_parties.csv')
+2025/02/28 12:48:20 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:20 PM INFO:Session_state variables initialized
+2025/02/28 12:48:20 PM INFO:utils_dir: H:\VScode\dashboard_demo\utils
+2025/02/28 12:48:20 PM INFO:mppartymemb_fname: H:\VScode\dashboard_demo\reference_files\mppartymemb_pypd.csv
+2025/02/28 12:48:20 PM INFO:cleaned_donorlist_fname: H:\VScode\dashboard_demo\output\cleaned_donorlist.csv
+2025/02/28 12:48:20 PM INFO:reference_dir: H:\VScode\dashboard_demo\reference_files
+2025/02/28 12:48:20 PM INFO:original_data_fname: H:\VScode\dashboard_demo\reference_files\original_data.csv
+2025/02/28 12:48:20 PM INFO:Donor_dedupe_cleaned_fname: H:\VScode\dashboard_demo\reference_files\Donor_dedupe_cleaned_data.csv
+2025/02/28 12:48:20 PM INFO:app_pages_dir: H:\VScode\dashboard_demo\app_pages
+2025/02/28 12:48:20 PM INFO:TEXT_FILE: H:\VScode\dashboard_demo\reference_files\admin_text.json
+2025/02/28 12:48:20 PM INFO:raw_data:            ECRef      OriginalRegulatedEntityName  ...  DonorId                        DonorName
+0      NC0408174                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+1      NC0408173                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+2      NC0408177                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+3      NC0408176                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+4      NC0408170                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+...          ...                              ...  ...      ...                              ...
+66006   C0242478               Vote Leave Limited  ...  74198.0          Shaftesbury Investments
+66007   C0242461               Vote Leave Limited  ...  74184.0                Mr Jeremy Hosking
+66008   C0243560               Vote Leave Limited  ...  23556.0                   Anthony Clarke
+66009   C0319710  Conservative And Unionist Party  ...   2146.0                Mr Peter A Dubens
+66010   C0319727  Conservative And Unionist Party  ...  74743.0                 Mr Ravi S Kailas
+
+[63939 rows x 40 columns]
+2025/02/28 12:48:20 PM INFO:regentity_map_fname: H:\VScode\dashboard_demo\reference_files\PoliticalEntityDeDuped.csv
+2025/02/28 12:48:20 PM INFO:filter_def: {'Sponsorships_ftr': {'DonationType': 'Sponsorship', 'NatureOfDonation': 'Sponsorship', 'IsSponsorship': 'True'}, 'ReturnedDonations_ftr': {'DonationAction': ['Returned', 'Forfeited'], 'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonors_ftr': {'DubiousDonor': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonations_ftr': {'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'AggregatedDonations_ftr': {'IsAggregation': 'True', 'DonationType': 'Aggregated Donation'}, 'SafeDonors_ftr': {'DonorType': ['Trade Union', 'Registered Political Party', 'Friendly Society', 'Public Fund']}, 'DubiousDonationType_ftr': {'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Total value of donations not reported individually', 'Aggregated Donation']}, 'BlankDate_ftr': {'ReceivedDate': ['PLACEHOLDER_DATE', None]}, 'BlankDonor_ftr': {'DonorId': ['1000001', None, 1000001]}, 'BlankRegEntity_ftr': {'RegulatedEntityId': ['1000001', None, 1000001]}, 'DonatedVisits_ftr': {'DonationType': 'Visit', 'NatureOfDonation': 'Visit'}, 'Bequests_ftr': {'IsBequestInt': 1, 'NatureOfDonation': 'Bequest', 'DonationType': 'Bequest'}, 'CorporateDonations_ftr': {'DonorStatus': ['Company', 'Partnership', 'Limited Liability Partnership']}, 'Cash_ftr': {'DonationType': 'Cash'}, 'NonCash_ftr': {'DonationType': 'Non Cash'}}
+2025/02/28 12:48:20 PM INFO:directories: {'data_dir': 'H:\\VScode\\dashboard_demo\\data', 'output_dir': 'H:\\VScode\\dashboard_demo\\output', 'logs_dir': 'H:\\VScode\\dashboard_demo\\logs', 'reference_dir': 'H:\\VScode\\dashboard_demo\\reference_files', 'components_dir': 'H:\\VScode\\dashboard_demo\\components', 'app_pages_dir': 'H:\\VScode\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\VScode\\dashboard_demo\\utils'}
+2025/02/28 12:48:20 PM INFO:PLACEHOLDER_ID: 1000001
+2025/02/28 12:48:20 PM INFO:data_regentity:       RegulatedEntityId                Regulated Entity Name  ... Donation Events  Donation Mean
+0                  17.0                    English Democrats  ...               1   10500.000000
+1                  17.0                    English Democrats  ...               5    2700.000000
+2                  17.0                    English Democrats  ...               3   22166.666667
+3                  17.0                    English Democrats  ...               1    1500.000000
+4                  17.0                    English Democrats  ...               1    7000.000000
+...                 ...                                  ...  ...             ...            ...
+3573            10264.0                        Robert Largan  ...               1    2000.000000
+3574            10265.0                           Jane Dodds  ...               2    1764.705000
+3575            10266.0                          Phil Wilson  ...               1    2000.000000
+3576            10267.0  Scottish Unionist Association Trust  ...               2  103675.035000
+3577            10267.0  Scottish Unionist Association Trust  ...               1   11520.000000
+
+[3578 rows x 6 columns]
+2025/02/28 12:48:20 PM INFO:ListofPoliticalPeople_fname: H:\VScode\dashboard_demo\reference_files\ListOfPoliticalPeople.csv
+2025/02/28 12:48:20 PM INFO:PLACEHOLDER_DATE: 1900-01-01 00:00:00
+2025/02/28 12:48:20 PM INFO:cleaned_donations_fname: H:\VScode\dashboard_demo\output\cleaned_donations.csv
+2025/02/28 12:48:20 PM INFO:output_dir: H:\VScode\dashboard_demo\output
+2025/02/28 12:48:20 PM INFO:data_dir: H:\VScode\dashboard_demo\data
+2025/02/28 12:48:20 PM INFO:thresholds: {(0, 0): 'No Relevant Donations', (1, 1): 'Single Donation Entity', (2, 5): 'Very Small Entity', (6, 15): 'Small Entity', (16, 100): 'Small Medium Entity', (101, 200): 'Medium Entity', (201, 500): 'Medium Large Entity', (501, 1000): 'Large Entity'}
+2025/02/28 12:48:20 PM INFO:cleaned_regentity_fname: H:\VScode\dashboard_demo\output\cleaned_regentity.csv
+2025/02/28 12:48:20 PM INFO:politician_party_fname: H:\VScode\dashboard_demo\reference_files\ListOfPoliticalPeople_Final.csv
+2025/02/28 12:48:20 PM INFO:donor_map_fname: H:\VScode\dashboard_demo\reference_files\PoliticalDonorsDeDuped.csv
+2025/02/28 12:48:20 PM INFO:data_party_sum:              RegulatedEntityName  DonationsValue  DonationEvents  DonationMean         RegEntity_Group
+0     A Minority Pastime Limited         6612.00               1   6612.000000  Single Donation Entity
+1                    A. A. Craig        12100.00              11   1100.000000            Small Entity
+2                Abisola Ifasawo         1650.00               1   1650.000000  Single Donation Entity
+3                  Adam Holloway        31341.00              11   2849.181818            Small Entity
+4                    Adam Ingram         5245.20               1   5245.200000  Single Donation Entity
+...                          ...             ...             ...           ...                     ...
+1319             Yorkshire Party         1000.00               1   1000.000000  Single Donation Entity
+1320   Young Britons' Foundation        54999.00               2  27499.500000       Very Small Entity
+1321               Yvette Cooper       545172.31              49  11125.965510     Small Medium Entity
+1322             Yvonne Fovargue         6758.06               2   3379.030000       Very Small Entity
+1323               Zac Goldsmith        50000.00               1  50000.000000  Single Donation Entity
+
+[1324 rows x 5 columns]
+2025/02/28 12:48:20 PM INFO:filenames: {'reference_dir': {'Donor_dedupe_cleaned_fname': 'Donor_dedupe_cleaned_data.csv', 'ListofPoliticalPeople_fname': 'ListOfPoliticalPeople.csv', 'mppartymemb_fname': 'mppartymemb_pypd.csv', 'donor_map_fname': 'PoliticalDonorsDeDuped.csv', 'politician_party_fname': 'ListOfPoliticalPeople_Final.csv', 'regentity_map_fname': 'PoliticalEntityDeDuped.csv', 'potential_donor_duplicates_fname': 'potential_donor_duplicates.csv', 'potential_regulatedentity_duplicates_fname': 'potential_regentiity_duplicates.csv', 'original_data_fname': 'original_data.csv', 'CREDENTIALS_FILE': 'admin_credentials.json', 'TEXT_FILE': 'admin_text.json'}, 'output_dir': {'cleaned_data_fname': 'cleaned_data.csv', 'cleaned_donations_fname': 'cleaned_donations.csv', 'cleaned_donorlist_fname': 'cleaned_donorlist.csv', 'cleaned_regentity_fname': 'cleaned_regentity.csv', 'party_summary_fname': 'party_summary.csv'}, 'BASE_DIR': {'ec_donations_fname': 'Donations_accepted_by_political_parties.csv'}}
+2025/02/28 12:48:20 PM INFO:potential_regulatedentity_duplicates_fname: H:\VScode\dashboard_demo\reference_files\potential_regentiity_duplicates.csv
+2025/02/28 12:48:20 PM INFO:logs_dir: H:\VScode\dashboard_demo\logs
+2025/02/28 12:48:20 PM INFO:party_summary_fname: H:\VScode\dashboard_demo\output\party_summary.csv
+2025/02/28 12:48:20 PM INFO:data_donor:          DonorId                          Donor Name  Donations Value  Donation Events  Donation Mean
+0            1.0               Agents Training Trust         53000.00                2   26500.000000
+1            2.0    Birkenhead North End Labour Club        118680.84                2   59340.420000
+2            3.0                Bord Institute Trust         26625.00                3    8875.000000
+3            4.0        Branksome Liberal Club Trust         74495.89               14    5321.135000
+4            5.0                    Bridgwater Trust          7700.00                3    2566.666667
+...          ...                                 ...              ...              ...            ...
+29493    87482.0  Glasgow Unionist Association Trust         50000.00                1   50000.000000
+29494  1000001.0             Not Recorded 1900-01-01         17500.00                2    8750.000000
+29495  1000001.0             Not Recorded 1961-01-01         11454.00                2    5727.000000
+29496  1000001.0             Not Recorded 1995-05-10         27938.19                2   13969.095000
+29497  1000001.0                  Unidentified Donor        728205.67               92    7915.279022
+
+[29498 rows x 5 columns]
+2025/02/28 12:48:20 PM INFO:potential_donor_duplicates_fname: H:\VScode\dashboard_demo\reference_files\potential_donor_duplicates.csv
+2025/02/28 12:48:20 PM INFO:CREDENTIALS_FILE: H:\VScode\dashboard_demo\reference_files\admin_credentials.json
+2025/02/28 12:48:20 PM INFO:data_remappings: {'NatureOfDonation': {'IsBequest': 'Is A Bequest', 'IsAggregation': 'Aggregated Donation', 'IsSponsorship': 'Sponsorship', 'Donation to nan': 'Other', 'Other Payment': 'Other'}, 'PartyParents': {'Conservatives': 52, 'Labour': 53, 'Liberal Democrats': 90, 'Scottish National Party': 102, 'Green Party': 63, 'Plaid Cymru': 77, 'UKIP': 85, 'Unknown': 0}}
+2025/02/28 12:48:20 PM INFO:data_clean:            ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns]
+2025/02/28 12:48:20 PM INFO:ec_donations_fname: Donations_accepted_by_political_parties.csv
+2025/02/28 12:48:20 PM INFO:menu_selection: {'title': 'Cash Donations', 'function': <function cash_donations_page at 0x000001D824C9CC10>}
+2025/02/28 12:48:20 PM INFO:BASE_DIR: H:\VScode\dashboard_demo
+2025/02/28 12:48:20 PM INFO:security: {'is_admin': False, 'is_authenticated': False, 'username': '', 'password': ''}
+2025/02/28 12:48:20 PM INFO:cleaned_data_fname: H:\VScode\dashboard_demo\output\cleaned_data.csv
+2025/02/28 12:48:20 PM INFO:components_dir: H:\VScode\dashboard_demo\components
+2025/02/28 12:48:20 PM INFO:Session state Setup complete
+2025/02/28 12:48:20 PM INFO:initialize_session_state executed successfully
+2025/02/28 12:48:20 PM INFO:Package setup complete
+2025/02/28 12:48:20 PM INFO:Calling pagesetup with args=()
+2025/02/28 12:48:20 PM INFO:Calling get_git_version with args=()
+2025/02/28 12:48:20 PM INFO:get_git_version executed successfully
+2025/02/28 12:48:20 PM INFO:App Version: v2.116
+2025/02/28 12:48:20 PM INFO:Switched to page: Cash Donations
+2025/02/28 12:48:20 PM INFO:Calling cash_donations_page with args=()
+2025/02/28 12:48:20 PM INFO:Calling load_and_filter_data with args=(None, 'filtered_keytarget_label')
+2025/02/28 12:48:20 PM INFO:Calling load_cleaned_data with args=()
+2025/02/28 12:48:23 PM INFO:Cleaned Data completed, shape: (63939, 40)
+2025/02/28 12:48:23 PM INFO:load_cleaned_data executed successfully
+2025/02/28 12:48:23 PM INFO:load_and_filter_data executed successfully
+2025/02/28 12:48:23 PM INFO:Calling display_summary_statistics with args=(           ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns],            ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns], 'Cash Donation', 'filtered_keytarget_label')
+2025/02/28 12:48:23 PM INFO:display_summary_statistics executed successfully
+2025/02/28 12:48:23 PM INFO:Calling display_textual_insights with args=('filtered_keytarget_label', 'Cash Donation', datetime.date(2001, 1, 1), datetime.date(2019, 9, 2), {'unique_reg_entities': 1324, 'unique_donors': 24066, 'unique_donations': np.int64(63939), 'total_value': np.float64(934089582.95), 'mean_value': np.float64(14609.074007256917), 'avg_donations_per_entity': np.float64(48.25584905660377), 'avg_value_per_entity': np.float64(9467.03590479101), 'avg_donors_per_entity': np.float64(20.86188679245283), 'donors_stdev': np.float64(819.2576959707048), 'value_stdev': np.float64(60679.81509488486), 'noofdonors_per_ent_stdev': np.float64(322.67849661732464)}, {'unique_reg_entities': 1324, 'unique_donors': 24066, 'unique_donations': np.int64(63939), 'total_value': np.float64(934089582.95), 'mean_value': np.float64(14609.074007256917), 'avg_donations_per_entity': np.float64(48.25584905660377), 'avg_value_per_entity': np.float64(9467.03590479101), 'avg_donors_per_entity': np.float64(20.86188679245283), 'donors_stdev': np.float64(819.2576959707048), 'value_stdev': np.float64(60679.81509488486), 'noofdonors_per_ent_stdev': np.float64(322.67849661732464)}, 100.0)
+2025/02/28 12:48:23 PM INFO:display_textual_insights executed successfully
+2025/02/28 12:48:23 PM INFO:Calling display_visualizations with args=(           ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns], 'Cash Donation', 'filtered_keytarget_label')
+2025/02/28 12:48:23 PM INFO:Calling plot_bar_line_by_year with args=(           ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns],)
+2025/02/28 12:48:23 PM INFO:plot_bar_line_by_year executed successfully
+2025/02/28 12:48:24 PM INFO:Calling plot_bar_line_by_year with args=(           ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns],)
+2025/02/28 12:48:24 PM INFO:plot_bar_line_by_year executed successfully
+2025/02/28 12:48:24 PM INFO:display_visualizations executed successfully
+2025/02/28 12:48:24 PM INFO:Calling plot_bar_line_by_year with args=(           ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns],)
+2025/02/28 12:48:24 PM INFO:plot_bar_line_by_year executed successfully
+2025/02/28 12:48:24 PM INFO:Calling plot_bar_line_by_year with args=(           ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns],)
+2025/02/28 12:48:24 PM INFO:plot_bar_line_by_year executed successfully
+2025/02/28 12:48:24 PM INFO:Calling plot_bar_line_by_year with args=(           ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns],)
+2025/02/28 12:48:24 PM INFO:plot_bar_line_by_year executed successfully
+2025/02/28 12:48:24 PM INFO:Calling plot_custom_bar_chart with args=()
+2025/02/28 12:48:24 PM INFO:plot_custom_bar_chart executed successfully
+2025/02/28 12:48:24 PM INFO:cash_donations_page executed successfully
+2025/02/28 12:48:24 PM INFO:pagesetup executed successfully
+2025/02/28 12:48:24 PM INFO:Calling firstload with args=()
+2025/02/28 12:48:24 PM INFO:firstload executed successfully
+2025/02/28 12:48:46 PM INFO:Current Working Directory: H:\VScode\dashboard_demo
+2025/02/28 12:48:46 PM INFO:Setting up the package
+2025/02/28 12:48:46 PM INFO:Module directory: H:\VScode\dashboard_demo
+2025/02/28 12:48:46 PM INFO:Calling get_git_version with args=('H:\\VScode\\dashboard_demo',)
+2025/02/28 12:48:46 PM INFO:get_git_version executed successfully
+2025/02/28 12:48:46 PM INFO:Version: v2.104
+2025/02/28 12:48:46 PM INFO:Calling initialize_session_state with args=()
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('BASE_DIR', 'H:\\VScode\\dashboard_demo')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('filenames', {'reference_dir': {'Donor_dedupe_cleaned_fname': 'Donor_dedupe_cleaned_data.csv', 'ListofPoliticalPeople_fname': 'ListOfPoliticalPeople.csv', 'mppartymemb_fname': 'mppartymemb_pypd.csv', 'donor_map_fname': 'PoliticalDonorsDeDuped.csv', 'politician_party_fname': 'ListOfPoliticalPeople_Final.csv', 'regentity_map_fname': 'PoliticalEntityDeDuped.csv', 'potential_donor_duplicates_fname': 'potential_donor_duplicates.csv', 'potential_regulatedentity_duplicates_fname': 'potential_regentiity_duplicates.csv', 'original_data_fname': 'original_data.csv', 'CREDENTIALS_FILE': 'admin_credentials.json', 'TEXT_FILE': 'admin_text.json'}, 'output_dir': {'cleaned_data_fname': 'cleaned_data.csv', 'cleaned_donations_fname': 'cleaned_donations.csv', 'cleaned_donorlist_fname': 'cleaned_donorlist.csv', 'cleaned_regentity_fname': 'cleaned_regentity.csv', 'party_summary_fname': 'party_summary.csv'}, 'BASE_DIR': {'ec_donations_fname': 'Donations_accepted_by_political_parties.csv'}})
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('PLACEHOLDER_DATE', Timestamp('1900-01-01 00:00:00'))
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('PLACEHOLDER_ID', 1000001)
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('thresholds', {(0, 0): 'No Relevant Donations', (1, 1): 'Single Donation Entity', (2, 5): 'Very Small Entity', (6, 15): 'Small Entity', (16, 100): 'Small Medium Entity', (101, 200): 'Medium Entity', (201, 500): 'Medium Large Entity', (501, 1000): 'Large Entity'})
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('data_remappings', {'NatureOfDonation': {'IsBequest': 'Is A Bequest', 'IsAggregation': 'Aggregated Donation', 'IsSponsorship': 'Sponsorship', 'Donation to nan': 'Other', 'Other Payment': 'Other'}, 'PartyParents': {'Conservatives': 52, 'Labour': 53, 'Liberal Democrats': 90, 'Scottish National Party': 102, 'Green Party': 63, 'Plaid Cymru': 77, 'UKIP': 85, 'Unknown': 0}})
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('filter_def', {'Sponsorships_ftr': {'DonationType': 'Sponsorship', 'NatureOfDonation': 'Sponsorship', 'IsSponsorship': 'True'}, 'ReturnedDonations_ftr': {'DonationAction': ['Returned', 'Forfeited'], 'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonors_ftr': {'DubiousDonor': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonations_ftr': {'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'AggregatedDonations_ftr': {'IsAggregation': 'True', 'DonationType': 'Aggregated Donation'}, 'SafeDonors_ftr': {'DonorType': ['Trade Union', 'Registered Political Party', 'Friendly Society', 'Public Fund']}, 'DubiousDonationType_ftr': {'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Total value of donations not reported individually', 'Aggregated Donation']}, 'BlankDate_ftr': {'ReceivedDate': ['PLACEHOLDER_DATE', None]}, 'BlankDonor_ftr': {'DonorId': ['1000001', None, 1000001]}, 'BlankRegEntity_ftr': {'RegulatedEntityId': ['1000001', None, 1000001]}, 'DonatedVisits_ftr': {'DonationType': 'Visit', 'NatureOfDonation': 'Visit'}, 'Bequests_ftr': {'IsBequestInt': 1, 'NatureOfDonation': 'Bequest', 'DonationType': 'Bequest'}, 'CorporateDonations_ftr': {'DonorStatus': ['Company', 'Partnership', 'Limited Liability Partnership']}, 'Cash_ftr': {'DonationType': 'Cash'}, 'NonCash_ftr': {'DonationType': 'Non Cash'}})
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('security', {'is_admin': False, 'is_authenticated': False, 'username': '', 'password': ''})
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('directories', {'data_dir': 'H:\\VScode\\dashboard_demo\\data', 'output_dir': 'H:\\VScode\\dashboard_demo\\output', 'logs_dir': 'H:\\VScode\\dashboard_demo\\logs', 'reference_dir': 'H:\\VScode\\dashboard_demo\\reference_files', 'components_dir': 'H:\\VScode\\dashboard_demo\\components', 'app_pages_dir': 'H:\\VScode\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\VScode\\dashboard_demo\\utils'})
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('reference_dir', 'H:\\VScode\\dashboard_demo\\reference_files')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('data_dir', 'H:\\VScode\\dashboard_demo\\data')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('output_dir', 'H:\\VScode\\dashboard_demo\\output')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('logs_dir', 'H:\\VScode\\dashboard_demo\\logs')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('components_dir', 'H:\\VScode\\dashboard_demo\\components')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('app_pages_dir', 'H:\\VScode\\dashboard_demo\\app_pages')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('utils_dir', 'H:\\VScode\\dashboard_demo\\utils')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('directories', {'data_dir': 'H:\\VScode\\dashboard_demo\\data', 'output_dir': 'H:\\VScode\\dashboard_demo\\output', 'logs_dir': 'H:\\VScode\\dashboard_demo\\logs', 'reference_dir': 'H:\\VScode\\dashboard_demo\\reference_files', 'components_dir': 'H:\\VScode\\dashboard_demo\\components', 'app_pages_dir': 'H:\\VScode\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\VScode\\dashboard_demo\\utils'})
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('Donor_dedupe_cleaned_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\Donor_dedupe_cleaned_data.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('ListofPoliticalPeople_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\ListOfPoliticalPeople.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('mppartymemb_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\mppartymemb_pypd.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('donor_map_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\PoliticalDonorsDeDuped.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('politician_party_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\ListOfPoliticalPeople_Final.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('regentity_map_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\PoliticalEntityDeDuped.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('potential_donor_duplicates_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\potential_donor_duplicates.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('potential_regulatedentity_duplicates_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\potential_regentiity_duplicates.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('original_data_fname', 'H:\\VScode\\dashboard_demo\\reference_files\\original_data.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('CREDENTIALS_FILE', 'H:\\VScode\\dashboard_demo\\reference_files\\admin_credentials.json')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('TEXT_FILE', 'H:\\VScode\\dashboard_demo\\reference_files\\admin_text.json')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('cleaned_data_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_data.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('cleaned_donations_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_donations.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('cleaned_donorlist_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_donorlist.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('cleaned_regentity_fname', 'H:\\VScode\\dashboard_demo\\output\\cleaned_regentity.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('party_summary_fname', 'H:\\VScode\\dashboard_demo\\output\\party_summary.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('ec_donations_fname', 'Donations_accepted_by_political_parties.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('ec_donations_fname', 'H:\\VScode\\dashboard_demo\\Donations_accepted_by_political_parties.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Calling init_state_var with args=('ec_donations_fname', 'H:\\VScode\\dashboard_demo\\Donations_accepted_by_political_parties.csv')
+2025/02/28 12:48:46 PM INFO:init_state_var executed successfully
+2025/02/28 12:48:46 PM INFO:Session_state variables initialized
+2025/02/28 12:48:46 PM INFO:utils_dir: H:\VScode\dashboard_demo\utils
+2025/02/28 12:48:46 PM INFO:mppartymemb_fname: H:\VScode\dashboard_demo\reference_files\mppartymemb_pypd.csv
+2025/02/28 12:48:46 PM INFO:cleaned_donorlist_fname: H:\VScode\dashboard_demo\output\cleaned_donorlist.csv
+2025/02/28 12:48:46 PM INFO:reference_dir: H:\VScode\dashboard_demo\reference_files
+2025/02/28 12:48:46 PM INFO:original_data_fname: H:\VScode\dashboard_demo\reference_files\original_data.csv
+2025/02/28 12:48:46 PM INFO:Donor_dedupe_cleaned_fname: H:\VScode\dashboard_demo\reference_files\Donor_dedupe_cleaned_data.csv
+2025/02/28 12:48:46 PM INFO:app_pages_dir: H:\VScode\dashboard_demo\app_pages
+2025/02/28 12:48:46 PM INFO:TEXT_FILE: H:\VScode\dashboard_demo\reference_files\admin_text.json
+2025/02/28 12:48:46 PM INFO:raw_data:            ECRef      OriginalRegulatedEntityName  ...  DonorId                        DonorName
+0      NC0408174                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+1      NC0408173                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+2      NC0408177                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+3      NC0408176                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+4      NC0408170                   Mr Andy Street  ...  86310.0  Conservative And Unionist Party
+...          ...                              ...  ...      ...                              ...
+66006   C0242478               Vote Leave Limited  ...  74198.0          Shaftesbury Investments
+66007   C0242461               Vote Leave Limited  ...  74184.0                Mr Jeremy Hosking
+66008   C0243560               Vote Leave Limited  ...  23556.0                   Anthony Clarke
+66009   C0319710  Conservative And Unionist Party  ...   2146.0                Mr Peter A Dubens
+66010   C0319727  Conservative And Unionist Party  ...  74743.0                 Mr Ravi S Kailas
+
+[63939 rows x 40 columns]
+2025/02/28 12:48:46 PM INFO:regentity_map_fname: H:\VScode\dashboard_demo\reference_files\PoliticalEntityDeDuped.csv
+2025/02/28 12:48:46 PM INFO:filter_def: {'Sponsorships_ftr': {'DonationType': 'Sponsorship', 'NatureOfDonation': 'Sponsorship', 'IsSponsorship': 'True'}, 'ReturnedDonations_ftr': {'DonationAction': ['Returned', 'Forfeited'], 'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonors_ftr': {'DubiousDonor': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonations_ftr': {'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'AggregatedDonations_ftr': {'IsAggregation': 'True', 'DonationType': 'Aggregated Donation'}, 'SafeDonors_ftr': {'DonorType': ['Trade Union', 'Registered Political Party', 'Friendly Society', 'Public Fund']}, 'DubiousDonationType_ftr': {'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Total value of donations not reported individually', 'Aggregated Donation']}, 'BlankDate_ftr': {'ReceivedDate': ['PLACEHOLDER_DATE', None]}, 'BlankDonor_ftr': {'DonorId': ['1000001', None, 1000001]}, 'BlankRegEntity_ftr': {'RegulatedEntityId': ['1000001', None, 1000001]}, 'DonatedVisits_ftr': {'DonationType': 'Visit', 'NatureOfDonation': 'Visit'}, 'Bequests_ftr': {'IsBequestInt': 1, 'NatureOfDonation': 'Bequest', 'DonationType': 'Bequest'}, 'CorporateDonations_ftr': {'DonorStatus': ['Company', 'Partnership', 'Limited Liability Partnership']}, 'Cash_ftr': {'DonationType': 'Cash'}, 'NonCash_ftr': {'DonationType': 'Non Cash'}}
+2025/02/28 12:48:46 PM INFO:directories: {'data_dir': 'H:\\VScode\\dashboard_demo\\data', 'output_dir': 'H:\\VScode\\dashboard_demo\\output', 'logs_dir': 'H:\\VScode\\dashboard_demo\\logs', 'reference_dir': 'H:\\VScode\\dashboard_demo\\reference_files', 'components_dir': 'H:\\VScode\\dashboard_demo\\components', 'app_pages_dir': 'H:\\VScode\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\VScode\\dashboard_demo\\utils'}
+2025/02/28 12:48:46 PM INFO:PLACEHOLDER_ID: 1000001
+2025/02/28 12:48:46 PM INFO:data_regentity:       RegulatedEntityId                Regulated Entity Name  ... Donation Events  Donation Mean
+0                  17.0                    English Democrats  ...               1   10500.000000
+1                  17.0                    English Democrats  ...               5    2700.000000
+2                  17.0                    English Democrats  ...               3   22166.666667
+3                  17.0                    English Democrats  ...               1    1500.000000
+4                  17.0                    English Democrats  ...               1    7000.000000
+...                 ...                                  ...  ...             ...            ...
+3573            10264.0                        Robert Largan  ...               1    2000.000000
+3574            10265.0                           Jane Dodds  ...               2    1764.705000
+3575            10266.0                          Phil Wilson  ...               1    2000.000000
+3576            10267.0  Scottish Unionist Association Trust  ...               2  103675.035000
+3577            10267.0  Scottish Unionist Association Trust  ...               1   11520.000000
+
+[3578 rows x 6 columns]
+2025/02/28 12:48:46 PM INFO:ListofPoliticalPeople_fname: H:\VScode\dashboard_demo\reference_files\ListOfPoliticalPeople.csv
+2025/02/28 12:48:46 PM INFO:PLACEHOLDER_DATE: 1900-01-01 00:00:00
+2025/02/28 12:48:46 PM INFO:cleaned_donations_fname: H:\VScode\dashboard_demo\output\cleaned_donations.csv
+2025/02/28 12:48:46 PM INFO:output_dir: H:\VScode\dashboard_demo\output
+2025/02/28 12:48:46 PM INFO:data_dir: H:\VScode\dashboard_demo\data
+2025/02/28 12:48:46 PM INFO:thresholds: {(0, 0): 'No Relevant Donations', (1, 1): 'Single Donation Entity', (2, 5): 'Very Small Entity', (6, 15): 'Small Entity', (16, 100): 'Small Medium Entity', (101, 200): 'Medium Entity', (201, 500): 'Medium Large Entity', (501, 1000): 'Large Entity'}
+2025/02/28 12:48:46 PM INFO:cleaned_regentity_fname: H:\VScode\dashboard_demo\output\cleaned_regentity.csv
+2025/02/28 12:48:46 PM INFO:politician_party_fname: H:\VScode\dashboard_demo\reference_files\ListOfPoliticalPeople_Final.csv
+2025/02/28 12:48:46 PM INFO:donor_map_fname: H:\VScode\dashboard_demo\reference_files\PoliticalDonorsDeDuped.csv
+2025/02/28 12:48:46 PM INFO:data_party_sum:              RegulatedEntityName  DonationsValue  DonationEvents  DonationMean         RegEntity_Group
+0     A Minority Pastime Limited         6612.00               1   6612.000000  Single Donation Entity
+1                    A. A. Craig        12100.00              11   1100.000000            Small Entity
+2                Abisola Ifasawo         1650.00               1   1650.000000  Single Donation Entity
+3                  Adam Holloway        31341.00              11   2849.181818            Small Entity
+4                    Adam Ingram         5245.20               1   5245.200000  Single Donation Entity
+...                          ...             ...             ...           ...                     ...
+1319             Yorkshire Party         1000.00               1   1000.000000  Single Donation Entity
+1320   Young Britons' Foundation        54999.00               2  27499.500000       Very Small Entity
+1321               Yvette Cooper       545172.31              49  11125.965510     Small Medium Entity
+1322             Yvonne Fovargue         6758.06               2   3379.030000       Very Small Entity
+1323               Zac Goldsmith        50000.00               1  50000.000000  Single Donation Entity
+
+[1324 rows x 5 columns]
+2025/02/28 12:48:46 PM INFO:filenames: {'reference_dir': {'Donor_dedupe_cleaned_fname': 'Donor_dedupe_cleaned_data.csv', 'ListofPoliticalPeople_fname': 'ListOfPoliticalPeople.csv', 'mppartymemb_fname': 'mppartymemb_pypd.csv', 'donor_map_fname': 'PoliticalDonorsDeDuped.csv', 'politician_party_fname': 'ListOfPoliticalPeople_Final.csv', 'regentity_map_fname': 'PoliticalEntityDeDuped.csv', 'potential_donor_duplicates_fname': 'potential_donor_duplicates.csv', 'potential_regulatedentity_duplicates_fname': 'potential_regentiity_duplicates.csv', 'original_data_fname': 'original_data.csv', 'CREDENTIALS_FILE': 'admin_credentials.json', 'TEXT_FILE': 'admin_text.json'}, 'output_dir': {'cleaned_data_fname': 'cleaned_data.csv', 'cleaned_donations_fname': 'cleaned_donations.csv', 'cleaned_donorlist_fname': 'cleaned_donorlist.csv', 'cleaned_regentity_fname': 'cleaned_regentity.csv', 'party_summary_fname': 'party_summary.csv'}, 'BASE_DIR': {'ec_donations_fname': 'Donations_accepted_by_political_parties.csv'}}
+2025/02/28 12:48:46 PM INFO:potential_regulatedentity_duplicates_fname: H:\VScode\dashboard_demo\reference_files\potential_regentiity_duplicates.csv
+2025/02/28 12:48:46 PM INFO:logs_dir: H:\VScode\dashboard_demo\logs
+2025/02/28 12:48:46 PM INFO:party_summary_fname: H:\VScode\dashboard_demo\output\party_summary.csv
+2025/02/28 12:48:46 PM INFO:data_donor:          DonorId                          Donor Name  Donations Value  Donation Events  Donation Mean
+0            1.0               Agents Training Trust         53000.00                2   26500.000000
+1            2.0    Birkenhead North End Labour Club        118680.84                2   59340.420000
+2            3.0                Bord Institute Trust         26625.00                3    8875.000000
+3            4.0        Branksome Liberal Club Trust         74495.89               14    5321.135000
+4            5.0                    Bridgwater Trust          7700.00                3    2566.666667
+...          ...                                 ...              ...              ...            ...
+29493    87482.0  Glasgow Unionist Association Trust         50000.00                1   50000.000000
+29494  1000001.0             Not Recorded 1900-01-01         17500.00                2    8750.000000
+29495  1000001.0             Not Recorded 1961-01-01         11454.00                2    5727.000000
+29496  1000001.0             Not Recorded 1995-05-10         27938.19                2   13969.095000
+29497  1000001.0                  Unidentified Donor        728205.67               92    7915.279022
+
+[29498 rows x 5 columns]
+2025/02/28 12:48:46 PM INFO:potential_donor_duplicates_fname: H:\VScode\dashboard_demo\reference_files\potential_donor_duplicates.csv
+2025/02/28 12:48:46 PM INFO:CREDENTIALS_FILE: H:\VScode\dashboard_demo\reference_files\admin_credentials.json
+2025/02/28 12:48:46 PM INFO:data_remappings: {'NatureOfDonation': {'IsBequest': 'Is A Bequest', 'IsAggregation': 'Aggregated Donation', 'IsSponsorship': 'Sponsorship', 'Donation to nan': 'Other', 'Other Payment': 'Other'}, 'PartyParents': {'Conservatives': 52, 'Labour': 53, 'Liberal Democrats': 90, 'Scottish National Party': 102, 'Green Party': 63, 'Plaid Cymru': 77, 'UKIP': 85, 'Unknown': 0}}
+2025/02/28 12:48:47 PM INFO:data_clean:            ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns]
+2025/02/28 12:48:47 PM INFO:ec_donations_fname: Donations_accepted_by_political_parties.csv
+2025/02/28 12:48:47 PM INFO:menu_selection: {'title': 'Bequeths', 'function': <function mod_bequeths_page at 0x000001D824C9DE10>}
+2025/02/28 12:48:47 PM INFO:BASE_DIR: H:\VScode\dashboard_demo
+2025/02/28 12:48:47 PM INFO:security: {'is_admin': False, 'is_authenticated': False, 'username': '', 'password': ''}
+2025/02/28 12:48:47 PM INFO:cleaned_data_fname: H:\VScode\dashboard_demo\output\cleaned_data.csv
+2025/02/28 12:48:47 PM INFO:components_dir: H:\VScode\dashboard_demo\components
+2025/02/28 12:48:47 PM INFO:Session state Setup complete
+2025/02/28 12:48:47 PM INFO:initialize_session_state executed successfully
+2025/02/28 12:48:47 PM INFO:Package setup complete
+2025/02/28 12:48:47 PM INFO:Calling pagesetup with args=()
+2025/02/28 12:48:47 PM INFO:Calling get_git_version with args=()
+2025/02/28 12:48:47 PM INFO:get_git_version executed successfully
+2025/02/28 12:48:47 PM INFO:App Version: v2.116
+2025/02/28 12:48:47 PM INFO:Switched to page: Bequeths
+2025/02/28 12:48:47 PM INFO:Calling display_data_page with args=('Bequests_ftr', 'Bequest')
+2025/02/28 12:48:47 PM INFO:Calling load_and_filter_data with args=('Bequests_ftr', 'filtered_keytarget_label')
+2025/02/28 12:48:47 PM INFO:Calling load_cleaned_data with args=()
+2025/02/28 12:48:50 PM INFO:Cleaned Data completed, shape: (63939, 40)
+2025/02/28 12:48:50 PM INFO:load_cleaned_data executed successfully
+2025/02/28 12:48:50 PM INFO:load_and_filter_data executed successfully
+2025/02/28 12:48:50 PM INFO:Calling display_summary_statistics with args=(           ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns],            ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns], 'Bequest', 'filtered_keytarget_label')
+2025/02/28 12:48:50 PM INFO:display_summary_statistics executed successfully
+2025/02/28 12:48:50 PM INFO:Calling display_textual_insights with args=('filtered_keytarget_label', 'Bequest', datetime.date(2001, 1, 1), datetime.date(2019, 9, 2), {'unique_reg_entities': 1324, 'unique_donors': 24066, 'unique_donations': np.int64(63939), 'total_value': np.float64(934089582.95), 'mean_value': np.float64(14609.074007256917), 'avg_donations_per_entity': np.float64(48.25584905660377), 'avg_value_per_entity': np.float64(9467.03590479101), 'avg_donors_per_entity': np.float64(20.86188679245283), 'donors_stdev': np.float64(819.2576959707048), 'value_stdev': np.float64(60679.81509488486), 'noofdonors_per_ent_stdev': np.float64(322.67849661732464)}, {'unique_reg_entities': 1324, 'unique_donors': 24066, 'unique_donations': np.int64(63939), 'total_value': np.float64(934089582.95), 'mean_value': np.float64(14609.074007256917), 'avg_donations_per_entity': np.float64(48.25584905660377), 'avg_value_per_entity': np.float64(9467.03590479101), 'avg_donors_per_entity': np.float64(20.86188679245283), 'donors_stdev': np.float64(819.2576959707048), 'value_stdev': np.float64(60679.81509488486), 'noofdonors_per_ent_stdev': np.float64(322.67849661732464)}, 0.5)
+2025/02/28 12:48:50 PM INFO:display_textual_insights executed successfully
+2025/02/28 12:48:50 PM INFO:Calling display_visualizations with args=(           ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns], 'Bequest', 'filtered_keytarget_label')
+2025/02/28 12:48:50 PM INFO:Calling plot_bar_line_by_year with args=(           ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns],)
+2025/02/28 12:48:50 PM INFO:plot_bar_line_by_year executed successfully
+2025/02/28 12:48:50 PM INFO:Calling plot_bar_line_by_year with args=(           ECRef      OriginalRegulatedEntityName  ... IsAggregationInt  IsSponsorshipInt
+0      NC0408174                   Mr Andy Street  ...                1                 1
+1      NC0408173                   Mr Andy Street  ...                1                 1
+2      NC0408177                   Mr Andy Street  ...                1                 1
+3      NC0408176                   Mr Andy Street  ...                1                 1
+4      NC0408170                   Mr Andy Street  ...                1                 1
+...          ...                              ...  ...              ...               ...
+66006   C0242478               Vote Leave Limited  ...                1                 1
+66007   C0242461               Vote Leave Limited  ...                1                 1
+66008   C0243560               Vote Leave Limited  ...                1                 1
+66009   C0319710  Conservative And Unionist Party  ...                1                 1
+66010   C0319727  Conservative And Unionist Party  ...                1                 1
+
+[63939 rows x 40 columns],)
+2025/02/28 12:48:50 PM INFO:plot_bar_line_by_year executed successfully
+2025/02/28 12:48:50 PM INFO:display_visualizations executed successfully
+2025/02/28 12:48:50 PM INFO:display_data_page executed successfully
+2025/02/28 12:48:50 PM INFO:pagesetup executed successfully
+2025/02/28 12:48:50 PM INFO:Calling firstload with args=()
+2025/02/28 12:48:50 PM INFO:firstload executed successfully
