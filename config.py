@@ -4,7 +4,7 @@ import os
 import pandas as pd
 
 # Base directory
-BASE_DIR = os.path.dirname(__file__)
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 DIRECTORIES = {
     "data_dir": os.path.join(BASE_DIR, "data"),
@@ -38,8 +38,9 @@ FILENAMES = {
         "cleaned_regentity_fname": "cleaned_regentity.csv",
         "party_summary_fname": "party_summary.csv",
     },
-    "BASE_DIR": {"ec_donations_fname",
-                 "Donations_accepted_by_political_parties.csv"},
+    "BASE_DIR": {
+        "ec_donations_fname": "Donations_accepted_by_political_parties.csv"
+    },
 }
 
 # Placeholder values

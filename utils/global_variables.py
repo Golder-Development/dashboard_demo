@@ -67,14 +67,18 @@ def initialize_session_state():
         if isinstance(filenames, dict):  # process dictionary entries
             for fname_key, filename in filenames.items():
                 file_path = (
-                    os.path.join(st.session_state["directories"].get(dir_key, " "), filename)
+                    os.path.join(st.session_state["directories"].get(dir_key, ""), filename)
                 )
                 init_state_var(fname_key, file_path)
 
-    # Handle `base_data` separately (since it's stored as a tuple)
-    base_data_key, base_data_filename = config.FILENAMES["BASE_DIR"]
-    base_data_path = os.path.join(st.session_state["BASE_DIR"],
-                                  base_data_filename)
+    # Handle `BASE_DIR` separately (since it's stored as a dictionary)
+    for base_key, base_filename in config.FILENAMES["BASE_DIR"].items():
+        base_path = os.path.join(st.session_state["BASE_DIR"], base_filename)
+        init_state_var(base_key, base_path)
+
+    # Handle `base_data` separately (since it's stored as a dictionary)
+    base_data_key, base_data_filename = list(config.FILENAMES["BASE_DIR"].items())[0]
+    base_data_path = os.path.join(st.session_state["BASE_DIR"], base_data_filename)
     init_state_var(base_data_key, base_data_path)
 
     # write session state as list to log

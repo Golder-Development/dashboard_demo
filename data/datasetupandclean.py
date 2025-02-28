@@ -17,7 +17,6 @@ def load_raw_data(output_csv=False,
         or "ec_donations_fname" not in st.session_state
     ):
         initialize_session_state()
-        return
     originaldatafilepath = st.session_state.ec_donations_fname
     loaddata_df = pd.read_csv(
         originaldatafilepath,

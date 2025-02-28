@@ -47,12 +47,6 @@ def cash_donations_page():
     perc_cash_donations_d = calculate_percentage(tstats['unique_donations'],
                                                  ostats['unique_donations'])
 
-    topline_summary_block(target_label,
-                          min_date,
-                          max_date,
-                          tstats,
-                          perc_cash_donations_d)
-
     display_textual_insights(
         pageref_label,
         target_label,
