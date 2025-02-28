@@ -36,6 +36,8 @@ def initialize_session_state():
     init_state_var("data_remappings", config.DATA_REMAPPINGS)
     init_state_var("filter_def", config.FILTER_DEF)
     init_state_var("security", config.SECURITY)
+    init_state_var("perc_target", config.perc_target)  # Add perc_target initialization
+
     # Initialize directories
     init_state_var("directories", config.DIRECTORIES)
 
@@ -52,7 +54,7 @@ def initialize_session_state():
         "components_dir",
         "app_pages_dir",
         "utils_dir"
-        ]:
+            ]:
         init_state_var(dir_key, st.session_state["directories"].get(dir_key))
 
     # Initialize directories
@@ -80,6 +82,9 @@ def initialize_session_state():
     base_data_key, base_data_filename = list(config.FILENAMES["BASE_DIR"].items())[0]
     base_data_path = os.path.join(st.session_state["BASE_DIR"], base_data_filename)
     init_state_var(base_data_key, base_data_path)
+
+    # Initialize Cash_ftr filter
+    init_state_var("Cash_ftr", config.FILTER_DEF.get("Cash_ftr"))
 
     # write session state as list to log
     logger.info("Session_state variables initialized")

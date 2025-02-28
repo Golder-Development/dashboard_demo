@@ -16,13 +16,19 @@ from components.Visualisations import (plot_custom_bar_chart,
 from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
 
+
 @log_function_call
 def cash_donations_page():
     """Displays the Cash Donations page in Streamlit."""
     # Load dataset
-    cash_ftr = st.session_state.get("cash_ftr", None)
+    cash_ftr = st.session_state.get("Cash_ftr")
     target_label = "Cash Donation"
-    pageref_label = "filtered_key" + "target_label"
+    pageref_label = "filtered_key_" + target_label  # Corrected concatenation
+
+    # Ensure cash_ftr is not a dictionary
+    if isinstance(cash_ftr, dict):
+        cash_ftr = tuple(cash_ftr.items())
+
     (cleaned_df,
      cleaned_c_d_df) = load_and_filter_data(cash_ftr, pageref_label)
 
@@ -59,11 +65,11 @@ def cash_donations_page():
 
     left, right = st.columns(2)
     with left:
-        st.write("## Explaination")
+        st.write("## Explanation")
         st.write("* The most donations to political parties are in cash."
                  "These vary from small donations from individuals, to larger "
                  "aggregated donations from multiple donors, and include "
-                 "donations from trade unions,business and bequests.")
+                 "donations from trade unions, business and bequests.")
         st.write("* These are identified by the regulator and marked in the"
                  " data. "
                  "This page provides a summary of the cash donations to "
@@ -80,7 +86,7 @@ def cash_donations_page():
                  f"and were made by {format_number(tstats['unique_donors'])} "
                  "unique donors.")
         st.write(f"* Cash donations were {perc_cash_donations_d:.2f}% of "
-                 f"all donations made to political parties between {min_date}"
+                 f"all donations made to political parties between {min_date} "
                  f"and {max_date}. All these had a total value of £ "
                  f"{format_number(tstats['total_value'])}")
     st.write("---")
@@ -92,19 +98,6 @@ def cash_donations_page():
     st.write("---")
     # Display visualizations
     display_visualizations(cleaned_c_d_df, target_label, pageref_label)
-    left_column, right_column = st.columns(2)
-    with left_column:
-        # Display results
-        # Call the function
-        display_donations_by_entity(cleaned_c_d_df)
-    with right_column:
-        if cleaned_c_d_df.empty:
-            st.write("No data available for the selected filters.")
-            return
-        else:
-            # Call the function
-            display_donations_by_year_and_entity(cleaned_c_d_df)
-    st.write("---")
     left, right = st.columns(2)
     with left:
         st.write('#### Cash Donations by Donor Type')
