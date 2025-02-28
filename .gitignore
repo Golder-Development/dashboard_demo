@@ -4,7 +4,11 @@ __pycache__/
 .venv/
 .vscode/
 devfiles/
-logs/app_logs.log
+
+# Ignore logs folder and log files
+logs/
+*.log
+
 tests/
 Wireframes/
 app.log
