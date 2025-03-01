@@ -6,6 +6,7 @@ from utils.logger import logger, log_function_call # Import decorator
 
 
 @log_function_call
+@st.cache_data
 def load_raw_data(output_csv=False,
                   dedupe_donors=False,
                   dedupe_regentity=False):

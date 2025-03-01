@@ -8,6 +8,7 @@ from utils.logger import logger, log_function_call
 from components.GenElectionRelationship import GenElectionRelation2
 
 @log_function_call
+@st.cache_data
 def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
     if streamlitrun:
         # Load the data
@@ -80,7 +81,7 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
     # apply mapping of MPs to party membership
     if "RegulatedEntityName" in loadclean_df.columns:
         loadclean_df = map_mp_to_party(loadclean_df)
-    
+
     # Create a DubiousData flag for problematic records
     if ("PLACEHOLDER_DATE" not in st.session_state) or (
         "PLACEHOLDER_ID" not in st.session_state
@@ -165,7 +166,7 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
         if col not in loadclean_df.columns:
             loadclean_df[col] = orig_df[col]
 
-   
+
     # Drop Columns that are not needed
     loadclean_df = loadclean_df.drop(
         [
@@ -204,40 +205,23 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
     loadclean_df["RegisterNameInt"] = loadclean_df["RegisterName"].astype("category").cat.codes
 
     # Column encoding PublicFundsInt
-    loadclean_df["PublicFundsInt"] = loadclean_df["DonationType"].apply(lambda x: 0 if x != "Public Funds" else 1)    
-    # Calculate the number of days to the next election
-    loadclean_df["DaysTillNextElection"] = loadclean_df["ReceivedDate"].map(
-        lambda x: GenElectionRelation2(x,
-              direction="DaysTill",
-              date_format='%Y/%m/%d %H:%M:%S')
+    loadclean_df["PublicFundsInt"] = loadclean_df["DonationType"].apply(lambda x: 0 if x != "Public Funds" else 1)
+    # Calculate the number of days to the next election and since the last election
+    loadclean_df["DaysTillNextElection"] = loadclean_df["ReceivedDate"].apply(
+        lambda x: GenElectionRelation2(x.strftime('%Y/%m/%d %H:%M:%S'), direction="DaysTill")
+    )
+    loadclean_df["DaysSinceLastElection"] = loadclean_df["ReceivedDate"].apply(
+        lambda x: GenElectionRelation2(x.strftime('%Y/%m/%d %H:%M:%S'), direction="DaysSince")
     )
 
-    # Calculate the number of days since the last election
-    loadclean_df["DaysSinceLastElection"] = loadclean_df["ReceivedDate"].map(
-        lambda x: GenElectionRelation2(x,
-              direction="DaysSince",
-              date_format='%Y/%m/%d %H:%M:%S')
-    )
-
-    # Apply the function to calculate weeks till the next election
-    loadclean_df['WeeksTillNextElection'] = loadclean_df['ReceivedDate'].apply(
-        lambda x: GenElectionRelation2(x, divisor=7, direction="DaysTill")
-    )
-
-    # Apply the function to calculate weeks since the last election
-    loadclean_df['WeeksSinceLastElection'] = loadclean_df['ReceivedDate'].apply(
-        lambda x: GenElectionRelation2(x, divisor=7, direction="DaysSince")
-    )
-
-    # Apply the function to calculate qtrs till the next election
-    loadclean_df['WeeksTillNextElection'] = loadclean_df['ReceivedDate'].apply(
-        lambda x: GenElectionRelation2(x, divisor=91, direction="DaysTill")
-    )
-
-    # Apply the function to calculate qtrs since the last election
-    loadclean_df['WeeksSinceLastElection'] = loadclean_df['ReceivedDate'].apply(
-        lambda x: GenElectionRelation2(x, divisor=91, direction="DaysSince")
-    )
+    # Calculate weeks and quarters till the next election and since the last election
+    for period, divisor in [("Weeks", 7), ("Quarters", 91)]:
+        loadclean_df[f'{period}TillNextElection'] = loadclean_df["ReceivedDate"].apply(
+            lambda x: GenElectionRelation2(x.strftime('%Y/%m/%d %H:%M:%S'), divisor=divisor, direction="DaysTill")
+        )
+        loadclean_df[f'{period}SinceLastElection'] = loadclean_df["ReceivedDate"].apply(
+            lambda x: GenElectionRelation2(x.strftime('%Y/%m/%d %H:%M:%S'), divisor=divisor, direction="DaysSince")
+        )
     # Save cleaned data
     if output_csv:
         output_dir = st.session_state.directories["output_dir"]

@@ -44,6 +44,7 @@ def load_and_filter_data(filter_key, pagereflabel):
 
     return cleaned_df, filtered_df
 
+
 @log_function_call
 def display_summary_statistics(filtered_df, overall_df, target_label, pageref_label):
     """Displays summary statistics for the given dataset."""
@@ -78,6 +79,7 @@ def display_summary_statistics(filtered_df, overall_df, target_label, pageref_la
         col.metric(label=label, value=value)
 
     return min_date_df, max_date_df, tstats, ostats, perc_target
+
 
 @log_function_call
 def display_visualizations(filtered_df, target_label, pageref_label):
