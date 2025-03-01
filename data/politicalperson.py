@@ -17,9 +17,9 @@ def map_mp_to_party(loaddata_df):
     loaddata_df.columns = loaddata_df.columns.str.strip()
 
     # Check if 'PartyName' exists
+    loaddata_df['PartyName'] = pd.NA
     if 'PartyName' not in loaddata_df.columns:
         logger.error("Missing column: 'PartyName' in loaddata_df. Available columns: %s", loaddata_df.columns)
-        loaddata_df['PartyName'] = pd.NA
 
     # Load and preprocess the political people dataset
     try:
@@ -38,7 +38,7 @@ def map_mp_to_party(loaddata_df):
         return loaddata_df
 
     politician_party_dict = politician_party_dict.rename(columns=expected_cols)[['RegulatedEntityId', 'PartyName']]
-    logger.info("Loaded politician_party_dict: %s", politician_party_dict.head())
+    logger.debug("Loaded politician_party_dict: %s", politician_party_dict.head())
 
     # Validate PartyParents mapping dictionary
     PartyUpdate_dict = st.session_state.data_remappings.get("PartyParents", {})
@@ -48,7 +48,7 @@ def map_mp_to_party(loaddata_df):
         return loaddata_df
 
     # Log keys for debugging
-    logger.info("PartyUpdate_dict keys: %s", PartyUpdate_dict.keys())
+    logger.debug("PartyUpdate_dict keys: %s", PartyUpdate_dict.keys())
 
     # Normalize case for mapping
     loaddata_df['PartyName'] = loaddata_df['PartyName'].str.strip().str.lower()
@@ -56,7 +56,7 @@ def map_mp_to_party(loaddata_df):
 
     # Map PartyId based on PartyName
     loaddata_df['PartyId'] = loaddata_df['PartyName'].map(PartyUpdate_dict).combine_first(loaddata_df['RegulatedEntityId'])
-    logger.info("Updated loaddata_df with PartyId: %s", loaddata_df.head())
+    logger.debug("Updated loaddata_df with PartyId: %s", loaddata_df.head())
 
     # Load and preprocess the regulated entity mapping file
     try:
@@ -75,20 +75,20 @@ def map_mp_to_party(loaddata_df):
         return loaddata_df
 
     RegulatedEntityNameMatch = RegulatedEntityNameMatch.rename(columns=expected_cols)[['PartyId', 'PartyName']]
-    logger.info("Loaded RegulatedEntityNameMatch: %s", RegulatedEntityNameMatch.head())
+    logger.debug("Loaded RegulatedEntityNameMatch: %s", RegulatedEntityNameMatch.head())
 
     # Merge regulated entity names
     loaddata_df = pd.merge(loaddata_df, RegulatedEntityNameMatch, how='left', on='PartyId', suffixes=('', '_y'))
 
     # Remove duplicate columns from merging
     loaddata_df.drop(columns=[col for col in loaddata_df.columns if col.endswith('_y')], inplace=True)
-    logger.info("loaddata_df after merging: %s", loaddata_df.head())
+    logger.debug("loaddata_df after merging: %s", loaddata_df.head())
 
     # Ensure PartyName and PartyId are properly assigned
     loaddata_df['PartyName'] = loaddata_df['PartyName'].replace("", pd.NA).combine_first(loaddata_df['RegulatedEntityName']).fillna("Unidentified Party")
     loaddata_df['PartyId'] = loaddata_df['PartyId'].replace("", pd.NA).combine_first(loaddata_df['RegulatedEntityId']).fillna(10000001)
 
-    logger.info("loaddata_df after updating PartyName and PartyId: %s", loaddata_df.head())
-    logger.info("loaddata_df PartyName unique values: %s", loaddata_df['PartyName'].unique())
+    logger.debug("loaddata_df after updating PartyName and PartyId: %s", loaddata_df.head())
+    logger.debug("loaddata_df PartyName unique values: %s", loaddata_df['PartyName'].unique())
     logger.info("Data Updated with PartyName and PartyId successfully")
     return loaddata_df

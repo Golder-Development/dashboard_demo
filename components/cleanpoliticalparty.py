@@ -12,7 +12,7 @@ def load_mppartymemb_pypd():
     try:
         # Load MP party memberships data
         mppartymemb_df = pd.read_csv(st.session_state.mppartymemb_fname)
-        logger.info(f"Loaded MP Party Memberships data: {mppartymemb_df}")
+        logger.debug(f"Loaded MP Party Memberships data: {mppartymemb_df}")
 
         # Store MP party memberships data in session state
         st.session_state.mppartymemb_pypd = mppartymemb_df
@@ -107,8 +107,8 @@ def get_party_df_from_pdpy(
     )
     # feedback
     mppartymemb_df = mppartymemb_df.drop(columns=["person_id", "party_id"])
-    logger.info("Fetched data from PdPy sample")
-    logger.info(mppartymemb_df[["given_name", "family_name", "party_name"]].head())
+    logger.debug("Fetched data from PdPy sample")
+    logger.debug(mppartymemb_df[["given_name", "family_name", "party_name"]].head())
     # Save final dataset
     mppartymemb_df.to_csv(st.session_state.mppartymemb_fname, index=False)
     return mppartymemb_df
@@ -166,24 +166,22 @@ def clean_political_party_data():
         lambda row: get_party_from_pdpy_df(pdpydf, row["CleanedName"]),
         axis=1,
     )
-    testdata = False
-    if testdata:
-        logger.info("sample of original file")
-        logger.info(
-            df[
-                [
-                    "OriginalRegulatedEntityName",
-                    "RegulatedEntityName",
-                    "CleanedName",
-                    "Status",
-                ]
-            ].head()
+    logger.debug("sample of original file")
+    logger.debug(
+        df[
+            [
+                "OriginalRegulatedEntityName",
+                "RegulatedEntityName",
+                "CleanedName",
+                "Status",
+            ]
+        ].head()
         )
-        logger.info("sample of cleaned file"
-        f" {df[['CleanedName', 'Status']].head()} ")
-        # print count of records by party
-        logger.info("count of records by party"
-        f" {df["PoliticalParty_pdpy"].value_counts()} ")# Save final dataset
+    logger.debug("sample of cleaned file"
+    f" {df[['CleanedName', 'Status']].head()} ")
+    # print count of records by party
+    logger.debug("count of records by party"
+    f" {df["PoliticalParty_pdpy"].value_counts()} ")# Save final dataset
 
     final_file_path = st.session_state.mp_party_memberships_file_path
     df.to_csv(final_file_path, index=False)

@@ -5,11 +5,14 @@ from components.modular_page_blocks import (
     display_textual_insights,
     display_visualizations,
 )
-from utils.logger import logger
+# from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
 
 
-def display_data_page(filter_key=None, target_label="default", entity="Donor"):
+@log_function_call
+def display_per_group_data_page(filter_key=None,
+                                target_label="default",
+                                group_entity="Donor"):
     """
     Template function to generate a
     Streamlit page for a specific data slice.
@@ -26,13 +29,17 @@ def display_data_page(filter_key=None, target_label="default", entity="Donor"):
         cleaned_c_r_df,
         cleaned_c_r_d_df,
     ) = load_and_filter_pergroup(
-        groupentity=entity, filter_key=filter_key, pageref_label=pageref_label
+        group_entity=group_entity, filter_key=filter_key, pageref_label=pageref_label
     )
 
     if cleaned_df is None:
         return
 
-    (min_date, max_date, tstats, ostats, perc_target) = display_summary_statistics(
+    (min_date,
+     max_date,
+     tstats,
+     ostats,
+     perc_target) = display_summary_statistics(
         filtered_df=cleaned_c_r_d_df,
         overall_df=cleaned_df,
         target_label=target_label,
@@ -51,5 +58,7 @@ def display_data_page(filter_key=None, target_label="default", entity="Donor"):
 
     st.write("---")
     display_visualizations(
-        cleaned_c_r_d_df, target_label=target_label, pageref_label=pageref_label
+        cleaned_c_r_d_df,
+        target_label=target_label,
+        pageref_label=pageref_label
     )

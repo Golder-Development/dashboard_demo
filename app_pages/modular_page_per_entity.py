@@ -5,10 +5,11 @@ from components.modular_page_blocks import (
     display_textual_insights,
     display_visualizations,
 )
-from utils.logger import logger
+# from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
 
 
+@log_function_call
 def display_data_page(
     filter_key, target_label="default", groupentity="RegulatedEntity"
 ):
@@ -33,7 +34,11 @@ def display_data_page(
     if cleaned_df is None:
         return
 
-    (min_date, max_date, tstats, ostats, perc_target) = display_summary_statistics(
+    (min_date,
+     max_date,
+     tstats,
+     ostats,
+     perc_target) = display_summary_statistics(
         cleaned_c_r_d_df, cleaned_df, target_label, pageref_label
     )
     perc_target = st.session_state.get("perc_target", 0.5)

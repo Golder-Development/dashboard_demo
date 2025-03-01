@@ -13,7 +13,7 @@ def load_election_dates():
     """Load general election dates into session state."""
     try:
         ElectionDates_dict = get_general_elections_dict()
-        logger.info(f"ElectionDatesDict: {ElectionDates_dict}")
+        logger.debug(f"ElectionDatesDict: {ElectionDates_dict}")
 
         # Extract only election dates as `date` objects
         election_dates = [

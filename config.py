@@ -125,26 +125,30 @@ FILTER_DEF = { # "filter_name": {"column_name": "value"}
                         "Unidentified Donor",
                         "Unidentifiable Donor"
                         ],
-        
     },
     "BlankDate_ftr": {"ReceivedDate": ["PLACEHOLDER_DATE", None]},
-    "BlankDonor_ftr": {"DonorId": ["1000001", None, 1000001]},
-    "BlankRegEntity_ftr": {"RegulatedEntityId": ["1000001", None, 1000001]},
-    "DonatedVisits_ftr": {"DonationType": "Visit", "NatureOfDonation": "Visit"},
-    "Bequests_ftr": {"IsBequestInt": 1, "NatureOfDonation": "Bequest", "DonationType": "Bequest"},  # Changed from string to boolean
+    "BlankDonor_ftr": {"DonorId": [1000001]},
+    "BlankRegEntity_ftr": {"RegulatedEntityId": [1000001]},
+    "DonatedVisits_ftr": {"DonationType": "Visit",
+                          "NatureOfDonation": "Visit"},
+    "Bequests_ftr": {"IsBequestInt": 1,
+                     "NatureOfDonation": "Bequest",
+                     "DonationType": "Bequest"},  # Changed from string to boolean
     "CorporateDonations_ftr": {
-        "DonorStatus": ["Company", "Partnership", "Limited Liability Partnership"]
+        "DonorStatus": ["Company",
+                        "Partnership",
+                        "Limited Liability Partnership"]
     },
     "RegulatedEntity_ftr": {"RegulatedEntityType": ["Political Party",
                                                     "Regulated Donee",
                                                     "Permitted Participant",
                                                     "Third Party"
                                                     ]},
-    "PoliticalParty_ftr": {"DonorType": "Political Party"},
+    "PoliticalParty_ftr": {"DonorStatus": "Registered Political Party"},
     "Cash_ftr": {"DonationType": "Cash"},
     "NonCash_ftr": {"DonationType": "Non Cash"},
 }
-SECURITY = { # "security_variable": "security_value"
+SECURITY = {  # "security_variable": "security_value"
     "is_admin": False,
     "is_authenticated": False,
     "username": "",

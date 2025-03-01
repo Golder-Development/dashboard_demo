@@ -5,6 +5,9 @@ Run this file first to start the app
 # import necessary modules
 import streamlit as st
 import os
+# Set the page config at the very beginning of the script
+st.set_page_config(page_title="Political Party Analysis", layout="wide")
+
 # import local modules
 try:
     import setup
