@@ -2,8 +2,7 @@
 Configuration file for the package.
 """
 import os
-from setuptools import setup, find_packages
-from utils.logger import logger, log_function_call
+from utils.logger import logger
 from utils.version import get_git_version
 from utils.global_variables import initialize_session_state
 
