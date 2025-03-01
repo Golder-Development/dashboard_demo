@@ -4,11 +4,10 @@ from components.modular_page_blocks import (
     display_textual_insights,
     display_visualizations,
     load_and_filter_data,
-    topline_summary_block,
-
 )
-from utils.logger import logger
+# from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
+
 
 @log_function_call
 def display_data_page(filter_key, target_label):

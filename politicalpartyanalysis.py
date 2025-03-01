@@ -51,7 +51,7 @@ def pagesetup():
     app.add_page("Donors per Regulated Entity", mod_regulated_entity_per_donors_page)    
     app.add_page("Dubious Donors per Regulated Entity", mod_dubious_donors_per_entity_page)
     app.add_page("Dubious Donations per Regulated Entity", mod_dubious_donations_per_entity_page)
-    app.add_page("Corporate Donations by Donor", mod_corporate_donations_per_donor_page)
+    app.add_page("Corporate Donations per Donor", mod_corporate_donations_per_donor_page)
     app.add_page("Sponsorships per Donor", mod_sponsorships_per_donor_page)
     app.add_page("Paid Visits per Donor", mod_visits_per_donor)
     app.add_page("Regulated Entities per Donor", mod_regulated_donor_per_entity_page)

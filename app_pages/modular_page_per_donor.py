@@ -5,10 +5,11 @@ from components.modular_page_blocks import (
     display_textual_insights,
     display_visualizations,
 )
-from utils.logger import logger
+# from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
 
 
+@log_function_call
 def display_data_page(filter_key=None, target_label="default", entity="Donor"):
     """
     Template function to generate a
@@ -32,7 +33,11 @@ def display_data_page(filter_key=None, target_label="default", entity="Donor"):
     if cleaned_df is None:
         return
 
-    (min_date, max_date, tstats, ostats, perc_target) = display_summary_statistics(
+    (min_date,
+     max_date,
+     tstats,
+     ostats,
+     perc_target) = display_summary_statistics(
         filtered_df=cleaned_c_r_d_df,
         overall_df=cleaned_df,
         target_label=target_label,
@@ -51,5 +56,7 @@ def display_data_page(filter_key=None, target_label="default", entity="Donor"):
 
     st.write("---")
     display_visualizations(
-        cleaned_c_r_d_df, target_label=target_label, pageref_label=pageref_label
+        cleaned_c_r_d_df,
+        target_label=target_label,
+        pageref_label=pageref_label
     )
