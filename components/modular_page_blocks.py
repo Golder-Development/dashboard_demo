@@ -23,7 +23,7 @@ from utils.logger import log_function_call  # Import decorator
 @log_function_call
 def load_and_filter_data(filter_key, pagereflabel):
     """Loads and filters dataset based on filter_key from session state."""
-    cleaned_df = load_cleaned_data()
+    cleaned_df = st.session_state["data_clean"]
     if cleaned_df is None:
         st.error("No data found. Please upload a dataset.")
         return None, None
@@ -68,12 +68,12 @@ def display_summary_statistics(filtered_df, overall_df, target_label, pageref_la
 
     cols = st.columns(6)
     stats_map = [
-        (f"Total {target_label}", f"£{tstats['total_value']:,.0f}"),
-        (f"{target_label} % of Total Donations", f"{perc_target:.2f}%"),
-        (f"{target_label} Donations", f"{tstats['unique_donations']:,}"),
-        (f"Mean {target_label} Value", f"£{tstats['mean_value']:,.0f}"),
-        (f"Total {target_label} Entities", f"{tstats['unique_reg_entities']:,}"),
-        (f"Total {target_label} Donors", f"{tstats['unique_donors']:,}"),
+        (f"Total {target_label}", f"£{format_number(tstats['total_value'])}"),
+        (f"{target_label} % of Total Donations", f"{perc_target:.0f}%"),
+        (f"{target_label} Donations", f"{format_number(tstats['unique_donations'])}"),
+        (f"Mean {target_label} Value", f"£{format_number(tstats['mean_value'])}"),
+        (f"Total {target_label} Entities", f"{format_number(tstats['unique_reg_entities'])}"),
+        (f"Total {target_label} Donors", f"{format_number(tstats['unique_donors'])}"),
     ]
     for col, (label, value) in zip(cols, stats_map):
         col.metric(label=label, value=value)
@@ -82,50 +82,52 @@ def display_summary_statistics(filtered_df, overall_df, target_label, pageref_la
 
 
 @log_function_call
-def display_visualizations(filtered_df, target_label, pageref_label):
+def display_visualizations(graph_df, target_label, pageref_label):
     pageref_label_vis = pageref_label + "_vis"
     """Displays charts for the given dataset."""
-    if filtered_df.empty:
+    if graph_df.empty:
         st.warning(f"No data available for {target_label}s.")
         return
 
     left_column, right_column = st.columns(2)
 
     with left_column:
+        left_widget_graph_key = "left" + pageref_label_vis
         plot_bar_line_by_year(
-            filtered_df,
+            graph_df,
             XValues="YearReceived",
-            YValue="Value",
-            GGroup="RegulatedEntityType",
+            YValues="Value",
+            GroupData="RegulatedEntityType",
             XLabel="Year",
             YLabel="Value of Donations £",
             Title=f"Value of {target_label}s by" " Year and Entity",
             CalcType="sum",
             use_custom_colors=False,
-            widget_key="Value_by_entity",
+            widget_key=left_widget_graph_key,
             ChartType="Bar",
             LegendTitle="Political Entity Type",
             percentbars=True,
-            use_container_width=True,
+            y_scale="linear",
         )
-
+        right_widget_graph_key = "right" + pageref_label_vis
     with right_column:
         plot_bar_line_by_year(
-            filtered_df,
+            graph_df,
             XValues="YearReceived",
-            YValue="Value",
-            GGroup="RegEntity_Group",
+            YValues="EventCount",
+            GroupData="RegEntity_Group",
             XLabel="Year",
-            YLabel="Value of Donations £",
-            Title=f"Value of {target_label}s " "by Year and Entity",
+            YLabel="Donations",
+            Title=f"Donations of {target_label}s by Year and Entity",
             CalcType="sum",
             use_custom_colors=True,
-            widget_key="Value_by_entity",
-            ChartType="Bar",
-            LegendTitle="Political Entity",
             percentbars=False,
-            use_container_width=True,
+            LegendTitle="Political Entity",
+            ChartType="line",
+            y_scale="linear",
+            widget_key=right_widget_graph_key,
         )
+
 
 @log_function_call
 def display_textual_insights(
@@ -168,7 +170,7 @@ def display_textual_insights(
                     ):
                         toggle_soft_delete(pageref_label, text_key, True)
                         st.warning(f"Soft Deleted {text_key}!")
-                        st.experimental_rerun()
+                        st.rerun()
 
                 with col3:
                     if is_deleted and st.button(
@@ -176,13 +178,13 @@ def display_textual_insights(
                     ):
                         toggle_soft_delete(pageref_label, text_key, False)
                         st.success(f"Restored {text_key}!")
-                        st.experimental_rerun()
+                        st.rerun()
 
                 with col4:
                     if st.button(f"🗑️ Delete {text_key}", key=f"perm_delete_{text_key}"):
                         permanent_delete(pageref_label, text_key)
                         st.error(f"Permanently Deleted {text_key}!")
-                        st.experimental_rerun()
+                        st.rerun()
 
         # Add new text element
         st.subheader("Add a New Text Element")
@@ -222,8 +224,8 @@ def display_textual_insights(
         )
         st.write(
             f"* Between {min_date} and {max_date},"
-            f" {tstats['unique_donations']} {target_label}s "
-            f"were made to {tstats['unique_reg_entities']}"
+            f" {format_number(tstats['unique_donations'])} {target_label}s "
+            f"were made to {format_number(tstats['unique_reg_entities'])}"
             " regulated entities."
         )
         st.write(
@@ -233,7 +235,7 @@ def display_textual_insights(
             " unique donors."
         )
         st.write(
-            f"* {target_label}s accounted for {perc_target:.2f}% of"
+            f"* {target_label}s accounted for {perc_target:.0f}% of"
             " all political donations."
         )
 
@@ -247,9 +249,9 @@ def display_textual_insights(
 
 
 @log_function_call
-def load_and_filter_perentity(groupentity, filter_key, pageref_label):
+def load_and_filter_perentity(group_entity, filter_key, pageref_label):
     """Loads and filters dataset based on filter_key from session state."""
-    cleaned_df = load_cleaned_data()
+    cleaned_df = st.session_state["data_clean"]
     if cleaned_df is None:
         st.error("No data found. Please upload a dataset.")
         return None, None, None, None, None, None, None, None
@@ -340,9 +342,9 @@ def load_and_filter_perentity(groupentity, filter_key, pageref_label):
 
 
 @log_function_call
-def load_and_filter_pergroup(groupentity, filter_key, pageref_label):
+def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
     """Loads and filters dataset based on filter_key from session state."""
-    cleaned_df = load_cleaned_data()
+    cleaned_df = st.session_state["data_clean"]
     if cleaned_df is None:
         st.error("No data found. Please upload a dataset.")
         return None, None
@@ -366,8 +368,8 @@ def load_and_filter_pergroup(groupentity, filter_key, pageref_label):
     end_date = dt.datetime.combine(end_date, dt.datetime.max.time())
 
     # --- Dropdown for chosen grouping ---
-    filterentityname = groupentity + "Name"
-    filterentityid = groupentity + "Id"
+    filterentityname = group_entity + "Name"
+    filterentityid =group_entity + "Id"
     # check filterentityname and filterentityid are in the dataframe
     if (
         filterentityname not in cleaned_df.columns
@@ -385,7 +387,7 @@ def load_and_filter_pergroup(groupentity, filter_key, pageref_label):
     # Add "All" as an option and create a dropdown that displays names but
     # returns IDs
     selected_entity_name = st.selectbox(
-        f"Filter by {groupentity}", ["All"] + sorted(entity_mapping.keys())
+        f"Filter by {group_entity}", ["All"] + sorted(entity_mapping.keys())
     )
 
     # Get the corresponding ID for filtering

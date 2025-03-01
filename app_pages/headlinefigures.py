@@ -112,8 +112,8 @@ def hlf_body():
         else:
             vis.plot_bar_line_by_year(filtered_df,
                                       XValues="YearReceived",
-                                      YValue="EventCount",
-                                      GGroup="RegulatedEntityType",
+                                      YValues="EventCount",
+                                      GroupData="RegulatedEntityType",
                                       XLabel="Year", YLabel="Donations",
                                       Title="Donations per Year & Entity Type",
                                       CalcType='sum',
@@ -133,13 +133,14 @@ def hlf_body():
             )
             vis.plot_bar_line_by_year(filtered_df_sort,
                                       XValues="YearReceived",
-                                      YValue="EventCount",
-                                      GGroup="Data Safety Score",
-                                      LegendTitle="Data Safety Score",
-                                      XLabel="Year", YLabel="Donations",
+                                      YValues="EventCount",
+                                      GroupData="Data Safety Score",
+                                      XLabel="Year",
+                                      YLabel="Donations",
                                       Title="Donations Risk Score by Year",
                                       CalcType='sum',
-                                      ChartType="Line",
+                                      LegendTitle="Data Safety Score",
+                                      ChartType="line",
                                       y_scale="linear",
                                       widget_key="dons_by_year_n_type")
     st.write("---")
@@ -198,8 +199,8 @@ def hlf_body():
         else:
             vis.plot_bar_line_by_year(filtered_df,
                                       XValues="YearReceived",
-                                      YValue="Value",
-                                      GGroup="RegEntity_Group",
+                                      YValues="Value",
+                                      GroupData="RegEntity_Group",
                                       XLabel="Year",
                                       YLabel="Value of Donations £ 000's",
                                       Title="Donations GBP by Year & Entity",
@@ -214,8 +215,8 @@ def hlf_body():
         else:
             vis.plot_bar_line_by_year(filtered_df,
                                       XValues="YearReceived",
-                                      YValue="Value",
-                                      GGroup="DonationType",
+                                      YValues="Value",
+                                      GroupData="DonationType",
                                       XLabel="Year",
                                       YLabel="Total Value (£)",
                                       y_scale="log",
@@ -233,16 +234,17 @@ def hlf_body():
         else:
             st.write("### Entity Distribution")
             vis.plot_pie_chart(
-                df=filtered_df,
-                category_column="RegEntity_Group",
-                value_column="Value",  # Use None for count
+                graph_df=filtered_df,
+                YValues="RegEntity_Group",
+                XValues="Value",  # Use None for count
                 color_column="RegEntity_Group",
-                title="Distribution of Donated Value by Entity",
-                category_label="Regulated Entity",
-                value_label="Percentage of Total Donations",
                 use_custom_colors=True,  # Use custom colors
+                color_mapping=None,
+                Title="Distribution of Donated Value by Entity",
+                YLabel="Regulated Entity",
+                XLabel="Percentage of Total Donations",
                 hole=0.3,  # Adjust for more or less donut effect
-                widget_key="Value_by_entity"
+                widget_key="pie_Value_by_entity"
             )
     with col2:
         if filtered_df.empty:
@@ -251,14 +253,15 @@ def hlf_body():
         else:
             st.write("### Entity Distribution")
             vis.plot_pie_chart(
-                df=filtered_df,
-                category_column="RegEntity_Group",
-                value_column=None,  # Use None for count
+                graph_df=filtered_df,
+                YValues="RegEntity_Group",
+                XValues="EventCount",  # Use None for count
                 color_column="RegEntity_Group",
-                title="Distribution of Donations by Entity",
-                category_label="Regulated Entity",
                 use_custom_colors=True,  # Use custom colors
-                value_label="Percentage of Donation Events",
+                color_mapping=None,
+                Title="Distribution of Donations by Entity",
+                YLabel="Regulated Entity",
+                XLabel="Percentage of Donation Events",
                 hole=0.3,  # Adjust for more or less donut effect
                 widget_key="pie_donations_by_entity"
             )

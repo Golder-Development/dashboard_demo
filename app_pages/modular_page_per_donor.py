@@ -10,7 +10,9 @@ from utils.logger import log_function_call  # Import decorator
 
 
 @log_function_call
-def display_data_page(filter_key=None, target_label="default", entity="Donor"):
+def display_per_group_data_page(filter_key=None,
+                                target_label="default",
+                                group_entity="Donor"):
     """
     Template function to generate a
     Streamlit page for a specific data slice.
@@ -27,7 +29,7 @@ def display_data_page(filter_key=None, target_label="default", entity="Donor"):
         cleaned_c_r_df,
         cleaned_c_r_d_df,
     ) = load_and_filter_pergroup(
-        groupentity=entity, filter_key=filter_key, pageref_label=pageref_label
+        group_entity=group_entity, filter_key=filter_key, pageref_label=pageref_label
     )
 
     if cleaned_df is None:

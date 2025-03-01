@@ -10,10 +10,10 @@ class MultiPage:
         self.pages = []  # List to store the pages
         self.app_name = app_name  # Name of the app
 
-        # Set the page configuration
-        st.set_page_config(
-            page_title=self.app_name, page_icon=":computer:", layout="wide"
-        )
+        # # Set the page configuration
+        # st.set_page_config(
+        #     page_title=self.app_name, page_icon=":computer:", layout="wide"
+        # )
 
     # Method to add a new page to the app
     def add_page(self, title, func) -> None:

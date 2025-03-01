@@ -46,8 +46,9 @@ def dedupe_entity_file(
         logger.info("Dedupe by file")
         # load regentity_map_fname file using global variables
         dedupedfilename = st.session_state[map_filename]
-        dedupedfilepath = dedupedfilename
-        re_dedupe_df = pd.read_csv(dedupedfilepath)
+        re_dedupe_df = pd.read_csv(dedupedfilename)
+        # ensure that there is only one value for each RegulatedEntityId by taking the first value in all cases
+        re_dedupe_df = re_dedupe_df.groupby(entityid).first().reset_index()
         # merge re_dedupe_df with original data
         loaddata_dd_df = pd.merge(loaddata_dd_df, re_dedupe_df, how="left", on=entityid)
         # rename RegulatedEntityName_x to RegulatedEntityName
