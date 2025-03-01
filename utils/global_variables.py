@@ -37,9 +37,13 @@ def initialize_session_state():
     init_state_var("filter_def", config.FILTER_DEF)
     init_state_var("security", config.SECURITY)
     init_state_var("perc_target", config.perc_target)  # Add perc_target initialization
-
+    init_state_var("RERUN_MP_PARTY_MEMBERSHIP", config.RERUN_MP_PARTY_MEMBERSHIP)
+    init_state_var("LOG_LEVEL", config.LOG_LEVEL)
     # Initialize directories
     init_state_var("directories", config.DIRECTORIES)
+
+    # Set globel env variables
+    os.environ["LOG_LEVEL"] = config.LOG_LEVEL
 
     # Ensure directories exist
     for key, path in st.session_state.directories.items():

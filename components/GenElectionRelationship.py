@@ -1,116 +1,120 @@
-# Original Code https://github.com/Hysnap/ElectionDateDifferentialCalc/
-# Module to calculate the difference in a definable period between a given
-# date and the nearest election date, for a set period defined in Days
-# Direction can be "DaysTill" or "DaysSince"
 import math
 import datetime as dt
+import bisect
+import streamlit as st
+from pdpy.pdpy.elections import get_general_elections_dict
 from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
 
 
+@log_function_call
+@st.cache_data
 def load_election_dates():
+    """Load general election dates into session state."""
+    try:
+        ElectionDates_dict = get_general_elections_dict()
+        logger.info(f"ElectionDatesDict: {ElectionDates_dict}")
+
+        # Extract only election dates as `date` objects
+        election_dates = [
+            value["election"]  # Extract the election date
+            for key, value in ElectionDates_dict.items()
+            # Ensure structure is valid
+            if isinstance(value, dict) and "election" in value
+        ]
+
+        if not election_dates:
+            raise ValueError("No valid election dates found.")
+
+        # Store sorted election dates in session state
+        st.session_state.ElectionDatesAscend = sorted(election_dates)
+        st.session_state.ElectionDatesDescend = sorted(election_dates,
+                                                       reverse=True)
+
+        logger.info("Election Dates Loaded Successfully.")
+
+    except Exception as e:
+        logger.error(f"Failed to load election dates: {e}")
+        st.session_state.ElectionDatesAscend = []
+        st.session_state.ElectionDatesDescend = []
+
+
+def GenElectionRelation2(R_Date, divisor=1,
+                         direction="DaysTill",
+                         date_format="%Y/%m/%d %H:%M:%S"):
     """
-    Load the general election dates from the pdpy.elections module.
-
-    Returns:
-        dict: A dictionary of general election dates.
-    """
-    ElectionDates_dict = elections.get_general_elections_dict()
-
-    # Create List of Election Dates from ElectionDates_dict
-    ElectionDates = []
-    for key in ElectionDates_dict.keys():
-        ElectionDates.append(ElectionDates_dict[key])
-
-    ## List of Election Dates
-
-    ElectionDates_old = [
-        "2001/06/07 00:00:00",
-        "2005/05/05 00:00:00",
-        "2010/06/05 00:00:00",
-        "2015/07/05 00:00:00",
-        "2017/07/05 00:00:00",
-        "2019/12/12 00:00:00",
-        "2024/07/04 00:00:00",
-    ]
-
-    return elections.get_general_elections_dict()
-
-    return ElectionDates
-
-
-def GenElectionRelation2(
-    R_Date, divisor=1, direction="DaysTill", date_format="%Y/%m/%d %H:%M:%S"
-):
-    """
-    Calculate the difference in a definable period between a given date and
+    Calculate the difference in days/weeks between a given date and
     the nearest election date.
 
-    Parameters:
+    Args:
         R_Date (str): The reference date in string format.
-        divisor (int): The unit divisor to group days (e.g., 7 for weeks,
-                        1 for days) defaults to 1 if not provided.
-        direction (str): The direction to calculate ("DaysTill" or "DaysSince")
-                        , defaults to "DaysTill" if not provided.
-        date_format (str): The date format of the input R_Date string defaults
-                        to "%Y/%m/%d %H:%M:%S" is none provided
+        divisor (int): The unit divisor (e.g., 7 for weeks, 1 for days).
+        Defaults to 1. direction (str): "DaysTill" (next election) or "DaysSince"
+        (previous election). Defaults to "DaysTill".
+        date_format (str): The format of R_Date (default: "%Y/%m/%d %H:%M:%S").
 
     Returns:
-        int: The calculated difference in the specified period, or 0 if no
-              match is found.
+        int: Days/weeks difference (rounded up if necessary),
+        or None on failure.
     """
-    # Load Election Dates
-    if "ElectionDates" not in st.session_state:
-        ElectionDates = load_election_dates()
-        st.session_state.ElectionDates = ElectionDates
+    # Ensure election dates are loaded
+    if "ElectionDatesAscend" not in st.session_state or "ElectionDatesDescend" not in st.session_state:
+        logger.info("Election Dates not found in session, loading now.")
+        load_election_dates()
 
-        # Pre-sorted lists of election dates
-        ElectionDatesAscend = sorted(ElectionDates)
-        ElectionDatesDescend = sorted(ElectionDates, reverse=True)
+    if not st.session_state.ElectionDatesAscend:
+        logger.error("Election dates could not be loaded. Returning None.")
+        return None
+
+    # Validate input
+    if not isinstance(R_Date, str):
+        logger.error(f"Invalid R_Date type: {type(R_Date)}. Expected string.")
+        return None
+
+    valid_directions = {"DaysTill", "DaysSince"}
+    if direction not in valid_directions:
+        logger.error(f"Invalid direction: {direction}."
+                     " Expected 'DaysTill' or 'DaysSince'.")
+        return None
 
     try:
-        # Convert the reference date to datetime
-        R_Date2 = dt.datetime.strptime(R_Date, date_format)
+        # Convert R_Date to date object (ignore time component)
+        R_Date2 = dt.datetime.strptime(R_Date, date_format).date()
 
-        # Use the appropriate election date list based on direction
         if direction == "DaysTill":
-            for ED in ElectionDatesAscend:
-                ED2 = dt.datetime.strptime(ED, date_format)
-                if R_Date2 <= ED2:
-                    DaysDiff = (ED2 - R_Date2).days
-                    return math.ceil(DaysDiff / divisor)
-        elif direction == "DaysSince":
-            for ED in ElectionDatesDescend:
-                ED2 = dt.datetime.strptime(ED, date_format)
-                if R_Date2 >= ED2:
-                    DaysDiff = (R_Date2 - ED2).days
-                    return math.ceil(DaysDiff / divisor)
+            idx = bisect.bisect_left(st.session_state.ElectionDatesAscend,
+                                     R_Date2)
+            if idx < len(st.session_state.ElectionDatesAscend):
+                DaysDiff = (st.session_state.ElectionDatesAscend[idx] - R_Date2).days
+                return math.ceil(DaysDiff / divisor) if divisor > 1 else DaysDiff
 
-        # If no match is found
+        elif direction == "DaysSince":
+            idx = bisect.bisect_right(st.session_state.ElectionDatesDescend,
+                                      R_Date2) - 1
+            if idx < 0:  # Prevent out-of-bounds access
+                return None
+            DaysDiff = (R_Date2 - st.session_state.ElectionDatesDescend[idx]).days
+            return math.ceil(DaysDiff / divisor) if divisor > 1 else DaysDiff
+
         return 0
 
     except Exception as e:
-        # Handle invalid date formats or other errors
-        print(f"Error: {e}")
+        logger.error(f"Error processing date: {e}")
         return None
 
 
-"""
-# Example usage with a DataFrame
-if __name__ == "__main__":
-    # Example DataFrame
-    data = {'ReceivedDate': ['2019/01/01 00:00:00', '2023/01/01 00:00:00']}
-    df = pd.DataFrame(data)
+# # Example usage
+# if __name__ == "__main__":
+#     import pandas as pd
 
-    # Apply the function to calculate days till the next election
-    df['WeeksTillNextElection'] = df['ReceivedDate'].apply(
-        lambda x: GenElectionRelation2(x, divisor=7, direction="DaysTill")
-    )
+#     data = {'ReceivedDate': ['2019/01/01 00:00:00', '2023/01/01 00:00:00']}
+#     df = pd.DataFrame(data)
 
-    # Apply the function to calculate days since the last election
-    df['WeeksSinceLastElection'] = df['ReceivedDate'].apply(
-        lambda x: GenElectionRelation2(x, divisor=7, direction="DaysSince")
-    )
+#     df['WeeksTillNextElection'] = df['ReceivedDate'].apply(
+#         lambda x: GenElectionRelation2(x, divisor=7, direction="DaysTill")
+#     )
+#     df['WeeksSinceLastElection'] = df['ReceivedDate'].apply(
+#         lambda x: GenElectionRelation2(x, divisor=7, direction="DaysSince")
+#     )
 
-    print(df)
-"""
+#     print(df)

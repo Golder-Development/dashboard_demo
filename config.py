@@ -6,7 +6,17 @@ import pandas as pd
 # Base directory
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
-DIRECTORIES = {
+# ReRun MP Party Membership
+RERUN_MP_PARTY_MEMBERSHIP = False
+
+# Placeholder values
+PLACEHOLDER_DATE = pd.Timestamp("1900-01-01 00:00:00")
+PLACEHOLDER_ID = 1000001
+perc_target = 0.5
+LOG_LEVEL = "DEBUG"
+
+DIRECTORIES = { # "directory_name": "directory_path"
+    "base_dir": BASE_DIR,
     "data_dir": os.path.join(BASE_DIR, "data"),
     "output_dir": os.path.join(BASE_DIR, "output"),
     "logs_dir": os.path.join(BASE_DIR, "logs"),
@@ -17,7 +27,7 @@ DIRECTORIES = {
 }
 
 # File paths
-FILENAMES = {
+FILENAMES = { # "directory" : {"file_name": "file_path"}
     "reference_dir": {
         "Donor_dedupe_cleaned_fname": "Donor_dedupe_cleaned_data.csv",
         "ListofPoliticalPeople_fname": "ListOfPoliticalPeople.csv",
@@ -43,12 +53,10 @@ FILENAMES = {
     },
 }
 
-# Placeholder values
-PLACEHOLDER_DATE = pd.Timestamp("1900-01-01 00:00:00")
-PLACEHOLDER_ID = 1000001
+
 
 # Threshold for donations
-THRESHOLDS = {
+THRESHOLDS = { # "threshold_range": "threshold_name"
     (0, 0): "No Relevant Donations",
     (1, 1): "Single Donation Entity",
     (2, 5): "Very Small Entity",
@@ -61,7 +69,7 @@ THRESHOLDS = {
 
 # Data remappings
 DATA_REMAPPINGS = {
-    "NatureOfDonation": {
+    "NatureOfDonation": { # "original_value": "new_value"
         "IsBequest": "Is A Bequest",
         "IsAggregation": "Aggregated Donation",
         "IsSponsorship": "Sponsorship",
@@ -69,7 +77,7 @@ DATA_REMAPPINGS = {
         "Other Payment": "Other",
     },
     # Mapping of party name to RegulatedEntityId
-    "PartyParents": {
+    "PartyParents": { # "party_name": "RegulatedEntityId"
         "Conservatives": 52,
         "Labour": 53,
         "Liberal Democrats": 90,
@@ -82,11 +90,10 @@ DATA_REMAPPINGS = {
 }
 
 # category filter definitions
-FILTER_DEF = {
+FILTER_DEF = { # "filter_name": {"column_name": "value"}
     "Sponsorships_ftr": {
-        "DonationType": "Sponsorship",
         "NatureOfDonation": "Sponsorship",
-        "IsSponsorship": "True",
+        "IsSponsorshipInt": 1,
     },
     "ReturnedDonations_ftr": {
         "DonationAction": ["Returned", "Forfeited"],
@@ -95,7 +102,8 @@ FILTER_DEF = {
     "DubiousDonors_ftr": {"DubiousDonor": list(range(1, 11))},
     "DubiousDonations_ftr": {"DubiousData": list(range(1, 11))},
     "AggregatedDonations_ftr": {
-        "IsAggregation": "True",
+        "IsAggregationInt": 1,
+        "NatureOfDonation": "Aggregated Donation",
         "DonationType": "Aggregated Donation",
     },
     "SafeDonors_ftr": {
@@ -112,7 +120,12 @@ FILTER_DEF = {
             "Unidentified Donor",
             "Total value of donations not reported individually",
             "Aggregated Donation",
-        ]
+        ],
+        "DonorStatus": ["Impermissible Donor",
+                        "Unidentified Donor",
+                        "Unidentifiable Donor"
+                        ],
+        
     },
     "BlankDate_ftr": {"ReceivedDate": ["PLACEHOLDER_DATE", None]},
     "BlankDonor_ftr": {"DonorId": ["1000001", None, 1000001]},
@@ -131,10 +144,21 @@ FILTER_DEF = {
     "Cash_ftr": {"DonationType": "Cash"},
     "NonCash_ftr": {"DonationType": "Non Cash"},
 }
-SECURITY = {
+SECURITY = { # "security_variable": "security_value"
     "is_admin": False,
     "is_authenticated": False,
     "username": "",
     "password": "",
 }
-perc_target = 0.5
+
+
+
+ELECTIONDATES = { # "election_name": "election_date"
+            "2001": "2001/06/07 00:00:00",
+            "2005": "2005/05/05 00:00:00",
+            "2010": "2010/06/05 00:00:00",
+            "2015": "2015/07/05 00:00:00",
+            "2017": "2017/07/05 00:00:00",
+            "2019": "2019/12/12 00:00:00",
+            "2024": "2024/07/04 00:00:00",
+        }

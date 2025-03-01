@@ -75,9 +75,6 @@ def load_regulated_entity_data(datafile=None, streamlitrun=True, output_csv=Fals
     if output_csv:
         output_dir = st.session_state.directories["output_dir"]
         cleaned_regentity_filename = st.session_state.cleaned_regentity_fname
-        cleaned_regentity_filename = os.path.join(
-            output_dir, cleaned_regentity_filename
-        )
         regent_df.to_csv(cleaned_regentity_filename)
 
     return regent_df

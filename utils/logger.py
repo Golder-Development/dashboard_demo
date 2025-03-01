@@ -1,9 +1,15 @@
 import logging
+import os
 from functools import wraps
+
+# Allow dynamic control of log level via environment variable or a default
+# to change via terminal: export LOG_LEVEL=DEBUG (linux), set LOG_LEVEL=DEBUG (Windows)
+# or alter in config.py
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()  # Can be DEBUG, INFO, WARNING, ERROR, CRITICAL
 
 # Configure logging correctly
 logging.basicConfig(
-    level=logging.INFO,  # Change to DEBUG for detailed logs
+    level=getattr(logging, LOG_LEVEL, logging.INFO),  # Defaults to INFO if invalid
     format="%(asctime)s %(levelname)s:%(message)s",
     datefmt="%Y/%m/%d %I:%M:%S %p",
     encoding="utf-8",
@@ -21,7 +27,7 @@ def log_function_call(func):
     """Decorator to log function calls, arguments, and return values."""
     @wraps(func)
     def wrapper(*args, **kwargs):
-        logger.info(f"Calling {func.__name__} with args={args}")
+        logger.debug(f"Calling {func.__name__} with args={args}, kwargs={kwargs}")  # Use DEBUG for detailed logs
         try:
             result = func(*args, **kwargs)
             logger.info(f"{func.__name__} executed successfully")
@@ -32,4 +38,4 @@ def log_function_call(func):
     return wrapper
 
 
-logger.info("Logging is set up correctly!")
+logger.info(f"Logging is set up correctly! Current log level: {LOG_LEVEL}")

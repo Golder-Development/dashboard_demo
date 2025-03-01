@@ -6,6 +6,7 @@ from utils.logger import logger, log_function_call # Import decorator
 
 
 @log_function_call
+@st.cache_data
 def load_raw_data(output_csv=False,
                   dedupe_donors=False,
                   dedupe_regentity=False):
@@ -30,7 +31,7 @@ def load_raw_data(output_csv=False,
             "AccountingUnitName": "object",
             "DonorName": "object",
             "AccountingUnitsAsCentralParty": "object",
-            "IsSponsorship": "object",
+            "IsSponsorship": "string",
             "DonorStatus": "object",
             "RegulatedDoneeType": "object",
             "CompanyRegistrationNumber": "object",
@@ -41,16 +42,16 @@ def load_raw_data(output_csv=False,
             "DonationAction": "object",
             "ReceivedDate": "object",
             "ReportedDate": "object",
-            "IsReportedPrePoll": "object",
+            "IsReportedPrePoll": "string",
             "ReportingPeriodName": "object",
-            "IsBequest": "object",
-            "IsAggregation": "object",
+            "IsBequest": "string",
+            "IsAggregation": "string",
             "RegulatedEntityId": "object",
             "AccountingUnitId": "object",
             "DonorId": "object",
             "CampaigningName": "object",
             "RegisterName": "object",
-            "IsIrishSource": "object",
+            "IsIrishSource": "string",
         },
         index_col="index",
     )  # Load the data

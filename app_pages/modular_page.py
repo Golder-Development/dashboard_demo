@@ -19,7 +19,7 @@ def display_data_page(filter_key, target_label):
     pageref_label = "filtered_key" + "target_label"
     (cleaned_df,
      cleaned_c_d_df) = load_and_filter_data(filter_key,
-                                         pageref_label)
+                                            pageref_label)
     if cleaned_df is None:
         return
     (min_date,

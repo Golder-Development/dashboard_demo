@@ -20,7 +20,8 @@ if 'logger' in globals():
     logger.info("🚀 Streamlit App Starting...")
     logger.info(f"Current Working Directory: {os.getcwd()}")
 else:
-    raise SystemExit("❌ Error: Logger is not properly configured!")# Run the setup function
+    # Run the setup function
+    raise SystemExit("❌ Error: Logger is not properly configured!")
 # Run the setup function
 try:
     setup.setup_package()
@@ -39,26 +40,29 @@ except Exception as e:
     st.error("Menu setup failed. Please check logs.")
     raise SystemExit("❌ Menu setup failed. Exiting.")
 
-# Display a loading message
-loading_message = st.empty()
-loading_message.markdown("<h3 style='text-align: center; color: blue;'>"
-                         "Please wait while the data sets are being "
-                         "calculated...</h3>", unsafe_allow_html=True)
 
 # Run the first load function
 try:
-    firstload()
-    logger.info("✅ Data first load completed successfully.")
+    if "data_clean" not in st.session_state or st.session_state.data_clean is None:
+        logger.info("No data found in session state, running firstload()")
+        # Display a loading message
+        load_message = st.empty()
+        load_message.markdown("<h3 style='text-align: center; color: blue;'>"
+                              "Please wait while the data sets are being "
+                              "calculated...</h3>", unsafe_allow_html=True)
+        firstload()  # Load the data
+        logger.info("✅ Data first load completed successfully.")
+        # Clear the loading message
+        load_message.empty()
+    else:
+        logger.info("Data already loaded in session state.")
 except Exception as e:
     logger.critical(f"❌ First load crashed: {e}", exc_info=True)
     st.error("Data loading failed. Please check logs.")
     raise SystemExit("❌ Data loading failed. Exiting.")
 
-# Clear the loading message
-loading_message.empty()
-
 logger.info("🎉 App is fully loaded and ready!")
-# The app is now ready to be run. 
+# The app is now ready to be run.
 # To run the app, open a terminal and run:
 #  "streamlit run PoliticalPartyAnalysisDashboard.py
 # The app will open in a new tab in your default web browser.

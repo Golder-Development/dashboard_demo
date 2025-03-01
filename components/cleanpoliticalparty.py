@@ -2,22 +2,30 @@ import pandas as pd
 import re
 import os
 import pdpy
+import streamlit as st
 from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
 
-# Define the base directory (can be adjusted if needed)
-BASE_DIR = os.path.dirname(__file__)  # Gets the directory of the script
-# change the directory to the parent directory and then to the data directory
-BASE_DIR = os.path.join(BASE_DIR, "..", "reference_files")
-# Construct file paths dynamically
-file_path = os.path.join(BASE_DIR, "ListOfPoliticalPeople.csv")
-mppartymemb_pypd_path = os.path.join(BASE_DIR, "mppartymemb_pypd.csv")
-final_file_path = os.path.join(BASE_DIR, "ListOfPoliticalPeople_Final.csv")
-# Load dataset
-df = pd.read_csv(file_path)
+@log_function_call
+def load_mppartymemb_pypd():
+    """Load MP party memberships data into session state."""
+    try:
+        # Load MP party memberships data
+        mppartymemb_df = pd.read_csv(st.session_state.mppartymemb_fname)
+        logger.info(f"Loaded MP Party Memberships data: {mppartymemb_df}")
+
+        # Store MP party memberships data in session state
+        st.session_state.mppartymemb_pypd = mppartymemb_df
+
+        logger.info("MP Party Memberships Data Loaded Successfully.")
+
+    except Exception as e:
+        logger.error(f"Failed to load MP Party Memberships data: {e}")
+        st.session_state.mppartymemb_pypd = pd.DataFrame()
 
 
 # Function to extract status and clean names
+@log_function_call
 def extract_status_and_clean_name(name):
     status_list = []
 
@@ -90,6 +98,7 @@ def extract_status_and_clean_name(name):
 
 
 # Function to query PdPy api
+@log_function_call
 def get_party_df_from_pdpy(
     from_date="2001-01-01", to_date="2024-12-31", while_mp=False, collapse=True
 ):
@@ -98,10 +107,10 @@ def get_party_df_from_pdpy(
     )
     # feedback
     mppartymemb_df = mppartymemb_df.drop(columns=["person_id", "party_id"])
-    print("Fetched data from PdPy sample")
-    print(mppartymemb_df[["given_name", "family_name", "party_name"]].head())
+    logger.info("Fetched data from PdPy sample")
+    logger.info(mppartymemb_df[["given_name", "family_name", "party_name"]].head())
     # Save final dataset
-    mppartymemb_df.to_csv(mppartymemb_pypd_path, index=False)
+    mppartymemb_df.to_csv(st.session_state.mppartymemb_fname, index=False)
     return mppartymemb_df
 
 
@@ -127,53 +136,56 @@ def get_party_from_pdpy_df(pdpydf, name):
         return "Issue with PdPy data"
 
 
-# Clean names and extract status
-df[["CleanedName", "Status"]] = df["RegulatedEntityName"].apply(
-    lambda x: pd.Series(extract_status_and_clean_name(x))
-)
+@log_function_call
+def clean_political_party_data():
+    # Load MP party memberships data
+    load_mppartymemb_pypd()
 
+    # Load original file
+    df = pd.read_csv(st.session_state.original_data_fname)
 
-# # Assign PoliticalParty based off UK Parliament data
-# create pdpydf
-pdpydf = get_party_df_from_pdpy()
-
-# create unified name column on pdpydf
-pdpydf[["First_Last_Name", "Last_First_Name"]] = pdpydf.apply(
-    lambda row: pd.Series(
-        create_unified_name_column(row["given_name"], row["family_name"])
-    ),
-    axis=1,
-)
-
-# Assign PoliticalParty based off PdpY data
-df["PoliticalParty_pdpy"] = df.apply(
-    lambda row: get_party_from_pdpy_df(pdpydf, row["CleanedName"]),
-    axis=1,
-)
-testdata = False
-if testdata:
-    print("sample of original file")
-    print(
-        df[
-            [
-                "OriginalRegulatedEntityName",
-                "RegulatedEntityName",
-                "CleanedName",
-                "Status",
-            ]
-        ].head()
+    # Clean names and extract status
+    df[["CleanedName", "Status"]] = df["RegulatedEntityName"].apply(
+        lambda x: pd.Series(extract_status_and_clean_name(x))
     )
-    print("sample of cleaned file")
-    print(
-        df[["OriginalRegulatedEntityName", "CleanedName", "PoliticalParty_pdpy"]].head()
+
+    # Assign PoliticalParty based off UK Parliament data
+    # create pdpydf
+    pdpydf = get_party_df_from_pdpy()
+
+    # create unified name column on pdpydf
+    pdpydf[["First_Last_Name", "Last_First_Name"]] = pdpydf.apply(
+        lambda row: pd.Series(
+            create_unified_name_column(row["given_name"], row["family_name"])
+        ),
+        axis=1,
     )
-    # print count of records by party
-    print("count of records by party")
-    print(df["PoliticalParty_pdpy"].value_counts())
 
-# Save final dataset
-ref_dir
-final_file_path = os.path.join(BASE_DIR, "ListOfPoliticalPeople_Final.csv")
-df.to_csv(final_file_path, index=False)
+    # Assign PoliticalParty based off PdpY data
+    df["PoliticalParty_pdpy"] = df.apply(
+        lambda row: get_party_from_pdpy_df(pdpydf, row["CleanedName"]),
+        axis=1,
+    )
+    testdata = False
+    if testdata:
+        logger.info("sample of original file")
+        logger.info(
+            df[
+                [
+                    "OriginalRegulatedEntityName",
+                    "RegulatedEntityName",
+                    "CleanedName",
+                    "Status",
+                ]
+            ].head()
+        )
+        logger.info("sample of cleaned file"
+        f" {df[['CleanedName', 'Status']].head()} ")
+        # print count of records by party
+        logger.info("count of records by party"
+        f" {df["PoliticalParty_pdpy"].value_counts()} ")# Save final dataset
 
-print(f"Processed file saved as: {final_file_path}")
+    final_file_path = st.session_state.mp_party_memberships_file_path
+    df.to_csv(final_file_path, index=False)
+
+    logger.info(f"Processed file saved as: {final_file_path}")
