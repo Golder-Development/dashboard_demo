@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from data.data_dedupe import dedupe_entity_file
-from utils.logger import logger, log_function_call # Import decorator
+from utils.logger import logger, log_function_call  # Import decorator
 
 
 @log_function_call
@@ -12,7 +12,9 @@ def raw_data_cleanup(
     loaddata_df = loaddata_df.copy()
     # Remove Currency sign of Value and convert to Float
     loaddata_df["Value"] = (
-        loaddata_df["Value"].replace({"£": "", ",": ""}, regex=True).astype(float)
+        loaddata_df["Value"]
+        .replace({"£": "", ",": ""}, regex=True)
+        .astype(float)
     )
     # Fill missing text fields with empty strings
     columns_to_fill = [
@@ -39,7 +41,8 @@ def raw_data_cleanup(
         "AccountingUnitId",
         "ECRef",
     ]
-    loaddata_df[columns_to_fill] = loaddata_df[columns_to_fill].fillna("").astype(str)
+    loaddata_df[columns_to_fill] = (
+        loaddata_df[columns_to_fill].fillna("").astype(str))
     # remove leading and trailing spaces from DonorName, RegulatedEntityName
     # remove leading and trailing spaces from DonorID and RegulatedEntityID
     # remove leading and trailing spaces from CampaignName and PurposeOfVisit
@@ -101,20 +104,26 @@ def raw_data_cleanup(
     )
 
     # make donorid and regulatedentityid numeric
-    loaddata_df["DonorId"] = pd.to_numeric(loaddata_df["DonorId"], errors="coerce")
+    loaddata_df["DonorId"] = (
+        pd.to_numeric(loaddata_df["DonorId"], errors="coerce"))
     loaddata_df["RegulatedEntityId"] = pd.to_numeric(
         loaddata_df["RegulatedEntityId"], errors="coerce"
     )
     # update Blank RegulatedEntityName to "Unidentified Entity"
-    loaddata_df["RegulatedEntityName"] = loaddata_df["RegulatedEntityName"].replace(
-        "", "Unidentified Entity"
-    )
+    loaddata_df["RegulatedEntityName"] = (
+        loaddata_df["RegulatedEntityName"].replace(
+            "", "Unidentified Entity"
+        ))
     # update Blank DonorId to 1000001
     loaddata_df["DonorId"] = loaddata_df["DonorId"].fillna(1000001)
     # update Blank RegulatedEntityId to "1000001"
-    loaddata_df["RegulatedEntityId"] = loaddata_df["RegulatedEntityId"].fillna(1000001)
+    loaddata_df["RegulatedEntityId"] = (
+        loaddata_df["RegulatedEntityId"].fillna(1000001)
+    )
     # update Blank RegisterName to "Other"
-    loaddata_df["RegisterName"] = loaddata_df["RegisterName"].replace("", "Other")
+    loaddata_df["RegisterName"] = (
+        loaddata_df["RegisterName"].replace("", "Other")
+    )
     # update Blank DonationAction to "Accepted"
     loaddata_df["DonationAction"] = loaddata_df["DonationAction"].replace(
         "", "Accepted"
@@ -126,7 +135,7 @@ def raw_data_cleanup(
     if dedupe_regentity:
         loaddata_df = dedupe_entity_file(
             loaddata_dd_df=loaddata_df,
-            entity="RegulatedEntity", 
+            entity="RegulatedEntity",
             map_filename="regentity_map_fname",
             output_csv=True
         )
@@ -136,7 +145,7 @@ def raw_data_cleanup(
     if dedupe_donors:
         loaddata_df = dedupe_entity_file(
             loaddata_dd_df=loaddata_df,
-            entity="Donor", 
+            entity="Donor",
             map_filename="donor_map_fname",
             output_csv=True
         )
