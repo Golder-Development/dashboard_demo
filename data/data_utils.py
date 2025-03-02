@@ -1,8 +1,31 @@
 import streamlit as st
 import os
 import pandas as pd
-from components import calculations as calc
 from utils.logger import log_function_call, logger
+
+
+@st.cache_data
+@log_function_call
+def try_to_use_preprocessed_data(originalfilepath,
+                                 savedfilepath,
+                                 timestamp_key):
+    """
+    Checks if the original file has been updated and if not,
+    loads the preprocessed data
+    """
+    logger.info(f"Original file path: {originalfilepath}")
+    logger.info(f"Saved file path: {savedfilepath}")
+
+    if originalfilepath is None:
+        logger.error("Error: originalfilepath is None!")
+        return None
+
+    if not is_file_updated(originalfilepath,
+                           timestamp_key) and os.path.exists(savedfilepath):
+        logger.info(f"Loading preprocessed data. Using {savedfilepath}"
+                    f" dated {timestamp_key} instead of {originalfilepath}")
+        return pd.read_csv(savedfilepath)
+    return None
 
 
 @st.cache_data
@@ -12,91 +35,42 @@ def initialise_data():
     initialises data for the app
     """
 
-    loading_message = st.empty()
-    loading_message.markdown(
-        "<h3 style='text-align: center; color: blue;'>"
-        "Please wait while the data sets are being "
-        "calculated...</h3>",
-        unsafe_allow_html=True,
-    )
+    # import the firstload function
     from data.data_loader import firstload
-
-    firstload()  # Load the data
-
-    loading_message.empty()
-
-
-@st.cache_data
-@log_function_call
-def load_entity_summary_data(main_file=None,
-                             cleaned_file=None,
-                             datafile=None,
-                             streamlitrun=True,
-                             output_csv=False):
     # Load the data
-    output_dir = st.session_state.directories["output_dir"]
-    cleaned_file_path = os.path.join(output_dir,
-                                     cleaned_file)
-
-    # Check if we can use cached cleaned data
-    if not is_file_updated(main_file, "regentity_last_modified") and os.path.exists(cleaned_file_path):
-        logger.info("Loading pre-cleaned regulated entity data.")
-        return pd.read_csv(cleaned_file_path)
-
-    if streamlitrun:
-        entitysummary_df = st.session_state.get("raw_data", None)
-        if entitysummary_df is None:
-            st.error("No data found in session state!")
-            return None
+    logger.info("Running first load function.")
+    firstload()
+    # check that the all data has been loaded into the session state
+    if "data_clean" not in st.session_state or \
+            st.session_state.data_clean is None:
+        logger.error("Data loading failed.")
+        st.error("Data loading failed. Please check logs.")
+        raise SystemExit("❌ Data loading failed. Exiting.")
     else:
-        if datafile is None:
-            st.error("No data found in session state!")
-        else:
-            entitysummary_df = datafile
-    # Create a DataFrame with the sum, count and mean of the donations
-    # for each RegulatedEntityName
-    RegulatedEntity_df = (
-        entitysummary_df.groupby(["RegulatedEntityName"])
-        .agg({"Value": ["sum", "count", "mean"]})
-        .reset_index()
-    )
-    # Rename columns
-    RegulatedEntity_df.columns = [
-        "RegulatedEntityName",
-        "DonationsValue",
-        "DonationEvents",
-        "DonationMean",
-    ]
-
-    # Add RegEntity_Group column based on thresholds
-    thresholds = st.session_state.thresholds
-    RegulatedEntity_df["RegEntity_Group"] = calc.determine_groups_optimized(
-        RegulatedEntity_df, "RegulatedEntityName", "DonationEvents", thresholds
-    )
-
-    # generate CSV file of summary data
-    if output_csv:
-        output_dir = st.session_state.directories["output_dir"]
-        party_filename = st.session_state.party_summary_fname
-        party_filename = os.path.join(output_dir, party_filename)
-        RegulatedEntity_df.to_csv(party_filename)
-
-    return RegulatedEntity_df
+        logger.info("✅ Data first load completed successfully.")
+    return None
 
 
 @log_function_call
 def get_file_modification_time(filepath):
     """Returns the last modification time of the given file."""
-    return os.path.getmtime(filepath) if os.path.exists(filepath) else None
+    logger.info(f"Getting modification time for {filepath}")
+    if os.path.exists(filepath):
+        return os.path.getmtime(filepath)
+    else:
+        logger.warning(f"File {filepath} does not exist.")
+        return None
 
 
 @log_function_call
 def is_file_updated(main_file, timestamp_key):
     """Checks if the main file has been updated
     since the last recorded timestamp."""
+    logger.info(f"Checking if {main_file} has been updated.")
     current_mod_time = get_file_modification_time(main_file)
+    logger.info(f"Current modification time: {current_mod_time}")
     last_mod_time = st.session_state.get(timestamp_key, None)
-
+    logger.info(f"Last modification time: {last_mod_time}")
     if last_mod_time is None or (current_mod_time and
                                  current_mod_time > last_mod_time):
         # Update the session state with the new timestamp

@@ -11,6 +11,7 @@ def get_git_version(module_path=None):
     - If `module_path` is provided, count commits only for that module.
     - Otherwise, count commits globally for the repository.
     """
+    # log current file and path
     try:
         # Base Git command
         base_cmd = ["git", "rev-list", "--count", "HEAD"]

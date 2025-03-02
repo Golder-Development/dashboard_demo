@@ -31,6 +31,7 @@ class MultiPage:
         st.text(f"Version: {version}")
         if not self.pages:
             st.warning("No pages have been added yet!")
+            logger.warning("No pages have been added yet!")
             return
 
         # Log the selected page

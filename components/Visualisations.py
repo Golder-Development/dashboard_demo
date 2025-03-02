@@ -1,7 +1,7 @@
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
-from utils.logger import log_function_call
+from utils.logger import log_function_call, logger
 
 
 @log_function_call
@@ -13,6 +13,7 @@ def plot_regressionplot(graph_df,
                         show_trendline=True):
     if graph_df is None or not all(col in graph_df.columns for col in [XValues, YValues]):
         st.error("Missing required columns in dataset.")
+        logger.error(f"Missing required columns in dataset. {__name__}")
         return
 
     fig = px.scatter(graph_df, x=XValues, y=YValues, title=title, trendline="ols" if show_trendline else None)
@@ -41,6 +42,7 @@ def plot_pie_chart(graph_df,
     # Ensure the required columns exist
     if XValues not in graph_df.columns or YValues not in graph_df.columns:
         st.error(f"❌ Error: Columns '{XValues}' or '{YValues}' not found in dataset.")
+        logger.error(f"Columns '{XValues}' or '{YValues}' not found in dataset. {__name__}")
         return
     
     # Handle missing values in category column
@@ -72,7 +74,7 @@ def plot_custom_bar_chart(graph_df,
                           color_mapping,
                           group_column=None):
     if graph_df is None or not all(col in graph_df.columns for col in [XValues, YValues]):
-        st.error("Missing required columns in dataset.")
+        logger.error(f"Missing required columns in dataset. {__name__}")
         return
 
     color_discrete_map = {cat: color_mapping.get(cat, "#636efa") for cat in graph_df[group_column]} if use_custom_colors and group_column else None
@@ -104,7 +106,8 @@ def plot_bar_line_by_year(graph_df,
     if Title is None:
         Title = f"{YLabel} by {XLabel}, grouped by {LegendTitle}"
     if graph_df is None or XValues not in graph_df.columns or YValues not in graph_df.columns:
-        st.error("Required columns not found in dataset.")
+        st.error("Missing required columns in dataset.")
+        logger.error(f"Missing required columns in dataset. {__name__}")
         return
 
     aggregation_methods = {"sum": "sum", "average": "mean", "count": "count"}

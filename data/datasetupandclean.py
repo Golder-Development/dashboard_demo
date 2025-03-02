@@ -1,34 +1,64 @@
 import pandas as pd
 import streamlit as st
-import os
-from data.data_utils import is_file_updated
+from data.data_utils import try_to_use_preprocessed_data
 from data.raw_data_clean import raw_data_cleanup
-from utils.global_variables import initialize_session_state
-from utils.logger import logger, log_function_call  # Import decorator
+from utils.logger import (log_function_call,
+                          logger,
+                          )
 
 
 @log_function_call
 @st.cache_data
-def load_raw_data(output_csv=False,
+def load_raw_data(main_file="raw_data",
+                  cleaned_file="raw_data_clean",
+                  output_csv=True,
                   dedupe_donors=False,
-                  dedupe_regentity=False):
+                  dedupe_regentity=False,
+                  originaldatafilepath="source_data_fname",
+                  processeddatafilepath="imported_raw_fname"):
     # Ensure session state variables are initialized
     if (
         "BASE_DIR" not in st.session_state
-        or "directories" not in st.session_state
-        or "filenames" not in st.session_state
-        or "ec_donations_fname" not in st.session_state
     ):
-        initialize_session_state()
+        logger.critical("Base Dir Session state variables not initialized!")
+        return None
 
-    originaldatafilepath = st.session_state.ec_donations_fname
-    cleaned_donations_file = st.session_state.cleaned_donations_fname
+    if (
+        "directories" not in st.session_state
+    ):        # Set the original data file path
+        logger.critical("Directories Session state variables not initialized!")
+        return None
 
-    # Check if we can use cached cleaned data
-    if not is_file_updated(originaldatafilepath, "raw_data_last_modified") and os.path.exists(cleaned_donations_file):
-        logger.info("Loading pre-cleaned raw data.")
-        return pd.read_csv(cleaned_donations_file, index_col="index")
+    if (
+        "filenames" not in st.session_state
+        or st.session_state.get(originaldatafilepath) is None
+        or st.session_state.get(processeddatafilepath) is None
+    ):
+        logger.critical(f"{originaldatafilepath} or {processeddatafilepath} "
+                        "Session state variables not initialized!")
+        return None
 
+    logger.debug(f"Original data file path pre"
+                 " raw data load: {originaldatafilepath}")
+    logger.debug(f"Processed data file path pre"
+                 " raw data load: {processeddatafilepath}")
+
+    originaldatafilepath = st.session_state.get(originaldatafilepath)
+    processeddatafilepath = st.session_state.get(processeddatafilepath)
+    # Use function to check if file has been updated and if not,
+    # load preprocessed data
+    loaddata_df = try_to_use_preprocessed_data(
+        originalfilepath=originaldatafilepath,
+        savedfilepath=processeddatafilepath,
+        timestamp_key="load_raw_data_last_modified")
+    # Check if cached data loaded successfully and return it
+    if loaddata_df is not None:
+        return loaddata_df
+    logger.info("Loading raw data...")
+    logger.debug(f"Original data file path post"
+                 " raw data load: {originaldatafilepath}")
+    logger.debug(f"Processed data file path post"
+                 " raw data load: {processeddatafilepath}")
     # Load and clean the raw data
     loaddata_df = pd.read_csv(
         originaldatafilepath,
@@ -68,16 +98,27 @@ def load_raw_data(output_csv=False,
     )
 
     # Print progress message
-    st.write("Base Data loaded successfully")
-    st.write(f"Data has {loaddata_df.shape[0]} rows and {loaddata_df.shape[1]} columns")
+    st.info("Base Data loaded successfully")
+    st.info(f"Data has {loaddata_df.shape[0]} rows "
+             f"and {loaddata_df.shape[1]} columns")
 
-    # Cleanse the raw data
-    loaddata_df = raw_data_cleanup(loaddata_df,
-                                   dedupe_donors=dedupe_donors,
-                                   dedupe_regentity=dedupe_regentity)
-
-    # Save cleaned data if required
+    logger.info(f"Data loaded successfully. Data has {loaddata_df.shape[0]} rows "
+                f"and {loaddata_df.shape[1]} columns")
+    # Save the raw data to session state
+    st.session_state.raw_data = loaddata_df
     if output_csv:
-        loaddata_df.to_csv(cleaned_donations_file)
+        loaddata_df.to_csv(processeddatafilepath)
+        logger.info(f"Data saved to {processeddatafilepath}")
+    # Save the raw data to session state
+    st.session_state.raw_data_clean = loaddata_df
+    
+    # Cleanse the raw data
+    loaddata_df = raw_data_cleanup(
+        loaddata_df=loaddata_df,
+        dedupe_donors=dedupe_donors,
+        dedupe_regentity=dedupe_regentity,
+        output_csv=output_csv,
+        originaldatafilepath=processeddatafilepath,
+        processeddatafilepath="cleaned_donations_fname")
 
     return loaddata_df

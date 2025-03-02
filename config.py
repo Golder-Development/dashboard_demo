@@ -15,8 +15,8 @@ PLACEHOLDER_ID = 1000001
 perc_target = 0.5
 LOG_LEVEL = "DEBUG"
 
-DIRECTORIES = { # "directory_name": "directory_path"
-    "base_dir": BASE_DIR,
+DIRECTORIES = {  # "directory_name": "directory_path"
+    "BASE_DIR": os.path.abspath(os.path.dirname(__file__)),
     "data_dir": os.path.join(BASE_DIR, "data"),
     "output_dir": os.path.join(BASE_DIR, "output"),
     "logs_dir": os.path.join(BASE_DIR, "logs"),
@@ -24,10 +24,12 @@ DIRECTORIES = { # "directory_name": "directory_path"
     "components_dir": os.path.join(BASE_DIR, "components"),
     "app_pages_dir": os.path.join(BASE_DIR, "app_pages"),
     "utils_dir": os.path.join(BASE_DIR, "utils"),
+    "source_dir": os.path.join(BASE_DIR, "source"),
+    "tests_dir": os.path.join(BASE_DIR, "tests"),
 }
 
 # File paths
-FILENAMES = { # "directory" : {"file_name": "file_path"}
+FILENAMES = {  # "directory" : {"file_name": "file_path"}
     "reference_dir": {
         "Donor_dedupe_cleaned_fname": "Donor_dedupe_cleaned_data.csv",
         "ListofPoliticalPeople_fname": "ListOfPoliticalPeople.csv",
@@ -47,16 +49,16 @@ FILENAMES = { # "directory" : {"file_name": "file_path"}
         "cleaned_donorlist_fname": "cleaned_donorlist.csv",
         "cleaned_regentity_fname": "cleaned_regentity.csv",
         "party_summary_fname": "party_summary.csv",
+        "imported_raw_fname": "imported_raw.csv",
     },
-    "BASE_DIR": {
-        "ec_donations_fname": "Donations_accepted_by_political_parties.csv"
+    "source_dir": {
+        "source_data_fname": "Donations_accepted_by_political_parties.csv"
     },
 }
 
 
-
 # Threshold for donations
-THRESHOLDS = { # "threshold_range": "threshold_name"
+THRESHOLDS = {  # "threshold_range": "threshold_name"
     (0, 0): "No Relevant Donations",
     (1, 1): "Single Donation Entity",
     (2, 5): "Very Small Entity",
@@ -69,7 +71,7 @@ THRESHOLDS = { # "threshold_range": "threshold_name"
 
 # Data remappings
 DATA_REMAPPINGS = {
-    "NatureOfDonation": { # "original_value": "new_value"
+    "NatureOfDonation": {  # "original_value": "new_value"
         "IsBequest": "Is A Bequest",
         "IsAggregation": "Aggregated Donation",
         "IsSponsorship": "Sponsorship",
@@ -77,7 +79,7 @@ DATA_REMAPPINGS = {
         "Other Payment": "Other",
     },
     # Mapping of party name to RegulatedEntityId
-    "PartyParents": { # "party_name": "RegulatedEntityId"
+    "PartyParents": {  # "party_name": "RegulatedEntityId"
         "Conservatives": 52,
         "Labour": 53,
         "Liberal Democrats": 90,
@@ -90,7 +92,7 @@ DATA_REMAPPINGS = {
 }
 
 # category filter definitions
-FILTER_DEF = { # "filter_name": {"column_name": "value"}
+FILTER_DEF = {  # "filter_name": {"column_name": "value"}
     "Sponsorships_ftr": {
         "NatureOfDonation": "Sponsorship",
         "IsSponsorshipInt": 1,
@@ -133,7 +135,7 @@ FILTER_DEF = { # "filter_name": {"column_name": "value"}
                           "NatureOfDonation": "Visit"},
     "Bequests_ftr": {"IsBequestInt": 1,
                      "NatureOfDonation": "Bequest",
-                     "DonationType": "Bequest"},  # Changed from string to boolean
+                     "DonationType": "Bequest"},
     "CorporateDonations_ftr": {
         "DonorStatus": ["Company",
                         "Partnership",
@@ -156,8 +158,7 @@ SECURITY = {  # "security_variable": "security_value"
 }
 
 
-
-ELECTIONDATES = { # "election_name": "election_date"
+ELECTIONDATES = {  # "election_name": "election_date"
             "2001": "2001/06/07 00:00:00",
             "2005": "2005/05/05 00:00:00",
             "2010": "2010/06/05 00:00:00",

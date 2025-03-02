@@ -1,5 +1,6 @@
 import logging
 import os
+import streamlit as st
 from functools import wraps
 
 # Allow dynamic control of log level via environment variable or a default
@@ -34,8 +35,17 @@ def log_function_call(func):
             return result
         except Exception as e:
             logger.error(f"Error in {func.__name__}: {e}", exc_info=True)
+            st.error(f"Error in {func.__name__}: {e}")
             raise e
     return wrapper
 
 
 logger.info(f"Logging is set up correctly! Current log level: {LOG_LEVEL}")
+
+
+def init_state_var(var_name, config_value):
+    if var_name not in st.session_state:
+        st.session_state[var_name] = config_value
+        return logger.debug(f"Initialised {var_name} with value: {config_value}")
+    else:
+        return logger.debug(f"{var_name} already exists in session state") 

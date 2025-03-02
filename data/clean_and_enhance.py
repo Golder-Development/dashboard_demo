@@ -1,21 +1,50 @@
 import pandas as pd
 import streamlit as st
-import os
+from data.data_utils import try_to_use_preprocessed_data
 from data.politicalperson import map_mp_to_party
 from components import mappings as mp
 from components import calculations as calc
 from utils.logger import logger, log_function_call
 from components.GenElectionRelationship import GenElectionRelation2
 
+
 @log_function_call
 @st.cache_data
-def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
+def load_cleaned_data(
+        originaldatafilepath="cleaned_donations_fname",
+        processeddatafilepath="cleaned_data_fname",
+        datafile="raw_data",
+        streamlitrun=True,
+        output_csv=False,
+        main_file="raw_data",
+        cleaned_file="data_clean"):
+
+    if (
+        st.session_state.get(originaldatafilepath) is None
+        or st.session_state.get(processeddatafilepath) is None
+    ):
+        logger.error("Session state variables not initialized!")
+        return None
+
+    originaldatafilepath = st.session_state.get(originaldatafilepath)
+    processeddatafilepath = st.session_state.get(processeddatafilepath)
+
+    # Use function to check if file has been updated and if not,
+    # load preprocessed data
+    loaddata_df = try_to_use_preprocessed_data(
+        originalfilepath=originaldatafilepath,
+        savedfilepath=processeddatafilepath,
+        timestamp_key="load_raw_data_last_modified")
+    # Check if cached data loaded successfully and return it
+    if loaddata_df is not None:
+        return loaddata_df
+
     if streamlitrun:
         # Load the data
-        output_dir = st.session_state.directories["output_dir"]
-        orig_df = st.session_state.raw_data
+        orig_df = st.session_state.get(datafile)
         if orig_df is None:
-            st.error("No data found in session state!")
+            st.error(f"No data found in session state! {__name__}")
+            logger.error(f"No data found in session state! {__name__}")
             return None
     else:
         if datafile is None:
@@ -37,7 +66,9 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
         "DonationAction",
         "DonationType",
     ]
-    loadclean_df[columns_to_fill] = loadclean_df[columns_to_fill].replace("", pd.NA)
+    loadclean_df[columns_to_fill] = (
+        loadclean_df[columns_to_fill].replace("", pd.NA)
+    )
     # # Fill blank ReceivedDate with ReportedDate
     # Fill blank ReceivedDate with ReportedDate, AcceptedDate,
     # or ReportingPeriodName_Date
@@ -58,7 +89,10 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
     # to 1900-01-01
     loadclean_df["ReceivedDate"] = (
         pd.to_datetime(
-            loadclean_df["ReceivedDate"], dayfirst=True, format="mixed", errors="coerce"
+            loadclean_df["ReceivedDate"],
+            dayfirst=True,
+            format="mixed",
+            errors="coerce"
         )
         .dt.normalize()
         .fillna(st.session_state.PLACEHOLDER_DATE)
@@ -74,9 +108,10 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
         loadclean_df["NatureOfDonation"] = loadclean_df.apply(
             mp.map_nature_of_donation, axis=1
         )
-        loadclean_df["NatureOfDonation"] = loadclean_df["NatureOfDonation"].replace(
-            {"Donation to nan": "Other", "Other Payment": "Other"}
-        )
+        loadclean_df["NatureOfDonation"] = (
+            loadclean_df["NatureOfDonation"].replace(
+                {"Donation to nan": "Other", "Other Payment": "Other"}
+               ))
 
     # apply mapping of MPs to party membership
     if "RegulatedEntityName" in loadclean_df.columns:
@@ -93,12 +128,14 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
 
     if "filter_def" not in st.session_state:
         raise ValueError(
-            "Session state variables filter_def must" " be initialized before use."
+            "Session state variables filter_def must"
+            " be initialized before use."
         )
 
     # Extend dubious donor criteria using session state variables
     loadclean_df["DubiousDonor"] = (
-        (loadclean_df["DonorId"].eq(st.session_state.get("PLACEHOLDER_ID")).astype(int))
+        (loadclean_df["DonorId"].eq(st.session_state
+                                    .get("PLACEHOLDER_ID")).astype(int))
         + (
             loadclean_df["DonorName"]
             .isin(["Unidentified Donor", "Anonymous Donor"])
@@ -110,13 +147,16 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
             .astype(int)
         )
     )
-    DubiousDonationTypes = st.session_state["filter_def"].get("DubiousDonationType_ftr")
+    DubiousDonationTypes = (
+        st.session_state["filter_def"].get("DubiousDonationType_ftr")
+    )
     loadclean_df["DubiousData"] = (
         loadclean_df["DubiousDonor"]
         + (loadclean_df["DonationType"].isin(DubiousDonationTypes).astype(int))
         + loadclean_df["DonationAction"].ne("Accepted").astype(int)
         + loadclean_df["IsAggregation"].eq("True").astype(int)
-        + (loadclean_df["NatureOfDonation"].eq("Aggregated Donation").astype(int))
+        + (loadclean_df["NatureOfDonation"]
+            .eq("Aggregated Donation").astype(int))
         + (
             loadclean_df["ReceivedDate"]
             .eq(st.session_state.get("PLACEHOLDER_DATE"))
@@ -127,7 +167,8 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
             .eq(st.session_state.get("PLACEHOLDER_ID"))
             .astype(int)
         )
-        + (loadclean_df["RegulatedEntityName"].eq("Unidentified Entity").astype(int))
+        + (loadclean_df["RegulatedEntityName"]
+           .eq("Unidentified Entity").astype(int))
         + (
             loadclean_df["DonorId"]
             .eq(st.session_state.get("PLACEHOLDER_ID"))
@@ -166,7 +207,6 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
         if col not in loadclean_df.columns:
             loadclean_df[col] = orig_df[col]
 
-
     # Drop Columns that are not needed
     loadclean_df = loadclean_df.drop(
         [
@@ -184,54 +224,84 @@ def load_cleaned_data(datafile=None, streamlitrun=True, output_csv=False):
         axis=1,
     )
 
-    # Column encoding DonationType, RegulatedEntityName, DonorName, DonationAction, DonorStatus,
-    # CampaigningName, PurposeOfVisit, AccountingUnitName, ReportingPeriodName, RegulatedDoneeType,
-    # IsIrishSource, IsBequest, IsAggregation, IsSponsorship, NatureOfDonation, RegisterName
-    loadclean_df["DonationTypeInt"] = loadclean_df["DonationType"].astype("category").cat.codes
-    loadclean_df["RegulatedEntityNameInt"] = loadclean_df["RegulatedEntityName"].astype("category").cat.codes
-    loadclean_df["DonorNameInt"] = loadclean_df["DonorName"].astype("category").cat.codes
-    loadclean_df["DonationActionInt"] = loadclean_df["DonationAction"].astype("category").cat.codes
-    loadclean_df["DonorStatusInt"] = loadclean_df["DonorStatus"].astype("category").cat.codes
-    # loadclean_df["CampaigningNameInt"] = loadclean_df["CampaigningName"].astype("category").cat.codes
-    loadclean_df["PurposeOfVisitInt"] = loadclean_df["PurposeOfVisit"].astype("category").cat.codes
-    # loadclean_df["AccountingUnitNameInt"] = loadclean_df["AccountingUnitName"].astype("category").cat.codes
-    # loadclean_df["ReportingPeriodNameInt"] = loadclean_df["ReportingPeriodName"].astype("category").cat.codes
-    loadclean_df["RegulatedDoneeTypeInt"] = loadclean_df["RegulatedDoneeType"].astype("category").cat.codes
-    # loadclean_df["IsIrishSourceInt"] = loadclean_df["IsIrishSource"].astype("category").cat.codes
-    loadclean_df["IsBequestInt"] = loadclean_df["IsBequest"].astype("category").cat.codes
-    loadclean_df["IsAggregationInt"] = loadclean_df["IsAggregation"].astype("category").cat.codes
-    loadclean_df["IsSponsorshipInt"] = loadclean_df["IsSponsorship"].astype("category").cat.codes
-    loadclean_df["NatureOfDonationInt"] = loadclean_df["NatureOfDonation"].astype("category").cat.codes
-    loadclean_df["RegisterNameInt"] = loadclean_df["RegisterName"].astype("category").cat.codes
+    # Column encoding DonationType, RegulatedEntityName, DonorName,
+    # DonationAction, DonorStatus,
+    # CampaigningName, PurposeOfVisit, AccountingUnitName, ReportingPeriodName,
+    # RegulatedDoneeType,
+    # IsIrishSource, IsBequest, IsAggregation, IsSponsorship, NatureOfDonation,
+    # RegisterName
+    loadclean_df["DonationTypeInt"] = (
+        loadclean_df["DonationType"].astype("category").cat.codes)
+    loadclean_df["RegulatedEntityNameInt"] = (
+        loadclean_df["RegulatedEntityName"].astype("category").cat.codes)
+    loadclean_df["DonorNameInt"] = (
+        loadclean_df["DonorName"].astype("category").cat.codes)
+    loadclean_df["DonationActionInt"] = (
+        loadclean_df["DonationAction"].astype("category").cat.codes)
+    loadclean_df["DonorStatusInt"] = (
+        loadclean_df["DonorStatus"].astype("category").cat.codes)
+    # loadclean_df["CampaigningNameInt"] = (
+    #     loadclean_df["CampaigningName"].astype("category").cat.codes)
+    loadclean_df["PurposeOfVisitInt"] = (
+        loadclean_df["PurposeOfVisit"].astype("category").cat.codes)
+    # loadclean_df["AccountingUnitNameInt"] = (
+    #     loadclean_df["AccountingUnitName"].astype("category").cat.codes)
+    # loadclean_df["ReportingPeriodNameInt"] = (
+    #     loadclean_df["ReportingPeriodName"].astype("category").cat.codes)
+    loadclean_df["RegulatedDoneeTypeInt"] = (
+        loadclean_df["RegulatedDoneeType"].astype("category").cat.codes)
+    # loadclean_df["IsIrishSourceInt"] = (
+    #     loadclean_df["IsIrishSource"].astype("category").cat.codes)
+    loadclean_df["IsBequestInt"] = (
+        loadclean_df["IsBequest"].astype("category").cat.codes)
+    loadclean_df["IsAggregationInt"] = (
+        loadclean_df["IsAggregation"].astype("category").cat.codes)
+    loadclean_df["IsSponsorshipInt"] = (
+        loadclean_df["IsSponsorship"].astype("category").cat.codes)
+    loadclean_df["NatureOfDonationInt"] = (
+        loadclean_df["NatureOfDonation"].astype("category").cat.codes)
+    loadclean_df["RegisterNameInt"] = (
+        loadclean_df["RegisterName"].astype("category").cat.codes)
 
     # Column encoding PublicFundsInt
-    loadclean_df["PublicFundsInt"] = loadclean_df["DonationType"].apply(lambda x: 0 if x != "Public Funds" else 1)
-    # Calculate the number of days to the next election and since the last election
-    loadclean_df["DaysTillNextElection"] = loadclean_df["ReceivedDate"].apply(
-        lambda x: GenElectionRelation2(x.strftime('%Y/%m/%d %H:%M:%S'), direction="DaysTill")
-    )
-    loadclean_df["DaysSinceLastElection"] = loadclean_df["ReceivedDate"].apply(
-        lambda x: GenElectionRelation2(x.strftime('%Y/%m/%d %H:%M:%S'), direction="DaysSince")
-    )
+    loadclean_df["PublicFundsInt"] = (
+        loadclean_df["DonationType"]
+        .apply(lambda x: 0 if x != "Public Funds" else 1))
+    # Calculate the number of days to the next election and
+    # since the last election
+    loadclean_df["DaysTillNextElection"] = (
+        loadclean_df["ReceivedDate"].apply(
+            lambda x: GenElectionRelation2(x.strftime('%Y/%m/%d %H:%M:%S'),
+                                           direction="DaysTill")
+        ))
+    loadclean_df["DaysSinceLastElection"] = (
+        loadclean_df["ReceivedDate"].apply(
+            lambda x: GenElectionRelation2(x.strftime('%Y/%m/%d %H:%M:%S'),
+                                           direction="DaysSince")
+        ))
 
-    # Calculate weeks and quarters till the next election and since the last election
+    # Calculate weeks and quarters till the next election and
+    # since the last election
     for period, divisor in [("Weeks", 7), ("Quarters", 91)]:
-        loadclean_df[f'{period}TillNextElection'] = loadclean_df["ReceivedDate"].apply(
-            lambda x: GenElectionRelation2(x.strftime('%Y/%m/%d %H:%M:%S'), divisor=divisor, direction="DaysTill")
-        )
-        loadclean_df[f'{period}SinceLastElection'] = loadclean_df["ReceivedDate"].apply(
-            lambda x: GenElectionRelation2(x.strftime('%Y/%m/%d %H:%M:%S'), divisor=divisor, direction="DaysSince")
-        )
+        loadclean_df[f'{period}TillNextElection'] = (
+            loadclean_df["ReceivedDate"].apply(
+                lambda x: GenElectionRelation2(x.strftime('%Y/%m/%d %H:%M:%S'),
+                                               divisor=divisor,
+                                               direction="DaysTill")
+                                                ))
+        loadclean_df[f'{period}SinceLastElection'] = (
+            loadclean_df["ReceivedDate"].apply(
+                lambda x: GenElectionRelation2(x.strftime('%Y/%m/%d %H:%M:%S'),
+                                               divisor=divisor,
+                                               direction="DaysSince")
+                                                ))
     # Save cleaned data
     if output_csv:
-        output_dir = st.session_state.directories["output_dir"]
-        cleaned_data_filename = st.session_state.cleaned_data_fname
-        cleaned_data_filename = os.path.join(output_dir, cleaned_data_filename)
         # Save the cleaned data to a CSV file for further analysis or reporting
-        loadclean_df.to_csv(cleaned_data_filename)
+        loadclean_df.to_csv(processeddatafilepath)
     logger.info(f"Cleaned Data completed, shape: {loadclean_df.shape}")
 
     # apply political party mappings to MPs
-    if st.session_state.RERUN_MP_PARTY_MEMBERSHIP:
-        MP_Party = mp.map_mps_to_party_membership(loadclean_df)
+    # if st.session_state.RERUN_MP_PARTY_MEMBERSHIP:
+    #     MP_Party = mp.map_mps_to_party_membership(loadclean_df)
     return loadclean_df
