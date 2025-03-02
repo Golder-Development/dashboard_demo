@@ -22,8 +22,10 @@ def load_cleaned_data(
     if (
         st.session_state.get(originaldatafilepath) is None
         or st.session_state.get(processeddatafilepath) is None
+        or st.session_state.get(main_file) is None
     ):
-        logger.error("Session state variables not initialized!")
+        logger.error(f"Session state variables not initialized! {__name__}")
+        st.error(f"Session state variables not initialized! {__name__}")
         return None
 
     originaldatafilepath = st.session_state.get(originaldatafilepath)
@@ -37,8 +39,25 @@ def load_cleaned_data(
         timestamp_key="load_raw_data_last_modified")
     # Check if cached data loaded successfully and return it
     if loaddata_df is not None:
-        return loaddata_df
-
+        # check that number of rows in the loaded data is the same as the
+        # number of rows in the original data
+        if len(loaddata_df) == len(st.session_state.get(main_file)):
+            return loaddata_df
+        else:
+            logger.error(
+                f"Number of rows in loaded data ({len(loaddata_df)}) "
+                f"does not match the number of rows in the original data "
+                f"({len(st.session_state.get(main_file))})! {__name__}"
+            )
+            st.error(
+                f"Number of rows in loaded data ({len(loaddata_df)}) "
+                f"does not match the number of rows in the original data "
+                f"({len(st.session_state.get(main_file))})! {__name__}"
+            )
+            logger.error(f"Reprocessing data... {__name__}")
+            st.error(f"Reprocessing data... {__name__}")
+    # start final processing - load and clean data
+    logger.info(f"Loading and cleaning data... {__name__}")
     if streamlitrun:
         # Load the data
         orig_df = st.session_state.get(datafile)
@@ -115,8 +134,13 @@ def load_cleaned_data(
 
     # apply mapping of MPs to party membership
     if "RegulatedEntityName" in loadclean_df.columns:
-        loadclean_df = map_mp_to_party(loadclean_df)
-
+        try:
+            loadclean_df = map_mp_to_party(loadclean_df)
+        except Exception as e:
+            logger.error(f"Error mapping MPs to party membership: {e}")
+            st.error(f"Error mapping MPs to party membership: {e}"
+                     " Political Party Matching will not be done")
+            return loadclean_df
     # Create a DubiousData flag for problematic records
     if ("PLACEHOLDER_DATE" not in st.session_state) or (
         "PLACEHOLDER_ID" not in st.session_state
@@ -300,8 +324,6 @@ def load_cleaned_data(
         # Save the cleaned data to a CSV file for further analysis or reporting
         loadclean_df.to_csv(processeddatafilepath)
     logger.info(f"Cleaned Data completed, shape: {loadclean_df.shape}")
-
-    # apply political party mappings to MPs
-    # if st.session_state.RERUN_MP_PARTY_MEMBERSHIP:
-    #     MP_Party = mp.map_mps_to_party_membership(loadclean_df)
+    st.info(f"Cleaned Data completed, shape: {loadclean_df.shape}")
+    # return the cleaned data
     return loadclean_df
