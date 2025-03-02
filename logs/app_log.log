@@ -988,3 +988,1490 @@ SyntaxError: invalid syntax
 2025/03/02 08:21:26 PM INFO:Switched to page: Introduction
 2025/03/02 08:21:26 PM INFO:pagesetup executed successfully
 2025/03/02 08:21:26 PM INFO:Data already loaded in session state.
+2025/03/02 08:29:56 PM INFO:Logging is set up correctly! Current log level: INFO
+2025/03/02 08:29:57 PM INFO:get_git_version executed successfully
+2025/03/02 08:29:57 PM INFO:get_git_version executed successfully
+2025/03/02 08:29:57 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 08:29:57 PM INFO:Running App setup...
+2025/03/02 08:29:57 PM INFO:Setting up the package
+2025/03/02 08:29:57 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 08:29:58 PM INFO:get_git_version executed successfully
+2025/03/02 08:29:58 PM INFO:Version: v20.122
+2025/03/02 08:29:58 PM INFO:Session_state variables initialized
+2025/03/02 08:29:58 PM INFO:Session state Setup complete
+2025/03/02 08:29:58 PM INFO:initialize_session_state executed successfully
+2025/03/02 08:29:58 PM INFO:Package setup complete
+2025/03/02 08:29:58 PM INFO:setup_package executed successfully
+2025/03/02 08:29:58 PM INFO:Running Menu setup...
+2025/03/02 08:29:58 PM INFO:get_git_version executed successfully
+2025/03/02 08:29:58 PM INFO:get_git_version executed successfully
+2025/03/02 08:29:58 PM INFO:get_git_version executed successfully
+2025/03/02 08:29:58 PM INFO:App Version: v20.143
+2025/03/02 08:29:58 PM INFO:Switched to page: Introduction
+2025/03/02 08:29:58 PM INFO:pagesetup executed successfully
+2025/03/02 08:29:58 PM INFO:No data found in session state, running firstload()
+2025/03/02 08:29:58 PM INFO:Running first load function.
+2025/03/02 08:29:58 PM INFO:Original file path: H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv
+2025/03/02 08:29:58 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\imported_raw.csv
+2025/03/02 08:29:58 PM INFO:Checking if H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv has been updated.
+2025/03/02 08:29:58 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv
+2025/03/02 08:29:58 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:29:58 PM INFO:Current modification time: 1740757862.6744745
+2025/03/02 08:29:58 PM INFO:Last modification time: None
+2025/03/02 08:29:58 PM INFO:is_file_updated executed successfully
+2025/03/02 08:29:58 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:29:58 PM INFO:Loading raw data...
+2025/03/02 08:29:59 PM INFO:Data loaded successfully. Data has 65278 rows and 29 columns
+2025/03/02 08:29:59 PM INFO:Data saved to H:\VScode\dashboard_demo-1\output\imported_raw.csv
+2025/03/02 08:29:59 PM INFO:Cleaning up raw data
+2025/03/02 08:29:59 PM ERROR:Session state variables not initialized!
+2025/03/02 08:29:59 PM INFO:Original file path: None
+2025/03/02 08:29:59 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 08:29:59 PM ERROR:Error: originalfilepath is None!
+2025/03/02 08:29:59 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:29:59 PM INFO:Data loaded, shape: (65278, 29)
+2025/03/02 08:30:01 PM INFO:Checking if H:\VScode\dashboard_demo-1\reference_files\PoliticalEntityDeDuped.csv has been updated.
+2025/03/02 08:30:01 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\reference_files\PoliticalEntityDeDuped.csv
+2025/03/02 08:30:01 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:30:01 PM INFO:Current modification time: 1740841102.2638545
+2025/03/02 08:30:01 PM INFO:Last modification time: None
+2025/03/02 08:30:01 PM INFO:is_file_updated executed successfully
+2025/03/02 08:30:01 PM INFO:Map file regentity_map_fname has been updated. Proceeding with deduplication.
+2025/03/02 08:30:01 PM INFO:File deduplication complete, shape: (65278, 34)
+2025/03/02 08:30:01 PM INFO:dedupe_entity_file executed successfully
+2025/03/02 08:30:01 PM INFO:Checking if H:\VScode\dashboard_demo-1\reference_files\PoliticalDonorsDeDuped.csv has been updated.
+2025/03/02 08:30:01 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\reference_files\PoliticalDonorsDeDuped.csv
+2025/03/02 08:30:01 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:30:01 PM INFO:Current modification time: 1740757863.2545311
+2025/03/02 08:30:01 PM INFO:Last modification time: None
+2025/03/02 08:30:01 PM INFO:is_file_updated executed successfully
+2025/03/02 08:30:01 PM INFO:Map file donor_map_fname has been updated. Proceeding with deduplication.
+2025/03/02 08:30:01 PM INFO:File deduplication complete, shape: (65278, 40)
+2025/03/02 08:30:01 PM INFO:dedupe_entity_file executed successfully
+2025/03/02 08:30:01 PM INFO:Raw Data cleanup completed
+2025/03/02 08:30:01 PM INFO:Data shape: (65278, 40)
+2025/03/02 08:30:04 PM INFO:Data saved to H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 08:30:04 PM INFO:Data cleanup completed, shape: (65278, 40)
+2025/03/02 08:30:04 PM INFO:raw_data_cleanup executed successfully
+2025/03/02 08:30:04 PM INFO:load_raw_data executed successfully
+2025/03/02 08:30:04 PM INFO:get_raw_data executed successfully
+2025/03/02 08:30:04 PM INFO:load_data_to_session executed successfully
+2025/03/02 08:30:04 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 08:30:04 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:30:04 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_donations.csv has been updated.
+2025/03/02 08:30:04 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 08:30:04 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:30:04 PM INFO:Current modification time: 1740947404.5546794
+2025/03/02 08:30:04 PM INFO:Last modification time: 1740757862.6744745
+2025/03/02 08:30:04 PM INFO:is_file_updated executed successfully
+2025/03/02 08:30:04 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:30:04 PM INFO:Loading and cleaning data... data.clean_and_enhance
+2025/03/02 08:30:07 PM ERROR:Number of rows in loaddata_df and raw_data do not match 78745 != 65278
+2025/03/02 08:30:07 PM ERROR:Attempting to remove duplicates
+2025/03/02 08:30:08 PM INFO:Data Updated with PartyName and PartyId successfully
+2025/03/02 08:30:08 PM INFO:map_mp_to_party executed successfully
+2025/03/02 08:30:08 PM INFO:Election Dates not found in session, loading now.
+2025/03/02 08:30:08 PM INFO:Election Dates Loaded Successfully.
+2025/03/02 08:30:08 PM INFO:load_election_dates executed successfully
+2025/03/02 08:30:28 PM INFO:Cleaned Data completed, shape: (65278, 58)
+2025/03/02 08:30:28 PM INFO:load_cleaned_data executed successfully
+2025/03/02 08:30:28 PM INFO:get_cleaned_data executed successfully
+2025/03/02 08:30:28 PM INFO:load_data_to_session executed successfully
+2025/03/02 08:30:28 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:30:28 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\party_summary.csv
+2025/03/02 08:30:28 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_data.csv has been updated.
+2025/03/02 08:30:28 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:30:28 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:30:28 PM INFO:Current modification time: 1740947428.463304
+2025/03/02 08:30:28 PM INFO:Last modification time: None
+2025/03/02 08:30:28 PM INFO:is_file_updated executed successfully
+2025/03/02 08:30:28 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:30:28 PM INFO:Regulated entity summary saved to H:\VScode\dashboard_demo-1\output\party_summary.csv
+2025/03/02 08:30:28 PM INFO:Raw Data cleanup completed
+2025/03/02 08:30:28 PM INFO:Data shape: (1361, 5)
+2025/03/02 08:30:28 PM INFO:load_entity_summary_data executed successfully
+2025/03/02 08:30:28 PM INFO:get_party_summary_data executed successfully
+2025/03/02 08:30:28 PM INFO:load_data_to_session executed successfully
+2025/03/02 08:30:28 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:30:28 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_donorlist.csv
+2025/03/02 08:30:28 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_data.csv has been updated.
+2025/03/02 08:30:28 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:30:28 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:30:28 PM INFO:Current modification time: 1740947428.463304
+2025/03/02 08:30:28 PM INFO:Last modification time: None
+2025/03/02 08:30:28 PM INFO:is_file_updated executed successfully
+2025/03/02 08:30:28 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:30:28 PM INFO:Donor data saved to H:\VScode\dashboard_demo-1\output\cleaned_donorlist.csv
+2025/03/02 08:30:28 PM INFO:Donor Data summary completed
+2025/03/02 08:30:28 PM INFO:Data shape: (30219, 5)
+2025/03/02 08:30:28 PM INFO:load_donorList_data executed successfully
+2025/03/02 08:30:28 PM INFO:get_donor_data executed successfully
+2025/03/02 08:30:28 PM INFO:load_data_to_session executed successfully
+2025/03/02 08:30:28 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:30:28 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_regentity.csv
+2025/03/02 08:30:28 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_data.csv has been updated.
+2025/03/02 08:30:28 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:30:28 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:30:28 PM INFO:Current modification time: 1740947428.463304
+2025/03/02 08:30:28 PM INFO:Last modification time: 1740947428.463304
+2025/03/02 08:30:28 PM INFO:is_file_updated executed successfully
+2025/03/02 08:30:28 PM INFO:Loading preprocessed data. Using H:\VScode\dashboard_demo-1\output\cleaned_regentity.csv dated load_donorlist_data_last_modified instead of H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:30:28 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:30:28 PM INFO:load_regulated_entity_data executed successfully
+2025/03/02 08:30:28 PM INFO:get_regentity_data executed successfully
+2025/03/02 08:30:28 PM INFO:load_data_to_session executed successfully
+2025/03/02 08:30:28 PM INFO:firstload executed successfully
+2025/03/02 08:30:28 PM INFO:initialise_data executed successfully
+2025/03/02 08:48:26 PM INFO:Logging is set up correctly! Current log level: INFO
+2025/03/02 08:48:27 PM INFO:get_git_version executed successfully
+2025/03/02 08:48:27 PM INFO:get_git_version executed successfully
+2025/03/02 08:48:27 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 08:48:27 PM INFO:Running App setup...
+2025/03/02 08:48:27 PM INFO:Setting up the package
+2025/03/02 08:48:27 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 08:48:27 PM INFO:get_git_version executed successfully
+2025/03/02 08:48:27 PM INFO:Version: v20.122
+2025/03/02 08:48:27 PM INFO:Session_state variables initialized
+2025/03/02 08:48:27 PM INFO:Session state Setup complete
+2025/03/02 08:48:27 PM INFO:initialize_session_state executed successfully
+2025/03/02 08:48:27 PM INFO:Package setup complete
+2025/03/02 08:48:27 PM INFO:setup_package executed successfully
+2025/03/02 08:48:27 PM INFO:Running Menu setup...
+2025/03/02 08:48:28 PM INFO:get_git_version executed successfully
+2025/03/02 08:48:28 PM INFO:get_git_version executed successfully
+2025/03/02 08:48:28 PM INFO:get_git_version executed successfully
+2025/03/02 08:48:28 PM INFO:App Version: v20.143
+2025/03/02 08:48:28 PM INFO:Switched to page: Introduction
+2025/03/02 08:48:28 PM INFO:pagesetup executed successfully
+2025/03/02 08:48:28 PM INFO:No data found in session state, running firstload()
+2025/03/02 08:48:28 PM INFO:Running first load function.
+2025/03/02 08:48:28 PM INFO:Original file path: H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv
+2025/03/02 08:48:28 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\imported_raw.csv
+2025/03/02 08:48:28 PM INFO:Checking if H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv has been updated.
+2025/03/02 08:48:28 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv
+2025/03/02 08:48:28 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:48:28 PM INFO:Current modification time: 1740757862.6744745
+2025/03/02 08:48:28 PM INFO:Last modification time: None
+2025/03/02 08:48:28 PM INFO:is_file_updated executed successfully
+2025/03/02 08:48:28 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:48:28 PM INFO:Loading raw data...
+2025/03/02 08:48:28 PM INFO:Data loaded successfully. Data has 65278 rows and 29 columns
+2025/03/02 08:48:29 PM INFO:Data saved to H:\VScode\dashboard_demo-1\output\imported_raw.csv
+2025/03/02 08:48:29 PM INFO:Cleaning up raw data
+2025/03/02 08:48:29 PM ERROR:Session state variables not initialized!
+2025/03/02 08:48:29 PM INFO:Original file path: None
+2025/03/02 08:48:29 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 08:48:29 PM ERROR:Error: originalfilepath is None!
+2025/03/02 08:48:29 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:48:29 PM INFO:Data loaded, shape: (65278, 29)
+2025/03/02 08:48:30 PM INFO:Checking if H:\VScode\dashboard_demo-1\reference_files\PoliticalEntityDeDuped.csv has been updated.
+2025/03/02 08:48:30 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\reference_files\PoliticalEntityDeDuped.csv
+2025/03/02 08:48:30 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:48:30 PM INFO:Current modification time: 1740841102.2638545
+2025/03/02 08:48:30 PM INFO:Last modification time: None
+2025/03/02 08:48:30 PM INFO:is_file_updated executed successfully
+2025/03/02 08:48:30 PM INFO:Map file regentity_map_fname has been updated. Proceeding with deduplication.
+2025/03/02 08:48:30 PM INFO:File deduplication complete, shape: (65278, 34)
+2025/03/02 08:48:30 PM INFO:dedupe_entity_file executed successfully
+2025/03/02 08:48:30 PM INFO:Checking if H:\VScode\dashboard_demo-1\reference_files\PoliticalDonorsDeDuped.csv has been updated.
+2025/03/02 08:48:30 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\reference_files\PoliticalDonorsDeDuped.csv
+2025/03/02 08:48:30 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:48:30 PM INFO:Current modification time: 1740757863.2545311
+2025/03/02 08:48:30 PM INFO:Last modification time: None
+2025/03/02 08:48:30 PM INFO:is_file_updated executed successfully
+2025/03/02 08:48:30 PM INFO:Map file donor_map_fname has been updated. Proceeding with deduplication.
+2025/03/02 08:48:31 PM INFO:File deduplication complete, shape: (65278, 40)
+2025/03/02 08:48:31 PM INFO:dedupe_entity_file executed successfully
+2025/03/02 08:48:31 PM INFO:Raw Data cleanup completed
+2025/03/02 08:48:31 PM INFO:Data shape: (65278, 40)
+2025/03/02 08:48:32 PM INFO:Data saved to H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 08:48:32 PM INFO:Data cleanup completed, shape: (65278, 40)
+2025/03/02 08:48:32 PM INFO:raw_data_cleanup executed successfully
+2025/03/02 08:48:32 PM INFO:load_raw_data executed successfully
+2025/03/02 08:48:32 PM INFO:get_raw_data executed successfully
+2025/03/02 08:48:32 PM INFO:load_data_to_session executed successfully
+2025/03/02 08:48:32 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 08:48:32 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:48:32 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_donations.csv has been updated.
+2025/03/02 08:48:32 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 08:48:32 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:48:32 PM INFO:Current modification time: 1740948512.3496904
+2025/03/02 08:48:32 PM INFO:Last modification time: 1740757862.6744745
+2025/03/02 08:48:32 PM INFO:is_file_updated executed successfully
+2025/03/02 08:48:32 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:48:32 PM INFO:Loading and cleaning data... data.clean_and_enhance
+2025/03/02 08:48:35 PM ERROR:Number of rows in loaddata_df and raw_data do not match 78745 != 65278
+2025/03/02 08:48:35 PM ERROR:Attempting to remove duplicates
+2025/03/02 08:48:35 PM INFO:Data Updated with PartyName and PartyId successfully
+2025/03/02 08:48:35 PM INFO:map_mp_to_party executed successfully
+2025/03/02 08:48:35 PM ERROR:Error in load_cleaned_data: assign_group() missing 1 required positional argument: 'total'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\clean_and_enhance.py", line 225, in load_cleaned_data
+    loadclean_df["RegEntity_Group"] = calc.determine_groups_optimized(
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 394, in determine_groups_optimized
+    .apply(assign_group(thresholds_dict=thresholds_dict))
+TypeError: assign_group() missing 1 required positional argument: 'total'
+2025/03/02 08:48:35 PM ERROR:Error in get_cleaned_data: assign_group() missing 1 required positional argument: 'total'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 37, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\clean_and_enhance.py", line 225, in load_cleaned_data
+    loadclean_df["RegEntity_Group"] = calc.determine_groups_optimized(
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 394, in determine_groups_optimized
+    .apply(assign_group(thresholds_dict=thresholds_dict))
+TypeError: assign_group() missing 1 required positional argument: 'total'
+2025/03/02 08:48:35 PM ERROR:Error in load_data_to_session: assign_group() missing 1 required positional argument: 'total'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 83, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 37, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\clean_and_enhance.py", line 225, in load_cleaned_data
+    loadclean_df["RegEntity_Group"] = calc.determine_groups_optimized(
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 394, in determine_groups_optimized
+    .apply(assign_group(thresholds_dict=thresholds_dict))
+TypeError: assign_group() missing 1 required positional argument: 'total'
+2025/03/02 08:48:35 PM ERROR:Error in firstload: assign_group() missing 1 required positional argument: 'total'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 89, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 83, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 37, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\clean_and_enhance.py", line 225, in load_cleaned_data
+    loadclean_df["RegEntity_Group"] = calc.determine_groups_optimized(
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 394, in determine_groups_optimized
+    .apply(assign_group(thresholds_dict=thresholds_dict))
+TypeError: assign_group() missing 1 required positional argument: 'total'
+2025/03/02 08:48:35 PM ERROR:Error in initialise_data: assign_group() missing 1 required positional argument: 'total'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_utils.py", line 42, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 89, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 83, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 37, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\clean_and_enhance.py", line 225, in load_cleaned_data
+    loadclean_df["RegEntity_Group"] = calc.determine_groups_optimized(
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 394, in determine_groups_optimized
+    .apply(assign_group(thresholds_dict=thresholds_dict))
+TypeError: assign_group() missing 1 required positional argument: 'total'
+2025/03/02 08:52:00 PM INFO:Logging is set up correctly! Current log level: INFO
+2025/03/02 08:52:00 PM INFO:get_git_version executed successfully
+2025/03/02 08:52:01 PM INFO:get_git_version executed successfully
+2025/03/02 08:52:01 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 08:52:01 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 08:52:01 PM INFO:Running App setup...
+2025/03/02 08:52:01 PM INFO:Running App setup...
+2025/03/02 08:52:01 PM INFO:Setting up the package
+2025/03/02 08:52:01 PM INFO:Setting up the package
+2025/03/02 08:52:01 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 08:52:01 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 08:52:01 PM INFO:get_git_version executed successfully
+2025/03/02 08:52:01 PM INFO:get_git_version executed successfully
+2025/03/02 08:52:01 PM INFO:Version: v20.122
+2025/03/02 08:52:01 PM INFO:Version: v20.122
+2025/03/02 08:52:01 PM INFO:Session_state variables initialized
+2025/03/02 08:52:01 PM INFO:Session state Setup complete
+2025/03/02 08:52:01 PM INFO:Session_state variables initialized
+2025/03/02 08:52:01 PM INFO:initialize_session_state executed successfully
+2025/03/02 08:52:01 PM INFO:Session state Setup complete
+2025/03/02 08:52:01 PM INFO:Package setup complete
+2025/03/02 08:52:01 PM INFO:initialize_session_state executed successfully
+2025/03/02 08:52:01 PM INFO:setup_package executed successfully
+2025/03/02 08:52:01 PM INFO:Package setup complete
+2025/03/02 08:52:01 PM INFO:setup_package executed successfully
+2025/03/02 08:52:01 PM INFO:Running Menu setup...
+2025/03/02 08:52:01 PM INFO:Running Menu setup...
+2025/03/02 08:52:01 PM INFO:get_git_version executed successfully
+2025/03/02 08:52:01 PM INFO:get_git_version executed successfully
+2025/03/02 08:52:02 PM INFO:get_git_version executed successfully
+2025/03/02 08:52:02 PM INFO:get_git_version executed successfully
+2025/03/02 08:52:02 PM INFO:App Version: v20.143
+2025/03/02 08:52:02 PM INFO:App Version: v20.143
+2025/03/02 08:52:02 PM INFO:Switched to page: Introduction
+2025/03/02 08:52:02 PM INFO:Switched to page: Introduction
+2025/03/02 08:52:02 PM INFO:pagesetup executed successfully
+2025/03/02 08:52:02 PM INFO:pagesetup executed successfully
+2025/03/02 08:52:02 PM INFO:No data found in session state, running firstload()
+2025/03/02 08:52:02 PM INFO:No data found in session state, running firstload()
+2025/03/02 08:52:02 PM INFO:Running first load function.
+2025/03/02 08:52:02 PM INFO:Original file path: H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv
+2025/03/02 08:52:02 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\imported_raw.csv
+2025/03/02 08:52:02 PM INFO:Checking if H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv has been updated.
+2025/03/02 08:52:02 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv
+2025/03/02 08:52:02 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:52:02 PM INFO:Current modification time: 1740757862.6744745
+2025/03/02 08:52:02 PM INFO:Last modification time: None
+2025/03/02 08:52:02 PM INFO:is_file_updated executed successfully
+2025/03/02 08:52:02 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:52:02 PM INFO:Loading raw data...
+2025/03/02 08:52:02 PM INFO:Data loaded successfully. Data has 65278 rows and 29 columns
+2025/03/02 08:52:03 PM INFO:Data saved to H:\VScode\dashboard_demo-1\output\imported_raw.csv
+2025/03/02 08:52:03 PM INFO:Cleaning up raw data
+2025/03/02 08:52:03 PM ERROR:Session state variables not initialized!
+2025/03/02 08:52:03 PM INFO:Original file path: None
+2025/03/02 08:52:03 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 08:52:03 PM ERROR:Error: originalfilepath is None!
+2025/03/02 08:52:03 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:52:03 PM INFO:Data loaded, shape: (65278, 29)
+2025/03/02 08:52:04 PM INFO:Running first load function.
+2025/03/02 08:52:04 PM INFO:Loading raw data...
+2025/03/02 08:52:05 PM INFO:Data loaded successfully. Data has 65278 rows and 29 columns
+2025/03/02 08:52:06 PM INFO:Data saved to H:\VScode\dashboard_demo-1\output\imported_raw.csv
+2025/03/02 08:52:06 PM INFO:Cleaning up raw data
+2025/03/02 08:52:06 PM ERROR:Session state variables not initialized!
+2025/03/02 08:52:06 PM INFO:Data loaded, shape: (65278, 29)
+2025/03/02 08:52:07 PM INFO:Checking if H:\VScode\dashboard_demo-1\reference_files\PoliticalEntityDeDuped.csv has been updated.
+2025/03/02 08:52:07 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\reference_files\PoliticalEntityDeDuped.csv
+2025/03/02 08:52:07 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:52:07 PM INFO:Current modification time: 1740841102.2638545
+2025/03/02 08:52:07 PM INFO:Last modification time: None
+2025/03/02 08:52:07 PM INFO:is_file_updated executed successfully
+2025/03/02 08:52:07 PM INFO:Map file regentity_map_fname has been updated. Proceeding with deduplication.
+2025/03/02 08:52:07 PM INFO:File deduplication complete, shape: (65278, 34)
+2025/03/02 08:52:07 PM INFO:dedupe_entity_file executed successfully
+2025/03/02 08:52:07 PM INFO:Checking if H:\VScode\dashboard_demo-1\reference_files\PoliticalDonorsDeDuped.csv has been updated.
+2025/03/02 08:52:07 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\reference_files\PoliticalDonorsDeDuped.csv
+2025/03/02 08:52:07 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:52:07 PM INFO:Current modification time: 1740757863.2545311
+2025/03/02 08:52:07 PM INFO:Last modification time: None
+2025/03/02 08:52:07 PM INFO:is_file_updated executed successfully
+2025/03/02 08:52:07 PM INFO:Map file donor_map_fname has been updated. Proceeding with deduplication.
+2025/03/02 08:52:07 PM INFO:File deduplication complete, shape: (65278, 40)
+2025/03/02 08:52:07 PM INFO:dedupe_entity_file executed successfully
+2025/03/02 08:52:07 PM INFO:Raw Data cleanup completed
+2025/03/02 08:52:07 PM INFO:Data shape: (65278, 40)
+2025/03/02 08:52:08 PM INFO:Data saved to H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 08:52:08 PM INFO:Data cleanup completed, shape: (65278, 40)
+2025/03/02 08:52:08 PM INFO:raw_data_cleanup executed successfully
+2025/03/02 08:52:09 PM INFO:load_raw_data executed successfully
+2025/03/02 08:52:09 PM INFO:get_raw_data executed successfully
+2025/03/02 08:52:09 PM INFO:load_data_to_session executed successfully
+2025/03/02 08:52:09 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 08:52:09 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:52:09 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_donations.csv has been updated.
+2025/03/02 08:52:09 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 08:52:09 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:52:09 PM INFO:Current modification time: 1740948728.8751676
+2025/03/02 08:52:09 PM INFO:Last modification time: None
+2025/03/02 08:52:09 PM INFO:is_file_updated executed successfully
+2025/03/02 08:52:09 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:52:09 PM INFO:Loading and cleaning data... data.clean_and_enhance
+2025/03/02 08:52:12 PM ERROR:Number of rows in loaddata_df and raw_data do not match 78745 != 65278
+2025/03/02 08:52:12 PM ERROR:Attempting to remove duplicates
+2025/03/02 08:52:12 PM INFO:Data Updated with PartyName and PartyId successfully
+2025/03/02 08:52:12 PM INFO:map_mp_to_party executed successfully
+2025/03/02 08:52:13 PM INFO:Election Dates not found in session, loading now.
+2025/03/02 08:52:13 PM INFO:Election Dates Loaded Successfully.
+2025/03/02 08:52:13 PM INFO:load_election_dates executed successfully
+2025/03/02 08:52:58 PM INFO:Cleaned Data completed, shape: (65278, 58)
+2025/03/02 08:52:58 PM INFO:load_cleaned_data executed successfully
+2025/03/02 08:52:58 PM INFO:get_cleaned_data executed successfully
+2025/03/02 08:52:58 PM INFO:load_data_to_session executed successfully
+2025/03/02 08:52:58 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:52:58 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\party_summary.csv
+2025/03/02 08:52:58 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_data.csv has been updated.
+2025/03/02 08:52:58 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:52:58 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:52:58 PM INFO:Current modification time: 1740948778.4264371
+2025/03/02 08:52:58 PM INFO:Last modification time: None
+2025/03/02 08:52:58 PM INFO:is_file_updated executed successfully
+2025/03/02 08:52:58 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:52:58 PM INFO:Regulated entity summary saved to H:\VScode\dashboard_demo-1\output\party_summary.csv
+2025/03/02 08:52:58 PM INFO:Raw Data cleanup completed
+2025/03/02 08:52:58 PM INFO:Data shape: (1361, 5)
+2025/03/02 08:52:58 PM INFO:load_entity_summary_data executed successfully
+2025/03/02 08:52:58 PM INFO:get_party_summary_data executed successfully
+2025/03/02 08:52:58 PM INFO:load_data_to_session executed successfully
+2025/03/02 08:52:58 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:52:58 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_donorlist.csv
+2025/03/02 08:52:58 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_data.csv has been updated.
+2025/03/02 08:52:58 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:52:58 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:52:58 PM INFO:Current modification time: 1740948778.4264371
+2025/03/02 08:52:58 PM INFO:Last modification time: None
+2025/03/02 08:52:58 PM INFO:is_file_updated executed successfully
+2025/03/02 08:52:58 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:52:58 PM INFO:Donor data saved to H:\VScode\dashboard_demo-1\output\cleaned_donorlist.csv
+2025/03/02 08:52:58 PM INFO:Donor Data summary completed
+2025/03/02 08:52:58 PM INFO:Data shape: (30219, 5)
+2025/03/02 08:52:58 PM INFO:load_donorList_data executed successfully
+2025/03/02 08:52:58 PM INFO:get_donor_data executed successfully
+2025/03/02 08:52:58 PM INFO:load_data_to_session executed successfully
+2025/03/02 08:52:58 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:52:58 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_regentity.csv
+2025/03/02 08:52:58 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_data.csv has been updated.
+2025/03/02 08:52:58 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:52:58 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:52:58 PM INFO:Current modification time: 1740948778.4264371
+2025/03/02 08:52:58 PM INFO:Last modification time: 1740948778.4264371
+2025/03/02 08:52:58 PM INFO:is_file_updated executed successfully
+2025/03/02 08:52:58 PM INFO:Loading preprocessed data. Using H:\VScode\dashboard_demo-1\output\cleaned_regentity.csv dated load_donorlist_data_last_modified instead of H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:52:58 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:52:58 PM INFO:load_regulated_entity_data executed successfully
+2025/03/02 08:52:58 PM INFO:get_regentity_data executed successfully
+2025/03/02 08:52:58 PM INFO:load_data_to_session executed successfully
+2025/03/02 08:52:58 PM INFO:firstload executed successfully
+2025/03/02 08:52:58 PM INFO:initialise_data executed successfully
+2025/03/02 08:53:32 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 08:53:32 PM INFO:Running App setup...
+2025/03/02 08:53:32 PM INFO:Setting up the package
+2025/03/02 08:53:32 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 08:53:32 PM INFO:get_git_version executed successfully
+2025/03/02 08:53:32 PM INFO:Version: v20.122
+2025/03/02 08:53:32 PM INFO:Session_state variables initialized
+2025/03/02 08:53:32 PM INFO:Session state Setup complete
+2025/03/02 08:53:32 PM INFO:initialize_session_state executed successfully
+2025/03/02 08:53:32 PM INFO:Package setup complete
+2025/03/02 08:53:32 PM INFO:setup_package executed successfully
+2025/03/02 08:53:32 PM INFO:Running Menu setup...
+2025/03/02 08:53:32 PM INFO:get_git_version executed successfully
+2025/03/02 08:53:32 PM INFO:App Version: v20.143
+2025/03/02 08:53:32 PM INFO:Switched to page: Introduction
+2025/03/02 08:53:32 PM INFO:pagesetup executed successfully
+2025/03/02 08:53:32 PM INFO:No data found in session state, running firstload()
+2025/03/02 08:53:38 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 08:53:38 PM INFO:Running App setup...
+2025/03/02 08:53:38 PM INFO:Setting up the package
+2025/03/02 08:53:38 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 08:53:38 PM INFO:get_git_version executed successfully
+2025/03/02 08:53:38 PM INFO:Version: v20.122
+2025/03/02 08:53:38 PM INFO:Session_state variables initialized
+2025/03/02 08:53:38 PM INFO:Session state Setup complete
+2025/03/02 08:53:38 PM INFO:initialize_session_state executed successfully
+2025/03/02 08:53:38 PM INFO:Package setup complete
+2025/03/02 08:53:38 PM INFO:setup_package executed successfully
+2025/03/02 08:53:38 PM INFO:Running Menu setup...
+2025/03/02 08:53:38 PM INFO:get_git_version executed successfully
+2025/03/02 08:53:38 PM INFO:App Version: v20.143
+2025/03/02 08:53:38 PM INFO:Switched to page: Head Line Figures
+2025/03/02 08:53:38 PM ERROR:Error in pagesetup: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 65, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 30, in hlf_body
+    unique_donors = get_donors_ct(filtered_df)
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 98, in get_donors_ct
+    return df["DonorId"].nunique()
+TypeError: 'NoneType' object is not subscriptable
+2025/03/02 08:53:38 PM CRITICAL:Menu setup crashed: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 46, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 65, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 30, in hlf_body
+    unique_donors = get_donors_ct(filtered_df)
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 98, in get_donors_ct
+    return df["DonorId"].nunique()
+TypeError: 'NoneType' object is not subscriptable
+2025/03/02 08:57:22 PM INFO:Logging is set up correctly! Current log level: INFO
+2025/03/02 08:57:23 PM INFO:get_git_version executed successfully
+2025/03/02 08:57:23 PM INFO:get_git_version executed successfully
+2025/03/02 08:57:23 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 08:57:23 PM INFO:Running App setup...
+2025/03/02 08:57:23 PM INFO:Setting up the package
+2025/03/02 08:57:23 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 08:57:23 PM INFO:get_git_version executed successfully
+2025/03/02 08:57:23 PM INFO:Version: v20.122
+2025/03/02 08:57:23 PM INFO:Session_state variables initialized
+2025/03/02 08:57:23 PM INFO:Session state Setup complete
+2025/03/02 08:57:23 PM INFO:initialize_session_state executed successfully
+2025/03/02 08:57:23 PM INFO:Package setup complete
+2025/03/02 08:57:23 PM INFO:setup_package executed successfully
+2025/03/02 08:57:23 PM INFO:Running Menu setup...
+2025/03/02 08:57:23 PM INFO:get_git_version executed successfully
+2025/03/02 08:57:23 PM INFO:get_git_version executed successfully
+2025/03/02 08:57:24 PM INFO:get_git_version executed successfully
+2025/03/02 08:57:24 PM INFO:App Version: v20.143
+2025/03/02 08:57:24 PM INFO:Switched to page: Introduction
+2025/03/02 08:57:24 PM INFO:pagesetup executed successfully
+2025/03/02 08:57:24 PM INFO:No data found in session state, running firstload()
+2025/03/02 08:57:24 PM INFO:Running first load function.
+2025/03/02 08:57:24 PM INFO:Original file path: H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv
+2025/03/02 08:57:24 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\imported_raw.csv
+2025/03/02 08:57:24 PM INFO:Checking if H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv has been updated.
+2025/03/02 08:57:24 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv
+2025/03/02 08:57:24 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:57:24 PM INFO:Current modification time: 1740757862.6744745
+2025/03/02 08:57:24 PM INFO:Last modification time: None
+2025/03/02 08:57:24 PM INFO:is_file_updated executed successfully
+2025/03/02 08:57:24 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:57:24 PM INFO:Loading raw data...
+2025/03/02 08:57:24 PM INFO:Data loaded successfully. Data has 65278 rows and 29 columns
+2025/03/02 08:57:25 PM INFO:Data saved to H:\VScode\dashboard_demo-1\output\imported_raw.csv
+2025/03/02 08:57:25 PM INFO:Cleaning up raw data
+2025/03/02 08:57:25 PM ERROR:Session state variables not initialized!
+2025/03/02 08:57:25 PM INFO:Original file path: None
+2025/03/02 08:57:25 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 08:57:25 PM ERROR:Error: originalfilepath is None!
+2025/03/02 08:57:25 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:57:25 PM INFO:Data loaded, shape: (65278, 29)
+2025/03/02 08:57:26 PM INFO:Checking if H:\VScode\dashboard_demo-1\reference_files\PoliticalEntityDeDuped.csv has been updated.
+2025/03/02 08:57:26 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\reference_files\PoliticalEntityDeDuped.csv
+2025/03/02 08:57:26 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:57:26 PM INFO:Current modification time: 1740841102.2638545
+2025/03/02 08:57:26 PM INFO:Last modification time: None
+2025/03/02 08:57:26 PM INFO:is_file_updated executed successfully
+2025/03/02 08:57:26 PM INFO:Map file regentity_map_fname has been updated. Proceeding with deduplication.
+2025/03/02 08:57:26 PM INFO:File deduplication complete, shape: (65278, 34)
+2025/03/02 08:57:26 PM INFO:dedupe_entity_file executed successfully
+2025/03/02 08:57:26 PM INFO:Checking if H:\VScode\dashboard_demo-1\reference_files\PoliticalDonorsDeDuped.csv has been updated.
+2025/03/02 08:57:26 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\reference_files\PoliticalDonorsDeDuped.csv
+2025/03/02 08:57:26 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:57:26 PM INFO:Current modification time: 1740757863.2545311
+2025/03/02 08:57:26 PM INFO:Last modification time: None
+2025/03/02 08:57:26 PM INFO:is_file_updated executed successfully
+2025/03/02 08:57:26 PM INFO:Map file donor_map_fname has been updated. Proceeding with deduplication.
+2025/03/02 08:57:26 PM INFO:File deduplication complete, shape: (65278, 40)
+2025/03/02 08:57:26 PM INFO:dedupe_entity_file executed successfully
+2025/03/02 08:57:26 PM INFO:Raw Data cleanup completed
+2025/03/02 08:57:26 PM INFO:Data shape: (65278, 40)
+2025/03/02 08:57:29 PM INFO:Data saved to H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 08:57:29 PM INFO:Data cleanup completed, shape: (65278, 40)
+2025/03/02 08:57:29 PM INFO:raw_data_cleanup executed successfully
+2025/03/02 08:57:29 PM INFO:load_raw_data executed successfully
+2025/03/02 08:57:29 PM INFO:get_raw_data executed successfully
+2025/03/02 08:57:29 PM INFO:load_data_to_session executed successfully
+2025/03/02 08:57:29 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 08:57:29 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:57:29 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_donations.csv has been updated.
+2025/03/02 08:57:29 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 08:57:29 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:57:29 PM INFO:Current modification time: 1740949049.5835457
+2025/03/02 08:57:29 PM INFO:Last modification time: 1740757862.6744745
+2025/03/02 08:57:29 PM INFO:is_file_updated executed successfully
+2025/03/02 08:57:29 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:57:29 PM INFO:Loading and cleaning data... data.clean_and_enhance
+2025/03/02 08:57:32 PM ERROR:Number of rows in loaddata_df and raw_data do not match 78745 != 65278
+2025/03/02 08:57:32 PM ERROR:Attempting to remove duplicates
+2025/03/02 08:57:33 PM INFO:Data Updated with PartyName and PartyId successfully
+2025/03/02 08:57:33 PM INFO:map_mp_to_party executed successfully
+2025/03/02 08:57:33 PM INFO:Election Dates not found in session, loading now.
+2025/03/02 08:57:33 PM INFO:Election Dates Loaded Successfully.
+2025/03/02 08:57:33 PM INFO:load_election_dates executed successfully
+2025/03/02 08:58:22 PM INFO:Cleaned Data completed, shape: (65278, 58)
+2025/03/02 08:58:22 PM INFO:load_cleaned_data executed successfully
+2025/03/02 08:58:22 PM INFO:get_cleaned_data executed successfully
+2025/03/02 08:58:22 PM INFO:load_data_to_session executed successfully
+2025/03/02 08:58:22 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:58:22 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\party_summary.csv
+2025/03/02 08:58:22 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_data.csv has been updated.
+2025/03/02 08:58:22 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:58:22 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:58:22 PM INFO:Current modification time: 1740949102.6745906
+2025/03/02 08:58:22 PM INFO:Last modification time: None
+2025/03/02 08:58:22 PM INFO:is_file_updated executed successfully
+2025/03/02 08:58:22 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:58:23 PM INFO:Regulated entity summary saved to H:\VScode\dashboard_demo-1\output\party_summary.csv
+2025/03/02 08:58:23 PM INFO:Raw Data cleanup completed
+2025/03/02 08:58:23 PM INFO:Data shape: (1361, 5)
+2025/03/02 08:58:23 PM INFO:load_entity_summary_data executed successfully
+2025/03/02 08:58:23 PM INFO:get_party_summary_data executed successfully
+2025/03/02 08:58:23 PM INFO:load_data_to_session executed successfully
+2025/03/02 08:58:23 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:58:23 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_donorlist.csv
+2025/03/02 08:58:23 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_data.csv has been updated.
+2025/03/02 08:58:23 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:58:23 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:58:23 PM INFO:Current modification time: 1740949102.6745906
+2025/03/02 08:58:23 PM INFO:Last modification time: None
+2025/03/02 08:58:23 PM INFO:is_file_updated executed successfully
+2025/03/02 08:58:23 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:58:23 PM INFO:Donor data saved to H:\VScode\dashboard_demo-1\output\cleaned_donorlist.csv
+2025/03/02 08:58:23 PM INFO:Donor Data summary completed
+2025/03/02 08:58:23 PM INFO:Data shape: (30219, 5)
+2025/03/02 08:58:23 PM INFO:load_donorList_data executed successfully
+2025/03/02 08:58:23 PM INFO:get_donor_data executed successfully
+2025/03/02 08:58:23 PM INFO:load_data_to_session executed successfully
+2025/03/02 08:58:23 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:58:23 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_regentity.csv
+2025/03/02 08:58:23 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_data.csv has been updated.
+2025/03/02 08:58:23 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:58:23 PM INFO:get_file_modification_time executed successfully
+2025/03/02 08:58:23 PM INFO:Current modification time: 1740949102.6745906
+2025/03/02 08:58:23 PM INFO:Last modification time: 1740949102.6745906
+2025/03/02 08:58:23 PM INFO:is_file_updated executed successfully
+2025/03/02 08:58:23 PM INFO:Loading preprocessed data. Using H:\VScode\dashboard_demo-1\output\cleaned_regentity.csv dated load_donorlist_data_last_modified instead of H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 08:58:23 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 08:58:23 PM INFO:load_regulated_entity_data executed successfully
+2025/03/02 08:58:23 PM INFO:get_regentity_data executed successfully
+2025/03/02 08:58:23 PM INFO:load_data_to_session executed successfully
+2025/03/02 08:58:23 PM INFO:firstload executed successfully
+2025/03/02 08:58:23 PM INFO:initialise_data executed successfully
+2025/03/02 08:58:32 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 08:58:32 PM INFO:Running App setup...
+2025/03/02 08:58:32 PM INFO:Setting up the package
+2025/03/02 08:58:32 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 08:58:32 PM INFO:get_git_version executed successfully
+2025/03/02 08:58:32 PM INFO:Version: v20.122
+2025/03/02 08:58:32 PM INFO:Session_state variables initialized
+2025/03/02 08:58:32 PM INFO:Session state Setup complete
+2025/03/02 08:58:32 PM INFO:initialize_session_state executed successfully
+2025/03/02 08:58:32 PM INFO:Package setup complete
+2025/03/02 08:58:32 PM INFO:setup_package executed successfully
+2025/03/02 08:58:32 PM INFO:Running Menu setup...
+2025/03/02 08:58:32 PM INFO:get_git_version executed successfully
+2025/03/02 08:58:32 PM INFO:App Version: v20.143
+2025/03/02 08:58:32 PM INFO:Switched to page: Head Line Figures
+2025/03/02 08:58:33 PM ERROR:Error in pagesetup: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 45, in hlf_body
+    single_donation_entity = get_donations_ct(
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 115, in get_donations_ct
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/02 08:58:33 PM CRITICAL:Menu setup crashed: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 46, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 45, in hlf_body
+    single_donation_entity = get_donations_ct(
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 115, in get_donations_ct
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/02 09:01:07 PM INFO:Logging is set up correctly! Current log level: INFO
+2025/03/02 09:01:07 PM INFO:get_git_version executed successfully
+2025/03/02 09:01:08 PM INFO:get_git_version executed successfully
+2025/03/02 09:01:08 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:01:08 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:01:08 PM INFO:Running App setup...
+2025/03/02 09:01:08 PM INFO:Running App setup...
+2025/03/02 09:01:08 PM INFO:Setting up the package
+2025/03/02 09:01:08 PM INFO:Setting up the package
+2025/03/02 09:01:08 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:01:08 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:01:08 PM INFO:get_git_version executed successfully
+2025/03/02 09:01:08 PM INFO:get_git_version executed successfully
+2025/03/02 09:01:08 PM INFO:Version: v20.122
+2025/03/02 09:01:08 PM INFO:Version: v20.122
+2025/03/02 09:01:08 PM INFO:Session_state variables initialized
+2025/03/02 09:01:08 PM INFO:Session state Setup complete
+2025/03/02 09:01:08 PM INFO:Session_state variables initialized
+2025/03/02 09:01:08 PM INFO:initialize_session_state executed successfully
+2025/03/02 09:01:08 PM INFO:Session state Setup complete
+2025/03/02 09:01:08 PM INFO:Package setup complete
+2025/03/02 09:01:08 PM INFO:initialize_session_state executed successfully
+2025/03/02 09:01:08 PM INFO:setup_package executed successfully
+2025/03/02 09:01:08 PM INFO:Package setup complete
+2025/03/02 09:01:08 PM INFO:setup_package executed successfully
+2025/03/02 09:01:08 PM INFO:Running Menu setup...
+2025/03/02 09:01:08 PM INFO:Running Menu setup...
+2025/03/02 09:01:08 PM INFO:get_git_version executed successfully
+2025/03/02 09:01:08 PM INFO:get_git_version executed successfully
+2025/03/02 09:01:08 PM INFO:get_git_version executed successfully
+2025/03/02 09:01:08 PM INFO:get_git_version executed successfully
+2025/03/02 09:01:08 PM INFO:App Version: v20.143
+2025/03/02 09:01:08 PM INFO:App Version: v20.143
+2025/03/02 09:01:08 PM INFO:Switched to page: Head Line Figures
+2025/03/02 09:01:08 PM INFO:Switched to page: Introduction
+2025/03/02 09:01:08 PM ERROR:Error in hlf_body: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 31, in hlf_body
+    unique_donors = get_donors_ct(filtered_df)
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 98, in get_donors_ct
+    return df["DonorId"].nunique()
+TypeError: 'NoneType' object is not subscriptable
+2025/03/02 09:01:08 PM INFO:pagesetup executed successfully
+2025/03/02 09:01:08 PM ERROR:Error in pagesetup: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 31, in hlf_body
+    unique_donors = get_donors_ct(filtered_df)
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 98, in get_donors_ct
+    return df["DonorId"].nunique()
+TypeError: 'NoneType' object is not subscriptable
+2025/03/02 09:01:08 PM CRITICAL:Menu setup crashed: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 46, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 31, in hlf_body
+    unique_donors = get_donors_ct(filtered_df)
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 98, in get_donors_ct
+    return df["DonorId"].nunique()
+TypeError: 'NoneType' object is not subscriptable
+2025/03/02 09:01:08 PM INFO:No data found in session state, running firstload()
+2025/03/02 09:01:09 PM INFO:Running first load function.
+2025/03/02 09:01:09 PM INFO:Original file path: H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv
+2025/03/02 09:01:09 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\imported_raw.csv
+2025/03/02 09:01:09 PM INFO:Checking if H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv has been updated.
+2025/03/02 09:01:09 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv
+2025/03/02 09:01:09 PM INFO:get_file_modification_time executed successfully
+2025/03/02 09:01:09 PM INFO:Current modification time: 1740757862.6744745
+2025/03/02 09:01:09 PM INFO:Last modification time: None
+2025/03/02 09:01:09 PM INFO:is_file_updated executed successfully
+2025/03/02 09:01:09 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 09:01:09 PM INFO:Loading raw data...
+2025/03/02 09:01:09 PM INFO:Data loaded successfully. Data has 65278 rows and 29 columns
+2025/03/02 09:01:10 PM INFO:Data saved to H:\VScode\dashboard_demo-1\output\imported_raw.csv
+2025/03/02 09:01:10 PM INFO:Cleaning up raw data
+2025/03/02 09:01:10 PM ERROR:Session state variables not initialized!
+2025/03/02 09:01:10 PM INFO:Original file path: None
+2025/03/02 09:01:10 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 09:01:10 PM ERROR:Error: originalfilepath is None!
+2025/03/02 09:01:10 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 09:01:10 PM INFO:Data loaded, shape: (65278, 29)
+2025/03/02 09:01:11 PM INFO:Checking if H:\VScode\dashboard_demo-1\reference_files\PoliticalEntityDeDuped.csv has been updated.
+2025/03/02 09:01:11 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\reference_files\PoliticalEntityDeDuped.csv
+2025/03/02 09:01:11 PM INFO:get_file_modification_time executed successfully
+2025/03/02 09:01:11 PM INFO:Current modification time: 1740841102.2638545
+2025/03/02 09:01:11 PM INFO:Last modification time: None
+2025/03/02 09:01:11 PM INFO:is_file_updated executed successfully
+2025/03/02 09:01:11 PM INFO:Map file regentity_map_fname has been updated. Proceeding with deduplication.
+2025/03/02 09:01:11 PM INFO:File deduplication complete, shape: (65278, 34)
+2025/03/02 09:01:11 PM INFO:dedupe_entity_file executed successfully
+2025/03/02 09:01:11 PM INFO:Checking if H:\VScode\dashboard_demo-1\reference_files\PoliticalDonorsDeDuped.csv has been updated.
+2025/03/02 09:01:11 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\reference_files\PoliticalDonorsDeDuped.csv
+2025/03/02 09:01:11 PM INFO:get_file_modification_time executed successfully
+2025/03/02 09:01:11 PM INFO:Current modification time: 1740757863.2545311
+2025/03/02 09:01:11 PM INFO:Last modification time: None
+2025/03/02 09:01:11 PM INFO:is_file_updated executed successfully
+2025/03/02 09:01:11 PM INFO:Map file donor_map_fname has been updated. Proceeding with deduplication.
+2025/03/02 09:01:11 PM INFO:File deduplication complete, shape: (65278, 40)
+2025/03/02 09:01:11 PM INFO:dedupe_entity_file executed successfully
+2025/03/02 09:01:11 PM INFO:Raw Data cleanup completed
+2025/03/02 09:01:11 PM INFO:Data shape: (65278, 40)
+2025/03/02 09:01:12 PM INFO:Data saved to H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 09:01:12 PM INFO:Data cleanup completed, shape: (65278, 40)
+2025/03/02 09:01:12 PM INFO:raw_data_cleanup executed successfully
+2025/03/02 09:01:13 PM INFO:load_raw_data executed successfully
+2025/03/02 09:01:13 PM INFO:get_raw_data executed successfully
+2025/03/02 09:01:13 PM INFO:load_data_to_session executed successfully
+2025/03/02 09:01:13 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 09:01:13 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 09:01:13 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_donations.csv has been updated.
+2025/03/02 09:01:13 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/02 09:01:13 PM INFO:get_file_modification_time executed successfully
+2025/03/02 09:01:13 PM INFO:Current modification time: 1740949272.9577415
+2025/03/02 09:01:13 PM INFO:Last modification time: 1740757862.6744745
+2025/03/02 09:01:13 PM INFO:is_file_updated executed successfully
+2025/03/02 09:01:13 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 09:01:13 PM INFO:Loading and cleaning data... data.clean_and_enhance
+2025/03/02 09:01:16 PM ERROR:Number of rows in loaddata_df and raw_data do not match 78745 != 65278
+2025/03/02 09:01:16 PM ERROR:Attempting to remove duplicates
+2025/03/02 09:01:16 PM INFO:Data Updated with PartyName and PartyId successfully
+2025/03/02 09:01:16 PM INFO:map_mp_to_party executed successfully
+2025/03/02 09:01:16 PM INFO:Election Dates not found in session, loading now.
+2025/03/02 09:01:16 PM INFO:Election Dates Loaded Successfully.
+2025/03/02 09:01:16 PM INFO:load_election_dates executed successfully
+2025/03/02 09:02:04 PM INFO:Cleaned Data completed, shape: (65278, 58)
+2025/03/02 09:02:04 PM INFO:load_cleaned_data executed successfully
+2025/03/02 09:02:04 PM INFO:get_cleaned_data executed successfully
+2025/03/02 09:02:04 PM INFO:load_data_to_session executed successfully
+2025/03/02 09:02:04 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 09:02:04 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\party_summary.csv
+2025/03/02 09:02:04 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_data.csv has been updated.
+2025/03/02 09:02:04 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 09:02:04 PM INFO:get_file_modification_time executed successfully
+2025/03/02 09:02:04 PM INFO:Current modification time: 1740949324.6539018
+2025/03/02 09:02:04 PM INFO:Last modification time: None
+2025/03/02 09:02:04 PM INFO:is_file_updated executed successfully
+2025/03/02 09:02:04 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 09:02:04 PM INFO:Regulated entity summary saved to H:\VScode\dashboard_demo-1\output\party_summary.csv
+2025/03/02 09:02:04 PM INFO:Raw Data cleanup completed
+2025/03/02 09:02:04 PM INFO:Data shape: (1361, 5)
+2025/03/02 09:02:04 PM INFO:load_entity_summary_data executed successfully
+2025/03/02 09:02:04 PM INFO:get_party_summary_data executed successfully
+2025/03/02 09:02:04 PM INFO:load_data_to_session executed successfully
+2025/03/02 09:02:04 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 09:02:04 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_donorlist.csv
+2025/03/02 09:02:04 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_data.csv has been updated.
+2025/03/02 09:02:04 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 09:02:04 PM INFO:get_file_modification_time executed successfully
+2025/03/02 09:02:04 PM INFO:Current modification time: 1740949324.6539018
+2025/03/02 09:02:04 PM INFO:Last modification time: None
+2025/03/02 09:02:04 PM INFO:is_file_updated executed successfully
+2025/03/02 09:02:04 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 09:02:05 PM INFO:Donor data saved to H:\VScode\dashboard_demo-1\output\cleaned_donorlist.csv
+2025/03/02 09:02:05 PM INFO:Donor Data summary completed
+2025/03/02 09:02:05 PM INFO:Data shape: (30219, 5)
+2025/03/02 09:02:05 PM INFO:load_donorList_data executed successfully
+2025/03/02 09:02:05 PM INFO:get_donor_data executed successfully
+2025/03/02 09:02:05 PM INFO:load_data_to_session executed successfully
+2025/03/02 09:02:05 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 09:02:05 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_regentity.csv
+2025/03/02 09:02:05 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_data.csv has been updated.
+2025/03/02 09:02:05 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 09:02:05 PM INFO:get_file_modification_time executed successfully
+2025/03/02 09:02:05 PM INFO:Current modification time: 1740949324.6539018
+2025/03/02 09:02:05 PM INFO:Last modification time: 1740949324.6539018
+2025/03/02 09:02:05 PM INFO:is_file_updated executed successfully
+2025/03/02 09:02:05 PM INFO:Loading preprocessed data. Using H:\VScode\dashboard_demo-1\output\cleaned_regentity.csv dated load_donorlist_data_last_modified instead of H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/02 09:02:05 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/02 09:02:05 PM INFO:load_regulated_entity_data executed successfully
+2025/03/02 09:02:05 PM INFO:get_regentity_data executed successfully
+2025/03/02 09:02:05 PM INFO:load_data_to_session executed successfully
+2025/03/02 09:02:05 PM INFO:firstload executed successfully
+2025/03/02 09:02:05 PM INFO:initialise_data executed successfully
+2025/03/02 09:02:31 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:02:31 PM INFO:Running App setup...
+2025/03/02 09:02:31 PM INFO:Setting up the package
+2025/03/02 09:02:31 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:02:31 PM INFO:get_git_version executed successfully
+2025/03/02 09:02:31 PM INFO:Version: v20.122
+2025/03/02 09:02:31 PM INFO:Session_state variables initialized
+2025/03/02 09:02:31 PM INFO:Session state Setup complete
+2025/03/02 09:02:31 PM INFO:initialize_session_state executed successfully
+2025/03/02 09:02:31 PM INFO:Package setup complete
+2025/03/02 09:02:31 PM INFO:setup_package executed successfully
+2025/03/02 09:02:31 PM INFO:Running Menu setup...
+2025/03/02 09:02:31 PM INFO:get_git_version executed successfully
+2025/03/02 09:02:31 PM INFO:App Version: v20.143
+2025/03/02 09:02:31 PM INFO:Switched to page: Head Line Figures
+2025/03/02 09:02:31 PM ERROR:Error in hlf_body: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 46, in hlf_body
+    single_donation_entity = get_donations_ct(
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 115, in get_donations_ct
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/02 09:02:31 PM ERROR:Error in pagesetup: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 46, in hlf_body
+    single_donation_entity = get_donations_ct(
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 115, in get_donations_ct
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/02 09:02:31 PM CRITICAL:Menu setup crashed: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 46, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 46, in hlf_body
+    single_donation_entity = get_donations_ct(
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 115, in get_donations_ct
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/02 09:03:41 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:03:41 PM INFO:Running App setup...
+2025/03/02 09:03:41 PM INFO:Setting up the package
+2025/03/02 09:03:41 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:03:41 PM INFO:get_git_version executed successfully
+2025/03/02 09:03:41 PM INFO:Version: v20.122
+2025/03/02 09:03:41 PM INFO:Session_state variables initialized
+2025/03/02 09:03:41 PM INFO:Session state Setup complete
+2025/03/02 09:03:41 PM INFO:initialize_session_state executed successfully
+2025/03/02 09:03:41 PM INFO:Package setup complete
+2025/03/02 09:03:41 PM INFO:setup_package executed successfully
+2025/03/02 09:03:41 PM INFO:Running Menu setup...
+2025/03/02 09:03:41 PM INFO:get_git_version executed successfully
+2025/03/02 09:03:41 PM INFO:App Version: v20.143
+2025/03/02 09:03:41 PM INFO:Switched to page: Bequeths
+2025/03/02 09:03:42 PM INFO:load_and_filter_data executed successfully
+2025/03/02 09:03:42 PM INFO:display_summary_statistics executed successfully
+2025/03/02 09:03:42 PM INFO:display_textual_insights executed successfully
+2025/03/02 09:03:42 PM INFO:plot_bar_line_by_year executed successfully
+2025/03/02 09:03:42 PM INFO:plot_bar_line_by_year executed successfully
+2025/03/02 09:03:42 PM INFO:display_visualizations executed successfully
+2025/03/02 09:03:42 PM INFO:display_data_page executed successfully
+2025/03/02 09:03:42 PM INFO:pagesetup executed successfully
+2025/03/02 09:03:42 PM INFO:Data already loaded in session state.
+2025/03/02 09:03:47 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:03:47 PM INFO:Running App setup...
+2025/03/02 09:03:47 PM INFO:Setting up the package
+2025/03/02 09:03:47 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:03:47 PM INFO:get_git_version executed successfully
+2025/03/02 09:03:47 PM INFO:Version: v20.122
+2025/03/02 09:03:47 PM INFO:Session_state variables initialized
+2025/03/02 09:03:48 PM INFO:Session state Setup complete
+2025/03/02 09:03:48 PM INFO:initialize_session_state executed successfully
+2025/03/02 09:03:48 PM INFO:Package setup complete
+2025/03/02 09:03:48 PM INFO:setup_package executed successfully
+2025/03/02 09:03:48 PM INFO:Running Menu setup...
+2025/03/02 09:03:48 PM INFO:get_git_version executed successfully
+2025/03/02 09:03:48 PM INFO:App Version: v20.143
+2025/03/02 09:03:48 PM INFO:Switched to page: Corporate Donations
+2025/03/02 09:03:48 PM INFO:load_and_filter_data executed successfully
+2025/03/02 09:03:48 PM INFO:display_summary_statistics executed successfully
+2025/03/02 09:03:48 PM INFO:display_textual_insights executed successfully
+2025/03/02 09:03:48 PM INFO:plot_bar_line_by_year executed successfully
+2025/03/02 09:03:48 PM INFO:plot_bar_line_by_year executed successfully
+2025/03/02 09:03:48 PM INFO:display_visualizations executed successfully
+2025/03/02 09:03:48 PM INFO:display_data_page executed successfully
+2025/03/02 09:03:48 PM INFO:pagesetup executed successfully
+2025/03/02 09:03:48 PM INFO:Data already loaded in session state.
+2025/03/02 09:03:53 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:03:53 PM INFO:Running App setup...
+2025/03/02 09:03:53 PM INFO:Setting up the package
+2025/03/02 09:03:53 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:03:53 PM INFO:get_git_version executed successfully
+2025/03/02 09:03:53 PM INFO:Version: v20.122
+2025/03/02 09:03:53 PM INFO:Session_state variables initialized
+2025/03/02 09:03:53 PM INFO:Session state Setup complete
+2025/03/02 09:03:53 PM INFO:initialize_session_state executed successfully
+2025/03/02 09:03:53 PM INFO:Package setup complete
+2025/03/02 09:03:53 PM INFO:setup_package executed successfully
+2025/03/02 09:03:53 PM INFO:Running Menu setup...
+2025/03/02 09:03:53 PM INFO:get_git_version executed successfully
+2025/03/02 09:03:53 PM INFO:App Version: v20.143
+2025/03/02 09:03:53 PM INFO:Switched to page: Notes on Data and Manipulations
+2025/03/02 09:03:54 PM INFO:pagesetup executed successfully
+2025/03/02 09:03:54 PM INFO:Data already loaded in session state.
+2025/03/02 09:36:42 PM INFO:Logging is set up correctly! Current log level: ERROR
+2025/03/02 09:36:42 PM INFO:get_git_version executed successfully
+2025/03/02 09:36:42 PM INFO:get_git_version executed successfully
+2025/03/02 09:36:42 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:36:42 PM INFO:Running App setup...
+2025/03/02 09:36:42 PM INFO:Setting up the package
+2025/03/02 09:36:42 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:36:42 PM INFO:get_git_version executed successfully
+2025/03/02 09:36:42 PM INFO:Version: v20.122
+2025/03/02 09:36:42 PM INFO:Session_state variables initialized
+2025/03/02 09:36:43 PM INFO:Session state Setup complete
+2025/03/02 09:36:43 PM INFO:initialize_session_state executed successfully
+2025/03/02 09:36:43 PM INFO:Package setup complete
+2025/03/02 09:36:43 PM INFO:setup_package executed successfully
+2025/03/02 09:36:43 PM INFO:Running Menu setup...
+2025/03/02 09:36:43 PM INFO:get_git_version executed successfully
+2025/03/02 09:36:43 PM INFO:get_git_version executed successfully
+2025/03/02 09:36:43 PM INFO:get_git_version executed successfully
+2025/03/02 09:36:43 PM INFO:App Version: v20.143
+2025/03/02 09:36:43 PM INFO:Switched to page: Head Line Figures
+2025/03/02 09:36:43 PM ERROR:Error in hlf_body: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 46, in hlf_body
+    top_entity_ct, top_donations = get_top_entity_by_donations(filtered_df)
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 115, in get_donations_ct
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/02 09:36:43 PM ERROR:Error in pagesetup: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 46, in hlf_body
+    top_entity_ct, top_donations = get_top_entity_by_donations(filtered_df)
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 115, in get_donations_ct
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/02 09:36:43 PM CRITICAL:Menu setup crashed: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 46, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 46, in hlf_body
+    top_entity_ct, top_donations = get_top_entity_by_donations(filtered_df)
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 115, in get_donations_ct
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/02 09:38:09 PM INFO:Logging is set up correctly! Current log level: ERROR
+2025/03/02 09:38:09 PM INFO:get_git_version executed successfully
+2025/03/02 09:38:09 PM INFO:get_git_version executed successfully
+2025/03/02 09:38:09 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:38:09 PM INFO:Running App setup...
+2025/03/02 09:38:09 PM INFO:Setting up the package
+2025/03/02 09:38:09 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:38:09 PM INFO:get_git_version executed successfully
+2025/03/02 09:38:09 PM INFO:Version: v20.122
+2025/03/02 09:38:09 PM INFO:Session_state variables initialized
+2025/03/02 09:38:09 PM INFO:Session state Setup complete
+2025/03/02 09:38:09 PM INFO:initialize_session_state executed successfully
+2025/03/02 09:38:09 PM INFO:Package setup complete
+2025/03/02 09:38:09 PM INFO:setup_package executed successfully
+2025/03/02 09:38:09 PM INFO:Running Menu setup...
+2025/03/02 09:38:09 PM INFO:get_git_version executed successfully
+2025/03/02 09:38:09 PM INFO:get_git_version executed successfully
+2025/03/02 09:38:09 PM INFO:get_git_version executed successfully
+2025/03/02 09:38:09 PM INFO:App Version: v20.143
+2025/03/02 09:38:09 PM INFO:Switched to page: Bequeths
+2025/03/02 09:38:09 PM INFO:load_and_filter_data executed successfully
+2025/03/02 09:38:10 PM INFO:display_summary_statistics executed successfully
+2025/03/02 09:38:10 PM INFO:display_textual_insights executed successfully
+2025/03/02 09:38:10 PM INFO:plot_bar_line_by_year executed successfully
+2025/03/02 09:38:10 PM INFO:plot_bar_line_by_year executed successfully
+2025/03/02 09:38:10 PM INFO:display_visualizations executed successfully
+2025/03/02 09:38:10 PM INFO:display_data_page executed successfully
+2025/03/02 09:38:10 PM INFO:pagesetup executed successfully
+2025/03/02 09:38:10 PM INFO:Data already loaded in session state.
+2025/03/02 09:38:13 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:38:13 PM INFO:Running App setup...
+2025/03/02 09:38:13 PM INFO:Setting up the package
+2025/03/02 09:38:13 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:38:13 PM INFO:get_git_version executed successfully
+2025/03/02 09:38:13 PM INFO:Version: v20.122
+2025/03/02 09:38:13 PM INFO:Session_state variables initialized
+2025/03/02 09:38:13 PM INFO:Session state Setup complete
+2025/03/02 09:38:13 PM INFO:initialize_session_state executed successfully
+2025/03/02 09:38:13 PM INFO:Package setup complete
+2025/03/02 09:38:13 PM INFO:setup_package executed successfully
+2025/03/02 09:38:13 PM INFO:Running Menu setup...
+2025/03/02 09:38:13 PM INFO:get_git_version executed successfully
+2025/03/02 09:38:13 PM INFO:App Version: v20.143
+2025/03/02 09:38:13 PM INFO:Switched to page: Head Line Figures
+2025/03/02 09:38:13 PM INFO:load_and_filter_data executed successfully
+2025/03/02 09:38:13 PM INFO:display_summary_statistics executed successfully
+2025/03/02 09:38:13 PM INFO:hlf_body executed successfully
+2025/03/02 09:38:13 PM INFO:pagesetup executed successfully
+2025/03/02 09:38:13 PM INFO:Data already loaded in session state.
+2025/03/02 09:38:39 PM INFO:Logging is set up correctly! Current log level: ERROR
+2025/03/02 09:38:39 PM INFO:get_git_version executed successfully
+2025/03/02 09:38:39 PM INFO:get_git_version executed successfully
+2025/03/02 09:38:39 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:38:39 PM INFO:Running App setup...
+2025/03/02 09:38:39 PM INFO:Setting up the package
+2025/03/02 09:38:39 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:38:39 PM INFO:get_git_version executed successfully
+2025/03/02 09:38:39 PM INFO:Version: v20.122
+2025/03/02 09:38:39 PM INFO:Session_state variables initialized
+2025/03/02 09:38:39 PM INFO:Session state Setup complete
+2025/03/02 09:38:39 PM INFO:initialize_session_state executed successfully
+2025/03/02 09:38:39 PM INFO:Package setup complete
+2025/03/02 09:38:39 PM INFO:setup_package executed successfully
+2025/03/02 09:38:39 PM INFO:Running Menu setup...
+2025/03/02 09:38:39 PM INFO:get_git_version executed successfully
+2025/03/02 09:38:39 PM INFO:get_git_version executed successfully
+2025/03/02 09:38:39 PM INFO:get_git_version executed successfully
+2025/03/02 09:38:39 PM INFO:App Version: v20.143
+2025/03/02 09:38:39 PM INFO:Switched to page: Bequeths
+2025/03/02 09:38:39 PM INFO:load_and_filter_data executed successfully
+2025/03/02 09:38:40 PM INFO:display_summary_statistics executed successfully
+2025/03/02 09:38:40 PM INFO:display_textual_insights executed successfully
+2025/03/02 09:38:40 PM INFO:plot_bar_line_by_year executed successfully
+2025/03/02 09:38:40 PM INFO:plot_bar_line_by_year executed successfully
+2025/03/02 09:38:40 PM INFO:display_visualizations executed successfully
+2025/03/02 09:38:40 PM INFO:display_data_page executed successfully
+2025/03/02 09:38:40 PM INFO:pagesetup executed successfully
+2025/03/02 09:38:40 PM INFO:Data already loaded in session state.
+2025/03/02 09:38:41 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:38:41 PM INFO:Running App setup...
+2025/03/02 09:38:41 PM INFO:Setting up the package
+2025/03/02 09:38:41 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:38:41 PM INFO:get_git_version executed successfully
+2025/03/02 09:38:41 PM INFO:Version: v20.122
+2025/03/02 09:38:41 PM INFO:Session_state variables initialized
+2025/03/02 09:38:41 PM INFO:Session state Setup complete
+2025/03/02 09:38:41 PM INFO:initialize_session_state executed successfully
+2025/03/02 09:38:41 PM INFO:Package setup complete
+2025/03/02 09:38:41 PM INFO:setup_package executed successfully
+2025/03/02 09:38:41 PM INFO:Running Menu setup...
+2025/03/02 09:38:41 PM INFO:get_git_version executed successfully
+2025/03/02 09:38:41 PM INFO:App Version: v20.143
+2025/03/02 09:38:41 PM INFO:Switched to page: Head Line Figures
+2025/03/02 09:38:41 PM INFO:load_and_filter_data executed successfully
+2025/03/02 09:38:41 PM INFO:display_summary_statistics executed successfully
+2025/03/02 09:38:41 PM INFO:hlf_body executed successfully
+2025/03/02 09:38:41 PM INFO:pagesetup executed successfully
+2025/03/02 09:38:41 PM INFO:Data already loaded in session state.
+2025/03/02 09:39:11 PM INFO:Logging is set up correctly! Current log level: ERROR
+2025/03/02 09:39:11 PM INFO:get_git_version executed successfully
+2025/03/02 09:39:11 PM INFO:get_git_version executed successfully
+2025/03/02 09:39:11 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:39:11 PM INFO:Running App setup...
+2025/03/02 09:39:11 PM INFO:Setting up the package
+2025/03/02 09:39:11 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:39:11 PM INFO:get_git_version executed successfully
+2025/03/02 09:39:11 PM INFO:Version: v20.122
+2025/03/02 09:39:11 PM INFO:Session_state variables initialized
+2025/03/02 09:39:11 PM INFO:Session state Setup complete
+2025/03/02 09:39:11 PM INFO:initialize_session_state executed successfully
+2025/03/02 09:39:11 PM INFO:Package setup complete
+2025/03/02 09:39:11 PM INFO:setup_package executed successfully
+2025/03/02 09:39:11 PM INFO:Running Menu setup...
+2025/03/02 09:39:11 PM INFO:get_git_version executed successfully
+2025/03/02 09:39:11 PM INFO:get_git_version executed successfully
+2025/03/02 09:39:11 PM INFO:get_git_version executed successfully
+2025/03/02 09:39:11 PM INFO:App Version: v20.143
+2025/03/02 09:39:11 PM INFO:Switched to page: Bequeths
+2025/03/02 09:39:11 PM INFO:load_and_filter_data executed successfully
+2025/03/02 09:39:11 PM INFO:display_summary_statistics executed successfully
+2025/03/02 09:39:11 PM INFO:display_textual_insights executed successfully
+2025/03/02 09:39:11 PM INFO:plot_bar_line_by_year executed successfully
+2025/03/02 09:39:11 PM INFO:plot_bar_line_by_year executed successfully
+2025/03/02 09:39:11 PM INFO:display_visualizations executed successfully
+2025/03/02 09:39:11 PM INFO:display_data_page executed successfully
+2025/03/02 09:39:11 PM INFO:pagesetup executed successfully
+2025/03/02 09:39:11 PM INFO:Data already loaded in session state.
+2025/03/02 09:39:13 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:39:13 PM INFO:Running App setup...
+2025/03/02 09:39:13 PM INFO:Setting up the package
+2025/03/02 09:39:13 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/02 09:39:13 PM INFO:get_git_version executed successfully
+2025/03/02 09:39:13 PM INFO:Version: v20.122
+2025/03/02 09:39:13 PM INFO:Session_state variables initialized
+2025/03/02 09:39:13 PM INFO:Session state Setup complete
+2025/03/02 09:39:13 PM INFO:initialize_session_state executed successfully
+2025/03/02 09:39:13 PM INFO:Package setup complete
+2025/03/02 09:39:13 PM INFO:setup_package executed successfully
+2025/03/02 09:39:13 PM INFO:Running Menu setup...
+2025/03/02 09:39:13 PM INFO:get_git_version executed successfully
+2025/03/02 09:39:13 PM INFO:App Version: v20.143
+2025/03/02 09:39:13 PM INFO:Switched to page: Head Line Figures
+2025/03/02 09:39:13 PM INFO:load_and_filter_data executed successfully
+2025/03/02 09:39:13 PM INFO:display_summary_statistics executed successfully
+2025/03/02 09:39:13 PM ERROR:Error in hlf_body: MetricMixin.metric() missing 1 required positional argument: 'value'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 81, in hlf_body
+    st.metric(label="Totalunique_donors)}")
+  File "H:\python310\lib\site-packages\streamlit\runtime\metrics_util.py", line 410, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+TypeError: MetricMixin.metric() missing 1 required positional argument: 'value'
+2025/03/02 09:39:13 PM ERROR:Error in pagesetup: MetricMixin.metric() missing 1 required positional argument: 'value'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 81, in hlf_body
+    st.metric(label="Totalunique_donors)}")
+  File "H:\python310\lib\site-packages\streamlit\runtime\metrics_util.py", line 410, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+TypeError: MetricMixin.metric() missing 1 required positional argument: 'value'
+2025/03/02 09:39:13 PM CRITICAL:Menu setup crashed: MetricMixin.metric() missing 1 required positional argument: 'value'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 46, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 81, in hlf_body
+    st.metric(label="Totalunique_donors)}")
+  File "H:\python310\lib\site-packages\streamlit\runtime\metrics_util.py", line 410, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+TypeError: MetricMixin.metric() missing 1 required positional argument: 'value'

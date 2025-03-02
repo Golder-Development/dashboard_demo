@@ -66,10 +66,10 @@ def load_donorList_data(main_file="data_clear",
     if output_csv:
         donorlist_df.to_csv(cleaneddatafilepath, index=False)
         logger.info(f"Donor data saved to {cleaneddatafilepath}")
-
-    st.info("Donor data summary successfully")
-    st.info(f"Data has {donorlist_df.shape[0]} rows "
-             f"and {donorlist_df.shape[1]} columns")
+    if logger.level <= 20:
+        st.info("Donor data summary successfully")
+        st.info(f"Data has {donorlist_df.shape[0]} rows "
+                f"and {donorlist_df.shape[1]} columns")
 
     logger.info("Donor Data summary completed")
     logger.info(f"Data shape: {donorlist_df.shape}")
@@ -84,7 +84,7 @@ def load_regulated_entity_data(
     output_csv=False,
     originaldatafilepath="cleaned_data_fname",
     cleaneddatafilepath="cleaned_regentity_fname",
-    ):
+        ):
     if (
         st.session_state.get(main_file) is None
         or st.session_state.get(originaldatafilepath) is None
@@ -115,7 +115,9 @@ def load_regulated_entity_data(
             logger.error(f"Error loading {main_file} from session state: {e}")
             return None
     else:
-        regent_df = pd.read_csv(cleaneddatafilepath) if cleaneddatafilepath else None
+        regent_df = (
+            pd.read_csv(cleaneddatafilepath) if cleaneddatafilepath else None
+        )
         if regent_df is None:
             return None
 
@@ -139,10 +141,10 @@ def load_regulated_entity_data(
     if output_csv:
         regent_df.to_csv(cleaneddatafilepath, index=False)
         logger.info(f"Regulated entity data saved to {cleaneddatafilepath}")
-
-    st.info("Regulated entity data successfully")
-    st.info(f"Data has {regent_df.shape[0]} rows "
-             f"and {regent_df.shape[1]} columns")
+    if logger.level <= 20:
+        st.info("Regulated entity data successfully")
+        st.info(f"Data has {regent_df.shape[0]} rows "
+                f"and {regent_df.shape[1]} columns")
 
     logger.info("Raw Data cleanup completed")
     logger.info(f"Data shape: {regent_df.shape}")
@@ -193,7 +195,8 @@ def load_entity_summary_data(
             logger.error("No datafile passed for entity summary creation!")
         else:
             entitysummary_df = datafile
-            st.info("Data loaded from datafile passed to function")
+            if logger.level <= 20:
+                st.info("Data loaded from datafile passed to function")
             logger.error("Data loaded from datafile passed to function")
 
     # Create a DataFrame with the sum, count and mean of the donations
@@ -224,10 +227,10 @@ def load_entity_summary_data(
     if output_csv:
         RegulatedEntity_df.to_csv(cleaned_data_file)
         logger.info(f"Regulated entity summary saved to {cleaned_data_file}")
-
-    st.info("Regulated entity summary successfully")
-    st.info(f"Data has {RegulatedEntity_df.shape[0]} rows "
-             f"and {RegulatedEntity_df.shape[1]} columns")
+    if logger.level <= 20:
+        st.info("Regulated entity summary successfully")
+        st.info(f"Data has {RegulatedEntity_df.shape[0]} rows "
+                f"and {RegulatedEntity_df.shape[1]} columns")
 
     logger.info("Raw Data cleanup completed")
     logger.info(f"Data shape: {RegulatedEntity_df.shape}")

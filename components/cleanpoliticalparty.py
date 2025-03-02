@@ -100,7 +100,7 @@ def get_party_df_from_pdpy(
     to_date="2024-12-31",
     while_mp=False,
     collapse=True
-    ):
+        ):
     mppartymemb_df = fetch_mps_party_memberships(
         from_date=from_date,
         to_date=to_date,
