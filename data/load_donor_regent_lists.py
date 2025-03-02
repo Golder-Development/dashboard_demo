@@ -8,7 +8,7 @@ from data.data_utils import try_to_use_preprocessed_data
 
 
 @log_function_call
-def load_donorList_data(main_file="data_clean",
+def load_donorList_data(main_file="data_clear",
                         cleaned_file="data_donor",
                         streamlitrun=True,
                         output_csv=False,
@@ -17,6 +17,7 @@ def load_donorList_data(main_file="data_clean",
     if (
         st.session_state.get(originaldatafilepath) is None
         or st.session_state.get(cleaneddatafilepath) is None
+        or st.session_state.get(main_file) is None
     ):
         st.error(f"Session state variables not initialized! {__name__}")
         logger.error(f"Session state variables not initialized! {__name__}")
@@ -37,7 +38,7 @@ def load_donorList_data(main_file="data_clean",
 
     # Load and clean the data
     if streamlitrun:
-        donorlist_df = st.session_state.get(cleaneddatafilepath)
+        donorlist_df = st.session_state.get(main_file)
         if donorlist_df is None:
             st.error(f"No data found in session state! {__name__}")
             logger.error(f"No data found in session state! {__name__}")
@@ -86,15 +87,16 @@ def load_regulated_entity_data(
     ):
     if (
         st.session_state.get(main_file) is None
-        or st.session_state.get(cleaned_file) is None
+        or st.session_state.get(originaldatafilepath) is None
+        or st.session_state.get(cleaneddatafilepath) is None
     ):
         st.error(f"Session state variables not initialized! {__name__}")
         logger.error(f"Session state variables not initialized! {__name__}")
         return None
 
     # Check if we can use cached cleaned data
-    originaldatafilepath = st.session_state.get(main_file)
-    cleaneddatafilepath = st.session_state.get(cleaned_file)
+    originaldatafilepath = st.session_state.get(originaldatafilepath)
+    cleaneddatafilepath = st.session_state.get(cleaneddatafilepath)
     # Use function to check if file has been updated and if not,
     # load preprocessed data
     loaddata_df = try_to_use_preprocessed_data(
@@ -108,9 +110,9 @@ def load_regulated_entity_data(
     # Load and clean the data
     if streamlitrun:
         try:
-            regent_df = st.session_state.get("data_clean")
+            regent_df = st.session_state.get(main_file)
         except Exception as e:
-            logger.error(f"Error loading data_clean from session state: {e}")
+            logger.error(f"Error loading {main_file} from session state: {e}")
             return None
     else:
         regent_df = pd.read_csv(cleaneddatafilepath) if cleaneddatafilepath else None
@@ -159,9 +161,17 @@ def load_entity_summary_data(
         originaldatafilepath="cleaned_data_fname",
         cleaneddatafilepath="party_summary_fname"
         ):
+    if (
+        st.session_state.get(main_file) is None
+        or st.session_state.get(originaldatafilepath) is None
+        or st.session_state.get(cleaneddatafilepath) is None
+    ):
+        st.error(f"Session state variables not initialized! {__name__}")
+        logger.error(f"Session state variables not initialized! {__name__}")
+        return None
     # Check if we can use cached cleaned data
-    originaldatafilepath = st.session_state.get("originaldatafilepath")
-    cleaned_data_file = st.session_state.get("cleaneddatafilepath")
+    originaldatafilepath = st.session_state.get(originaldatafilepath)
+    cleaned_data_file = st.session_state.get(cleaneddatafilepath)
     # Use function to check if file has been updated and if not,
     # load preprocessed data
     loaddata_df = try_to_use_preprocessed_data(originaldatafilepath,
@@ -172,7 +182,7 @@ def load_entity_summary_data(
         return loaddata_df
 
     if streamlitrun:
-        entitysummary_df = st.session_state.get(originaldatafilepath)
+        entitysummary_df = st.session_state.get(main_file)
         if entitysummary_df is None:
             st.error(f"No data found in session state! {__name__}")
             logger.error(f"No data found in session state! {__name__}")
