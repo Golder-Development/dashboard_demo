@@ -6,62 +6,73 @@ Run this file first to start the app
 import streamlit as st
 import os
 # Set the page config at the very beginning of the script
-st.set_page_config(page_title="Political Party Analysis", layout="wide")
+st.set_page_config(page_title="Political Party Analysis",
+                   layout="wide")
 
 # import local modules
 try:
     import setup
     import politicalpartyanalysis
     from utils.logger import logger
-    from data.data_loader import firstload
+    from data.data_utils import initialise_data
 except ImportError as e:
     raise SystemExit(f"❌ Error: Failed to import modules - {e}")
 
 
 # log current working directory
 if 'logger' in globals():
+    # log current file and path
     logger.info("🚀 Streamlit App Starting...")
+    current_file = os.path.abspath(__file__)
+    current_path = os.path.dirname(current_file)
     logger.info(f"Current Working Directory: {os.getcwd()}")
+    logger.info(f"🚀 running {current_path}, {current_file}")
 else:
     # Run the setup function
     raise SystemExit("❌ Error: Logger is not properly configured!")
 # Run the setup function
 try:
+    logger.info("Running App setup...")
     setup.setup_package()
     logger.info("✅ Setup completed successfully.")
 except Exception as e:
     logger.critical(f"App setup crashed: {e}", exc_info=True)
-    st.error("App setup failed. Please check logs.")
+    st.error(f"App setup failed. Please check logs. {__name__}")
     raise SystemExit("❌ App setup failed. Exiting.")
 
 # run political party analysis
 try:
+    logger.info("Running Menu setup...")
     politicalpartyanalysis.pagesetup()
     logger.info("✅ Menu setup completed successfully.")
 except Exception as e:
     logger.critical(f"Menu setup crashed: {e}", exc_info=True)
-    st.error("Menu setup failed. Please check logs.")
+    st.error(f"Menu setup failed. Please check logs. {__name__}")
     raise SystemExit("❌ Menu setup failed. Exiting.")
 
 
 # Run the first load function
 try:
-    if "data_clean" not in st.session_state or st.session_state.data_clean is None:
+    if "data_clean" not in st.session_state or \
+            st.session_state.data_clean is None:
         logger.info("No data found in session state, running firstload()")
+        # Create a loading message
+        loading_message = st.empty()
         # Display a loading message
-        load_message = st.empty()
-        load_message.markdown("<h3 style='text-align: center; color: blue;'>"
-                              "Please wait while the data sets are being "
-                              "calculated...</h3>", unsafe_allow_html=True)
-        firstload()  # Load the data
-        logger.info("✅ Data first load completed successfully.")
+        loading_message.markdown(
+            "<h3 style='text-align: center; color: blue;'>"
+            "Please wait while the data sets are being "
+            "calculated...</h3>",
+            unsafe_allow_html=True,
+        )
+        initialise_data()  # Load the data
         # Clear the loading message
-        load_message.empty()
+        loading_message.empty()
     else:
         logger.info("Data already loaded in session state.")
 except Exception as e:
     logger.critical(f"❌ First load crashed: {e}", exc_info=True)
-    st.error("Data loading failed. Please check logs.")
+    st.error(f"Data loading failed. Please check logs. {e}")
     raise SystemExit("❌ Data loading failed. Exiting.")
 
 logger.info("🎉 App is fully loaded and ready!")

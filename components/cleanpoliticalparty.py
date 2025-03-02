@@ -1,10 +1,10 @@
 import pandas as pd
 import re
-import os
 import pdpy
 import streamlit as st
 from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
+
 
 @log_function_call
 def load_mppartymemb_pypd():
@@ -103,12 +103,17 @@ def get_party_df_from_pdpy(
     from_date="2001-01-01", to_date="2024-12-31", while_mp=False, collapse=True
 ):
     mppartymemb_df = pdpy.fetch_mps_party_memberships(
-        from_date=from_date, to_date=to_date, while_mp=while_mp, collapse=collapse
+        from_date=from_date,
+        to_date=to_date,
+        while_mp=while_mp,
+        collapse=collapse
     )
     # feedback
     mppartymemb_df = mppartymemb_df.drop(columns=["person_id", "party_id"])
     logger.debug("Fetched data from PdPy sample")
-    logger.debug(mppartymemb_df[["given_name", "family_name", "party_name"]].head())
+    logger.debug(mppartymemb_df[["given_name",
+                                 "family_name",
+                                 "party_name"]].head())
     # Save final dataset
     mppartymemb_df.to_csv(st.session_state.mppartymemb_fname, index=False)
     return mppartymemb_df
@@ -124,11 +129,13 @@ def create_unified_name_column(given_name, family_name):
 # Function to determine party based on name
 def get_party_from_pdpy_df(pdpydf, name):
     if pdpydf is not None:
-        party = pdpydf.loc[pdpydf["First_Last_Name"] == name, "party_name"].values
+        party = pdpydf.loc[pdpydf["First_Last_Name"] == name,
+                           "party_name"].values
         if party.size > 0:
             return party[0]
         else:
-            party = pdpydf.loc[pdpydf["display_name"] == name, "party_name"].values
+            party = pdpydf.loc[pdpydf["display_name"] == name,
+                               "party_name"].values
             if party.size > 0:
                 return party[0]
         return "Unknown"
@@ -178,11 +185,11 @@ def clean_political_party_data():
         ].head()
         )
     logger.debug("sample of cleaned file"
-    f" {df[['CleanedName', 'Status']].head()} ")
+                 f" {df[['CleanedName', 'Status']].head()} ")
     # print count of records by party
     logger.debug("count of records by party"
-    f" {df["PoliticalParty_pdpy"].value_counts()} ")# Save final dataset
-
+                 f" {df['PoliticalParty_pdpy'].value_counts()} ")
+    # Save final dataset
     final_file_path = st.session_state.mp_party_memberships_file_path
     df.to_csv(final_file_path, index=False)
 

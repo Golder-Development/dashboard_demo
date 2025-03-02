@@ -2,29 +2,34 @@
 Configuration file for the package.
 """
 import os
-from utils.logger import logger
+import streamlit as st
+from utils.logger import logger, log_function_call
 from utils.version import get_git_version
 from utils.global_variables import initialize_session_state
 
+
+@log_function_call
 def setup_package():
     """
     Function to setup the package.
     """
+    # log current file and path
     logger.info("Setting up the package")
     # Define the directory
     MODULE_DIR = os.path.dirname(__file__)
     logger.info(f"Module directory: {MODULE_DIR}")
     # Define the name of the package
-    name = "Political Party Analysis Dashboard"
+    packagename = "Political Party Analysis Dashboard"
     # Define the version of the package
     try:
         version = get_git_version(MODULE_DIR)
         logger.info(f"Version: {version}")
     except Exception as e:
-        logger.error(f"Error getting version: {e}")
-
+        logger.critical(f"App setup crashed: {e}", exc_info=True)
+        st.error(f"App setup failed. Please check logs. {e}")
+        raise SystemExit("❌ App setup failed. Exiting.")
     # Define the description of the package
-    description = "A package to clean and dedupe data"
+    packagedescription = "A package to clean and dedupe data"
     # Define the author of the package
     author = "Paul Golder"
     # Define the email address of the package author
@@ -46,7 +51,7 @@ def setup_package():
         "bcrypt"
     ]
     # Define the entry points of the package
-    entry_points = {"PoliticalPartyAnalysisDashboard": ["main = main:main"]}
+    packageentry_points = {"PoliticalPartyAnalysisDashboard": ["main = main:main"]}
     # Define the package data
     package_data = {"data": ["data/Donations_accepted_by_political_parties.csv"]}
     # Define the package classifiers
@@ -56,12 +61,15 @@ def setup_package():
         "Operating System :: OS Independent",
     ]
     # Define the package keywords
-    keywords = ["data", "cleaning", "deduplication", "political party analysis"]
+    packagekeywords = ["data", "cleaning", "deduplication", "political party analysis"]
     # Define the package URL
-    url = "https://github.com/Golder-Development/dashboard_demo"
+    packageurl = "https://github.com/Golder-Development/dashboard_demo"
     # initialize variables
     try:
         initialize_session_state()
+        logger.info("Package setup complete")
     except Exception as e:
-        logger.error(f"Error initializing session: {e}")
-    logger.info("Package setup complete")
+        logger.critical(f"App setup crashed: {e}", exc_info=True)
+        st.error(f"App setup failed. Please check logs. {e}")
+        raise SystemExit("❌ App setup failed. Exiting.")
+    return

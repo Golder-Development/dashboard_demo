@@ -1,7 +1,9 @@
 # all globel variables and constants are defined here  #
 
 import streamlit as st
-from utils.logger import log_function_call, logger
+from utils.logger import (log_function_call,
+                          logger,
+                          init_state_var)
 import config  # Import the config file
 import os
 
@@ -20,13 +22,11 @@ import os
 
 @log_function_call
 def initialize_session_state():
+    # Set globel env variables
+    os.environ["LOG_LEVEL"] = config.LOG_LEVEL
+    init_state_var("LOG_LEVEL", config.LOG_LEVEL)
+    # log current file and path
     """Load global variables into session_state if they are not already set."""
-    # Define a helper function to initialize values from config
-    @log_function_call
-    def init_state_var(var_name, config_value):
-        if var_name not in st.session_state:
-            st.session_state[var_name] = config_value
-
     # Initialize simple configuration values
     init_state_var("BASE_DIR", config.BASE_DIR)
     init_state_var("filenames", config.FILENAMES)
@@ -36,17 +36,13 @@ def initialize_session_state():
     init_state_var("data_remappings", config.DATA_REMAPPINGS)
     init_state_var("filter_def", config.FILTER_DEF)
     init_state_var("security", config.SECURITY)
-    init_state_var("perc_target", config.perc_target)  # Add perc_target initialization
+    init_state_var("perc_target", config.perc_target)
     init_state_var("RERUN_MP_PARTY_MEMBERSHIP", config.RERUN_MP_PARTY_MEMBERSHIP)
-    init_state_var("LOG_LEVEL", config.LOG_LEVEL)
     # Initialize directories
     init_state_var("directories", config.DIRECTORIES)
 
-    # Set globel env variables
-    os.environ["LOG_LEVEL"] = config.LOG_LEVEL
-
     # Ensure directories exist
-    for key, path in st.session_state.directories.items():
+    for key, path in config.DIRECTORIES.items():
         os.makedirs(path, exist_ok=True)  # Creates if not exists
 
     # Initialize directory references
@@ -57,35 +53,18 @@ def initialize_session_state():
         "logs_dir",
         "components_dir",
         "app_pages_dir",
-        "utils_dir"
+        "utils_dir",
             ]:
-        init_state_var(dir_key, st.session_state["directories"].get(dir_key))
-
-    # Initialize directories
-    init_state_var("directories", config.DIRECTORIES)
-
-    # Ensure directories exist
-    for key, path in st.session_state.directories.items():
-        os.makedirs(path, exist_ok=True)  # Create directory
+        init_state_var(dir_key, config.DIRECTORIES.get(dir_key))
 
     # Initialize filenames using correct directory mapping
     for dir_key, filenames in config.FILENAMES.items():
         if isinstance(filenames, dict):  # process dictionary entries
             for fname_key, filename in filenames.items():
                 file_path = (
-                    os.path.join(st.session_state["directories"].get(dir_key, ""), filename)
+                    os.path.join(config.DIRECTORIES.get(dir_key, ""), filename)
                 )
                 init_state_var(fname_key, file_path)
-
-    # Handle `BASE_DIR` separately (since it's stored as a dictionary)
-    for base_key, base_filename in config.FILENAMES["BASE_DIR"].items():
-        base_path = os.path.join(st.session_state["BASE_DIR"], base_filename)
-        init_state_var(base_key, base_path)
-
-    # Handle `base_data` separately (since it's stored as a dictionary)
-    base_data_key, base_data_filename = list(config.FILENAMES["BASE_DIR"].items())[0]
-    base_data_path = os.path.join(st.session_state["BASE_DIR"], base_data_filename)
-    init_state_var(base_data_key, base_data_path)
 
     # Initialize Cash_ftr filter
     init_state_var("Cash_ftr", config.FILTER_DEF.get("Cash_ftr"))
@@ -93,6 +72,8 @@ def initialize_session_state():
     # write session state as list to log
     logger.info("Session_state variables initialized")
     for key, value in st.session_state.items():
-        logger.info(f"{key}: {value}")
+        logger.debug(f"{key}: {value}")
 
-    logger.info("Session state Setup complete")
+    return logger.info("Session state Setup complete")
+# End of function initialize_session_state
+# End of file

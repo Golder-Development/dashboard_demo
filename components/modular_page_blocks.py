@@ -1,6 +1,5 @@
 import streamlit as st
 import datetime as dt
-from data.data_loader import load_cleaned_data
 from components.filters import filter_by_date, apply_filters
 from components.calculations import (
     compute_summary_statistics,
@@ -9,15 +8,13 @@ from components.calculations import (
     calculate_percentage,
     format_number,
 )
-from components.Visualisations import plot_custom_bar_chart, plot_bar_line_by_year
+from components.Visualisations import plot_bar_line_by_year
 from components.text_management import (
     load_page_text,
-    check_password,
     save_text,
     toggle_soft_delete,
     permanent_delete,
 )
-from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
 
 @log_function_call
@@ -253,7 +250,8 @@ def load_and_filter_perentity(group_entity, filter_key, pageref_label):
     """Loads and filters dataset based on filter_key from session state."""
     cleaned_df = st.session_state["data_clean"]
     if cleaned_df is None:
-        st.error("No data found. Please upload a dataset.")
+        st.error(f"No data found. Please upload a dataset. {__name__}")
+        logger.error(f"No data found. Please upload a dataset. {__name__}")
         return None, None, None, None, None, None, None, None
 
     # Get min and max dates from the dataset
@@ -346,7 +344,8 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
     """Loads and filters dataset based on filter_key from session state."""
     cleaned_df = st.session_state["data_clean"]
     if cleaned_df is None:
-        st.error("No data found. Please upload a dataset.")
+        st.error(f"No data found. Please upload a dataset. {__name__}")
+        logger.error(f"No data found. Please upload a dataset. {__name__}")
         return None, None
 
     # Get min and max dates from the dataset
@@ -379,6 +378,9 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
             f"Error: chosen filter {filterentityname} or"
             f" {filterentityid} not in the dataset."
         )
+        logger.error(
+            f"Error: chosen filter {filterentityname} or"
+            f" {filterentityid} not in the dataset.")
         return (None, None, None, None, None, None, None, None)
 
     # Create a mapping of RegulatedEntityName -> RegulatedEntityId
