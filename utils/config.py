@@ -16,7 +16,7 @@ perc_target = 0.5
 LOG_LEVEL = "ERROR"
 
 DIRECTORIES = {  # "directory_name": "directory_path"
-    "BASE_DIR": os.path.abspath(os.path.dirname(__file__)),
+    "BASE_DIR": Path(os.getcwd()),
     "data_dir": os.path.join(BASE_DIR, "data"),
     "output_dir": os.path.join(BASE_DIR, "output"),
     "logs_dir": os.path.join(BASE_DIR, "logs"),
