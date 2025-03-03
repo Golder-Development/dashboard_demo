@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 from components.filters import apply_filters
 from utils.logger import logger
-from utils.logger import log_function_call  # Import decorator
+
 
 # Convert placeholder date to datetime once
 PLACEHOLDER_DATE = st.session_state.get("PLACEHOLDER_DATE")
@@ -52,7 +52,8 @@ def get_blank_received_date_ct(df, filters=None):
 
 
 def get_blank_regulated_entity_id_ct(df, filters=None):
-    return count_missing_values(df, "RegulatedEntityId", PLACEHOLDER_ID, filters)
+    return count_missing_values(df, "RegulatedEntityId", PLACEHOLDER_ID,
+                                filters)
 
 
 def get_blank_donor_id_ct(df, filters=None):
@@ -260,7 +261,7 @@ def format_number(value):
     elif value >= 10_000:
         return f"{value / 1_000:,.1f}k"
     else:
-        return f"{value:,.2f}"
+        return f"{value:,.0f}"
 
 
 def get_median_donation(df, filters=None):
@@ -336,8 +337,41 @@ def get_noofdonors_per_ent_stdev(df, filters=None):
 # Function to calculate key values
 def compute_summary_statistics(df, filters):
     """Compute key statistics like total donations, mean, std, etc."""
-    if df.empty:
-        return {}
+    try:
+        df = apply_filters(df, filters)
+    except Exception as e:
+        logger.error(f"Error applying filters: {e}")
+        return {
+            "unique_reg_entities": 0,
+            "unique_donors": 0,
+            "unique_donations": 0,
+            "total_value": 0.0,
+            "mean_value": 0.0,
+            "avg_donations_per_entity": 0.0,
+            "avg_value_per_entity": 0.0,
+            "avg_donors_per_entity": 0.0,
+            "donors_stdev": 0.0,
+            "value_stdev": 0.0,
+            "noofdonors_per_ent_stdev": 0.0,
+        }
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError("Filtered result is not a DataFrame")
+
+    if df is None or df.empty:
+        return {
+            "unique_reg_entities": 0,
+            "unique_donors": 0,
+            "unique_donations": 0,
+            "total_value": 0.0,
+            "mean_value": 0.0,
+            "avg_donations_per_entity": 0.0,
+            "avg_value_per_entity": 0.0,
+            "avg_donors_per_entity": 0.0,
+            "donors_stdev": 0.0,
+            "value_stdev": 0.0,
+            "noofdonors_per_ent_stdev": 0.0,
+        }
 
     regentity_ct = get_regentity_ct(df, filters)
     donors_ct = get_donors_ct(df, filters)
@@ -381,46 +415,40 @@ def determine_groups_optimized(df, entity, measure, thresholds_dict):
         pd.Series: A Series containing assigned groups for each row.
     """
     # Step 1: Compute total measure per entity
-    # (avoiding duplicate calculations)
-    entity_totals = df.groupby(entity)[measure].sum().to_dict()
-    # Step 2: Convert entity totals into a DataFrame for fast merging
-    totals_df = pd.DataFrame(
-        list(entity_totals.items()), columns=[entity, "total_measure"]
+    entity_totals = df.groupby(entity, as_index=False)[measure].sum()
+    entity_totals.rename(columns={measure: "total_measure"}, inplace=True)
+
+    # Step 2: Assign groups based on thresholds
+    entity_totals["group"] = entity_totals["total_measure"].apply(
+        lambda x: assign_group(x, thresholds_dict, entity_totals[entity])
     )
-    # Step 3: Assign groups based on thresholds
-    def assign_group(total):
-        """Assigns a group based on thresholds or
-        returns the entity name if above max threshold."""
-        for (low, high), group_name in thresholds_dict.items():
-            if low <= total <= high:
-                return group_name
-        return None  # If no group matches, will be handled later
-    # Apply the threshold mapping
-    totals_df["group"] = totals_df["total_measure"].apply(assign_group)
-    # Step 4: Ensure entities above the max threshold
-    # are assigned their entity name
-    max_threshold = max(high for (_, high) in thresholds_dict.keys())
-    totals_df.loc[
-        totals_df["total_measure"] > max_threshold, "group"
-    ] = totals_df[entity]
-    # Step 5: Merge back into the original DataFrame
-    merged_df = df.merge(totals_df[[entity, "group"]],
-                         on=entity, how="left")
-    # Step 6: ensure number of rows is the same
-    if len(merged_df) != len(df):
-        st.error(f"Length of dataframes do not match:"
-                 f" original {len(df)}, merged {len(merged_df)}")
-        logger.error(f"Length of dataframes do not match:"
-                     f" original {len(df)}, merged {len(merged_df)}")
-        merged_df = merged_df.drop_duplicates()
-        # recheck row counts
-        if len(merged_df) != len(df):
-            st.error(f"Length of dataframes do not match after"
-                     f" deduplication: original {len(df)},"
-                     f" merged {len(merged_df)}")
-            logger.critical(f"Length of dataframes do not match after"
-                            f" deduplication: original {len(df)},"
-                            f" merged {len(merged_df)}")
+
+    # Step 3: Merge back into the original DataFrame
+    df = df.merge(entity_totals[[entity, "group"]], on=entity, how="left")
+
+    # Step 4: Validate row count consistency
+    if len(df) != len(df):
+        st.error(f"Length mismatch: original {len(df)}, merged {len(df)}")
+        logger.error(f"Length mismatch: original {len(df)}, merged {len(df)}")
+        df.drop_duplicates(inplace=True)
+
+        if len(df) != len(df):
+            st.error(f"Mismatch after deduplication: original {len(df)},"
+                     f" merged {len(df)}")
+            logger.critical(f"Mismatch after deduplication: original"
+                            f" {len(df)}, merged {len(df)}")
             return None
-    # Step 7: Return the group column
-    return merged_df["group"]
+
+    # Step 5: Return the group column
+    return df["group"]
+
+
+def assign_group(total, thresholds_dict, entity_name):
+    """
+    Assigns a group based on thresholds.
+    If above the max threshold, returns the entity name.
+    """
+    for (low, high), group_name in thresholds_dict.items():
+        if low <= total <= high:
+            return group_name
+    return entity_name  # Assign entity name if above max threshold

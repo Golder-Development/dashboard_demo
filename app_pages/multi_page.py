@@ -30,7 +30,8 @@ class MultiPage:
             logger.error(f"Error fetching version: {e}")
         st.text(f"Version: {version}")
         if not self.pages:
-            st.warning("No pages have been added yet!")
+            if logger.level <= 20:
+                st.warning("No pages have been added yet!")
             logger.warning("No pages have been added yet!")
             return
 

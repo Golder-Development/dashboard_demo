@@ -43,11 +43,13 @@ def load_and_filter_data(filter_key, pagereflabel):
 
 
 @log_function_call
-def display_summary_statistics(filtered_df, overall_df, target_label, pageref_label):
+def display_summary_statistics(filtered_df, overall_df, target_label,
+                               pageref_label):
     """Displays summary statistics for the given dataset."""
     pageref_label_dss = pageref_label + "_dss"
     if filtered_df is None or filtered_df.empty:
-        st.warning(f"No {target_label}s found for the selected filters.")
+        if logger.level <= 20:
+            st.warning(f"No {target_label}s found for the selected filters.")
         return
 
     min_date_df = get_mindate(filtered_df).date()
@@ -83,7 +85,8 @@ def display_visualizations(graph_df, target_label, pageref_label):
     pageref_label_vis = pageref_label + "_vis"
     """Displays charts for the given dataset."""
     if graph_df.empty:
-        st.warning(f"No data available for {target_label}s.")
+        if logger.level <= 20:
+            st.warning(f"No data available for {target_label}s.")
         return
 
     left_column, right_column = st.columns(2)
@@ -94,7 +97,7 @@ def display_visualizations(graph_df, target_label, pageref_label):
             graph_df,
             XValues="YearReceived",
             YValues="Value",
-            GroupData="RegulatedEntityType",
+            GroupData="RegEntity_Group",
             XLabel="Year",
             YLabel="Value of Donations £",
             Title=f"Value of {target_label}s by" " Year and Entity",

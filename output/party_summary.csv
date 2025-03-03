@@ -246,7 +246,18 @@
 244,Compass,64000.0,5,12800.0,Very Small Entity
 245,Conor Burns,24734.75,9,2748.3055555555557,Small Entity
 246,Conor Mcginn,8431.1,4,2107.775,Very Small Entity
-247,Conservative And Unionist Party,419413549.81,20356,20603.927579583415,Conservative And Unionist Party
+247,Conservative And Unionist Party,419413549.81,20356,20603.927579583415,"0       A Minority Pastime Limited
+1                      A. A. Craig
+2                  Abisola Ifasawo
+3                    Adam Holloway
+4                      Adam Ingram
+                   ...            
+1356     Young Britons' Foundation
+1357                 Yvette Cooper
+1358               Yvonne Fovargue
+1359                 Zac Goldsmith
+1360                Órlaithí Flynn
+Name: RegulatedEntityName, Length: 1361, dtype: object"
 248,Conservative Christian Fellowship,1123627.54,33,34049.3193939394,Small Medium Entity
 249,Conservative Councillors' Association,53150.0,7,7592.857142857143,Small Entity
 250,Conservative Friends Of Chinese,11250.0,1,11250.0,Single Donation Entity
@@ -496,7 +507,18 @@
 494,Grahame Morris,7200.110000000001,3,2400.036666666667,Very Small Entity
 495,Grant Shapps,6938.0,3,2312.6666666666665,Very Small Entity
 496,Grassroots Out Ltd,2611474.76,18,145081.9311111111,Small Medium Entity
-497,Green Party,4976510.87,1045,4762.211358851675,Green Party
+497,Green Party,4976510.87,1045,4762.211358851675,"0       A Minority Pastime Limited
+1                      A. A. Craig
+2                  Abisola Ifasawo
+3                    Adam Holloway
+4                      Adam Ingram
+                   ...            
+1356     Young Britons' Foundation
+1357                 Yvette Cooper
+1358               Yvonne Fovargue
+1359                 Zac Goldsmith
+1360                Órlaithí Flynn
+Name: RegulatedEntityName, Length: 1361, dtype: object"
 498,Green-Leaves,20000.0,2,10000.0,Very Small Entity
 499,Greg Clark,15000.0,4,3750.0,Very Small Entity
 500,Greg Hands,92688.53,16,5793.033125,Small Medium Entity
@@ -739,7 +761,18 @@
 737,Labour Leave Limited,375000.0,9,41666.666666666664,Small Entity
 738,Labour Network In England Ltd,10000.0,1,10000.0,Single Donation Entity
 739,Labour No To Av,200995.49000000002,3,66998.49666666667,Very Small Entity
-740,Labour Party,357496731.14,18126,19722.869421825002,Labour Party
+740,Labour Party,357496731.14,18126,19722.869421825002,"0       A Minority Pastime Limited
+1                      A. A. Craig
+2                  Abisola Ifasawo
+3                    Adam Holloway
+4                      Adam Ingram
+                   ...            
+1356     Young Britons' Foundation
+1357                 Yvette Cooper
+1358               Yvonne Fovargue
+1359                 Zac Goldsmith
+1360                Órlaithí Flynn
+Name: RegulatedEntityName, Length: 1361, dtype: object"
 741,Labour People Ltd,70000.0,7,10000.0,Small Entity
 742,Labour Together,206000.0,8,25750.0,Small Entity
 743,Labour Tomorrow Ltd,335400.0,9,37266.666666666664,Small Entity
@@ -763,7 +796,18 @@
 761,Lgbtory,10000.0,1,10000.0,Single Donation Entity
 762,Liam Byrne,64747.34,15,4316.489333333333,Small Entity
 763,Liberal Democrat Friends Of Israel,43000.0,5,8600.0,Very Small Entity
-764,Liberal Democrats,99275063.97,12191,8143.307683537036,Liberal Democrats
+764,Liberal Democrats,99275063.97,12191,8143.307683537036,"0       A Minority Pastime Limited
+1                      A. A. Craig
+2                  Abisola Ifasawo
+3                    Adam Holloway
+4                      Adam Ingram
+                   ...            
+1356     Young Britons' Foundation
+1357                 Yvette Cooper
+1358               Yvonne Fovargue
+1359                 Zac Goldsmith
+1360                Órlaithí Flynn
+Name: RegulatedEntityName, Length: 1361, dtype: object"
 765,Liberal Democrats Scottish Parliamentary Party,113270.7,20,5663.535,Small Medium Entity
 766,Liberal Party,15076.32,14,1076.8799999999999,Small Entity
 767,Life,12569.02,3,4189.673333333333,Very Small Entity
@@ -1303,7 +1347,18 @@
 1301,Trudy Harrison,12191.11,2,6095.555,Very Small Entity
 1302,Trust,140000.0,4,35000.0,Very Small Entity
 1303,Tulip Siddiq,10000.0,1,10000.0,Single Donation Entity
-1304,Uk Independence Party (Ukip),17793986.89,1810,9830.931983425415,Uk Independence Party (Ukip)
+1304,Uk Independence Party (Ukip),17793986.89,1810,9830.931983425415,"0       A Minority Pastime Limited
+1                      A. A. Craig
+2                  Abisola Ifasawo
+3                    Adam Holloway
+4                      Adam Ingram
+                   ...            
+1356     Young Britons' Foundation
+1357                 Yvette Cooper
+1358               Yvonne Fovargue
+1359                 Zac Goldsmith
+1360                Órlaithí Flynn
+Name: RegulatedEntityName, Length: 1361, dtype: object"
 1305,Uk-Eu Open Policy Limited (Campaign Name: Best For Britain),140000.0,6,23333.333333333332,Small Entity
 1306,Ulster Unionist Party,194941.34,51,3822.3792156862746,Small Medium Entity
 1307,Uncaged Campaigns Ltd,7461.0,2,3730.5,Very Small Entity

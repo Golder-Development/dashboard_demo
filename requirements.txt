@@ -11,3 +11,4 @@ rapidfuzz
 streamlit
 pytest
 bcrypt
+pathlib

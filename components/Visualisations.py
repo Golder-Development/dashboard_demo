@@ -11,12 +11,16 @@ def plot_regressionplot(graph_df,
                         Title,
                         widget_key,
                         show_trendline=True):
-    if graph_df is None or not all(col in graph_df.columns for col in [XValues, YValues]):
+    if graph_df is None or not all(
+        col in graph_df.columns for col in [XValues, YValues]
+    ):
         st.error("Missing required columns in dataset.")
         logger.error(f"Missing required columns in dataset. {__name__}")
         return
 
-    fig = px.scatter(graph_df, x=XValues, y=YValues, title=title, trendline="ols" if show_trendline else None)
+    fig = px.scatter(graph_df, x=XValues, y=YValues,
+                     title=Title,
+                     trendline="ols" if show_trendline else None)
 
     if show_trendline and len(fig.data) > 1:
         fig.add_trace(fig.data[1])
@@ -38,27 +42,32 @@ def plot_pie_chart(graph_df,
                    XLabel="Category",
                    hole=0.3,
                    widget_key="default"):
-    
     # Ensure the required columns exist
     if XValues not in graph_df.columns or YValues not in graph_df.columns:
-        st.error(f"❌ Error: Columns '{XValues}' or '{YValues}' not found in dataset.")
-        logger.error(f"Columns '{XValues}' or '{YValues}' not found in dataset. {__name__}")
+        st.error(f"❌ Error: Columns '{XValues}' or"
+                 f" '{YValues}' not found in dataset.")
+        logger.error(f"Columns '{XValues}' or '{YValues}' "
+                     f"not found in dataset. {__name__}")
         return
-    
     # Handle missing values in category column
     graph_df = graph_df.copy()  # Prevent modifying original DataFrame
     if graph_df[XValues].isna().any():
-        st.warning(f"⚠️ Missing values detected in '{XValues}'. Filling with 'Unknown'.")
+        st.warning(f"⚠️ Missing values detected in '{XValues}'."
+                   " Filling with 'Unknown'.")
         graph_df[XValues] = graph_df[XValues].fillna("Unknown")
 
     # Aggregate data
     data = graph_df.groupby(XValues, as_index=False)[YValues].sum()
 
     # Apply custom colors if enabled
-    color_discrete_map = {cat: color_mapping.get(cat, "#636efa") for cat in data[XValues]} if use_custom_colors and color_mapping else None
+    color_discrete_map = (
+        {cat: color_mapping.get(cat, "#636efa") for cat in data[XValues]}
+        if use_custom_colors and color_mapping
+        else None
+    )
 
     # Create pie chart
-    fig = px.pie(data, names=XValues, values=YValues, title=Title, hole=hole, 
+    fig = px.pie(data, names=XValues, values=YValues, title=Title, hole=hole,
                  color=XValues, color_discrete_map=color_discrete_map)
 
     # Display chart
@@ -73,12 +82,19 @@ def plot_custom_bar_chart(graph_df,
                           use_custom_colors,
                           color_mapping,
                           group_column=None):
-    if graph_df is None or not all(col in graph_df.columns for col in [XValues, YValues]):
+    if graph_df is None or not all(
+        col in graph_df.columns for col in [XValues, YValues]
+    ):
         logger.error(f"Missing required columns in dataset. {__name__}")
         return
-
-    color_discrete_map = {cat: color_mapping.get(cat, "#636efa") for cat in graph_df[group_column]} if use_custom_colors and group_column else None
-
+    color_discrete_map = (
+        {
+            cat: color_mapping.get(cat, "#636efa")
+            for cat in graph_df[group_column]
+        }
+        if use_custom_colors and group_column
+        else None
+    )
     fig = px.bar(graph_df,
                  x=XValues,
                  y=YValues,
@@ -105,7 +121,9 @@ def plot_bar_line_by_year(graph_df,
                           widget_key="default"):
     if Title is None:
         Title = f"{YLabel} by {XLabel}, grouped by {LegendTitle}"
-    if graph_df is None or XValues not in graph_df.columns or YValues not in graph_df.columns:
+    if (graph_df is None or
+        XValues not in graph_df.columns or
+            YValues not in graph_df.columns):
         st.error("Missing required columns in dataset.")
         logger.error(f"Missing required columns in dataset. {__name__}")
         return
@@ -133,7 +151,7 @@ def plot_bar_line_by_year(graph_df,
         value=(min(year_options), max(year_options)),
         key=f"year_slider_{widget_key}"
     )
-    df_agg = df_agg[(df_agg[XValues] >= selected_years[0]) & 
+    df_agg = df_agg[(df_agg[XValues] >= selected_years[0]) &
                     (df_agg[XValues] <= selected_years[1])]
 
     fig = go.Figure()
