@@ -7725,3 +7725,733 @@ KeyError: 'RegEntity_Group'
 2025/03/03 08:17:21 AM INFO:hlf_body executed successfully
 2025/03/03 08:17:21 AM INFO:pagesetup executed successfully
 2025/03/03 08:17:21 AM INFO:Data already loaded in session state.
+2025/03/03 08:18:57 AM INFO:Logging is set up correctly! Current log level: ERROR
+2025/03/03 08:18:57 AM INFO:get_git_version executed successfully
+2025/03/03 08:18:57 AM INFO:get_git_version executed successfully
+2025/03/03 08:18:57 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:18:57 AM INFO:Running App setup...
+2025/03/03 08:18:57 AM INFO:Setting up the package
+2025/03/03 08:18:57 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:18:57 AM INFO:get_git_version executed successfully
+2025/03/03 08:18:57 AM INFO:Version: v20.123
+2025/03/03 08:18:57 AM INFO:Session_state variables initialized
+2025/03/03 08:18:57 AM INFO:Session state Setup complete
+2025/03/03 08:18:57 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:18:57 AM INFO:Package setup complete
+2025/03/03 08:18:57 AM INFO:setup_package executed successfully
+2025/03/03 08:18:57 AM INFO:Running Menu setup...
+2025/03/03 08:18:57 AM INFO:get_git_version executed successfully
+2025/03/03 08:18:57 AM ERROR:Error in pagesetup: unexpected indent (headlinefigures.py, line 138)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 10, in pagesetup
+    from app_pages.headlinefigures import hlf_body
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 138
+    sde_stats["unique_donations"], tstats["unique_donations"]
+IndentationError: unexpected indent
+2025/03/03 08:18:57 AM CRITICAL:Menu setup crashed: unexpected indent (headlinefigures.py, line 138)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 46, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 10, in pagesetup
+    from app_pages.headlinefigures import hlf_body
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 138
+    sde_stats["unique_donations"], tstats["unique_donations"]
+IndentationError: unexpected indent
+2025/03/03 08:19:16 AM INFO:Logging is set up correctly! Current log level: ERROR
+2025/03/03 08:19:16 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:16 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:16 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:19:16 AM INFO:Running App setup...
+2025/03/03 08:19:16 AM INFO:Setting up the package
+2025/03/03 08:19:16 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:19:16 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:16 AM INFO:Version: v20.123
+2025/03/03 08:19:16 AM INFO:Session_state variables initialized
+2025/03/03 08:19:16 AM INFO:Session state Setup complete
+2025/03/03 08:19:16 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:19:16 AM INFO:Package setup complete
+2025/03/03 08:19:16 AM INFO:setup_package executed successfully
+2025/03/03 08:19:16 AM INFO:Running Menu setup...
+2025/03/03 08:19:16 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:16 AM ERROR:Error in pagesetup: unmatched ')' (headlinefigures.py, line 139)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 10, in pagesetup
+    from app_pages.headlinefigures import hlf_body
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 139
+    )
+    ^
+SyntaxError: unmatched ')'
+2025/03/03 08:19:16 AM CRITICAL:Menu setup crashed: unmatched ')' (headlinefigures.py, line 139)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 46, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 10, in pagesetup
+    from app_pages.headlinefigures import hlf_body
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 139
+    )
+    ^
+SyntaxError: unmatched ')'
+2025/03/03 08:19:28 AM INFO:Logging is set up correctly! Current log level: ERROR
+2025/03/03 08:19:28 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:28 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:28 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:19:28 AM INFO:Running App setup...
+2025/03/03 08:19:28 AM INFO:Setting up the package
+2025/03/03 08:19:28 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:19:28 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:28 AM INFO:Version: v20.123
+2025/03/03 08:19:28 AM INFO:Session_state variables initialized
+2025/03/03 08:19:29 AM INFO:Session state Setup complete
+2025/03/03 08:19:29 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:19:29 AM INFO:Package setup complete
+2025/03/03 08:19:29 AM INFO:setup_package executed successfully
+2025/03/03 08:19:29 AM INFO:Running Menu setup...
+2025/03/03 08:19:29 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:29 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:29 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:29 AM INFO:App Version: v20.144
+2025/03/03 08:19:29 AM INFO:Switched to page: Bequeths
+2025/03/03 08:19:29 AM INFO:load_and_filter_data executed successfully
+2025/03/03 08:19:29 AM INFO:display_summary_statistics executed successfully
+2025/03/03 08:19:29 AM INFO:display_textual_insights executed successfully
+2025/03/03 08:19:29 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:19:29 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:19:29 AM INFO:display_visualizations executed successfully
+2025/03/03 08:19:29 AM INFO:display_data_page executed successfully
+2025/03/03 08:19:29 AM INFO:pagesetup executed successfully
+2025/03/03 08:19:29 AM INFO:Data already loaded in session state.
+2025/03/03 08:19:30 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:19:30 AM INFO:Running App setup...
+2025/03/03 08:19:30 AM INFO:Setting up the package
+2025/03/03 08:19:30 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:19:30 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:30 AM INFO:Version: v20.123
+2025/03/03 08:19:30 AM INFO:Session_state variables initialized
+2025/03/03 08:19:31 AM INFO:Session state Setup complete
+2025/03/03 08:19:31 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:19:31 AM INFO:Package setup complete
+2025/03/03 08:19:31 AM INFO:setup_package executed successfully
+2025/03/03 08:19:31 AM INFO:Running Menu setup...
+2025/03/03 08:19:31 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:31 AM INFO:App Version: v20.144
+2025/03/03 08:19:31 AM INFO:Switched to page: Head Line Figures
+2025/03/03 08:19:31 AM INFO:load_and_filter_data executed successfully
+2025/03/03 08:19:31 AM INFO:display_summary_statistics executed successfully
+2025/03/03 08:19:31 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:19:31 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:19:31 AM ERROR:Error in hlf_body: name 'sde_stats' is not defined
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 138, in hlf_body
+    sde_stats["unique_donations"], tstats["unique_donations"]
+NameError: name 'sde_stats' is not defined
+2025/03/03 08:19:31 AM ERROR:Error in pagesetup: name 'sde_stats' is not defined
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 138, in hlf_body
+    sde_stats["unique_donations"], tstats["unique_donations"]
+NameError: name 'sde_stats' is not defined
+2025/03/03 08:19:31 AM CRITICAL:Menu setup crashed: name 'sde_stats' is not defined
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 46, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 138, in hlf_body
+    sde_stats["unique_donations"], tstats["unique_donations"]
+NameError: name 'sde_stats' is not defined
+2025/03/03 08:19:52 AM INFO:Logging is set up correctly! Current log level: ERROR
+2025/03/03 08:19:52 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:52 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:52 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:19:52 AM INFO:Running App setup...
+2025/03/03 08:19:52 AM INFO:Setting up the package
+2025/03/03 08:19:52 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:19:52 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:52 AM INFO:Version: v20.123
+2025/03/03 08:19:52 AM INFO:Session_state variables initialized
+2025/03/03 08:19:52 AM INFO:Session state Setup complete
+2025/03/03 08:19:52 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:19:52 AM INFO:Package setup complete
+2025/03/03 08:19:52 AM INFO:setup_package executed successfully
+2025/03/03 08:19:52 AM INFO:Running Menu setup...
+2025/03/03 08:19:52 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:52 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:52 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:52 AM INFO:App Version: v20.144
+2025/03/03 08:19:52 AM INFO:Switched to page: Bequeths
+2025/03/03 08:19:52 AM INFO:load_and_filter_data executed successfully
+2025/03/03 08:19:52 AM INFO:display_summary_statistics executed successfully
+2025/03/03 08:19:52 AM INFO:display_textual_insights executed successfully
+2025/03/03 08:19:52 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:19:52 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:19:52 AM INFO:display_visualizations executed successfully
+2025/03/03 08:19:52 AM INFO:display_data_page executed successfully
+2025/03/03 08:19:52 AM INFO:pagesetup executed successfully
+2025/03/03 08:19:52 AM INFO:Data already loaded in session state.
+2025/03/03 08:19:55 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:19:55 AM INFO:Running App setup...
+2025/03/03 08:19:55 AM INFO:Setting up the package
+2025/03/03 08:19:55 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:19:55 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:55 AM INFO:Version: v20.123
+2025/03/03 08:19:55 AM INFO:Session_state variables initialized
+2025/03/03 08:19:56 AM INFO:Session state Setup complete
+2025/03/03 08:19:56 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:19:56 AM INFO:Package setup complete
+2025/03/03 08:19:56 AM INFO:setup_package executed successfully
+2025/03/03 08:19:56 AM INFO:Running Menu setup...
+2025/03/03 08:19:56 AM INFO:get_git_version executed successfully
+2025/03/03 08:19:56 AM INFO:App Version: v20.144
+2025/03/03 08:19:56 AM INFO:Switched to page: Head Line Figures
+2025/03/03 08:19:56 AM INFO:load_and_filter_data executed successfully
+2025/03/03 08:19:56 AM INFO:display_summary_statistics executed successfully
+2025/03/03 08:19:56 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:19:56 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:19:56 AM ERROR:Error in hlf_body: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 120, in hlf_body
+    compute_summary_statistics(filtered_df,
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 355, in compute_summary_statistics
+    regentity_ct = get_regentity_ct(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 121, in get_regentity_ct
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/03 08:19:56 AM ERROR:Error in pagesetup: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 120, in hlf_body
+    compute_summary_statistics(filtered_df,
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 355, in compute_summary_statistics
+    regentity_ct = get_regentity_ct(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 121, in get_regentity_ct
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/03 08:19:56 AM CRITICAL:Menu setup crashed: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 46, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 120, in hlf_body
+    compute_summary_statistics(filtered_df,
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 355, in compute_summary_statistics
+    regentity_ct = get_regentity_ct(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 121, in get_regentity_ct
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/03 08:23:38 AM INFO:Logging is set up correctly! Current log level: ERROR
+2025/03/03 08:23:38 AM INFO:get_git_version executed successfully
+2025/03/03 08:23:38 AM INFO:get_git_version executed successfully
+2025/03/03 08:23:38 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:23:38 AM INFO:Running App setup...
+2025/03/03 08:23:38 AM INFO:Setting up the package
+2025/03/03 08:23:38 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:23:38 AM INFO:get_git_version executed successfully
+2025/03/03 08:23:38 AM INFO:Version: v20.123
+2025/03/03 08:23:38 AM INFO:Session_state variables initialized
+2025/03/03 08:23:38 AM INFO:Session state Setup complete
+2025/03/03 08:23:38 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:23:38 AM INFO:Package setup complete
+2025/03/03 08:23:38 AM INFO:setup_package executed successfully
+2025/03/03 08:23:38 AM INFO:Running Menu setup...
+2025/03/03 08:23:38 AM INFO:get_git_version executed successfully
+2025/03/03 08:23:38 AM INFO:get_git_version executed successfully
+2025/03/03 08:23:38 AM INFO:get_git_version executed successfully
+2025/03/03 08:23:38 AM INFO:App Version: v20.144
+2025/03/03 08:23:38 AM INFO:Switched to page: Bequeths
+2025/03/03 08:23:38 AM INFO:load_and_filter_data executed successfully
+2025/03/03 08:23:38 AM INFO:display_summary_statistics executed successfully
+2025/03/03 08:23:38 AM INFO:display_textual_insights executed successfully
+2025/03/03 08:23:38 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:23:38 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:23:38 AM INFO:display_visualizations executed successfully
+2025/03/03 08:23:38 AM INFO:display_data_page executed successfully
+2025/03/03 08:23:38 AM INFO:pagesetup executed successfully
+2025/03/03 08:23:38 AM INFO:Data already loaded in session state.
+2025/03/03 08:23:43 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:23:43 AM INFO:Running App setup...
+2025/03/03 08:23:43 AM INFO:Setting up the package
+2025/03/03 08:23:43 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:23:43 AM INFO:get_git_version executed successfully
+2025/03/03 08:23:43 AM INFO:Version: v20.123
+2025/03/03 08:23:43 AM INFO:Session_state variables initialized
+2025/03/03 08:23:43 AM INFO:Session state Setup complete
+2025/03/03 08:23:43 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:23:43 AM INFO:Package setup complete
+2025/03/03 08:23:43 AM INFO:setup_package executed successfully
+2025/03/03 08:23:43 AM INFO:Running Menu setup...
+2025/03/03 08:23:43 AM INFO:get_git_version executed successfully
+2025/03/03 08:23:43 AM INFO:App Version: v20.144
+2025/03/03 08:23:43 AM INFO:Switched to page: Head Line Figures
+2025/03/03 08:23:43 AM INFO:load_and_filter_data executed successfully
+2025/03/03 08:23:43 AM INFO:display_summary_statistics executed successfully
+2025/03/03 08:23:44 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:23:44 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:23:44 AM ERROR:Error in hlf_body: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 120, in hlf_body
+    compute_summary_statistics(filtered_df,
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 340, in compute_summary_statistics
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/03 08:23:44 AM ERROR:Error in pagesetup: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 120, in hlf_body
+    compute_summary_statistics(filtered_df,
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 340, in compute_summary_statistics
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/03 08:23:44 AM CRITICAL:Menu setup crashed: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 46, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 120, in hlf_body
+    compute_summary_statistics(filtered_df,
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 340, in compute_summary_statistics
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/03 08:24:26 AM INFO:Logging is set up correctly! Current log level: ERROR
+2025/03/03 08:24:26 AM INFO:get_git_version executed successfully
+2025/03/03 08:24:26 AM INFO:get_git_version executed successfully
+2025/03/03 08:24:26 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:24:26 AM INFO:Running App setup...
+2025/03/03 08:24:26 AM INFO:Setting up the package
+2025/03/03 08:24:26 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:24:26 AM INFO:get_git_version executed successfully
+2025/03/03 08:24:26 AM INFO:Version: v20.123
+2025/03/03 08:24:26 AM INFO:Session_state variables initialized
+2025/03/03 08:24:26 AM INFO:Session state Setup complete
+2025/03/03 08:24:26 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:24:26 AM INFO:Package setup complete
+2025/03/03 08:24:26 AM INFO:setup_package executed successfully
+2025/03/03 08:24:26 AM INFO:Running Menu setup...
+2025/03/03 08:24:26 AM INFO:get_git_version executed successfully
+2025/03/03 08:24:26 AM INFO:get_git_version executed successfully
+2025/03/03 08:24:26 AM INFO:get_git_version executed successfully
+2025/03/03 08:24:26 AM INFO:App Version: v20.144
+2025/03/03 08:24:26 AM INFO:Switched to page: Bequeths
+2025/03/03 08:24:26 AM INFO:load_and_filter_data executed successfully
+2025/03/03 08:24:26 AM INFO:display_summary_statistics executed successfully
+2025/03/03 08:24:26 AM INFO:display_textual_insights executed successfully
+2025/03/03 08:24:26 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:24:27 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:24:27 AM INFO:display_visualizations executed successfully
+2025/03/03 08:24:27 AM INFO:display_data_page executed successfully
+2025/03/03 08:24:27 AM INFO:pagesetup executed successfully
+2025/03/03 08:24:27 AM INFO:Data already loaded in session state.
+2025/03/03 08:24:27 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:24:27 AM INFO:Running App setup...
+2025/03/03 08:24:27 AM INFO:Setting up the package
+2025/03/03 08:24:27 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:24:27 AM INFO:get_git_version executed successfully
+2025/03/03 08:24:27 AM INFO:Version: v20.123
+2025/03/03 08:24:27 AM INFO:Session_state variables initialized
+2025/03/03 08:24:28 AM INFO:Session state Setup complete
+2025/03/03 08:24:28 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:24:28 AM INFO:Package setup complete
+2025/03/03 08:24:28 AM INFO:setup_package executed successfully
+2025/03/03 08:24:28 AM INFO:Running Menu setup...
+2025/03/03 08:24:28 AM INFO:get_git_version executed successfully
+2025/03/03 08:24:28 AM INFO:App Version: v20.144
+2025/03/03 08:24:28 AM INFO:Switched to page: Head Line Figures
+2025/03/03 08:24:28 AM INFO:load_and_filter_data executed successfully
+2025/03/03 08:24:28 AM INFO:display_summary_statistics executed successfully
+2025/03/03 08:24:28 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:24:28 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:24:28 AM ERROR:Error in hlf_body: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 120, in hlf_body
+    compute_summary_statistics(filtered_df, {"RegEntity_Group": "Single Donation Entity"})
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 340, in compute_summary_statistics
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/03 08:24:28 AM ERROR:Error in pagesetup: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 120, in hlf_body
+    compute_summary_statistics(filtered_df, {"RegEntity_Group": "Single Donation Entity"})
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 340, in compute_summary_statistics
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/03 08:24:28 AM CRITICAL:Menu setup crashed: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 46, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 73, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo-1\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 120, in hlf_body
+    compute_summary_statistics(filtered_df, {"RegEntity_Group": "Single Donation Entity"})
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 340, in compute_summary_statistics
+    df = apply_filters(df, filters)
+  File "H:\VScode\dashboard_demo-1\components\filters.py", line 37, in apply_filters
+    conditions.append(df[column] == value)
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 6119, in _cmp_method
+    res_values = ops.comparison_op(lvalues, rvalues, op)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 344, in comparison_op
+    res_values = comp_method_OBJECT_ARRAY(op, lvalues, rvalues)
+  File "H:\python310\lib\site-packages\pandas\core\ops\array_ops.py", line 129, in comp_method_OBJECT_ARRAY
+    result = libops.scalar_compare(x.ravel(), y, op)
+  File "ops.pyx", line 95, in pandas._libs.ops.scalar_compare
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/03 08:25:41 AM INFO:Logging is set up correctly! Current log level: ERROR
+2025/03/03 08:25:41 AM INFO:get_git_version executed successfully
+2025/03/03 08:25:41 AM INFO:get_git_version executed successfully
+2025/03/03 08:25:41 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:25:41 AM INFO:Running App setup...
+2025/03/03 08:25:41 AM INFO:Setting up the package
+2025/03/03 08:25:41 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:25:41 AM INFO:get_git_version executed successfully
+2025/03/03 08:25:41 AM INFO:Version: v20.123
+2025/03/03 08:25:41 AM INFO:Session_state variables initialized
+2025/03/03 08:25:41 AM INFO:Session state Setup complete
+2025/03/03 08:25:41 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:25:41 AM INFO:Package setup complete
+2025/03/03 08:25:41 AM INFO:setup_package executed successfully
+2025/03/03 08:25:41 AM INFO:Running Menu setup...
+2025/03/03 08:25:41 AM INFO:get_git_version executed successfully
+2025/03/03 08:25:41 AM INFO:get_git_version executed successfully
+2025/03/03 08:25:41 AM INFO:get_git_version executed successfully
+2025/03/03 08:25:41 AM INFO:App Version: v20.144
+2025/03/03 08:25:41 AM INFO:Switched to page: Bequeths
+2025/03/03 08:25:41 AM INFO:load_and_filter_data executed successfully
+2025/03/03 08:25:42 AM INFO:display_summary_statistics executed successfully
+2025/03/03 08:25:42 AM INFO:display_textual_insights executed successfully
+2025/03/03 08:25:42 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:25:42 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:25:42 AM INFO:display_visualizations executed successfully
+2025/03/03 08:25:42 AM INFO:display_data_page executed successfully
+2025/03/03 08:25:42 AM INFO:pagesetup executed successfully
+2025/03/03 08:25:42 AM INFO:Data already loaded in session state.
+2025/03/03 08:25:43 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:25:43 AM INFO:Running App setup...
+2025/03/03 08:25:43 AM INFO:Setting up the package
+2025/03/03 08:25:43 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:25:43 AM INFO:get_git_version executed successfully
+2025/03/03 08:25:43 AM INFO:Version: v20.123
+2025/03/03 08:25:43 AM INFO:Session_state variables initialized
+2025/03/03 08:25:43 AM INFO:Session state Setup complete
+2025/03/03 08:25:43 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:25:43 AM INFO:Package setup complete
+2025/03/03 08:25:43 AM INFO:setup_package executed successfully
+2025/03/03 08:25:43 AM INFO:Running Menu setup...
+2025/03/03 08:25:43 AM INFO:get_git_version executed successfully
+2025/03/03 08:25:43 AM INFO:App Version: v20.144
+2025/03/03 08:25:43 AM INFO:Switched to page: Head Line Figures
+2025/03/03 08:25:43 AM INFO:load_and_filter_data executed successfully
+2025/03/03 08:25:43 AM INFO:display_summary_statistics executed successfully
+2025/03/03 08:25:43 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:25:43 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:25:44 AM ERROR:Error applying filters: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/03 08:25:44 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:25:44 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:25:44 AM INFO:hlf_body executed successfully
+2025/03/03 08:25:44 AM INFO:pagesetup executed successfully
+2025/03/03 08:25:44 AM INFO:Data already loaded in session state.
+2025/03/03 08:27:16 AM INFO:Logging is set up correctly! Current log level: ERROR
+2025/03/03 08:27:16 AM INFO:get_git_version executed successfully
+2025/03/03 08:27:16 AM INFO:get_git_version executed successfully
+2025/03/03 08:27:16 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:27:16 AM INFO:Running App setup...
+2025/03/03 08:27:16 AM INFO:Setting up the package
+2025/03/03 08:27:16 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:27:16 AM INFO:get_git_version executed successfully
+2025/03/03 08:27:16 AM INFO:Version: v20.123
+2025/03/03 08:27:16 AM INFO:Session_state variables initialized
+2025/03/03 08:27:16 AM INFO:Session state Setup complete
+2025/03/03 08:27:16 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:27:16 AM INFO:Package setup complete
+2025/03/03 08:27:16 AM INFO:setup_package executed successfully
+2025/03/03 08:27:16 AM INFO:Running Menu setup...
+2025/03/03 08:27:16 AM INFO:get_git_version executed successfully
+2025/03/03 08:27:16 AM INFO:get_git_version executed successfully
+2025/03/03 08:27:16 AM INFO:get_git_version executed successfully
+2025/03/03 08:27:16 AM INFO:App Version: v20.144
+2025/03/03 08:27:16 AM INFO:Switched to page: Bequeths
+2025/03/03 08:27:16 AM INFO:load_and_filter_data executed successfully
+2025/03/03 08:27:17 AM INFO:display_summary_statistics executed successfully
+2025/03/03 08:27:17 AM INFO:display_textual_insights executed successfully
+2025/03/03 08:27:17 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:27:17 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:27:17 AM INFO:display_visualizations executed successfully
+2025/03/03 08:27:17 AM INFO:display_data_page executed successfully
+2025/03/03 08:27:17 AM INFO:pagesetup executed successfully
+2025/03/03 08:27:17 AM INFO:Data already loaded in session state.
+2025/03/03 08:27:18 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:27:18 AM INFO:Running App setup...
+2025/03/03 08:27:18 AM INFO:Setting up the package
+2025/03/03 08:27:18 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:27:18 AM INFO:get_git_version executed successfully
+2025/03/03 08:27:18 AM INFO:Version: v20.123
+2025/03/03 08:27:18 AM INFO:Session_state variables initialized
+2025/03/03 08:27:18 AM INFO:Session state Setup complete
+2025/03/03 08:27:18 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:27:18 AM INFO:Package setup complete
+2025/03/03 08:27:18 AM INFO:setup_package executed successfully
+2025/03/03 08:27:18 AM INFO:Running Menu setup...
+2025/03/03 08:27:18 AM INFO:get_git_version executed successfully
+2025/03/03 08:27:18 AM INFO:App Version: v20.144
+2025/03/03 08:27:18 AM INFO:Switched to page: Head Line Figures
+2025/03/03 08:27:18 AM INFO:load_and_filter_data executed successfully
+2025/03/03 08:27:18 AM INFO:display_summary_statistics executed successfully
+2025/03/03 08:27:18 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:27:18 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:27:19 AM ERROR:Error applying filters: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/03 08:27:19 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:27:19 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:27:19 AM INFO:hlf_body executed successfully
+2025/03/03 08:27:19 AM INFO:pagesetup executed successfully
+2025/03/03 08:27:19 AM INFO:Data already loaded in session state.
+2025/03/03 08:29:44 AM INFO:Logging is set up correctly! Current log level: ERROR
+2025/03/03 08:29:44 AM INFO:get_git_version executed successfully
+2025/03/03 08:29:44 AM INFO:get_git_version executed successfully
+2025/03/03 08:29:44 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:29:44 AM INFO:Running App setup...
+2025/03/03 08:29:44 AM INFO:Setting up the package
+2025/03/03 08:29:44 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:29:44 AM INFO:get_git_version executed successfully
+2025/03/03 08:29:44 AM INFO:Version: v20.123
+2025/03/03 08:29:44 AM INFO:Session_state variables initialized
+2025/03/03 08:29:44 AM INFO:Session state Setup complete
+2025/03/03 08:29:44 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:29:44 AM INFO:Package setup complete
+2025/03/03 08:29:44 AM INFO:setup_package executed successfully
+2025/03/03 08:29:44 AM INFO:Running Menu setup...
+2025/03/03 08:29:44 AM INFO:get_git_version executed successfully
+2025/03/03 08:29:44 AM INFO:get_git_version executed successfully
+2025/03/03 08:29:44 AM INFO:get_git_version executed successfully
+2025/03/03 08:29:44 AM INFO:App Version: v20.144
+2025/03/03 08:29:44 AM INFO:Switched to page: Bequeths
+2025/03/03 08:29:45 AM INFO:load_and_filter_data executed successfully
+2025/03/03 08:29:45 AM INFO:display_summary_statistics executed successfully
+2025/03/03 08:29:45 AM INFO:display_textual_insights executed successfully
+2025/03/03 08:29:45 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:29:45 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:29:45 AM INFO:display_visualizations executed successfully
+2025/03/03 08:29:45 AM INFO:display_data_page executed successfully
+2025/03/03 08:29:45 AM INFO:pagesetup executed successfully
+2025/03/03 08:29:45 AM INFO:Data already loaded in session state.
