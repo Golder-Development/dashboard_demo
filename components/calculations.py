@@ -337,8 +337,20 @@ def get_noofdonors_per_ent_stdev(df, filters=None):
 # Function to calculate key values
 def compute_summary_statistics(df, filters):
     """Compute key statistics like total donations, mean, std, etc."""
-    if df.empty:
-        return {}
+    if df is None:
+        return {
+            "unique_reg_entities": 0,
+            "unique_donors": 0,
+            "unique_donations": 0,
+            "total_value": 0.0,
+            "mean_value": 0.0,
+            "avg_donations_per_entity": 0.0,
+            "avg_value_per_entity": 0.0,
+            "avg_donors_per_entity": 0.0,
+            "donors_stdev": 0.0,
+            "value_stdev": 0.0,
+            "noofdonors_per_ent_stdev": 0.0,
+        }
 
     regentity_ct = get_regentity_ct(df, filters)
     donors_ct = get_donors_ct(df, filters)

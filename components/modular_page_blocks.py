@@ -97,7 +97,7 @@ def display_visualizations(graph_df, target_label, pageref_label):
             graph_df,
             XValues="YearReceived",
             YValues="Value",
-            GroupData="RegulatedEntityType",
+            GroupData="RegEntity_Group",
             XLabel="Year",
             YLabel="Value of Donations £",
             Title=f"Value of {target_label}s by" " Year and Entity",

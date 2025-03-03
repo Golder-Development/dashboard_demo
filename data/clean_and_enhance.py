@@ -116,6 +116,8 @@ def load_cleaned_data(
         .dt.normalize()
         .fillna(st.session_state.PLACEHOLDER_DATE)
     )
+
+
     # Create Year and Month columns
     loadclean_df["YearReceived"] = loadclean_df["ReceivedDate"].dt.year
     loadclean_df["MonthReceived"] = loadclean_df["ReceivedDate"].dt.month

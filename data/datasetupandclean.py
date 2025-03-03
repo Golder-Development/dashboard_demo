@@ -96,13 +96,7 @@ def load_raw_data(main_file="raw_data",
         },
         index_col="index",
     )
-    # set data min and max dates formatted as datetime format
-    st.session_state.min_datetime = pd.to_datetime(loaddata_df["ReceivedDate"]).min()
-    st.session_state.max_datetime = pd.to_datetime(loaddata_df["ReceivedDate"]).max()
-    # set data min and max formatted dates - formatted to date only   
-    st.session_state.min_date = st.session_state.min_datetime.date()
-    st.session_state.max_date = st.session_state.max_datetime.date()
-    
+   
     # Print progress message
     if logger.level <= 20:
         st.info("Base Data loaded successfully")

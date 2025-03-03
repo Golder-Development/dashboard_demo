@@ -8,6 +8,7 @@ from components.calculations import (
     get_top_entity_by_donations,
     get_top_donType_by_don,
     get_value_total,
+    compute_summary_statistics
     )
 from components.modular_page_blocks import (
     load_and_filter_data,
@@ -56,152 +57,151 @@ def hlf_body():
                                                      tstats["total_value"])
     top_dontype_dons_percent = calculate_percentage(top_dontype_dons,
                                                     tstats["unique_donations"])
-
-    # Display the headline figures
-    # st.write("---")
-    # st.write("## Topline Summary of Political Donations "
-    #          f" from {min_date_df} to {max_date_df}")
-    # d, left, a, b, mid, c, right = st.columns(7)
-    # with d:
-    #     st.metric(label="Total Value of Donations",
-    #               value=f"£{format_number(tstats['total_value'])}")
-    # with left:
-    #     st.metric(label="Total Donations",
-    #               value=f"{format_number(tstats['unique_donations'])}")
-    # with a:
-    #     st.metric(label=f"{top_entity} %",
-    #               value=f"{format_number(top_entity_value_percent)}%")
-    # with b:
-    #     st.metric(label=f"{top_dontype_ct} Donations",
-    #               value=f"{format_number(top_dontype_dons)}")
-    # with mid:
-    #     st.metric(label="Average Donation Value",
-    #               value=f"£{format_number(tstats['mean_value'])}")
-    # with c:
-    #     st.metric(label="Totalunique_donors)}")
-    # st.write("---")
-    # mid, right = st.columns(2)
-    # with mid:
-    #     if filtered_df.empty:
-    #         st.write("No data available for the selected filters.")
-    #         return
-    #     else:
-    #         vis.plot_bar_line_by_year(filtered_df,
-    #                                   XValues="YearReceived",
-    #                                   YValues="EventCount",
-    #                                   GroupData="RegulatedEntityType",
-    #                                   XLabel="Year", YLabel="Donations",
-    #                                   Title="Donations per Year & Entity Type",
-    #                                   CalcType='sum',
-    #                                   LegendTitle="Regulated Entity Type",
-    #                                   widget_key="dons_by_year_n_entity")
-    # with right:
-    #     if filtered_df.empty:
-    #         st.write("No data available for the selected filters.")
-    #         return
-    #     else:
-    #         filtered_df_sort = filtered_df.sort_values(
-    #             by=["YearReceived", "DubiousData"],
-    #             ascending=[True, False]
-    #         )
-    #         filtered_df_sort = filtered_df_sort.rename(
-    #             columns={"DubiousData": "Data Safety Score"}
-    #         )
-    #         vis.plot_bar_line_by_year(filtered_df_sort,
-    #                                   XValues="YearReceived",
-    #                                   YValues="EventCount",
-    #                                   GroupData="Data Safety Score",
-    #                                   XLabel="Year",
-    #                                   YLabel="Donations",
-    #                                   Title="Donations Risk Score by Year",
-    #                                   CalcType='sum',
-    #                                   LegendTitle="Data Safety Score",
-    #                                   ChartType="line",
-    #                                   y_scale="linear",
-    #                                   widget_key="dons_by_year_n_type")
-    # st.write("---")
-    # st.write("### Headline Figures")
-    # col1, col2 = st.columns(2)
-    # with col1:
-    #     st.write(f"* During the period from {min_date_df} to {max_date_df} "
-    #              f"{ostats['unique_reg_entites']:,.0f} regulated political "
-    #              "bodies received donations.")
-    #     st.write(
-    #         "* These had a total value of "
-    #         f"£{format_number(ostats['total_value'])} "
-    #         f"from {format_number(ostats['unique_donors'])} unique donors."
-    #         f"  The average donation was "
-    #         f"£{format_number(ostats['mean_value'])} "
-    #         f"and there were {format_number(ostats['unique_donations'])}"
-    #         " unique donations"
-    #     )
-    #     # st.write(
-    #     #     f"* Political parties were identified as the "
-    #     #     f"donor in {PP_donations_percent:.2f}% "
-    #     #     f"of donations. These donations were worth"
-    #     #     f" £{format_number(PP_donations_value)} "
-    #     #     f"or {PP_donations_value_percent:.2f}% of the total "
-    #     #     "value of donations."
-    #     # )
-    #     # st.write(
-    #     #     f"* {single_donation_entity} of the donations were to entities "
-    #     #     f"that only received one donation. These donations represented "
-    #     #     f"{single_donation_percent:.2f}% of all donations, were worth "
-    #     #     f" £{format_number(single_donation_entity_value)} or "
-    #     #     f"{single_donation_entity_value_percent:.2f}% of the total value"
-    #     #     f"of donations and were {single_donation_entity_percent:.0f}% of"
-    #     #     f"the regulated entities."
-    #     # )
+    st.write("---")
+    mid, right = st.columns(2)
+    with mid:
+        if cleaned_df.empty:
+            st.write("No data available for the selected filters.")
+            return
+        else:
+            vis.plot_bar_line_by_year(cleaned_df,
+                                      XValues="YearReceived",
+                                      YValues="EventCount",
+                                      GroupData="RegulatedEntityType",
+                                      XLabel="Year", YLabel="Donations",
+                                      Title="Donations per Year & Entity Type",
+                                      CalcType='sum',
+                                      LegendTitle="Regulated Entity Type",
+                                      widget_key="dons_by_year_n_entity")
+    with right:
+        if filtered_df.empty:
+            st.write("No data available for the selected filters.")
+            return
+        else:
+            filtered_df_sort = filtered_df.sort_values(
+                by=["YearReceived", "DubiousData"],
+                ascending=[True, False]
+            )
+            filtered_df_sort = filtered_df_sort.rename(
+                columns={"DubiousData": "Data Safety Score"}
+            )
+            vis.plot_bar_line_by_year(filtered_df_sort,
+                                      XValues="YearReceived",
+                                      YValues="Value",
+                                      GroupData="Data Safety Score",
+                                      XLabel="Year",
+                                      YLabel="Donations",
+                                      Title="Donations Risk Score by Year",
+                                      CalcType='sum',
+                                      LegendTitle="Data Safety Score",
+                                      ChartType="line",
+                                      y_scale="linear",
+                                      widget_key="dons_by_year_n_type")
+    st.write("---")
+    st.write("### Headline Figures")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.write(f"* During the period from {min_date_df} to {max_date_df} "
+                 f"{tstats['unique_reg_entities']:,.0f} regulated political "
+                 "bodies received donations.")
+        st.write(
+            "* These had a total value of "
+            f"£{format_number(tstats['total_value'])} "
+            f"from {format_number(tstats['unique_donors'])} unique donors."
+            f"  The average donation was "
+            f"£{format_number(tstats['mean_value'])} "
+            f"and there were {format_number(tstats['unique_donations'])}"
+            " unique donations"
+        )
+        pstats = (
+            compute_summary_statistics(filtered_df, {"RegulatedEntityType": "Political Party"})
+        )
+        # sde_stats = (
+        #     compute_summary_statistics(filtered_df,
+        #                          {"RegEntity_Group": "Single Donation Entity"})
+        # )
+        PP_donations_percent = calculate_percentage(
+            pstats["unique_donations"], tstats["unique_donations"]
+        )
+        PP_donations_value_percent = calculate_percentage(
+            pstats["total_value"], tstats["total_value"]
+        )
+        st.write(
+            f"* Political parties were identified as the "
+            f"donor in {PP_donations_percent:.2f}% "
+            f"of donations. These donations were worth"
+            f" £{format_number(pstats['total_value'])} "
+            f"or {PP_donations_value_percent:.2f}% of the total "
+            "value of donations."
+        )
+        # single_donation_percent = calculate_percentage(
+        #     sde_stats["unique_donations"], tstats["unique_donations"]
+        # )
+        # single_donation_entity_value_percent = calculate_percentage(
+        #     sde_stats["total_value"], tstats["total_value"]
+        # )
+        # single_donation_entity_percent = calculate_percentage(
+        #     sde_stats["unique_reg_entities"], tstats["unique_reg_entities"]
+        # )
+        # st.write(
+        #     f"* {sde_stats['unique_donations']} of the donations were to entities "
+        #     f"that only received one donation. These donations represented "
+        #     f"{single_donation_percent:.2f}% of all donations, were worth "
+        #     f" £{format_number(sde_stats['total_value'])} or "
+        #     f"{single_donation_entity_value_percent:.2f}% of the total value"
+        #     f"of donations and were {single_donation_entity_percent:.0f}% of"
+        #     f"the regulated entities."
+        # )
     # with col2:
-    #     st.write(
-    #         f"* Most Donations were in {top_dontype_ct}, these "
-    #         f"represented {top_dontype_dons_percent:.2f}% of "
-    #         f"donations and were {top_dontype_value_percent:.2f}% "
-    #         f"of the total value of donations.")
-    #     st.write(
-    #         f"* The {top_entity} received the most donations by value, with "
-    #         f"a total value of £{format_number(top_value)} or "
-    #         f"{top_value/ostats['total_value']*100:.2f}% of all donations.")
-    #     st.write(
-    #         f"* The {top_entity_ct} received the most donations by count, "
-    #         f"having {top_donations:,.0f} donations which represented "
-    #         f"{top_donations/ostats['unique_donations']*100:.2f}% of all donations.")
-    # st.write("---")
-    # mid, right = st.columns(2)
-    # with mid:
-    #     if filtered_df.empty:
-    #         st.write("No data available for the selected filters.")
-    #         return
-    #     else:
-    #         vis.plot_bar_line_by_year(filtered_df,
-    #                                   XValues="YearReceived",
-    #                                   YValues="Value",
-    #                                   GroupData="RegEntity_Group",
-    #                                   XLabel="Year",
-    #                                   YLabel="Value of Donations £ 000's",
-    #                                   Title="Donations GBP by Year & Entity",
-    #                                   use_custom_colors=True,
-    #                                   LegendTitle="Regulated Entity",
-    #                                   widget_key="value_by_year_n_entity",
-    #                                   CalcType='sum')
-    # with right:
-    #     if filtered_df.empty:
-    #         st.write("No data available for the selected filters.")
-    #         return
-    #     else:
-    #         vis.plot_bar_line_by_year(filtered_df,
-    #                                   XValues="YearReceived",
-    #                                   YValues="Value",
-    #                                   GroupData="DonationType",
-    #                                   XLabel="Year",
-    #                                   YLabel="Total Value (£)",
-    #                                   y_scale="log",
-    #                                   ChartType="Line",
-    #                                   LegendTitle="Donation Type",
-    #                                   Title="Donations GBP Types by Year",
-    #                                   widget_key="value_by_year_n_type",
-    #                                   CalcType='sum')
-    # st.write("---")
+        st.write(
+            f"* Most Donations were in {top_dontype_ct}, these "
+            f"represented {top_dontype_dons_percent:.2f}% of "
+            f"donations and were {top_dontype_value_percent:.2f}% "
+            f"of the total value of donations.")
+        st.write(
+            f"* The {top_entity} received the most donations by value, with "
+            f"a total value of £{format_number(top_value)} or "
+            f"{top_value/tstats['total_value']*100:.2f}% of all donations.")
+        st.write(
+            f"* The {top_entity_ct} received the most donations by count, "
+            f"having {top_donations:,.0f} donations which represented "
+            f"{top_donations/tstats['unique_donations']*100:.2f}% of all donations.")
+    st.write("---")
+    mid, right = st.columns(2)
+    with mid:
+        if filtered_df.empty:
+            st.write("No data available for the selected filters.")
+            return
+        else:
+            vis.plot_bar_line_by_year(filtered_df,
+                                      XValues="YearReceived",
+                                      YValues="Value",
+                                      GroupData="RegEntity_Group",
+                                      XLabel="Year",
+                                      YLabel="Value of Donations £ 000's",
+                                      Title="Donations GBP by Year & Entity",
+                                      use_custom_colors=False,
+                                      LegendTitle="Regulated Entity",
+                                      widget_key="value_by_year_n_entity",
+                                      CalcType='sum')
+    with right:
+        if filtered_df.empty:
+            st.write("No data available for the selected filters.")
+            return
+        else:
+            vis.plot_bar_line_by_year(filtered_df,
+                                      XValues="YearReceived",
+                                      YValues="Value",
+                                      GroupData="DonationType",
+                                      XLabel="Year",
+                                      YLabel="Total Value (£)",
+                                      y_scale="log",
+                                      ChartType="Line",
+                                      LegendTitle="Donation Type",
+                                      Title="Donations GBP Types by Year",
+                                      widget_key="value_by_year_n_type",
+                                      CalcType='sum')
+    st.write("---")
     # col1, col2, right = st.columns(3)
     # with col1:
     #     if filtered_df.empty:
