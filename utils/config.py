@@ -20,12 +20,12 @@ DIRECTORIES = {  # "directory_name": "directory_path"
     "data_dir": os.path.join("data"),
     "output_dir": os.path.join("output"),
     "logs_dir": os.path.join("logs"),
-    "reference_dir": os.path.join( "reference_files"),
-    "components_dir": os.path.join( "components"),
-    "app_pages_dir": os.path.join( "app_pages"),
-    "utils_dir": os.path.join( "utils"),
-    "source_dir": os.path.join( "source"),
-    "tests_dir": os.path.join( "tests"),
+    "reference_dir": os.path.join("reference_files"),
+    "components_dir": os.path.join("components"),
+    "app_pages_dir": os.path.join("app_pages"),
+    "utils_dir": os.path.join("utils"),
+    "source_dir": os.path.join("source"),
+    "tests_dir": os.path.join("tests"),
 }
 
 DIRECTORIES_original = {  # "directory_name": "directory_path"
