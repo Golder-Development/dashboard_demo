@@ -47,7 +47,7 @@ FILENAMES = {  # "directory" : {"file_name": "file_path"}
         "Donor_dedupe_cleaned_fname": "Donor_dedupe_cleaned_data.csv",
         "ListofPoliticalPeople_fname": "ListOfPoliticalPeople.csv",
         "mppartymemb_fname": "mppartymemb_pypd.csv",
-        "donor_map_fname": "PoliticalDonorsDeDuped.csv",
+        "donor_map_fname": "PoliticalDonorsDeduped.csv",
         "politician_party_fname": "ListOfPoliticalPeople_Final.csv",
         "regentity_map_fname": "PoliticalEntityDeDuped.csv",
         "potential_donor_duplicates_fname": "potential_donor_duplicates.csv",
