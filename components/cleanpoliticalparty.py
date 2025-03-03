@@ -1,6 +1,6 @@
 import pandas as pd
 import re
-from pdpy.pdpy import fetch_mps_party_memberships
+import pdpy
 import streamlit as st
 from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
@@ -101,7 +101,7 @@ def get_party_df_from_pdpy(
     while_mp=False,
     collapse=True
         ):
-    mppartymemb_df = fetch_mps_party_memberships(
+    mppartymemb_df = pdpy.fetch_mps_party_memberships(
         from_date=from_date,
         to_date=to_date,
         while_mp=while_mp,

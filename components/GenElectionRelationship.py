@@ -2,7 +2,7 @@ import math
 import datetime as dt
 import bisect
 import streamlit as st
-from pdpy.pdpy.elections import get_general_elections_dict
+import pdpy
 from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
 
@@ -12,7 +12,7 @@ from utils.logger import log_function_call  # Import decorator
 def load_election_dates():
     """Load general election dates into session state."""
     try:
-        ElectionDates_dict = get_general_elections_dict()
+        ElectionDates_dict = pdpy.get_general_elections_dict()
         logger.debug(f"ElectionDatesDict: {ElectionDates_dict}")
 
         # Extract only election dates as `date` objects
