@@ -2,9 +2,9 @@
 
 import os
 import pandas as pd
-
+from pathlib import Path
 # Base directory
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+BASE_DIR = Path(os.getcwd())
 
 # ReRun MP Party Membership
 RERUN_MP_PARTY_MEMBERSHIP = False

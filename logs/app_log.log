@@ -8480,3 +8480,47 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 2025/03/03 08:29:47 AM INFO:hlf_body executed successfully
 2025/03/03 08:29:47 AM INFO:pagesetup executed successfully
 2025/03/03 08:29:47 AM INFO:Data already loaded in session state.
+2025/03/03 08:34:44 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:34:44 AM INFO:Running App setup...
+2025/03/03 08:34:44 AM INFO:Setting up the package
+2025/03/03 08:34:44 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:34:44 AM INFO:get_git_version executed successfully
+2025/03/03 08:34:44 AM INFO:Version: v20.123
+2025/03/03 08:34:44 AM INFO:Session_state variables initialized
+2025/03/03 08:34:44 AM INFO:Session state Setup complete
+2025/03/03 08:34:44 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:34:44 AM INFO:Package setup complete
+2025/03/03 08:34:44 AM INFO:setup_package executed successfully
+2025/03/03 08:34:44 AM INFO:Running Menu setup...
+2025/03/03 08:34:44 AM INFO:get_git_version executed successfully
+2025/03/03 08:34:44 AM INFO:App Version: v20.144
+2025/03/03 08:34:44 AM INFO:Switched to page: Introduction
+2025/03/03 08:34:44 AM INFO:pagesetup executed successfully
+2025/03/03 08:34:44 AM INFO:Data already loaded in session state.
+2025/03/03 08:34:46 AM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:34:46 AM INFO:Running App setup...
+2025/03/03 08:34:46 AM INFO:Setting up the package
+2025/03/03 08:34:46 AM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 08:34:46 AM INFO:get_git_version executed successfully
+2025/03/03 08:34:46 AM INFO:Version: v20.123
+2025/03/03 08:34:46 AM INFO:Session_state variables initialized
+2025/03/03 08:34:46 AM INFO:Session state Setup complete
+2025/03/03 08:34:46 AM INFO:initialize_session_state executed successfully
+2025/03/03 08:34:46 AM INFO:Package setup complete
+2025/03/03 08:34:46 AM INFO:setup_package executed successfully
+2025/03/03 08:34:46 AM INFO:Running Menu setup...
+2025/03/03 08:34:46 AM INFO:get_git_version executed successfully
+2025/03/03 08:34:46 AM INFO:App Version: v20.144
+2025/03/03 08:34:46 AM INFO:Switched to page: Head Line Figures
+2025/03/03 08:34:47 AM INFO:load_and_filter_data executed successfully
+2025/03/03 08:34:47 AM INFO:display_summary_statistics executed successfully
+2025/03/03 08:34:47 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:34:47 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:34:47 AM ERROR:Error applying filters: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025/03/03 08:34:47 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:34:47 AM INFO:plot_bar_line_by_year executed successfully
+2025/03/03 08:34:47 AM INFO:hlf_body executed successfully
+2025/03/03 08:34:47 AM INFO:pagesetup executed successfully
+2025/03/03 08:34:47 AM INFO:Data already loaded in session state.
+2025/03/03 09:09:24 AM INFO:Logging is set up correctly! Current log level: INFO
+2025/03/03 09:09:24 AM INFO:get_git_version executed successfully
