@@ -49,7 +49,8 @@ def GenElectionRelation2(R_Date, divisor=1,
     Args:
         R_Date (str): The reference date in string format.
         divisor (int): The unit divisor (e.g., 7 for weeks, 1 for days).
-        Defaults to 1. direction (str): "DaysTill" (next election) or "DaysSince"
+        Defaults to 1. direction (str): "DaysTill" (next election)
+        or "DaysSince"
         (previous election). Defaults to "DaysTill".
         date_format (str): The format of R_Date (default: "%Y/%m/%d %H:%M:%S").
 
@@ -58,7 +59,8 @@ def GenElectionRelation2(R_Date, divisor=1,
         or None on failure.
     """
     # Ensure election dates are loaded
-    if "ElectionDatesAscend" not in st.session_state or "ElectionDatesDescend" not in st.session_state:
+    if ("ElectionDatesAscend" not in st.session_state or
+            "ElectionDatesDescend" not in st.session_state):
         logger.info("Election Dates not found in session, loading now.")
         load_election_dates()
 
@@ -85,15 +87,18 @@ def GenElectionRelation2(R_Date, divisor=1,
             idx = bisect.bisect_left(st.session_state.ElectionDatesAscend,
                                      R_Date2)
             if idx < len(st.session_state.ElectionDatesAscend):
-                DaysDiff = (st.session_state.ElectionDatesAscend[idx] - R_Date2).days
-                return math.ceil(DaysDiff / divisor) if divisor > 1 else DaysDiff
+                DaysDiff = (st.session_state.ElectionDatesAscend[idx] -
+                            R_Date2).days
+                return (math.ceil(DaysDiff / divisor) if divisor > 1
+                        else DaysDiff)
 
         elif direction == "DaysSince":
             idx = bisect.bisect_right(st.session_state.ElectionDatesDescend,
                                       R_Date2) - 1
             if idx < 0:  # Prevent out-of-bounds access
                 return None
-            DaysDiff = (R_Date2 - st.session_state.ElectionDatesDescend[idx]).days
+            DaysDiff = (R_Date2 -
+                        st.session_state.ElectionDatesDescend[idx]).days
             return math.ceil(DaysDiff / divisor) if divisor > 1 else DaysDiff
 
         return 0
