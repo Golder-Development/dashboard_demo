@@ -12,4 +12,4 @@ streamlit
 pytest
 bcrypt
 pathlib
-./pdpy
+packages/pdpy-1.0.tar.gz
