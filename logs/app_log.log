@@ -1,0 +1,292 @@
+2025/03/03 12:10:54 PM INFO:Logging is set up correctly! Current log level: INFO
+2025/03/03 12:10:54 PM INFO:get_git_version executed successfully
+2025/03/03 12:14:38 PM INFO:Logging is set up correctly! Current log level: INFO
+2025/03/03 12:14:39 PM INFO:get_git_version executed successfully
+2025/03/03 12:15:54 PM INFO:Logging is set up correctly! Current log level: INFO
+2025/03/03 12:15:54 PM INFO:get_git_version executed successfully
+2025/03/03 12:15:55 PM INFO:get_git_version executed successfully
+2025/03/03 12:15:55 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 12:15:55 PM INFO:Running App setup...
+2025/03/03 12:15:55 PM INFO:Setting up the package
+2025/03/03 12:15:55 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 12:15:55 PM INFO:get_git_version executed successfully
+2025/03/03 12:15:55 PM INFO:Version: v20.130
+2025/03/03 12:15:55 PM INFO:Session_state variables initialized
+2025/03/03 12:15:55 PM INFO:Session state Setup complete
+2025/03/03 12:15:55 PM INFO:initialize_session_state executed successfully
+2025/03/03 12:15:55 PM INFO:Package setup complete
+2025/03/03 12:15:55 PM INFO:setup_package executed successfully
+2025/03/03 12:15:55 PM INFO:Running Menu setup...
+2025/03/03 12:15:55 PM INFO:get_git_version executed successfully
+2025/03/03 12:15:55 PM INFO:get_git_version executed successfully
+2025/03/03 12:15:56 PM INFO:get_git_version executed successfully
+2025/03/03 12:15:56 PM INFO:App Version: v20.151
+2025/03/03 12:15:56 PM INFO:Switched to page: Introduction
+2025/03/03 12:15:56 PM INFO:pagesetup executed successfully
+2025/03/03 12:15:56 PM INFO:No data found in session state, running firstload()
+2025/03/03 12:15:56 PM INFO:Running first load function.
+2025/03/03 12:15:56 PM INFO:Original file path: H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv
+2025/03/03 12:15:56 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\imported_raw.csv
+2025/03/03 12:15:56 PM INFO:Checking if H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv has been updated.
+2025/03/03 12:15:56 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv
+2025/03/03 12:15:56 PM INFO:get_file_modification_time executed successfully
+2025/03/03 12:15:56 PM INFO:Current modification time: 1740757862.6744745
+2025/03/03 12:15:56 PM INFO:Last modification time: None
+2025/03/03 12:15:56 PM INFO:is_file_updated executed successfully
+2025/03/03 12:15:56 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/03 12:15:56 PM INFO:Loading raw data...
+2025/03/03 12:15:56 PM INFO:Data loaded successfully. Data has 65278 rows and 29 columns
+2025/03/03 12:15:57 PM INFO:Data saved to H:\VScode\dashboard_demo-1\output\imported_raw.csv
+2025/03/03 12:15:57 PM INFO:Cleaning up raw data
+2025/03/03 12:15:57 PM ERROR:Session state variables not initialized!
+2025/03/03 12:15:57 PM INFO:Original file path: None
+2025/03/03 12:15:57 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/03 12:15:57 PM ERROR:Error: originalfilepath is None!
+2025/03/03 12:15:57 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/03 12:15:57 PM INFO:Data loaded, shape: (65278, 29)
+2025/03/03 12:15:58 PM INFO:Checking if H:\VScode\dashboard_demo-1\reference_files\PoliticalEntityDeDuped.csv has been updated.
+2025/03/03 12:15:58 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\reference_files\PoliticalEntityDeDuped.csv
+2025/03/03 12:15:58 PM INFO:get_file_modification_time executed successfully
+2025/03/03 12:15:58 PM INFO:Current modification time: 1740841102.2638545
+2025/03/03 12:15:58 PM INFO:Last modification time: None
+2025/03/03 12:15:58 PM INFO:is_file_updated executed successfully
+2025/03/03 12:15:58 PM INFO:Map file regentity_map_fname has been updated. Proceeding with deduplication.
+2025/03/03 12:15:58 PM INFO:File deduplication complete, shape: (65278, 34)
+2025/03/03 12:15:58 PM INFO:dedupe_entity_file executed successfully
+2025/03/03 12:15:58 PM INFO:Checking if H:\VScode\dashboard_demo-1\reference_files\PoliticalDonorsDeDuped.csv has been updated.
+2025/03/03 12:15:58 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\reference_files\PoliticalDonorsDeDuped.csv
+2025/03/03 12:15:58 PM INFO:get_file_modification_time executed successfully
+2025/03/03 12:15:58 PM INFO:Current modification time: 1740757863.2545311
+2025/03/03 12:15:58 PM INFO:Last modification time: None
+2025/03/03 12:15:58 PM INFO:is_file_updated executed successfully
+2025/03/03 12:15:58 PM INFO:Map file donor_map_fname has been updated. Proceeding with deduplication.
+2025/03/03 12:15:59 PM INFO:File deduplication complete, shape: (65278, 40)
+2025/03/03 12:15:59 PM INFO:dedupe_entity_file executed successfully
+2025/03/03 12:15:59 PM INFO:Raw Data cleanup completed
+2025/03/03 12:15:59 PM INFO:Data shape: (65278, 40)
+2025/03/03 12:15:59 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 12:15:59 PM INFO:Running App setup...
+2025/03/03 12:15:59 PM INFO:Setting up the package
+2025/03/03 12:15:59 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 12:15:59 PM INFO:get_git_version executed successfully
+2025/03/03 12:15:59 PM INFO:Version: v20.130
+2025/03/03 12:15:59 PM INFO:Session_state variables initialized
+2025/03/03 12:15:59 PM INFO:Session state Setup complete
+2025/03/03 12:15:59 PM INFO:initialize_session_state executed successfully
+2025/03/03 12:15:59 PM INFO:Package setup complete
+2025/03/03 12:15:59 PM INFO:setup_package executed successfully
+2025/03/03 12:15:59 PM INFO:Running Menu setup...
+2025/03/03 12:15:59 PM INFO:get_git_version executed successfully
+2025/03/03 12:15:59 PM INFO:App Version: v20.151
+2025/03/03 12:15:59 PM INFO:Switched to page: Introduction
+2025/03/03 12:15:59 PM INFO:pagesetup executed successfully
+2025/03/03 12:16:00 PM INFO:No data found in session state, running firstload()
+2025/03/03 12:16:00 PM INFO:Data saved to H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/03 12:16:00 PM INFO:Data cleanup completed, shape: (65278, 40)
+2025/03/03 12:16:00 PM INFO:raw_data_cleanup executed successfully
+2025/03/03 12:16:01 PM INFO:load_raw_data executed successfully
+2025/03/03 12:16:01 PM INFO:get_raw_data executed successfully
+2025/03/03 12:16:01 PM INFO:load_data_to_session executed successfully
+2025/03/03 12:16:01 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/03 12:16:01 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/03 12:16:01 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_donations.csv has been updated.
+2025/03/03 12:16:01 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/03 12:16:01 PM INFO:get_file_modification_time executed successfully
+2025/03/03 12:16:01 PM INFO:Current modification time: 1741004160.80787
+2025/03/03 12:16:01 PM INFO:Last modification time: 1740757862.6744745
+2025/03/03 12:16:01 PM INFO:is_file_updated executed successfully
+2025/03/03 12:16:01 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/03 12:16:01 PM INFO:Loading and cleaning data... data.clean_and_enhance
+2025/03/03 12:16:04 PM ERROR:Number of rows in loaddata_df and raw_data do not match 78745 != 65278
+2025/03/03 12:16:04 PM ERROR:Attempting to remove duplicates
+2025/03/03 12:16:05 PM INFO:Data Updated with PartyName and PartyId successfully
+2025/03/03 12:16:05 PM INFO:map_mp_to_party executed successfully
+2025/03/03 12:16:05 PM INFO:Election Dates not found in session, loading now.
+2025/03/03 12:16:05 PM INFO:Election Dates Loaded Successfully.
+2025/03/03 12:16:05 PM INFO:load_election_dates executed successfully
+2025/03/03 12:16:14 PM INFO:Running first load function.
+2025/03/03 12:34:23 PM INFO:Logging is set up correctly! Current log level: INFO
+2025/03/03 12:34:23 PM INFO:get_git_version executed successfully
+2025/03/03 12:34:24 PM INFO:get_git_version executed successfully
+2025/03/03 12:34:24 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 12:34:24 PM INFO:Running App setup...
+2025/03/03 12:34:24 PM INFO:Setting up the package
+2025/03/03 12:34:24 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 12:34:24 PM INFO:get_git_version executed successfully
+2025/03/03 12:34:24 PM INFO:Version: v20.130
+2025/03/03 12:34:24 PM ERROR:Error in initialize_session_state: name 'Path' is not defined
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\utils\global_variables.py", line 25, in initialize_session_state
+    BASE_DIR = Path(os.getcwd())
+NameError: name 'Path' is not defined
+2025/03/03 12:34:24 PM CRITICAL:App setup crashed: name 'Path' is not defined
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\setup.py", line 69, in setup_package
+    initialize_session_state()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 39, in wrapper
+    raise e
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 33, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\utils\global_variables.py", line 25, in initialize_session_state
+    BASE_DIR = Path(os.getcwd())
+NameError: name 'Path' is not defined
+2025/03/03 12:35:12 PM INFO:Logging is set up correctly! Current log level: INFO
+2025/03/03 12:35:13 PM INFO:get_git_version executed successfully
+2025/03/03 12:35:14 PM INFO:get_git_version executed successfully
+2025/03/03 12:35:14 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 12:35:14 PM INFO:Current Working Directory: H:\VScode\dashboard_demo-1
+2025/03/03 12:35:14 PM INFO:Running App setup...
+2025/03/03 12:35:14 PM INFO:Running App setup...
+2025/03/03 12:35:14 PM INFO:Setting up the package
+2025/03/03 12:35:14 PM INFO:Setting up the package
+2025/03/03 12:35:14 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 12:35:14 PM INFO:Module directory: H:\VScode\dashboard_demo-1
+2025/03/03 12:35:14 PM INFO:get_git_version executed successfully
+2025/03/03 12:35:14 PM INFO:get_git_version executed successfully
+2025/03/03 12:35:14 PM INFO:Version: v20.130
+2025/03/03 12:35:14 PM INFO:Version: v20.130
+2025/03/03 12:35:14 PM INFO:Session_state variables initialized
+2025/03/03 12:35:14 PM INFO:Session state Setup complete
+2025/03/03 12:35:14 PM INFO:Session_state variables initialized
+2025/03/03 12:35:14 PM INFO:initialize_session_state executed successfully
+2025/03/03 12:35:14 PM INFO:Session state Setup complete
+2025/03/03 12:35:14 PM INFO:Package setup complete
+2025/03/03 12:35:14 PM INFO:initialize_session_state executed successfully
+2025/03/03 12:35:14 PM INFO:setup_package executed successfully
+2025/03/03 12:35:14 PM INFO:Package setup complete
+2025/03/03 12:35:14 PM INFO:setup_package executed successfully
+2025/03/03 12:35:14 PM INFO:Running Menu setup...
+2025/03/03 12:35:14 PM INFO:Running Menu setup...
+2025/03/03 12:35:14 PM INFO:get_git_version executed successfully
+2025/03/03 12:35:14 PM INFO:get_git_version executed successfully
+2025/03/03 12:35:14 PM INFO:get_git_version executed successfully
+2025/03/03 12:35:14 PM INFO:get_git_version executed successfully
+2025/03/03 12:35:14 PM INFO:App Version: v20.151
+2025/03/03 12:35:14 PM INFO:App Version: v20.151
+2025/03/03 12:35:14 PM INFO:Switched to page: Introduction
+2025/03/03 12:35:14 PM INFO:Switched to page: Introduction
+2025/03/03 12:35:14 PM INFO:pagesetup executed successfully
+2025/03/03 12:35:14 PM INFO:pagesetup executed successfully
+2025/03/03 12:35:14 PM INFO:No data found in session state, running firstload()
+2025/03/03 12:35:14 PM INFO:No data found in session state, running firstload()
+2025/03/03 12:35:15 PM INFO:Running first load function.
+2025/03/03 12:35:15 PM INFO:Original file path: H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv
+2025/03/03 12:35:15 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\imported_raw.csv
+2025/03/03 12:35:15 PM INFO:Checking if H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv has been updated.
+2025/03/03 12:35:15 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\source\Donations_accepted_by_political_parties.csv
+2025/03/03 12:35:15 PM INFO:get_file_modification_time executed successfully
+2025/03/03 12:35:15 PM INFO:Current modification time: 1740757862.6744745
+2025/03/03 12:35:15 PM INFO:Last modification time: None
+2025/03/03 12:35:15 PM INFO:is_file_updated executed successfully
+2025/03/03 12:35:15 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/03 12:35:15 PM INFO:Loading raw data...
+2025/03/03 12:35:15 PM INFO:Data loaded successfully. Data has 65278 rows and 29 columns
+2025/03/03 12:35:16 PM INFO:Data saved to H:\VScode\dashboard_demo-1\output\imported_raw.csv
+2025/03/03 12:35:16 PM INFO:Cleaning up raw data
+2025/03/03 12:35:16 PM ERROR:Session state variables not initialized!
+2025/03/03 12:35:16 PM INFO:Original file path: None
+2025/03/03 12:35:16 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/03 12:35:16 PM ERROR:Error: originalfilepath is None!
+2025/03/03 12:35:16 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/03 12:35:16 PM INFO:Data loaded, shape: (65278, 29)
+2025/03/03 12:35:17 PM INFO:Running first load function.
+2025/03/03 12:35:17 PM INFO:Loading raw data...
+2025/03/03 12:35:17 PM INFO:Data loaded successfully. Data has 65278 rows and 29 columns
+2025/03/03 12:35:18 PM INFO:Data saved to H:\VScode\dashboard_demo-1\output\imported_raw.csv
+2025/03/03 12:35:18 PM INFO:Cleaning up raw data
+2025/03/03 12:35:18 PM ERROR:Session state variables not initialized!
+2025/03/03 12:35:18 PM INFO:Data loaded, shape: (65278, 29)
+2025/03/03 12:35:20 PM INFO:Checking if H:\VScode\dashboard_demo-1\reference_files\PoliticalEntityDeDuped.csv has been updated.
+2025/03/03 12:35:20 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\reference_files\PoliticalEntityDeDuped.csv
+2025/03/03 12:35:20 PM INFO:get_file_modification_time executed successfully
+2025/03/03 12:35:20 PM INFO:Current modification time: 1740841102.2638545
+2025/03/03 12:35:20 PM INFO:Last modification time: None
+2025/03/03 12:35:20 PM INFO:is_file_updated executed successfully
+2025/03/03 12:35:20 PM INFO:Map file regentity_map_fname has been updated. Proceeding with deduplication.
+2025/03/03 12:35:20 PM INFO:File deduplication complete, shape: (65278, 34)
+2025/03/03 12:35:20 PM INFO:dedupe_entity_file executed successfully
+2025/03/03 12:35:20 PM INFO:Checking if H:\VScode\dashboard_demo-1\reference_files\PoliticalDonorsDeDuped.csv has been updated.
+2025/03/03 12:35:20 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\reference_files\PoliticalDonorsDeDuped.csv
+2025/03/03 12:35:20 PM INFO:get_file_modification_time executed successfully
+2025/03/03 12:35:20 PM INFO:Current modification time: 1740757863.2545311
+2025/03/03 12:35:20 PM INFO:Last modification time: None
+2025/03/03 12:35:20 PM INFO:is_file_updated executed successfully
+2025/03/03 12:35:20 PM INFO:Map file donor_map_fname has been updated. Proceeding with deduplication.
+2025/03/03 12:35:20 PM INFO:File deduplication complete, shape: (65278, 40)
+2025/03/03 12:35:20 PM INFO:dedupe_entity_file executed successfully
+2025/03/03 12:35:20 PM INFO:Raw Data cleanup completed
+2025/03/03 12:35:20 PM INFO:Data shape: (65278, 40)
+2025/03/03 12:35:21 PM INFO:Data saved to H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/03 12:35:21 PM INFO:Data cleanup completed, shape: (65278, 40)
+2025/03/03 12:35:21 PM INFO:raw_data_cleanup executed successfully
+2025/03/03 12:35:21 PM INFO:load_raw_data executed successfully
+2025/03/03 12:35:22 PM INFO:get_raw_data executed successfully
+2025/03/03 12:35:22 PM INFO:load_data_to_session executed successfully
+2025/03/03 12:35:22 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/03 12:35:22 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/03 12:35:22 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_donations.csv has been updated.
+2025/03/03 12:35:22 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_donations.csv
+2025/03/03 12:35:22 PM INFO:get_file_modification_time executed successfully
+2025/03/03 12:35:22 PM INFO:Current modification time: 1741005321.7253928
+2025/03/03 12:35:22 PM INFO:Last modification time: None
+2025/03/03 12:35:22 PM INFO:is_file_updated executed successfully
+2025/03/03 12:35:22 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/03 12:35:22 PM INFO:Loading and cleaning data... data.clean_and_enhance
+2025/03/03 12:35:25 PM ERROR:Number of rows in loaddata_df and raw_data do not match 78745 != 65278
+2025/03/03 12:35:25 PM ERROR:Attempting to remove duplicates
+2025/03/03 12:35:25 PM INFO:Data Updated with PartyName and PartyId successfully
+2025/03/03 12:35:25 PM INFO:map_mp_to_party executed successfully
+2025/03/03 12:35:25 PM INFO:Election Dates not found in session, loading now.
+2025/03/03 12:35:25 PM INFO:Election Dates Loaded Successfully.
+2025/03/03 12:35:25 PM INFO:load_election_dates executed successfully
+2025/03/03 12:36:11 PM INFO:Cleaned Data completed, shape: (65278, 58)
+2025/03/03 12:36:11 PM INFO:load_cleaned_data executed successfully
+2025/03/03 12:36:12 PM INFO:get_cleaned_data executed successfully
+2025/03/03 12:36:12 PM INFO:load_data_to_session executed successfully
+2025/03/03 12:36:12 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/03 12:36:12 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\party_summary.csv
+2025/03/03 12:36:12 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_data.csv has been updated.
+2025/03/03 12:36:12 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/03 12:36:12 PM INFO:get_file_modification_time executed successfully
+2025/03/03 12:36:12 PM INFO:Current modification time: 1741005371.7955623
+2025/03/03 12:36:12 PM INFO:Last modification time: None
+2025/03/03 12:36:12 PM INFO:is_file_updated executed successfully
+2025/03/03 12:36:12 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/03 12:36:12 PM INFO:Regulated entity summary saved to H:\VScode\dashboard_demo-1\output\party_summary.csv
+2025/03/03 12:36:12 PM INFO:Raw Data cleanup completed
+2025/03/03 12:36:12 PM INFO:Data shape: (1361, 5)
+2025/03/03 12:36:12 PM INFO:load_entity_summary_data executed successfully
+2025/03/03 12:36:12 PM INFO:get_party_summary_data executed successfully
+2025/03/03 12:36:12 PM INFO:load_data_to_session executed successfully
+2025/03/03 12:36:12 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/03 12:36:12 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_donorlist.csv
+2025/03/03 12:36:12 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_data.csv has been updated.
+2025/03/03 12:36:12 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/03 12:36:12 PM INFO:get_file_modification_time executed successfully
+2025/03/03 12:36:12 PM INFO:Current modification time: 1741005371.7955623
+2025/03/03 12:36:12 PM INFO:Last modification time: None
+2025/03/03 12:36:12 PM INFO:is_file_updated executed successfully
+2025/03/03 12:36:12 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/03 12:36:12 PM INFO:Donor data saved to H:\VScode\dashboard_demo-1\output\cleaned_donorlist.csv
+2025/03/03 12:36:12 PM INFO:Donor Data summary completed
+2025/03/03 12:36:12 PM INFO:Data shape: (30219, 5)
+2025/03/03 12:36:12 PM INFO:load_donorList_data executed successfully
+2025/03/03 12:36:12 PM INFO:get_donor_data executed successfully
+2025/03/03 12:36:12 PM INFO:load_data_to_session executed successfully
+2025/03/03 12:36:12 PM INFO:Original file path: H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/03 12:36:12 PM INFO:Saved file path: H:\VScode\dashboard_demo-1\output\cleaned_regentity.csv
+2025/03/03 12:36:12 PM INFO:Checking if H:\VScode\dashboard_demo-1\output\cleaned_data.csv has been updated.
+2025/03/03 12:36:12 PM INFO:Getting modification time for H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/03 12:36:12 PM INFO:get_file_modification_time executed successfully
+2025/03/03 12:36:12 PM INFO:Current modification time: 1741005371.7955623
+2025/03/03 12:36:12 PM INFO:Last modification time: 1741005371.7955623
+2025/03/03 12:36:12 PM INFO:is_file_updated executed successfully
+2025/03/03 12:36:12 PM INFO:Loading preprocessed data. Using H:\VScode\dashboard_demo-1\output\cleaned_regentity.csv dated load_donorlist_data_last_modified instead of H:\VScode\dashboard_demo-1\output\cleaned_data.csv
+2025/03/03 12:36:12 PM INFO:try_to_use_preprocessed_data executed successfully
+2025/03/03 12:36:12 PM INFO:load_regulated_entity_data executed successfully
+2025/03/03 12:36:12 PM INFO:get_regentity_data executed successfully
+2025/03/03 12:36:12 PM INFO:load_data_to_session executed successfully
+2025/03/03 12:36:12 PM INFO:firstload executed successfully
+2025/03/03 12:36:12 PM INFO:initialise_data executed successfully

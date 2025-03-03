@@ -1,10 +1,10 @@
 # all globel variables and constants are defined here  #
-
 import streamlit as st
+from pathlib import Path
 from utils.logger import (log_function_call,
                           logger,
                           init_state_var)
-import config  # Import the config file
+import utils.config as config  # Import the config file
 import os
 
 """
@@ -22,13 +22,14 @@ import os
 
 @log_function_call
 def initialize_session_state():
+    BASE_DIR = Path(os.getcwd())
     # Set globel env variables
     os.environ["LOG_LEVEL"] = config.LOG_LEVEL
     init_state_var("LOG_LEVEL", config.LOG_LEVEL)
     # log current file and path
     """Load global variables into session_state if they are not already set."""
     # Initialize simple configuration values
-    init_state_var("BASE_DIR", config.BASE_DIR)
+    init_state_var("BASE_DIR", BASE_DIR)
     init_state_var("filenames", config.FILENAMES)
     init_state_var("PLACEHOLDER_DATE", config.PLACEHOLDER_DATE)
     init_state_var("PLACEHOLDER_ID", config.PLACEHOLDER_ID)
