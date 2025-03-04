@@ -13,6 +13,7 @@ from data.data_utils import try_to_use_preprocessed_data
 def load_election_dates():
     """Load general election dates into session state."""
     election_dates_df = None
+    logger.debug(f"st.session_state.ELECTION_DATES: {st.session_state.ELECTION_DATES}")
     if st.session_state.ELECTION_DATES is None:
         logger.info("Election dates not found in session.")
         raise ValueError("Election dates not found in session.")

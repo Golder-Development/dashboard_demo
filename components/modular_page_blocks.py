@@ -20,7 +20,7 @@ from utils.logger import log_function_call  # Import decorator
 @log_function_call
 def load_and_filter_data(filter_key, pagereflabel):
     """Loads and filters dataset based on filter_key from session state."""
-    cleaned_df = st.session_state["data_clean"]
+    cleaned_df = st.session_state.data_clean
     if cleaned_df is None:
         st.error("No data found. Please upload a dataset.")
         return None, None
