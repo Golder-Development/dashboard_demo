@@ -159,3 +159,4 @@ def GenElectionRelation2(R_Date, divisor=1,
 #     )
 
 #     print(df)
+
