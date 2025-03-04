@@ -420,12 +420,14 @@ def determine_groups_optimized(df, entity, measure, thresholds_dict):
 
     # Step 2: Assign groups based on thresholds
     entity_totals["group"] = entity_totals["total_measure"].apply(
-        lambda x: assign_group(x, thresholds_dict, entity_totals[entity])
+        lambda x: assign_group(x, thresholds_dict, entity)
     )
 
     # Step 3: Merge back into the original DataFrame
     df = df.merge(entity_totals[[entity, "group"]], on=entity, how="left")
-
+    logger.debug(f"Group assignment: {df['group'].value_counts()}")
+    logger.debug(f"Group assignment: {entity_totals['group'].value_counts()}")
+    
     # Step 4: Validate row count consistency
     if len(df) != len(df):
         st.error(f"Length mismatch: original {len(df)}, merged {len(df)}")

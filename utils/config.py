@@ -13,7 +13,7 @@ RERUN_MP_PARTY_MEMBERSHIP = False
 PLACEHOLDER_DATE = pd.Timestamp("1900-01-01 00:00:00")
 PLACEHOLDER_ID = 1000001
 perc_target = 0.5
-LOG_LEVEL = "DEBUG"
+LOG_LEVEL = "ERROR"
 
 DIRECTORIES = {  # "directory_name": "directory_path"
     "BASE_DIR": Path(os.getcwd()),

@@ -152,87 +152,87 @@ def load_regulated_entity_data(
     return regent_df
 
 
-# @st.cache_data
-# @log_function_call
-# def load_entity_summary_data(
-#         main_file="raw_data",
-#         cleaned_file="party_summary_fname",
-#         datafile=None,
-#         output_csv=False,
-#         streamlitrun=True,
-#         originaldatafilepath="cleaned_data_fname",
-#         cleaneddatafilepath="party_summary_fname"
-#         ):
-#     if (
-#         st.session_state.get(main_file) is None
-#         or st.session_state.get(originaldatafilepath) is None
-#         or st.session_state.get(cleaneddatafilepath) is None
-#     ):
-#         st.error(f"Session state variables not initialized! {__name__}")
-#         logger.error(f"Session state variables not initialized! {__name__}")
-#         return None
-#     # Check if we can use cached cleaned data
-#     originaldatafilepath = st.session_state.get(originaldatafilepath)
-#     cleaned_data_file = st.session_state.get(cleaneddatafilepath)
-#     # Use function to check if file has been updated and if not,
-#     # load preprocessed data
-#     loaddata_df = try_to_use_preprocessed_data(originaldatafilepath,
-#                                                cleaned_data_file,
-#                                                "entity_summary_last_modified")
-#     # Check if cached data loaded successfully and return it
-#     if loaddata_df is not None:
-#         return loaddata_df
+@st.cache_data
+@log_function_call
+def load_entity_summary_data(
+        main_file="raw_data",
+        cleaned_file="party_summary_fname",
+        datafile=None,
+        output_csv=False,
+        streamlitrun=True,
+        originaldatafilepath="cleaned_data_fname",
+        cleaneddatafilepath="party_summary_fname"
+        ):
+    if (
+        st.session_state.get(main_file) is None
+        or st.session_state.get(originaldatafilepath) is None
+        or st.session_state.get(cleaneddatafilepath) is None
+    ):
+        st.error(f"Session state variables not initialized! {__name__}")
+        logger.error(f"Session state variables not initialized! {__name__}")
+        return None
+    # Check if we can use cached cleaned data
+    originaldatafilepath = st.session_state.get(originaldatafilepath)
+    cleaned_data_file = st.session_state.get(cleaneddatafilepath)
+    # Use function to check if file has been updated and if not,
+    # load preprocessed data
+    loaddata_df = try_to_use_preprocessed_data(originaldatafilepath,
+                                               cleaned_data_file,
+                                               "entity_summary_last_modified")
+    # Check if cached data loaded successfully and return it
+    if loaddata_df is not None:
+        return loaddata_df
 
-#     if streamlitrun:
-#         entitysummary_df = st.session_state.get(main_file)
-#         if entitysummary_df is None:
-#             st.error(f"No data found in session state! {__name__}")
-#             logger.error(f"No data found in session state! {__name__}")
-#             return None
-#     else:
-#         if datafile is None:
-#             st.error("No datafile passed for entity summary creation!")
-#             logger.error("No datafile passed for entity summary creation!")
-#         else:
-#             entitysummary_df = datafile
-#             if logger.level <= 20:
-#                 st.info("Data loaded from datafile passed to function")
-#             logger.error("Data loaded from datafile passed to function")
+    if streamlitrun:
+        entitysummary_df = st.session_state.get(main_file)
+        if entitysummary_df is None:
+            st.error(f"No data found in session state! {__name__}")
+            logger.error(f"No data found in session state! {__name__}")
+            return None
+    else:
+        if datafile is None:
+            st.error("No datafile passed for entity summary creation!")
+            logger.error("No datafile passed for entity summary creation!")
+        else:
+            entitysummary_df = datafile
+            if logger.level <= 20:
+                st.info("Data loaded from datafile passed to function")
+            logger.error("Data loaded from datafile passed to function")
 
-#     # Create a DataFrame with the sum, count and mean of the donations
-#     # for each RegulatedEntityName
-#     RegulatedEntity_df = (
-#         entitysummary_df.groupby(["RegulatedEntityName"])
-#         .agg({"Value": ["sum", "count", "mean"]})
-#         .reset_index()
-#     )
-#     # Rename columns
-#     RegulatedEntity_df.columns = [
-#         "RegulatedEntityName",
-#         "DonationsValue",
-#         "DonationEvents",
-#         "DonationMean",
-#     ]
+    # Create a DataFrame with the sum, count and mean of the donations
+    # for each RegulatedEntityName
+    RegulatedEntity_df = (
+        entitysummary_df.groupby(["RegulatedEntityName"])
+        .agg({"Value": ["sum", "count", "mean"]})
+        .reset_index()
+    )
+    # Rename columns
+    RegulatedEntity_df.columns = [
+        "RegulatedEntityName",
+        "DonationsValue",
+        "DonationEvents",
+        "DonationMean",
+    ]
 
-#     # Add RegEntity_Group column based on thresholds
-#     thresholds = st.session_state.thresholds
-#     RegulatedEntity_df["RegEntity_Group"] = determine_groups_optimized(
-#         RegulatedEntity_df,
-#         "RegulatedEntityName",
-#         "DonationEvents",
-#         thresholds
-#     )
+    # Add RegEntity_Group column based on thresholds
+    thresholds = st.session_state.thresholds
+    RegulatedEntity_df["RegEntity_Group"] = determine_groups_optimized(
+        RegulatedEntity_df,
+        "RegulatedEntityName",
+        "DonationEvents",
+        thresholds
+    )
 
-#     # generate CSV file of summary data
-#     if output_csv:
-#         RegulatedEntity_df.to_csv(cleaned_data_file)
-#         logger.info(f"Regulated entity summary saved to {cleaned_data_file}")
-#     if logger.level <= 20:
-#         st.info("Regulated entity summary successfully")
-#         st.info(f"Data has {RegulatedEntity_df.shape[0]} rows "
-#                 f"and {RegulatedEntity_df.shape[1]} columns")
+    # generate CSV file of summary data
+    if output_csv:
+        RegulatedEntity_df.to_csv(cleaned_data_file)
+        logger.info(f"Regulated entity summary saved to {cleaned_data_file}")
+    if logger.level <= 20:
+        st.info("Regulated entity summary successfully")
+        st.info(f"Data has {RegulatedEntity_df.shape[0]} rows "
+                f"and {RegulatedEntity_df.shape[1]} columns")
 
-#     logger.info("Raw Data cleanup completed")
-#     logger.info(f"Data shape: {RegulatedEntity_df.shape}")
+    logger.info("Raw Data cleanup completed")
+    logger.info(f"Data shape: {RegulatedEntity_df.shape}")
 
-#     return RegulatedEntity_df
+    return RegulatedEntity_df
