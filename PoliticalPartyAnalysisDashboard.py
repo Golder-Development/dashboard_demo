@@ -56,6 +56,14 @@ try:
     if "data_clean" not in st.session_state or \
             st.session_state.data_clean is None:
         logger.info("No data found in session state, running firstload()")
+        if "data_donor" in st.session_state and \
+           "raw_data" in st.session_state and \
+           "data_clean" in st.session_state and \
+           "data_regentity" in st.session_state:
+            logger.debug(f"st.session_state.data_donor: {len(st.session_state.data_donor)}")
+            logger.debug(f"st.session_state.raw_data: {len(st.session_state.raw_data)}")
+            logger.debug(f"st.session_state.data_clean: {len(st.session_state.data_clean)}")
+            logger.debug(f"st.session_state.data_regentity: {len(st.session_state.data_regentity)}")
         # Create a loading message
         loading_message = st.empty()
         # Display a loading message

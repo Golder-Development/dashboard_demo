@@ -50,11 +50,12 @@ FILENAMES = {  # "directory" : {"file_name": "file_path"}
         "donor_map_fname": "PoliticalDonorsDeduped.csv",
         "politician_party_fname": "ListOfPoliticalPeople_Final.csv",
         "regentity_map_fname": "PoliticalEntityDeDuped.csv",
-        "potential_donor_duplicates_fname": "potential_donor_duplicates.csv",
-        "potential_regulatedentity_duplicates_fname": "potential_regentiity_duplicates.csv",
+        # "potential_donor_duplicates_fname": "potential_donor_duplicates.csv",
+        # "potential_regulatedentity_duplicates_fname": "potential_regentiity_duplicates.csv",
         "original_data_fname": "original_data.csv",
         "CREDENTIALS_FILE": "admin_credentials.json",
         "TEXT_FILE": "admin_text.json",
+        "ELECTION_DATES": "elections.csv",
     },
     "output_dir": {
         "cleaned_data_fname": "cleaned_data.csv",
@@ -169,14 +170,3 @@ SECURITY = {  # "security_variable": "security_value"
     "username": "",
     "password": "",
 }
-
-
-ELECTIONDATES = {  # "election_name": "election_date"
-            "2001": "2001/06/07 00:00:00",
-            "2005": "2005/05/05 00:00:00",
-            "2010": "2010/06/05 00:00:00",
-            "2015": "2015/07/05 00:00:00",
-            "2017": "2017/07/05 00:00:00",
-            "2019": "2019/12/12 00:00:00",
-            "2024": "2024/07/04 00:00:00",
-        }

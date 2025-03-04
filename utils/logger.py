@@ -6,7 +6,7 @@ from functools import wraps
 # Allow dynamic control of log level via environment variable or a default
 # to change via terminal: export LOG_LEVEL=DEBUG (linux), set LOG_LEVEL=DEBUG (Windows)
 # or alter in config.py
-LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()  # Can be DEBUG, INFO, WARNING, ERROR, CRITICAL
+LOG_LEVEL = os.getenv("LOG_LEVEL", "DEBUG").upper()  # Can be DEBUG, INFO, WARNING, ERROR, CRITICAL
 
 # Configure logging correctly
 logging.basicConfig(
@@ -22,7 +22,7 @@ logging.basicConfig(
 
 # Get a logger instance
 logger = logging.getLogger("StreamlitApp")
-
+logger.setLevel(getattr(logging, LOG_LEVEL, logging.INFO))  # Set log level for the logger
 
 def log_function_call(func):
     """Decorator to log function calls, arguments, and return values."""
