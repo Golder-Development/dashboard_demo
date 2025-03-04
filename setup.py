@@ -27,7 +27,7 @@ def setup_package():
     except Exception as e:
         logger.critical(f"App setup crashed: {e}", exc_info=True)
         st.error(f"App setup failed. Please check logs. {e}")
-        raise SystemExit("❌ App setup failed. Exiting.")
+        raise SystemExit("App setup failed. Exiting.")
     # Define the description of the package
     packagedescription = "A package to clean and dedupe data"
     # Define the author of the package
@@ -71,5 +71,5 @@ def setup_package():
     except Exception as e:
         logger.critical(f"App setup crashed: {e}", exc_info=True)
         st.error(f"App setup failed. Please check logs. {e}")
-        raise SystemExit("❌ App setup failed. Exiting.")
+        raise SystemExit("App setup failed. Exiting.")
     return

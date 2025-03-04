@@ -87,6 +87,9 @@ def raw_data_cleanup(
         "AccountingUnitId",
         "ECRef",
     ]
+    # label index to index
+    loaddata_df.index.name = "index"
+    # bulk change all columns to string and replace NaN with empty string
     loaddata_df[columns_to_fill] = (
         loaddata_df[columns_to_fill].fillna("").astype(str))
     # remove leading and trailing spaces from DonorName, RegulatedEntityName
@@ -159,6 +162,10 @@ def raw_data_cleanup(
     loaddata_df["RegulatedEntityName"] = (
         loaddata_df["RegulatedEntityName"].replace(
             "", "Unidentified Entity"
+        ))
+    # update null or blank RegulatedEntityName to "Unidentified Entity"
+    loaddata_df["RegulatedEntityName"] = (
+        loaddata_df["RegulatedEntityName"].fillna("Unidentified Entity"
         ))
     # update Blank DonorId to 1000001
     loaddata_df["DonorId"] = loaddata_df["DonorId"].fillna(1000001)

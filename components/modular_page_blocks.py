@@ -15,7 +15,8 @@ from components.text_management import (
     toggle_soft_delete,
     permanent_delete,
 )
-from utils.logger import log_function_call  # Import decorator
+from utils.logger import log_function_call, logger
+
 
 @log_function_call
 def load_and_filter_data(filter_key, pagereflabel):
@@ -37,7 +38,9 @@ def load_and_filter_data(filter_key, pagereflabel):
     # Apply filters
     current_target = st.session_state["filter_def"].get(filter_key)
     cleaned_d_df = filter_by_date(cleaned_df, start_date, end_date)
-    filtered_df = apply_filters(cleaned_d_df, current_target, logical_operator="or")
+    filtered_df = apply_filters(cleaned_d_df,
+                                current_target,
+                                logical_operator="or")
 
     return cleaned_df, filtered_df
 
@@ -67,12 +70,18 @@ def display_summary_statistics(filtered_df, overall_df, target_label,
 
     cols = st.columns(6)
     stats_map = [
-        (f"Total {target_label}", f"£{format_number(tstats['total_value'])}"),
-        (f"{target_label} % of Total Donations", f"{perc_target:.0f}%"),
-        (f"{target_label} Donations", f"{format_number(tstats['unique_donations'])}"),
-        (f"Mean {target_label} Value", f"£{format_number(tstats['mean_value'])}"),
-        (f"Total {target_label} Entities", f"{format_number(tstats['unique_reg_entities'])}"),
-        (f"Total {target_label} Donors", f"{format_number(tstats['unique_donors'])}"),
+        (f"Total {target_label}",
+         f"£{format_number(tstats['total_value'])}"),
+        (f"{target_label} % of Total Donations",
+         f"{perc_target:.0f}%"),
+        (f"{target_label} Donations",
+         f"{format_number(tstats['unique_donations'])}"),
+        (f"Mean {target_label} Value",
+         f"£{format_number(tstats['mean_value'])}"),
+        (f"Total {target_label} Entities",
+         f"{format_number(tstats['unique_reg_entities'])}"),
+        (f"Total {target_label} Donors",
+         f"{format_number(tstats['unique_donors'])}"),
     ]
     for col, (label, value) in zip(cols, stats_map):
         col.metric(label=label, value=value)
@@ -131,7 +140,8 @@ def display_visualizations(graph_df, target_label, pageref_label):
 
 @log_function_call
 def display_textual_insights(
-    pageref_label, target_label, min_date, max_date, tstats, ostats, perc_target
+    pageref_label, target_label, min_date,
+    max_date, tstats, ostats, perc_target
 ):
     """Displays insights and explanations."""
     pageref_label_ti = pageref_label + "_ti"
@@ -151,7 +161,8 @@ def display_textual_insights(
                     st.markdown(f"⚠️ **(Deleted)** {text_key}:")
                 else:
                     st.text_area(
-                        f"Edit {text_key}:", value=text_value, key=f"edit_{text_key}"
+                        f"Edit {text_key}:", value=text_value,
+                        key=f"edit_{text_key}"
                     )
 
                 col1, col2, col3, col4 = st.columns([3, 1, 1, 1])
@@ -181,7 +192,8 @@ def display_textual_insights(
                         st.rerun()
 
                 with col4:
-                    if st.button(f"🗑️ Delete {text_key}", key=f"perm_delete_{text_key}"):
+                    if st.button(f"🗑️ Delete {text_key}",
+                                 key=f"perm_delete_{text_key}"):
                         permanent_delete(pageref_label, text_key)
                         st.error(f"Permanently Deleted {text_key}!")
                         st.rerun()
@@ -245,7 +257,8 @@ def display_textual_insights(
             "* Political donations fluctuate significantly over time,"
             " especially during elections."
         )
-        st.write("* Funding sources and types of" " donors impact donation trends.")
+        st.write("* Funding sources and types of"
+                 " donors impact donation trends.")
 
 
 @log_function_call
@@ -258,8 +271,10 @@ def load_and_filter_perentity(group_entity, filter_key, pageref_label):
         return None, None, None, None, None, None, None, None
 
     # Get min and max dates from the dataset
-    min_date = dt.datetime.combine(get_mindate(cleaned_df), dt.datetime.min.time())
-    max_date = dt.datetime.combine(get_maxdate(cleaned_df), dt.datetime.min.time())
+    min_date = dt.datetime.combine(get_mindate(cleaned_df),
+                                   dt.datetime.min.time())
+    max_date = dt.datetime.combine(get_maxdate(cleaned_df),
+                                   dt.datetime.min.time())
 
     # # Add a date range slider to filter by received date
     date_range2 = st.slider(
@@ -322,7 +337,8 @@ def load_and_filter_perentity(group_entity, filter_key, pageref_label):
     else:
         cleaned_r_df = cleaned_df
     # Create dataframe for chosen entity and date range all measures
-    cleaned_r_d_df = cleaned_r_df[date_filter] if date_filter.any() else cleaned_r_df
+    cleaned_r_d_df = (
+        cleaned_r_df[date_filter] if date_filter.any() else cleaned_r_df)
     # Create dataframe for chosen target and date range all entities
     cleaned_c_d_df = apply_filters(cleaned_d_df, current_target)
     # Create dataframe for chosen target and entity all dates
@@ -352,8 +368,10 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
         return None, None
 
     # Get min and max dates from the dataset
-    min_date = dt.datetime.combine(get_mindate(cleaned_df), dt.datetime.min.time())
-    max_date = dt.datetime.combine(get_maxdate(cleaned_df), dt.datetime.min.time())
+    min_date = dt.datetime.combine(get_mindate(cleaned_df),
+                                   dt.datetime.min.time())
+    max_date = dt.datetime.combine(get_maxdate(cleaned_df),
+                                   dt.datetime.min.time())
 
     # # Add a date range slider to filter by received date
     date_range2 = st.slider(
@@ -371,7 +389,7 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
 
     # --- Dropdown for chosen grouping ---
     filterentityname = group_entity + "Name"
-    filterentityid =group_entity + "Id"
+    filterentityid = group_entity + "Id"
     # check filterentityname and filterentityid are in the dataframe
     if (
         filterentityname not in cleaned_df.columns
@@ -387,7 +405,8 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
         return (None, None, None, None, None, None, None, None)
 
     # Create a mapping of RegulatedEntityName -> RegulatedEntityId
-    entity_mapping = dict(zip(cleaned_df[filterentityname], cleaned_df[filterentityid]))
+    entity_mapping = dict(zip(cleaned_df[filterentityname],
+                              cleaned_df[filterentityid]))
 
     # Add "All" as an option and create a dropdown that displays names but
     # returns IDs
@@ -406,7 +425,9 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
     # Apply filters
     entity_filter = {}
     entity_filter = (
-        {filterentityid: selected_entity_id} if selected_entity_name != "All" else {}
+        {filterentityid: selected_entity_id}
+        if selected_entity_name != "All"
+        else {}
     )
     # # Filter by date range
     date_filter = (cleaned_df["ReceivedDate"] >= start_date) & (
@@ -428,7 +449,8 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
     else:
         cleaned_r_df = cleaned_df
     # Create dataframe for chosen entity and date range all measures
-    cleaned_r_d_df = cleaned_r_df[date_filter] if date_filter.any() else cleaned_r_df
+    cleaned_r_d_df = (
+        cleaned_r_df[date_filter] if date_filter.any() else cleaned_r_df)
     # Create dataframe for chosen target and date range all entities
     cleaned_c_d_df = apply_filters(cleaned_d_df, current_target)
     # Create dataframe for chosen target and entity all dates
@@ -449,7 +471,11 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
 
 
 @log_function_call
-def topline_summary_block(target_label, min_date_df, max_date_df, tstats, perc_cash_donations_d):
+def topline_summary_block(target_label,
+                          min_date_df,
+                          max_date_df,
+                          tstats,
+                          perc_cash_donations_d):
     st.write(f"## Summary Statistics for {target_label},"
              f" from {min_date_df} to {max_date_df}")
     left, a, b, mid, c, right = st.columns(6)

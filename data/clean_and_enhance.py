@@ -1,12 +1,14 @@
 import pandas as pd
+import numpy as np
 import streamlit as st
 from data.data_utils import try_to_use_preprocessed_data
 from data.politicalperson import map_mp_to_party
 from components import mappings as mp
 from components import calculations as calc
 from utils.logger import logger, log_function_call
-from data.GenElectionRelationship import(GenElectionRelation2,
-                                               load_election_dates)
+from data.GenElectionRelationship import (
+    load_election_dates
+    )
 
 
 @log_function_call
@@ -121,7 +123,8 @@ def load_cleaned_data(
         .fillna(st.session_state.PLACEHOLDER_DATE)
     )
     # Phase 1 - line 122 - Clean data prep
-    logger.debug(f"Clean Data Prep 123: streamlitdata load: {len(loadclean_df)}")
+    logger.debug(f"Clean Data Prep 123: streamlitdata"
+                 f" load: {len(loadclean_df)}")
 
     # Create Year and Month columns
     loadclean_df["YearReceived"] = loadclean_df["ReceivedDate"].dt.year
@@ -312,45 +315,62 @@ def load_cleaned_data(
         # QtrsSinceLastElection] to None
         loadclean_df["DaysTillNextElection"] = None
         loadclean_df["DaysSinceLastElection"] = None
-        loadclean_df["WeeksTillNextElection"] = None
-        loadclean_df["WeeksSinceLastElection"] = None
+        loadclean_df["WksTillNextElection"] = None
+        loadclean_df["WksSinceLastElection"] = None
         loadclean_df["QtrsTillNextElection"] = None
         loadclean_df["QtrsSinceLastElection"] = None
+        loadclean_df["YrsTillNextElection"] = None
+        loadclean_df["YrsSinceLastElection"] = None
         logger.error("Election dates could not be loaded. Returning None.")
         st.error("Election dates could not be loaded. Returning None.")
         return None
     else:
-        # Calculate days till the next election and since the last election
-        loadclean_df["DaysTillNextElection"] = (
-            loadclean_df["ReceivedDate"].apply(
-                lambda x: GenElectionRelation2(
-                    x.strftime('%Y/%m/%d %H:%M:%S'),
-                    direction="DaysTill")
-            ))
-        loadclean_df["DaysSinceLastElection"] = (
-            loadclean_df["ReceivedDate"].apply(
-                lambda x: GenElectionRelation2(
-                    x.strftime('%Y/%m/%d %H:%M:%S'),
-                    direction="DaysSince")
-            ))
+        # Convert election dates into Pandas Series
+        loadclean_df["ReceivedDate"] = pd.to_datetime(
+            loadclean_df["ReceivedDate"])
+        election_dates_asc = pd.to_datetime(
+            pd.Series(st.session_state.ElectionDatesAscend))
+        election_dates_desc = pd.to_datetime(
+            pd.Series(st.session_state.ElectionDatesDescend))
 
-        # Calculate weeks and quarters till the next election and
-        # since the last election
-        for period, divisor in [("Weeks", 7), ("Quarters", 91)]:
-            loadclean_df[f'{period}TillNextElection'] = (
-                loadclean_df["ReceivedDate"].apply(
-                    lambda x: GenElectionRelation2(
-                        x.strftime('%Y/%m/%d %H:%M:%S'),
-                        divisor=divisor,
-                        direction="DaysTill")
-                            ))
-            loadclean_df[f'{period}SinceLastElection'] = (
-                loadclean_df["ReceivedDate"].apply(
-                    lambda x: GenElectionRelation2(
-                        x.strftime('%Y/%m/%d %H:%M:%S'),
-                        divisor=divisor,
-                        direction="DaysSince")
-                            ))
+        # Calculate days till the next election and since the last election
+        def get_days_till_next_election(date_series):
+            date_series = pd.to_datetime(date_series)
+            idx = np.searchsorted(election_dates_asc,
+                                  date_series,
+                                  side="left")
+            valid_idx = idx < len(election_dates_asc)
+            next_election_dates = np.where(valid_idx,
+                                           election_dates_asc.iloc[idx],
+                                           pd.NaT)
+            return (pd.to_datetime(next_election_dates) - date_series).dt.days
+
+        # Vectorized function for days since the last election
+        def get_days_since_last_election(date_series):
+            date_series = pd.to_datetime(date_series)
+            idx = np.searchsorted(election_dates_desc,
+                                  date_series,
+                                  side="right") - 1
+            valid_idx = idx >= 0
+            last_election_dates = np.where(valid_idx,
+                                           election_dates_desc.iloc[idx],
+                                           pd.NaT)
+            return (date_series - pd.to_datetime(last_election_dates)).dt.days
+        # Apply vectorized calculations
+        loadclean_df["DaysTillNextElection"] = (
+            get_days_till_next_election(loadclean_df["ReceivedDate"])
+            )
+        loadclean_df["DaysSinceLastElection"] = (
+            get_days_since_last_election(loadclean_df["ReceivedDate"])
+            )
+
+        # Compute weeks and quarters and years
+        for period, divisor in [("Wks", 7), ("Qtrs", 91), ("Yrs", 365)]:
+            loadclean_df[f"{period}TillNextElection"] = (
+                np.ceil(loadclean_df["DaysTillNextElection"] / divisor))
+            loadclean_df[f"{period}SinceLastElection"] = (
+                np.ceil(loadclean_df["DaysSinceLastElection"] / divisor))
+
     logger.debug(f"Clean Data Prep 353: Election dates: {len(loadclean_df)}")
     # compare count of rows in original data with cleaned data
     if len(orig_df) != len(loadclean_df):
@@ -369,7 +389,7 @@ def load_cleaned_data(
         logger.info(
             f"Deduplication completed, shape: {loadclean_df.shape} {__name__}"
         )
-        #compare count of rows in original data with cleaned data
+        # compare count of rows in original data with cleaned data
         if len(orig_df) != len(loadclean_df):
             logger.error(
                 "Post deduplication: "

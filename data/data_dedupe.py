@@ -22,7 +22,7 @@ def dedupe_entity_file(
     {entity}id. If the file does not exist, the dedupe_entity_fuzzy
     function is called to dedupe the data and return the new data.
     """
-    # Load the data
+    # Load the data prep - set field names
     originalentityname = f"Original{entity}Name"
     originalentityid = f"Original{entity}Id"
     entityname = f"{entity}Name"
@@ -35,28 +35,35 @@ def dedupe_entity_file(
         logger.error(f"{entityid} not found in data")
         raise ValueError(f"{entityid} not found in data")
 
-    # Check if the mapping file has been updated
+    # Check if the mapping file exists in the session state
     map_file_path = st.session_state.get(map_filename)
     if not map_file_path:
         logger.error(f"{map_filename} not found in session state filenames")
         raise ValueError(f"{map_filename} not found in session state filenames")
 
-    # Check if the map file exists and whether it has been updated
-    if is_file_updated(map_file_path, f"{map_filename}_last_modified"):
-        logger.info(f"Map file {map_filename} has been updated. Proceeding with deduplication.")
+    # File exists and contains data use it to dedupe the data
+    # check {map_filename} exists and has data
+    elif os.path.exists(map_file_path) and os.path.getsize(map_file_path) > 0:
+        logger.info(f"Map file {map_filename} exists."
+                    " Proceeding with deduplication.")
         # Load the dedupe map file
         re_dedupe_df = pd.read_csv(map_file_path)
-        # Ensure that there is only one value for each entity ID by taking the first value in all cases
+        # Ensure that there is only one value for each entity ID by taking
+        # the first value in all cases
         re_dedupe_df = re_dedupe_df.groupby(entityid).first().reset_index()
-        # Merge the cleaned data with the original data
-        loaddata_dd_df = pd.merge(loaddata_dd_df, re_dedupe_df, how="left", on=entityid)
-        # Rename columns
-        entityname_x = f"{entityname}_x"
-        entityname_y = f"{entityname}_y"
-        loaddata_dd_df.rename(
-            columns={entityname_x: entityname, entityname_y: originalentityname},
-            inplace=True,
-        )
+        # Merge the cleaned data with the original data, selecting only required columns
+        loaddata_dd_df = pd.merge(loaddata_dd_df,
+                      re_dedupe_df[[entityid, cleanedentityname, cleanedentityid]],
+                      how="left",
+                      on=entityid)
+        # # Rename columns
+        # entityname_x = f"{entityname}_x"
+        # # entityname_y = f"{entityname}_y"
+        # loaddata_dd_df.rename(
+        #     columns={entityname_x: entityname  #, entityname_y: originalentityname
+        #              },
+        #     inplace=True,
+        # )
         # Handle missing values for parent entities
         loaddata_dd_df["ParentEntityId"] = (
             loaddata_dd_df[cleanedentityid].replace("", pd.NA)
@@ -65,10 +72,12 @@ def dedupe_entity_file(
             loaddata_dd_df[cleanedentityname].replace("", pd.NA)
         )
         loaddata_dd_df["ParentEntityId"] = (
-            loaddata_dd_df["ParentEntityId"].fillna(loaddata_dd_df[entityid])
+            loaddata_dd_df[cleanedentityid]
+            .fillna(loaddata_dd_df[entityid])
         )
         loaddata_dd_df["ParentEntityName"] = (
-            loaddata_dd_df["ParentEntityName"].fillna(loaddata_dd_df[entityname])
+            loaddata_dd_df[cleanedentityname]
+            .fillna(loaddata_dd_df[entityname])
         )
         loaddata_dd_df.rename(
             columns={
@@ -79,7 +88,30 @@ def dedupe_entity_file(
             },
             inplace=True,
         )
-        logger.info(f"File deduplication complete, shape: {loaddata_dd_df.shape}")
+        # drop unnecessary columns
+        # loaddata_dd_df.drop(columns=[cleanedentityid,
+        # cleanedentityname], inplace=True)
+        # count of deduped records
+        updatedidrecords = (loaddata_dd_df[loaddata_dd_df[entityid] !=
+                                loaddata_dd_df[originalentityid]]).count()
+        updatednamerecords = (loaddata_dd_df[loaddata_dd_df[entityname] !=
+                                loaddata_dd_df[originalentityname]]).count()
+        changednamerecords = (
+            loaddata_dd_df[loaddata_dd_df[cleanedentityname] !=
+                loaddata_dd_df[originalentityname]]).count()
+        changedidrecords = (loaddata_dd_df[loaddata_dd_df[cleanedentityid] !=
+                                loaddata_dd_df[originalentityid]]).count()
+        logger.info(f"File deduplication complete, shape: {updatedidrecords}"
+                    f" records updated with new {entityid} and"
+                    f" {updatednamerecords} records updated"
+                    f" with new {entityname}")
+        logger.debug(f"File deduplication cleaned complete, "
+                     f"shape: {changedidrecords}"
+                     f" records updated with new {entityid} and"
+                     f" {changednamerecords} records updated"
+                     f" with new {entityname}")
+        logger.info(f"File deduplication complete,"
+                    f" shape: {loaddata_dd_df.shape}")
         return loaddata_dd_df
     else:
         # If the file hasn't been updated, use fuzzy matching for deduplication

@@ -45,9 +45,9 @@ def initialise_data():
             st.session_state.data_clean is None:
         logger.error("Data loading failed.")
         st.error("Data loading failed. Please check logs.")
-        raise SystemExit("❌ Data loading failed. Exiting.")
+        raise SystemExit("Data loading failed. Exiting.")
     else:
-        logger.info("✅ Data first load completed successfully.")
+        logger.info("Data first load completed successfully.")
     return None
 
 

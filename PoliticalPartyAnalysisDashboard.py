@@ -16,39 +16,39 @@ try:
     from utils.logger import logger
     from data.data_utils import initialise_data
 except ImportError as e:
-    raise SystemExit(f"❌ Error: Failed to import modules - {e}")
+    raise SystemExit(f"Error: Failed to import modules - {e}")
 
 
 # log current working directory
 if 'logger' in globals():
     # log current file and path
-    logger.info("🚀 Streamlit App Starting...")
+    logger.info("Streamlit App Starting...")
     current_file = os.path.abspath(__file__)
     current_path = os.path.dirname(current_file)
     logger.info(f"Current Working Directory: {os.getcwd()}")
-    logger.info(f"🚀 running {current_path}, {current_file}")
+    logger.info(f"running {current_path}, {current_file}")
 else:
     # Run the setup function
-    raise SystemExit("❌ Error: Logger is not properly configured!")
+    raise SystemExit("Error: Logger is not properly configured!")
 # Run the setup function
 try:
     logger.info("Running App setup...")
     setup.setup_package()
-    logger.info("✅ Setup completed successfully.")
+    logger.info("Setup completed successfully.")
 except Exception as e:
     logger.critical(f"App setup crashed: {e}", exc_info=True)
     st.error(f"App setup failed. Please check logs. {__name__}")
-    raise SystemExit("❌ App setup failed. Exiting.")
+    raise SystemExit("App setup failed. Exiting.")
 
 # run political party analysis
 try:
     logger.info("Running Menu setup...")
     politicalpartyanalysis.pagesetup()
-    logger.info("✅ Menu setup completed successfully.")
+    logger.info("Menu setup completed successfully.")
 except Exception as e:
     logger.critical(f"Menu setup crashed: {e}", exc_info=True)
     st.error(f"Menu setup failed. Please check logs. {__name__}")
-    raise SystemExit("❌ Menu setup failed. Exiting.")
+    raise SystemExit("Menu setup failed. Exiting.")
 
 
 # Run the first load function
@@ -60,10 +60,14 @@ try:
            "raw_data" in st.session_state and \
            "data_clean" in st.session_state and \
            "data_regentity" in st.session_state:
-            logger.debug(f"st.session_state.data_donor: {len(st.session_state.data_donor)}")
-            logger.debug(f"st.session_state.raw_data: {len(st.session_state.raw_data)}")
-            logger.debug(f"st.session_state.data_clean: {len(st.session_state.data_clean)}")
-            logger.debug(f"st.session_state.data_regentity: {len(st.session_state.data_regentity)}")
+            logger.debug("st.session_state.data_donor:"
+                         f" {len(st.session_state.data_donor)}")
+            logger.debug("st.session_state.raw_data:"
+                         f" {len(st.session_state.raw_data)}")
+            logger.debug("st.session_state.data_clean:"
+                         f" {len(st.session_state.data_clean)}")
+            logger.debug("st.session_state.data_regentity:"
+                         f" {len(st.session_state.data_regentity)}")
         # Create a loading message
         loading_message = st.empty()
         # Display a loading message
@@ -79,11 +83,11 @@ try:
     else:
         logger.info("Data already loaded in session state.")
 except Exception as e:
-    logger.critical(f"❌ First load crashed: {e}", exc_info=True)
+    logger.critical(f"First load crashed: {e}", exc_info=True)
     st.error(f"Data loading failed. Please check logs. {e}")
-    raise SystemExit("❌ Data loading failed. Exiting.")
+    raise SystemExit("Data loading failed. Exiting.")
 
-logger.info("🎉 App is fully loaded and ready!")
+logger.info("App is fully loaded and ready!")
 # The app is now ready to be run.
 # To run the app, open a terminal and run:
 #  "streamlit run PoliticalPartyAnalysisDashboard.py
