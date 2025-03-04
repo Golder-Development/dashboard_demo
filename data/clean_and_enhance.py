@@ -5,7 +5,8 @@ from data.politicalperson import map_mp_to_party
 from components import mappings as mp
 from components import calculations as calc
 from utils.logger import logger, log_function_call
-from components.GenElectionRelationship import GenElectionRelation2
+from data.GenElectionRelationship import(GenElectionRelation2,
+                                               load_election_dates)
 
 
 @log_function_call
@@ -295,32 +296,89 @@ def load_cleaned_data(
         .apply(lambda x: 0 if x != "Public Funds" else 1))
     # Calculate the number of days to the next election and
     # since the last election
-    loadclean_df["DaysTillNextElection"] = (
-        loadclean_df["ReceivedDate"].apply(
-            lambda x: GenElectionRelation2(x.strftime('%Y/%m/%d %H:%M:%S'),
-                                           direction="DaysTill")
-        ))
-    loadclean_df["DaysSinceLastElection"] = (
-        loadclean_df["ReceivedDate"].apply(
-            lambda x: GenElectionRelation2(x.strftime('%Y/%m/%d %H:%M:%S'),
-                                           direction="DaysSince")
-        ))
+    # Ensure election dates are loaded
+    if ("ElectionDatesAscend" not in st.session_state or
+            "ElectionDatesDescend" not in st.session_state):
+        load_election_dates()
 
-    # Calculate weeks and quarters till the next election and
-    # since the last election
-    for period, divisor in [("Weeks", 7), ("Quarters", 91)]:
-        loadclean_df[f'{period}TillNextElection'] = (
+    if not st.session_state.ElectionDatesAscend:
+        # set [DaysTillNextElection, DaysSinceLastElection,
+        # WeeksTillNextElection, WeeksSinceLastElection,QtrsTillNextElection,
+        # QtrsSinceLastElection] to None
+        loadclean_df["DaysTillNextElection"] = None
+        loadclean_df["DaysSinceLastElection"] = None
+        loadclean_df["WeeksTillNextElection"] = None
+        loadclean_df["WeeksSinceLastElection"] = None
+        loadclean_df["QtrsTillNextElection"] = None
+        loadclean_df["QtrsSinceLastElection"] = None
+        logger.error("Election dates could not be loaded. Returning None.")
+        st.error("Election dates could not be loaded. Returning None.")
+        return None
+    else:
+        # Calculate days till the next election and since the last election
+        loadclean_df["DaysTillNextElection"] = (
             loadclean_df["ReceivedDate"].apply(
-                lambda x: GenElectionRelation2(x.strftime('%Y/%m/%d %H:%M:%S'),
-                                               divisor=divisor,
-                                               direction="DaysTill")
-                                                ))
-        loadclean_df[f'{period}SinceLastElection'] = (
+                lambda x: GenElectionRelation2(
+                    x.strftime('%Y/%m/%d %H:%M:%S'),
+                    direction="DaysTill")
+            ))
+        loadclean_df["DaysSinceLastElection"] = (
             loadclean_df["ReceivedDate"].apply(
-                lambda x: GenElectionRelation2(x.strftime('%Y/%m/%d %H:%M:%S'),
-                                               divisor=divisor,
-                                               direction="DaysSince")
-                                                ))
+                lambda x: GenElectionRelation2(
+                    x.strftime('%Y/%m/%d %H:%M:%S'),
+                    direction="DaysSince")
+            ))
+
+        # Calculate weeks and quarters till the next election and
+        # since the last election
+        for period, divisor in [("Weeks", 7), ("Quarters", 91)]:
+            loadclean_df[f'{period}TillNextElection'] = (
+                loadclean_df["ReceivedDate"].apply(
+                    lambda x: GenElectionRelation2(
+                        x.strftime('%Y/%m/%d %H:%M:%S'),
+                        divisor=divisor,
+                        direction="DaysTill")
+                            ))
+            loadclean_df[f'{period}SinceLastElection'] = (
+                loadclean_df["ReceivedDate"].apply(
+                    lambda x: GenElectionRelation2(
+                        x.strftime('%Y/%m/%d %H:%M:%S'),
+                        divisor=divisor,
+                        direction="DaysSince")
+                            ))
+    # compare count of rows in original data with cleaned data
+    if len(orig_df) != len(loadclean_df):
+        logger.error(
+            f"Number of rows in cleaned data ({len(loadclean_df)}) "
+            f"does not match the number of rows in the original data "
+            f"({len(orig_df)})! {__name__}"
+        )
+        st.error(
+            f"Number of rows in cleaned data ({len(loadclean_df)}) "
+            f"does not match the number of rows in the original data "
+            f"({len(orig_df)})! {__name__}"
+        )
+        # Dedupe the data
+        loadclean_df = loadclean_df.drop_duplicates()
+        logger.info(
+            f"Deduplication completed, shape: {loadclean_df.shape} {__name__}"
+        )
+        #compare count of rows in original data with cleaned data
+        if len(orig_df) != len(loadclean_df):
+            logger.error(
+                "Post deduplication: "
+                f"Number of rows in cleaned data ({len(loadclean_df)}) "
+                f"does not match the number of rows in the original data "
+                f"({len(orig_df)})! {__name__}"
+            )
+            st.error(
+                "Post deduplication: "
+                f"Number of rows in cleaned data ({len(loadclean_df)}) "
+                f"does not match the number of rows in the original data "
+                f"({len(orig_df)})! {__name__}, deduplication failed"
+            )
+            return ValueError("Deduplication failed")
+
     # Save cleaned data
     if output_csv:
         # Save the cleaned data to a CSV file for further analysis or reporting
