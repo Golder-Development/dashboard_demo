@@ -26,8 +26,14 @@ def load_and_filter_data(filter_key, pagereflabel):
         st.error("No data found. Please upload a dataset.")
         return None, None
 
-    min_date = get_mindate(cleaned_df).date()
-    max_date = get_maxdate(cleaned_df).date()
+    if "min_date" in st.session_state and "max_date" in st.session_state:
+        min_date = st.session_state.min_date
+        max_date = st.session_state.max_date
+    else:
+        min_date = cleaned_df["ReceivedDate"].min().date()
+        max_date = cleaned_df["ReceivedDate"].max().date()
+        st.session_state.min_date = min_date
+        st.session_state.max_date = max_date
 
     # Convert selected dates to datetime
     start_date, end_date = (

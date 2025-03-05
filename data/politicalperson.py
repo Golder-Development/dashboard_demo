@@ -131,6 +131,7 @@ def map_mp_to_party(loaddata_df):
                      inplace=True)
     logger.debug("loaddata_df after merging: %s",
                  loaddata_df.head())
+    
     # Ensure PartyName and PartyId are properly assigned
     loaddata_df['PartyName'] = (
         loaddata_df['PartyName'].
@@ -144,6 +145,7 @@ def map_mp_to_party(loaddata_df):
         combine_first(loaddata_df['RegulatedEntityId']).
         fillna(10000001)
     )
+    
     # compare rows in dataset to original data to check for duplicates
     if len(loaddata_df) != len(st.session_state.raw_data):
         logger.error("Number of rows in loaddata_df and raw_data do not match"
@@ -154,6 +156,7 @@ def map_mp_to_party(loaddata_df):
         logger.error("Attempting to remove duplicates")
         st.error("Attempting to remove duplicates")
         loaddata_df = loaddata_df.drop_duplicates()
+
         # recompare rows in dataset to original data to check for duplicates
         if len(loaddata_df) != len(st.session_state.raw_data):
             logger.error("Number of rows in loaddata_df and raw_data"
@@ -165,6 +168,7 @@ def map_mp_to_party(loaddata_df):
                      f" {len(loaddata_df)} != {len(st.session_state.raw_data)}"
                      " Political Party Mataching will not be done")
             return None
+
     # Log unique values for PartyName
     logger.debug("loaddata_df after updating PartyName and PartyId: %s",
                  loaddata_df.head())
