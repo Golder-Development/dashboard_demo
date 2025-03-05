@@ -8,7 +8,12 @@ from components.calculations import (
     calculate_percentage,
     format_number,
 )
-from components.Visualisations import plot_bar_line_by_year
+from Visualisations import ( 
+    plot_bar_line,
+    plot_pie_chart,
+    plot_bar_chart,
+    plot_regressionplot
+    )
 from components.text_management import (
     load_page_text,
     save_text,
@@ -108,7 +113,7 @@ def display_visualizations(graph_df, target_label, pageref_label):
 
     with left_column:
         left_widget_graph_key = "left" + pageref_label_vis
-        plot_bar_line_by_year(
+        plot_bar_line.plot_bar_line_by_year(
             graph_df,
             XValues="YearReceived",
             YValues="Value",
@@ -126,7 +131,7 @@ def display_visualizations(graph_df, target_label, pageref_label):
         )
         right_widget_graph_key = "right" + pageref_label_vis
     with right_column:
-        plot_bar_line_by_year(
+        plot_bar_line.plot_bar_line_by_year(
             graph_df,
             XValues="YearReceived",
             YValues="EventCount",

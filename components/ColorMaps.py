@@ -2,7 +2,7 @@ from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
 
 
-color_mapping = {
+political_colors= {
     # Official Tory blue
     "Conservative and Unionist Party": "#0087DC",
     # Official Labour red
