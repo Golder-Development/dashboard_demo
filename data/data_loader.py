@@ -20,19 +20,6 @@ def get_raw_data():
         processeddatafilepath="imported_raw_fname")
 
 
-# @log_function_call
-# @st.cache_data
-# def get_party_summary_data():
-#     return load_entity_summary_data(        
-#         main_file="raw_data",
-#         cleaned_file="party_summary_fname",
-#         datafile=None,
-#         output_csv=True,
-#         streamlitrun=True,
-#         originaldatafilepath="cleaned_data_fname",
-#         cleaneddatafilepath="party_summary_fname")
-
-
 @log_function_call
 @st.cache_data
 def get_cleaned_data():
@@ -44,6 +31,7 @@ def get_cleaned_data():
         output_csv=True,
         main_file="raw_data",
         cleaned_file="data_clean")
+
 
 @log_function_call
 @st.cache_data
@@ -76,6 +64,12 @@ def firstload():
     # Ensure g_thresholds is available as a global dictionary
     # if 'g_thresholds' not in st.session_state:
     #     create_thresholds()
+    def load_data_to_session(key, loader_function):
+        if key not in st.session_state:
+            st.session_state[key] = loader_function()
+            return key
+        else:
+            return key
 
     # Load and cache data correctly
     load_data_to_session("raw_data", get_raw_data)
@@ -91,10 +85,3 @@ def firstload():
     logger.debug(f"st.session_state.data_donor: {len(st.session_state.data_donor)}")
     logger.debug(f"st.session_state.data_clean: {len(st.session_state.data_clean)}")
 
-@log_function_call
-def load_data_to_session(key, loader_function):
-    if key not in st.session_state:
-        st.session_state[key] = loader_function()
-        return key
-    else:
-        return key

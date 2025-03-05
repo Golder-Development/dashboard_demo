@@ -38,10 +38,10 @@ def load_raw_data(main_file="raw_data",
                         "Session state variables not initialized!")
         return None
 
-    logger.debug(f"Original data file path pre"
-                 " raw data load: {originaldatafilepath}")
-    logger.debug(f"Processed data file path pre"
-                 " raw data load: {processeddatafilepath}")
+    logger.debug("Original data file path pre"
+                 f" raw data load: {originaldatafilepath}")
+    logger.debug("Processed data file path pre"
+                 f" raw data load: {processeddatafilepath}")
 
     originaldatafilepath = st.session_state.get(originaldatafilepath)
     processeddatafilepath = st.session_state.get(processeddatafilepath)
@@ -53,73 +53,76 @@ def load_raw_data(main_file="raw_data",
         timestamp_key="load_raw_data_last_modified")
     # Check if cached data loaded successfully and return it
     if loaddata_df is not None:
-        return loaddata_df
-    logger.info("Loading raw data...")
-    logger.debug(f"Original data file path post"
-                 " raw data load: {originaldatafilepath}")
-    logger.debug(f"Processed data file path post"
-                 " raw data load: {processeddatafilepath}")
-    # Load and clean the raw data
-    loaddata_df = pd.read_csv(
-        originaldatafilepath,
-        dtype={
-            "index": "int64",
-            "ECRef": "object",
-            "RegulatedEntityName": "object",
-            "RegulatedEntityType": "object",
-            "Value": "object",
-            "AcceptedDate": "object",
-            "AccountingUnitName": "object",
-            "DonorName": "object",
-            "AccountingUnitsAsCentralParty": "object",
-            "IsSponsorship": "string",
-            "DonorStatus": "object",
-            "RegulatedDoneeType": "object",
-            "CompanyRegistrationNumber": "object",
-            "Postcode": "object",
-            "DonationType": "object",
-            "NatureOfDonation": "object",
-            "PurposeOfVisit": "object",
-            "DonationAction": "object",
-            "ReceivedDate": "object",
-            "ReportedDate": "object",
-            "IsReportedPrePoll": "string",
-            "ReportingPeriodName": "object",
-            "IsBequest": "string",
-            "IsAggregation": "string",
-            "RegulatedEntityId": "object",
-            "AccountingUnitId": "object",
-            "DonorId": "object",
-            "CampaigningName": "object",
-            "RegisterName": "object",
-            "IsIrishSource": "string",
-        },
-        index_col="index",
-    )
-   
-    # Print progress message
-    if logger.level <= 20:
-        st.info("Base Data loaded successfully")
-        st.info(f"Data has {loaddata_df.shape[0]} rows "
-                f"and {loaddata_df.shape[1]} columns")
+        logger.info("Preprocessed data loaded successfully.")
+    else:
+        logger.info("Loading raw data...")
+        logger.debug("Original data file path post"
+                     f" raw data load: {originaldatafilepath}")
+        logger.debug("Processed data file path post"
+                     f" raw data load: {processeddatafilepath}")
+        # Load and clean the raw data
+        loaddata_df = pd.read_csv(
+            originaldatafilepath,
+            dtype={
+                "index": "int64",
+                "ECRef": "object",
+                "RegulatedEntityName": "object",
+                "RegulatedEntityType": "object",
+                "Value": "object",
+                "AcceptedDate": "object",
+                "AccountingUnitName": "object",
+                "DonorName": "object",
+                "AccountingUnitsAsCentralParty": "object",
+                "IsSponsorship": "string",
+                "DonorStatus": "object",
+                "RegulatedDoneeType": "object",
+                "CompanyRegistrationNumber": "object",
+                "Postcode": "object",
+                "DonationType": "object",
+                "NatureOfDonation": "object",
+                "PurposeOfVisit": "object",
+                "DonationAction": "object",
+                "ReceivedDate": "object",
+                "ReportedDate": "object",
+                "IsReportedPrePoll": "string",
+                "ReportingPeriodName": "object",
+                "IsBequest": "string",
+                "IsAggregation": "string",
+                "RegulatedEntityId": "object",
+                "AccountingUnitId": "object",
+                "DonorId": "object",
+                "CampaigningName": "object",
+                "RegisterName": "object",
+                "IsIrishSource": "string",
+            },
+            index_col="index",
+        )
 
-    logger.info(f"Data loaded successfully. Data has {loaddata_df.shape[0]} rows "
-                f"and {loaddata_df.shape[1]} columns")
-    # Save the raw data to session state
-    st.session_state.raw_data = loaddata_df
-    if output_csv:
-        loaddata_df.to_csv(processeddatafilepath)
-        logger.info(f"Data saved to {processeddatafilepath}")
-    # Save the raw data to session state
-    st.session_state.raw_data_clean = loaddata_df
-    
+        # Print progress message
+        if logger.level <= 20:
+            st.info("Base Data loaded successfully")
+            st.info(f"Data has {loaddata_df.shape[0]} rows "
+                    f"and {loaddata_df.shape[1]} columns")
+
+        logger.info(f"Data loaded successfully."
+                    f" Data has {loaddata_df.shape[0]} rows "
+                    f"and {loaddata_df.shape[1]} columns")
+        # Save the raw data to session state
+        st.session_state.raw_data = loaddata_df
+        if output_csv:
+            loaddata_df.to_csv(processeddatafilepath)
+            logger.info(f"Data saved to {processeddatafilepath}")
+        logger.info("Data saved to sessionstate as 'raw_data'")
+
     # Cleanse the raw data
-    loaddata_df = raw_data_cleanup(
-        loaddata_df=loaddata_df,
-        dedupe_donors=dedupe_donors,
-        dedupe_regentity=dedupe_regentity,
-        output_csv=output_csv,
-        originaldatafilepath=processeddatafilepath,
-        processeddatafilepath="cleaned_donations_fname")
+    def imported_raw_data(loaddata_df):
+        loaddata_df = raw_data_cleanup(
+            loaddata_df=loaddata_df,
+            dedupe_donors=dedupe_donors,
+            dedupe_regentity=dedupe_regentity,
+            output_csv=output_csv,
+            originaldatafilepath=processeddatafilepath,
+            processeddatafilepath="cleaned_donations_fname")
+        return loaddata_df
 
-    return loaddata_df
+    return imported_raw_data(loaddata_df)

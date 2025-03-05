@@ -176,6 +176,25 @@ def mod_non_cash_donations_per_entity_page():
                                 group_entity="RegulatedEntity")
 
 
+# Non Cash Donations
+def mod_publicfund_donations_page():
+    display_data_page(filter_key="PublicFundsDonations_ftr",
+                      target_label="Non Cash Donation")
+
+
+# Non Cash Donations per donor
+def mod_publicfund_donations_per_donor_page():
+    display_per_group_data_page(filter_key="PublicFundsDonations_ftr",
+                                target_label="Non Cash Donations per Donor",
+                                group_entity="Donor")
+
+
+# Non Cash Donations per entity
+def mod_publicfund_donations_per_entity_page():
+    display_per_group_data_page(filter_key="PublicFundsDonations_ftr",
+                                target_label="Non Cash Donations per Entity",
+                                group_entity="RegulatedEntity")
+
 # login
 @log_function_call
 def loginpage():

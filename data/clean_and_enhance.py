@@ -152,6 +152,7 @@ def load_cleaned_data(
                      " Political Party Matching will not be done")
             return loadclean_df
     logger.debug(f"Clean Data Prep 150: Map Mps: {len(loadclean_df)}")
+
     # Create a DubiousData flag for problematic records
     if ("PLACEHOLDER_DATE" not in st.session_state) or (
         "PLACEHOLDER_ID" not in st.session_state

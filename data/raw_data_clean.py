@@ -7,6 +7,7 @@ from utils.logger import (
     log_function_call,  # Import decorator
     )
 
+
 @log_function_call
 def raw_data_cleanup(
     loaddata_df,
@@ -15,7 +16,7 @@ def raw_data_cleanup(
     dedupe_regentity=True,
     originaldatafilepath="imported_raw_fname",
     processeddatafilepath="cleaned_donations_fname",
-    ):
+        ):
     """
     Clean up the raw data file - this is only run if the data has been updated
     since the last run.
@@ -54,7 +55,7 @@ def raw_data_cleanup(
         return preloaddata_df
 
     # Load and clean the raw data
-    loaddata_df 
+    loaddata_df
     logger.info(f"Data loaded, shape: {loaddata_df.shape}")
     # Remove Currency sign of Value and convert to Float
     loaddata_df["Value"] = (
@@ -165,8 +166,8 @@ def raw_data_cleanup(
         ))
     # update null or blank RegulatedEntityName to "Unidentified Entity"
     loaddata_df["RegulatedEntityName"] = (
-        loaddata_df["RegulatedEntityName"].fillna("Unidentified Entity"
-        ))
+        loaddata_df["RegulatedEntityName"].fillna("Unidentified Entity")
+        )
     # update Blank DonorId to 1000001
     loaddata_df["DonorId"] = loaddata_df["DonorId"].fillna(1000001)
     # update Blank RegulatedEntityId to "1000001"

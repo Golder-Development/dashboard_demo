@@ -50,12 +50,11 @@ FILENAMES = {  # "directory" : {"file_name": "file_path"}
         "donor_map_fname": "PoliticalDonorsDeduped.csv",
         "politician_party_fname": "ListOfPoliticalPeople_Final.csv",
         "regentity_map_fname": "PoliticalEntityDeDuped.csv",
-        # "potential_donor_duplicates_fname": "potential_donor_duplicates.csv",
-        # "potential_regulatedentity_duplicates_fname": "potential_regentiity_duplicates.csv",
         "original_data_fname": "original_data.csv",
         "CREDENTIALS_FILE": "admin_credentials.json",
         "TEXT_FILE": "admin_text.json",
         "ELECTION_DATES": "elections.csv",
+        "LAST_MODIFIED_DATES": "last_modified_dates.json",
     },
     "output_dir": {
         "cleaned_data_fname": "cleaned_data.csv",
@@ -155,14 +154,19 @@ FILTER_DEF = {  # "filter_name": {"column_name": "value"}
                         "Partnership",
                         "Limited Liability Partnership"]
     },
-    "RegulatedEntity_ftr": {"RegulatedEntityType": ["Political Party",
-                                                    "Regulated Donee",
-                                                    "Permitted Participant",
-                                                    "Third Party"
-                                                    ]},
+    "RegulatedEntity_ftr": {
+        "RegulatedEntityType": ["Political Party",
+                                "Regulated Donee",
+                                "Permitted Participant",
+                                "Third Party"
+                                ]},
     "PoliticalParty_ftr": {"DonorStatus": "Registered Political Party"},
-    "Cash_ftr": {"DonationType": "Cash"},
-    "NonCash_ftr": {"DonationType": "Non Cash"},
+    "CashDonations_ftr": {"DonationType": ["Cash", "Aggregate Donation"]},
+    "PublicFundsDonations_ftr": {"DonationType": "Public Funds"},
+    "NonCashDonations_ftr": {"DonationType": ["Non Cash",
+                                              "Visit",
+                                              "Bequest",
+                                              "Sponsorship",]},
 }
 SECURITY = {  # "security_variable": "security_value"
     "is_admin": False,
