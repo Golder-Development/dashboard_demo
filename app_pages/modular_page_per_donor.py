@@ -10,9 +10,11 @@ from utils.logger import log_function_call  # Import decorator
 
 
 @log_function_call
-def display_per_group_data_page(filter_key=None,
-                                target_label="default",
-                                group_entity="Donor"):
+def display_per_group_data_page(
+    functionname="display_per_group_data_page",
+    filter_key=None,
+    target_label="default",
+    group_entity="Donor"):
     """
     Template function to generate a
     Streamlit page for a specific data slice.

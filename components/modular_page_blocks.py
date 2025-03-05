@@ -267,104 +267,6 @@ def display_textual_insights(
                  " donors impact donation trends.")
 
 
-@log_function_call
-def load_and_filter_perentity(group_entity, filter_key, pageref_label):
-    """Loads and filters dataset based on filter_key from session state."""
-    cleaned_df = st.session_state["data_clean"]
-    if cleaned_df is None:
-        st.error(f"No data found. Please upload a dataset. {__name__}")
-        logger.error(f"No data found. Please upload a dataset. {__name__}")
-        return None, None, None, None, None, None, None, None
-
-    # Get min and max dates from the dataset
-    min_date = dt.datetime.combine(get_mindate(cleaned_df),
-                                   dt.datetime.min.time())
-    max_date = dt.datetime.combine(get_maxdate(cleaned_df),
-                                   dt.datetime.min.time())
-
-    # # Add a date range slider to filter by received date
-    date_range2 = st.slider(
-        "Select Date Range",
-        min_value=min_date,
-        max_value=max_date,
-        value=(min_date, max_date),
-        format="YYYY-MM-DD",
-    )
-
-    # # Extract start and end dates from the slider
-    start_date, end_date = date_range2
-    start_date = dt.datetime.combine(start_date, dt.datetime.min.time())
-    end_date = dt.datetime.combine(end_date, dt.datetime.max.time())
-
-    # --- Dropdown for Regulated Entity ---
-    # Create a mapping of RegulatedEntityName -> RegulatedEntityId
-    entity_mapping = dict(
-        zip(cleaned_df["RegulatedEntityName"], cleaned_df["RegulatedEntityId"])
-    )
-
-    # Add "All" as an option and create a dropdown that displays names but
-    # returns IDs
-    selected_entity_name = st.selectbox(
-        "Filter by Regulated Entity", ["All"] + sorted(entity_mapping.keys())
-    )
-
-    # Get the corresponding ID for filtering
-    selected_entity_id = entity_mapping.get(selected_entity_name, None)
-
-    # Apply filters
-    current_target = st.session_state["filter_def"].get(filter_key)
-
-    # Define filter condition
-    filters = {}
-    # Apply filters
-    entity_filter = {}
-    entity_filter = (
-        {"RegulatedEntityId": selected_entity_id}
-        if selected_entity_name != "All"
-        else {}
-    )
-    # # Filter by date range
-    date_filter = (cleaned_df["ReceivedDate"] >= start_date) & (
-        cleaned_df["ReceivedDate"] <= end_date
-    )
-    # Create dataframe for chosen date range and all entities
-    if date_filter is not None:
-        cleaned_d_df = cleaned_df[date_filter]
-    else:
-        cleaned_d_df = cleaned_df
-    # Create dataframe for chosen target all date range and all entities
-    if current_target:
-        cleaned_c_df = apply_filters(cleaned_df, current_target)
-    else:
-        cleaned_c_df = cleaned_df
-    # Create dataframe for chosen entity all date range and all entities
-    if entity_filter:
-        cleaned_r_df = apply_filters(cleaned_df, entity_filter)
-    else:
-        cleaned_r_df = cleaned_df
-    # Create dataframe for chosen entity and date range all measures
-    cleaned_r_d_df = (
-        cleaned_r_df[date_filter] if date_filter.any() else cleaned_r_df)
-    # Create dataframe for chosen target and date range all entities
-    cleaned_c_d_df = apply_filters(cleaned_d_df, current_target)
-    # Create dataframe for chosen target and entity all dates
-    cleaned_c_r_df = apply_filters(cleaned_r_df, current_target)
-    # Create dataframe for chosen target, entity and date range
-    cleaned_c_r_d_df = apply_filters(cleaned_r_d_df, current_target)
-
-    return (
-        cleaned_df,
-        cleaned_d_df,
-        cleaned_c_df,
-        cleaned_r_df,
-        cleaned_r_d_df,
-        cleaned_c_d_df,
-        cleaned_c_r_df,
-        cleaned_c_r_d_df,
-    )
-
-
-@log_function_call
 def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
     """Loads and filters dataset based on filter_key from session state."""
     cleaned_df = st.session_state["data_clean"]
@@ -379,7 +281,7 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
     max_date = dt.datetime.combine(get_maxdate(cleaned_df),
                                    dt.datetime.min.time())
 
-    # # Add a date range slider to filter by received date
+    # Date range slider
     date_range2 = st.slider(
         "Select Date Range",
         min_value=min_date,
@@ -388,80 +290,72 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
         format="YYYY-MM-DD",
     )
 
-    # # Extract start and end dates from the slider
     start_date, end_date = date_range2
     start_date = dt.datetime.combine(start_date, dt.datetime.min.time())
     end_date = dt.datetime.combine(end_date, dt.datetime.max.time())
 
-    # --- Dropdown for chosen grouping ---
-    filterentityname = group_entity + "Name"
-    filterentityid = group_entity + "Id"
-    # check filterentityname and filterentityid are in the dataframe
-    if (
-        filterentityname not in cleaned_df.columns
-        or filterentityid not in cleaned_df.columns
-    ):
-        st.error(
-            f"Error: chosen filter {filterentityname} or"
-            f" {filterentityid} not in the dataset."
-        )
-        logger.error(
-            f"Error: chosen filter {filterentityname} or"
-            f" {filterentityid} not in the dataset.")
-        return (None, None, None, None, None, None, None, None)
+    # Dictionary to hold friendly titles and relevant numeric reference fields
+    group_entity_options = {
+        "Donor": ("DonorName", "DonorId"),
+        "Donor Classification": ("DonorStatus", "DonorStatusInt"),
+        "Regulated Entity": ("RegulatedEntityName", "RegulatedEntityId"),
+        "Recipients Classification": ("RegulatedDoneeType", None),
+        "Nature of Donation": ("NatureOfDonation", "NatureOfDonationInt"),
+        "Reporting Period": ("ReportingPeriodName", None),
+        "Party Affiliation": ("PartyName", "PartyId"),
+        "Regulated Entity Group": ("RegEntity_Group", None),
+    }
 
-    # Create a mapping of RegulatedEntityName -> RegulatedEntityId
-    entity_mapping = dict(zip(cleaned_df[filterentityname],
-                              cleaned_df[filterentityid]))
-
-    # Add "All" as an option and create a dropdown that displays names but
-    # returns IDs
-    selected_entity_name = st.selectbox(
-        f"Filter by {group_entity}", ["All"] + sorted(entity_mapping.keys())
+    prev_selected_group = st.session_state.get("selected_group_entity", None)
+    
+    selected_group_entity = st.selectbox(
+        "Select Group Entity",
+        options=list(group_entity_options.keys()),
+        format_func=lambda x: group_entity_options[x][0],
+        key="selected_group_entity"
     )
 
-    # Get the corresponding ID for filtering
-    selected_entity_id = entity_mapping.get(selected_entity_name, None)
+    # Reset section dropdown when group entity changes
+    if prev_selected_group is not None and prev_selected_group != selected_group_entity:
+        st.session_state["selected_entity_name"] = "All"
+    
+    # Get corresponding column names
+    group_entity_col, group_entity_id_col = group_entity_options[selected_group_entity]
+    
+    # Apply initial filtering
+    date_filter = (cleaned_df["ReceivedDate"] >= start_date) & (cleaned_df["ReceivedDate"] <= end_date)
+    filtered_df = cleaned_df[date_filter]
+    
+    # Create mapping for dropdown based on filtered data
+    entity_mapping = dict(zip(filtered_df[group_entity_col],
+                              filtered_df[group_entity_id_col])
+                          ) if group_entity_id_col else None
+    
+    available_entities = sorted(filtered_df[group_entity_col].unique().tolist())
+    
+    selected_entity_name = st.selectbox(
+        f"Filter by {group_entity_col}",
+        ["All"] + available_entities,
+        key="selected_entity_name"
+    )
+    
+    selected_entity_id = entity_mapping.get(selected_entity_name, None) if entity_mapping else None
 
     # Apply filters
     current_target = st.session_state["filter_def"].get(filter_key)
-
-    # Define filter condition
-    filters = {}
-    # Apply filters
-    entity_filter = {}
+    
     entity_filter = (
-        {filterentityid: selected_entity_id}
-        if selected_entity_name != "All"
+        {group_entity_id_col: selected_entity_id} if selected_entity_id is not None
+        else {group_entity_col: selected_entity_name} if selected_entity_name != "All"
         else {}
     )
-    # # Filter by date range
-    date_filter = (cleaned_df["ReceivedDate"] >= start_date) & (
-        cleaned_df["ReceivedDate"] <= end_date
-    )
-    # Create dataframe for chosen date range and all entities
-    if date_filter is not None:
-        cleaned_d_df = cleaned_df[date_filter]
-    else:
-        cleaned_d_df = cleaned_df
-    # Create dataframe for chosen target all date range and all entities
-    if current_target:
-        cleaned_c_df = apply_filters(cleaned_df, current_target)
-    else:
-        cleaned_c_df = cleaned_df
-    # Create dataframe for chosen entity all date range and all entities
-    if entity_filter:
-        cleaned_r_df = apply_filters(cleaned_df, entity_filter)
-    else:
-        cleaned_r_df = cleaned_df
-    # Create dataframe for chosen entity and date range all measures
-    cleaned_r_d_df = (
-        cleaned_r_df[date_filter] if date_filter.any() else cleaned_r_df)
-    # Create dataframe for chosen target and date range all entities
+    
+    cleaned_d_df = filtered_df
+    cleaned_c_df = apply_filters(cleaned_df, current_target) if current_target else cleaned_df
+    cleaned_r_df = apply_filters(cleaned_df, entity_filter) if entity_filter else cleaned_df
+    cleaned_r_d_df = cleaned_r_df[date_filter] if date_filter.any() else cleaned_r_df
     cleaned_c_d_df = apply_filters(cleaned_d_df, current_target)
-    # Create dataframe for chosen target and entity all dates
     cleaned_c_r_df = apply_filters(cleaned_r_df, current_target)
-    # Create dataframe for chosen target, entity and date range
     cleaned_c_r_d_df = apply_filters(cleaned_r_d_df, current_target)
 
     return (
@@ -474,6 +368,7 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
         cleaned_c_r_df,
         cleaned_c_r_d_df,
     )
+
 
 
 @log_function_call

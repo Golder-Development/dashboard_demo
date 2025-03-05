@@ -3,7 +3,7 @@ from data.datasetupandclean import load_raw_data
 from data.clean_and_enhance import load_cleaned_data
 from data.load_donor_regent_lists import (load_donorList_data,
                                           load_regulated_entity_data
-                                          )# load_entity_summary_data
+                                          )
 from utils.logger import log_function_call, logger
 
 
@@ -81,7 +81,6 @@ def firstload():
     logger.debug(f"st.session_state.data_donor: {len(st.session_state.data_donor)}")
     logger.debug(f"st.session_state.data_clean: {len(st.session_state.data_clean)}")
     load_data_to_session("data_regentity", get_regentity_data)
-    logger.debug(f"st.session_state.data_regentity: {len(st.session_state.data_regentity)}")    
+    logger.debug(f"st.session_state.data_regentity: {len(st.session_state.data_regentity)}")
     logger.debug(f"st.session_state.data_donor: {len(st.session_state.data_donor)}")
     logger.debug(f"st.session_state.data_clean: {len(st.session_state.data_clean)}")
-

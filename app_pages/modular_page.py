@@ -10,7 +10,7 @@ from utils.logger import log_function_call  # Import decorator
 
 
 @log_function_call
-def display_data_page(filter_key, target_label):
+def display_data_page(functionname, filter_key, target_label):
     """
     Template function to generate a Streamlit
     page for a specific data slice.
