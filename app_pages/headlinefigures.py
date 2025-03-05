@@ -137,7 +137,7 @@ def hlf_body():
             st.write(
                 "* There were no donations to entities that only received one donation."
             )
-        else:              
+        else:
             single_donation_percent = calculate_percentage(
                 sde_stats["unique_donations"], tstats["unique_donations"]
             )
@@ -155,7 +155,7 @@ def hlf_body():
                 f"{single_donation_entity_value_percent:.2f}% of the total value"
                 f"of donations and were {single_donation_entity_percent:.0f}% of"
                 f"the regulated entities."
-            )       
+            )
     with col2:
         st.write(
             f"* Most Donations were in {top_dontype_ct}, these "
