@@ -219,7 +219,7 @@ def hlf_body():
                 widget_key="value_by_year_n_type",
                 CalcType='sum')
     st.write("---")
-    col1, col2, right = st.columns(3)
+    col1, col2 = st.columns(2)
     with col1:
         if filtered_df.empty:
             st.write("No data available for the selected filters.")
@@ -258,7 +258,4 @@ def hlf_body():
                 hole=0.3,  # Adjust for more or less donut effect
                 widget_key="pie_donations_by_entity",
                 )
-    with right:
-        st.metric(label="Total Donors",
-                  value=f"{format_number(tstats['unique_donors'])}")
     st.write("---")
