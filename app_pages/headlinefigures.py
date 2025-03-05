@@ -1,5 +1,8 @@
 import streamlit as st
-import components.Visualisations as vis
+from Visualisations import (
+    plot_bar_line,
+    plot_pie_chart,
+)
 from utils.logger import log_function_call, logger
 from components.calculations import (
     format_number,
@@ -64,15 +67,16 @@ def hlf_body():
             st.write("No data available for the selected filters.")
             return
         else:
-            vis.plot_bar_line_by_year(cleaned_df,
-                                      XValues="YearReceived",
-                                      YValues="EventCount",
-                                      GroupData="RegulatedEntityType",
-                                      XLabel="Year", YLabel="Donations",
-                                      Title="Donations per Year & Entity Type",
-                                      CalcType='sum',
-                                      LegendTitle="Regulated Entity Type",
-                                      widget_key="dons_by_year_n_entity")
+            plot_bar_line.plot_bar_line_by_year(
+                graph_df=cleaned_df,
+                XValues="YearReceived",
+                YValues="EventCount",
+                GroupData="RegulatedEntityType",
+                XLabel="Year", YLabel="Donations",
+                Title="Donations per Year & Entity Type",
+                CalcType='sum',
+                LegendTitle="Regulated Entity Type",
+                widget_key="dons_by_year_n_entity")
     with right:
         if filtered_df.empty:
             st.write("No data available for the selected filters.")
@@ -85,18 +89,19 @@ def hlf_body():
             filtered_df_sort = filtered_df_sort.rename(
                 columns={"DubiousData": "Data Safety Score"}
             )
-            vis.plot_bar_line_by_year(filtered_df_sort,
-                                      XValues="YearReceived",
-                                      YValues="Value",
-                                      GroupData="Data Safety Score",
-                                      XLabel="Year",
-                                      YLabel="Donations",
-                                      Title="Donations Risk Score by Year",
-                                      CalcType='sum',
-                                      LegendTitle="Data Safety Score",
-                                      ChartType="line",
-                                      y_scale="linear",
-                                      widget_key="dons_by_year_n_type")
+            plot_bar_line.plot_bar_line_by_year(
+                graph_df=filtered_df_sort,
+                XValues="YearReceived",
+                YValues="Value",
+                GroupData="Data Safety Score",
+                XLabel="Year",
+                YLabel="Donations GBP",
+                Title="Donations Risk Score by Year",
+                CalcType='sum',
+                LegendTitle="Data Safety Score",
+                ChartType="line",
+                y_scale="linear",
+                widget_key="dons_by_year_n_type")
     st.write("---")
     st.write("### Headline Figures")
     col1, col2 = st.columns(2)
@@ -114,7 +119,8 @@ def hlf_body():
             " unique donations"
         )
         pstats = (
-            compute_summary_statistics(filtered_df, {"RegulatedEntityType": "Political Party"})
+            compute_summary_statistics(filtered_df,
+                                       {"RegulatedEntityType": "Political Party"})
         )
         PP_donations_percent = calculate_percentage(
             pstats["unique_donations"], tstats["unique_donations"]
@@ -131,11 +137,13 @@ def hlf_body():
             "value of donations."
         )
         sde_stats = (
-            compute_summary_statistics(filtered_df, {"RegEntity_Group": "Single Donation Entity"})
+            compute_summary_statistics(filtered_df,
+                                       {"RegEntity_Group": "Single Donation Entity"})
         )
         if sde_stats["unique_donations"] == 0:
             st.write(
-                "* There were no donations to entities that only received one donation."
+                "* There were no donations to entities that"
+                " only received one donation."
             )
         else:
             single_donation_percent = calculate_percentage(
@@ -148,11 +156,13 @@ def hlf_body():
                 sde_stats["unique_reg_entities"], tstats["unique_reg_entities"]
             )
             st.write(
-                f"* {sde_stats['unique_donations']} of the donations were to entities "
+                f"* {sde_stats['unique_donations']} of the"
+                " donations were to entities "
                 f"that only received one donation. These donations represented "
                 f"{single_donation_percent:.2f}% of all donations, were worth "
                 f" £{format_number(sde_stats['total_value'])} or "
-                f"{single_donation_entity_value_percent:.2f}% of the total value"
+                f"{single_donation_entity_value_percent:.2f}% of"
+                " the total value"
                 f"of donations and were {single_donation_entity_percent:.0f}% of"
                 f"the regulated entities."
             )
@@ -169,7 +179,8 @@ def hlf_body():
         st.write(
             f"* The {top_entity_ct} received the most donations by count, "
             f"having {top_donations:,.0f} donations which represented "
-            f"{top_donations/tstats['unique_donations']*100:.2f}% of all donations.")
+            f"{top_donations/tstats['unique_donations']*100:.2f}%"
+            " of all donations.")
     st.write("---")
     mid, right = st.columns(2)
     with mid:
@@ -177,190 +188,77 @@ def hlf_body():
             st.write("No data available for the selected filters.")
             return
         else:
-            vis.plot_bar_line_by_year(filtered_df,
-                                      XValues="YearReceived",
-                                      YValues="Value",
-                                      GroupData="RegEntity_Group",
-                                      XLabel="Year",
-                                      YLabel="Value of Donations £ 000's",
-                                      Title="Donations GBP by Year & Entity",
-                                      use_custom_colors=False,
-                                      LegendTitle="Regulated Entity",
-                                      widget_key="value_by_year_n_entity",
-                                      CalcType='sum')
+            plot_bar_line.plot_bar_line_by_year(
+                graph_df=filtered_df,
+                XValues="YearReceived",
+                YValues="Value",
+                GroupData="RegEntity_Group",
+                XLabel="Year",
+                YLabel="Donations GBP",
+                Title="Donations GBP by Year & Entity",
+                use_custom_colors=False,
+                LegendTitle="Regulated Entity",
+                widget_key="value_by_year_n_entity",
+                CalcType='sum')
     with right:
         if filtered_df.empty:
             st.write("No data available for the selected filters.")
             return
         else:
-            vis.plot_bar_line_by_year(filtered_df,
-                                      XValues="YearReceived",
-                                      YValues="Value",
-                                      GroupData="DonationType",
-                                      XLabel="Year",
-                                      YLabel="Total Value (£)",
-                                      y_scale="log",
-                                      ChartType="Line",
-                                      LegendTitle="Donation Type",
-                                      Title="Donations GBP Types by Year",
-                                      widget_key="value_by_year_n_type",
-                                      CalcType='sum')
+            plot_bar_line.plot_bar_line_by_year(
+                graph_df=filtered_df,
+                XValues="YearReceived",
+                YValues="Value",
+                GroupData="DonationType",
+                XLabel="Year",
+                YLabel="Total Value GBP",
+                y_scale="log",
+                ChartType="Line",
+                LegendTitle="Donation Type",
+                Title="Donations GBP Types by Year",
+                widget_key="value_by_year_n_type",
+                CalcType='sum')
     st.write("---")
-    # col1, col2, right = st.columns(3)
-    # with col1:
-    #     if filtered_df.empty:
-    #         st.write("No data available for the selected filters.")
-    #         return
-    #     else:
-    #         st.write("### Entity Distribution")
-    #         vis.plot_pie_chart(
-    #             graph_df=filtered_df,
-    #             YValues="RegEntity_Group",
-    #             XValues="Value",  # Use None for count
-    #             color_column="RegEntity_Group",
-    #             use_custom_colors=True,  # Use custom colors
-    #             color_mapping=None,
-    #             Title="Distribution of Donated Value by Entity",
-    #             YLabel="Regulated Entity",
-    #             XLabel="Percentage of Total Donations",
-    #             hole=0.3,  # Adjust for more or less donut effect
-    #             widget_key="pie_Value_by_entity"
-    #         )
-    # with col2:
-    #     if filtered_df.empty:
-    #         st.write("No data available for the selected filters.")
-    #         return
-    #     else:
-    #         st.write("### Entity Distribution")
-    #         vis.plot_pie_chart(
-    #             graph_df=filtered_df,
-    #             YValues="RegEntity_Group",
-    #             XValues="EventCount",  # Use None for count
-    #             color_column="RegEntity_Group",
-    #             use_custom_colors=True,  # Use custom colors
-    #             color_mapping=None,
-    #             Title="Distribution of Donations by Entity",
-    #             YLabel="Regulated Entity",
-    #             XLabel="Percentage of Donation Events",
-    #             hole=0.3,  # Adjust for more or less donut effect
-    #             widget_key="pie_donations_by_entity",
-    #             value=f"{format_number(tstats['unique_reg_entities'])}")
-    # with right:
-    #     st.metric(label="Total Donors",
-    #               value=f"{format_number(tstats['unique_donors'])}")
-    # st.write("---")
-    # mid, right = st.columns(2)
-    # with mid:
-    #     if filtered_df.empty:
-    #         st.write("No data available for the selected filters.")
-    #         return
-    #     else:
-    #         vis.plot_bar_line_by_year(filtered_df,
-    #                                   XValues="YearReceived",
-    #                                   YValues="EventCount",
-    #                                   GroupData="RegulatedEntityType",
-    #                                   XLabel="Year", YLabel="Donations",
-    #                                   Title="Donations per Year & Entity Type",
-    #                                   CalcType='sum',
-    #                                   LegendTitle="Regulated Entity Type",
-    #                                   widget_key="dons_by_year_n_entity")
-    # with right:
-    #     if filtered_df.empty:
-    #         st.write("No data available for the selected filters.")
-    #         return
-    #     else:
-    #         filtered_df_sort = filtered_df.sort_values(
-    #             by=["YearReceived", "DubiousData"],
-    #             ascending=[True, False]
-    #         )
-    #         filtered_df_sort = filtered_df_sort.rename(
-    #             columns={"DubiousData": "Data Safety Score"}
-    #         )
-    #         vis.plot_bar_line_by_year(filtered_df_sort,
-    #                                   XValues="YearReceived",
-    #                                   YValues="EventCount",
-    #                                   GroupData="Data Safety Score",
-    #                                   XLabel="Year",
-    #                                   YLabel="Donations",
-    #                                   Title="Donations Risk Score by Year",
-    #                                   CalcType='sum',
-    #                                   LegendTitle="Data Safety Score",
-    #                                   ChartType="line",
-    #                                   y_scale="linear",
-    #                                   widget_key="dons_by_year_n_type")
-    # st.write("---")
-    # mid, right = st.columns(2)
-    # with mid:
-    #     if filtered_df.empty:
-    #         st.write("No data available for the selected filters.")
-    #         return
-    #     else:
-    #         vis.plot_bar_line_by_year(filtered_df,
-    #                                   XValues="YearReceived",
-    #                                   YValues="Value",
-    #                                   GroupData="RegEntity_Group",
-    #                                   XLabel="Year",
-    #                                   YLabel="Value of Donations £ 000's",
-    #                                   Title="Donations GBP by Year & Entity",
-    #                                   use_custom_colors=True,
-    #                                   LegendTitle="Regulated Entity",
-    #                                   widget_key="value_by_year_n_entity",
-    #                                   CalcType='sum')
-    # with right:
-    #     if filtered_df.empty:
-    #         st.write("No data available for the selected filters.")
-    #         return
-    #     else:
-    #         vis.plot_bar_line_by_year(filtered_df,
-    #                                   XValues="YearReceived",
-    #                                   YValues="Value",
-    #                                   GroupData="DonationType",
-    #                                   XLabel="Year",
-    #                                   YLabel="Total Value (£)",
-    #                                   y_scale="log",
-    #                                   ChartType="Line",
-    #                                   LegendTitle="Donation Type",
-    #                                   Title="Donations GBP Types by Year",
-    #                                   widget_key="value_by_year_n_type",
-    #                                   CalcType='sum')
-    # st.write("---")
-    # col1, col2 = st.columns(2)
-    # with col1:
-    #     if filtered_df.empty:
-    #         st.write("No data available for the selected filters.")
-    #         return
-    #     else:
-    #         st.write("### Entity Distribution")
-    #         vis.plot_pie_chart(
-    #             graph_df=filtered_df,
-    #             YValues="RegEntity_Group",
-    #             XValues="Value",  # Use None for count
-    #             color_column="RegEntity_Group",
-    #             use_custom_colors=True,  # Use custom colors
-    #             color_mapping=None,
-    #             Title="Distribution of Donated Value by Entity",
-    #             YLabel="Regulated Entity",
-    #             XLabel="Percentage of Total Donations",
-    #             hole=0.3,  # Adjust for more or less donut effect
-    #             widget_key="pie_Value_by_entity"
-    #         )
-    # with col2:
-    #     if filtered_df.empty:
-    #         st.write("No data available for the selected filters.")
-    #         return
-    #     else:
-    #         st.write("### Entity Distribution")
-    #         vis.plot_pie_chart(
-    #             graph_df=filtered_df,
-    #             YValues="RegEntity_Group",
-    #             XValues="EventCount",  # Use None for count
-    #             color_column="RegEntity_Group",
-    #             use_custom_colors=True,  # Use custom colors
-    #             color_mapping=None,
-    #             Title="Distribution of Donations by Entity",
-    #             YLabel="Regulated Entity",
-    #             XLabel="Percentage of Donation Events",
-    #             hole=0.3,  # Adjust for more or less donut effect
-    #             widget_key="pie_donations_by_entity"
-    #         )
-    # st.write("---")
+    col1, col2, right = st.columns(3)
+    with col1:
+        if filtered_df.empty:
+            st.write("No data available for the selected filters.")
+            return
+        else:
+            st.write("### Entity Distribution")
+            plot_pie_chart.plot_pie_chart(
+                graph_df=filtered_df,
+                XValues="RegEntity_Group",
+                YValues="Value",  # Use None for count
+                color_column="RegEntity_Group",
+                use_custom_colors=True,  # Use custom colors
+                color_map=None,
+                Title="Distribution of Donated Value by Entity",
+                YLabel="Regulated Entity",
+                XLabel="Percentage of Total Donations",
+                hole=0.3,  # Adjust for more or less donut effect
+                widget_key="pie_Value_by_entity"
+            )
+    with col2:
+        if filtered_df.empty:
+            st.write("No data available for the selected filters.")
+            return
+        else:
+            st.write("### Entity Distribution")
+            plot_pie_chart.plot_pie_chart(
+                graph_df=filtered_df,
+                XValues="RegEntity_Group",
+                YValues="EventCount",  # Use None for count
+                color_column="RegEntity_Group",
+                use_custom_colors=True,  # Use custom colors
+                color_map=None,
+                Title="Distribution of Donations by Entity",
+                YLabel="Regulated Entity",
+                XLabel="Percentage of Donation Events",
+                hole=0.3,  # Adjust for more or less donut effect
+                widget_key="pie_donations_by_entity",
+                )
+    with right:
+        st.metric(label="Total Donors",
+                  value=f"{format_number(tstats['unique_donors'])}")
+    st.write("---")

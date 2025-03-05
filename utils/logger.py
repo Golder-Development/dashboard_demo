@@ -10,7 +10,7 @@ from functools import wraps
 # or alter in config.py
 # Use DEBUG for detailed logs
 # Can be DEBUG, INFO, WARNING, ERROR, CRITICAL
-LOG_LEVEL = os.getenv("LOG_LEVEL", "DEBUG").upper()
+LOG_LEVEL = os.getenv("LOG_LEVEL", "ERROR").upper()
 
 # Configure logging correctly,  # Defaults to INFO if invalid
 logging.basicConfig(
@@ -37,7 +37,7 @@ def log_function_call(func):
     def wrapper(*args, **kwargs):
         try:
             logger.debug(f"Calling {func.__name__} with"
-                " args={args}, kwargs={kwargs}")
+                         " args={args}, kwargs={kwargs}")
             result = func(*args, **kwargs)
             logger.info(f"{func.__name__} executed successfully")
             return result
