@@ -475,3 +475,10 @@ ImportError: cannot import name 'hlf_body' from 'app_pages.headlinefigures' (H:\
 2025/03/06 08:30 ERROR:Timestamp key election_dates_last_modified not recognised.
 2025/03/06 08:30 ERROR:Failed to load election dates from file.
 2025/03/06 08:30 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/06 09:09 ERROR:Session state variables not initialized!
+2025/03/06 09:09 ERROR:Error: originalfilepath is None!
+2025/03/06 09:09 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/06 09:09 ERROR:Number of rows in loaddata_df and raw_data do not match 78745 != 65278
+2025/03/06 09:09 ERROR:Attempting to remove duplicates
+2025/03/06 09:09 ERROR:Failed to load election dates from file.
+2025/03/06 09:09 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
