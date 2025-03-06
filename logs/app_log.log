@@ -482,3 +482,91 @@ ImportError: cannot import name 'hlf_body' from 'app_pages.headlinefigures' (H:\
 2025/03/06 09:09 ERROR:Attempting to remove duplicates
 2025/03/06 09:09 ERROR:Failed to load election dates from file.
 2025/03/06 09:09 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/06 09:29 ERROR:Session state variables not initialized!
+2025/03/06 09:29 ERROR:Error: originalfilepath is None!
+2025/03/06 09:29 ERROR:Error in firstload: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 130, in __getattr__
+    return self[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\Golder-Development\dashboard_demo\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\Golder-Development\dashboard_demo\dashboard_demo\data\data_loader.py", line 74, in firstload
+    st.session_state.data_clean is None:
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 132, in __getattr__
+    raise AttributeError(_missing_attr_error_message(key))
+AttributeError: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+2025/03/06 09:29 CRITICAL:First load crashed: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 130, in __getattr__
+    return self[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\Golder-Development\dashboard_demo\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 80, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\Golder-Development\dashboard_demo\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\Golder-Development\dashboard_demo\dashboard_demo\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\Golder-Development\dashboard_demo\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\Golder-Development\dashboard_demo\dashboard_demo\data\data_loader.py", line 74, in firstload
+    st.session_state.data_clean is None:
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 132, in __getattr__
+    raise AttributeError(_missing_attr_error_message(key))
+AttributeError: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
