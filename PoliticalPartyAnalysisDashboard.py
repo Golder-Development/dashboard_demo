@@ -31,14 +31,13 @@ else:
     # Run the setup function
     raise SystemExit("Error: Logger is not properly configured!")
 # Run the setup function
-try:
-    logger.info("Running App setup...")
-    setup.setup_package()
-    logger.info("Setup completed successfully.")
-except Exception as e:
-    logger.critical(f"App setup crashed: {e}", exc_info=True)
-    st.error(f"App setup failed. Please check logs. {__name__}")
-    raise SystemExit("App setup failed. Exiting.")
+logger.info("Running App setup...")
+setup.setup_package()
+logger.info("Setup completed successfully.")
+# except Exception as e:
+#     logger.critical(f"App setup crashed: {e}", exc_info=True)
+#     st.error(f"App setup failed. Please check logs. {__name__}")
+#     raise SystemExit("App setup failed. Exiting.")
 
 # run political party analysis
 try:
@@ -53,39 +52,24 @@ except Exception as e:
 
 # Run the first load function
 try:
-    if "data_clean" not in st.session_state or \
-            st.session_state.data_clean is None:
-        logger.info("No data found in session state, running firstload()")
-        if "data_donor" in st.session_state and \
-           "raw_data" in st.session_state and \
-           "data_clean" in st.session_state and \
-           "data_regentity" in st.session_state:
-            logger.debug("st.session_state.data_donor:"
-                         f" {len(st.session_state.data_donor)}")
-            logger.debug("st.session_state.raw_data:"
-                         f" {len(st.session_state.raw_data)}")
-            logger.debug("st.session_state.data_clean:"
-                         f" {len(st.session_state.data_clean)}")
-            logger.debug("st.session_state.data_regentity:"
-                         f" {len(st.session_state.data_regentity)}")
-        # Create a loading message
-        loading_message = st.empty()
-        # Display a loading message
-        loading_message.markdown(
-            "<h3 style='text-align: center; color: blue;'>"
-            "Please wait while the data sets are being "
-            "calculated...</h3>",
-            unsafe_allow_html=True,
-        )
-        initialise_data()  # Load the data
-        # Clear the loading message
-        loading_message.empty()
-    else:
-        logger.info("Data already loaded in session state.")
+    # Create a loading message
+    loading_message = st.empty()
+    # Display a loading message
+    loading_message.markdown(
+        "<h3 style='text-align: center; color: blue;'>"
+        "Please wait while the data sets are being "
+        "calculated...</h3>",
+        unsafe_allow_html=True,
+    )
+    initialise_data()  # Load the data
+    # Clear the loading message
+    loading_message.empty()
 except Exception as e:
     logger.critical(f"First load crashed: {e}", exc_info=True)
     st.error(f"Data loading failed. Please check logs. {e}")
     raise SystemExit("Data loading failed. Exiting.")
+
+
 
 logger.info("App is fully loaded and ready!")
 # The app is now ready to be run.

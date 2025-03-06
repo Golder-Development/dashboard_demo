@@ -4,7 +4,7 @@ from pathlib import Path
 from utils.logger import (log_function_call,
                           logger,
                           init_state_var)
-import utils.config as config  # Import the config file
+import config as config  # Import the config file
 import os
 
 """
