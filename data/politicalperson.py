@@ -2,137 +2,105 @@ import streamlit as st
 import pandas as pd
 from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
-from components.cleanpoliticalparty import get_party_df_from_pdpy
 
 
 @log_function_call
 def map_mp_to_party(loaddata_df):
+    logger.debug("loaddata_df RegulatedEntityName unique values: %s",
+                 len(loaddata_df['RegulatedEntityName'].unique()))
     # Recollect data from Parliament API
-    if st.session_state.RERUN_MP_PARTY_MEMBERSHIP:
-        # check that pdpy is installed
-        try:
-            get_party_df_from_pdpy(from_date=st.session_state.min_date,
-                                   to_date=st.session_state.max_date,
-                                   while_mp=False,
-                                   collapse=True)
-        except ImportError:
-            logger.error("pdpy is not installed. Please install pdpy first"
-                         " if you wish to use the Parliament API."
-                         " Will proceed with last copy of saved data.")
-    # Ensure required files exist
     if st.session_state.politician_party_fname is None:
         logger.critical("ListOfPoliticalPeople_final.csv file is missing")
-        st.error("ListOfPoliticalPeople_final.csv file is missing"
-                 " Political Party Mataching will not be done")
-        return loaddata_df
-    if st.session_state.regentity_map_fname is None:
-        logger.critical("Regulated entity mapping file is missing")
-        st.error("Regulated entity mapping file is missing"
-                 " Political Party Mataching will not be done")
-        return loaddata_df
-    # Clean column names in loaddata_df
-    loaddata_df.columns = loaddata_df.columns.str.strip()
-    # Check if 'PartyName' exists
-    loaddata_df['PartyName'] = pd.NA
-    if 'PartyName' not in loaddata_df.columns:
-        logger.error("Missing column: 'PartyName' in"
-                     " loaddata_df. Available columns: %s",
-                     loaddata_df.columns)
     # Load and preprocess the political people dataset
-    try:
-        politician_party_dict = (
-            pd.read_csv(st.session_state.politician_party_fname))
-        politician_party_dict.columns = (
-            politician_party_dict.columns.str.strip())
-    except Exception as e:
-        logger.error("Error reading politician_party_fname: %s", e)
-        return loaddata_df
-    # Rename columns and ensure required fields exist
-    expected_cols = {'Original RegulatedEntityId': 'RegulatedEntityId',
-                     'PoliticalParty_pdpy': 'PartyName'}
-    missing_cols = [
-        col for col in expected_cols
-        if col not in politician_party_dict.columns
-    ]
-    if missing_cols:
-        logger.error("Missing columns in politician_party_dict: %s",
-                     missing_cols)
-        st.error("Missing columns in politician_party_dict: %s",
-                 missing_cols)
-        return loaddata_df
-    # Rename columns and select required columns
-    politician_party_dict = (
-        politician_party_dict.rename(columns=expected_cols)[
-            ['RegulatedEntityId', 'PartyName']
-        ])
-    logger.debug("Loaded politician_party_dict: %s",
-                 politician_party_dict.head())
+        try:
+            politician_party_dict = (
+                pd.read_csv(st.session_state.politician_party_fname))
+            politician_party_dict.columns = (
+                politician_party_dict.columns.str.strip())
+            # drop RegisterName, RegulatedDoneeType, RegulatedEntityType,
+            # Status, OriginalRegulatedEntityId, OriginalRegulatedEntityName
+            politician_party_dict = politician_party_dict.drop(
+                columns=["RegisterName", "RegulatedDoneeType",
+                         "RegulatedEntityType", "Status",
+                         "OriginalRegulatedEntityId",
+                         "OriginalRegulatedEntityName"])
+            # filter out PoliticalParty_pdpy == "Unknown"
+            politician_party_dict = politician_party_dict[
+                politician_party_dict["PoliticalParty_pdpy"] != "Unknown"]
+            # rename PoliticalParty_pdpy to PartyName
+            politician_party_dict = politician_party_dict.rename(
+                columns={"PoliticalParty_pdpy": "PartyName"})
+            RegulatedEntityNameMatch = (
+                pd.read_csv(st.session_state.regentity_map_fname)
+                )
+            RegulatedEntityNameMatch.columns = (
+                RegulatedEntityNameMatch.columns.str.strip()
+                )
+            expected_cols = {'CleanedRegulatedEntityId': 'PartyId',
+                             'CleanedRegulatedEntityName': 'PartyName'}
+            missing_cols = [
+                col for col in expected_cols
+                if col not in RegulatedEntityNameMatch.columns
+                ]
+            if missing_cols:
+                logger.error("Missing columns in"
+                            " RegulatedEntityNameMatch: %s", missing_cols,
+                            "political party matching will not be done")
+            PartyUpdate_dict = (
+                st.session_state.data_remappings.get("PartyParents", {}))
+        except Exception as e:
+            logger.error("Error reading files for party matching: %s", e)       
+            loaddata_df['PartyName'] = pd.NA
+            loaddata_df['PartyId'] = pd.NA
+            st.error("Political Party Mataching will not be done")
+            return loaddata_df
     # Validate PartyParents mapping dictionary
-    PartyUpdate_dict = st.session_state.data_remappings.get("PartyParents", {})
-    if not isinstance(PartyUpdate_dict, dict):
-        logger.error("PartyParents mapping is not a valid dictionary")
-        st.error("PartyParents mapping is not a valid dictionary"
-                 " Political Party Mataching will not be done")
-        return loaddata_df
-    # Log keys for debugging
-    logger.debug("PartyUpdate_dict keys: %s", PartyUpdate_dict.keys())
+    loaddata_df['PartyName'] = pd.NA
+    loaddata_df['PartyId'] = pd.NA
     # Normalize case for mapping
     loaddata_df['PartyName'] = loaddata_df['PartyName'].str.strip().str.lower()
     PartyUpdate_dict = {k.lower(): v for k, v in PartyUpdate_dict.items()}
-    # Map PartyId based on PartyName
-    loaddata_df['PartyId'] = (
-        loaddata_df['PartyName'].map(PartyUpdate_dict)
-        .combine_first(loaddata_df['RegulatedEntityId'])
+    # add PartyId based on PartyName from PartyUpdate_dict to political_party_dict
+    politician_party_dict['PartyId'] = (
+        politician_party_dict['PartyName'].map(PartyUpdate_dict)
+        .combine_first(politician_party_dict['RegulatedEntityId'])
         )
-    logger.debug("Updated loaddata_df with PartyId: %s", loaddata_df.head())
-    # Load and preprocess the regulated entity mapping file
-    try:
-        RegulatedEntityNameMatch = (
-            pd.read_csv(st.session_state.regentity_map_fname)
-            )
-        RegulatedEntityNameMatch.columns = (
-            RegulatedEntityNameMatch.columns.str.strip()
-            )
-    except Exception as e:
-        logger.error("Error reading regentity_map_fname: %s", e)
-        st.error("Error reading regentity_map_fname: %s", e,
-                 " Political Party Mataching will not be done")
-        return loaddata_df
-    # Ensure required columns exist
-    expected_cols = {'CleanedRegulatedEntityId': 'PartyId',
-                     'CleanedRegulatedEntityName': 'PartyName'}
-    missing_cols = [
-        col for col in expected_cols
-        if col not in RegulatedEntityNameMatch.columns
-    ]
-    if missing_cols:
-        logger.error("Missing columns in"
-                     " RegulatedEntityNameMatch: %s", missing_cols,
-                     "political party matching will not be done")
-        st.error("Missing columns in"
-                 " RegulatedEntityNameMatch: %s", missing_cols,
-                 "political party matching will not be done")
-        return loaddata_df
+    logger.debug("Updated politician_party_dict with PartyId:")
+    # rename columns to match expected columns
     RegulatedEntityNameMatch = (
         RegulatedEntityNameMatch
-        .rename(columns=expected_cols)[['PartyId', 'PartyName']]
+        .rename(columns=expected_cols)[['PartyId', 'RegEntPartyName']]
         )
-    logger.debug("Loaded RegulatedEntityNameMatch: %s",
-                 RegulatedEntityNameMatch.head())
-    # Merge regulated entity names
+    # drop all columns except PartyId and RegEntPartyName
+    RegulatedEntityNameMatch = RegulatedEntityNameMatch.dropna(
+        subset=['PartyId', 'RegEntPartyName'])
+    logger.debug("Loaded RegulatedEntityNameMatch: ")
+    # add RegulatedEntityName as RegEntPartyName to political_party_dict based of PartyId
+    politician_party_dict = pd.merge(politician_party_dict,
+                                     RegulatedEntityNameMatch,
+                                     how='left',
+                                     on='PartyId',
+                                     suffixes=('', '_y'))
+    # Remove duplicate columns from merging
+    politician_party_dict.drop(columns=[col for col in politician_party_dict.
+                                        columns if col.endswith('_y')],
+                                 inplace=True)
+    # remove duplicate rows based on RegulatedEntityId if more than 1 row keep the first
+    politician_party_dict = politician_party_dict.drop_duplicates(
+        subset=['RegulatedEntityId'], keep='first')
+    # USING political_party_dict to update loaddata_df with PartyName and PartyId by
+    # matching on RegulatedEntityId
     loaddata_df = pd.merge(loaddata_df,
-                           RegulatedEntityNameMatch,
+                           politician_party_dict,
                            how='left',
-                           on='PartyId',
+                           on='RegulatedEntityId',
                            suffixes=('', '_y'))
     # Remove duplicate columns from merging
-    loaddata_df.drop(columns=[col for col in loaddata_df.
-                              columns if col.endswith('_y')],
-                     inplace=True)
-    logger.debug("loaddata_df after merging: %s",
-                 loaddata_df.head())
-    
-    # Ensure PartyName and PartyId are properly assigned
+    loaddata_df.drop(columns=[col for col in loaddata_df.columns
+                              if col.endswith('_y')],
+                      inplace=True)
+    # Ensure PartyName and PartyId are properly assigned, if null try and set to RegulatedEntityName and RegulatedEntityId
+    # if no match then fill with "Unidentified Party" and 10000001
     loaddata_df['PartyName'] = (
         loaddata_df['PartyName'].
         replace("", pd.NA).
@@ -145,7 +113,7 @@ def map_mp_to_party(loaddata_df):
         combine_first(loaddata_df['RegulatedEntityId']).
         fillna(10000001)
     )
-    
+
     # compare rows in dataset to original data to check for duplicates
     if len(loaddata_df) != len(st.session_state.raw_data):
         logger.error("Number of rows in loaddata_df and raw_data do not match"
@@ -170,10 +138,10 @@ def map_mp_to_party(loaddata_df):
             return None
 
     # Log unique values for PartyName
-    logger.debug("loaddata_df after updating PartyName and PartyId: %s",
-                 loaddata_df.head())
     logger.debug("loaddata_df PartyName unique values: %s",
-                 loaddata_df['PartyName'].unique())
+                 len(loaddata_df['PartyName'].unique()))
+    logger.debug("loaddata_df RegulatedEntityName unique values: %s",
+                 len(loaddata_df['RegulatedEntityName'].unique()))
     logger.info("Data Updated with PartyName and PartyId successfully")
     st.success("Data Updated with PartyName and PartyId successfully")
     # return updated data

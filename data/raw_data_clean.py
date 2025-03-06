@@ -194,8 +194,7 @@ def raw_data_cleanup(
             output_csv=True
         )
     else:
-        if logger.level <= 20:
-            st.info("Deduping of Regulated Entities not selected")
+         logger.info("Deduping of Regulated Entities not selected")
 
     if dedupe_donors:
         loaddata_df = dedupe_entity_file(
@@ -205,15 +204,9 @@ def raw_data_cleanup(
             output_csv=True
         )
     else:
-        if logger.level <= 20:
-            st.info("Deduping of Donors Entities not selected")
+        logger.info("Deduping of Donors Entities not selected")
 
     # Print progress message
-    if logger.level <= 20:
-        st.info("Raw Data improved successfully")
-        st.info(f"Data has {loaddata_df.shape[0]} rows "
-                f"and {loaddata_df.shape[1]} columns")
-
     logger.info("Raw Data cleanup completed")
     logger.info(f"Data shape: {loaddata_df.shape}")
 

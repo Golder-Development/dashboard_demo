@@ -411,10 +411,8 @@ def load_cleaned_data(
         # Save the cleaned data to a CSV file for further analysis or reporting
         loadclean_df.to_csv(processeddatafilepath)
     logger.info(f"Cleaned Data completed, shape: {loadclean_df.shape}")
-    # only show st.info message if LOG_LEVEL is set to INFO or lower
-    if logger.level <= 20:
-        st.info("Data successfully cleaned")
-        st.info(f"Data has {loadclean_df.shape[0]} rows "
+    logger.info("Data successfully cleaned")
+    logger.info(f"Data has {loadclean_df.shape[0]} rows "
                 f"and {loadclean_df.shape[1]} columns")
     # return the cleaned data
     return loadclean_df

@@ -66,11 +66,6 @@ def load_donorList_data(main_file="data_clear",
     if output_csv:
         donorlist_df.to_csv(cleaneddatafilepath, index=False)
         logger.info(f"Donor data saved to {cleaneddatafilepath}")
-    if logger.level <= 20:
-        st.info("Donor data summary successfully")
-        st.info(f"Data has {donorlist_df.shape[0]} rows "
-                f"and {donorlist_df.shape[1]} columns")
-
     logger.info("Donor Data summary completed")
     logger.info(f"Data shape: {donorlist_df.shape}")
     return donorlist_df
@@ -132,7 +127,7 @@ def load_regulated_entity_data(
     regent_df.columns = [
         "RegulatedEntityId",
         "Regulated Entity Name",
-        "Regulated Entity Group",
+        "RegEntity_Group",
         "Donations Value",
         "Donation Events",
         "Donation Mean",
@@ -141,11 +136,6 @@ def load_regulated_entity_data(
     if output_csv:
         regent_df.to_csv(cleaneddatafilepath, index=False)
         logger.info(f"Regulated entity data saved to {cleaneddatafilepath}")
-    if logger.level <= 20:
-        st.info("Regulated entity data successfully")
-        st.info(f"Data has {regent_df.shape[0]} rows "
-                f"and {regent_df.shape[1]} columns")
-
     logger.info("Raw Data cleanup completed")
     logger.info(f"Data shape: {regent_df.shape}")
 
@@ -193,11 +183,10 @@ def load_entity_summary_data(
         if datafile is None:
             st.error("No datafile passed for entity summary creation!")
             logger.error("No datafile passed for entity summary creation!")
+            return None
         else:
             entitysummary_df = datafile
-            if logger.level <= 20:
-                st.info("Data loaded from datafile passed to function")
-            logger.error("Data loaded from datafile passed to function")
+            logger.info("Data loaded from datafile passed to function")
 
     # Create a DataFrame with the sum, count and mean of the donations
     # for each RegulatedEntityName
@@ -219,11 +208,6 @@ def load_entity_summary_data(
     if output_csv:
         RegulatedEntity_df.to_csv(cleaned_data_file)
         logger.info(f"Regulated entity summary saved to {cleaned_data_file}")
-    if logger.level <= 20:
-        st.info("Regulated entity summary successfully")
-        st.info(f"Data has {RegulatedEntity_df.shape[0]} rows "
-                f"and {RegulatedEntity_df.shape[1]} columns")
-
     logger.info("Raw Data cleanup completed")
     logger.info(f"Data shape: {RegulatedEntity_df.shape}")
 
