@@ -419,15 +419,17 @@ def determine_groups_optimized(df, entity, measure, thresholds_dict):
     entity_totals.rename(columns={measure: "total_measure"}, inplace=True)
 
     # Step 2: Assign groups based on thresholds
-    entity_totals["group"] = entity_totals["total_measure"].apply(
-        lambda x: assign_group(x, thresholds_dict, entity)
-    )
+    entity_totals["group"] = entity_totals.apply(
+    lambda row: assign_group(row["total_measure"],
+                             thresholds_dict,
+                             row[entity]), axis=1
+        )
 
     # Step 3: Merge back into the original DataFrame
     df = df.merge(entity_totals[[entity, "group"]], on=entity, how="left")
     logger.debug(f"Group assignment: {df['group'].value_counts()}")
     logger.debug(f"Group assignment: {entity_totals['group'].value_counts()}")
-    
+
     # Step 4: Validate row count consistency
     if len(df) != len(df):
         st.error(f"Length mismatch: original {len(df)}, merged {len(df)}")
@@ -445,7 +447,7 @@ def determine_groups_optimized(df, entity, measure, thresholds_dict):
     return df["group"]
 
 
-def assign_group(total, thresholds_dict, entity_name):
+def assign_group(total, thresholds_dict, entity_value):
     """
     Assigns a group based on thresholds.
     If above the max threshold, returns the entity name.
@@ -453,4 +455,4 @@ def assign_group(total, thresholds_dict, entity_name):
     for (low, high), group_name in thresholds_dict.items():
         if low <= total <= high:
             return group_name
-    return entity_name  # Assign entity name if above max threshold
+    return entity_value  # Assign entity name if above max threshold
