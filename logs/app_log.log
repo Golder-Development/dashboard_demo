@@ -1,0 +1,477 @@
+2025/03/06 08:02 CRITICAL:App setup crashed: module 'setup' has no attribute 'setup_package'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 36, in <module>
+    setup.setup_package()
+AttributeError: module 'setup' has no attribute 'setup_package'
+2025/03/06 08:02 ERROR:Session state variables not initialized!
+2025/03/06 08:02 ERROR:Error: originalfilepath is None!
+2025/03/06 08:02 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/06 08:02 ERROR:No data found in session state! data.clean_and_enhance
+2025/03/06 08:02 ERROR:Error in firstload: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 78, in firstload
+    logger.debug(f"st.session_state.raw_data: {len(st.session_state.data_clean)}")
+TypeError: object of type 'NoneType' has no len()
+2025/03/06 08:02 CRITICAL:First load crashed: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 80, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 78, in firstload
+    logger.debug(f"st.session_state.raw_data: {len(st.session_state.data_clean)}")
+TypeError: object of type 'NoneType' has no len()
+2025/03/06 08:06 ERROR:Session state variables not initialized!
+2025/03/06 08:06 ERROR:Error: originalfilepath is None!
+2025/03/06 08:06 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/06 08:06 ERROR:No data found in session state! data.clean_and_enhance
+2025/03/06 08:06 ERROR:Error in firstload: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 80, in firstload
+    f" {len(st.session_state.data_clean)}")
+TypeError: object of type 'NoneType' has no len()
+2025/03/06 08:06 CRITICAL:First load crashed: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 80, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 80, in firstload
+    f" {len(st.session_state.data_clean)}")
+TypeError: object of type 'NoneType' has no len()
+2025/03/06 08:09 ERROR:Session state variables not initialized!
+2025/03/06 08:09 ERROR:Error: originalfilepath is None!
+2025/03/06 08:09 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/06 08:09 ERROR:No data found in session state! data.clean_and_enhance
+2025/03/06 08:09 ERROR:Error in firstload: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 80, in firstload
+    f" {len(st.session_state.data_clean)}")
+TypeError: object of type 'NoneType' has no len()
+2025/03/06 08:09 CRITICAL:First load crashed: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 80, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 80, in firstload
+    f" {len(st.session_state.data_clean)}")
+TypeError: object of type 'NoneType' has no len()
+2025/03/06 08:10 ERROR:Session state variables not initialized!
+2025/03/06 08:10 ERROR:Error: originalfilepath is None!
+2025/03/06 08:10 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/06 08:10 ERROR:Number of rows in loaddata_df and raw_data do not match 78745 != 65278
+2025/03/06 08:10 ERROR:Attempting to remove duplicates
+2025/03/06 08:10 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/06 08:10 ERROR:Failed to load election dates from file.
+2025/03/06 08:14 ERROR:Session state variables not initialized!
+2025/03/06 08:14 ERROR:Error: originalfilepath is None!
+2025/03/06 08:14 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/06 08:14 ERROR:Number of rows in loaddata_df and raw_data do not match 78745 != 65278
+2025/03/06 08:14 ERROR:Attempting to remove duplicates
+2025/03/06 08:14 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/06 08:14 ERROR:Failed to load election dates from file.
+2025/03/06 08:14 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/06 08:23 ERROR:Session state variables not initialized!
+2025/03/06 08:23 ERROR:Error: originalfilepath is None!
+2025/03/06 08:23 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/06 08:23 ERROR:Number of rows in loaddata_df and raw_data do not match 78745 != 65278
+2025/03/06 08:23 ERROR:Attempting to remove duplicates
+2025/03/06 08:23 ERROR:Error in load_cleaned_data: 'int' object is not subscriptable
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\clean_and_enhance.py", line 237, in load_cleaned_data
+    loadclean_df["RegEntity_Group"] = calc.determine_groups_optimized(
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 422, in determine_groups_optimized
+    entity_totals["group"] = entity_totals["total_measure"].apply(
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 4924, in apply
+    ).apply()
+  File "H:\python310\lib\site-packages\pandas\core\apply.py", line 1427, in apply
+    return self.apply_standard()
+  File "H:\python310\lib\site-packages\pandas\core\apply.py", line 1507, in apply_standard
+    mapped = obj._map_values(
+  File "H:\python310\lib\site-packages\pandas\core\base.py", line 921, in _map_values
+    return algorithms.map_array(arr, mapper, na_action=na_action, convert=convert)
+  File "H:\python310\lib\site-packages\pandas\core\algorithms.py", line 1743, in map_array
+    return lib.map_infer(values, mapper, convert=convert)
+  File "lib.pyx", line 2972, in pandas._libs.lib.map_infer
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 423, in <lambda>
+    lambda row: assign_group(row["total_measure"], thresholds_dict, row[entity],axis=1)
+TypeError: 'int' object is not subscriptable
+2025/03/06 08:23 CRITICAL:First load crashed: 'int' object is not subscriptable
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 80, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 69, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\clean_and_enhance.py", line 237, in load_cleaned_data
+    loadclean_df["RegEntity_Group"] = calc.determine_groups_optimized(
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 422, in determine_groups_optimized
+    entity_totals["group"] = entity_totals["total_measure"].apply(
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 4924, in apply
+    ).apply()
+  File "H:\python310\lib\site-packages\pandas\core\apply.py", line 1427, in apply
+    return self.apply_standard()
+  File "H:\python310\lib\site-packages\pandas\core\apply.py", line 1507, in apply_standard
+    mapped = obj._map_values(
+  File "H:\python310\lib\site-packages\pandas\core\base.py", line 921, in _map_values
+    return algorithms.map_array(arr, mapper, na_action=na_action, convert=convert)
+  File "H:\python310\lib\site-packages\pandas\core\algorithms.py", line 1743, in map_array
+    return lib.map_infer(values, mapper, convert=convert)
+  File "lib.pyx", line 2972, in pandas._libs.lib.map_infer
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 423, in <lambda>
+    lambda row: assign_group(row["total_measure"], thresholds_dict, row[entity],axis=1)
+TypeError: 'int' object is not subscriptable
+2025/03/06 08:27 ERROR:Session state variables not initialized!
+2025/03/06 08:27 ERROR:Error: originalfilepath is None!
+2025/03/06 08:28 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/06 08:28 ERROR:Number of rows in loaddata_df and raw_data do not match 78745 != 65278
+2025/03/06 08:28 ERROR:Attempting to remove duplicates
+2025/03/06 08:28 ERROR:Error in load_cleaned_data: determine_groups_optimized.<locals>.<lambda>() got an unexpected keyword argument 'axis'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\clean_and_enhance.py", line 237, in load_cleaned_data
+    loadclean_df["RegEntity_Group"] = calc.determine_groups_optimized(
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 422, in determine_groups_optimized
+    entity_totals["group"] = entity_totals["total_measure"].apply(
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 4924, in apply
+    ).apply()
+  File "H:\python310\lib\site-packages\pandas\core\apply.py", line 1427, in apply
+    return self.apply_standard()
+  File "H:\python310\lib\site-packages\pandas\core\apply.py", line 1507, in apply_standard
+    mapped = obj._map_values(
+  File "H:\python310\lib\site-packages\pandas\core\base.py", line 921, in _map_values
+    return algorithms.map_array(arr, mapper, na_action=na_action, convert=convert)
+  File "H:\python310\lib\site-packages\pandas\core\algorithms.py", line 1743, in map_array
+    return lib.map_infer(values, mapper, convert=convert)
+  File "lib.pyx", line 2972, in pandas._libs.lib.map_infer
+  File "H:\python310\lib\site-packages\pandas\core\apply.py", line 1496, in curried
+    return func(x, *self.args, **self.kwargs)
+TypeError: determine_groups_optimized.<locals>.<lambda>() got an unexpected keyword argument 'axis'
+2025/03/06 08:28 CRITICAL:First load crashed: determine_groups_optimized.<locals>.<lambda>() got an unexpected keyword argument 'axis'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 80, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 69, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\clean_and_enhance.py", line 237, in load_cleaned_data
+    loadclean_df["RegEntity_Group"] = calc.determine_groups_optimized(
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 422, in determine_groups_optimized
+    entity_totals["group"] = entity_totals["total_measure"].apply(
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 4924, in apply
+    ).apply()
+  File "H:\python310\lib\site-packages\pandas\core\apply.py", line 1427, in apply
+    return self.apply_standard()
+  File "H:\python310\lib\site-packages\pandas\core\apply.py", line 1507, in apply_standard
+    mapped = obj._map_values(
+  File "H:\python310\lib\site-packages\pandas\core\base.py", line 921, in _map_values
+    return algorithms.map_array(arr, mapper, na_action=na_action, convert=convert)
+  File "H:\python310\lib\site-packages\pandas\core\algorithms.py", line 1743, in map_array
+    return lib.map_infer(values, mapper, convert=convert)
+  File "lib.pyx", line 2972, in pandas._libs.lib.map_infer
+  File "H:\python310\lib\site-packages\pandas\core\apply.py", line 1496, in curried
+    return func(x, *self.args, **self.kwargs)
+TypeError: determine_groups_optimized.<locals>.<lambda>() got an unexpected keyword argument 'axis'
+2025/03/06 08:28 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/06 08:28 ERROR:Number of rows in loaddata_df and raw_data do not match 78745 != 65278
+2025/03/06 08:28 ERROR:Attempting to remove duplicates
+2025/03/06 08:28 ERROR:Error in load_cleaned_data: determine_groups_optimized.<locals>.<lambda>() got an unexpected keyword argument 'axis'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\clean_and_enhance.py", line 237, in load_cleaned_data
+    loadclean_df["RegEntity_Group"] = calc.determine_groups_optimized(
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 422, in determine_groups_optimized
+    entity_totals["group"] = entity_totals["total_measure"].apply(
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 4924, in apply
+    ).apply()
+  File "H:\python310\lib\site-packages\pandas\core\apply.py", line 1427, in apply
+    return self.apply_standard()
+  File "H:\python310\lib\site-packages\pandas\core\apply.py", line 1507, in apply_standard
+    mapped = obj._map_values(
+  File "H:\python310\lib\site-packages\pandas\core\base.py", line 921, in _map_values
+    return algorithms.map_array(arr, mapper, na_action=na_action, convert=convert)
+  File "H:\python310\lib\site-packages\pandas\core\algorithms.py", line 1743, in map_array
+    return lib.map_infer(values, mapper, convert=convert)
+  File "lib.pyx", line 2972, in pandas._libs.lib.map_infer
+  File "H:\python310\lib\site-packages\pandas\core\apply.py", line 1496, in curried
+    return func(x, *self.args, **self.kwargs)
+TypeError: determine_groups_optimized.<locals>.<lambda>() got an unexpected keyword argument 'axis'
+2025/03/06 08:28 CRITICAL:First load crashed: determine_groups_optimized.<locals>.<lambda>() got an unexpected keyword argument 'axis'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 80, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 69, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo-1\data\clean_and_enhance.py", line 237, in load_cleaned_data
+    loadclean_df["RegEntity_Group"] = calc.determine_groups_optimized(
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 422, in determine_groups_optimized
+    entity_totals["group"] = entity_totals["total_measure"].apply(
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 4924, in apply
+    ).apply()
+  File "H:\python310\lib\site-packages\pandas\core\apply.py", line 1427, in apply
+    return self.apply_standard()
+  File "H:\python310\lib\site-packages\pandas\core\apply.py", line 1507, in apply_standard
+    mapped = obj._map_values(
+  File "H:\python310\lib\site-packages\pandas\core\base.py", line 921, in _map_values
+    return algorithms.map_array(arr, mapper, na_action=na_action, convert=convert)
+  File "H:\python310\lib\site-packages\pandas\core\algorithms.py", line 1743, in map_array
+    return lib.map_infer(values, mapper, convert=convert)
+  File "lib.pyx", line 2972, in pandas._libs.lib.map_infer
+  File "H:\python310\lib\site-packages\pandas\core\apply.py", line 1496, in curried
+    return func(x, *self.args, **self.kwargs)
+TypeError: determine_groups_optimized.<locals>.<lambda>() got an unexpected keyword argument 'axis'
+2025/03/06 08:29 ERROR:Error in pagesetup: unexpected indent (calculations.py, line 422)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 10, in pagesetup
+    from app_pages.headlinefigures import hlf_body
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 7, in <module>
+    from components.calculations import (
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 422
+    entity_totals["group"] = entity_totals.apply(
+IndentationError: unexpected indent
+2025/03/06 08:29 ERROR:Error in pagesetup: cannot import name 'hlf_body' from 'app_pages.headlinefigures' (H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 10, in pagesetup
+    from app_pages.headlinefigures import hlf_body
+ImportError: cannot import name 'hlf_body' from 'app_pages.headlinefigures' (H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py)
+2025/03/06 08:29 CRITICAL:Menu setup crashed: unexpected indent (calculations.py, line 422)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 46, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 10, in pagesetup
+    from app_pages.headlinefigures import hlf_body
+  File "H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py", line 7, in <module>
+    from components.calculations import (
+  File "H:\VScode\dashboard_demo-1\components\calculations.py", line 422
+    entity_totals["group"] = entity_totals.apply(
+IndentationError: unexpected indent
+2025/03/06 08:29 CRITICAL:Menu setup crashed: cannot import name 'hlf_body' from 'app_pages.headlinefigures' (H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo-1\PoliticalPartyAnalysisDashboard.py", line 46, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo-1\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo-1\politicalpartyanalysis.py", line 10, in pagesetup
+    from app_pages.headlinefigures import hlf_body
+ImportError: cannot import name 'hlf_body' from 'app_pages.headlinefigures' (H:\VScode\dashboard_demo-1\app_pages\headlinefigures.py)
+2025/03/06 08:30 ERROR:Session state variables not initialized!
+2025/03/06 08:30 ERROR:Error: originalfilepath is None!
+2025/03/06 08:30 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/06 08:30 ERROR:Number of rows in loaddata_df and raw_data do not match 78745 != 65278
+2025/03/06 08:30 ERROR:Attempting to remove duplicates
+2025/03/06 08:30 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/06 08:30 ERROR:Failed to load election dates from file.
+2025/03/06 08:30 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.

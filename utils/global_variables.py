@@ -25,9 +25,6 @@ def initialize_session_state():
     BASE_DIR = Path(os.getcwd())
     logger.info(f"BASE_DIR: {BASE_DIR}")
 
-    # Set globel env variables
-    os.environ["LOG_LEVEL"] = config.LOG_LEVEL
-    init_state_var("LOG_LEVEL", config.LOG_LEVEL)
     # log current file and path
     """Load global variables into session_state if they are not already set."""
     # Initialize simple configuration values

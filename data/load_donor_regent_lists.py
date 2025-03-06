@@ -202,26 +202,18 @@ def load_entity_summary_data(
     # Create a DataFrame with the sum, count and mean of the donations
     # for each RegulatedEntityName
     RegulatedEntity_df = (
-        entitysummary_df.groupby(["RegulatedEntityName"])
+        entitysummary_df.groupby(["RegulatedEntityName", "RegEntity_Group"])
         .agg({"Value": ["sum", "count", "mean"]})
         .reset_index()
     )
     # Rename columns
     RegulatedEntity_df.columns = [
         "RegulatedEntityName",
+        "RegEntity_Group",
         "DonationsValue",
         "DonationEvents",
         "DonationMean",
     ]
-
-    # Add RegEntity_Group column based on thresholds
-    thresholds = st.session_state.thresholds
-    RegulatedEntity_df["RegEntity_Group"] = determine_groups_optimized(
-        RegulatedEntity_df,
-        "RegulatedEntityName",
-        "DonationEvents",
-        thresholds
-    )
 
     # generate CSV file of summary data
     if output_csv:

@@ -73,14 +73,21 @@ def firstload():
 
     # Load and cache data correctly
     load_data_to_session("raw_data", get_raw_data)
-    logger.debug(f"st.session_state.raw_data: {len(st.session_state.raw_data)}")
+    logger.debug("st.session_state.raw_data:"
+                 f" {len(st.session_state.raw_data)}")
     load_data_to_session("data_clean", get_cleaned_data)
-    logger.debug(f"st.session_state.raw_data: {len(st.session_state.data_clean)}")
+    logger.debug("st.session_state.raw_data:"
+                 f" {len(st.session_state.data_clean)}")
     # load_data_to_session("data_party_sum", get_party_summary_data)
     load_data_to_session("data_donor", get_donor_data)
-    logger.debug(f"st.session_state.data_donor: {len(st.session_state.data_donor)}")
-    logger.debug(f"st.session_state.data_clean: {len(st.session_state.data_clean)}")
+    logger.debug("st.session_state.data_donor:"
+                 f" {len(st.session_state.data_donor)}")
+    logger.debug("st.session_state.data_clean:"
+                 f" {len(st.session_state.data_clean)}")
     load_data_to_session("data_regentity", get_regentity_data)
-    logger.debug(f"st.session_state.data_regentity: {len(st.session_state.data_regentity)}")
-    logger.debug(f"st.session_state.data_donor: {len(st.session_state.data_donor)}")
-    logger.debug(f"st.session_state.data_clean: {len(st.session_state.data_clean)}")
+    logger.debug("st.session_state.data_regentity:"
+                 f" {len(st.session_state.data_regentity)}")
+    logger.debug("st.session_state.data_donor:"
+                 f" {len(st.session_state.data_donor)}")
+    logger.debug("st.session_state.data_clean:"
+                 f" {len(st.session_state.data_clean)}")

@@ -119,8 +119,9 @@ def hlf_body():
             " unique donations"
         )
         pstats = (
-            compute_summary_statistics(filtered_df,
-                                       {"RegulatedEntityType": "Political Party"})
+            compute_summary_statistics(
+                filtered_df,
+                {"RegulatedEntityType": "Political Party"})
         )
         PP_donations_percent = calculate_percentage(
             pstats["unique_donations"], tstats["unique_donations"]
@@ -137,8 +138,9 @@ def hlf_body():
             "value of donations."
         )
         sde_stats = (
-            compute_summary_statistics(filtered_df,
-                                       {"RegEntity_Group": "Single Donation Entity"})
+            compute_summary_statistics(
+                filtered_df,
+                {"RegEntity_Group": "Single Donation Entity"})
         )
         if sde_stats["unique_donations"] == 0:
             st.write(
@@ -158,13 +160,14 @@ def hlf_body():
             st.write(
                 f"* {sde_stats['unique_donations']} of the"
                 " donations were to entities "
-                f"that only received one donation. These donations represented "
+                "that only received one donation. "
+                "These donations represented "
                 f"{single_donation_percent:.2f}% of all donations, were worth "
                 f" £{format_number(sde_stats['total_value'])} or "
                 f"{single_donation_entity_value_percent:.2f}% of"
                 " the total value"
-                f"of donations and were {single_donation_entity_percent:.0f}% of"
-                f"the regulated entities."
+                f"of donations and were {single_donation_entity_percent:.0f}"
+                "% ofthe regulated entities."
             )
     with col2:
         st.write(
