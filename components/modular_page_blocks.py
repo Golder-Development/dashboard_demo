@@ -117,7 +117,7 @@ def display_visualizations(graph_df, target_label, pageref_label):
             graph_df,
             XValues="YearReceived",
             YValues="Value",
-            GroupData="RegEntity_Group",
+            GroupData="Party_Group",
             XLabel="Year",
             YLabel="Value of Donations £",
             Title=f"Value of {target_label}s by" " Year and Entity",
@@ -135,7 +135,7 @@ def display_visualizations(graph_df, target_label, pageref_label):
             graph_df,
             XValues="YearReceived",
             YValues="EventCount",
-            GroupData="RegEntity_Group",
+            GroupData="Party_Group",
             XLabel="Year",
             YLabel="Donations",
             Title=f"Donations of {target_label}s by Year and Entity",
@@ -307,8 +307,8 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
         "Recipients Classification": ("RegulatedDoneeType", None),
         "Nature of Donation": ("NatureOfDonation", "NatureOfDonationInt"),
         "Reporting Period": ("ReportingPeriodName", None),
-        "Party Affiliation": ("PartyName", "PartyId"),
-        "Regulated Entity Group": ("RegEntity_Group", None),
+        "Party Affiliation": ("PartyName", None),
+        "Regulated Entity Group": ("Party_Group", None),
     }
 
     prev_selected_group = st.session_state.get("selected_group_entity", None)

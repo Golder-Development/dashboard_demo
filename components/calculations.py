@@ -52,7 +52,7 @@ def get_blank_received_date_ct(df, filters=None):
 
 
 def get_blank_regulated_entity_id_ct(df, filters=None):
-    return count_missing_values(df, "RegulatedEntityId", PLACEHOLDER_ID,
+    return count_missing_values(df, "PartyId", PLACEHOLDER_ID,
                                 filters)
 
 
@@ -119,7 +119,7 @@ def get_donations_ct(df, filters=None):
 def get_regentity_ct(df, filters=None):
     """Count of Regulated Entities"""
     df = apply_filters(df, filters)
-    return df["RegulatedEntityName"].nunique()
+    return df["PartyName"].nunique()
 
 
 def get_mindate(df, filters=None):
@@ -212,8 +212,8 @@ def get_top_entity_by_value(df, filters=None):
         tuple: (RegulatedEntityName, Value)
     """
     df = apply_filters(df, filters)
-    top_entity = df.groupby("RegulatedEntityName")["Value"].sum().idxmax()
-    top_value = df.groupby("RegulatedEntityName")["Value"].sum().max()
+    top_entity = df.groupby("PartyName")["Value"].sum().idxmax()
+    top_value = df.groupby("PartyName")["Value"].sum().max()
     return top_entity, top_value
 
 
@@ -231,8 +231,8 @@ def get_top_entity_by_donations(df, filters=None):
         tuple: (RegulatedEntityName, Value)
     """
     df = apply_filters(df, filters)
-    top_entity = df.groupby("RegulatedEntityName")["EventCount"].sum().idxmax()
-    top_value = df.groupby("RegulatedEntityName")["EventCount"].sum().max()
+    top_entity = df.groupby("PartyName")["EventCount"].sum().idxmax()
+    top_value = df.groupby("PartyName")["EventCount"].sum().max()
     return top_entity, top_value
 
 
@@ -301,37 +301,37 @@ def calculate_percentage(numerator=0, denominator=0):
 def get_avg_donations_per_entity(df, filters=None):
     """Calculates the average number of donations per entity."""
     df = apply_filters(df, filters)
-    return df.groupby("RegulatedEntityId").size().mean()
+    return df.groupby("PartyId").size().mean()
 
 
 def get_avg_value_per_entity(df, filters=None):
     """Calculates the average value of donations per entity."""
     df = apply_filters(df, filters)
-    return df.groupby("RegulatedEntityId")["Value"].mean().mean()
+    return df.groupby("PartyId")["Value"].mean().mean()
 
 
 def get_avg_donors_per_entity(df, filters=None):
     """Calculates the average number of donors per entity."""
     df = apply_filters(df, filters)
-    return df.groupby("RegulatedEntityId")["DonorId"].nunique().mean()
+    return df.groupby("PartyId")["DonorId"].nunique().mean()
 
 
 def get_donors_stdev(df, filters=None):
     """Calculates the standard deviation of donors per entity."""
     df = apply_filters(df, filters)
-    return df.groupby("RegulatedEntityId").size().std()
+    return df.groupby("PartyId").size().std()
 
 
 def get_value_stdev(df, filters=None):
     """Calculates the standard deviation of value per entity."""
     df = apply_filters(df, filters)
-    return df.groupby("RegulatedEntityId")["Value"].mean().std()
+    return df.groupby("PartyId")["Value"].mean().std()
 
 
 def get_noofdonors_per_ent_stdev(df, filters=None):
     """Calculates the standard deviation of donors per entity."""
     df = apply_filters(df, filters)
-    return df.groupby("RegulatedEntityId")["DonorId"].nunique().std()
+    return df.groupby("PartyId")["DonorId"].nunique().std()
 
 
 # Function to calculate key values

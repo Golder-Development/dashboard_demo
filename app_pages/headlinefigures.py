@@ -140,7 +140,7 @@ def hlf_body():
         sde_stats = (
             compute_summary_statistics(
                 filtered_df,
-                {"RegEntity_Group": "Single Donation Entity"})
+                {"Party_Group": "Single Donation Entity"})
         )
         if sde_stats["unique_donations"] == 0:
             st.write(
@@ -195,7 +195,7 @@ def hlf_body():
                 graph_df=filtered_df,
                 XValues="YearReceived",
                 YValues="Value",
-                GroupData="RegEntity_Group",
+                GroupData="Party_Group",
                 XLabel="Year",
                 YLabel="Donations GBP",
                 Title="Donations GBP by Year & Entity",
@@ -228,12 +228,11 @@ def hlf_body():
             st.write("No data available for the selected filters.")
             return
         else:
-            st.write("### Entity Distribution")
             plot_pie_chart.plot_pie_chart(
                 graph_df=filtered_df,
-                XValues="RegEntity_Group",
+                XValues="Party_Group",
                 YValues="Value",  # Use None for count
-                color_column="RegEntity_Group",
+                color_column="Party_Group",
                 use_custom_colors=True,  # Use custom colors
                 color_map=None,
                 Title="Distribution of Donated Value by Entity",
@@ -247,12 +246,11 @@ def hlf_body():
             st.write("No data available for the selected filters.")
             return
         else:
-            st.write("### Entity Distribution")
             plot_pie_chart.plot_pie_chart(
                 graph_df=filtered_df,
-                XValues="RegEntity_Group",
+                XValues="Party_Group",
                 YValues="EventCount",  # Use None for count
-                color_column="RegEntity_Group",
+                color_column="Party_Group",
                 use_custom_colors=True,  # Use custom colors
                 color_map=None,
                 Title="Distribution of Donations by Entity",

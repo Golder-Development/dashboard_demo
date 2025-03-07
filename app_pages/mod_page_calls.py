@@ -31,7 +31,7 @@ def mod_visits_per_regulated_entity():
         functionname="mod_visits_per_regulated_entity",
         filter_key="DonatedVisits_ftr",
         target_label="Donated Visits per Entity",
-        group_entity="RegulatedEntity")
+        group_entity="Party")
 
 
 # Donated Sponsorships
@@ -48,7 +48,7 @@ def mod_sponsorships_per_entity():
         functionname="mod_sponsorships_per_entity",
         filter_key="Sponsorships_ftr",
         target_label="Sponsorships per Entity",
-        group_entity="RegulatedEntity")
+        group_entity="Party")
 
 
 # sponsorships per donor
@@ -73,7 +73,7 @@ def mod_bequeths_per_entity():
         functionname="mod_bequeths_per_entity",
         filter_key="Bequests_ftr",
         target_label="Bequest",
-        group_entity="RegulatedEntity")
+        group_entity="Party")
 
 
 def mod_bequeths_per_donor():
@@ -107,7 +107,7 @@ def mod_corporate_donations_per_donor():
         functionname="mod_corporate_donations_per_donor",
         filter_key="CorporateDonations_ftr",
         target_label="Corporate Donations per Donor",
-        group_entity="RegulatedEntity")
+        group_entity="Party")
 
 
 # Dubious Donations
@@ -124,7 +124,7 @@ def mod_dubious_donations_per_entity():
         functionname="mod_dubious_donations_per_entity",
         filter_key="DubiousDonations_ftr",
         target_label="Dubious Donors per Entity",
-        group_entity="RegulatedEntity")
+        group_entity="Party")
 
 
 # Dubious Donations per donor
@@ -142,7 +142,7 @@ def mod_corporate_donations_per_entity():
         functionname="mod_corporate_donations_per_entity",
         filter_key="CorporateDonations_ftr",
         target_label="Corporate Donations per Entity",
-        group_entity="RegulatedEntity")
+        group_entity="Party")
 
 
 # Donations by Political Party by donor
@@ -160,7 +160,7 @@ def mod_regulated_donor_per_entity():
         functionname="mod_regulated_donor_per_entity",
         filter_key="RegulatedEntity_ftr",
         target_label="Donors per Regulated Entity",
-        group_entity="RegulatedEntity")
+        group_entity="Party")
 
 
 # Regulated Entity Donors
@@ -178,7 +178,7 @@ def mod_dubious_donors_per_entity():
         functionname="mod_dubious_donors_per_entity",
         filter_key="DubiousDonors_ftr",
         target_label="Dubious Donors per Entity",
-        group_entity="RegulatedEntity")
+        group_entity="Party")
 
 
 # Dubious Donors
@@ -212,7 +212,7 @@ def mod_cash_donations_per_entity():
         functionname="mod_cash_donations_per_entity",
         filter_key="CashDonations_ftr",
         target_label="Cash Donations per Entity",
-        group_entity="RegulatedEntity")
+        group_entity="Party")
 
 
 # Non Cash Donations
@@ -238,7 +238,7 @@ def mod_non_cash_donations_per_entity():
         functionname="mod_non_cash_donations_per_entity",
         filter_key="NonCashDonations_ftr",
         target_label="Non Cash Donations per Entity",
-        group_entity="RegulatedEntity")
+        group_entity="Party")
 
 
 # Non Cash Donations
@@ -264,7 +264,7 @@ def mod_publicfund_donations_per_entity():
         functionname="mod_publicfund_donations_per_entity",
         filter_key="PublicFundsDonations_ftr",
         target_label="Non Cash Donations per Entity",
-        group_entity="RegulatedEntity")
+        group_entity="Party")
 
 
 # login

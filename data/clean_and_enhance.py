@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import numpy as np
 import streamlit as st
@@ -132,6 +133,10 @@ def load_cleaned_data(
     loadclean_df["YearMonthReceived"] = (
         loadclean_df["YearReceived"] * 100 + loadclean_df["MonthReceived"]
     )
+    # Fill blank RegulatedDoneeType with RegulatedEntityType
+    loadclean_df["RegulatedDoneeType"] = (
+        loadclean_df["RegulatedDoneeType"].fillna(loadclean_df["RegulatedEntityType"])
+    )
     # Handle NatureOfDonation based on other fields
     if "NatureOfDonation" in loadclean_df.columns:
         loadclean_df["NatureOfDonation"] = loadclean_df.apply(
@@ -143,15 +148,64 @@ def load_cleaned_data(
                ))
 
     # apply mapping of MPs to party membership
-    if "RegulatedEntityName" in loadclean_df.columns:
-        try:
-            loadclean_df = map_mp_to_party(loadclean_df)
-        except Exception as e:
-            logger.error(f"Error mapping MPs to party membership: {e}")
-            st.error(f"Error mapping MPs to party membership: {e}"
-                     " Political Party Matching will not be done")
-            return loadclean_df
-    logger.debug(f"Clean Data Prep 150: Map Mps: {len(loadclean_df)}")
+    map_filename = "regentity_map_fname"
+    map_file_path = st.session_state.get(map_filename)
+    if not map_file_path:
+        logger.error(f"{map_filename} not found in session state filenames")
+        raise ValueError(f"{map_filename} not found in session state filenames")
+
+    # File exists and contains data use it to dedupe the data
+    # check {map_filename} exists and has data
+    elif os.path.exists(map_file_path) and os.path.getsize(map_file_path) > 0:
+        logger.info(f"Map file {map_filename} exists."
+                    " Proceeding with deduplication.")
+        # Load the dedupe map file
+        re_dedupe_df = pd.read_csv(map_file_path, dtype={
+            "CleanedRegulatedEntityId": "int64",
+            "RegulatedEntityId": "int64",
+            "CleanedRegulatedEntityName": "object",
+            "PartyName": "object",
+            "PartyId": "int64",
+            "Political Leaning": "object",
+            "Special Interest": "object",
+            })
+        # drop unnecessary columns
+        re_dedupe_df = re_dedupe_df.drop(["RegulatedEntityId",
+                                          "CleanedRegulatedEntityName"
+                                          ], axis=1)
+        # Ensure that there is only one value for each entity ID by taking
+        # the first value in all cases
+        re_dedupe_df = re_dedupe_df.groupby("CleanedRegulatedEntityId").first().reset_index()
+        # rename CleanedRegulatedEntityId to RegulatedEntityId
+        re_dedupe_df.rename(
+            columns={"CleanedRegulatedEntityId": "RegulatedEntityId"}, inplace=True)
+        # Merge the cleaned data with the original data, selecting only required columns
+        loadclean_df = pd.merge(loadclean_df,
+                       re_dedupe_df[["RegulatedEntityId",
+                                    "PartyName",
+                                    "PartyId",
+                                    "Political Leaning",
+                                    "Special Interest"]],
+                       how="left",
+                       on="RegulatedEntityId")
+        # Replace Independent with "" in PartyName and 1000001 in PartyId with Null
+        loadclean_df["PartyName"] = loadclean_df["PartyName"].replace("Independent", "")
+        # Handle missing values for parent entities
+        loadclean_df["PartyId"] = (
+            loadclean_df["PartyId"].replace("", pd.NA)
+        )
+        loadclean_df["PartytName"] = (
+            loadclean_df["PartyName"].replace("", pd.NA)
+        )
+        loadclean_df["PartyId"] = (
+            loadclean_df["PartyId"]
+            .fillna(loadclean_df["RegulatedEntityId"])
+        )
+        loadclean_df["PartyName"] = (
+            loadclean_df["PartyName"]
+            .fillna(loadclean_df["RegulatedEntityName"])
+        )
+    logger.debug(f"Clean Data Prep 150: Map Party: {len(loadclean_df)}")
 
     # Create a DubiousData flag for problematic records
     if ("PLACEHOLDER_DATE" not in st.session_state) or (
@@ -238,6 +292,12 @@ def load_cleaned_data(
             loadclean_df, "RegulatedEntityName", "EventCount", thresholds
         )
     logger.debug(f"Clean Data Prep 235: RegEntity_Map: {len(loadclean_df)}")
+    #' Applky Dictionary to populate Party_Group
+    if "PartyName" in loadclean_df.columns:
+        loadclean_df["Party_Group"] = calc.determine_groups_optimized(
+            loadclean_df, "PartyName", "EventCount", thresholds
+        )
+    logger.debug(f"Clean Data Prep 235: Party_Group: {len(loadclean_df)}")
     # Ensure all columns that are in data are also in data_clean
     for col in orig_df.columns:
         if col not in loadclean_df.columns:
@@ -298,7 +358,13 @@ def load_cleaned_data(
         loadclean_df["NatureOfDonation"].astype("category").cat.codes)
     loadclean_df["RegisterNameInt"] = (
         loadclean_df["RegisterName"].astype("category").cat.codes)
-
+    loadclean_df["PartyNameInt"] = (
+        loadclean_df["PartyName"].astype("category").cat.codes)
+    loadclean_df["PartyGroupInt"] = (
+        loadclean_df["Party_Group"].astype("category").cat.codes)
+    loadclean_df["RegEntityGrou[Int"] = (
+        loadclean_df["RegEntity_Group"].astype("category").cat.codes)
+    
     # Column encoding PublicFundsInt
     loadclean_df["PublicFundsInt"] = (
         loadclean_df["DonationType"]
@@ -406,6 +472,20 @@ def load_cleaned_data(
             )
             return ValueError("Deduplication failed")
     logger.debug(f"Clean Data Prep 386: End of clean: {len(loadclean_df)}")
+    # Drop unnecessary columns
+    loadclean_df = loadclean_df.drop(
+        [
+            "CleanedRegulatedEntityId",
+            "CleanedRegulatedEntityName",
+            "CleanedDonorId",
+            "CleanedDonorName",
+            "OriginalRegulatedEntityId",
+            "OriginalRegulatedEntityName",
+            "OriginalDonorId",
+            "OriginalDonorName",
+        ],
+        axis=1,
+    )
     # Save cleaned data
     if output_csv:
         # Save the cleaned data to a CSV file for further analysis or reporting

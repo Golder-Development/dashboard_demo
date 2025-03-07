@@ -1154,3 +1154,1145 @@ Traceback (most recent call last):
   File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 132, in __getattr__
     raise AttributeError(_missing_attr_error_message(key))
 AttributeError: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+2025/03/07 03:37 ERROR:Session state variables not initialized!
+2025/03/07 03:37 ERROR:Error: originalfilepath is None!
+2025/03/07 03:37 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/07 03:37 ERROR:Error in load_cleaned_data: local variable 'loaddata_dd_df' referenced before assignment
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 166, in load_cleaned_data
+    loaddata_dd_df = pd.merge(loaddata_dd_df,
+UnboundLocalError: local variable 'loaddata_dd_df' referenced before assignment
+2025/03/07 03:37 CRITICAL:First load crashed: local variable 'loaddata_dd_df' referenced before assignment
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 64, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 66, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 166, in load_cleaned_data
+    loaddata_dd_df = pd.merge(loaddata_dd_df,
+UnboundLocalError: local variable 'loaddata_dd_df' referenced before assignment
+2025/03/07 03:40 ERROR:Session state variables not initialized!
+2025/03/07 03:40 ERROR:Error: originalfilepath is None!
+2025/03/07 03:40 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/07 03:40 ERROR:Error in load_cleaned_data: The column label 'RegulatedEntityId' is not unique.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 166, in load_cleaned_data
+    loadclean_df = pd.merge(loadclean_df,
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 170, in merge
+    op = _MergeOperation(
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 794, in __init__
+    ) = self._get_merge_keys()
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 1297, in _get_merge_keys
+    right_keys.append(right._get_label_or_level_values(rk))
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1925, in _get_label_or_level_values
+    raise ValueError(
+ValueError: The column label 'RegulatedEntityId' is not unique.
+2025/03/07 03:40 CRITICAL:First load crashed: The column label 'RegulatedEntityId' is not unique.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 64, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 66, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 166, in load_cleaned_data
+    loadclean_df = pd.merge(loadclean_df,
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 170, in merge
+    op = _MergeOperation(
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 794, in __init__
+    ) = self._get_merge_keys()
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 1297, in _get_merge_keys
+    right_keys.append(right._get_label_or_level_values(rk))
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1925, in _get_label_or_level_values
+    raise ValueError(
+ValueError: The column label 'RegulatedEntityId' is not unique.
+2025/03/07 03:40 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/07 03:40 ERROR:Error in load_cleaned_data: The column label 'RegulatedEntityId' is not unique.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 166, in load_cleaned_data
+    loadclean_df = pd.merge(loadclean_df,
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 170, in merge
+    op = _MergeOperation(
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 794, in __init__
+    ) = self._get_merge_keys()
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 1297, in _get_merge_keys
+    right_keys.append(right._get_label_or_level_values(rk))
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1925, in _get_label_or_level_values
+    raise ValueError(
+ValueError: The column label 'RegulatedEntityId' is not unique.
+2025/03/07 03:40 CRITICAL:First load crashed: The column label 'RegulatedEntityId' is not unique.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 64, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 66, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 166, in load_cleaned_data
+    loadclean_df = pd.merge(loadclean_df,
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 170, in merge
+    op = _MergeOperation(
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 794, in __init__
+    ) = self._get_merge_keys()
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 1297, in _get_merge_keys
+    right_keys.append(right._get_label_or_level_values(rk))
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1925, in _get_label_or_level_values
+    raise ValueError(
+ValueError: The column label 'RegulatedEntityId' is not unique.
+2025/03/07 03:41 ERROR:Session state variables not initialized!
+2025/03/07 03:41 ERROR:Error: originalfilepath is None!
+2025/03/07 03:41 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/07 03:41 ERROR:Error in load_cleaned_data: 'RegulatedEntityId'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 166, in load_cleaned_data
+    loadclean_df = pd.merge(loadclean_df,
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 170, in merge
+    op = _MergeOperation(
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 794, in __init__
+    ) = self._get_merge_keys()
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 1297, in _get_merge_keys
+    right_keys.append(right._get_label_or_level_values(rk))
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1911, in _get_label_or_level_values
+    raise KeyError(key)
+KeyError: 'RegulatedEntityId'
+2025/03/07 03:41 CRITICAL:First load crashed: 'RegulatedEntityId'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 64, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 66, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 166, in load_cleaned_data
+    loadclean_df = pd.merge(loadclean_df,
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 170, in merge
+    op = _MergeOperation(
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 794, in __init__
+    ) = self._get_merge_keys()
+  File "H:\python310\lib\site-packages\pandas\core\reshape\merge.py", line 1297, in _get_merge_keys
+    right_keys.append(right._get_label_or_level_values(rk))
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 1911, in _get_label_or_level_values
+    raise KeyError(key)
+KeyError: 'RegulatedEntityId'
+2025/03/07 03:48 ERROR:Error in initialise_data: invalid syntax (clean_and_enhance.py, line 160)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 160
+    "CleanedRegulatedEntityId": Int64,
+                              ^
+SyntaxError: invalid syntax
+2025/03/07 03:48 CRITICAL:First load crashed: invalid syntax (clean_and_enhance.py, line 160)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 64, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 160
+    "CleanedRegulatedEntityId": Int64,
+                              ^
+SyntaxError: invalid syntax
+2025/03/07 03:48 ERROR:Error in initialise_data: invalid syntax (clean_and_enhance.py, line 160)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 160
+    "CleanedRegulatedEntityId": Int64,
+                              ^
+SyntaxError: invalid syntax
+2025/03/07 03:48 CRITICAL:First load crashed: invalid syntax (clean_and_enhance.py, line 160)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 64, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 160
+    "CleanedRegulatedEntityId": Int64,
+                              ^
+SyntaxError: invalid syntax
+2025/03/07 03:51 ERROR:Error in initialise_data: invalid syntax (clean_and_enhance.py, line 160)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 160
+    "CleanedRegulatedEntityId": "int64",
+                              ^
+SyntaxError: invalid syntax
+2025/03/07 03:51 CRITICAL:First load crashed: invalid syntax (clean_and_enhance.py, line 160)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 64, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 160
+    "CleanedRegulatedEntityId": "int64",
+                              ^
+SyntaxError: invalid syntax
+2025/03/07 03:51 ERROR:Error in initialise_data: invalid syntax (clean_and_enhance.py, line 160)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 160
+    "CleanedRegulatedEntityId": "int64",
+                              ^
+SyntaxError: invalid syntax
+2025/03/07 03:51 CRITICAL:First load crashed: invalid syntax (clean_and_enhance.py, line 160)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 64, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 160
+    "CleanedRegulatedEntityId": "int64",
+                              ^
+SyntaxError: invalid syntax
+2025/03/07 03:51 ERROR:Error in initialise_data: invalid syntax (clean_and_enhance.py, line 160)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 160
+    "CleanedRegulatedEntityId": "int64",
+                              ^
+SyntaxError: invalid syntax
+2025/03/07 03:51 CRITICAL:First load crashed: invalid syntax (clean_and_enhance.py, line 160)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 64, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 160
+    "CleanedRegulatedEntityId": "int64",
+                              ^
+SyntaxError: invalid syntax
+2025/03/07 03:52 ERROR:Error in initialise_data: invalid syntax (clean_and_enhance.py, line 164)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 164
+    "PartyId": "int64",
+             ^
+SyntaxError: invalid syntax
+2025/03/07 03:52 CRITICAL:First load crashed: invalid syntax (clean_and_enhance.py, line 164)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 64, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 164
+    "PartyId": "int64",
+             ^
+SyntaxError: invalid syntax
+2025/03/07 03:52 ERROR:Error in initialise_data: invalid syntax (clean_and_enhance.py, line 164)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 164
+    "PartyId": "int64",
+             ^
+SyntaxError: invalid syntax
+2025/03/07 03:52 CRITICAL:First load crashed: invalid syntax (clean_and_enhance.py, line 164)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 64, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 164
+    "PartyId": "int64",
+             ^
+SyntaxError: invalid syntax
+2025/03/07 03:53 ERROR:Session state variables not initialized!
+2025/03/07 03:53 ERROR:Error: originalfilepath is None!
+2025/03/07 03:53 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/07 03:53 ERROR:Failed to load election dates from file.
+2025/03/07 03:53 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/07 04:04 ERROR:Error in display_per_group_data_page: '<' not supported between instances of 'float' and 'str'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 33, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 339, in load_and_filter_pergroup
+    available_entities = sorted(filtered_df[group_entity_col].unique().tolist())
+TypeError: '<' not supported between instances of 'float' and 'str'
+2025/03/07 04:04 CRITICAL:Menu setup crashed: '<' not supported between instances of 'float' and 'str'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 83, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 211, in mod_cash_donations_per_entity
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 33, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 339, in load_and_filter_pergroup
+    available_entities = sorted(filtered_df[group_entity_col].unique().tolist())
+TypeError: '<' not supported between instances of 'float' and 'str'
+2025/03/07 04:12 CRITICAL:Menu setup crashed: '<' not supported between instances of 'float' and 'str'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 83, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 211, in mod_cash_donations_per_entity
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 33, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 339, in load_and_filter_pergroup
+    available_entities = sorted(filtered_df[group_entity_col].unique().tolist())
+TypeError: '<' not supported between instances of 'float' and 'str'
+2025/03/07 04:14 CRITICAL:Menu setup crashed: '<' not supported between instances of 'float' and 'str'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 83, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 211, in mod_cash_donations_per_entity
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 33, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 339, in load_and_filter_pergroup
+    available_entities = sorted(filtered_df[group_entity_col].unique().tolist())
+TypeError: '<' not supported between instances of 'float' and 'str'
+2025/03/07 04:14 CRITICAL:Menu setup crashed: '<' not supported between instances of 'float' and 'str'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 83, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 211, in mod_cash_donations_per_entity
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 33, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 339, in load_and_filter_pergroup
+    available_entities = sorted(filtered_df[group_entity_col].unique().tolist())
+TypeError: '<' not supported between instances of 'float' and 'str'
+2025/03/07 04:14 CRITICAL:Menu setup crashed: '<' not supported between instances of 'float' and 'str'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 83, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 211, in mod_cash_donations_per_entity
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 33, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 339, in load_and_filter_pergroup
+    available_entities = sorted(filtered_df[group_entity_col].unique().tolist())
+TypeError: '<' not supported between instances of 'float' and 'str'
+2025/03/07 04:35 CRITICAL:Menu setup crashed: '<' not supported between instances of 'float' and 'str'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 83, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 211, in mod_cash_donations_per_entity
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 33, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 339, in load_and_filter_pergroup
+    available_entities = sorted(filtered_df[group_entity_col].unique().tolist())
+TypeError: '<' not supported between instances of 'float' and 'str'
+2025/03/07 04:50 ERROR:Error in display_per_group_data_page: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 33, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 277, in load_and_filter_pergroup
+    cleaned_df = st.session_state["data_clean"]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+2025/03/07 04:50 CRITICAL:Menu setup crashed: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 83, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 211, in mod_cash_donations_per_entity
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 33, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 277, in load_and_filter_pergroup
+    cleaned_df = st.session_state["data_clean"]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+2025/03/07 04:50 ERROR:Session state variables not initialized!
+2025/03/07 04:50 ERROR:Error: originalfilepath is None!
+2025/03/07 04:50 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/07 04:50 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/07 04:50 ERROR:Failed to load election dates from file.
+2025/03/07 04:50 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/07 04:52 ERROR:Error in display_per_group_data_page: '<' not supported between instances of 'float' and 'str'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 33, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 339, in load_and_filter_pergroup
+    available_entities = sorted(filtered_df[group_entity_col].unique().tolist())
+TypeError: '<' not supported between instances of 'float' and 'str'
+2025/03/07 04:52 CRITICAL:Menu setup crashed: '<' not supported between instances of 'float' and 'str'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 83, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 211, in mod_cash_donations_per_entity
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 33, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 339, in load_and_filter_pergroup
+    available_entities = sorted(filtered_df[group_entity_col].unique().tolist())
+TypeError: '<' not supported between instances of 'float' and 'str'
+2025/03/07 04:52 CRITICAL:Menu setup crashed: '<' not supported between instances of 'float' and 'str'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 83, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 211, in mod_cash_donations_per_entity
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 33, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 339, in load_and_filter_pergroup
+    available_entities = sorted(filtered_df[group_entity_col].unique().tolist())
+TypeError: '<' not supported between instances of 'float' and 'str'
+2025/03/07 04:56 ERROR:Error in display_per_group_data_page: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 33, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 277, in load_and_filter_pergroup
+    cleaned_df = st.session_state["data_clean"]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+2025/03/07 04:56 CRITICAL:Menu setup crashed: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 83, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 211, in mod_cash_donations_per_entity
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 33, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 277, in load_and_filter_pergroup
+    cleaned_df = st.session_state["data_clean"]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+2025/03/07 04:56 ERROR:Session state variables not initialized!
+2025/03/07 04:56 ERROR:Error: originalfilepath is None!
+2025/03/07 04:56 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/07 04:56 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/07 04:56 ERROR:Failed to load election dates from file.
+2025/03/07 04:56 ERROR:Error in load_cleaned_data: "['ParentEntityId', 'ParentEntityName'] not found in axis"
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 476, in load_cleaned_data
+    loadclean_df = loadclean_df.drop(
+  File "H:\python310\lib\site-packages\pandas\core\frame.py", line 5581, in drop
+    return super().drop(
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 4788, in drop
+    obj = obj._drop_axis(labels, axis, level=level, errors=errors)
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 4830, in _drop_axis
+    new_axis = axis.drop(labels, errors=errors)
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 7070, in drop
+    raise KeyError(f"{labels[mask].tolist()} not found in axis")
+KeyError: "['ParentEntityId', 'ParentEntityName'] not found in axis"
+2025/03/07 04:56 CRITICAL:First load crashed: "['ParentEntityId', 'ParentEntityName'] not found in axis"
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 64, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 66, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 476, in load_cleaned_data
+    loadclean_df = loadclean_df.drop(
+  File "H:\python310\lib\site-packages\pandas\core\frame.py", line 5581, in drop
+    return super().drop(
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 4788, in drop
+    obj = obj._drop_axis(labels, axis, level=level, errors=errors)
+  File "H:\python310\lib\site-packages\pandas\core\generic.py", line 4830, in _drop_axis
+    new_axis = axis.drop(labels, errors=errors)
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 7070, in drop
+    raise KeyError(f"{labels[mask].tolist()} not found in axis")
+KeyError: "['ParentEntityId', 'ParentEntityName'] not found in axis"
+2025/03/07 04:57 ERROR:Error in display_per_group_data_page: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 33, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 277, in load_and_filter_pergroup
+    cleaned_df = st.session_state["data_clean"]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+2025/03/07 04:57 CRITICAL:Menu setup crashed: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 83, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 211, in mod_cash_donations_per_entity
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 33, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 277, in load_and_filter_pergroup
+    cleaned_df = st.session_state["data_clean"]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+2025/03/07 04:57 ERROR:Session state variables not initialized!
+2025/03/07 04:57 ERROR:Error: originalfilepath is None!
+2025/03/07 04:57 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/07 04:57 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/07 04:57 ERROR:Failed to load election dates from file.
+2025/03/07 04:57 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/07 05:10 ERROR:Error in load_and_filter_data: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 130, in __getattr__
+    return self[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 29, in load_and_filter_data
+    cleaned_df = st.session_state.data_clean
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 132, in __getattr__
+    raise AttributeError(_missing_attr_error_message(key))
+AttributeError: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+2025/03/07 05:10 CRITICAL:Menu setup crashed: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 130, in __getattr__
+    return self[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 83, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\headlinefigures.py", line 30, in hlf_body
+    load_and_filter_data(filter_key=filter_key,
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 29, in load_and_filter_data
+    cleaned_df = st.session_state.data_clean
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 132, in __getattr__
+    raise AttributeError(_missing_attr_error_message(key))
+AttributeError: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+2025/03/07 05:11 ERROR:Error in load_and_filter_data: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 130, in __getattr__
+    return self[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 29, in load_and_filter_data
+    cleaned_df = st.session_state.data_clean
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 132, in __getattr__
+    raise AttributeError(_missing_attr_error_message(key))
+AttributeError: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+2025/03/07 05:11 CRITICAL:Menu setup crashed: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 130, in __getattr__
+    return self[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 83, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\headlinefigures.py", line 30, in hlf_body
+    load_and_filter_data(filter_key=filter_key,
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 29, in load_and_filter_data
+    cleaned_df = st.session_state.data_clean
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 132, in __getattr__
+    raise AttributeError(_missing_attr_error_message(key))
+AttributeError: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+2025/03/07 05:12 ERROR:Session state variables not initialized!
+2025/03/07 05:12 ERROR:Error: originalfilepath is None!
+2025/03/07 05:12 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/07 05:13 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/07 05:13 ERROR:Failed to load election dates from file.
+2025/03/07 05:13 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/07 05:13 ERROR:Error in display_per_group_data_page: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 40, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/03/07 05:13 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 83, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 211, in mod_cash_donations_per_entity
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 40, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
