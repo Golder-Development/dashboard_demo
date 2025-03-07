@@ -209,11 +209,6 @@ def raw_data_cleanup(
             st.info("Deduping of Donors Entities not selected")
 
     # Print progress message
-    if logger.level <= 20:
-        st.info("Raw Data improved successfully")
-        st.info(f"Data has {loaddata_df.shape[0]} rows "
-                f"and {loaddata_df.shape[1]} columns")
-
     logger.info("Raw Data cleanup completed")
     logger.info(f"Data shape: {loaddata_df.shape}")
 

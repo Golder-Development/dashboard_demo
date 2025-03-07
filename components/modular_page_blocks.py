@@ -122,7 +122,7 @@ def display_visualizations(graph_df, target_label, pageref_label):
             YLabel="Value of Donations £",
             Title=f"Value of {target_label}s by" " Year and Entity",
             CalcType="sum",
-            use_custom_colors=False,
+            use_custom_colors=True,
             widget_key=left_widget_graph_key,
             ChartType="Bar",
             LegendTitle="Political Entity Type",

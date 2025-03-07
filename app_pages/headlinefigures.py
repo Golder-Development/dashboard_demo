@@ -199,7 +199,7 @@ def hlf_body():
                 XLabel="Year",
                 YLabel="Donations GBP",
                 Title="Donations GBP by Year & Entity",
-                use_custom_colors=False,
+                use_custom_colors=True,
                 LegendTitle="Regulated Entity",
                 widget_key="value_by_year_n_entity",
                 CalcType='sum')

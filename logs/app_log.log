@@ -2296,3 +2296,144 @@ Traceback (most recent call last):
   File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 40, in display_per_group_data_page
     (min_date,
 TypeError: cannot unpack non-iterable NoneType object
+2025/03/07 09:50 ERROR:Session state variables not initialized!
+2025/03/07 09:50 ERROR:Error: originalfilepath is None!
+2025/03/07 09:50 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/07 09:50 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/07 09:50 ERROR:Failed to load election dates from file.
+2025/03/07 09:50 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/07 10:08 ERROR:Session state variables not initialized!
+2025/03/07 10:08 ERROR:Error: originalfilepath is None!
+2025/03/07 10:08 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/07 10:08 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/07 10:08 ERROR:Failed to load election dates from file.
+2025/03/07 10:13 ERROR:Session state variables not initialized!
+2025/03/07 10:13 ERROR:Error: originalfilepath is None!
+2025/03/07 10:13 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/07 10:13 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/07 10:13 ERROR:Failed to load election dates from file.
+2025/03/07 10:13 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/07 10:13 ERROR:Error in hlf_body: attempt to get argmax of an empty sequence
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\headlinefigures.py", line 48, in hlf_body
+    top_entity, top_value = get_top_entity_by_value(filtered_df)
+  File "H:\VScode\dashboard_demo\components\calculations.py", line 215, in get_top_entity_by_value
+    top_entity = df.groupby("PartyName")["Value"].sum().idxmax()
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 2761, in idxmax
+    i = self.argmax(axis, skipna, *args, **kwargs)
+  File "H:\python310\lib\site-packages\pandas\core\base.py", line 751, in argmax
+    result = nanops.nanargmax(delegate, skipna=skipna)
+  File "H:\python310\lib\site-packages\pandas\core\nanops.py", line 1148, in nanargmax
+    result = values.argmax(axis)
+ValueError: attempt to get argmax of an empty sequence
+2025/03/07 10:13 CRITICAL:Menu setup crashed: attempt to get argmax of an empty sequence
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 75, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\headlinefigures.py", line 48, in hlf_body
+    top_entity, top_value = get_top_entity_by_value(filtered_df)
+  File "H:\VScode\dashboard_demo\components\calculations.py", line 215, in get_top_entity_by_value
+    top_entity = df.groupby("PartyName")["Value"].sum().idxmax()
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 2761, in idxmax
+    i = self.argmax(axis, skipna, *args, **kwargs)
+  File "H:\python310\lib\site-packages\pandas\core\base.py", line 751, in argmax
+    result = nanops.nanargmax(delegate, skipna=skipna)
+  File "H:\python310\lib\site-packages\pandas\core\nanops.py", line 1148, in nanargmax
+    result = values.argmax(axis)
+ValueError: attempt to get argmax of an empty sequence
+2025/03/07 10:16 ERROR:Error in load_and_filter_data: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 130, in __getattr__
+    return self[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 29, in load_and_filter_data
+    cleaned_df = st.session_state.data_clean
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 132, in __getattr__
+    raise AttributeError(_missing_attr_error_message(key))
+AttributeError: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+2025/03/07 10:16 CRITICAL:Menu setup crashed: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 130, in __getattr__
+    return self[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 75, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\headlinefigures.py", line 30, in hlf_body
+    load_and_filter_data(filter_key=filter_key,
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 29, in load_and_filter_data
+    cleaned_df = st.session_state.data_clean
+  File "H:\python310\lib\site-packages\streamlit\runtime\state\session_state_proxy.py", line 132, in __getattr__
+    raise AttributeError(_missing_attr_error_message(key))
+AttributeError: st.session_state has no attribute "data_clean". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+2025/03/07 10:16 ERROR:Session state variables not initialized!
+2025/03/07 10:16 ERROR:Error: originalfilepath is None!
+2025/03/07 10:16 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/07 10:16 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/07 10:16 ERROR:Failed to load election dates from file.
+2025/03/07 10:16 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/07 10:27 ERROR:Session state variables not initialized!
+2025/03/07 10:27 ERROR:Error: originalfilepath is None!
+2025/03/07 10:27 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/07 10:27 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/07 10:27 ERROR:Failed to load election dates from file.
+2025/03/07 10:27 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
