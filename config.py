@@ -92,9 +92,9 @@ DATA_REMAPPINGS = {
     },
     # Mapping of party name to RegulatedEntityId
     "PartyParents": {  # "party_name": "RegulatedEntityId"
-        "Conservatives": 52,
+        "Conservative": 52,
         "Labour": 53,
-        "Liberal Democrats": 90,
+        "Liberal Democrat": 90,
         "Scottish National Party": 102,
         "Green Party": 63,
         "Plaid Cymru": 77,
