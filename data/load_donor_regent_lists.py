@@ -66,11 +66,6 @@ def load_donorList_data(main_file="data_clear",
     if output_csv:
         donorlist_df.to_csv(cleaneddatafilepath, index=False)
         logger.info(f"Donor data saved to {cleaneddatafilepath}")
-    if logger.level <= 20:
-        st.info("Donor data summary successfully")
-        st.info(f"Data has {donorlist_df.shape[0]} rows "
-                f"and {donorlist_df.shape[1]} columns")
-
     logger.info("Donor Data summary completed")
     logger.info(f"Data shape: {donorlist_df.shape}")
     return donorlist_df
@@ -141,11 +136,6 @@ def load_regulated_entity_data(
     if output_csv:
         regent_df.to_csv(cleaneddatafilepath, index=False)
         logger.info(f"Regulated entity data saved to {cleaneddatafilepath}")
-    if logger.level <= 20:
-        st.info("Regulated entity data successfully")
-        st.info(f"Data has {regent_df.shape[0]} rows "
-                f"and {regent_df.shape[1]} columns")
-
     logger.info("Raw Data cleanup completed")
     logger.info(f"Data shape: {regent_df.shape}")
 
@@ -219,11 +209,6 @@ def load_entity_summary_data(
     if output_csv:
         RegulatedEntity_df.to_csv(cleaned_data_file)
         logger.info(f"Regulated entity summary saved to {cleaned_data_file}")
-    if logger.level <= 20:
-        st.info("Regulated entity summary successfully")
-        st.info(f"Data has {RegulatedEntity_df.shape[0]} rows "
-                f"and {RegulatedEntity_df.shape[1]} columns")
-
     logger.info("Raw Data cleanup completed")
     logger.info(f"Data shape: {RegulatedEntity_df.shape}")
 
