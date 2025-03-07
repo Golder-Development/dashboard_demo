@@ -181,30 +181,27 @@ def load_cleaned_data(
             columns={"CleanedRegulatedEntityId": "RegulatedEntityId"}, inplace=True)
         # Merge the cleaned data with the original data, selecting only required columns
         loadclean_df = pd.merge(loadclean_df,
-                       re_dedupe_df[["RegulatedEntityId",
-                                    "PartyName",
-                                    "PartyId",
-                                    "Political Leaning",
-                                    "Special Interest"]],
-                       how="left",
-                       on="RegulatedEntityId")
-        # Replace Independent with "" in PartyName and 1000001 in PartyId with Null
-        loadclean_df["PartyName"] = loadclean_df["PartyName"].replace("Independent", "")
+                                re_dedupe_df[["RegulatedEntityId",
+                                              "PartyName",
+                                              "PartyId",
+                                              "Political Leaning",
+                                              "Special Interest"]],
+                                how="left",
+                                on="RegulatedEntityId")
+                    # Replace Independent with "" in PartyName and 1000001 in PartyId with Null
+        loadclean_df["PartyId"] = loadclean_df["PartyId"].replace(1000001, pd.NA)
+        loadclean_df["PartyName"] = loadclean_df["PartyName"].replace("Independent", pd.NA)
         # Handle missing values for parent entities
         loadclean_df["PartyId"] = (
-            loadclean_df["PartyId"].replace("", pd.NA)
-        )
-        loadclean_df["PartytName"] = (
-            loadclean_df["PartyName"].replace("", pd.NA)
-        )
+            loadclean_df["PartyId"].replace("", pd.NA))
+        loadclean_df["PartyName"] = (
+            loadclean_df["PartyName"].replace("", pd.NA))
         loadclean_df["PartyId"] = (
             loadclean_df["PartyId"]
-            .fillna(loadclean_df["RegulatedEntityId"])
-        )
+            .fillna(loadclean_df["RegulatedEntityId"]))
         loadclean_df["PartyName"] = (
             loadclean_df["PartyName"]
-            .fillna(loadclean_df["RegulatedEntityName"])
-        )
+            .fillna(loadclean_df["RegulatedEntityName"]))
     logger.debug(f"Clean Data Prep 150: Map Party: {len(loadclean_df)}")
 
     # Create a DubiousData flag for problematic records

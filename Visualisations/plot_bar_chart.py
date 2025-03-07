@@ -91,7 +91,7 @@ def plot_custom_bar_chart(
             .reset_index()
         )
 
-    color_mapping=political_colors
+    color_mapping = political_colors
     # Determine color mapping
     if use_custom_colors and group_column:
         color_discrete_map = {

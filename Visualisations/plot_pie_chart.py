@@ -69,7 +69,7 @@ def plot_pie_chart(
         else:
             data = graph_df[XValues].YValues().reset_index()
             data.columns = [XValues, "count"]
-            value_column = "count"
+            XValues = "count"
 
         # Custom labels for tooltips
         labels = {XValues: XLabel, YValues: YLabel}

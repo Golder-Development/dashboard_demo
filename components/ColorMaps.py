@@ -4,11 +4,13 @@ from utils.logger import log_function_call  # Import decorator
 
 political_colors= {
     # Official Tory blue
-    "Conservative and Unionist Party": "#0087DC",
+    "Conservative And Unionist Party": "#0087DC",
     # Official Labour red
     "Labour Party": "#DC241F",
     # Official Lib Dem yellow-orange
     "Liberal Democrats": "#FDBB30",
+    # Official Green Party green
+    "Liberal Democrat": "#FDBB30",
     # Official Green Party green
     "Green Party": "#78B943",
     # SNP uses bright yellow
@@ -18,7 +20,7 @@ political_colors= {
     # Reform UK blue-cyan
     "Reform UK": "#12B6CF",
     # UKIP purple
-    "UK Independence Party (UKIP)": "#70147A",
+    "Uk Independence Party (Ukip)": "#70147A",
     # DUP red
     "Democratic Unionist Party (DUP)": "#D50000",
     # Sinn Féin dark green
@@ -30,6 +32,7 @@ political_colors= {
     # Alliance gold
     "Alliance Party of Northern Ireland": "#FFD700",
     # Neutral gray for unclassified entities
+    "Independent": "#7f7f7f",
     "Other": "#7f7f7f",
     # Categories for entity sizes
     "Large Entity": "#9467bd",  # Purple
@@ -37,4 +40,5 @@ political_colors= {
     "Small Entity": "#e377c2",  # Pink
     "Very Small Entity": "#bcbd22",  # Olive green
     "Single Donation Entity": "#7f7f7f",  # Gray
+    "Small Medium Entity": "#17becf",  # Cyan
 }
