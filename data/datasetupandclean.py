@@ -99,11 +99,6 @@ def load_raw_data(main_file="raw_data",
         )
 
         # Print progress message
-        if logger.level <= 20:
-            st.info("Base Data loaded successfully")
-            st.info(f"Data has {loaddata_df.shape[0]} rows "
-                    f"and {loaddata_df.shape[1]} columns")
-
         logger.info(f"Data loaded successfully."
                     f" Data has {loaddata_df.shape[0]} rows "
                     f"and {loaddata_df.shape[1]} columns")

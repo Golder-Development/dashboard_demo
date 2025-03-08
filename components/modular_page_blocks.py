@@ -19,7 +19,11 @@ from components.text_management import (
     save_text,
     toggle_soft_delete,
     permanent_delete,
-)
+    display_text_elements,
+    manage_text_elements,
+    Refresh_Text_Session_State,
+    load_all_text,
+    )
 from utils.logger import log_function_call, logger
 
 
@@ -129,8 +133,11 @@ def display_visualizations(graph_df, target_label, pageref_label):
             percentbars=True,
             y_scale="linear",
         )
-        right_widget_graph_key = "right" + pageref_label_vis
+        manage_text_elements(pageref_label)
+        display_text_elements(pageref_label, target_label)
+
     with right_column:
+        right_widget_graph_key = "right" + pageref_label_vis
         plot_bar_line.plot_bar_line_by_year(
             graph_df,
             XValues="YearReceived",
@@ -147,129 +154,34 @@ def display_visualizations(graph_df, target_label, pageref_label):
             y_scale="linear",
             widget_key=right_widget_graph_key,
         )
+        manage_text_elements(pageref_label)
+        display_text_elements(pageref_label, target_label)
 
 
 @log_function_call
-def display_textual_insights(
-    pageref_label, target_label, min_date,
-    max_date, tstats, ostats, perc_target
-):
-    """Displays insights and explanations."""
-    pageref_label_ti = pageref_label + "_ti"
-    page_texts = load_page_text(pageref_label_ti)
-
-    # Admin Section - Manage multiple text elements
-    if st.session_state.security["is_admin"]:
-        st.subheader(f"Manage Text for {pageref_label_ti}")
-
-        # Existing text elements
-        if page_texts:
-            for text_key, text_data in page_texts.items():
-                is_deleted = text_data["is_deleted"]
-                text_value = text_data["text"]
-
-                if is_deleted:
-                    st.markdown(f"⚠️ **(Deleted)** {text_key}:")
-                else:
-                    st.text_area(
-                        f"Edit {text_key}:", value=text_value,
-                        key=f"edit_{text_key}"
-                    )
-
-                col1, col2, col3, col4 = st.columns([3, 1, 1, 1])
-
-                with col1:
-                    if not is_deleted and st.button(
-                        f"Save {text_key}", key=f"save_{text_key}"
-                    ):
-                        new_value = st.session_state[f"edit_{text_key}"]
-                        save_text(pageref_label, text_key, new_value)
-                        st.success(f"Updated {text_key}!")
-
-                with col2:
-                    if not is_deleted and st.button(
-                        f"Soft Delete {text_key}", key=f"delete_{text_key}"
-                    ):
-                        toggle_soft_delete(pageref_label, text_key, True)
-                        st.warning(f"Soft Deleted {text_key}!")
-                        st.rerun()
-
-                with col3:
-                    if is_deleted and st.button(
-                        f"Restore {text_key}", key=f"restore_{text_key}"
-                    ):
-                        toggle_soft_delete(pageref_label, text_key, False)
-                        st.success(f"Restored {text_key}!")
-                        st.rerun()
-
-                with col4:
-                    if st.button(f"🗑️ Delete {text_key}",
-                                 key=f"perm_delete_{text_key}"):
-                        permanent_delete(pageref_label, text_key)
-                        st.error(f"Permanently Deleted {text_key}!")
-                        st.rerun()
-
-        # Add new text element
-        st.subheader("Add a New Text Element")
-        new_key = st.text_input("New Text Element Name:")
-        new_value = st.text_area("Text Content:")
-
-        if st.button("Add Text Element"):
-            if new_key.strip() == "":
-                st.error("Text Element Name cannot be empty.")
-            elif new_key in page_texts:
-                st.error("A text element with this name already exists.")
-            else:
-                save_text(pageref_label_ti, new_key, new_value)
-                st.success(f"Added {new_key}!")
-                st.experimental_rerun()
-
-    # Display all visible (not deleted) text elements for the page
-    st.subheader(f"Explanations for {target_label}")
-    for text_key, text_data in page_texts.items():
-        if not text_data["is_deleted"]:
-            st.write(f"**{text_key}:** {text_data['text']}")
-
-    # Logout button
-    if st.session_state.security["is_admin"]:
-        if st.button("Logout"):
-            st.session_state.security["is_admin"] = False
-            st.experimental_rerun()
-
+def display_textual_insights(pageref_label, target_label, min_date,
+                             max_date, tstats, ostats, perc_target):
+    """Displays insights and explanations."""   
     st.write("---")
     left, right = st.columns(2)
 
     with left:
         st.write("## Explanation")
-        st.write(
-            f"* {target_label}s are recorded forms of"
-            " support for political entities."
-        )
-        st.write(
-            f"* Between {min_date} and {max_date},"
-            f" {format_number(tstats['unique_donations'])} {target_label}s "
-            f"were made to {format_number(tstats['unique_reg_entities'])}"
-            " regulated entities."
-        )
-        st.write(
-            "* These had a mean value of "
-            f"£{format_number(tstats['mean_value'])} "
-            f"and were made by {format_number(tstats['unique_donors'])}"
-            " unique donors."
-        )
-        st.write(
-            f"* {target_label}s accounted for {perc_target:.0f}% of"
-            " all political donations."
-        )
+        st.write(f"* {target_label}s are recorded forms of support for political entities.")
+        st.write(f"* Between {min_date} and {max_date}, {format_number(tstats['unique_donations'])} {target_label}s "
+                 f"were made to {format_number(tstats['unique_reg_entities'])} regulated entities.")
+        st.write(f"* These had a mean value of £{format_number(tstats['mean_value'])} "
+                 f"and were made by {format_number(tstats['unique_donors'])} unique donors.")
+        st.write(f"* {target_label}s accounted for {perc_target:.0f}% of all political donations.")
 
     with right:
-        st.write("### Key Observations")
-        st.write(
-            "* Political donations fluctuate significantly over time,"
-            " especially during elections."
-        )
-        st.write("* Funding sources and types of"
-                 " donors impact donation trends.")
+        manage_text_elements(pageref_label)
+        display_text_elements(pageref_label, target_label)
+
+        if st.session_state.security["is_admin"]:
+            if st.button("Logout"):
+                st.session_state.security["is_admin"] = False
+                st.rerun()
 
 
 def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
