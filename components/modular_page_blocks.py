@@ -17,12 +17,6 @@ from Visualisations import (
 from components.text_management import (
     load_page_text,
     save_text,
-    toggle_soft_delete,
-    permanent_delete,
-    display_text_elements,
-    manage_text_elements,
-    Refresh_Text_Session_State,
-    load_all_text,
     )
 from utils.logger import log_function_call, logger
 
@@ -64,7 +58,6 @@ def load_and_filter_data(filter_key, pagereflabel):
 def display_summary_statistics(filtered_df, overall_df, target_label,
                                pageref_label):
     """Displays summary statistics for the given dataset."""
-    pageref_label_dss = pageref_label + "_dss"
     if filtered_df is None or filtered_df.empty:
         if logger.level <= 20:
             st.warning(f"No {target_label}s found for the selected filters.")
@@ -133,9 +126,6 @@ def display_visualizations(graph_df, target_label, pageref_label):
             percentbars=True,
             y_scale="linear",
         )
-        manage_text_elements(pageref_label)
-        display_text_elements(pageref_label, target_label)
-
     with right_column:
         right_widget_graph_key = "right" + pageref_label_vis
         plot_bar_line.plot_bar_line_by_year(
@@ -154,33 +144,59 @@ def display_visualizations(graph_df, target_label, pageref_label):
             y_scale="linear",
             widget_key=right_widget_graph_key,
         )
-        manage_text_elements(pageref_label)
-        display_text_elements(pageref_label, target_label)
 
 
 @log_function_call
-def display_textual_insights(pageref_label, target_label, min_date,
+def display_textual_insights_predefined(pageref_label, target_label, min_date,
                              max_date, tstats, ostats, perc_target):
-    """Displays insights and explanations."""   
-    st.write("---")
-    left, right = st.columns(2)
+    """Displays predefined text elements for a given page."""
+    st.write("## Observations")
+    st.write(f"* {target_label}s are recorded forms of support for political entities.")
+    st.write(f"* Between {min_date} and {max_date}, {format_number(tstats['unique_donations'])} {target_label}s "
+             f"were made to {format_number(tstats['unique_reg_entities'])} regulated entities."
+             f" These had a mean value of £{format_number(tstats['mean_value'])} "
+             f"and were made by {format_number(tstats['unique_donors'])} unique donors.")
+    st.write(f"* The most active donor of {target_label} was {tstats['most_common_donor'][0]}. "
+             f"They made {format_number(tstats['most_common_donor'][1])} donations.")
+    st.write(f"* The most generous donor of {target_label} was {tstats['most_valuable_donor'][0]}, "
+             f"who donated £{format_number(tstats['most_valuable_donor'][1])}.")
+    st.write(f"* The most common recipient of {target_label}s was {tstats['most_common_entity'][0]}, "
+             f"they received {format_number(tstats['most_common_entity'][1])} donations.")
+    st.write(f"* {tstats['most_valuable_entity'][0]} received £{format_number(tstats['most_valuable_entity'][1])} "
+             f" of {target_label}s.")
 
-    with left:
-        st.write("## Explanation")
-        st.write(f"* {target_label}s are recorded forms of support for political entities.")
-        st.write(f"* Between {min_date} and {max_date}, {format_number(tstats['unique_donations'])} {target_label}s "
-                 f"were made to {format_number(tstats['unique_reg_entities'])} regulated entities.")
-        st.write(f"* These had a mean value of £{format_number(tstats['mean_value'])} "
-                 f"and were made by {format_number(tstats['unique_donors'])} unique donors.")
-        st.write(f"* {target_label}s accounted for {perc_target:.0f}% of all political donations.")
 
-    with right:
-        manage_text_elements(pageref_label)
-        display_text_elements(pageref_label, target_label)
+def display_textual_insights_custom(pageref_label, target_label):
+    """Displays stored text elements for a given page. Allows edits only if admin is logged in."""
+    page_texts = load_page_text(pageref_label)
 
-        if st.session_state.security["is_admin"]:
-            if st.button("Logout"):
-                st.session_state.security["is_admin"] = False
+    st.subheader(f"Explanations for {target_label}")
+
+    if not page_texts:
+        st.info("No text available for this section.")
+        return  # ✅ Stop execution if no text exists
+
+    for text_key, text_data in page_texts.items():
+        is_deleted = text_data.get("is_deleted", False)
+        text_value = text_data.get("text", "")
+
+        if is_deleted:
+            continue  # ✅ Skip deleted texts
+
+        # Display text for all users
+        st.write(f"**{text_key}:** {text_value}")
+
+        # ✅ Check admin status safely
+        is_admin = st.session_state.get("security", {}).get("is_admin", False)
+
+        if is_admin:
+            new_value = st.text_area(
+                f"Edit {text_key}:", value=text_value, key=f"edit_{pageref_label}_{text_key}"
+            )
+
+            if st.button(f"Save {text_key}", key=f"save_{pageref_label}_{text_key}"):
+                save_text(pageref_label, text_key, new_value)
+                st.success(f"Updated {text_key}!")
                 st.rerun()
 
 
@@ -224,7 +240,7 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
     }
 
     prev_selected_group = st.session_state.get("selected_group_entity", None)
-    
+
     selected_group_entity = st.selectbox(
         "Select Group Entity",
         options=list(group_entity_options.keys()),
@@ -235,27 +251,27 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
     # Reset section dropdown when group entity changes
     if prev_selected_group is not None and prev_selected_group != selected_group_entity:
         st.session_state["selected_entity_name"] = "All"
-    
+
     # Get corresponding column names
     group_entity_col, group_entity_id_col = group_entity_options[selected_group_entity]
-    
+
     # Apply initial filtering
     date_filter = (cleaned_df["ReceivedDate"] >= start_date) & (cleaned_df["ReceivedDate"] <= end_date)
     filtered_df = cleaned_df[date_filter]
-    
+
     # Create mapping for dropdown based on filtered data
     entity_mapping = dict(zip(filtered_df[group_entity_col],
                               filtered_df[group_entity_id_col])
                           ) if group_entity_id_col else None
-    
+
     available_entities = sorted(filtered_df[group_entity_col].unique().tolist())
-    
+
     selected_entity_name = st.selectbox(
         f"Filter by {group_entity_col}",
         ["All"] + available_entities,
         key="selected_entity_name"
     )
-    
+
     selected_entity_id = entity_mapping.get(selected_entity_name, None) if entity_mapping else None
 
     # Apply filters
@@ -266,7 +282,7 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
         else {group_entity_col: selected_entity_name} if selected_entity_name != "All"
         else {}
     )
-    
+
     cleaned_d_df = filtered_df
     cleaned_c_df = apply_filters(cleaned_df, current_target) if current_target else cleaned_df
     cleaned_r_df = apply_filters(cleaned_df, entity_filter) if entity_filter else cleaned_df
@@ -285,7 +301,6 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
         cleaned_c_r_df,
         cleaned_c_r_d_df,
     )
-
 
 
 @log_function_call

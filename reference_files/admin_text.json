@@ -18,5 +18,11 @@
             "text": "The number of cash donations made to the Labour Party has been in decline over the period.  Due to this decline in the last 2 years of the period, the Labour Party and Liberal Democrats received similar volumes of donations.",
             "is_deleted": false
         }
+    },
+    "CashDonations_ftrCash Donation_ti": {
+        "Para1": {
+            "text": "Except for in 2016",
+            "is_deleted": false
+        }
     }
 }

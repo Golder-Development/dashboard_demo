@@ -3,14 +3,15 @@ import json
 import os
 import bcrypt
 from utils.global_variables import initialize_session_state
-from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
 
 
 # File paths
 def Refresh_Text_Session_State():
-    if "FILENAMES" or "DIRECTORIES" not in st.session_state:
+    if "FILENAMES" not in st.session_state or "DIRECTORIES" not in st.session_state:
         initialize_session_state()
+    if "TEXT_FILE" not in st.session_state:
+        st.session_state["TEXT_FILE"] = "reference_files\admin_text.json"  # Ensure this is correct
 
 
 def load_credentials():
@@ -38,8 +39,16 @@ def check_password(username, password):
 
 # Function to load text for a specific page
 def load_page_text(pageref_label):
-    all_texts = safe_load_json(load_all_text())
-    return all_texts.get(pageref_label, {})  # Return dictionary of text elements
+    """Loads text elements for a specific page and ensures correct structure."""
+    all_texts = load_all_text()
+    page_texts = all_texts.get(pageref_label, {})
+
+    # Ensure all entries have a dictionary structure
+    for key, value in page_texts.items():
+        if not isinstance(value, dict):
+            page_texts[key] = {"text": value, "is_deleted": False}
+
+    return page_texts
 
 
 # Function to toggle soft delete
@@ -77,7 +86,7 @@ def load_all_text():
         Refresh_Text_Session_State()
 
     TEXT_FILE = st.session_state.get("TEXT_FILE", None)
-    
+
     if not TEXT_FILE or not os.path.exists(TEXT_FILE):
         return {}  # ✅ Return empty dictionary if file does not exist
 
@@ -92,30 +101,24 @@ def load_all_text():
             return {}  # ✅ Return empty dictionary on JSON error
 
 
-
-
 def save_text(pageref_label, text_key, new_text):
-    """Saves text data to the JSON file."""
+    """Saves text for a specific page and element, ensuring correct format."""
     if "TEXT_FILE" not in st.session_state:
         Refresh_Text_Session_State()
-
-    TEXT_FILE = st.session_state.get("TEXT_FILE", None)
-
-    if not TEXT_FILE:
-        st.error("TEXT_FILE is not set in session state.")
-        return
-
-    # Ensure a valid JSON structure exists before writing
-    if not os.path.exists(TEXT_FILE) or os.stat(TEXT_FILE).st_size == 0:
-        with open(TEXT_FILE, "w", encoding="utf-8") as f:
-            json.dump({}, f)  # ✅ Initialize file with an empty dictionary
+    TEXT_FILE = st.session_state.get("TEXT_FILE")
 
     all_texts = load_all_text()
 
+    # Ensure the page reference exists
     if pageref_label not in all_texts:
         all_texts[pageref_label] = {}
 
-    all_texts[pageref_label][text_key] = {"text": new_text, "is_deleted": False}
+    # Ensure the text entry has the correct structure
+    if text_key not in all_texts[pageref_label]:
+        all_texts[pageref_label][text_key] = {"text": "", "is_deleted": False}
+
+    # Update the text
+    all_texts[pageref_label][text_key]["text"] = new_text
 
     with open(TEXT_FILE, "w", encoding="utf-8") as f:
         json.dump(all_texts, f, indent=4)
@@ -124,7 +127,7 @@ def save_text(pageref_label, text_key, new_text):
 def load_and_prepare_texts(pageref_label):
     """Loads text elements, converting numbers where needed."""
     page_texts = load_page_text(pageref_label)
-    
+
     for text_key, text_data in page_texts.items():
         text_value = text_data['text']
 
@@ -146,26 +149,28 @@ def manage_text_elements(pageref_label):
     page_texts = load_and_prepare_texts(pageref_label_ti)
 
     # st.subheader(f"Explanations for {pageref_label_ti}")
+    if "security" not in st.session_state:
+        st.session_state.security = {"is_admin": False}  # Default to False if missing  
 
-    if not page_texts:
-        st.info("No text elements available.")
-        return  # ✅ Skip the rest of the function
-
-    # # ✅ Show all stored text, regardless of login status
-    # for text_key, text_data in page_texts.items():
-    #     if not text_data["is_deleted"]:
-    #         st.write(f"**{text_key}:** {text_data['text']}")
+    # ✅ Show all stored text, regardless of login status
+    for text_key, text_data in page_texts.items():
+        if not text_data["is_deleted"]:
+            st.write(f"**{text_key}:** {text_data['text']}")
 
     # ✅ If user is NOT admin, stop here (No edit controls)
     if not st.session_state.security.get("is_admin", False):
-        return  # ✅ Skip the rest of the function
+        if not page_texts:
+            st.info("No text elements available.")
+            return  # ✅ Skip the rest of the function
+        else:
+            return
 
     # ✅ Admin Controls (Editing & Deletion)
     st.subheader(f"Manage Text for {pageref_label_ti}")
 
     for text_key, text_data in page_texts.items():
-        is_deleted = text_data["is_deleted"]
-        text_value = text_data["text"]
+        text_value = text_data.get("text", "No text available")
+        is_deleted = text_data.get("is_deleted", False)
 
         if is_deleted:
             st.markdown(f"⚠️ **(Deleted)** {text_key}:")
@@ -212,6 +217,7 @@ def manage_text_elements(pageref_label):
             save_text(pageref_label_ti, new_key, new_value)
             st.success(f"Added {new_key}!")
             st.rerun()
+
 
 def display_text_elements(pageref_label, target_label):
     """Displays stored text elements for a given page."""

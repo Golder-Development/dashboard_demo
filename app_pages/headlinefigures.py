@@ -7,9 +7,7 @@ from utils.logger import log_function_call, logger
 from components.calculations import (
     format_number,
     calculate_percentage,
-    get_top_entity_by_value,
-    get_top_entity_by_donations,
-    get_top_donType_by_don,
+    get_top_or_bottom_entity_by_column,
     get_value_total,
     compute_summary_statistics
     )
@@ -45,17 +43,22 @@ def hlf_body():
     )
 
     # # Get the regulated entity with the greatest value of donations
-    top_entity, top_value = get_top_entity_by_value(filtered_df)
+    top_entity, top_value = get_top_or_bottom_entity_by_column(
+        df=filtered_df, column="PartyName", value_column="Value", top=True)
     # Get the regulated entity with the greatest number of donations
-    top_entity_ct, top_donations = get_top_entity_by_donations(filtered_df)
+    top_entity_ct, top_donations = get_top_or_bottom_entity_by_column(
+        df=filtered_df, column="PartyName", value_column="EventCount", top=True)
     # Get the donation type with the greatest number of donations
-    top_dontype_ct, top_dontype_dons = get_top_donType_by_don(filtered_df)
+    top_dontype_ct, top_dontype_dons = get_top_or_bottom_entity_by_column(
+        df=filtered_df, column="DonationType", value_column="EventCount", top=True)
     # Get the donation type with the greatest value of donations
-    top_dontype_value = get_value_total(filtered_df,
-                                        {'DonationType': top_dontype_ct})
+    top_dontype, top_dontype_value = get_top_or_bottom_entity_by_column(
+        df=filtered_df, column="DonationType", value_column="Value", top=True)
     # calculate the percentage of donations and value for political parties
     top_entity_value_percent = calculate_percentage(top_value,
                                                     tstats["total_value"])
+    top_entity_dons_percent = calculate_percentage(top_donations,
+                                                  tstats["unique_donations"])
     top_dontype_value_percent = calculate_percentage(top_dontype_value,
                                                      tstats["total_value"])
     top_dontype_dons_percent = calculate_percentage(top_dontype_dons,

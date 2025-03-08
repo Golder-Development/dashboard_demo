@@ -241,29 +241,29 @@ def mod_non_cash_donations_per_entity():
         group_entity="Party")
 
 
-# Non Cash Donations
+# Public Fund Donation
 def mod_publicfund_donations():
     display_data_page(
         functionname="mod_publicfund_donations",
         filter_key="PublicFundsDonations_ftr",
-        target_label="Non Cash Donation")
+        target_label="Public Fund Donation")
 
 
-# Non Cash Donations per donor
+# Public Fund Donation per donor
 def mod_publicfund_donations_per_donor():
     display_per_group_data_page(
         functionname="mod_publicfund_donations_per_donor",
         filter_key="PublicFundsDonations_ftr",
-        target_label="Non Cash Donations per Donor",
+        target_label="Public Fund Donation per Donor",
         group_entity="Donor")
 
 
-# Non Cash Donations per entity
+# Public Fund Donation per entity
 def mod_publicfund_donations_per_entity():
     display_per_group_data_page(
         functionname="mod_publicfund_donations_per_entity",
         filter_key="PublicFundsDonations_ftr",
-        target_label="Non Cash Donations per Entity",
+        target_label="Public Fund Donation per Entity",
         group_entity="Party")
 
 

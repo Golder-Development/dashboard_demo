@@ -198,62 +198,34 @@ def get_donation_isanaggregate_value(df, filters=None):
     return df.groupby("IsAnAggregate")["Value"].sum()
 
 
-def get_top_entity_by_value(df, filters=None):
+def get_top_or_bottom_entity_by_column(df,
+                                       column,
+                                       value_column,
+                                       top=True,
+                                       filters=None):
     """
-    Returns the name and value of the regulated entity with the
-    greatest value of donations.
+    Returns the name and value of the entity with the greatest or smallest value
+    in the specified column.
 
     Parameters:
         df (pd.DataFrame): The dataset.
-        filters (dict, optional): Dictionary where keys are column names
-        and values are filter conditions.
+        column (str): The column to group by.
+        value_column (str): The column to sum for the value.
+        top (bool, optional): If True, returns the top entity. If False, returns the bottom entity.
+        filters (dict, optional): Dictionary where keys are column names and values are filter conditions.
 
     Returns:
-        tuple: (RegulatedEntityName, Value)
+        tuple: (EntityName, Value)
     """
     df = apply_filters(df, filters)
-    top_entity = df.groupby("PartyName")["Value"].sum().idxmax()
-    top_value = df.groupby("PartyName")["Value"].sum().max()
-    return top_entity, top_value
-
-
-def get_top_entity_by_donations(df, filters=None):
-    """
-    Returns the name and value of the regulated entity with the
-    greatest number of donations.
-
-    Parameters:
-        df (pd.DataFrame): The dataset.
-        filters (dict, optional): Dictionary where keys are column names
-        and values are filter conditions.
-
-    Returns:
-        tuple: (RegulatedEntityName, Value)
-    """
-    df = apply_filters(df, filters)
-    top_entity = df.groupby("PartyName")["EventCount"].sum().idxmax()
-    top_value = df.groupby("PartyName")["EventCount"].sum().max()
-    return top_entity, top_value
-
-
-def get_top_donType_by_don(df, filters=None):
-    """
-    Returns the name and value of the regulated entity with the greatest
-    number of donations.
-
-    Parameters:
-        df (pd.DataFrame): The dataset.
-        filters (dict, optional): Dictionary where keys are column names and
-        values are filter conditions.
-
-    Returns:
-        tuple: (RegulatedEntityName, Value)
-    """
-    df = apply_filters(df, filters)
-    top_entity = df.groupby("DonationType")["EventCount"].sum().idxmax()
-    top_value = df.groupby("DonationType")["EventCount"].sum().max()
-    return top_entity, top_value
-
+    grouped = df.groupby(column)[value_column].sum()
+    if top:
+        entity = grouped.idxmax()
+        value = grouped.max()
+    else:
+        entity = grouped.idxmin()
+        value = grouped.min()
+    return entity, value
 
 def format_number(value):
     if value >= 1_000_000:
@@ -268,24 +240,6 @@ def get_median_donation(df, filters=None):
     """Calculates the median donation value."""
     df = apply_filters(df, filters)
     return df["Value"].median()
-
-
-def get_top_donors(df, sort_col, exclude_single_donation=False):
-    """Returns top 5 donors sorted by a specific column."""
-    if exclude_single_donation:
-        df = df[df["No of Donations"] > 1]
-    return df.sort_values(sort_col, ascending=False)[
-        [
-            "Donor Name",
-            "Regulated Entities",
-            "Avg No. Donations Per Entity",
-            "No of Donations",
-            "Total Donations £",
-            "Avg Donations",
-            "Median Donations",
-            "Avg Value Per Entity",
-        ]
-    ].head(5)
 
 
 def calculate_percentage(numerator=0, denominator=0):
@@ -353,7 +307,12 @@ def compute_summary_statistics(df, filters):
             "donors_stdev": 0.0,
             "value_stdev": 0.0,
             "noofdonors_per_ent_stdev": 0.0,
-        }
+            "most_common_entity": ("", 0.0),
+            "most_valuable_entity": ("", 0.0),
+            "least_common_entity": ("", 0.0),
+            "least_valuable_entity": ("", 0.0),
+            "most_common_donor": ("", 0.0),
+            "most_valuable_donor": ("",0.0)       }
 
     if not isinstance(df, pd.DataFrame):
         raise ValueError("Filtered result is not a DataFrame")
@@ -371,6 +330,12 @@ def compute_summary_statistics(df, filters):
             "donors_stdev": 0.0,
             "value_stdev": 0.0,
             "noofdonors_per_ent_stdev": 0.0,
+            "most_common_entity": ("", 0.0),
+            "most_valuable_entity": ("", 0.0),
+            "least_common_entity": ("", 0.0),
+            "least_valuable_entity": ("", 0.0),
+            "most_common_donor": ("", 0.0),
+            "most_valuable_donor": ("", 0.0),
         }
 
     regentity_ct = get_regentity_ct(df, filters)
@@ -384,7 +349,36 @@ def compute_summary_statistics(df, filters):
     donors_stdev = get_donors_stdev(df, filters)
     value_stdev = get_value_stdev(df, filters)
     noofdonors_per_ent_stdev = get_noofdonors_per_ent_stdev(df, filters)
-
+    most_common_entity = get_top_or_bottom_entity_by_column(df=df,
+                                                            column="PartyName",
+                                                            value_column="EventCount",
+                                                            top=True,
+                                                            filters=filters)
+    most_valuable_entity = get_top_or_bottom_entity_by_column(df=df,
+                                                              column="PartyName",
+                                                              value_column="Value",
+                                                              top=True,
+                                                              filters=filters)
+    least_common_entity = get_top_or_bottom_entity_by_column(df=df,
+                                                             column="PartyName",
+                                                             value_column="EventCount",
+                                                             top=False,
+                                                             filters=filters)
+    least_valuable_entity = get_top_or_bottom_entity_by_column(df=df,
+                                                               column="PartyName",
+                                                               value_column="Value",
+                                                               top=False,
+                                                               filters=filters)
+    most_common_donor = get_top_or_bottom_entity_by_column(df=df,
+                                                           column="DonorName",
+                                                           value_column="EventCount",
+                                                           top=True,
+                                                           filters=filters)
+    most_valuable_donor = get_top_or_bottom_entity_by_column(df=df,
+                                                             column="DonorName",
+                                                             value_column="Value",
+                                                             top=True,
+                                                             filters=filters)
     return {
         "unique_reg_entities": regentity_ct,
         "unique_donors": donors_ct,
@@ -397,6 +391,12 @@ def compute_summary_statistics(df, filters):
         "donors_stdev": donors_stdev,
         "value_stdev": value_stdev,
         "noofdonors_per_ent_stdev": noofdonors_per_ent_stdev,
+        "most_common_entity": most_common_entity,
+        "most_valuable_entity": most_valuable_entity,
+        "least_common_entity": least_common_entity,
+        "least_valuable_entity": least_valuable_entity,
+        "most_common_donor": most_common_donor,
+        "most_valuable_donor": most_valuable_donor,
     }
 
 
