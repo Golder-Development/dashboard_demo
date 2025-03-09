@@ -69,8 +69,6 @@ except Exception as e:
     st.error(f"Data loading failed. Please check logs. {e}")
     raise SystemExit("Data loading failed. Exiting.")
 
-
-
 logger.info("App is fully loaded and ready!")
 # The app is now ready to be run.
 # To run the app, open a terminal and run:

@@ -185,8 +185,6 @@ def load_entity_summary_data(
             logger.error("No datafile passed for entity summary creation!")
         else:
             entitysummary_df = datafile
-            if logger.level <= 20:
-                st.info("Data loaded from datafile passed to function")
             logger.error("Data loaded from datafile passed to function")
 
     # Create a DataFrame with the sum, count and mean of the donations

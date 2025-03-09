@@ -2,7 +2,8 @@ import streamlit as st
 from components.modular_page_blocks import (
     load_and_filter_pergroup,
     display_summary_statistics,
-    display_textual_insights,
+    display_textual_insights_predefined,
+    display_textual_insights_custom,
     display_visualizations,
 )
 # from utils.logger import logger
@@ -20,7 +21,7 @@ def display_per_group_data_page(
     Streamlit page for a specific data slice.
     """
     perc_target = st.session_state.get("perc_target", 0.5)
-    pageref_label = "filter_key" + "target_label"
+    pageref_label = filter_key + target_label
     (
         cleaned_df,
         cleaned_d_df,
@@ -48,15 +49,22 @@ def display_per_group_data_page(
         pageref_label=pageref_label,
     )
 
-    display_textual_insights(
-        pageref_label=pageref_label,
-        target_label=target_label,
-        min_date=min_date,
-        max_date=max_date,
-        tstats=tstats,
-        ostats=ostats,
-        perc_target=perc_target,
-    )
+    st.write("---")
+    left, right = st.columns(2)
+    with left:
+        display_textual_insights_predefined(
+            pageref_label,
+            target_label,
+            min_date,
+            max_date,
+            tstats,
+            ostats,
+            perc_target
+        )
+    with right:
+        display_textual_insights_custom(
+            target_label=target_label,
+            pageref_label=pageref_label)
 
     st.write("---")
     display_visualizations(

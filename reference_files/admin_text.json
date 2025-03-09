@@ -1,12 +1,32 @@
 {
-    "Page1": {
-        "graph_explanation": {
-            "text": "This is the explanation for the graph.",
+    "filtered_keytarget_label_ti": {
+        "abcd": {
+            "text": "ancd",
             "is_deleted": false
         },
-        "key_insight": {
-            "text": "Key insight for Page 1.",
-            "is_deleted": true
+        "## Observations": {
+            "text": "onaverage  stugg daksanvcoqwm",
+            "is_deleted": false
+        }
+    },
+    "filtered_keytarget_label": {
+        "abcd": {
+            "text": "Most Political Donations are defined as Cash Donations, these include donations from an identifiable individual and aggregated donations from multiple individuals.  There is no limit on the size of donations an individual can currently make to a political party, however non UK citizens are not allowed to donate.  ",
+            "is_deleted": false
+        },
+        "## Observations": {
+            "text": "The number of cash donations made to the Labour Party has been in decline over the period.  Due to this decline in the last 2 years of the period, the Labour Party and Liberal Democrats received similar volumes of donations.",
+            "is_deleted": false
+        }
+    },
+    "CashDonations_ftrCash Donation_ti": {
+        "Para1": {
+            "text": "Except for in 2016",
+            "is_deleted": false
+        },
+        "Para 2": {
+            "text": "More useful information",
+            "is_deleted": false
         }
     }
 }

@@ -400,26 +400,35 @@ def load_cleaned_data(
         # Calculate days till the next election and since the last election
         def get_days_till_next_election(date_series):
             date_series = pd.to_datetime(date_series)
-            idx = np.searchsorted(election_dates_asc,
-                                  date_series,
-                                  side="left")
-            valid_idx = idx < len(election_dates_asc)
-            next_election_dates = np.where(valid_idx,
-                                           election_dates_asc.iloc[idx],
-                                           pd.NaT)
-            return (pd.to_datetime(next_election_dates) - date_series).dt.days
+            idx = np.searchsorted(election_dates_asc, date_series, side="left")
+            
+            # Ensure idx is within valid bounds
+            idx = np.clip(idx, 0, len(election_dates_asc) - 1)
+            
+            # Assign next election date only if idx is valid
+            next_election_dates = np.where(idx < len(election_dates_asc),
+                                        election_dates_asc.iloc[idx],
+                                        pd.NaT)
 
-        # Vectorized function for days since the last election
+            # Compute days difference and handle NaT cases
+            days_diff = (pd.to_datetime(next_election_dates) - date_series).dt.days
+            return days_diff.fillna(0).astype(int)  # Default to 0
+
         def get_days_since_last_election(date_series):
             date_series = pd.to_datetime(date_series)
-            idx = np.searchsorted(election_dates_desc,
-                                  date_series,
-                                  side="right") - 1
-            valid_idx = idx >= 0
-            last_election_dates = np.where(valid_idx,
-                                           election_dates_desc.iloc[idx],
-                                           pd.NaT)
-            return (date_series - pd.to_datetime(last_election_dates)).dt.days
+            idx = np.searchsorted(election_dates_desc, date_series, side="right") - 1
+            
+            # Ensure idx is within valid bounds
+            idx = np.clip(idx, 0, len(election_dates_desc) - 1)
+            
+            # Assign last election date only if idx is valid
+            last_election_dates = np.where(idx >= 0,
+                                        election_dates_desc.iloc[idx],
+                                        pd.NaT)
+
+            # Compute days difference and handle NaT cases
+            days_diff = (date_series - pd.to_datetime(last_election_dates)).dt.days
+            return days_diff.fillna(0).astype(int)  # Default to 0
         # Apply vectorized calculations
         loadclean_df["DaysTillNextElection"] = (
             get_days_till_next_election(loadclean_df["ReceivedDate"])

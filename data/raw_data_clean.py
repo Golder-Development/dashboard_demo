@@ -58,11 +58,18 @@ def raw_data_cleanup(
     loaddata_df
     logger.info(f"Data loaded, shape: {loaddata_df.shape}")
     # Remove Currency sign of Value and convert to Float
+    # Handle "Value" column correctly
     loaddata_df["Value"] = (
         loaddata_df["Value"]
-        .replace({"£": "", ",": ""}, regex=True)
-        .astype(float)
+        .astype(str)  # Ensure values are strings before replacing
+        .str.replace("£", "", regex=False)  # Remove pound sign
+        .str.replace(",", "", regex=False)  # Remove commas
+        .str.replace(r"\((.*?)\)", r"-\1", regex=True)  # Convert (100) to -100
+        .str.strip()  # Remove leading/trailing spaces
     )
+
+    # Convert to float safely
+    loaddata_df["Value"] = pd.to_numeric(loaddata_df["Value"], errors="coerce")
     # Fill missing text fields with empty strings
     columns_to_fill = [
         "PurposeOfVisit",

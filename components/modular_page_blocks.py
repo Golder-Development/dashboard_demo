@@ -17,9 +17,7 @@ from Visualisations import (
 from components.text_management import (
     load_page_text,
     save_text,
-    toggle_soft_delete,
-    permanent_delete,
-)
+    )
 from utils.logger import log_function_call, logger
 
 
@@ -60,7 +58,6 @@ def load_and_filter_data(filter_key, pagereflabel):
 def display_summary_statistics(filtered_df, overall_df, target_label,
                                pageref_label):
     """Displays summary statistics for the given dataset."""
-    pageref_label_dss = pageref_label + "_dss"
     if filtered_df is None or filtered_df.empty:
         if logger.level <= 20:
             st.warning(f"No {target_label}s found for the selected filters.")
@@ -129,8 +126,8 @@ def display_visualizations(graph_df, target_label, pageref_label):
             percentbars=True,
             y_scale="linear",
         )
-        right_widget_graph_key = "right" + pageref_label_vis
     with right_column:
+        right_widget_graph_key = "right" + pageref_label_vis
         plot_bar_line.plot_bar_line_by_year(
             graph_df,
             XValues="YearReceived",
@@ -150,126 +147,57 @@ def display_visualizations(graph_df, target_label, pageref_label):
 
 
 @log_function_call
-def display_textual_insights(
-    pageref_label, target_label, min_date,
-    max_date, tstats, ostats, perc_target
-):
-    """Displays insights and explanations."""
-    pageref_label_ti = pageref_label + "_ti"
-    page_texts = load_page_text(pageref_label_ti)
+def display_textual_insights_predefined(pageref_label, target_label, min_date,
+                             max_date, tstats, ostats, perc_target):
+    """Displays predefined text elements for a given page."""
+    st.write("## Observations")
+    st.write(f"* {target_label}s are recorded forms of support for political entities.")
+    st.write(f"* Between {min_date} and {max_date}, {format_number(tstats['unique_donations'])} {target_label}s "
+             f"were made to {format_number(tstats['unique_reg_entities'])} regulated entities."
+             f" These had a mean value of £{format_number(tstats['mean_value'])} "
+             f"and were made by {format_number(tstats['unique_donors'])} unique donors.")
+    st.write(f"* The most active donor of {target_label} was {tstats['most_common_donor'][0]}. "
+             f"They made {format_number(tstats['most_common_donor'][1])} donations.")
+    st.write(f"* The most generous donor of {target_label} was {tstats['most_valuable_donor'][0]}, "
+             f"who donated £{format_number(tstats['most_valuable_donor'][1])}.")
+    st.write(f"* The most common recipient of {target_label}s was {tstats['most_common_entity'][0]}, "
+             f"they received {format_number(tstats['most_common_entity'][1])} donations.")
+    st.write(f"* {tstats['most_valuable_entity'][0]} received £{format_number(tstats['most_valuable_entity'][1])} "
+             f" of {target_label}s.")
 
-    # Admin Section - Manage multiple text elements
-    if st.session_state.security["is_admin"]:
-        st.subheader(f"Manage Text for {pageref_label_ti}")
 
-        # Existing text elements
-        if page_texts:
-            for text_key, text_data in page_texts.items():
-                is_deleted = text_data["is_deleted"]
-                text_value = text_data["text"]
+def display_textual_insights_custom(pageref_label, target_label):
+    """Displays stored text elements for a given page. Allows edits only if admin is logged in."""
+    page_texts = load_page_text(pageref_label)
 
-                if is_deleted:
-                    st.markdown(f"⚠️ **(Deleted)** {text_key}:")
-                else:
-                    st.text_area(
-                        f"Edit {text_key}:", value=text_value,
-                        key=f"edit_{text_key}"
-                    )
-
-                col1, col2, col3, col4 = st.columns([3, 1, 1, 1])
-
-                with col1:
-                    if not is_deleted and st.button(
-                        f"Save {text_key}", key=f"save_{text_key}"
-                    ):
-                        new_value = st.session_state[f"edit_{text_key}"]
-                        save_text(pageref_label, text_key, new_value)
-                        st.success(f"Updated {text_key}!")
-
-                with col2:
-                    if not is_deleted and st.button(
-                        f"Soft Delete {text_key}", key=f"delete_{text_key}"
-                    ):
-                        toggle_soft_delete(pageref_label, text_key, True)
-                        st.warning(f"Soft Deleted {text_key}!")
-                        st.rerun()
-
-                with col3:
-                    if is_deleted and st.button(
-                        f"Restore {text_key}", key=f"restore_{text_key}"
-                    ):
-                        toggle_soft_delete(pageref_label, text_key, False)
-                        st.success(f"Restored {text_key}!")
-                        st.rerun()
-
-                with col4:
-                    if st.button(f"🗑️ Delete {text_key}",
-                                 key=f"perm_delete_{text_key}"):
-                        permanent_delete(pageref_label, text_key)
-                        st.error(f"Permanently Deleted {text_key}!")
-                        st.rerun()
-
-        # Add new text element
-        st.subheader("Add a New Text Element")
-        new_key = st.text_input("New Text Element Name:")
-        new_value = st.text_area("Text Content:")
-
-        if st.button("Add Text Element"):
-            if new_key.strip() == "":
-                st.error("Text Element Name cannot be empty.")
-            elif new_key in page_texts:
-                st.error("A text element with this name already exists.")
-            else:
-                save_text(pageref_label_ti, new_key, new_value)
-                st.success(f"Added {new_key}!")
-                st.experimental_rerun()
-
-    # Display all visible (not deleted) text elements for the page
     st.subheader(f"Explanations for {target_label}")
+
+    if not page_texts:
+        st.info("No text available for this section.")
+        return  # ✅ Stop execution if no text exists
+
     for text_key, text_data in page_texts.items():
-        if not text_data["is_deleted"]:
-            st.write(f"**{text_key}:** {text_data['text']}")
+        is_deleted = text_data.get("is_deleted", False)
+        text_value = text_data.get("text", "")
 
-    # Logout button
-    if st.session_state.security["is_admin"]:
-        if st.button("Logout"):
-            st.session_state.security["is_admin"] = False
-            st.experimental_rerun()
+        if is_deleted:
+            continue  # ✅ Skip deleted texts
 
-    st.write("---")
-    left, right = st.columns(2)
+        # Display text for all users
+        st.write(f"**{text_key}:** {text_value}")
 
-    with left:
-        st.write("## Explanation")
-        st.write(
-            f"* {target_label}s are recorded forms of"
-            " support for political entities."
-        )
-        st.write(
-            f"* Between {min_date} and {max_date},"
-            f" {format_number(tstats['unique_donations'])} {target_label}s "
-            f"were made to {format_number(tstats['unique_reg_entities'])}"
-            " regulated entities."
-        )
-        st.write(
-            "* These had a mean value of "
-            f"£{format_number(tstats['mean_value'])} "
-            f"and were made by {format_number(tstats['unique_donors'])}"
-            " unique donors."
-        )
-        st.write(
-            f"* {target_label}s accounted for {perc_target:.0f}% of"
-            " all political donations."
-        )
+        # ✅ Check admin status safely
+        is_admin = st.session_state.get("security", {}).get("is_admin", False)
 
-    with right:
-        st.write("### Key Observations")
-        st.write(
-            "* Political donations fluctuate significantly over time,"
-            " especially during elections."
-        )
-        st.write("* Funding sources and types of"
-                 " donors impact donation trends.")
+        if is_admin:
+            new_value = st.text_area(
+                f"Edit {text_key}:", value=text_value, key=f"edit_{pageref_label}_{text_key}"
+            )
+
+            if st.button(f"Save {text_key}", key=f"save_{pageref_label}_{text_key}"):
+                save_text(pageref_label, text_key, new_value)
+                st.success(f"Updated {text_key}!")
+                st.rerun()
 
 
 def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
@@ -312,7 +240,7 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
     }
 
     prev_selected_group = st.session_state.get("selected_group_entity", None)
-    
+
     selected_group_entity = st.selectbox(
         "Select Group Entity",
         options=list(group_entity_options.keys()),
@@ -323,27 +251,27 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
     # Reset section dropdown when group entity changes
     if prev_selected_group is not None and prev_selected_group != selected_group_entity:
         st.session_state["selected_entity_name"] = "All"
-    
+
     # Get corresponding column names
     group_entity_col, group_entity_id_col = group_entity_options[selected_group_entity]
-    
+
     # Apply initial filtering
     date_filter = (cleaned_df["ReceivedDate"] >= start_date) & (cleaned_df["ReceivedDate"] <= end_date)
     filtered_df = cleaned_df[date_filter]
-    
+
     # Create mapping for dropdown based on filtered data
     entity_mapping = dict(zip(filtered_df[group_entity_col],
                               filtered_df[group_entity_id_col])
                           ) if group_entity_id_col else None
-    
+
     available_entities = sorted(filtered_df[group_entity_col].unique().tolist())
-    
+
     selected_entity_name = st.selectbox(
         f"Filter by {group_entity_col}",
         ["All"] + available_entities,
         key="selected_entity_name"
     )
-    
+
     selected_entity_id = entity_mapping.get(selected_entity_name, None) if entity_mapping else None
 
     # Apply filters
@@ -354,7 +282,7 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
         else {group_entity_col: selected_entity_name} if selected_entity_name != "All"
         else {}
     )
-    
+
     cleaned_d_df = filtered_df
     cleaned_c_df = apply_filters(cleaned_df, current_target) if current_target else cleaned_df
     cleaned_r_df = apply_filters(cleaned_df, entity_filter) if entity_filter else cleaned_df
@@ -373,7 +301,6 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
         cleaned_c_r_df,
         cleaned_c_r_d_df,
     )
-
 
 
 @log_function_call

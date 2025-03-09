@@ -6,7 +6,7 @@ from utils.logger import log_function_call  # Import decorator
 
 
 def plot_bar_line_by_year(
-    graph_df,
+    graph_df = st.session_state.get("data_clean"),
     XValues="YearReceived",
     YValues="Value",
     GroupData="RegEntity_Group",

@@ -52,11 +52,9 @@ def plot_custom_bar_chart(
     Returns:
     None (Displays the chart in Streamlit)
     """
-
-
-
     if graph_df is None or XValues not in graph_df or YValues not in graph_df:
         st.error("Data is missing or incorrect column names provided.")
+        logger.error("Data is missing or incorrect column names provided.")
         return
 
     # Aggregate Data
@@ -91,6 +89,8 @@ def plot_custom_bar_chart(
             .reset_index()
         )
 
+    logger.debug(f"Aggregated DataFrame: {df_agg}")
+
     color_mapping = political_colors
     # Determine color mapping
     if use_custom_colors and group_column:
@@ -116,16 +116,26 @@ def plot_custom_bar_chart(
         orientation=orientation,
     )
 
-    # Update layout with axis scale options
+    logger.debug(f"Generated Figure: {fig}")
+
+    # Update layout with axis scale optionslegend_title if legend_title 
+    # else group_column if group_column else "legend"),
     fig.update_layout(
         xaxis={"type": x_scale},
         yaxis={"type": y_scale},
-        legend=dict(orientation="h", yanchor="top", y=-0.1, xanchor="center", x=0.5),
-        legend_title=(
-            legend_title if legend_title else group_column if group_column else "legend"
-        ),
+        legend=dict(orientation="h", yanchor="top", y=-0.1, xanchor="center", x=0.5),  # Display in Streamlit
+        legend_title=(legend_title if legend_title else group_column if group_column else "legend"),    
         title=dict(xanchor="center", yanchor="top", x=0.5),
+        margin=dict(l=0, r=0, t=50, b=0),
     )
-
+    # Apply formatting to hover text if YValues is Value, then apply format_number and add a £ sign
+    if YValues == "Value":
+        fig.update_traces(
+            hovertemplate="<b>%{x}</b><br><br>"
+            + YValues
+            + ": £%{y:,.0f}<extra></extra>"
+        )
+    
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=use_container_width)
+    logger.info("Bar chart displayed successfully.")
