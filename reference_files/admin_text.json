@@ -23,6 +23,10 @@
         "Para1": {
             "text": "Except for in 2016",
             "is_deleted": false
+        },
+        "Para 2": {
+            "text": "More useful information",
+            "is_deleted": false
         }
     }
 }

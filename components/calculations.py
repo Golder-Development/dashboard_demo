@@ -204,15 +204,18 @@ def get_top_or_bottom_entity_by_column(df,
                                        top=True,
                                        filters=None):
     """
-    Returns the name and value of the entity with the greatest or smallest value
+    Returns the name and value of the entity with the
+    greatest or smallest value
     in the specified column.
 
     Parameters:
         df (pd.DataFrame): The dataset.
         column (str): The column to group by.
         value_column (str): The column to sum for the value.
-        top (bool, optional): If True, returns the top entity. If False, returns the bottom entity.
-        filters (dict, optional): Dictionary where keys are column names and values are filter conditions.
+        top (bool, optional): If True, returns the top entity.
+        If False, returns the bottom entity.
+        filters (dict, optional): Dictionary where keys are column names
+        and values are filter conditions.
 
     Returns:
         tuple: (EntityName, Value)
@@ -226,6 +229,7 @@ def get_top_or_bottom_entity_by_column(df,
         entity = grouped.idxmin()
         value = grouped.min()
     return entity, value
+
 
 def format_number(value):
     if value >= 1_000_000:
@@ -312,7 +316,8 @@ def compute_summary_statistics(df, filters):
             "least_common_entity": ("", 0.0),
             "least_valuable_entity": ("", 0.0),
             "most_common_donor": ("", 0.0),
-            "most_valuable_donor": ("",0.0)       }
+            "most_valuable_donor": ("", 0.0)
+            }
 
     if not isinstance(df, pd.DataFrame):
         raise ValueError("Filtered result is not a DataFrame")
@@ -420,9 +425,9 @@ def determine_groups_optimized(df, entity, measure, thresholds_dict):
 
     # Step 2: Assign groups based on thresholds
     entity_totals["group"] = entity_totals.apply(
-    lambda row: assign_group(row["total_measure"],
-                             thresholds_dict,
-                             row[entity]), axis=1
+                                lambda row: assign_group(row["total_measure"],
+                                                         thresholds_dict,
+                                                         row[entity]), axis=1
         )
 
     # Step 3: Merge back into the original DataFrame
@@ -456,3 +461,49 @@ def assign_group(total, thresholds_dict, entity_value):
         if low <= total <= high:
             return group_name
     return entity_value  # Assign entity name if above max threshold
+
+
+def calculate_agg_by_variable(
+    datafile=st.session_state.get("data_clean"),
+    groupby_variable="PartyName",
+    groupby_name="Party",
+    agg_variable="Value",
+    agg_type="mean",
+    agg_name="AverageDonation"
+        ):
+    """
+    Calculate aggregate measures by group.
+
+    Parameters:
+    datafile (pd.DataFrame): DataFrame containing entity and measure columns.
+    groupby_variable (str): Column name representing the entity.
+    agg_variable (str): Column name representing the numeric measure.
+    agg_type (str): Aggregation function to use (e.g., 'mean', 'sum').
+    agg_name (str): Name for the aggregated measure.
+
+    Returns:
+    pd.DataFrame: DataFrame containing aggregated measures by group.
+    """
+    if datafile is None:
+        return pd.DataFrame()
+
+    # Calculate aggregate measures by allocated entity
+    if agg_type == "mean":
+        agg_df = datafile.groupby(groupby_variable,
+                                  as_index=False)[agg_variable].mean()
+    elif agg_type == "sum":
+        agg_df = datafile.groupby(groupby_variable,
+                                  as_index=False)[agg_variable].sum()
+    elif agg_type == "count":
+        agg_df = datafile.groupby(groupby_variable,
+                                  as_index=False)[agg_variable].count()
+    elif agg_type == "nunique":
+        agg_df = datafile.groupby(groupby_variable,
+                                  as_index=False)[agg_variable].nunique()
+    else:
+        raise ValueError(f"Unsupported aggregation type: {agg_type}")
+
+    agg_df.rename(columns={agg_variable: agg_name,
+                           groupby_variable: groupby_name}, inplace=True)
+
+    return agg_df

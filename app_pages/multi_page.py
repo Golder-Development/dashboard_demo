@@ -21,7 +21,7 @@ class MultiPage:
 
     # Method to run the app
     def run(self):
-        st.title(self.app_name)  # Display the app title
+        # Display the app title
         try:
             version = get_git_version()
             logger.info(f"App Version: {version}")
@@ -37,7 +37,7 @@ class MultiPage:
 
         # Log the selected page
         page = st.sidebar.radio(
-            "Menu",
+            self.app_name,
             self.pages,
             format_func=lambda page: page["title"],
             key="menu_selection",

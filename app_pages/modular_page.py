@@ -34,7 +34,7 @@ def display_data_page(functionname, filter_key, target_label):
         pageref_label
     )
     perc_target = st.session_state.get("perc_target", 0.5)
-    
+
     left, right = st.columns(2)
     with left:
         display_textual_insights_predefined(
@@ -53,7 +53,7 @@ def display_data_page(functionname, filter_key, target_label):
         display_textual_insights_custom(
             target_label=target_label,
             pageref_label=pageref_label)
-        
+
     st.write("---")
     display_visualizations(cleaned_c_d_df,
                            target_label,
