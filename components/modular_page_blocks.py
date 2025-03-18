@@ -18,10 +18,10 @@ from components.text_management import (
     load_page_text,
     save_text,
     )
-from utils.logger import log_function_call, logger
+from utils.logger import streamlit_logger as logger, log_functioncall
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def load_and_filter_data(filter_key, pagereflabel):
     """Loads and filters dataset based on filter_key from session state."""
     cleaned_df = st.session_state.data_clean
@@ -54,7 +54,7 @@ def load_and_filter_data(filter_key, pagereflabel):
     return cleaned_df, filtered_df
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def display_summary_statistics(filtered_df, overall_df, target_label,
                                pageref_label):
     """Displays summary statistics for the given dataset."""
@@ -97,7 +97,7 @@ def display_summary_statistics(filtered_df, overall_df, target_label,
     return min_date_df, max_date_df, tstats, ostats, perc_target
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def display_visualizations(graph_df, target_label, pageref_label):
     pageref_label_vis = pageref_label + "_vis"
     """Displays charts for the given dataset."""
@@ -146,7 +146,7 @@ def display_visualizations(graph_df, target_label, pageref_label):
         )
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def display_textual_insights_predefined(pageref_label, target_label, min_date,
                              max_date, tstats, ostats, perc_target):
     """Displays predefined text elements for a given page."""
@@ -303,7 +303,7 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
     )
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def topline_summary_block(target_label,
                           min_date_df,
                           max_date_df,

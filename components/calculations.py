@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 from components.filters import apply_filters
-from utils.logger import logger
+from utils.logger import streamlit_logger as logger
 
 
 # Convert placeholder date to datetime once

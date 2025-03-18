@@ -2,11 +2,12 @@ import pandas as pd
 import re
 import pdpy
 import streamlit as st
-from utils.logger import logger
+from utils.logger import streamlit_logger as logger
 from utils.logger import log_function_call  # Import decorator
+from utils.utils import save_dataframe_to_zip
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def load_mppartymemb_pypd():
     """Load MP party memberships data into session state."""
     try:
@@ -22,7 +23,7 @@ def load_mppartymemb_pypd():
 
 
 # Function to extract status and clean names
-@log_function_call
+@log_function_call("StreamlitApp")
 def extract_status_and_clean_name(name):
     status_list = []
     for prefix in [
@@ -94,7 +95,7 @@ def extract_status_and_clean_name(name):
 
 
 # Function to query PdPy api
-@log_function_call
+@log_function_call("StreamlitApp")
 def get_party_df_from_pdpy(
     from_date="2001-01-01",
     to_date="2024-12-31",
@@ -114,7 +115,8 @@ def get_party_df_from_pdpy(
                                  "family_name",
                                  "party_name"]].head())
     # Save final dataset
-    mppartymemb_df.to_csv(st.session_state.mppartymemb_fname, index=False)
+    save_dataframe_to_zip(mppartymemb_df, st.session_state.mppartymemb_fname, "mppartymemb.csv")
+    # mppartymemb_df.to_csv(st.session_state.mppartymemb_fname, index=False)
     return mppartymemb_df
 
 
@@ -142,7 +144,7 @@ def get_party_from_pdpy_df(pdpydf, name):
         return "Issue with PdPy data"
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def clean_political_party_data():
     # Load MP party memberships data
     load_mppartymemb_pypd()
@@ -185,7 +187,8 @@ def clean_political_party_data():
                  f" {df['PoliticalParty_pdpy'].value_counts()} ")
     # Save final dataset
     final_file_path = st.session_state.mp_party_memberships_file_path
-    df.to_csv(final_file_path, index=False)
+    save_dataframe_to_zip(df, final_file_path, "mppartymemb.zip", "mppartymemb.csv")
+    # df.to_csv(final_file_path, index=False)
     # feedback
     logger.info("Political Party Data Cleaned Successfully.")
     logger.info(f"Processed file saved as: {final_file_path}")

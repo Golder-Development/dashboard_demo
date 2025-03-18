@@ -6,11 +6,11 @@ from components.modular_page_blocks import (
     display_textual_insights_custom,
     display_visualizations,
 )
-# from utils.logger import logger
+# from utils.logger import streamlit_logger as logger
 from utils.logger import log_function_call  # Import decorator
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def display_per_group_data_page(
     functionname="display_per_group_data_page",
     filter_key=None,

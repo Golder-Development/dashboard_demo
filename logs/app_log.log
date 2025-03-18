@@ -4038,3 +4038,1165 @@ To fix this error, please pass a unique `key` argument to the `slider` element.
 2025/03/18 08:50 ERROR:Timestamp key election_dates_last_modified not recognised.
 2025/03/18 08:50 ERROR:Failed to load election dates from file.
 2025/03/18 08:50 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 10:17 ERROR:Session state variables not initialized!
+2025/03/18 10:17 ERROR:Error: originalfilepath is None!
+2025/03/18 10:17 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 10:17 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 10:17 ERROR:Failed to load election dates from file.
+2025/03/18 10:17 ERROR:Error in load_cleaned_data: [Errno 2] No such file or directory: 'RPI.csv'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 491, in load_cleaned_data
+    RPI_index = pd.read_csv("RPI.csv", header=None, skiprows=8, names=["Date", "RPI_Index"])
+  File "H:\python310\lib\site-packages\pandas\io\parsers\readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "H:\python310\lib\site-packages\pandas\io\parsers\readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "H:\python310\lib\site-packages\pandas\io\parsers\readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "H:\python310\lib\site-packages\pandas\io\parsers\readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+  File "H:\python310\lib\site-packages\pandas\io\common.py", line 863, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'RPI.csv'
+2025/03/18 10:17 CRITICAL:First load crashed: [Errno 2] No such file or directory: 'RPI.csv'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 66, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 491, in load_cleaned_data
+    RPI_index = pd.read_csv("RPI.csv", header=None, skiprows=8, names=["Date", "RPI_Index"])
+  File "H:\python310\lib\site-packages\pandas\io\parsers\readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "H:\python310\lib\site-packages\pandas\io\parsers\readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "H:\python310\lib\site-packages\pandas\io\parsers\readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "H:\python310\lib\site-packages\pandas\io\parsers\readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+  File "H:\python310\lib\site-packages\pandas\io\common.py", line 863, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'RPI.csv'
+2025/03/18 10:18 ERROR:Session state variables not initialized!
+2025/03/18 10:18 ERROR:Error: originalfilepath is None!
+2025/03/18 10:18 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 10:18 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 10:18 ERROR:Failed to load election dates from file.
+2025/03/18 10:18 ERROR:Error in load_cleaned_data: Can only compare identically-labeled Series objects
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 500, in load_cleaned_data
+    loadclean_df["Value"] * (RPI_Start / RPI_index[RPI_index["Date"] == loadclean_df["ReceivedDate"]]["RPI_Index"].values[0])
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 5794, in _cmp_method
+    raise ValueError("Can only compare identically-labeled Series objects")
+ValueError: Can only compare identically-labeled Series objects
+2025/03/18 10:18 CRITICAL:First load crashed: Can only compare identically-labeled Series objects
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 66, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 500, in load_cleaned_data
+    loadclean_df["Value"] * (RPI_Start / RPI_index[RPI_index["Date"] == loadclean_df["ReceivedDate"]]["RPI_Index"].values[0])
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 5794, in _cmp_method
+    raise ValueError("Can only compare identically-labeled Series objects")
+ValueError: Can only compare identically-labeled Series objects
+2025/03/18 10:20 ERROR:Session state variables not initialized!
+2025/03/18 10:20 ERROR:Error: originalfilepath is None!
+2025/03/18 10:20 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 10:20 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 10:20 ERROR:Failed to load election dates from file.
+2025/03/18 10:20 ERROR:Error in load_cleaned_data: 'Date'
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 3790, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Date'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 493, in load_cleaned_data
+    RPI_index["Date"] = RPI_index["Date"].apply(lambda x: str(x) + " Jan" if len(str(x)) == 4 else x)
+  File "H:\python310\lib\site-packages\pandas\core\frame.py", line 3896, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 3797, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Date'
+2025/03/18 10:20 CRITICAL:First load crashed: 'Date'
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 3790, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Date'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 66, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 493, in load_cleaned_data
+    RPI_index["Date"] = RPI_index["Date"].apply(lambda x: str(x) + " Jan" if len(str(x)) == 4 else x)
+  File "H:\python310\lib\site-packages\pandas\core\frame.py", line 3896, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 3797, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Date'
+2025/03/18 10:21 ERROR:Error in initialise_data: unterminated string literal (detected at line 506) (clean_and_enhance.py, line 506)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 506
+    logger.debug(f"RPI Modified Value: {loadclean_df[['ReceivedDate',
+                 ^
+SyntaxError: unterminated string literal (detected at line 506)
+2025/03/18 10:21 CRITICAL:First load crashed: unterminated string literal (detected at line 506) (clean_and_enhance.py, line 506)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 506
+    logger.debug(f"RPI Modified Value: {loadclean_df[['ReceivedDate',
+                 ^
+SyntaxError: unterminated string literal (detected at line 506)
+2025/03/18 10:21 ERROR:Error in initialise_data: unterminated string literal (detected at line 506) (clean_and_enhance.py, line 506)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 506
+    logger.debug(f"RPI Modified Value: {loadclean_df[['ReceivedDate',
+                 ^
+SyntaxError: unterminated string literal (detected at line 506)
+2025/03/18 10:21 CRITICAL:First load crashed: unterminated string literal (detected at line 506) (clean_and_enhance.py, line 506)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 3, in <module>
+    from data.clean_and_enhance import load_cleaned_data
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 506
+    logger.debug(f"RPI Modified Value: {loadclean_df[['ReceivedDate',
+                 ^
+SyntaxError: unterminated string literal (detected at line 506)
+2025/03/18 10:22 ERROR:Session state variables not initialized!
+2025/03/18 10:22 ERROR:Error: originalfilepath is None!
+2025/03/18 10:22 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 10:22 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 10:22 ERROR:Failed to load election dates from file.
+2025/03/18 10:22 ERROR:Error in load_cleaned_data: time data "1800" doesn't match format "%Y %b", at position 0. You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 495, in load_cleaned_data
+    RPI_index["ReceivedDate"] = pd.to_datetime(RPI_index["ReceivedDate"], format="%Y %b")
+  File "H:\python310\lib\site-packages\pandas\core\tools\datetimes.py", line 1112, in to_datetime
+    values = convert_listlike(arg._values, format)
+  File "H:\python310\lib\site-packages\pandas\core\tools\datetimes.py", line 488, in _convert_listlike_datetimes
+    return _array_strptime_with_fallback(arg, name, utc, format, exact, errors)
+  File "H:\python310\lib\site-packages\pandas\core\tools\datetimes.py", line 519, in _array_strptime_with_fallback
+    result, timezones = array_strptime(arg, fmt, exact=exact, errors=errors, utc=utc)
+  File "strptime.pyx", line 534, in pandas._libs.tslibs.strptime.array_strptime
+  File "strptime.pyx", line 355, in pandas._libs.tslibs.strptime.array_strptime
+ValueError: time data "1800" doesn't match format "%Y %b", at position 0. You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2025/03/18 10:22 CRITICAL:First load crashed: time data "1800" doesn't match format "%Y %b", at position 0. You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 66, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 495, in load_cleaned_data
+    RPI_index["ReceivedDate"] = pd.to_datetime(RPI_index["ReceivedDate"], format="%Y %b")
+  File "H:\python310\lib\site-packages\pandas\core\tools\datetimes.py", line 1112, in to_datetime
+    values = convert_listlike(arg._values, format)
+  File "H:\python310\lib\site-packages\pandas\core\tools\datetimes.py", line 488, in _convert_listlike_datetimes
+    return _array_strptime_with_fallback(arg, name, utc, format, exact, errors)
+  File "H:\python310\lib\site-packages\pandas\core\tools\datetimes.py", line 519, in _array_strptime_with_fallback
+    result, timezones = array_strptime(arg, fmt, exact=exact, errors=errors, utc=utc)
+  File "strptime.pyx", line 534, in pandas._libs.tslibs.strptime.array_strptime
+  File "strptime.pyx", line 355, in pandas._libs.tslibs.strptime.array_strptime
+ValueError: time data "1800" doesn't match format "%Y %b", at position 0. You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2025/03/18 10:23 ERROR:Session state variables not initialized!
+2025/03/18 10:23 ERROR:Error: originalfilepath is None!
+2025/03/18 10:23 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 10:23 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 10:23 ERROR:Failed to load election dates from file.
+2025/03/18 10:23 ERROR:Error in load_cleaned_data: Can only compare identically-labeled Series objects
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 501, in load_cleaned_data
+    loadclean_df["Value"] * (RPI_Start / RPI_index[RPI_index["ReceivedDate"] == loadclean_df["ReceivedDate"]]["RPI_Index"].values[0])
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 5794, in _cmp_method
+    raise ValueError("Can only compare identically-labeled Series objects")
+ValueError: Can only compare identically-labeled Series objects
+2025/03/18 10:23 CRITICAL:First load crashed: Can only compare identically-labeled Series objects
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 66, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 501, in load_cleaned_data
+    loadclean_df["Value"] * (RPI_Start / RPI_index[RPI_index["ReceivedDate"] == loadclean_df["ReceivedDate"]]["RPI_Index"].values[0])
+  File "H:\python310\lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+  File "H:\python310\lib\site-packages\pandas\core\arraylike.py", line 40, in __eq__
+    return self._cmp_method(other, operator.eq)
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 5794, in _cmp_method
+    raise ValueError("Can only compare identically-labeled Series objects")
+ValueError: Can only compare identically-labeled Series objects
+2025/03/18 10:29 ERROR:Session state variables not initialized!
+2025/03/18 10:29 ERROR:Error: originalfilepath is None!
+2025/03/18 10:29 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 10:29 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 10:29 ERROR:Failed to load election dates from file.
+2025/03/18 10:29 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 10:42 ERROR:Error in initialise_data: cannot import name 'datapipeline_logger' from 'utils.logger' (H:\VScode\dashboard_demo\utils\logger.py)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 1, in <module>
+    from utils.logger import datapipeline_logger as logger, log_function_call
+ImportError: cannot import name 'datapipeline_logger' from 'utils.logger' (H:\VScode\dashboard_demo\utils\logger.py)
+2025/03/18 10:42 CRITICAL:First load crashed: cannot import name 'datapipeline_logger' from 'utils.logger' (H:\VScode\dashboard_demo\utils\logger.py)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 1, in <module>
+    from utils.logger import datapipeline_logger as logger, log_function_call
+ImportError: cannot import name 'datapipeline_logger' from 'utils.logger' (H:\VScode\dashboard_demo\utils\logger.py)
+2025/03/18 10:42 ERROR:Error in initialise_data: No module named 'google.cloud'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 13, in <module>
+    from google.cloud import api_keys_v2
+ModuleNotFoundError: No module named 'google.cloud'
+2025/03/18 10:42 CRITICAL:First load crashed: No module named 'google.cloud'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 13, in <module>
+    from google.cloud import api_keys_v2
+ModuleNotFoundError: No module named 'google.cloud'
+2025/03/18 10:42 ERROR:Error in initialise_data: No module named 'google.cloud'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 13, in <module>
+    from google.cloud import api_keys_v2
+ModuleNotFoundError: No module named 'google.cloud'
+2025/03/18 10:42 CRITICAL:First load crashed: No module named 'google.cloud'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 13, in <module>
+    from google.cloud import api_keys_v2
+ModuleNotFoundError: No module named 'google.cloud'
+2025/03/18 10:44 ERROR:Error in initialise_data: module 'tqdm' has no attribute 'pandas'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 22, in <module>
+    tqdm.pandas
+AttributeError: module 'tqdm' has no attribute 'pandas'
+2025/03/18 10:44 CRITICAL:First load crashed: module 'tqdm' has no attribute 'pandas'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 22, in <module>
+    tqdm.pandas
+AttributeError: module 'tqdm' has no attribute 'pandas'
+2025/03/18 10:44 ERROR:Error in initialise_data: module 'tqdm' has no attribute 'pd'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 22, in <module>
+    tqdm.pd
+AttributeError: module 'tqdm' has no attribute 'pd'
+2025/03/18 10:44 CRITICAL:First load crashed: module 'tqdm' has no attribute 'pd'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 22, in <module>
+    tqdm.pd
+AttributeError: module 'tqdm' has no attribute 'pd'
+2025/03/18 10:46 ERROR:Error in initialise_data: module 'tqdm' has no attribute 'pandas'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 22, in <module>
+    tqdm.pandas
+AttributeError: module 'tqdm' has no attribute 'pandas'
+2025/03/18 10:46 CRITICAL:First load crashed: module 'tqdm' has no attribute 'pandas'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 22, in <module>
+    tqdm.pandas
+AttributeError: module 'tqdm' has no attribute 'pandas'
+2025/03/18 10:47 ERROR:Error in initialise_data: module 'tqdm' has no attribute 'pandas'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 22, in <module>
+    tqdm.pandas()
+AttributeError: module 'tqdm' has no attribute 'pandas'
+2025/03/18 10:47 CRITICAL:First load crashed: module 'tqdm' has no attribute 'pandas'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 22, in <module>
+    tqdm.pandas()
+AttributeError: module 'tqdm' has no attribute 'pandas'
+2025/03/18 10:47 ERROR:Error in initialise_data: module 'tqdm' has no attribute 'pandas'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 22, in <module>
+    tqdm.pandas()
+AttributeError: module 'tqdm' has no attribute 'pandas'
+2025/03/18 10:47 CRITICAL:First load crashed: module 'tqdm' has no attribute 'pandas'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 22, in <module>
+    tqdm.pandas()
+AttributeError: module 'tqdm' has no attribute 'pandas'
+2025/03/18 10:51 ERROR:Error in initialise_data: [E050] Can't find model 'en_core_web_sm'. It doesn't seem to be a Python package or a valid path to a data directory.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 29, in <module>
+    nlp = spacy.load("en_core_web_sm")
+  File "H:\python310\lib\site-packages\spacy\__init__.py", line 51, in load
+    return util.load_model(
+  File "H:\python310\lib\site-packages\spacy\util.py", line 472, in load_model
+    raise IOError(Errors.E050.format(name=name))
+OSError: [E050] Can't find model 'en_core_web_sm'. It doesn't seem to be a Python package or a valid path to a data directory.
+2025/03/18 10:51 CRITICAL:First load crashed: [E050] Can't find model 'en_core_web_sm'. It doesn't seem to be a Python package or a valid path to a data directory.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 29, in <module>
+    nlp = spacy.load("en_core_web_sm")
+  File "H:\python310\lib\site-packages\spacy\__init__.py", line 51, in load
+    return util.load_model(
+  File "H:\python310\lib\site-packages\spacy\util.py", line 472, in load_model
+    raise IOError(Errors.E050.format(name=name))
+OSError: [E050] Can't find model 'en_core_web_sm'. It doesn't seem to be a Python package or a valid path to a data directory.
+2025/03/18 10:54 ERROR:Error in initialise_data: 'Logger' object has no attribute '__name__'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 39, in wrapper
+    logger.debug(f"Calling {func.__name__} with"
+AttributeError: 'Logger' object has no attribute '__name__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 43, in <module>
+    def checkdirectory():
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 47, in wrapper
+    logger.error(f"Error in {func.__name__}:"
+AttributeError: 'Logger' object has no attribute '__name__'
+2025/03/18 10:54 CRITICAL:First load crashed: 'Logger' object has no attribute '__name__'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 39, in wrapper
+    logger.debug(f"Calling {func.__name__} with"
+AttributeError: 'Logger' object has no attribute '__name__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 43, in <module>
+    def checkdirectory():
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 47, in wrapper
+    logger.error(f"Error in {func.__name__}:"
+AttributeError: 'Logger' object has no attribute '__name__'
+2025/03/18 10:55 INFO:Logging is set up correctly! Current log level: DEBUG
+2025/03/18 10:55 DEBUG:Calling get_git_version with args={args}, kwargs={kwargs}
+2025/03/18 10:55 INFO:get_git_version executed successfully
+2025/03/18 10:55 DEBUG:Calling get_git_version with args={args}, kwargs={kwargs}
+2025/03/18 10:55 INFO:get_git_version executed successfully
+2025/03/18 10:55 INFO:Streamlit App Starting...
+2025/03/18 10:55 INFO:Streamlit App Starting...
+2025/03/18 10:55 INFO:Current Working Directory: H:\VScode\dashboard_demo
+2025/03/18 10:55 INFO:Current Working Directory: H:\VScode\dashboard_demo
+2025/03/18 10:55 INFO:running H:\VScode\dashboard_demo, H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py
+2025/03/18 10:55 INFO:running H:\VScode\dashboard_demo, H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py
+2025/03/18 10:55 INFO:Running App setup...
+2025/03/18 10:55 INFO:Running App setup...
+2025/03/18 10:55 DEBUG:Calling setup_package with args={args}, kwargs={kwargs}
+2025/03/18 10:55 DEBUG:Calling setup_package with args={args}, kwargs={kwargs}
+2025/03/18 10:55 INFO:Setting up the package
+2025/03/18 10:55 INFO:Setting up the package
+2025/03/18 10:55 INFO:Module directory: H:\VScode\dashboard_demo
+2025/03/18 10:55 INFO:Module directory: H:\VScode\dashboard_demo
+2025/03/18 10:55 DEBUG:Calling get_git_version with args={args}, kwargs={kwargs}
+2025/03/18 10:55 DEBUG:Calling get_git_version with args={args}, kwargs={kwargs}
+2025/03/18 10:55 INFO:get_git_version executed successfully
+2025/03/18 10:55 INFO:get_git_version executed successfully
+2025/03/18 10:55 INFO:Version: v39.181
+2025/03/18 10:55 INFO:Version: v39.181
+2025/03/18 10:55 DEBUG:Calling initialize_session_state with args={args}, kwargs={kwargs}
+2025/03/18 10:55 DEBUG:Calling initialize_session_state with args={args}, kwargs={kwargs}
+2025/03/18 10:55 INFO:BASE_DIR: H:\VScode\dashboard_demo
+2025/03/18 10:55 INFO:BASE_DIR: H:\VScode\dashboard_demo
+2025/03/18 10:55 DEBUG:Initialised BASE_DIR with value: H:\VScode\dashboard_demo
+2025/03/18 10:55 DEBUG:Initialised BASE_DIR with value: H:\VScode\dashboard_demo
+2025/03/18 10:55 DEBUG:Initialised filenames with value: {'reference_dir': {'Donor_dedupe_cleaned_fname': 'Donor_dedupe_cleaned_data.zip', 'ListofPoliticalPeople_fname': 'ListOfPoliticalPeople.csv', 'mppartymemb_fname': 'mppartymemb_pypd.zip', 'donor_map_fname': 'PoliticalDonorsDeduped.zip', 'politician_party_fname': 'ListOfPoliticalPeople_Final.zip', 'regentity_map_fname': 'PoliticalEntityDeDuped.zip', 'original_data_fname': 'original_data.csv', 'CREDENTIALS_FILE': 'admin_credentials.json', 'TEXT_FILE': 'admin_text.json', 'ELECTION_DATES': 'elections.csv', 'LAST_MODIFIED_DATES': 'last_modified_dates.json'}, 'output_dir': {'cleaned_data_fname': 'cleaned_data.zip', 'cleaned_donations_fname': 'cleaned_donations.zip', 'cleaned_donorlist_fname': 'cleaned_donorlist.zip', 'cleaned_regentity_fname': 'cleaned_regentity.zip', 'party_summary_fname': 'party_summary.zip', 'imported_raw_fname': 'imported_raw.zip'}, 'source_dir': {'source_data_fname': 'Donations_accepted_by_political_parties.csv'}}
+2025/03/18 10:55 DEBUG:Initialised filenames with value: {'reference_dir': {'Donor_dedupe_cleaned_fname': 'Donor_dedupe_cleaned_data.zip', 'ListofPoliticalPeople_fname': 'ListOfPoliticalPeople.csv', 'mppartymemb_fname': 'mppartymemb_pypd.zip', 'donor_map_fname': 'PoliticalDonorsDeduped.zip', 'politician_party_fname': 'ListOfPoliticalPeople_Final.zip', 'regentity_map_fname': 'PoliticalEntityDeDuped.zip', 'original_data_fname': 'original_data.csv', 'CREDENTIALS_FILE': 'admin_credentials.json', 'TEXT_FILE': 'admin_text.json', 'ELECTION_DATES': 'elections.csv', 'LAST_MODIFIED_DATES': 'last_modified_dates.json'}, 'output_dir': {'cleaned_data_fname': 'cleaned_data.zip', 'cleaned_donations_fname': 'cleaned_donations.zip', 'cleaned_donorlist_fname': 'cleaned_donorlist.zip', 'cleaned_regentity_fname': 'cleaned_regentity.zip', 'party_summary_fname': 'party_summary.zip', 'imported_raw_fname': 'imported_raw.zip'}, 'source_dir': {'source_data_fname': 'Donations_accepted_by_political_parties.csv'}}
+2025/03/18 10:55 DEBUG:Initialised PLACEHOLDER_DATE with value: 1900-01-01 00:00:00
+2025/03/18 10:55 DEBUG:Initialised PLACEHOLDER_DATE with value: 1900-01-01 00:00:00
+2025/03/18 10:55 DEBUG:Initialised PLACEHOLDER_ID with value: 1000001
+2025/03/18 10:55 DEBUG:Initialised PLACEHOLDER_ID with value: 1000001
+2025/03/18 10:55 DEBUG:Initialised thresholds with value: {(0, 0): 'No Relevant Donations', (1, 1): 'Single Donation Entity', (2, 5): 'Very Small Entity', (6, 15): 'Small Entity', (16, 100): 'Small Medium Entity', (101, 200): 'Medium Entity', (201, 500): 'Medium Large Entity', (501, 1000): 'Large Entity'}
+2025/03/18 10:55 DEBUG:Initialised thresholds with value: {(0, 0): 'No Relevant Donations', (1, 1): 'Single Donation Entity', (2, 5): 'Very Small Entity', (6, 15): 'Small Entity', (16, 100): 'Small Medium Entity', (101, 200): 'Medium Entity', (201, 500): 'Medium Large Entity', (501, 1000): 'Large Entity'}
+2025/03/18 10:55 DEBUG:Initialised data_remappings with value: {'NatureOfDonation': {'IsBequest': 'Is A Bequest', 'IsAggregation': 'Aggregated Donation', 'IsSponsorship': 'Sponsorship', 'Donation to nan': 'Other', 'Other Payment': 'Other'}, 'PartyParents': {'Conservatives': 52, 'Labour': 53, 'Liberal Democrats': 90, 'Scottish National Party': 102, 'Green Party': 63, 'Plaid Cymru': 77, 'UKIP': 85, 'Unknown': 0}}
+2025/03/18 10:55 DEBUG:Initialised data_remappings with value: {'NatureOfDonation': {'IsBequest': 'Is A Bequest', 'IsAggregation': 'Aggregated Donation', 'IsSponsorship': 'Sponsorship', 'Donation to nan': 'Other', 'Other Payment': 'Other'}, 'PartyParents': {'Conservatives': 52, 'Labour': 53, 'Liberal Democrats': 90, 'Scottish National Party': 102, 'Green Party': 63, 'Plaid Cymru': 77, 'UKIP': 85, 'Unknown': 0}}
+2025/03/18 10:55 DEBUG:Initialised filter_def with value: {'Sponsorships_ftr': {'NatureOfDonation': 'Sponsorship', 'IsSponsorshipInt': 1}, 'ReturnedDonations_ftr': {'DonationAction': ['Returned', 'Forfeited'], 'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonors_ftr': {'DubiousDonor': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonations_ftr': {'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'AggregatedDonations_ftr': {'IsAggregationInt': 1, 'NatureOfDonation': 'Aggregated Donation', 'DonationType': 'Aggregated Donation'}, 'SafeDonors_ftr': {'DonorType': ['Trade Union', 'Registered Political Party', 'Friendly Society', 'Public Fund']}, 'DubiousDonationType_ftr': {'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Total value of donations not reported individually', 'Aggregated Donation'], 'DonorStatus': ['Impermissible Donor', 'Unidentified Donor', 'Unidentifiable Donor']}, 'BlankDate_ftr': {'ReceivedDate': ['PLACEHOLDER_DATE', None]}, 'BlankDonor_ftr': {'DonorId': [1000001]}, 'BlankRegEntity_ftr': {'RegulatedEntityId': [1000001]}, 'DonatedVisits_ftr': {'DonationType': 'Visit', 'NatureOfDonation': 'Visit'}, 'Bequests_ftr': {'IsBequestInt': 1, 'NatureOfDonation': 'Bequest', 'DonationType': 'Bequest'}, 'CorporateDonations_ftr': {'DonorStatus': ['Company', 'Partnership', 'Limited Liability Partnership']}, 'RegulatedEntity_ftr': {'RegulatedEntityType': ['Political Party', 'Regulated Donee', 'Permitted Participant', 'Third Party']}, 'PoliticalParty_ftr': {'DonorStatus': 'Registered Political Party'}, 'CashDonations_ftr': {'DonationType': ['Cash', 'Aggregate Donation']}, 'PublicFundsDonations_ftr': {'DonationType': 'Public Funds'}, 'NonCashDonations_ftr': {'DonationType': ['Non Cash', 'Visit', 'Bequest', 'Sponsorship']}}
+2025/03/18 10:55 DEBUG:Initialised filter_def with value: {'Sponsorships_ftr': {'NatureOfDonation': 'Sponsorship', 'IsSponsorshipInt': 1}, 'ReturnedDonations_ftr': {'DonationAction': ['Returned', 'Forfeited'], 'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonors_ftr': {'DubiousDonor': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonations_ftr': {'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'AggregatedDonations_ftr': {'IsAggregationInt': 1, 'NatureOfDonation': 'Aggregated Donation', 'DonationType': 'Aggregated Donation'}, 'SafeDonors_ftr': {'DonorType': ['Trade Union', 'Registered Political Party', 'Friendly Society', 'Public Fund']}, 'DubiousDonationType_ftr': {'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Total value of donations not reported individually', 'Aggregated Donation'], 'DonorStatus': ['Impermissible Donor', 'Unidentified Donor', 'Unidentifiable Donor']}, 'BlankDate_ftr': {'ReceivedDate': ['PLACEHOLDER_DATE', None]}, 'BlankDonor_ftr': {'DonorId': [1000001]}, 'BlankRegEntity_ftr': {'RegulatedEntityId': [1000001]}, 'DonatedVisits_ftr': {'DonationType': 'Visit', 'NatureOfDonation': 'Visit'}, 'Bequests_ftr': {'IsBequestInt': 1, 'NatureOfDonation': 'Bequest', 'DonationType': 'Bequest'}, 'CorporateDonations_ftr': {'DonorStatus': ['Company', 'Partnership', 'Limited Liability Partnership']}, 'RegulatedEntity_ftr': {'RegulatedEntityType': ['Political Party', 'Regulated Donee', 'Permitted Participant', 'Third Party']}, 'PoliticalParty_ftr': {'DonorStatus': 'Registered Political Party'}, 'CashDonations_ftr': {'DonationType': ['Cash', 'Aggregate Donation']}, 'PublicFundsDonations_ftr': {'DonationType': 'Public Funds'}, 'NonCashDonations_ftr': {'DonationType': ['Non Cash', 'Visit', 'Bequest', 'Sponsorship']}}
+2025/03/18 10:55 DEBUG:Initialised security with value: {'is_admin': False, 'is_authenticated': False, 'username': '', 'password': ''}
+2025/03/18 10:55 DEBUG:Initialised security with value: {'is_admin': False, 'is_authenticated': False, 'username': '', 'password': ''}
+2025/03/18 10:55 DEBUG:Initialised perc_target with value: 0.5
+2025/03/18 10:55 DEBUG:Initialised perc_target with value: 0.5
+2025/03/18 10:55 DEBUG:Initialised RERUN_MP_PARTY_MEMBERSHIP with value: False
+2025/03/18 10:55 DEBUG:Initialised RERUN_MP_PARTY_MEMBERSHIP with value: False
+2025/03/18 10:55 DEBUG:Initialised directories with value: {'BASE_DIR': WindowsPath('H:/VScode/dashboard_demo'), 'data_dir': 'data', 'output_dir': 'output', 'logs_dir': 'logs', 'reference_dir': 'reference_files', 'components_dir': 'components', 'app_pages_dir': 'app_pages', 'utils_dir': 'utils', 'source_dir': 'source', 'tests_dir': 'tests'}
+2025/03/18 10:55 DEBUG:Initialised directories with value: {'BASE_DIR': WindowsPath('H:/VScode/dashboard_demo'), 'data_dir': 'data', 'output_dir': 'output', 'logs_dir': 'logs', 'reference_dir': 'reference_files', 'components_dir': 'components', 'app_pages_dir': 'app_pages', 'utils_dir': 'utils', 'source_dir': 'source', 'tests_dir': 'tests'}
+2025/03/18 10:55 DEBUG:Initialised reference_dir with value: reference_files
+2025/03/18 10:55 DEBUG:Initialised reference_dir with value: reference_files
+2025/03/18 10:55 DEBUG:Initialised data_dir with value: data
+2025/03/18 10:55 DEBUG:Initialised data_dir with value: data
+2025/03/18 10:55 DEBUG:Initialised output_dir with value: output
+2025/03/18 10:55 DEBUG:Initialised output_dir with value: output
+2025/03/18 10:55 DEBUG:Initialised logs_dir with value: logs
+2025/03/18 10:55 DEBUG:Initialised logs_dir with value: logs
+2025/03/18 10:55 DEBUG:Initialised components_dir with value: components
+2025/03/18 10:55 DEBUG:Initialised components_dir with value: components
+2025/03/18 10:55 DEBUG:Initialised app_pages_dir with value: app_pages
+2025/03/18 10:55 DEBUG:Initialised app_pages_dir with value: app_pages
+2025/03/18 10:55 DEBUG:Initialised utils_dir with value: utils
+2025/03/18 10:55 DEBUG:Initialised utils_dir with value: utils
+2025/03/18 10:55 DEBUG:Initialised Donor_dedupe_cleaned_fname with value: reference_files\Donor_dedupe_cleaned_data.zip
+2025/03/18 10:55 DEBUG:Initialised Donor_dedupe_cleaned_fname with value: reference_files\Donor_dedupe_cleaned_data.zip
+2025/03/18 10:55 DEBUG:Initialised ListofPoliticalPeople_fname with value: reference_files\ListOfPoliticalPeople.csv
+2025/03/18 10:55 DEBUG:Initialised ListofPoliticalPeople_fname with value: reference_files\ListOfPoliticalPeople.csv
+2025/03/18 10:55 DEBUG:Initialised mppartymemb_fname with value: reference_files\mppartymemb_pypd.zip
+2025/03/18 10:55 DEBUG:Initialised mppartymemb_fname with value: reference_files\mppartymemb_pypd.zip
+2025/03/18 10:55 DEBUG:Initialised donor_map_fname with value: reference_files\PoliticalDonorsDeduped.zip
+2025/03/18 10:55 DEBUG:Initialised donor_map_fname with value: reference_files\PoliticalDonorsDeduped.zip
+2025/03/18 10:55 DEBUG:Initialised politician_party_fname with value: reference_files\ListOfPoliticalPeople_Final.zip
+2025/03/18 10:55 DEBUG:Initialised politician_party_fname with value: reference_files\ListOfPoliticalPeople_Final.zip
+2025/03/18 10:55 DEBUG:Initialised regentity_map_fname with value: reference_files\PoliticalEntityDeDuped.zip
+2025/03/18 10:55 DEBUG:Initialised regentity_map_fname with value: reference_files\PoliticalEntityDeDuped.zip
+2025/03/18 10:55 DEBUG:Initialised original_data_fname with value: reference_files\original_data.csv
+2025/03/18 10:55 DEBUG:Initialised original_data_fname with value: reference_files\original_data.csv
+2025/03/18 10:55 DEBUG:Initialised CREDENTIALS_FILE with value: reference_files\admin_credentials.json
+2025/03/18 10:55 DEBUG:Initialised CREDENTIALS_FILE with value: reference_files\admin_credentials.json
+2025/03/18 10:55 DEBUG:Initialised TEXT_FILE with value: reference_files\admin_text.json
+2025/03/18 10:55 DEBUG:Initialised TEXT_FILE with value: reference_files\admin_text.json
+2025/03/18 10:55 DEBUG:Initialised ELECTION_DATES with value: reference_files\elections.csv
+2025/03/18 10:55 DEBUG:Initialised ELECTION_DATES with value: reference_files\elections.csv
+2025/03/18 10:55 DEBUG:Initialised LAST_MODIFIED_DATES with value: reference_files\last_modified_dates.json
+2025/03/18 10:55 DEBUG:Initialised LAST_MODIFIED_DATES with value: reference_files\last_modified_dates.json
+2025/03/18 10:55 DEBUG:Initialised cleaned_data_fname with value: output\cleaned_data.zip
+2025/03/18 10:55 DEBUG:Initialised cleaned_data_fname with value: output\cleaned_data.zip
+2025/03/18 10:55 DEBUG:Initialised cleaned_donations_fname with value: output\cleaned_donations.zip
+2025/03/18 10:55 DEBUG:Initialised cleaned_donations_fname with value: output\cleaned_donations.zip
+2025/03/18 10:55 DEBUG:Initialised cleaned_donorlist_fname with value: output\cleaned_donorlist.zip
+2025/03/18 10:55 DEBUG:Initialised cleaned_donorlist_fname with value: output\cleaned_donorlist.zip
+2025/03/18 10:55 DEBUG:Initialised cleaned_regentity_fname with value: output\cleaned_regentity.zip
+2025/03/18 10:55 DEBUG:Initialised cleaned_regentity_fname with value: output\cleaned_regentity.zip
+2025/03/18 10:55 DEBUG:Initialised party_summary_fname with value: output\party_summary.zip
+2025/03/18 10:55 DEBUG:Initialised party_summary_fname with value: output\party_summary.zip
+2025/03/18 10:55 DEBUG:Initialised imported_raw_fname with value: output\imported_raw.zip
+2025/03/18 10:55 DEBUG:Initialised imported_raw_fname with value: output\imported_raw.zip
+2025/03/18 10:55 DEBUG:Initialised source_data_fname with value: source\Donations_accepted_by_political_parties.csv
+2025/03/18 10:55 DEBUG:Initialised source_data_fname with value: source\Donations_accepted_by_political_parties.csv
+2025/03/18 10:55 DEBUG:Initialised Cash_ftr with value: None
+2025/03/18 10:55 DEBUG:Initialised Cash_ftr with value: None
+2025/03/18 10:55 INFO:Session_state variables initialized
+2025/03/18 10:55 INFO:Session_state variables initialized
+2025/03/18 10:55 DEBUG:directories: {'BASE_DIR': WindowsPath('H:/VScode/dashboard_demo'), 'data_dir': 'data', 'output_dir': 'output', 'logs_dir': 'logs', 'reference_dir': 'reference_files', 'components_dir': 'components', 'app_pages_dir': 'app_pages', 'utils_dir': 'utils', 'source_dir': 'source', 'tests_dir': 'tests'}
+2025/03/18 10:55 DEBUG:directories: {'BASE_DIR': WindowsPath('H:/VScode/dashboard_demo'), 'data_dir': 'data', 'output_dir': 'output', 'logs_dir': 'logs', 'reference_dir': 'reference_files', 'components_dir': 'components', 'app_pages_dir': 'app_pages', 'utils_dir': 'utils', 'source_dir': 'source', 'tests_dir': 'tests'}
+2025/03/18 10:55 DEBUG:thresholds: {(0, 0): 'No Relevant Donations', (1, 1): 'Single Donation Entity', (2, 5): 'Very Small Entity', (6, 15): 'Small Entity', (16, 100): 'Small Medium Entity', (101, 200): 'Medium Entity', (201, 500): 'Medium Large Entity', (501, 1000): 'Large Entity'}
+2025/03/18 10:55 DEBUG:thresholds: {(0, 0): 'No Relevant Donations', (1, 1): 'Single Donation Entity', (2, 5): 'Very Small Entity', (6, 15): 'Small Entity', (16, 100): 'Small Medium Entity', (101, 200): 'Medium Entity', (201, 500): 'Medium Large Entity', (501, 1000): 'Large Entity'}
+2025/03/18 10:55 DEBUG:PLACEHOLDER_DATE: 1900-01-01 00:00:00
+2025/03/18 10:55 DEBUG:PLACEHOLDER_DATE: 1900-01-01 00:00:00
+2025/03/18 10:55 DEBUG:LAST_MODIFIED_DATES: reference_files\last_modified_dates.json
+2025/03/18 10:55 DEBUG:LAST_MODIFIED_DATES: reference_files\last_modified_dates.json
+2025/03/18 10:55 DEBUG:source_data_fname: source\Donations_accepted_by_political_parties.csv
+2025/03/18 10:55 DEBUG:source_data_fname: source\Donations_accepted_by_political_parties.csv
+2025/03/18 10:55 DEBUG:Cash_ftr: None
+2025/03/18 10:55 DEBUG:Cash_ftr: None
+2025/03/18 10:55 DEBUG:cleaned_donorlist_fname: output\cleaned_donorlist.zip
+2025/03/18 10:55 DEBUG:cleaned_donorlist_fname: output\cleaned_donorlist.zip
+2025/03/18 10:55 DEBUG:imported_raw_fname: output\imported_raw.zip
+2025/03/18 10:55 DEBUG:imported_raw_fname: output\imported_raw.zip
+2025/03/18 10:55 DEBUG:data_dir: data
+2025/03/18 10:55 DEBUG:data_dir: data
+2025/03/18 10:55 DEBUG:original_data_fname: reference_files\original_data.csv
+2025/03/18 10:55 DEBUG:original_data_fname: reference_files\original_data.csv
+2025/03/18 10:55 DEBUG:cleaned_donations_fname: output\cleaned_donations.zip
+2025/03/18 10:55 DEBUG:cleaned_donations_fname: output\cleaned_donations.zip
+2025/03/18 10:55 DEBUG:perc_target: 0.5
+2025/03/18 10:55 DEBUG:perc_target: 0.5
+2025/03/18 10:55 DEBUG:TEXT_FILE: reference_files\admin_text.json
+2025/03/18 10:55 DEBUG:TEXT_FILE: reference_files\admin_text.json
+2025/03/18 10:55 DEBUG:data_remappings: {'NatureOfDonation': {'IsBequest': 'Is A Bequest', 'IsAggregation': 'Aggregated Donation', 'IsSponsorship': 'Sponsorship', 'Donation to nan': 'Other', 'Other Payment': 'Other'}, 'PartyParents': {'Conservatives': 52, 'Labour': 53, 'Liberal Democrats': 90, 'Scottish National Party': 102, 'Green Party': 63, 'Plaid Cymru': 77, 'UKIP': 85, 'Unknown': 0}}
+2025/03/18 10:55 DEBUG:data_remappings: {'NatureOfDonation': {'IsBequest': 'Is A Bequest', 'IsAggregation': 'Aggregated Donation', 'IsSponsorship': 'Sponsorship', 'Donation to nan': 'Other', 'Other Payment': 'Other'}, 'PartyParents': {'Conservatives': 52, 'Labour': 53, 'Liberal Democrats': 90, 'Scottish National Party': 102, 'Green Party': 63, 'Plaid Cymru': 77, 'UKIP': 85, 'Unknown': 0}}
+2025/03/18 10:55 DEBUG:app_pages_dir: app_pages
+2025/03/18 10:55 DEBUG:app_pages_dir: app_pages
+2025/03/18 10:55 DEBUG:ListofPoliticalPeople_fname: reference_files\ListOfPoliticalPeople.csv
+2025/03/18 10:55 DEBUG:ListofPoliticalPeople_fname: reference_files\ListOfPoliticalPeople.csv
+2025/03/18 10:55 DEBUG:output_dir: output
+2025/03/18 10:55 DEBUG:output_dir: output
+2025/03/18 10:55 DEBUG:components_dir: components
+2025/03/18 10:55 DEBUG:components_dir: components
+2025/03/18 10:55 DEBUG:mppartymemb_fname: reference_files\mppartymemb_pypd.zip
+2025/03/18 10:55 DEBUG:mppartymemb_fname: reference_files\mppartymemb_pypd.zip
+2025/03/18 10:55 DEBUG:cleaned_data_fname: output\cleaned_data.zip
+2025/03/18 10:55 DEBUG:cleaned_data_fname: output\cleaned_data.zip
+2025/03/18 10:55 DEBUG:regentity_map_fname: reference_files\PoliticalEntityDeDuped.zip
+2025/03/18 10:55 DEBUG:regentity_map_fname: reference_files\PoliticalEntityDeDuped.zip
+2025/03/18 10:55 DEBUG:filenames: {'reference_dir': {'Donor_dedupe_cleaned_fname': 'Donor_dedupe_cleaned_data.zip', 'ListofPoliticalPeople_fname': 'ListOfPoliticalPeople.csv', 'mppartymemb_fname': 'mppartymemb_pypd.zip', 'donor_map_fname': 'PoliticalDonorsDeduped.zip', 'politician_party_fname': 'ListOfPoliticalPeople_Final.zip', 'regentity_map_fname': 'PoliticalEntityDeDuped.zip', 'original_data_fname': 'original_data.csv', 'CREDENTIALS_FILE': 'admin_credentials.json', 'TEXT_FILE': 'admin_text.json', 'ELECTION_DATES': 'elections.csv', 'LAST_MODIFIED_DATES': 'last_modified_dates.json'}, 'output_dir': {'cleaned_data_fname': 'cleaned_data.zip', 'cleaned_donations_fname': 'cleaned_donations.zip', 'cleaned_donorlist_fname': 'cleaned_donorlist.zip', 'cleaned_regentity_fname': 'cleaned_regentity.zip', 'party_summary_fname': 'party_summary.zip', 'imported_raw_fname': 'imported_raw.zip'}, 'source_dir': {'source_data_fname': 'Donations_accepted_by_political_parties.csv'}}
+2025/03/18 10:55 DEBUG:filenames: {'reference_dir': {'Donor_dedupe_cleaned_fname': 'Donor_dedupe_cleaned_data.zip', 'ListofPoliticalPeople_fname': 'ListOfPoliticalPeople.csv', 'mppartymemb_fname': 'mppartymemb_pypd.zip', 'donor_map_fname': 'PoliticalDonorsDeduped.zip', 'politician_party_fname': 'ListOfPoliticalPeople_Final.zip', 'regentity_map_fname': 'PoliticalEntityDeDuped.zip', 'original_data_fname': 'original_data.csv', 'CREDENTIALS_FILE': 'admin_credentials.json', 'TEXT_FILE': 'admin_text.json', 'ELECTION_DATES': 'elections.csv', 'LAST_MODIFIED_DATES': 'last_modified_dates.json'}, 'output_dir': {'cleaned_data_fname': 'cleaned_data.zip', 'cleaned_donations_fname': 'cleaned_donations.zip', 'cleaned_donorlist_fname': 'cleaned_donorlist.zip', 'cleaned_regentity_fname': 'cleaned_regentity.zip', 'party_summary_fname': 'party_summary.zip', 'imported_raw_fname': 'imported_raw.zip'}, 'source_dir': {'source_data_fname': 'Donations_accepted_by_political_parties.csv'}}
+2025/03/18 10:55 DEBUG:PLACEHOLDER_ID: 1000001
+2025/03/18 10:55 DEBUG:PLACEHOLDER_ID: 1000001
+2025/03/18 10:55 DEBUG:politician_party_fname: reference_files\ListOfPoliticalPeople_Final.zip
+2025/03/18 10:55 DEBUG:politician_party_fname: reference_files\ListOfPoliticalPeople_Final.zip
+2025/03/18 10:55 DEBUG:utils_dir: utils
+2025/03/18 10:55 DEBUG:utils_dir: utils
+2025/03/18 10:55 DEBUG:CREDENTIALS_FILE: reference_files\admin_credentials.json
+2025/03/18 10:55 DEBUG:CREDENTIALS_FILE: reference_files\admin_credentials.json
+2025/03/18 10:55 DEBUG:filter_def: {'Sponsorships_ftr': {'NatureOfDonation': 'Sponsorship', 'IsSponsorshipInt': 1}, 'ReturnedDonations_ftr': {'DonationAction': ['Returned', 'Forfeited'], 'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonors_ftr': {'DubiousDonor': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonations_ftr': {'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'AggregatedDonations_ftr': {'IsAggregationInt': 1, 'NatureOfDonation': 'Aggregated Donation', 'DonationType': 'Aggregated Donation'}, 'SafeDonors_ftr': {'DonorType': ['Trade Union', 'Registered Political Party', 'Friendly Society', 'Public Fund']}, 'DubiousDonationType_ftr': {'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Total value of donations not reported individually', 'Aggregated Donation'], 'DonorStatus': ['Impermissible Donor', 'Unidentified Donor', 'Unidentifiable Donor']}, 'BlankDate_ftr': {'ReceivedDate': ['PLACEHOLDER_DATE', None]}, 'BlankDonor_ftr': {'DonorId': [1000001]}, 'BlankRegEntity_ftr': {'RegulatedEntityId': [1000001]}, 'DonatedVisits_ftr': {'DonationType': 'Visit', 'NatureOfDonation': 'Visit'}, 'Bequests_ftr': {'IsBequestInt': 1, 'NatureOfDonation': 'Bequest', 'DonationType': 'Bequest'}, 'CorporateDonations_ftr': {'DonorStatus': ['Company', 'Partnership', 'Limited Liability Partnership']}, 'RegulatedEntity_ftr': {'RegulatedEntityType': ['Political Party', 'Regulated Donee', 'Permitted Participant', 'Third Party']}, 'PoliticalParty_ftr': {'DonorStatus': 'Registered Political Party'}, 'CashDonations_ftr': {'DonationType': ['Cash', 'Aggregate Donation']}, 'PublicFundsDonations_ftr': {'DonationType': 'Public Funds'}, 'NonCashDonations_ftr': {'DonationType': ['Non Cash', 'Visit', 'Bequest', 'Sponsorship']}}
+2025/03/18 10:55 DEBUG:filter_def: {'Sponsorships_ftr': {'NatureOfDonation': 'Sponsorship', 'IsSponsorshipInt': 1}, 'ReturnedDonations_ftr': {'DonationAction': ['Returned', 'Forfeited'], 'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonors_ftr': {'DubiousDonor': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonations_ftr': {'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'AggregatedDonations_ftr': {'IsAggregationInt': 1, 'NatureOfDonation': 'Aggregated Donation', 'DonationType': 'Aggregated Donation'}, 'SafeDonors_ftr': {'DonorType': ['Trade Union', 'Registered Political Party', 'Friendly Society', 'Public Fund']}, 'DubiousDonationType_ftr': {'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Total value of donations not reported individually', 'Aggregated Donation'], 'DonorStatus': ['Impermissible Donor', 'Unidentified Donor', 'Unidentifiable Donor']}, 'BlankDate_ftr': {'ReceivedDate': ['PLACEHOLDER_DATE', None]}, 'BlankDonor_ftr': {'DonorId': [1000001]}, 'BlankRegEntity_ftr': {'RegulatedEntityId': [1000001]}, 'DonatedVisits_ftr': {'DonationType': 'Visit', 'NatureOfDonation': 'Visit'}, 'Bequests_ftr': {'IsBequestInt': 1, 'NatureOfDonation': 'Bequest', 'DonationType': 'Bequest'}, 'CorporateDonations_ftr': {'DonorStatus': ['Company', 'Partnership', 'Limited Liability Partnership']}, 'RegulatedEntity_ftr': {'RegulatedEntityType': ['Political Party', 'Regulated Donee', 'Permitted Participant', 'Third Party']}, 'PoliticalParty_ftr': {'DonorStatus': 'Registered Political Party'}, 'CashDonations_ftr': {'DonationType': ['Cash', 'Aggregate Donation']}, 'PublicFundsDonations_ftr': {'DonationType': 'Public Funds'}, 'NonCashDonations_ftr': {'DonationType': ['Non Cash', 'Visit', 'Bequest', 'Sponsorship']}}
+2025/03/18 10:55 DEBUG:reference_dir: reference_files
+2025/03/18 10:55 DEBUG:reference_dir: reference_files
+2025/03/18 10:55 DEBUG:ELECTION_DATES: reference_files\elections.csv
+2025/03/18 10:55 DEBUG:ELECTION_DATES: reference_files\elections.csv
+2025/03/18 10:55 DEBUG:BASE_DIR: H:\VScode\dashboard_demo
+2025/03/18 10:55 DEBUG:BASE_DIR: H:\VScode\dashboard_demo
+2025/03/18 10:55 DEBUG:donor_map_fname: reference_files\PoliticalDonorsDeduped.zip
+2025/03/18 10:55 DEBUG:donor_map_fname: reference_files\PoliticalDonorsDeduped.zip
+2025/03/18 10:55 DEBUG:party_summary_fname: output\party_summary.zip
+2025/03/18 10:55 DEBUG:party_summary_fname: output\party_summary.zip
+2025/03/18 10:55 DEBUG:cleaned_regentity_fname: output\cleaned_regentity.zip
+2025/03/18 10:55 DEBUG:cleaned_regentity_fname: output\cleaned_regentity.zip
+2025/03/18 10:55 DEBUG:logs_dir: logs
+2025/03/18 10:55 DEBUG:logs_dir: logs
+2025/03/18 10:55 DEBUG:security: {'is_admin': False, 'is_authenticated': False, 'username': '', 'password': ''}
+2025/03/18 10:55 DEBUG:security: {'is_admin': False, 'is_authenticated': False, 'username': '', 'password': ''}
+2025/03/18 10:55 DEBUG:Donor_dedupe_cleaned_fname: reference_files\Donor_dedupe_cleaned_data.zip
+2025/03/18 10:55 DEBUG:Donor_dedupe_cleaned_fname: reference_files\Donor_dedupe_cleaned_data.zip
+2025/03/18 10:55 DEBUG:RERUN_MP_PARTY_MEMBERSHIP: False
+2025/03/18 10:55 DEBUG:RERUN_MP_PARTY_MEMBERSHIP: False
+2025/03/18 10:55 INFO:Session state Setup complete
+2025/03/18 10:55 INFO:Session state Setup complete
+2025/03/18 10:55 INFO:initialize_session_state executed successfully
+2025/03/18 10:55 INFO:initialize_session_state executed successfully
+2025/03/18 10:55 INFO:Package setup complete
+2025/03/18 10:55 INFO:Package setup complete
+2025/03/18 10:55 INFO:setup_package executed successfully
+2025/03/18 10:55 INFO:setup_package executed successfully
+2025/03/18 10:55 INFO:Setup completed successfully.
+2025/03/18 10:55 INFO:Setup completed successfully.
+2025/03/18 10:55 DEBUG:Calling initialise_data with args={args}, kwargs={kwargs}
+2025/03/18 10:55 DEBUG:Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2025/03/18 10:55 DEBUG:Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2025/03/18 10:55 ERROR:Error in initialise_data: 'Logger' object has no attribute '__name__'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 39, in wrapper
+    logger.debug(f"Calling {func.__name__} with"
+AttributeError: 'Logger' object has no attribute '__name__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 43, in <module>
+    def checkdirectory():
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 47, in wrapper
+    logger.error(f"Error in {func.__name__}:"
+AttributeError: 'Logger' object has no attribute '__name__'
+2025/03/18 10:55 CRITICAL:First load crashed: 'Logger' object has no attribute '__name__'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 39, in wrapper
+    logger.debug(f"Calling {func.__name__} with"
+AttributeError: 'Logger' object has no attribute '__name__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 43, in <module>
+    def checkdirectory():
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 47, in wrapper
+    logger.error(f"Error in {func.__name__}:"
+AttributeError: 'Logger' object has no attribute '__name__'
+2025/03/18 10:55 DEBUG:Calling initialise_data with args={args}, kwargs={kwargs}
+2025/03/18 10:55 DEBUG:Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2025/03/18 10:55 DEBUG:Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2025/03/18 10:55 ERROR:Error in initialise_data: 'Logger' object has no attribute '__name__'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 39, in wrapper
+    logger.debug(f"Calling {func.__name__} with"
+AttributeError: 'Logger' object has no attribute '__name__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 43, in <module>
+    def checkdirectory():
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 47, in wrapper
+    logger.error(f"Error in {func.__name__}:"
+AttributeError: 'Logger' object has no attribute '__name__'
+2025/03/18 10:55 CRITICAL:First load crashed: 'Logger' object has no attribute '__name__'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 39, in wrapper
+    logger.debug(f"Calling {func.__name__} with"
+AttributeError: 'Logger' object has no attribute '__name__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 47, in initialise_data
+    from data.data_loader import firstload
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 2, in <module>
+    from data.datasetupandclean import load_raw_data
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 3, in <module>
+    from utils.utils import save_dataframe_to_zip
+  File "H:\VScode\dashboard_demo\utils\utils.py", line 43, in <module>
+    def checkdirectory():
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 47, in wrapper
+    logger.error(f"Error in {func.__name__}:"
+AttributeError: 'Logger' object has no attribute '__name__'

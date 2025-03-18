@@ -1,13 +1,13 @@
-from utils.logger import datapipeline_logger as logger, log_function_call
+from utils.logger import streamlit_logger as logger as logger, log_function_call
 import os
 import csv
 import zipfile
 import io
 import re
 import ast
-import pandas as pd
+import pandas
 import time
-import tqdm
+# import tqdm
 from geopy.exc import GeocoderTimedOut
 from geopy.geocoders import GoogleV3
 from google.cloud import api_keys_v2
@@ -19,7 +19,7 @@ from textblob import TextBlob
 import spacy
 
 # attach tqdm to pandas
-tqdm.pandas
+# tqdm.pandas(desc='Progress')
 
 # Download necessary NLTK resources (if you haven't already)
 nltk.download('stopwords')
@@ -39,7 +39,7 @@ if not api_key:
 geolocator = GoogleV3(api_key=api_key)
 
 
-@log_function_call(logger)
+@log_function_call("StreamlitApp")(logger)
 def checkdirectory():
     current_dir = os.getcwd()
     current_dir
@@ -63,7 +63,7 @@ def checkdirectory():
             print("Current Directory =", current_dir)
 
 
-@log_function_call(logger)
+@log_function_call("StreamlitApp")(logger)
 def save_dataframe_to_zip(df, zip_filename, csv_filename='data.csv'):
     logger.info(f"Saving Df to {zip_filename}")
     """Saves a pandas DataFrame to a zipped CSV file.
@@ -88,7 +88,7 @@ def save_dataframe_to_zip(df, zip_filename, csv_filename='data.csv'):
         zip_file.writestr(csv_filename, csv_buffer.getvalue())
 
 
-@log_function_call(logger)
+@log_function_call("StreamlitApp")(logger)
 def separate_string(input_string):
     # Extract the contents of the brackets
     bracket_content = re.search(r'\((.*?)\)', input_string).group(1)
@@ -98,7 +98,7 @@ def separate_string(input_string):
     return remaining_text, bracket_content
 
 
-@log_function_call(logger)
+@log_function_call("StreamlitApp")(logger)
 def clean_text(text):
     """Cleans the input text."""
     # check that passed text is a string
@@ -166,7 +166,7 @@ def string_to_list(location_str):
         return []
 
 
-@log_function_call(logger)
+@log_function_call("StreamlitApp")(logger)
 def restrict_api_key_server(project_id: str, key_id: str) -> Key:
     """
     Restricts the API key based on IP addresses. You can specify one or
@@ -233,7 +233,7 @@ def classify_media(text):
                   'linkedin': ['linkedin', 'share'],
                   }
     # Handle NaN cases safely
-    if pd.isna(text):
+    if pandas.isna(text):
         return 'text'
     for key, value in media_dict.items():
         # Lowercase to ensure case insensitivity
@@ -244,7 +244,7 @@ def classify_media(text):
 
 
 # Function to get geolocation information
-@log_function_call(logger)
+@log_function_call("StreamlitApp")(logger)
 def get_geolocation_info(location):
     usetimedelay = True
     try:
@@ -286,7 +286,7 @@ def get_geolocation_info(location):
 
 
 # Function to extract geolocation details
-@log_function_call(logger)
+@log_function_call("StreamlitApp")(logger)
 def extract_geolocation_details(address):
     if address:
         address_parts = address.split(', ')
@@ -298,7 +298,7 @@ def extract_geolocation_details(address):
         return None, None, None
 
 
-@log_function_call(logger)
+@log_function_call("StreamlitApp")(logger)
 def extract_locations(text, keyword_processor, nlp):
     """Extracts location names from text using NLP and predefined list."""
     logger.debug("Starting location extraction...")

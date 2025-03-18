@@ -4,7 +4,7 @@ from Visualisations import (
     plot_pie_chart,
     plot_bar_chart
 )
-from utils.logger import log_function_call, logger
+from utils.logger import streamlit_logger as logger, log_functioncall
 from components.calculations import (
     format_number,
     calculate_percentage,
@@ -19,7 +19,7 @@ from components.modular_page_blocks import (
     )
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def hlf_body():
     """
     This function displays the content of Page two.

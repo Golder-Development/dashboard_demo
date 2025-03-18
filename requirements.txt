@@ -13,3 +13,9 @@ pytest
 bcrypt
 pathlib
 packages/pdpy-1.0.tar.gz
+nltk
+spacy
+geopy
+google-cloud-api-keys
+textblob
+en-core-web-sm==3.0.0

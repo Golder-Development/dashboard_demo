@@ -1,12 +1,12 @@
 import streamlit as st
 import plotly.express as px
 from components.ColorMaps import political_colors
-from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
 
 
+@log_function_call("StreamlitApp")
 def plot_bar_line_by_year(
-    graph_df = st.session_state.get("data_clean"),
+    graph_df=st.session_state.get("data_clean"),
     XValues="YearReceived",
     YValues="Value",
     GroupData="RegEntity_Group",
@@ -14,12 +14,13 @@ def plot_bar_line_by_year(
     YLabel="Total Value",
     Title="Donations by Year and Entity Type",
     LegendTitle="Regulated Entity Group",
-    CalcType="sum",  # sum, avg, count, median, max, min, std, var, sem, skew, kurt
+    # sum, avg, count, median, max, min, std, var, sem, skew, kurt
+    CalcType="sum",
     ChartType="Bar",  # Bar or Line
     x_scale="linear",
     y_scale="linear",
     use_custom_colors=False,
-    use_container_width=True,   
+    use_container_width=True,
     percentbars=False,  # Show as percentage of total
     orientation="v",    # 'v' for vertical, 'h' for horizontal bars
     widget_key="graph1",
@@ -28,7 +29,7 @@ def plot_bar_line_by_year(
     barmode="stack",  # Bar chart only - stack or group
     show_legend=True,  # Show legend
     color_map=None,  # Custom color mapping
-    ):
+        ):
 
     if graph_df is None or graph_df.empty:
         st.warning("No data available to plot.")
@@ -107,7 +108,7 @@ def plot_bar_line_by_year(
         filtered_data[YValues] = (
             filtered_data.groupby(XValues)[YValues].transform(
                 lambda x: (x / x.sum()) * 100
-        ))
+            ))
         YLabel = "Percentage of Total (%)"
 
     # Define colors
@@ -151,9 +152,11 @@ def plot_bar_line_by_year(
         xaxis={"type": x_scale},
         yaxis={"type": y_scale if not show_as_percentage else "linear"},
         legend_title=LegendTitle,
-        hovermode="x unified", # Display hover info for all data points at a given x value
+        # Display hover info for all data points at a given x value
+        hovermode="x unified",
         showlegend=True,  # Show legend
-        legend=dict(orientation="h", yanchor="top", y=-0.1, xanchor="center", x=0.5),
+        legend=dict(orientation="h", yanchor="top", y=-0.1,
+                    xanchor="center", x=0.5),
         title=dict(xanchor="center", yanchor="top", x=0.5),
     )
 

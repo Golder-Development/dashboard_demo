@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+from utils.utils import save_dataframe_to_zip
 from components.calculations import determine_groups_optimized
 from utils.logger import (log_function_call,
                           logger,
@@ -7,7 +8,7 @@ from utils.logger import (log_function_call,
 from data.data_utils import try_to_use_preprocessed_data
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def load_donorList_data(main_file="data_clear",
                         cleaned_file="data_donor",
                         streamlitrun=True,
@@ -64,14 +65,15 @@ def load_donorList_data(main_file="data_clear",
     ]
 
     if output_csv:
-        donorlist_df.to_csv(cleaneddatafilepath, index=False)
+        save_dataframe_to_zip(donorlist_df, cleaneddatafilepath, "donorlist.csv")
+        # donorlist_df.to_csv(cleaneddatafilepath, index=False)
         logger.info(f"Donor data saved to {cleaneddatafilepath}")
     logger.info("Donor Data summary completed")
     logger.info(f"Data shape: {donorlist_df.shape}")
     return donorlist_df
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def load_regulated_entity_data(
     main_file="data_clean",
     cleaned_file="data_regentity",
@@ -134,7 +136,8 @@ def load_regulated_entity_data(
     ]
 
     if output_csv:
-        regent_df.to_csv(cleaneddatafilepath, index=False)
+        save_dataframe_to_zip(regent_df, cleaneddatafilepath, "regentity.csv")
+        # regent_df.to_csv(cleaneddatafilepath, index=False)
         logger.info(f"Regulated entity data saved to {cleaneddatafilepath}")
     logger.info("Raw Data cleanup completed")
     logger.info(f"Data shape: {regent_df.shape}")
@@ -143,7 +146,7 @@ def load_regulated_entity_data(
 
 
 @st.cache_data
-@log_function_call
+@log_function_call("StreamlitApp")
 def load_entity_summary_data(
         main_file="raw_data",
         cleaned_file="party_summary_fname",
@@ -205,7 +208,8 @@ def load_entity_summary_data(
 
     # generate CSV file of summary data
     if output_csv:
-        RegulatedEntity_df.to_csv(cleaned_data_file)
+        save_dataframe_to_zip(RegulatedEntity_df, cleaned_data_file, "entity_summary.csv")
+        # RegulatedEntity_df.to_csv(cleaned_data_file)
         logger.info(f"Regulated entity summary saved to {cleaned_data_file}")
     logger.info("Raw Data cleanup completed")
     logger.info(f"Data shape: {RegulatedEntity_df.shape}")

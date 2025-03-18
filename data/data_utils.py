@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import json
 import pandas as pd
-from utils.logger import log_function_call, logger
+from utils.logger import streamlit_logger as logger, log_functioncall
 from data.data_file_defs import (load_source_data,
                                 load_improved_raw_data,
                                 load_cleaned_data,
@@ -10,7 +10,7 @@ from data.data_file_defs import (load_source_data,
                                  )
 
 @st.cache_data
-@log_function_call
+@log_function_call("StreamlitApp")
 def try_to_use_preprocessed_data(originalfilepath,
                                  savedfilepath,
                                  timestamp_key):
@@ -37,7 +37,7 @@ def try_to_use_preprocessed_data(originalfilepath,
 
 
 @st.cache_data
-@log_function_call
+@log_function_call("StreamlitApp")
 def initialise_data():
     """
     initialises data for the app
@@ -76,7 +76,7 @@ def save_last_modified_dates(last_modified_dates):
         json.dump(last_modified_dates, f, indent=4)
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def get_file_modification_time(filepath):
     """Returns the last modification time of the given file."""
     logger.info(f"Getting modification time for {filepath}")
@@ -87,7 +87,7 @@ def get_file_modification_time(filepath):
         return None
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def is_file_updated(main_file, timestamp_key):
     """Checks if the main file has been updated
     since the last recorded timestamp."""

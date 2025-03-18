@@ -1,7 +1,7 @@
 from utils.logger import log_function_call
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def pagesetup():
     # Description: This is the main file to set up the menu
     # from app_pages import introduction

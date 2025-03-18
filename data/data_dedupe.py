@@ -1,14 +1,15 @@
 import pandas as pd
 import streamlit as st
 import os
+from utils.utils import save_dataframe_to_zip
 from rapidfuzz import process, fuzz
 from collections import defaultdict
-from utils.logger import logger, log_function_call
+from utils.logger import log_functioncall, streamlit_logger as logger
 # Import the is_file_updated function
 from data.data_utils import is_file_updated
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def dedupe_entity_file(
     loaddata_dd_df,
     entity,
@@ -123,7 +124,7 @@ def dedupe_entity_file(
     return loaddata_dd_df
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def dedupe_entity_fuzzy(deupedf, entity, threshold=85, output_csv=False):
     """
     Fuzzy deduplication logic that attempts to match similar entity names.
@@ -173,7 +174,8 @@ def dedupe_entity_fuzzy(deupedf, entity, threshold=85, output_csv=False):
         output_df = pd.DataFrame(
             potential_duplicates.items(), columns=[entityid, "Potential Duplicates"]
         )
-        output_df.to_csv(potential_regentity_duplicates_filename, index=False)
+        save_dataframe_to_zip(output_df, potential_regentity_duplicates_filename)
+        # output_df.to_csv(potential_regentity_duplicates_filename, index=False)
 
     # Create mappings for cleansed ID and Name
     id_to_cleansed = {}

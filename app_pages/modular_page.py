@@ -7,11 +7,11 @@ from components.modular_page_blocks import (
     load_and_filter_data,
 )
 from components.text_management import manage_text_elements
-# from utils.logger import logger
+# from utils.logger import streamlit_logger as logger
 from utils.logger import log_function_call  # Import decorator
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def display_data_page(functionname, filter_key, target_label):
     """
     Template function to generate a Streamlit
