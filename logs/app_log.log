@@ -3835,3 +3835,8 @@ AttributeError: st.session_state has no attribute "data_clean". Did you forget t
 2025/03/09 02:10 ERROR:Timestamp key election_dates_last_modified not recognised.
 2025/03/09 02:10 ERROR:Failed to load election dates from file.
 2025/03/09 02:10 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 03:39 ERROR:Session state variables not initialized!
+2025/03/18 03:39 ERROR:Error: originalfilepath is None!
+2025/03/18 03:39 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 03:39 ERROR:Failed to load election dates from file.
+2025/03/18 03:39 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
