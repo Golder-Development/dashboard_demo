@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+from utils.utils import save_dataframe_to_zip
 from data.data_utils import try_to_use_preprocessed_data
 from data.raw_data_clean import raw_data_cleanup
 from utils.logger import (log_function_call,
@@ -7,7 +8,7 @@ from utils.logger import (log_function_call,
                           )
 
 
-@log_function_call
+@log_function_call("StreamlitApp")()
 @st.cache_data
 def load_raw_data(main_file="raw_data",
                   cleaned_file="raw_data_clean",
@@ -105,7 +106,8 @@ def load_raw_data(main_file="raw_data",
         # Save the raw data to session state
         st.session_state.raw_data = loaddata_df
         if output_csv:
-            loaddata_df.to_csv(processeddatafilepath)
+            save_dataframe_to_zip(loaddata_df, processeddatafilepath, "cleaned_donations.csv")
+            # loaddata_df.to_csv(processeddatafilepath)
             logger.info(f"Data saved to {processeddatafilepath}")
         logger.info("Data saved to sessionstate as 'raw_data'")
 

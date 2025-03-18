@@ -2,17 +2,17 @@ import os
 import pandas as pd
 import numpy as np
 import streamlit as st
+from utils.utils import save_dataframe_to_zip
 from data.data_utils import try_to_use_preprocessed_data
-from data.politicalperson import map_mp_to_party
 from components import mappings as mp
 from components import calculations as calc
-from utils.logger import logger, log_function_call
+from utils.logger import log_functioncall, streamlit_logger as logger
 from data.GenElectionRelationship import (
     load_election_dates
     )
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 @st.cache_data
 def load_cleaned_data(
         originaldatafilepath="cleaned_donations_fname",
@@ -289,7 +289,7 @@ def load_cleaned_data(
             loadclean_df, "RegulatedEntityName", "EventCount", thresholds
         )
     logger.debug(f"Clean Data Prep 235: RegEntity_Map: {len(loadclean_df)}")
-    #' Applky Dictionary to populate Party_Group
+    # Apply Dictionary to populate Party_Group
     if "PartyName" in loadclean_df.columns:
         loadclean_df["Party_Group"] = calc.determine_groups_optimized(
             loadclean_df, "PartyName", "EventCount", thresholds
@@ -361,7 +361,7 @@ def load_cleaned_data(
         loadclean_df["Party_Group"].astype("category").cat.codes)
     loadclean_df["RegEntityGrou[Int"] = (
         loadclean_df["RegEntity_Group"].astype("category").cat.codes)
-    
+
     # Column encoding PublicFundsInt
     loadclean_df["PublicFundsInt"] = (
         loadclean_df["DonationType"]
@@ -401,10 +401,10 @@ def load_cleaned_data(
         def get_days_till_next_election(date_series):
             date_series = pd.to_datetime(date_series)
             idx = np.searchsorted(election_dates_asc, date_series, side="left")
-            
+
             # Ensure idx is within valid bounds
             idx = np.clip(idx, 0, len(election_dates_asc) - 1)
-            
+
             # Assign next election date only if idx is valid
             next_election_dates = np.where(idx < len(election_dates_asc),
                                         election_dates_asc.iloc[idx],
@@ -417,10 +417,10 @@ def load_cleaned_data(
         def get_days_since_last_election(date_series):
             date_series = pd.to_datetime(date_series)
             idx = np.searchsorted(election_dates_desc, date_series, side="right") - 1
-            
+
             # Ensure idx is within valid bounds
             idx = np.clip(idx, 0, len(election_dates_desc) - 1)
-            
+
             # Assign last election date only if idx is valid
             last_election_dates = np.where(idx >= 0,
                                         election_dates_desc.iloc[idx],
@@ -487,10 +487,35 @@ def load_cleaned_data(
         ],
         axis=1,
     )
+    # add value indexed to take in RPI
+    # load RPI.csv no header but start import from row 9, set column 1 as date and column 2 as RPI_Index
+    RPI_index = pd.read_csv("reference_files\\RPI.csv", header=None, skiprows=8, names=["ReceivedDate", "RPI_Index"])
+    logger.debug(f"RPI Index on load: {RPI_index.head(10)}")
+    # update date if just a number to be number +" Jan"
+    RPI_index["ReceivedDatee"] = RPI_index["ReceivedDate"].apply(lambda x: str(x) + " Jan" if len(str(x)) == 4 else x)
+    logger.debug(f"RPI Index date update for years only: {RPI_index.head(10)}")
+    # convert date to datetime, current format = YYYY MMM
+    RPI_index["ReceivedDate"] = pd.to_datetime(RPI_index["ReceivedDate"], format='mixed')
+    logger.debug(f"RPI Index date update to datetime: {RPI_index.head(10)}")
+    # from RPI_index set a variable RPI_Start as value for Jan 2000
+    RPI_Start = RPI_index[RPI_index["ReceivedDate"] == "2000-01-01"]["RPI_Index"].values[0]
+    logger.debug(f"RPI Start: {RPI_Start}")
+    # add column with RPI start value, 
+    loadclean_df["RPI_Start"] = RPI_Start
+    # add a column with the correct RPI_index for the date matching on ReceivedDate Year and month only
+    loadclean_df["RPI_Index"] = loadclean_df["ReceivedDate"].apply(lambda x: RPI_index[RPI_index["ReceivedDate"] == x]["RPI_Index"].values[0] if x in RPI_index["ReceivedDate"].values else 0)
+    # add a column with the RPI_Modified_Value = Value * (RPI_Index / RPI_Start)
+    loadclean_df["RPI_Modified_Value"] = loadclean_df["Value"] * (loadclean_df["RPI_Index"] / loadclean_df["RPI_Start"])
+    # print to debug a 10 line sample of date, original valuem RPI_Index and RPI_Modified_Value
+    logger.debug(f"RPI Index: {RPI_index.head(10)}")
+    logger.debug(f"RPI Start: {RPI_Start}")
+    logger.debug(f"RPI Modified Value: {loadclean_df[['ReceivedDate', 'Value', 'RPI_Index', 'RPI_Modified_Value']].head(10)}")
+
     # Save cleaned data
     if output_csv:
         # Save the cleaned data to a CSV file for further analysis or reporting
-        loadclean_df.to_csv(processeddatafilepath)
+        save_dataframe_to_zip(loadclean_df, processeddatafilepath, cleaned_file)
+        # loadclean_df.to_csv(processeddatafilepath)
     logger.info(f"Cleaned Data completed, shape: {loadclean_df.shape}")
     # return the cleaned data
     return loadclean_df

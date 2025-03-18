@@ -13,7 +13,7 @@ st.set_page_config(page_title="Political Party Analysis",
 try:
     import setup
     import politicalpartyanalysis
-    from utils.logger import logger
+    from utils.logger import streamlit_logger as logger
     from data.data_utils import initialise_data
 except ImportError as e:
     raise SystemExit(f"Error: Failed to import modules - {e}")

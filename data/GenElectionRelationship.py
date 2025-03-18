@@ -3,12 +3,12 @@ import datetime as dt
 import bisect
 import streamlit as st
 from pdpy.elections import get_general_elections_dict
-from utils.logger import logger
+from utils.logger import streamlit_logger as logger
 from utils.logger import log_function_call  # Import decorator
 from data.data_utils import try_to_use_preprocessed_data
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 @st.cache_data
 def load_election_dates():
     """Load general election dates into session state."""

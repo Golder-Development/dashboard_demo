@@ -4,10 +4,10 @@ from data.clean_and_enhance import load_cleaned_data
 from data.load_donor_regent_lists import (load_donorList_data,
                                           load_regulated_entity_data
                                           )
-from utils.logger import log_function_call, logger
+from utils.logger import streamlit_logger as logger, log_functioncall
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 @st.cache_data
 def get_raw_data():
     return load_raw_data(
@@ -20,7 +20,7 @@ def get_raw_data():
         processeddatafilepath="imported_raw_fname")
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 @st.cache_data
 def get_cleaned_data():
     return load_cleaned_data(
@@ -33,7 +33,7 @@ def get_cleaned_data():
         cleaned_file="data_clean")
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 @st.cache_data
 def get_donor_data():
     return load_donorList_data(
@@ -45,7 +45,7 @@ def get_donor_data():
         cleaneddatafilepath="cleaned_donorlist_fname")
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 @st.cache_data
 def get_regentity_data():
     return load_regulated_entity_data(
@@ -58,7 +58,7 @@ def get_regentity_data():
         )
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 @st.cache_data
 def firstload():
     def load_data_to_session(key, loader_function):

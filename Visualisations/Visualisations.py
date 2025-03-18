@@ -68,7 +68,7 @@
 #     st.plotly_chart(fig)
 
 
-# @log_function_call
+# @log_function_call("StreamlitApp")
 # def plot_custom_bar_chart(graph_df,
 #                           XValues,
 #                           YValues,
@@ -98,7 +98,7 @@
 #     st.plotly_chart(fig)
 
 
-# @log_function_call
+# @log_function_call("StreamlitApp")
 # def plot_bar_line_by_year(graph_df,
 #                           XValues="Year",
 #                           YValues="Value",

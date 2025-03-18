@@ -1,4 +1,4 @@
-from utils.logger import logger
+from utils.logger import streamlit_logger as logger
 from utils.logger import log_function_call  # Import decorator
 
 

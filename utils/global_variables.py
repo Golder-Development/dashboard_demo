@@ -20,7 +20,7 @@ import os
 """
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def initialize_session_state():
     BASE_DIR = Path(os.getcwd())
     logger.info(f"BASE_DIR: {BASE_DIR}")

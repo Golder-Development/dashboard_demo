@@ -1,11 +1,11 @@
 import streamlit as st
 import pandas as pd
-from utils.logger import logger
+from utils.logger import streamlit_logger as logger
 from utils.logger import log_function_call  # Import decorator
 from components.cleanpoliticalparty import get_party_df_from_pdpy
 
 
-@log_function_call
+@log_function_call("StreamlitApp")
 def map_mp_to_party(loaddata_df):
     # Recollect data from Parliament API
     if st.session_state.RERUN_MP_PARTY_MEMBERSHIP:

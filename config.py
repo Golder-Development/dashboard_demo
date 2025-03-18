@@ -43,12 +43,12 @@ DIRECTORIES_original = {  # "directory_name": "directory_path"
 # File paths
 FILENAMES = {  # "directory" : {"file_name": "file_path"}
     "reference_dir": {
-        "Donor_dedupe_cleaned_fname": "Donor_dedupe_cleaned_data.csv",
+        "Donor_dedupe_cleaned_fname": "Donor_dedupe_cleaned_data.zip",
         "ListofPoliticalPeople_fname": "ListOfPoliticalPeople.csv",
-        "mppartymemb_fname": "mppartymemb_pypd.csv",
-        "donor_map_fname": "PoliticalDonorsDeduped.csv",
-        "politician_party_fname": "ListOfPoliticalPeople_Final.csv",
-        "regentity_map_fname": "PoliticalEntityDeDuped.csv",
+        "mppartymemb_fname": "mppartymemb_pypd.zip",
+        "donor_map_fname": "PoliticalDonorsDeduped.zip",
+        "politician_party_fname": "ListOfPoliticalPeople_Final.zip",
+        "regentity_map_fname": "PoliticalEntityDeDuped.zip",
         "original_data_fname": "original_data.csv",
         "CREDENTIALS_FILE": "admin_credentials.json",
         "TEXT_FILE": "admin_text.json",
@@ -56,12 +56,12 @@ FILENAMES = {  # "directory" : {"file_name": "file_path"}
         "LAST_MODIFIED_DATES": "last_modified_dates.json",
     },
     "output_dir": {
-        "cleaned_data_fname": "cleaned_data.csv",
-        "cleaned_donations_fname": "cleaned_donations.csv",
-        "cleaned_donorlist_fname": "cleaned_donorlist.csv",
-        "cleaned_regentity_fname": "cleaned_regentity.csv",
-        "party_summary_fname": "party_summary.csv",
-        "imported_raw_fname": "imported_raw.csv",
+        "cleaned_data_fname": "cleaned_data.zip",
+        "cleaned_donations_fname": "cleaned_donations.zip",
+        "cleaned_donorlist_fname": "cleaned_donorlist.zip",
+        "cleaned_regentity_fname": "cleaned_regentity.zip",
+        "party_summary_fname": "party_summary.zip",
+        "imported_raw_fname": "imported_raw.zip",
     },
     "source_dir": {
         "source_data_fname": "Donations_accepted_by_political_parties.csv"
