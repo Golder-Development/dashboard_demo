@@ -39,16 +39,6 @@ logger.info("Setup completed successfully.")
 #     st.error(f"App setup failed. Please check logs. {__name__}")
 #     raise SystemExit("App setup failed. Exiting.")
 
-# run political party analysis
-try:
-    logger.info("Running Menu setup...")
-    politicalpartyanalysis.pagesetup()
-    logger.info("Menu setup completed successfully.")
-except Exception as e:
-    logger.critical(f"Menu setup crashed: {e}", exc_info=True)
-    st.error(f"Menu setup failed. Please check logs. {__name__}")
-    raise SystemExit("Menu setup failed. Exiting.")
-
 
 # Run the first load function
 try:
@@ -68,6 +58,18 @@ except Exception as e:
     logger.critical(f"First load crashed: {e}", exc_info=True)
     st.error(f"Data loading failed. Please check logs. {e}")
     raise SystemExit("Data loading failed. Exiting.")
+
+
+# run political party analysis
+try:
+    logger.info("Running Menu setup...")
+    politicalpartyanalysis.pagesetup()
+    logger.info("Menu setup completed successfully.")
+except Exception as e:
+    logger.critical(f"Menu setup crashed: {e}", exc_info=True)
+    st.error(f"Menu setup failed. Please check logs. {__name__}")
+    raise SystemExit("Menu setup failed. Exiting.")
+
 
 logger.info("App is fully loaded and ready!")
 # The app is now ready to be run.
