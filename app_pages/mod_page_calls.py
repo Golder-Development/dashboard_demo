@@ -14,15 +14,14 @@ def mod_visits():
     tab1, tab2 = st.tabs(["Donated Visits", "Donated Visits by.."])
     with tab1:
         display_data_page(functionname="mod_visits",
-                        filter_key="DonatedVisits_ftr",
-                        target_label="Donated Visit")
+                          filter_key="DonatedVisits_ftr",
+                          target_label="Donated Visit")
     with tab2:
         display_per_group_data_page(
             functionname="mod_visits_per_donor",
             filter_key="DonatedVisits_ftr",
             target_label="Donated Visits per Donor",
-            group_entity="Donor")        
-
+            group_entity="Donor")
 
 
 # Donated Sponsorships
@@ -53,7 +52,7 @@ def mod_bequeths():
         display_per_group_data_page(
             functionname="mod_bequeths_per_donor",
             filter_key="Bequests_ftr",
-            target_label="Bequest",
+            target_label="Bequest per Donor",
             group_entity="Donor")
 
 
@@ -80,19 +79,19 @@ def mod_dubious_donations():
         display_data_page(
             functionname="mod_dubious_donations",
             filter_key="DubiousDonations_ftr",
-            target_label="Dubious Donor")
+            target_label="Dubious Donations")
     with tab2:
         display_per_group_data_page(
             functionname="mod_dubious_donations_per_donor",
             filter_key="DubiousDonations_ftr",
             target_label="Dubious Donations per Donor",
             group_entity="Donor")
-        
 
 
 # Donations by Political Party by donor
 def mod_donations_per_political_party():
-    tab1, tab2 = st.tabs(["Donations per Political Party", "Donations per Political Party by.."])
+    tab1, tab2 = st.tabs(["Donations per Political Party",
+                          "Donations per Political Party by.."])
     with tab1:
         display_per_group_data_page(
             functionname="mod_donations_per_political_party",
@@ -105,11 +104,12 @@ def mod_donations_per_political_party():
             filter_key="PoliticalParty_ftr",
             target_label="Donations per Political Party",
             group_entity="Party")
-        
+
 
 # Regulated Entity Donors
 def mod_regulated_donor_per_entity():
-    tab1, tab2 = st.tabs(["Donors per Regulated Entity", "Regulated Entity by Donor"])
+    tab1, tab2 = st.tabs(["Donors per Regulated Entity",
+                          "Regulated Entity by Donor"])
     with tab1:
         display_per_group_data_page(
             functionname="mod_regulated_donor_per_entity",
@@ -120,8 +120,8 @@ def mod_regulated_donor_per_entity():
         display_per_group_data_page(
             functionname="mod_regulated_donor_per_entity",
             filter_key="RegulatedEntity_ftr",
-            target_label="Regulated Entity by Donor",
-            group_entity="Donor")
+            target_label="Regulated Entity by Entity",
+            group_entity="Entity")
 
 
 # Dubious Donors
@@ -174,7 +174,8 @@ def mod_non_cash_donations():
 
 # Public Fund Donation
 def mod_publicfund_donations():
-    Tab1, Tab2 = st.tabs(["Public Fund Donations", "Public Fund Donations by.."])
+    Tab1, Tab2 = st.tabs(["Public Fund Donations",
+                          "Public Fund Donations by.."])
     with Tab1:
         display_data_page(
             functionname="mod_publicfund_donations",

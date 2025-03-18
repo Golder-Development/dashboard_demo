@@ -17,44 +17,53 @@ def display_data_page(functionname, filter_key, target_label):
     Template function to generate a Streamlit
     page for a specific data slice.
     """
-    pageref_label = filter_key + target_label
-    (cleaned_df,
-     cleaned_c_d_df) = load_and_filter_data(filter_key,
-                                            pageref_label)
-    if cleaned_df is None:
-        return
-    (min_date,
-     max_date,
-     tstats,
-     ostats,
-     perc_target) = display_summary_statistics(
-        cleaned_c_d_df,
-        cleaned_df,
-        target_label,
-        pageref_label
-    )
-    perc_target = st.session_state.get("perc_target", 0.5)
-
-    left, right = st.columns(2)
-    with left:
-        display_textual_insights_predefined(
-            pageref_label,
+    tab1, tab2 = st.tabs(["HeadLine Figures", "Topline Graphs"])
+    with tab1:
+        pageref_label = filter_key + target_label
+        (cleaned_df,
+         cleaned_c_d_df) = load_and_filter_data(filter_key,
+                                                pageref_label)
+        if cleaned_df is None:
+            return
+        (min_date,
+         max_date,
+         tstats,
+         ostats,
+         perc_target) = display_summary_statistics(
+            cleaned_c_d_df,
+            cleaned_df,
             target_label,
-            min_date,
-            max_date,
-            tstats,
-            ostats,
-            perc_target
+            pageref_label
         )
-    with right:
-        manage_text_elements(
-            pageref_label,
-        )
-        display_textual_insights_custom(
-            target_label=target_label,
-            pageref_label=pageref_label)
+        perc_target = st.session_state.get("perc_target", 0.5)
 
-    st.write("---")
-    display_visualizations(cleaned_c_d_df,
-                           target_label,
-                           pageref_label)
+        left, right = st.columns(2)
+        with left:
+            display_textual_insights_predefined(
+                pageref_label,
+                target_label,
+                min_date,
+                max_date,
+                tstats,
+                ostats,
+                perc_target
+            )
+        with right:
+            manage_text_elements(
+                pageref_label,
+            )
+            display_textual_insights_custom(
+                target_label=target_label,
+                pageref_label=pageref_label)
+
+    with tab2:
+        """
+        Template function to generate a Streamlit
+        page for a specific data slice.
+        """
+        st.write("---")
+        display_visualizations(cleaned_c_d_df,
+                               target_label,
+                               pageref_label)
+# end of display_data_page
+# PATH: app_pages/modular_page.py

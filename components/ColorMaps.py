@@ -1,5 +1,4 @@
-from utils.logger import logger
-from utils.logger import log_function_call  # Import decorator
+# Description: This file contains the color maps used in the visualizations.
 
 
 political_colors= {
@@ -42,3 +41,6 @@ political_colors= {
     "Single Donation Entity": "#7f7f7f",  # Gray
     "Small Medium Entity": "#17becf",  # Cyan
 }
+
+# End of ColorMaps.py
+# PATH: components/ColorMaps.py

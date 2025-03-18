@@ -21,36 +21,16 @@ def plot_custom_bar_chart(
     x_scale="linear",
     y_scale="linear",
     legend_title=None,
-    use_custom_colors=False,  # Added option for custom colors
+    use_custom_colors=False,
     use_container_width=True,
+    xaxis_sort="value_desc",  # Added option for x-axis sorting
 ):
     """
     Generates an interactive bar chart using Plotly Express
     Parameters:
-    df (pd.DataFrame): DataFrame containing the data.
-    x_column (str): Column for x-axis (categorical variable).
-    y_column (str): Column for y-axis (numerical variable).
-    group_column (str, optional): Column for grouping bars.
-    agg_func (str): Aggregation function ('sum', 'avg', 'count', etc.).
-    title (str): Chart title.
-    x_label (str, optional): X-axis label (defaults to column name).
-    y_label (str, optional): Y-axis label (defaults to column name).
-    orientation (str): 'v' for vertical, 'h' for horizontal bars.
-    barmode (str): 'group' (side-by-side) or 'stack' (stacked bars).
-    color_palette (str): Plotly color scale.
-    key (str, optional): Unique key for Streamlit widgets.
-    x_scale (str): Scale for the x-axis ('linear' or 'log').Type:
-        enumerated , one of
-        ( "-" | "linear" | "log" | "date" | "category" | "multicategory" )
-    y_scale (str): Scale for the y-axis ('linear' or 'log').Type:
-        enumerated , one of
-        ( "-" | "linear" | "log" | "date" | "category" | "multicategory" )
-    use_custom_colors (bool): Whether to apply custom colors from a
-        dictionary.
-    use_container_width (bool): Whether to use full width in Streamlit.
-
-    Returns:
-    None (Displays the chart in Streamlit)
+    ...
+    xaxis_sort (str): Sorting for x-axis ('alphabetic_asc', 'value_desc', 'value_asc').
+    ...
     """
     if graph_df is None or XValues not in graph_df or YValues not in graph_df:
         st.error("Data is missing or incorrect column names provided.")
@@ -91,51 +71,74 @@ def plot_custom_bar_chart(
 
     logger.debug(f"Aggregated DataFrame: {df_agg}")
 
+    # Apply x-axis sorting
+    if xaxis_sort == "alphabetic_asc":
+        df_agg = df_agg.sort_values(by=XValues, ascending=True)
+    elif xaxis_sort == "value_desc":
+        df_agg = df_agg.sort_values(by=YValues, ascending=False)
+    elif xaxis_sort == "value_asc":
+        df_agg = df_agg.sort_values(by=YValues, ascending=True)
+
+    logger.debug(f"Sorted DataFrame: {df_agg}")
+
     color_mapping = political_colors
+
+    # Debugging: Check what values will be mapped
+    logger.debug(f"Unique XValues: {df_agg[XValues].unique()}")
+    if group_column:
+        logger.debug(f"Unique Group Column: {df_agg[group_column].unique()}")
+
+    # Determine which column to apply color mapping to
+    color_column = XValues if group_column is None else group_column
+
     # Determine color mapping
-    if use_custom_colors and group_column:
-        color_discrete_map = {
-            cat: color_mapping.get(cat, "#636efa") for cat in df_agg[group_column]
-        }
-    else:
-        color_discrete_map = None
+    color_discrete_map = {
+        str(cat).strip(): color_mapping.get(str(cat).strip(), "#636efa") for cat in df_agg[color_column].unique()
+    }
+
+    logger.debug(f"Final color_discrete_map: {color_discrete_map}")
 
     # Generate Bar Chart
     fig = px.bar(
         df_agg,
         x=XValues if orientation == "v" else YValues,
         y=YValues if orientation == "v" else XValues,
-        color=group_column if group_column else None,
+        color=color_column,
         barmode=barmode,
         title=title,
         labels={XValues: XLabel or XValues, YValues: YLabel or YValues},
         color_discrete_map=color_discrete_map,
-        color_discrete_sequence=px.colors.qualitative.__dict__.get(
-            color_palette, px.colors.qualitative.Set1
-        ),
+        color_discrete_sequence=color_discrete_map,
         orientation=orientation,
     )
 
+    # Adjust bar width to auto-fill x-axis with a small gap
+    fig.update_traces(width=0.9)
+
+    # Debugging missing mappings
+    missing_keys = [cat for cat in df_agg[XValues].unique() if cat not in color_mapping]
+    logger.debug(f"Missing color mappings for: {missing_keys}")
+
     logger.debug(f"Generated Figure: {fig}")
 
-    # Update layout with axis scale optionslegend_title if legend_title 
-    # else group_column if group_column else "legend"),
+    # Update layout with axis scale options
     fig.update_layout(
         xaxis={"type": x_scale},
         yaxis={"type": y_scale},
-        legend=dict(orientation="h", yanchor="top", y=-0.1, xanchor="center", x=0.5),  # Display in Streamlit
-        legend_title=(legend_title if legend_title else group_column if group_column else "legend"),    
+        legend=dict(orientation="h", yanchor="top", y=-0.1, xanchor="center", x=0.5),
+        legend_title=(legend_title if legend_title else group_column if group_column else "legend"),
         title=dict(xanchor="center", yanchor="top", x=0.5),
         margin=dict(l=0, r=0, t=50, b=0),
     )
-    # Apply formatting to hover text if YValues is Value, then apply format_number and add a £ sign
+
+    # Apply formatting to hover text if YValues is Value
     if YValues == "Value":
         fig.update_traces(
             hovertemplate="<b>%{x}</b><br><br>"
             + YValues
             + ": £%{y:,.0f}<extra></extra>"
         )
-    
+
     # Display in Streamlit
     st.plotly_chart(fig, use_container_width=use_container_width)
     logger.info("Bar chart displayed successfully.")

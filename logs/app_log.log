@@ -4032,3 +4032,768 @@ To fix this error, please pass a unique `key` argument to the `slider` element.
 2025/03/18 04:14 ERROR:Timestamp key election_dates_last_modified not recognised.
 2025/03/18 04:14 ERROR:Failed to load election dates from file.
 2025/03/18 04:14 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 12:56 ERROR:Session state variables not initialized!
+2025/03/18 12:56 ERROR:Error: originalfilepath is None!
+2025/03/18 12:56 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 12:56 ERROR:Failed to load election dates from file.
+2025/03/18 12:56 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 12:57 ERROR:Error in display_per_group_data_page: There are multiple `slider` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `slider` element.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 34, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 218, in load_and_filter_pergroup
+    date_range2 = st.slider(
+  File "H:\python310\lib\site-packages\streamlit\runtime\metrics_util.py", line 409, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\elements\widgets\slider.py", line 502, in slider
+    return self._slider(
+  File "H:\python310\lib\site-packages\streamlit\elements\widgets\slider.py", line 547, in _slider
+    element_id = compute_and_register_element_id(
+  File "H:\python310\lib\site-packages\streamlit\elements\lib\utils.py", line 226, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+  File "H:\python310\lib\site-packages\streamlit\elements\lib\utils.py", line 132, in _register_element_id
+    raise StreamlitDuplicateElementId(element_type)
+streamlit.errors.StreamlitDuplicateElementId: There are multiple `slider` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `slider` element.
+2025/03/18 12:57 CRITICAL:Menu setup crashed: There are multiple `slider` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `slider` element.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 66, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 103, in mod_donations_per_political_party
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 34, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 218, in load_and_filter_pergroup
+    date_range2 = st.slider(
+  File "H:\python310\lib\site-packages\streamlit\runtime\metrics_util.py", line 409, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\elements\widgets\slider.py", line 502, in slider
+    return self._slider(
+  File "H:\python310\lib\site-packages\streamlit\elements\widgets\slider.py", line 547, in _slider
+    element_id = compute_and_register_element_id(
+  File "H:\python310\lib\site-packages\streamlit\elements\lib\utils.py", line 226, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+  File "H:\python310\lib\site-packages\streamlit\elements\lib\utils.py", line 132, in _register_element_id
+    raise StreamlitDuplicateElementId(element_type)
+streamlit.errors.StreamlitDuplicateElementId: There are multiple `slider` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `slider` element.
+2025/03/18 02:33 ERROR:Session state variables not initialized!
+2025/03/18 02:33 ERROR:Error: originalfilepath is None!
+2025/03/18 02:33 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 02:33 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 02:33 ERROR:Failed to load election dates from file.
+2025/03/18 02:33 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 02:58 ERROR:Session state variables not initialized!
+2025/03/18 02:58 ERROR:Error: originalfilepath is None!
+2025/03/18 02:58 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 02:58 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 02:58 ERROR:Failed to load election dates from file.
+2025/03/18 02:58 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 02:58 ERROR:Error in pagesetup: module 'streamlit' has no attribute 'writes'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\introduction.py", line 27, in introduction_body
+    st.writes("* The Eighth section provides details of Visits made by Political "
+AttributeError: module 'streamlit' has no attribute 'writes'
+2025/03/18 02:58 CRITICAL:Menu setup crashed: module 'streamlit' has no attribute 'writes'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 66, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\introduction.py", line 27, in introduction_body
+    st.writes("* The Eighth section provides details of Visits made by Political "
+AttributeError: module 'streamlit' has no attribute 'writes'
+2025/03/18 03:00 ERROR:Session state variables not initialized!
+2025/03/18 03:00 ERROR:Error: originalfilepath is None!
+2025/03/18 03:00 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 03:00 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 03:00 ERROR:Failed to load election dates from file.
+2025/03/18 03:00 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 03:01 ERROR:Error in display_visualizations: There are multiple `plotly_chart` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `plotly_chart` element.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 113, in display_visualizations
+    plot_bar_line.plot_bar_line_by_year(
+  File "H:\VScode\dashboard_demo\Visualisations\plot_bar_line.py", line 169, in plot_bar_line_by_year
+    st.plotly_chart(fig, use_container_width=use_container_width)
+  File "H:\python310\lib\site-packages\streamlit\runtime\metrics_util.py", line 409, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\elements\plotly_chart.py", line 506, in plotly_chart
+    plotly_chart_proto.id = compute_and_register_element_id(
+  File "H:\python310\lib\site-packages\streamlit\elements\lib\utils.py", line 226, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+  File "H:\python310\lib\site-packages\streamlit\elements\lib\utils.py", line 132, in _register_element_id
+    raise StreamlitDuplicateElementId(element_type)
+streamlit.errors.StreamlitDuplicateElementId: There are multiple `plotly_chart` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `plotly_chart` element.
+2025/03/18 03:01 CRITICAL:Menu setup crashed: There are multiple `plotly_chart` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `plotly_chart` element.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 66, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 52, in mod_bequeths
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 70, in display_per_group_data_page
+    display_visualizations(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 113, in display_visualizations
+    plot_bar_line.plot_bar_line_by_year(
+  File "H:\VScode\dashboard_demo\Visualisations\plot_bar_line.py", line 169, in plot_bar_line_by_year
+    st.plotly_chart(fig, use_container_width=use_container_width)
+  File "H:\python310\lib\site-packages\streamlit\runtime\metrics_util.py", line 409, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\elements\plotly_chart.py", line 506, in plotly_chart
+    plotly_chart_proto.id = compute_and_register_element_id(
+  File "H:\python310\lib\site-packages\streamlit\elements\lib\utils.py", line 226, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+  File "H:\python310\lib\site-packages\streamlit\elements\lib\utils.py", line 132, in _register_element_id
+    raise StreamlitDuplicateElementId(element_type)
+streamlit.errors.StreamlitDuplicateElementId: There are multiple `plotly_chart` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `plotly_chart` element.
+2025/03/18 03:02 CRITICAL:Menu setup crashed: There are multiple `plotly_chart` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `plotly_chart` element.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 66, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 52, in mod_bequeths
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 70, in display_per_group_data_page
+    display_visualizations(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 113, in display_visualizations
+    plot_bar_line.plot_bar_line_by_year(
+  File "H:\VScode\dashboard_demo\Visualisations\plot_bar_line.py", line 169, in plot_bar_line_by_year
+    st.plotly_chart(fig, use_container_width=use_container_width)
+  File "H:\python310\lib\site-packages\streamlit\runtime\metrics_util.py", line 409, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\elements\plotly_chart.py", line 506, in plotly_chart
+    plotly_chart_proto.id = compute_and_register_element_id(
+  File "H:\python310\lib\site-packages\streamlit\elements\lib\utils.py", line 226, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+  File "H:\python310\lib\site-packages\streamlit\elements\lib\utils.py", line 132, in _register_element_id
+    raise StreamlitDuplicateElementId(element_type)
+streamlit.errors.StreamlitDuplicateElementId: There are multiple `plotly_chart` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `plotly_chart` element.
+2025/03/18 03:25 ERROR:Session state variables not initialized!
+2025/03/18 03:25 ERROR:Error: originalfilepath is None!
+2025/03/18 03:25 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 03:25 ERROR:Error in load_cleaned_data: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 227, in load_cleaned_data
+    DubiousDonorTypesDS = DubiousDonorTypes.get("DonorStatus")
+AttributeError: 'NoneType' object has no attribute 'get'
+2025/03/18 03:25 CRITICAL:First load crashed: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 66, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 227, in load_cleaned_data
+    DubiousDonorTypesDS = DubiousDonorTypes.get("DonorStatus")
+AttributeError: 'NoneType' object has no attribute 'get'
+2025/03/18 03:27 ERROR:Session state variables not initialized!
+2025/03/18 03:27 ERROR:Error: originalfilepath is None!
+2025/03/18 03:27 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 03:27 ERROR:Error in load_cleaned_data: 'DonorType'
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 3790, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'DonorType'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 252, in load_cleaned_data
+    loadclean_df["DonorType"]
+  File "H:\python310\lib\site-packages\pandas\core\frame.py", line 3896, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 3797, in get_loc
+    raise KeyError(key) from err
+KeyError: 'DonorType'
+2025/03/18 03:27 CRITICAL:First load crashed: 'DonorType'
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 3790, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'DonorType'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 66, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 252, in load_cleaned_data
+    loadclean_df["DonorType"]
+  File "H:\python310\lib\site-packages\pandas\core\frame.py", line 3896, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 3797, in get_loc
+    raise KeyError(key) from err
+KeyError: 'DonorType'
+2025/03/18 03:30 ERROR:Session state variables not initialized!
+2025/03/18 03:30 ERROR:Error: originalfilepath is None!
+2025/03/18 03:30 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 03:30 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 03:30 ERROR:Failed to load election dates from file.
+2025/03/18 03:30 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 03:46 ERROR:Session state variables not initialized!
+2025/03/18 03:46 ERROR:Error: originalfilepath is None!
+2025/03/18 03:46 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 03:46 ERROR:Error in load_cleaned_data: Lengths must be equal
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 287, in load_cleaned_data
+    + (loadclean_df["IsAggregation"].eq(DubiousDonationTypesIA).astype(int))
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 5942, in eq
+    return self._flex_method(
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 5929, in _flex_method
+    raise ValueError("Lengths must be equal")
+ValueError: Lengths must be equal
+2025/03/18 03:46 CRITICAL:First load crashed: Lengths must be equal
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 66, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 287, in load_cleaned_data
+    + (loadclean_df["IsAggregation"].eq(DubiousDonationTypesIA).astype(int))
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 5942, in eq
+    return self._flex_method(
+  File "H:\python310\lib\site-packages\pandas\core\series.py", line 5929, in _flex_method
+    raise ValueError("Lengths must be equal")
+ValueError: Lengths must be equal
+2025/03/18 03:47 ERROR:Session state variables not initialized!
+2025/03/18 03:47 ERROR:Error: originalfilepath is None!
+2025/03/18 03:47 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 03:47 ERROR:Error in load_cleaned_data: 'DonorType'
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 3790, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'DonorType'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 309, in load_cleaned_data
+    loadclean_df["DonorType"].isin(
+  File "H:\python310\lib\site-packages\pandas\core\frame.py", line 3896, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 3797, in get_loc
+    raise KeyError(key) from err
+KeyError: 'DonorType'
+2025/03/18 03:47 CRITICAL:First load crashed: 'DonorType'
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 3790, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'DonorType'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 54, in <module>
+    initialise_data()  # Load the data
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 50, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 78, in firstload
+    load_data_to_session("data_clean", get_cleaned_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 66, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 26, in get_cleaned_data
+    return load_cleaned_data(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\clean_and_enhance.py", line 309, in load_cleaned_data
+    loadclean_df["DonorType"].isin(
+  File "H:\python310\lib\site-packages\pandas\core\frame.py", line 3896, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 3797, in get_loc
+    raise KeyError(key) from err
+KeyError: 'DonorType'
+2025/03/18 03:49 ERROR:Session state variables not initialized!
+2025/03/18 03:49 ERROR:Error: originalfilepath is None!
+2025/03/18 03:49 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 03:49 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 03:49 ERROR:Failed to load election dates from file.
+2025/03/18 03:49 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 04:00 ERROR:Session state variables not initialized!
+2025/03/18 04:00 ERROR:Error: originalfilepath is None!
+2025/03/18 04:00 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 04:00 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 04:00 ERROR:Failed to load election dates from file.
+2025/03/18 04:00 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 04:00 ERROR:Error in pagesetup: invalid syntax (plot_bar_chart.py, line 100)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 10, in pagesetup
+    from app_pages.headlinefigures import hlf_body
+  File "H:\VScode\dashboard_demo\app_pages\headlinefigures.py", line 2, in <module>
+    from Visualisations import (
+  File "H:\VScode\dashboard_demo\Visualisations\plot_bar_chart.py", line 100
+    elif use_custom_colors and not group_column:
+    ^^^^
+SyntaxError: invalid syntax
+2025/03/18 04:00 CRITICAL:Menu setup crashed: invalid syntax (plot_bar_chart.py, line 100)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 66, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 10, in pagesetup
+    from app_pages.headlinefigures import hlf_body
+  File "H:\VScode\dashboard_demo\app_pages\headlinefigures.py", line 2, in <module>
+    from Visualisations import (
+  File "H:\VScode\dashboard_demo\Visualisations\plot_bar_chart.py", line 100
+    elif use_custom_colors and not group_column:
+    ^^^^
+SyntaxError: invalid syntax
+2025/03/18 04:01 ERROR:Session state variables not initialized!
+2025/03/18 04:01 ERROR:Error: originalfilepath is None!
+2025/03/18 04:01 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 04:01 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 04:01 ERROR:Failed to load election dates from file.
+2025/03/18 04:01 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 04:09 ERROR:Session state variables not initialized!
+2025/03/18 04:09 ERROR:Error: originalfilepath is None!
+2025/03/18 04:10 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 04:10 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 04:10 ERROR:Failed to load election dates from file.
+2025/03/18 04:10 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 04:10 ERROR:Error in pagesetup: unmatched ')' (plot_bar_chart.py, line 99)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 10, in pagesetup
+    from app_pages.headlinefigures import hlf_body
+  File "H:\VScode\dashboard_demo\app_pages\headlinefigures.py", line 2, in <module>
+    from Visualisations import (
+  File "H:\VScode\dashboard_demo\Visualisations\plot_bar_chart.py", line 99
+    logger.debug(df_agg[XValues].unique()) if group_column in df_agg else "group_column not found")
+                                                                                                  ^
+SyntaxError: unmatched ')'
+2025/03/18 04:10 CRITICAL:Menu setup crashed: unmatched ')' (plot_bar_chart.py, line 99)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 66, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 10, in pagesetup
+    from app_pages.headlinefigures import hlf_body
+  File "H:\VScode\dashboard_demo\app_pages\headlinefigures.py", line 2, in <module>
+    from Visualisations import (
+  File "H:\VScode\dashboard_demo\Visualisations\plot_bar_chart.py", line 99
+    logger.debug(df_agg[XValues].unique()) if group_column in df_agg else "group_column not found")
+                                                                                                  ^
+SyntaxError: unmatched ')'
+2025/03/18 04:11 ERROR:Session state variables not initialized!
+2025/03/18 04:11 ERROR:Error: originalfilepath is None!
+2025/03/18 04:11 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 04:11 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 04:11 ERROR:Failed to load election dates from file.
+2025/03/18 04:11 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 04:11 ERROR:Error in hlf_body: None
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 3790, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: None
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\headlinefigures.py", line 303, in hlf_body
+    plot_bar_chart.plot_custom_bar_chart(
+  File "H:\VScode\dashboard_demo\Visualisations\plot_bar_chart.py", line 96, in plot_custom_bar_chart
+    logger.debug(f"Unique values - XValues: {(df_agg[XValues].unique()) if group_column in df_agg else 'group_column not found'}, group_column: {(df_agg[group_column].unique()) if XValues in df_agg else 'XValues not found'}")
+  File "H:\python310\lib\site-packages\pandas\core\frame.py", line 3896, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 3797, in get_loc
+    raise KeyError(key) from err
+KeyError: None
+2025/03/18 04:11 CRITICAL:Menu setup crashed: None
+Traceback (most recent call last):
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 3790, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: None
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 66, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\headlinefigures.py", line 303, in hlf_body
+    plot_bar_chart.plot_custom_bar_chart(
+  File "H:\VScode\dashboard_demo\Visualisations\plot_bar_chart.py", line 96, in plot_custom_bar_chart
+    logger.debug(f"Unique values - XValues: {(df_agg[XValues].unique()) if group_column in df_agg else 'group_column not found'}, group_column: {(df_agg[group_column].unique()) if XValues in df_agg else 'XValues not found'}")
+  File "H:\python310\lib\site-packages\pandas\core\frame.py", line 3896, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "H:\python310\lib\site-packages\pandas\core\indexes\base.py", line 3797, in get_loc
+    raise KeyError(key) from err
+KeyError: None
+2025/03/18 04:13 ERROR:Session state variables not initialized!
+2025/03/18 04:13 ERROR:Error: originalfilepath is None!
+2025/03/18 04:14 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 04:14 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 04:14 ERROR:Failed to load election dates from file.
+2025/03/18 04:14 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 04:25 ERROR:Session state variables not initialized!
+2025/03/18 04:25 ERROR:Error: originalfilepath is None!
+2025/03/18 04:25 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 04:25 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 04:25 ERROR:Failed to load election dates from file.
+2025/03/18 04:25 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 04:45 ERROR:Session state variables not initialized!
+2025/03/18 04:45 ERROR:Error: originalfilepath is None!
+2025/03/18 04:46 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/18 04:46 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/18 04:46 ERROR:Failed to load election dates from file.
+2025/03/18 04:46 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/18 04:50 ERROR:Error in display_per_group_data_page: There are multiple `slider` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `slider` element.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 34, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 218, in load_and_filter_pergroup
+    date_range2 = st.slider(
+  File "H:\python310\lib\site-packages\streamlit\runtime\metrics_util.py", line 409, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\elements\widgets\slider.py", line 502, in slider
+    return self._slider(
+  File "H:\python310\lib\site-packages\streamlit\elements\widgets\slider.py", line 547, in _slider
+    element_id = compute_and_register_element_id(
+  File "H:\python310\lib\site-packages\streamlit\elements\lib\utils.py", line 226, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+  File "H:\python310\lib\site-packages\streamlit\elements\lib\utils.py", line 132, in _register_element_id
+    raise StreamlitDuplicateElementId(element_type)
+streamlit.errors.StreamlitDuplicateElementId: There are multiple `slider` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `slider` element.
+2025/03/18 04:50 CRITICAL:Menu setup crashed: There are multiple `slider` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `slider` element.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 66, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 102, in mod_donations_per_political_party
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 34, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 218, in load_and_filter_pergroup
+    date_range2 = st.slider(
+  File "H:\python310\lib\site-packages\streamlit\runtime\metrics_util.py", line 409, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\elements\widgets\slider.py", line 502, in slider
+    return self._slider(
+  File "H:\python310\lib\site-packages\streamlit\elements\widgets\slider.py", line 547, in _slider
+    element_id = compute_and_register_element_id(
+  File "H:\python310\lib\site-packages\streamlit\elements\lib\utils.py", line 226, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+  File "H:\python310\lib\site-packages\streamlit\elements\lib\utils.py", line 132, in _register_element_id
+    raise StreamlitDuplicateElementId(element_type)
+streamlit.errors.StreamlitDuplicateElementId: There are multiple `slider` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `slider` element.
+2025/03/18 04:50 CRITICAL:Menu setup crashed: There are multiple `slider` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `slider` element.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 66, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 102, in mod_donations_per_political_party
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 34, in display_per_group_data_page
+    ) = load_and_filter_pergroup(
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 218, in load_and_filter_pergroup
+    date_range2 = st.slider(
+  File "H:\python310\lib\site-packages\streamlit\runtime\metrics_util.py", line 409, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\elements\widgets\slider.py", line 502, in slider
+    return self._slider(
+  File "H:\python310\lib\site-packages\streamlit\elements\widgets\slider.py", line 547, in _slider
+    element_id = compute_and_register_element_id(
+  File "H:\python310\lib\site-packages\streamlit\elements\lib\utils.py", line 226, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+  File "H:\python310\lib\site-packages\streamlit\elements\lib\utils.py", line 132, in _register_element_id
+    raise StreamlitDuplicateElementId(element_type)
+streamlit.errors.StreamlitDuplicateElementId: There are multiple `slider` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `slider` element.

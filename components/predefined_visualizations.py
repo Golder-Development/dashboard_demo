@@ -1,6 +1,6 @@
 from Visualisations import plot_bar_line, plot_bar_chart
-from components.ColorMaps import political_colors
 import streamlit as st
+
 
 def display_donations_by_entity(cleaned_c_d_df):
     if cleaned_c_d_df.empty:

@@ -219,64 +219,99 @@ def load_cleaned_data(
             " be initialized before use."
         )
 
+    # load dubioud donor criteria
+    DubiousDonorTypes = (
+        st.session_state["filter_def"].get("DubiousDonorTypes_ftr")
+    )
+    # Get list of DonorStatus filter from DubiousDonorTypes
+    DubiousDonorTypesDS = DubiousDonorTypes.get("DonorStatus")
+    # Get list of DonorName filter from DubiousDonorTypes
+    DubiousDonorTypesDN = DubiousDonorTypes.get("DonorName")
+    # Get list of DonorId filter from DubiousDonorTypes
+    DubiousDonorTypesDI = DubiousDonorTypes.get("DonorId")
+    # Get list of NatureOfDonation filter from DubiousDonorTypes
+    DubiousDonorTypesND = DubiousDonorTypes.get("NatureOfDonation")
+    # Get list of DonationType filter from DubiousDonorTypes
+    DubiousDonorTypesDT = DubiousDonorTypes.get("DonationType")
+
     # Extend dubious donor criteria using session state variables
     loadclean_df["DubiousDonor"] = (
-        (loadclean_df["DonorId"].eq(st.session_state
-                                    .get("PLACEHOLDER_ID")).astype(int))
-        + (
+        (
+            loadclean_df["DonorId"]
+            .isin(DubiousDonorTypesDI)
+            .astype(int)
+            )
+        +
+        (
             loadclean_df["DonorName"]
-            .isin(["Unidentified Donor", "Anonymous Donor"])
+            .isin(DubiousDonorTypesDN)
             .astype(int)
-        )
-        + (
+           )
+        +
+        (
             loadclean_df["DonationType"]
-            .isin(["Unidentified Donor", "Impermissible Donor"])
+            .isin(DubiousDonorTypesDT)
             .astype(int)
-        )
+            )
+        + 
+        (
+            loadclean_df["DonorStatus"]
+            .isin(DubiousDonorTypesDS)
+            .astype(int)
+            )
+        +
+        (
+            loadclean_df["NatureOfDonation"]
+            .isin(DubiousDonorTypesND)
+            .astype(int)
+            )
+        
     )
+    # Extend dubious donation criteria using session state variables
     DubiousDonationTypes = (
         st.session_state["filter_def"].get("DubiousDonationType_ftr")
     )
+    # load dubious donation criteria
+    DubiousDonationTypesND = DubiousDonationTypes.get("NatureOfDonation")
+    DubiousDonationTypesDT = DubiousDonationTypes.get("DonationType")
+    DubioudDonationTypesDA = DubiousDonationTypes.get("DonationAction")
+    DubiousDonationTypesREI = DubiousDonationTypes.get("RegulatedEntityId")
+    DubiousDonationTypesREN = DubiousDonationTypes.get("RegulatedEntityName")
+    DubiousDonationTypesIA = DubiousDonationTypes.get("IsAggregation")
+    DubiousDonationTypesRD = DubiousDonationTypes.get("ReceivedDate")
+        
     loadclean_df["DubiousData"] = (
         loadclean_df["DubiousDonor"]
-        + (loadclean_df["DonationType"].isin(DubiousDonationTypes).astype(int))
-        + loadclean_df["DonationAction"].ne("Accepted").astype(int)
-        + loadclean_df["IsAggregation"].eq("True").astype(int)
+        + (loadclean_df["DonationType"].isin(DubiousDonationTypesDT).astype(int))
+        + (loadclean_df["DonationAction"].isin(DubioudDonationTypesDA).astype(int))
+        + (loadclean_df["IsAggregation"].isin(DubiousDonationTypesIA).astype(int))
         + (loadclean_df["NatureOfDonation"]
-            .eq("Aggregated Donation").astype(int))
+            .isin(DubiousDonationTypesND).astype(int))
         + (
             loadclean_df["ReceivedDate"]
-            .eq(st.session_state.get("PLACEHOLDER_DATE"))
+            .isin(DubiousDonationTypesRD)
             .astype(int)
         )
         + (
             loadclean_df["RegulatedEntityId"]
-            .eq(st.session_state.get("PLACEHOLDER_ID"))
+            .isin(DubiousDonationTypesREI)
             .astype(int)
         )
         + (loadclean_df["RegulatedEntityName"]
-           .eq("Unidentified Entity").astype(int))
-        + (
-            loadclean_df["DonorId"]
-            .eq(st.session_state.get("PLACEHOLDER_ID"))
-            .astype(int)
-        )
-        + loadclean_df["DonorName"].eq("Unidentified Donor").astype(int)
-        - (
-            loadclean_df["DonorStatus"]
-            .isin(st.session_state["filter_def"].get("SafeDonors_ftr"))
-            .astype(int)
-        )  # Safe donors should be excluded
+           .isin(DubiousDonationTypesREN).astype(int))
         - (
             (
-                (loadclean_df["IsAggregation"].eq("True"))
+                (loadclean_df["IsAggregation"].eq(True) |
+                 loadclean_df["DonationType"].eq("Aggregated Donation") |
+                    loadclean_df["NatureOfDonation"].eq("Aggregated Donation") 
+                )
                 & (
                     loadclean_df["DonorStatus"].isin(
                         st.session_state["filter_def"].get("SafeDonors_ftr")
                     )
                 )
             ).astype(int)
-        )  # Fixing subtraction
+        )
     )
 
     # if "DubiousData" is less than 0, set it to 0

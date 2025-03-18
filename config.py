@@ -121,13 +121,36 @@ FILTER_DEF = {  # "filter_name": {"column_name": "value"}
         "DonationType": "Aggregated Donation",
     },
     "SafeDonors_ftr": {
-        "DonorType": [
+        "DonorStatus": [
             "Trade Union",
             "Registered Political Party",
             "Friendly Society",
             "Public Fund",
         ]
     },
+    "DubiousDonorTypes_ftr": {
+        "DonorStatus": ["Impermissible Donor",
+                        "Unidentified Donor",
+                        "Unidentifiable Donor",
+                        "Anonymous Donor",
+                        ],
+        "DonorName": ["Impermissible Donor",
+                      "Unidentified Donor",
+                      "Unidentifiable Donor",
+                      "Anonymous Donor",
+                     ],
+        "NatureOfDonation": ["Impermissible Donor",
+                             "Unidentified Donor",
+                             "Unidentifiable Donor",
+                             "Anonymous Donor",
+                            ],
+        "DonorId": [1000001],
+        "DonationType": ["Impermissible Donor",
+                         "Unidentified Donor",
+                         "Unidentifiable Donor",
+                         "Anonymous Donor",
+                        ],
+        },
     "DubiousDonationType_ftr": {
         "NatureOfDonation": [
             "Impermissible Donor",
@@ -135,10 +158,19 @@ FILTER_DEF = {  # "filter_name": {"column_name": "value"}
             "Total value of donations not reported individually",
             "Aggregated Donation",
         ],
-        "DonorStatus": ["Impermissible Donor",
-                        "Unidentified Donor",
-                        "Unidentifiable Donor"
-                        ],
+        "DonationType": [
+            "Aggregated Donation"]
+        ,
+        "IsAggregation": [True],
+        "ReceivedDate": ["PLACEHOLDER_DATE", None],
+        "RegulatedEntityId": [1000001],
+        "RegulatedEntityName": [
+                                "Unidentified Entity",
+                                "Unidentifiable Entity",
+                                "Unknown Entity",
+                                ],
+        "DonationAction": ["Returned", "Forfeited"],
+        "IsAggregation": [True],
     },
     "BlankDate_ftr": {"ReceivedDate": ["PLACEHOLDER_DATE", None]},
     "BlankDonor_ftr": {"DonorId": [1000001]},
@@ -167,6 +199,7 @@ FILTER_DEF = {  # "filter_name": {"column_name": "value"}
                                               "Bequest",
                                               "Sponsorship",]},
 }
+
 SECURITY = {  # "security_variable": "security_value"
     "is_admin": False,
     "is_authenticated": False,

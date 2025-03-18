@@ -34,7 +34,7 @@ def pagesetup():
     app.add_page("Cash Donations", mod_cash_donations)
     app.add_page("Non Cash Donations", mod_non_cash_donations)
     app.add_page("Public Fund Donations", mod_publicfund_donations)
-    app.add_page("Bequeths", mod_bequeths)
+    app.add_page("Bequests", mod_bequeths)
     app.add_page("Corporate Donations", mod_corporate_donations)
     app.add_page("Sponsorships", mod_sponsorships)
     app.add_page("Paid Visits", mod_visits)

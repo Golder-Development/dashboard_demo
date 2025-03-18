@@ -10,7 +10,6 @@ from components.calculations import (
     calculate_percentage,
     get_top_or_bottom_entity_by_column,
     calculate_agg_by_variable,
-    get_value_total,
     compute_summary_statistics
     )
 from components.modular_page_blocks import (
@@ -24,22 +23,30 @@ def hlf_body():
     """
     This function displays the content of Page two.
     """
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(["HeadLine Figures", "Topline Graphs", "More Graphs", "Pie Charts", "Avg Donations"])
+    (tab1,
+     tab2,
+     tab3,
+     tab4,
+     tab5) = st.tabs(["HeadLine Figures",
+                      "Topline Graphs",
+                      "More Graphs",
+                      "Pie Charts",
+                      "Avg Donations"])
     filter_key = None
     # Load and filter data
     with tab1:
         cleaned_df, filtered_df = (
             load_and_filter_data(filter_key=filter_key,
-                                pagereflabel="headlinefigures"))
+                                 pagereflabel="headlinefigures"))
         if cleaned_df is None or filtered_df is None:
             logger.error("Data not loaded or filtered")
             return
         # Display summary statistics
         (min_date_df,
-        max_date_df,
-        tstats,
-        ostats,
-        perc_target) = display_summary_statistics(
+         max_date_df,
+         tstats,
+         ostats,
+         perc_target) = display_summary_statistics(
             filtered_df,
             cleaned_df,
             "Political Donations",
@@ -48,32 +55,32 @@ def hlf_body():
 
         # # Get the regulated entity with the greatest value of donations
         top_entity, top_value = get_top_or_bottom_entity_by_column(
-            df=filtered_df, column="PartyName", value_column="Value", top=True)
+            df=filtered_df, column="PartyName",
+            value_column="Value", top=True)
         # Get the regulated entity with the greatest number of donations
         top_entity_ct, top_donations = get_top_or_bottom_entity_by_column(
-            df=filtered_df, column="PartyName", value_column="EventCount", top=True)
+            df=filtered_df, column="PartyName",
+            value_column="EventCount", top=True)
         # Get the donation type with the greatest number of donations
         top_dontype_ct, top_dontype_dons = get_top_or_bottom_entity_by_column(
-            df=filtered_df, column="DonationType", value_column="EventCount", top=True)
+            df=filtered_df, column="DonationType",
+            value_column="EventCount", top=True)
         # Get the donation type with the greatest value of donations
         top_dontype, top_dontype_value = get_top_or_bottom_entity_by_column(
-            df=filtered_df, column="DonationType", value_column="Value", top=True)
+            df=filtered_df, column="DonationType",
+            value_column="Value", top=True)
         # calculate the percentage of donations and value for political parties
-        top_entity_value_percent = calculate_percentage(top_value,
-                                                        tstats["total_value"])
-        top_entity_dons_percent = calculate_percentage(top_donations,
-                                                    tstats["unique_donations"])
-        top_dontype_value_percent = calculate_percentage(top_dontype_value,
-                                                        tstats["total_value"])
-        top_dontype_dons_percent = calculate_percentage(top_dontype_dons,
-                                                        tstats["unique_donations"])
+        top_dontype_value_percent = (
+            calculate_percentage(top_dontype_value, tstats["total_value"]))
+        top_dontype_dons_percent = (
+            calculate_percentage(top_dontype_dons, tstats["unique_donations"]))
         st.write("---")
         st.write("### Headline Figures")
         col1, col2 = st.columns(2)
         with col1:
-            st.write(f"* During the period from {min_date_df} to {max_date_df} "
-                    f"{tstats['unique_reg_entities']:,.0f} regulated political "
-                    "bodies received donations.")
+            st.write(f"* During the period {min_date_df} to {max_date_df} "
+                     f"{tstats['unique_reg_entities']:,.0f} regulated "
+                     "political bodies received donations.")
             st.write(
                 "* These had a total value of "
                 f"£{format_number(tstats['total_value'])} "
@@ -120,18 +127,19 @@ def hlf_body():
                     sde_stats["total_value"], tstats["total_value"]
                 )
                 single_donation_entity_percent = calculate_percentage(
-                    sde_stats["unique_reg_entities"], tstats["unique_reg_entities"]
+                    sde_stats["unique_reg_entities"],
+                    tstats["unique_reg_entities"]
                 )
                 st.write(
                     f"* {sde_stats['unique_donations']} of the"
                     " donations were to entities "
                     "that only received one donation. "
                     "These donations represented "
-                    f"{single_donation_percent:.2f}% of all donations, were worth "
-                    f" £{format_number(sde_stats['total_value'])} or "
+                    f"{single_donation_percent:.2f}% of all donations, were "
+                    f" worth £{format_number(sde_stats['total_value'])} or "
                     f"{single_donation_entity_value_percent:.2f}% of"
-                    " the total value"
-                    f"of donations and were {single_donation_entity_percent:.0f}"
+                    " the total value of donations"
+                    f" and were {single_donation_entity_percent:.0f}"
                     "% ofthe regulated entities."
                 )
         with col2:
@@ -141,9 +149,10 @@ def hlf_body():
                 f"donations and were {top_dontype_value_percent:.2f}% "
                 f"of the total value of donations.")
             st.write(
-                f"* The {top_entity} received the most donations by value, with "
-                f"a total value of £{format_number(top_value)} or "
-                f"{top_value/tstats['total_value']*100:.2f}% of all donations.")
+                f"* The {top_entity} received the most donations by value, "
+                f"with a total value of £{format_number(top_value)} or "
+                f"{top_value/tstats['total_value']*100:.2f}% "
+                "of all donations.")
             st.write(
                 f"* The {top_entity_ct} received the most donations by count, "
                 f"having {top_donations:,.0f} donations which represented "
@@ -176,6 +185,9 @@ def hlf_body():
                     by=["YearReceived", "DubiousData"],
                     ascending=[True, False]
                 )
+                filtered_df_sort = filtered_df_sort[
+                    filtered_df_sort["DubiousData"] > 0
+                ]  
                 filtered_df_sort = filtered_df_sort.rename(
                     columns={"DubiousData": "Data Safety Score"}
                 )
@@ -281,7 +293,8 @@ def hlf_body():
             agg_type="mean",
             agg_name="Average Donation"
         )
-        # display the average donation per entity on a graph showing the top 10 and variance from the mean
+        # display the average donation per entity on a
+        # graph showing the top 10 and variance from the mean
         with col1:
             if filtered_df.empty:
                 st.write("No data available for the selected filters.")
@@ -295,7 +308,7 @@ def hlf_body():
                     barmode="group",
                     orientation="v",
                     agg_func="avg",
-                    use_custom_colors=False,
+                    use_custom_colors=True,
                     title="Average Donation per Party",
                     XLabel="Political Party",
                     YLabel="Average Donation GBP",
@@ -307,10 +320,12 @@ def hlf_body():
             # diplay a table of the data
             st.write("### Average Donation per Party")
             avg_donation_sorted = (
-                avg_donation.sort_values(by="Average Donation", ascending=False).head(10))
+                avg_donation.sort_values(by="Average Donation",
+                                         ascending=False).head(10))
             avg_donation_sorted["Average Donation"] = (
-                avg_donation_sorted["Average Donation"].apply(lambda x: f"£{format_number(x)}"))
+                avg_donation_sorted["Average Donation"]
+                .apply(lambda x: f"£{format_number(x)}"))
             st.dataframe(avg_donation_sorted, hide_index=True)
         st.write("---")
-
-
+# End of hlf_body function
+# Path: app_pages/headlinefigures.py

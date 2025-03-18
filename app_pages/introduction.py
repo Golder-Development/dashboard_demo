@@ -12,27 +12,43 @@ def introduction_body():
              "Political donations in the United Kingdom.")
     st.write("* The first section of this dashboard provides an overview of "
              "the whole dataset.")
-    st.write("* The Second section provides information of donations that are "
-             "considered dubious.  This includes donations with missing dates,"
-             " missing donor names and donations that are considered to be "
-             "from dubious donors or where the donor is not identifiable. ")
+    st.write("* The Second section provides information "
+             "of cash donations made "
+             "to Political Parties during the period.  This is the largest "
+             "category of donations in the dataset.")
     st.write("* The Third section provides details of a subset of the data "
-             "focusing on the Cash donations to Politcal Parties, excluding"
-             " donations by the parties to other political actors and "
-             " campaigns.  It also summarises the data to focus on the top "
-             " parties creating summary groups for the rest.")
-    st.write("* The Fourth section provides a summary of sponsorships made "
+             "focusing on the Non Cash donations to Politcal Parties.")
+    st.write("* The Fourth section provides a summary of Public Funds donated "
              "to Political Partys.")
-    st.write("* The Fifth section provides a look at the paid visits donated"
-             " to Political Parties.")
-    st.write("* The Sixth section provides a look at the activity levels of"
-             " donors to Political Parties, and offers a way to look at"
-             " the activity levels of particular donors to different parties.")
-    st.write("* The Seventh section provides details on the data sources used"
-             " how it was cleaned and prepared for analysis/visualization."
-             " It also provides a link to the original data source,"
-             " and outlines any assumptions made in the data preparation "
-             " and analysis.")
-    st.write("* You should be able to access the code through the github link"
-             " at the top of the page.")
+    st.write("* The Fifth section provides a look at donations from Bequests.")
+    st.write("* The Sixth section covers donations from Corporate Entities, "
+             "Limited Liability Partnerships and Unincorporated Associations.")
+    st.write("* The Seventh section lookgs at donations made as Sponsorships. "
+             " These come from various sources and are not always financial.")
+    st.write("* The Eighth section provides details of Visits"
+             " made by Political "
+              "Entities that were funded by a third party.")
+    st.write("* The Ninth section provides details of donations that were "
+             "made by Dubioud Donors that have been identified as such by the "
+             "Regulatory, it also includes large aggregated donations from "
+             "Unregulated entities.")
+    st.write("* In the tenth section, we look at donations that"
+             " were identified as "
+             "dubious in nature, this can be due to missing information or "
+             "donations where the donor can not be identified. "
+             " Not all of these "
+             "are dubious, but they would need investigation to confirm their "
+             "status and so a better classification is Possibly Dubious.")
+    st.write("* The Eleventh section provides a way to look at"
+             " donations made to "
+             "specific Regulated Entities, and provides details"
+             " on all donations received.")
+    st.write("* The Twelfth section is a narative on the data"
+             " and how it was manipulated, "
+             "cleaned and prepared for analysis.  Along with any"
+             " assumptions and links "
+             "to the underlying code and related sites.")
+    st.write("* The login and logout are for maintenance purposes only.")
     st.write("---")
+# End of introduction.py
+# PATH: app_pages/headlinefigures.py
