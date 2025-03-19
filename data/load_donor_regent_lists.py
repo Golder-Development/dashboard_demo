@@ -142,7 +142,7 @@ def load_regulated_entity_data(
     return regent_df
 
 
-@st.cache_data
+
 @log_function_call
 def load_entity_summary_data(
         main_file="raw_data",

@@ -8,6 +8,9 @@ import os
 # Set the page config at the very beginning of the script
 st.set_page_config(page_title="Political Party Analysis",
                    layout="wide")
+# force data reload if the app has not be run in last 2 hours
+
+
 
 # import local modules
 try:

@@ -59,7 +59,6 @@ def get_regentity_data():
 
 
 @log_function_call
-@st.cache_data
 def firstload():
     def load_data_to_session(key, loader_function):
         if key not in st.session_state:

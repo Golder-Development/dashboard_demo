@@ -8,7 +8,6 @@ from utils.logger import (log_function_call,
 
 
 @log_function_call
-@st.cache_data
 def load_raw_data(main_file="raw_data",
                   cleaned_file="raw_data_clean",
                   output_csv=True,

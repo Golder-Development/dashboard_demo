@@ -36,7 +36,7 @@ def try_to_use_preprocessed_data(originalfilepath,
     return None
 
 
-@st.cache_data
+
 @log_function_call
 def initialise_data():
     """

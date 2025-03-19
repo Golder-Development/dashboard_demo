@@ -13,7 +13,6 @@ from data.GenElectionRelationship import (
 
 
 @log_function_call
-@st.cache_data
 def load_cleaned_data(
         originaldatafilepath="cleaned_donations_fname",
         processeddatafilepath="cleaned_data_fname",
