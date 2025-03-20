@@ -11,7 +11,6 @@ st.set_page_config(page_title="Political Party Analysis",
 # force data reload if the app has not be run in last 2 hours
 
 
-
 # import local modules
 try:
     import setup
@@ -37,26 +36,14 @@ else:
 logger.info("Running App setup...")
 setup.setup_package()
 logger.info("Setup completed successfully.")
-# except Exception as e:
-#     logger.critical(f"App setup crashed: {e}", exc_info=True)
-#     st.error(f"App setup failed. Please check logs. {__name__}")
-#     raise SystemExit("App setup failed. Exiting.")
 
 
 # Run the first load function
 try:
     # Create a loading message
-    loading_message = st.empty()
-    # Display a loading message
-    loading_message.markdown(
-        "<h3 style='text-align: center; color: blue;'>"
-        "Please wait while the data sets are being "
-        "calculated...</h3>",
-        unsafe_allow_html=True,
-    )
-    initialise_data()  # Load the data
+    with st.spinner("Loading data..."):
+        initialise_data()  # Load the data
     # Clear the loading message
-    loading_message.empty()
 except Exception as e:
     logger.critical(f"First load crashed: {e}", exc_info=True)
     st.error(f"Data loading failed. Please check logs. {e}")

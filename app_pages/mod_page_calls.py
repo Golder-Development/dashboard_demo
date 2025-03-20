@@ -90,20 +90,12 @@ def mod_dubious_donations():
 
 # Donations by Political Party by donor
 def mod_donations_per_political_party():
-    tab1, tab2 = st.tabs(["Donations per Political Party",
-                          "Donations per Political Party by.."])
-    with tab1:
         display_per_group_data_page(
             functionname="mod_donations_per_political_party",
             filter_key="PoliticalParty_ftr",
             target_label="Donations per Political Party",
             group_entity="Donor")
-    with tab2:
-        display_per_group_data_page(
-            functionname="mod_donations_per_political_party",
-            filter_key="PoliticalParty_ftr",
-            target_label="Donations per Political Party",
-            group_entity="Party")
+
 
 
 # Regulated Entity Donors
