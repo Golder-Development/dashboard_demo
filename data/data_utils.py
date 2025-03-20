@@ -42,7 +42,6 @@ def initialise_data():
     """
     initialises data for the app
     """
-
     # import the firstload function
     from data.data_loader import firstload
     # Load the data
