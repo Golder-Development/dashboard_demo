@@ -184,7 +184,9 @@ def display_textual_insights_custom(pageref_label, target_label):
             continue  # ✅ Skip deleted texts
 
         # Display text for all users
-        st.write(f"**{text_key}:** {text_value}")
+        st.markdown("---")
+        st.markdown(f"### {text_key}")
+        st.write(f"* {text_value}")
 
         # ✅ Check admin status safely
         is_admin = st.session_state.get("security", {}).get("is_admin", False)

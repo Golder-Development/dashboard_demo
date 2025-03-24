@@ -1,0 +1,12 @@
+2025/03/23 06:54 ERROR:Session state variables not initialized!
+2025/03/23 06:54 ERROR:Error: originalfilepath is None!
+2025/03/23 06:54 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/23 06:54 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/23 06:54 ERROR:Failed to load election dates from file.
+2025/03/23 06:54 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/23 07:02 ERROR:Session state variables not initialized!
+2025/03/23 07:02 ERROR:Error: originalfilepath is None!
+2025/03/23 07:02 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/23 07:02 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/23 07:02 ERROR:Failed to load election dates from file.
+2025/03/23 07:02 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
