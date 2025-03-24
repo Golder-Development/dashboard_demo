@@ -3,7 +3,7 @@ import json
 import os
 import bcrypt
 from utils.global_variables import initialize_session_state
-from utils.logger import log_function_call  # Import decorator
+from utils.logger import log_function_call, logger  # Import decorator
 
 
 # File paths
@@ -40,6 +40,7 @@ def check_password(username, password):
 # Function to load text for a specific page
 def load_page_text(pageref_label):
     """Loads text elements for a specific page and ensures correct structure."""
+    pageref_label = f"{pageref_label}_ti"
     all_texts = load_all_text()
     page_texts = all_texts.get(pageref_label, {})
 
@@ -142,7 +143,7 @@ def load_and_prepare_texts(pageref_label):
 
     return page_texts
 
-
+@log_function_call
 def manage_text_elements(pageref_label):
     """Displays text elements for a page with admin controls (if logged in)."""
     pageref_label_ti = f"{pageref_label}_ti"
@@ -160,7 +161,7 @@ def manage_text_elements(pageref_label):
     # ✅ If user is NOT admin, stop here (No edit controls)
     if not st.session_state.security.get("is_admin", False):
         if not page_texts:
-            st.info("No text elements available.")
+            logger.debug("Not logged in as admin.")
             return  # ✅ Skip the rest of the function
         else:
             return

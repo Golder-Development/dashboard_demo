@@ -79,7 +79,7 @@ def mod_dubious_donations():
         display_data_page(
             functionname="mod_dubious_donations",
             filter_key="DubiousDonations_ftr",
-            target_label="Dubious Donations")
+            target_label="Dubious Donation")
     with tab2:
         display_per_group_data_page(
             functionname="mod_dubious_donations_per_donor",
