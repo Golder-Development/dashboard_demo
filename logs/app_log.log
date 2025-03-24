@@ -10,3 +10,141 @@
 2025/03/23 07:02 ERROR:Timestamp key election_dates_last_modified not recognised.
 2025/03/23 07:02 ERROR:Failed to load election dates from file.
 2025/03/23 07:02 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/24 08:14 ERROR:Session state variables not initialized!
+2025/03/24 08:14 ERROR:Error: originalfilepath is None!
+2025/03/24 08:14 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/24 08:14 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/24 08:14 ERROR:Failed to load election dates from file.
+2025/03/24 08:14 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/24 08:16 ERROR:Session state variables not initialized!
+2025/03/24 08:16 ERROR:Error: originalfilepath is None!
+2025/03/24 08:16 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/24 08:16 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/24 08:16 ERROR:Failed to load election dates from file.
+2025/03/24 08:16 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/24 08:21 ERROR:Session state variables not initialized!
+2025/03/24 08:21 ERROR:Error: originalfilepath is None!
+2025/03/24 08:21 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/03/24 08:21 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/03/24 08:21 ERROR:Failed to load election dates from file.
+2025/03/24 08:21 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/03/24 08:27 ERROR:Error in display_textual_insights_custom: There are multiple `text_input` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `text_input` element.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 176, in display_textual_insights_custom
+    manage_text_elements(
+  File "H:\VScode\dashboard_demo\components\text_management.py", line 209, in manage_text_elements
+    new_key = st.text_input("New Text Element Name:")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\metrics_util.py", line 410, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\elements\widgets\text_widgets.py", line 236, in text_input
+    return self._text_input(
+           ^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\elements\widgets\text_widgets.py", line 284, in _text_input
+    element_id = compute_and_register_element_id(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\elements\lib\utils.py", line 241, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\elements\lib\utils.py", line 147, in _register_element_id
+    raise StreamlitDuplicateElementId(element_type)
+streamlit.errors.StreamlitDuplicateElementId: There are multiple `text_input` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `text_input` element.
+2025/03/24 08:27 CRITICAL:Menu setup crashed: There are multiple `text_input` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `text_input` element.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 144, in mod_cash_donations
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 65, in display_per_group_data_page
+    display_textual_insights_custom(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 176, in display_textual_insights_custom
+    manage_text_elements(
+  File "H:\VScode\dashboard_demo\components\text_management.py", line 209, in manage_text_elements
+    new_key = st.text_input("New Text Element Name:")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\metrics_util.py", line 410, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\elements\widgets\text_widgets.py", line 236, in text_input
+    return self._text_input(
+           ^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\elements\widgets\text_widgets.py", line 284, in _text_input
+    element_id = compute_and_register_element_id(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\elements\lib\utils.py", line 241, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\elements\lib\utils.py", line 147, in _register_element_id
+    raise StreamlitDuplicateElementId(element_type)
+streamlit.errors.StreamlitDuplicateElementId: There are multiple `text_input` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `text_input` element.
+2025/03/24 08:29 CRITICAL:Menu setup crashed: There are multiple `text_input` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `text_input` element.
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 144, in mod_cash_donations
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 65, in display_per_group_data_page
+    display_textual_insights_custom(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\components\modular_page_blocks.py", line 176, in display_textual_insights_custom
+    manage_text_elements(
+  File "H:\VScode\dashboard_demo\components\text_management.py", line 209, in manage_text_elements
+    new_key = st.text_input("New Text Element Name:")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\metrics_util.py", line 410, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\elements\widgets\text_widgets.py", line 236, in text_input
+    return self._text_input(
+           ^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\elements\widgets\text_widgets.py", line 284, in _text_input
+    element_id = compute_and_register_element_id(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\elements\lib\utils.py", line 241, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\elements\lib\utils.py", line 147, in _register_element_id
+    raise StreamlitDuplicateElementId(element_type)
+streamlit.errors.StreamlitDuplicateElementId: There are multiple `text_input` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `text_input` element.

@@ -9,14 +9,12 @@ from components.calculations import (
     format_number,
 )
 from Visualisations import ( 
-    plot_bar_line,
-    plot_pie_chart,
-    plot_bar_chart,
-    plot_regressionplot
+    plot_bar_line
     )
 from components.text_management import (
     load_page_text,
     save_text,
+    manage_text_elements
     )
 from utils.logger import log_function_call, logger
 
@@ -165,16 +163,19 @@ def display_textual_insights_predefined(pageref_label, target_label, min_date,
     st.write(f"* {tstats['most_valuable_entity'][0]} received £{format_number(tstats['most_valuable_entity'][1])} "
              f" of {target_label}s.")
 
-
+@log_function_call
 def display_textual_insights_custom(pageref_label, target_label):
     """Displays stored text elements for a given page. Allows edits only if admin is logged in."""
-    page_texts = load_page_text(pageref_label)
 
+    page_texts = load_page_text(pageref_label)
+    logger.debug(f"Page texts: {page_texts}")
     st.subheader(f"Explanations for {target_label}")
 
     if not page_texts:
         st.info("No text available for this section.")
         return  # ✅ Stop execution if no text exists
+
+    manage_text_elements(pageref_label)
 
     for text_key, text_data in page_texts.items():
         is_deleted = text_data.get("is_deleted", False)
@@ -278,7 +279,7 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
 
     # Apply filters
     current_target = st.session_state["filter_def"].get(filter_key)
-    
+
     entity_filter = (
         {group_entity_id_col: selected_entity_id} if selected_entity_id is not None
         else {group_entity_col: selected_entity_name} if selected_entity_name != "All"

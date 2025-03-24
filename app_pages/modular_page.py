@@ -49,9 +49,7 @@ def display_data_page(functionname, filter_key, target_label):
                 perc_target
             )
         with right:
-            manage_text_elements(
-                pageref_label,
-            )
+
             display_textual_insights_custom(
                 target_label=target_label,
                 pageref_label=pageref_label)
