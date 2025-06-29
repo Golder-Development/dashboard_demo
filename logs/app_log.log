@@ -854,3 +854,66 @@ Traceback (most recent call last):
   File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
     (min_date,
 TypeError: cannot unpack non-iterable NoneType object
+2025/06/29 02:10 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 20, in mod_visits
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/06/29 02:10 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 36, in mod_sponsorships
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/06/29 02:10 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 68, in mod_corporate_donations
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
