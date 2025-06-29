@@ -9,128 +9,141 @@ def notesondataprep_body():
     filtered_df = df
     min_date = ppcalc.get_mindate(filtered_df, filters).date()
     max_date = ppcalc.get_maxdate(filtered_df, filters).date()
+    # set the urls for the data sources and references
+    code_institute = "https://codeinstitute.net/"
     electoral_commission = "https://www.electoralcommission.org.uk/"
     wmca = "https://www.wmca.org.uk/"
     datalink = "https://www.kaggle.com/robertjacobson/uk-political-donations"
     # use markdown to create headers and sub headers
-    st.write("---")
-    st.write("### Notes on Data Source")
-    st.write(f"* The data covers the period from {min_date} to {max_date}")
-    st.write(
-        "* The data was sourced from the "
-        "[Electoral Commission](%s)." % electoral_commission,
-        "Having been initially extracted and " "compiled by https://data.world/vizwiz.",
+    st.markdown("---")
+    st.markdown("### Notes on Data Source")
+    st.markdown(f"* The data covers the period from {min_date} to {max_date}")
+    st.markdown(f"* The data was sourced from the " +
+        f"[Electoral Commission](%s)." % electoral_commission +
+        f"the first version used data compiled by https://data.world/vizwiz, this has now been replaced with the latest data from the Electoral Commission."
     )
-    st.write("* The data is a snapshot of donations made to Political Parties")
-    st.write("---")
-    st.write("### Data Cleansing and Assumptions")
-    st.write(
-        "This was built using Streamlit and Python following training "
-        "from the [Code Institute](%s)." % "https://codeinstitute.net/"
-        "On a Data Analytics and AI Course funded "
-        "by the [WMCA](%s)." % wmca
+    st.markdown("* The data is a snapshot of donations made to Political Parties")
+    st.markdown("---")
+    st.markdown("### Data Cleansing and Assumptions")
+    st.markdown(
+        f"This was built using Streamlit and Python following training " +
+        f"from the [Code Institute](%s). " % code_institute +
+        f"On a Data Analytics and AI Course funded " +
+        f"by the [WMCA](%s)." % wmca
     )
-    st.write(
-        "The initial data had the value changed into a numeric format "
-        "to enable calculations and visualisations.  It is available from"
-        " [Kaggle](%s)." % datalink
+    st.markdown("#### Removal of Dublicate Donations")
+    st.markdown("The data was deduplicated using python and pandas, to ensure "+
+                "no inaccurate double counting of donations. " + 
+                " This deduplication was an improvement on implemented in July" +
+                " 2025 and will explain variations in reported values.")
+    st.markdown("#### Donation Value Cleansing")
+    st.markdown(
+        "The initial data had the value changed into a numeric format " +
+        "by removing the currency sign and commas, then converting to a float " +
+        "to enable calculations and visualisations."
     )
-    st.write(
-        "The all text based data was the cleaned and transformed "
-        "to enable analysis.  The following steps were taken:"
-        "Leading and trailing spaces were removed, all text was "
-        "converted to Title case, and all special characters were "
-        "removed."
+    st.markdown("#### Text Based Data Cleaning")
+    st.markdown(
+        "Then all text based data was cleaned and transformed " +
+        "to enable analysis.  The following steps were taken:")
+    st.markdown(" * Leading and trailing spaces were removed ")
+    st.markdown(" * all text was converted to Title case")
+    st.markdown(" * all special characters were removed.")
+    st.markdown("#### Donor Entity Cleaning")
+    st.markdown(
+        " * The DonorId and DonorName fields were then analysed to identify " +
+        "dublicates due to poor data entry.  This was preformed using Fuzzy Logic " +
+        "to identify similar names and then manually checked to ensure " +
+        "the correct donor was identified." +
+        " There is an element of subjectivity in this process, and as such may introduce " +
+        " some minor errors into the data. " 
     )
-    st.write(
-        "The data was then analysed to identify any missing values.  The"
-        "following fields were identified as having missing values:"
-    )
-    st.write(
-        "The DonorId and DonorName fields were then analysed to identify"
-        "dublicates due to poor data entry.  The following rules were "
-        "used to identify duplicates:"
-    )
-    st.write(
-        "The data included records for the Northern Ireland Assembly"
-        "and were identified by their own register, these have been "
-        "seperated out and are not included in the analysis unless "
+    st.markdown("#### Northern Ireland Assembly")
+    st.markdown(
+        "The data included records for the Northern Ireland Assembly" +
+        "and were identified by their own register, these have been " +
+        "seperated out and are not included in the analysis unless " +
         "explicitly stated otherwise."
     )
-    st.write(
-        "The data included records for donations from Public Funds "
-        "these have been excluded from the analysis unless explicitly "
+    st.markdown("#### Donations from Public Funds")
+    st.markdown(
+        "The data included records for donations from Public Funds " +
+        "these have been excluded from the analysis unless explicitly " +
         "stated otherwise."
     )
-    st.write(
-        "Two Donation Types were identified as have exceptionally long"
-        " names and so were shortened for ease of use."
+    st.markdown("#### Donations Type labels")
+    st.markdown(
+        "Two Donation Types were identified as have exceptionally long" +
+        " names and so were shortened for ease of use." +
         "These were:"
     )
-    st.write(
-        " * 'Total value of donations not reported individually' was "
+    st.markdown(
+        " * 'Total value of donations not reported individually' was " +
         "changed to 'Aggregated Donation'."
     )
-    st.write(
-        " * 'Permissible Donor Exempt Trust' was changed to 'P.D. Exempt " "Trust'."
+    st.markdown(
+        " * 'Permissible Donor Exempt Trust' was changed to 'P.D. Exempt" +
+        " Trust'."
     )
-    st.write(
-        "The data was then cleaned to ensure that every record had a"
-        "valid received date, this was achieved by"
-        " firstly populating the missing dates with either the Recorded"
-        "Date or the Reported Date. If both of these"
-        " were also missing then a date was calculated based on the"
-        "Reporting Period.  If the value was still blank"
-        " then the value was set to 1900-01-01.  All time values were set"
-        "to 00:00:00."
+    st.markdown("#### Received Date and Time Cleansing and population")
+    st.markdown(
+        "The data was cleaned to ensure that every record had a " +
+        "valid Received Date, this was achieved by populating the missing dates")
+    st.markdown(" * with the Recorded Date if present,")
+    st.markdown(" * or the Reported Date, if present,")
+    st.markdown(" * or a date calculated from the Reporting Period Name.")
+    st.markdown(" * If the value was still blank then the value was set to 1900-01-01.")
+    st.markdown("All time values were set to 00:00:00."
     )
-    st.write(
-        "The Nature of Donation field was then populated based on the"
-        "values in the dataset.  The following rules were used:"
+    st.markdown("#### Nature of Donation Cleansing and Population")
+    st.markdown(
+        "The Nature of Donation field was populated based on the"
+        "values in the dataset.  The following rules were applied in sequence stopping at the first valid one:"
     )
     st.markdown(
         " *  If the Nature of Donation was already populated then it" "was left as is."
     )
-    st.write(
+    st.markdown(
         "  * If the IsBequest field was populated then the Nature of"
         "Donation was set to 'Is A Bequest'."
     )
-    st.write(
+    st.markdown(
         "  * If the IsAggregation field was populated then the Nature of"
         "Donation was set to 'Aggregated Donation'."
     )
-    st.write(
+    st.markdown(
         "  * If the IsSponsorship field was populated then the Nature of"
         "Donation was set to 'Sponsorship'."
     )
-    st.write(
-        "  * If the RegulatedDoneeType field was populated then the"
+    st.markdown(
+        "  * If the RegulatedDoneeType field was populated then the "
         "Nature of Donation was set to "
         "'Donation to {RegulatedDoneeType}'."
     )
-    st.write(
+    st.markdown(
         "  * If the Nature of Donation was 'Donation to nan' then it was"
         "set to 'Other'."
     )
-    st.write(
+    st.markdown(
         "  * If the Nature of Donation was 'Other Payment' then it was"
         "set to 'Other'."
     )
-    st.write(
+    st.markdown(
         "  * If the DonationAction field was populated then the Nature of"
         "Donation was set to '{DonationAction}'."
     )
-    st.write(
+    st.markdown(
         "  * If the DonationType field was populated then the Nature of"
         " Donation was set to '{DonationType}'."
     )
-    st.write(
-        "Regulated Entities were then analysed and categorised based on"
+    st.markdown("#### Regulated Entity Classification")
+    st.markdown(
+        "Regulated Entities were then analysed and categorised based on "
         "the number of donations received. The table below"
         " shows the categories used."
     )
-    st.write("---")
-    st.write("## Entity Classification Based on Donations")
+    st.markdown("---")
+    st.markdown("## Entity Classification Based on Donations")
     col1, col2 = st.columns(2)
     with col1:
         ppcalc.display_thresholds_table()

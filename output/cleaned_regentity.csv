@@ -2,43 +2,44 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 17.0,English Democrats,Small Entity,118532.0,12,9877.666666666666
 19.0,Legalise Cannabis Alliance,Small Entity,35500.0,13,2730.769230769231
 30.0,Upminster And Cranham Residents Association,Single Donation Entity,10000.0,1,10000.0
-39.0,Sinn Fã©In,Medium Large Entity,2506699.11,359,6982.448774373259
-39.0,Sinn Féin,Medium Large Entity,5936716.49,358,16583.006955307264
+39.0,Sinn Fã©In,Medium Large Entity,4129844.63,273,15127.636007326008
+39.0,Sinn Fãƒâ©In,Medium Large Entity,2506699.11,359,6982.448774373259
+39.0,Sinn Féin,Small Entity,129662.04000000001,7,18523.148571428574
 44.0,Independent Kidderminster Hospital And Health Concern,Small Entity,31949.0,8,3993.625
 46.0,Scottish Socialist Party,Medium Entity,558415.09,145,3851.138551724138
-51.0,Conservative And Unionist Party,Conservative And Unionist Party,219439.68,24,9143.32
-52.0,Conservative And Unionist Party,Conservative And Unionist Party,622044653.29,28862,21552.375209271704
-53.0,Labour Party,Labour Party,528224673.11,22723,23246.255912951634
+51.0,Conservative And Unionist Party,Conservative And Unionist Party,211519.68,23,9196.507826086956
+52.0,Conservative And Unionist Party,Conservative And Unionist Party,610926410.02,28293,21592.846641218675
+53.0,Labour Party,Labour Party,518469768.5,22476,23067.706375689624
 54.0,Liberal Party,Small Entity,43076.32,15,2871.7546666666667
-55.0,Sdlp (Social Democratic & Labour Party),Medium Entity,1967513.74,200,9837.5687
+55.0,Sdlp (Social Democratic & Labour Party),Medium Entity,1999008.52,198,10096.002626262627
 58.0,Mebyon Kernow - Party For Cornwall,Very Small Entity,9410.9,4,2352.725
-63.0,Green Party,Green Party,9698595.57,1582,6130.591384323641
+63.0,Green Party,Green Party,9525343.75,1537,6197.360930383865
 66.0,Official Monster Raving Loony Party,Small Entity,8572.42,7,1224.6314285714286
 67.0,Alliance For Green Socialism,Single Donation Entity,9217.0,1,9217.0
 69.0,Democratic Party,Single Donation Entity,100000.0,1,100000.0
-70.0,Democratic Unionist Party - D.U.P.,Medium Large Entity,4187603.33,315,13293.978825396825
+70.0,Democratic Unionist Party - D.U.P.,Medium Large Entity,3946042.7600000002,293,13467.722730375428
 73.0,Socialist Labour Party,Very Small Entity,60200.0,2,30100.0
-77.0,Plaid Cymru - Party Of Wales,Large Entity,8148210.29,511,15945.617005870841
-78.0,Communist Party Of Britain,Small Medium Entity,633021.63,24,26375.90125
+77.0,Plaid Cymru - Party Of Wales,Large Entity,8063896.88,503,16031.604135188867
+78.0,Communist Party Of Britain,Small Medium Entity,881564.04,22,40071.09272727273
 79.0,Christian Peoples Alliance,Small Medium Entity,145808.49,85,1715.3939999999998
-83.0,Ulster Unionist Party,Medium Entity,762351.15,197,3869.8027918781727
-85.0,Uk Independence Party (Ukip),Uk Independence Party (Ukip),18393762.37,1840,9996.609983695653
-90.0,Liberal Democrats,Liberal Democrats,160154990.36,18627,8598.002381489237
-102.0,Scottish National Party (Snp),Large Entity,32034465.88,821,39018.83785627284
-103.0,Alliance - Alliance Party Of Northern Ireland,Medium Large Entity,1411291.8,226,6244.653982300885
-106.0,British National Party,Medium Entity,1722255.99,151,11405.66880794702
+83.0,Ulster Unionist Party,Medium Entity,710705.62,180,3948.3645555555554
+85.0,Uk Independence Party (Ukip),Uk Independence Party (Ukip),18241017.39,1830,9967.769065573772
+90.0,Liberal Democrats,Liberal Democrats,158111555.21,18421,8583.223234894956
+102.0,Scottish National Party (Snp),Large Entity,31048725.35,804,38617.81759950249
+103.0,Alliance - Alliance Party Of Northern Ireland,Medium Large Entity,1401056.31,214,6546.992102803739
+106.0,British National Party,Medium Entity,1712826.94,150,11418.846266666666
 110.0,Socialist Party Of Great Britain,Small Medium Entity,2762676.68,29,95264.71310344829
 115.0,Prolife,Small Entity,65828.6,8,8228.575
 116.0,Progressive Democratic Party,Very Small Entity,13000.0,2,6500.0
 117.0,National Front,Single Donation Entity,6169.91,1,6169.91
-119.0,Co-Operative Party,Large Entity,20508584.95,650,31551.669153846153
-130.0,Scottish Green Party,Medium Entity,1101918.35,198,5565.244191919192
+119.0,Co-Operative Party,Large Entity,20308589.95,635,31982.031417322833
+130.0,Scottish Green Party,Medium Entity,1039272.49,187,5557.606898395722
 133.0,Peace Party - Non-Violence Justice Environment,Single Donation Entity,6000.0,1,6000.0
 138.0,Nork Residents' Association,Single Donation Entity,7945.0,1,7945.0
-243.0,Social Democratic Party,Small Entity,130411.2,12,10867.6
+243.0,Social Democratic Party,Small Entity,132705.6,9,14745.066666666668
 250.0,Better Bedford Independent Party,Very Small Entity,27676.0,3,9225.333333333334
 285.0,People's Alliance,Small Medium Entity,669125.57,24,27880.232083333332
-305.0,Green Party,Green Party,281458.57,74,3803.4941891891895
+305.0,Green Party,Green Party,245002.82,64,3828.1690625
 331.0,Forward Wales,Small Entity,55662.5,11,5060.227272727273
 352.0,New Party,Medium Entity,1382819.88,146,9471.36904109589
 362.0,Respect Party,Small Medium Entity,80482.95,16,5030.184375
@@ -54,7 +55,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 616.0,Animal Welfare Party,Very Small Entity,60000.0,4,15000.0
 617.0,Scottish Voice,Small Entity,125000.0,6,20833.333333333332
 623.0,Women4Theworld,Small Entity,53835.0,6,8972.5
-680.0,Traditional Unionist Voice - Tuv,Small Medium Entity,300032.61,99,3030.632424242424
+680.0,Traditional Unionist Voice - Tuv,Small Medium Entity,279484.95,90,3105.3883333333333
 695.0,Left List,Small Entity,15200.0,9,1688.888888888889
 730.0,Yes 2 Europe,Very Small Entity,12000.0,4,3000.0
 736.0,United Kingdom First,Small Entity,25440.5,8,3180.0625
@@ -63,7 +64,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 746.0,Jury Team,Very Small Entity,69500.29000000001,5,13900.058
 750.0,Fair Pay Fair Trade Party,Very Small Entity,16040.0,2,8020.0
 770.0,Pirate Party Uk,Single Donation Entity,210.0,1,210.0
-773.0,People Before Profit,Medium Entity,157811.64,111,1421.7264864864867
+773.0,People Before Profit,Small Medium Entity,135953.15,99,1373.2641414141412
 773.0,People Before Profit Alliance,Small Medium Entity,57864.36,41,1411.3258536585365
 786.0,Buckinghamshire Campaign For Democracy,Very Small Entity,50000.0,3,16666.666666666668
 804.0,Trade Unionist And Socialist Coalition,Small Entity,81000.0,7,11571.42857142857
@@ -88,7 +89,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 939.0,League Against Cruel Sports (Uk) Limited,Small Medium Entity,91750.0,26,3528.846153846154
 941.0,Tmvo Ltd,Single Donation Entity,9737.17,1,9737.17
 954.0,Vote Cruelty Free,Very Small Entity,31905.0,4,7976.25
-956.0,Vote For A Change Ltd,Small Entity,539016.6799999999,7,77002.38285714285
+956.0,Vote For A Change Ltd,Small Entity,539016.68,7,77002.38285714286
 958.0,Democratic Reform Company,Small Entity,599721.66,9,66635.74
 968.0,A Minority Pastime Limited,Single Donation Entity,6612.0,1,6612.0
 969.0,Young Britons' Foundation,Very Small Entity,54999.0,2,27499.5
@@ -104,9 +105,9 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1023.0,Imelda Mary Read,Small Medium Entity,37877.65,20,1893.8825000000002
 1024.0,Brian Simpson,Small Entity,25758.9,12,2146.5750000000003
 1025.0,Christian Socialist Movement,Very Small Entity,5400.0,2,2700.0
-1026.0,Roger Casale,Small Entity,18770.309999999998,9,2085.5899999999997
+1026.0,Roger Casale,Small Entity,18770.31,9,2085.59
 1027.0,Roy Perry,Very Small Entity,6933.9,2,3466.95
-1028.0,Edward Davey,Small Medium Entity,202757.0,37,5479.918918918919
+1028.0,Edward Davey,Small Medium Entity,200257.0,36,5562.694444444444
 1029.0,Andrew Lansley,Very Small Entity,46245.2,4,11561.3
 1030.0,Robert Laxton,Very Small Entity,13897.48,3,4632.493333333333
 1032.0,Richard Inglewood,Very Small Entity,13036.8,3,4345.599999999999
@@ -138,7 +139,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1058.0,Liberal Democrats Scottish Parliamentary Party,Small Medium Entity,113270.7,20,5663.535
 1059.0,Jacqueline Foster,Very Small Entity,7758.9,2,3879.45
 1060.0,David Sumberg,Very Small Entity,7758.9,2,3879.45
-1061.0,Crispin Blunt,Small Medium Entity,153046.38,38,4027.536315789474
+1061.0,Crispin Blunt,Small Medium Entity,149045.01,37,4028.243513513514
 1062.0,Richard Balfe,Single Donation Entity,3933.9,1,3933.9
 1063.0,Tom Harris,Single Donation Entity,5245.2,1,5245.2
 1064.0,Robert Spink,Very Small Entity,15006.5,4,3751.625
@@ -155,7 +156,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1076.0,Malcolm Moss,Very Small Entity,14758.2,3,4919.400000000001
 1077.0,James Bovan,Single Donation Entity,3933.9,1,3933.9
 1078.0,Alex Salmond,Very Small Entity,27431.97,4,6857.9925
-1079.0,David Lammy,Small Medium Entity,757679.5,95,7975.573684210526
+1079.0,David Lammy,Small Medium Entity,748954.6,94,7967.602127659574
 1080.0,Tim Collins,Very Small Entity,16888.2,2,8444.1
 1081.0,Jimmy Hood,Very Small Entity,13645.2,3,4548.400000000001
 1082.0,Gary Titley,Very Small Entity,15258.9,4,3814.725
@@ -171,7 +172,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1093.0,Nigel Evans,Small Medium Entity,118191.2,30,3939.7066666666665
 1094.0,Gavin Strang,Single Donation Entity,5245.2,1,5245.2
 1095.0,Andrew Dismore,Very Small Entity,6445.2,2,3222.6
-1096.0,Nigel Farage,Small Medium Entity,66469.65,17,3909.9794117647057
+1096.0,Nigel Farage,Small Medium Entity,117287.15,20,5864.3575
 1097.0,David Hamilton,Very Small Entity,18241.2,5,3648.2400000000002
 1098.0,David Lidington,Small Entity,40652.25,12,3387.6875
 1099.0,Alan Meale,Very Small Entity,12245.2,2,6122.6
@@ -208,7 +209,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1130.0,Oliver Heald,Single Donation Entity,5245.2,1,5245.2
 1131.0,Quentin Davies,Very Small Entity,6545.2,2,3272.6
 1132.0,Linda Mcavan,Very Small Entity,7758.9,2,3879.45
-1133.0,David Davis,Small Medium Entity,454424.25,50,9088.485
+1133.0,David Davis,Small Medium Entity,449298.03,49,9169.347551020408
 1134.0,Theresa Villiers,Small Entity,16297.65,7,2328.235714285714
 1135.0,Adam Ingram,Single Donation Entity,5245.2,1,5245.2
 1136.0,Archy Kirkwood,Single Donation Entity,5245.2,1,5245.2
@@ -242,7 +243,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1164.0,Elfyn Llwyd,Very Small Entity,15977.189999999999,5,3195.4379999999996
 1165.0,Henry Bellingham,Single Donation Entity,5245.2,1,5245.2
 1166.0,Bill Rammell,Very Small Entity,10345.2,2,5172.6
-1167.0,Gary Nicholas Streeter,Very Small Entity,25183.2,5,5036.64
+1167.0,Gary Nicholas Streeter,Very Small Entity,18033.2,4,4508.3
 1168.0,Chris Pond,Single Donation Entity,5245.2,1,5245.2
 1169.0,Nicholas Palmer,Very Small Entity,8245.2,3,2748.4
 1170.0,Michael Connarty,Very Small Entity,16446.7,5,3289.34
@@ -259,12 +260,12 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1181.0,Kevin Brennan,Very Small Entity,8945.2,3,2981.7333333333336
 1182.0,David Hanson,Very Small Entity,10345.2,2,5172.6
 1183.0,Dan Norris,Small Entity,38984.2,8,4873.025
-1184.0,Stephen R O'Brien,Small Medium Entity,350160.28,26,13467.703076923079
+1184.0,Stephen R O'Brien,Small Medium Entity,350160.27999999997,26,13467.703076923075
 1185.0,David Chidgey,Single Donation Entity,5245.2,1,5245.2
 1186.0,Richard Ottoway,Single Donation Entity,5245.2,1,5245.2
 1187.0,Teddy Taylor,Single Donation Entity,5245.2,1,5245.2
 1188.0,Mark Oaten,Small Entity,29467.28,7,4209.611428571428
-1189.0,David Amess,Small Medium Entity,93716.27,23,4074.6204347826088
+1189.0,David Amess,Small Medium Entity,91163.27,22,4143.785
 1190.0,David Marshall,Very Small Entity,10345.2,2,5172.6
 1191.0,Douglas Henderson,Very Small Entity,6246.2,2,3123.1
 1192.0,Christopher Beazley,Single Donation Entity,3933.9,1,3933.9
@@ -280,7 +281,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1202.0,Frank Doran,Single Donation Entity,5245.2,1,5245.2
 1203.0,Leeds Liberal Democrat Federation,Single Donation Entity,3000.0,1,3000.0
 1204.0,Christopher Ruane,Very Small Entity,12045.2,3,4015.066666666667
-1205.0,Tim Loughton,Small Medium Entity,184496.07,28,6589.145357142857
+1205.0,Tim Loughton,Small Medium Entity,181996.07,27,6740.595185185185
 1206.0,Robert N Wareing,Very Small Entity,10345.2,2,5172.6
 1207.0,John Mcfall,Small Entity,21901.72,6,3650.286666666667
 1209.0,Mike Gapes,Small Entity,45451.2,10,4545.12
@@ -294,7 +295,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1217.0,Michael Mayes,Single Donation Entity,5245.2,1,5245.2
 1218.0,Diana Wallis,Single Donation Entity,3825.0,1,3825.0
 1219.0,Paul Keetch,Very Small Entity,13245.2,2,6622.6
-1220.0,Barry Gardiner,Small Medium Entity,632432.36,62,10200.52193548387
+1220.0,Barry Gardiner,Small Medium Entity,627312.55,62,10117.94435483871
 1221.0,Wayne David,Small Entity,32831.38,10,3283.138
 1222.0,Bill Miller,Single Donation Entity,3933.9,1,3933.9
 1223.0,Mark Fisher,Very Small Entity,16280.0,4,4070.0
@@ -322,7 +323,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1245.0,Malcolm Bruce,Small Entity,27203.91,10,2720.391
 1246.0,Socialist Environment And Resources Association,Very Small Entity,10155.0,2,5077.5
 1247.0,Helen Jackson,Single Donation Entity,5100.0,1,5100.0
-1248.0,John Mann,Small Medium Entity,88446.82,32,2763.963125
+1248.0,John Mann,Small Medium Entity,82860.82,30,2762.0273333333334
 1249.0,David Cairns,Very Small Entity,11338.52,5,2267.704
 1250.0,Vera Baird,Single Donation Entity,5245.2,1,5245.2
 1251.0,Laurence Robertson,Small Medium Entity,60701.89,16,3793.868125
@@ -353,9 +354,9 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1278.0,Parliamentary Mainstream,Small Medium Entity,97087.0,44,2206.5227272727275
 1279.0,Conservatives For Change Ltd,Small Entity,189000.0,14,13500.0
 1280.0,Thomas Clarke,Single Donation Entity,5245.2,1,5245.2
-1281.0,Conservative Group For Europe,Small Medium Entity,240837.0,57,4225.210526315789
+1281.0,Conservative Group For Europe,Small Medium Entity,215837.0,55,3924.309090909091
 1282.0,Harry Cohen,Single Donation Entity,5245.2,1,5245.2
-1283.0,Andrew Rosindell,Small Medium Entity,196521.04,68,2890.015294117647
+1283.0,Andrew Rosindell,Small Medium Entity,196682.04,68,2892.382941176471
 1284.0,Richard Burden,Small Entity,27874.65,10,2787.465
 1285.0,Glyn Ford,Very Small Entity,29000.0,5,5800.0
 1286.0,James Arbuthnot,Small Entity,23382.1,9,2598.011111111111
@@ -364,7 +365,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1289.0,Humfrey Malins Cbe,Single Donation Entity,5245.2,1,5245.2
 1290.0,Wendy Alexander,Very Small Entity,12950.0,3,4316.666666666667
 1291.0,Richard Spring,Small Entity,38548.15,12,3212.3458333333333
-1292.0,Graham Brady,Small Entity,64728.119999999995,12,5394.009999999999
+1292.0,Graham Brady,Small Entity,54269.12,11,4933.556363636364
 1293.0,Margaret Moran,Very Small Entity,8733.2,2,4366.6
 1294.0,Robin Cook,Single Donation Entity,5245.2,1,5245.2
 1295.0,Peter Luff,Small Entity,22379.2,6,3729.866666666667
@@ -404,9 +405,9 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1329.0,Nicholas Brown,Very Small Entity,9604.35,3,3201.4500000000003
 1330.0,Sarah Teather,Small Entity,16341.55,6,2723.5916666666667
 1331.0,Joan Humble,Single Donation Entity,3000.0,1,3000.0
-1332.0,Jeremy Hunt,Small Medium Entity,925933.33,96,9645.138854166666
-1333.0,Christopher Grayling,Small Medium Entity,402477.3,30,13415.91
-1334.0,Andrew Mitchell,Small Medium Entity,670193.89,97,6909.215360824743
+1332.0,Jeremy Hunt,Small Medium Entity,665788.34,63,10568.068888888889
+1333.0,Christopher Grayling,Small Medium Entity,393477.3,29,13568.18275862069
+1334.0,Andrew Mitchell,Small Medium Entity,669106.99,97,6898.010206185567
 1335.0,Nick Herbert,Small Medium Entity,243376.76,36,6760.4655555555555
 1336.0,Malcolm Rifkind,Small Entity,68146.0,6,11357.666666666666
 1339.0,Graham Stuart,Small Entity,50216.54,15,3347.769333333333
@@ -414,7 +415,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1341.0,Menzies Campbell,Small Entity,47638.99,14,3402.785
 1342.0,Denis Murphy,Very Small Entity,15500.0,3,5166.666666666667
 1343.0,Mary Creagh,Very Small Entity,8850.0,3,2950.0
-1345.0,Stephen Byers,Small Entity,36621.090000000004,15,2441.4060000000004
+1345.0,Stephen Byers,Small Entity,36621.09,15,2441.406
 1346.0,Simon Hughes,Small Entity,43250.54,8,5406.3175
 1347.0,James Brokenshire,Single Donation Entity,7500.0,1,7500.0
 1348.0,David Anderson,Small Entity,25812.6,10,2581.2599999999998
@@ -438,28 +439,28 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1366.0,Mark Prisk,Very Small Entity,12334.0,3,4111.333333333333
 1367.0,John Stanley,Small Entity,21765.8,6,3627.633333333333
 1368.0,Tobias Ellwood,Small Medium Entity,72179.41,18,4009.9672222222225
-1369.0,Alan Duncan,Small Medium Entity,44067.52,16,2754.22
+1369.0,Alan Duncan,Small Entity,41067.520000000004,15,2737.834666666667
 1370.0,Brooks Newmark,Very Small Entity,9070.33,3,3023.443333333333
-1371.0,Michael Fallon,Small Entity,24985.98,6,4164.33
+1371.0,Michael Fallon,Very Small Entity,18767.989999999998,5,3753.5979999999995
 1372.0,Keith Vaz,Very Small Entity,13649.89,3,4549.963333333333
-1373.0,Geoffrey Clifton-Brown,Small Entity,31185.69,9,3465.0766666666664
+1373.0,Geoffrey Clifton-Brown,Small Entity,31185.690000000002,9,3465.076666666667
 1374.0,Annette Brooke,Very Small Entity,3398.0,2,1699.0
 1375.0,John Mcdonnell,Very Small Entity,7000.0,2,3500.0
-1376.0,Brian Donohoe,Small Entity,34866.130000000005,9,3874.014444444445
+1376.0,Brian Donohoe,Small Entity,34866.13,9,3874.014444444444
 1377.0,Jonathan Cruddas,Small Entity,166472.33000000002,12,13872.694166666668
 1379.0,Kerry Mccarthy,Small Entity,26536.1,10,2653.6099999999997
 1380.0,Andrew Tyrie,Very Small Entity,21800.0,3,7266.666666666667
 1381.0,Hazel Blears,Small Entity,86115.78,13,6624.290769230769
 1382.0,Alan Johnson,Small Medium Entity,69209.0,23,3009.086956521739
 1383.0,Geoff Hoon,Very Small Entity,5039.0,2,2519.5
-1384.0,Hilary Benn,Small Medium Entity,263847.29000000004,18,14658.18277777778
-1385.0,Rosie Cooper,Very Small Entity,24393.0,5,4878.6
+1384.0,Hilary Benn,Small Medium Entity,263847.29,18,14658.182777777776
+1385.0,Rosie Cooper,Very Small Entity,22123.0,4,5530.75
 1387.0,Frank Dobson,Very Small Entity,13235.0,4,3308.75
 1388.0,Charles Clarke,Small Entity,23574.8,8,2946.85
-1389.0,Gordon Brown,Small Medium Entity,255701.33000000002,29,8817.28724137931
-1390.0,Conservative Middle East Council,Small Medium Entity,1581393.51,71,22273.148028169013
+1389.0,Gordon Brown,Small Medium Entity,255701.33,29,8817.28724137931
+1390.0,Conservative Middle East Council,Small Medium Entity,1551393.51,69,22483.963913043477
 1391.0,Alan Milburn,Small Entity,37213.13,7,5316.161428571429
-1392.0,Andy Slaughter,Small Entity,28569.52,6,4761.586666666667
+1392.0,Andy Slaughter,Very Small Entity,18569.52,5,3713.904
 1393.0,Dame Angela Watkinson,Very Small Entity,13465.8,5,2693.16
 1394.0,Mark Lancaster,Small Entity,38216.35,12,3184.695833333333
 1395.0,Emily Thornberry,Small Entity,57229.0,6,9538.166666666666
@@ -469,33 +470,33 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1399.0,Lynne Featherstone,Single Donation Entity,3507.25,1,3507.25
 1400.0,Stephen Ladyman,Very Small Entity,14100.0,4,3525.0
 1401.0,Hugo Swire,Small Entity,34048.49,10,3404.8489999999997
-1402.0,Boris Johnson,Medium Large Entity,2446511.75,201,12171.700248756219
+1402.0,Boris Johnson,Medium Entity,1670011.75,146,11438.436643835616
 1403.0,Sally Keeble,Very Small Entity,7400.0,2,3700.0
 1404.0,South Ribble Westminster Fund,Very Small Entity,35000.0,3,11666.666666666666
 1405.0,Philip Dunne,Very Small Entity,13273.09,4,3318.2725
 1406.0,Andy Reed,Very Small Entity,3757.08,2,1878.54
 1407.0,Julie Morgan,Very Small Entity,8942.1,4,2235.525
-1409.0,Rachel Reeves,Small Medium Entity,372590.08,44,8467.956363636364
-1411.0,Mark Francois,Very Small Entity,16772.24,5,3354.4480000000003
+1409.0,Rachel Reeves,Small Medium Entity,354250.08,40,8856.252
+1411.0,Mark Francois,Small Entity,20436.99,6,3406.1650000000004
 1412.0,Derek Wyatt,Small Entity,44255.39,15,2950.3593333333333
 1413.0,Shahid Malik,Very Small Entity,15000.0,2,7500.0
 1414.0,Richard Howitt,Very Small Entity,14402.55,5,2880.5099999999998
 1415.0,Colin Burgon,Very Small Entity,3674.35,3,1224.7833333333333
-1416.0,Alistair Carmichael,Small Entity,92204.66,15,6146.977333333333
+1416.0,Alistair Carmichael,Small Entity,90219.35,14,6444.239285714286
 1417.0,Katy Clark,Small Entity,28854.45,12,2404.5375
 1418.0,Conservative Muslim Forum,Small Entity,130410.0,15,8694.0
 1419.0,Mark Hendrick,Small Entity,60382.16,15,4025.4773333333337
 1420.0,Andrew Selous,Single Donation Entity,8000.0,1,8000.0
 1421.0,Andrew Stunell,Very Small Entity,5000.0,2,2500.0
-1422.0,David Willetts,Small Entity,67335.79000000001,11,6121.435454545455
+1422.0,David Willetts,Small Entity,67335.79,11,6121.435454545454
 1423.0,Andrew Robathan,Very Small Entity,11762.0,4,2940.5
-1424.0,Jim Fitzpatrick,Very Small Entity,25180.0,5,5036.0
+1424.0,Jim Fitzpatrick,Very Small Entity,18180.0,4,4545.0
 1426.0,Daniel Kawczynski,Small Medium Entity,76977.5,22,3498.9772727272725
 1428.0,Mark Adrian Clarke,Very Small Entity,9000.0,3,3000.0
 1429.0,Don Foster,Very Small Entity,11260.44,2,5630.22
-1430.0,Virendra Kumar Sharma,Small Medium Entity,121860.02,31,3930.968387096774
-1431.0,Conservative/Unionist Members 1922 Committee,Small Medium Entity,318500.0,22,14477.272727272728
-1432.0,Women2Win,Small Medium Entity,270832.0,21,12896.761904761905
+1430.0,Virendra Kumar Sharma,Small Medium Entity,119980.02,30,3999.3340000000003
+1431.0,Conservative/Unionist Members 1922 Committee,Small Medium Entity,296000.0,20,14800.0
+1432.0,Women2Win,Small Medium Entity,260832.0,20,13041.6
 1433.0,Celia Barlow,Small Entity,18179.0,6,3029.8333333333335
 1434.0,James Devine,Very Small Entity,7396.0,2,3698.0
 1436.0,Martin Linton,Single Donation Entity,1200.0,1,1200.0
@@ -506,13 +507,13 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1441.0,Angie Bray,Single Donation Entity,2000.0,1,2000.0
 1442.0,Chris Bryant,Small Entity,50775.0,10,5077.5
 1443.0,Richard Cook,Single Donation Entity,2000.0,1,2000.0
-1444.0,Stephen Crabb,Small Entity,36747.29,14,2624.8064285714286
+1444.0,Stephen Crabb,Small Entity,34247.29,13,2634.4069230769232
 1445.0,David Davies,Very Small Entity,4199.98,2,2099.99
 1446.0,Paul Davies,Single Donation Entity,3000.0,1,3000.0
 1447.0,Parmjit Dhanda,Very Small Entity,13536.0,5,2707.2
-1448.0,Andrew Gwynne,Small Medium Entity,58318.62,18,3239.9233333333336
+1448.0,Andrew Gwynne,Small Medium Entity,56732.12,17,3337.183529411765
 1449.0,Fabian Hamilton,Very Small Entity,11527.58,5,2305.516
-1450.0,Mark Harper,Small Entity,40420.0,12,3368.3333333333335
+1450.0,Mark Harper,Small Entity,24420.0,8,3052.5
 1451.0,Barbara Keeley,Single Donation Entity,1425.0,1,1425.0
 1452.0,Simon Kirby,Single Donation Entity,2000.0,1,2000.0
 1453.0,Ivan Lewis,Small Medium Entity,112463.43,26,4325.516538461538
@@ -525,7 +526,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1460.0,Daria Jean Taylor,Very Small Entity,3780.13,2,1890.065
 1461.0,Iain Wright,Small Entity,19828.64,7,2832.662857142857
 1462.0,Mark Robert Timothy Garnier,Very Small Entity,10159.49,4,2539.8725
-1463.0,Sharon Hodgson,Small Entity,52461.41,13,4035.4930769230773
+1463.0,Sharon Hodgson,Small Entity,54961.41,14,3925.815
 1464.0,Sian James,Single Donation Entity,7500.0,1,7500.0
 1465.0,Tom Levitt,Very Small Entity,8598.0,2,4299.0
 1466.0,Sarah Mccarthy-Fry,Single Donation Entity,3573.0,1,3573.0
@@ -542,12 +543,12 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1477.0,Jim Knight,Single Donation Entity,1366.0,1,1366.0
 1478.0,Jason Alexander Mccartney,Single Donation Entity,2000.0,1,2000.0
 1479.0,Paul Maynard,Small Entity,15767.4,7,2252.485714285714
-1480.0,Maggie Throup,Small Entity,17922.22,7,2560.317142857143
+1480.0,Maggie Throup,Small Entity,15289.64,6,2548.273333333333
 1481.0,Michael Richard Weatherley,Very Small Entity,13537.43,4,3384.3575
 1482.0,David Gold,Single Donation Entity,2000.0,1,2000.0
 1483.0,Mark Coote,Single Donation Entity,2000.0,1,2000.0
 1484.0,Tony Cunningham,Very Small Entity,2949.0,2,1474.5
-1485.0,Dame Louise Ellman,Small Entity,13992.56,8,1749.07
+1485.0,Dame Louise Ellman,Small Entity,11992.56,7,1713.222857142857
 1486.0,Lorraine Fullbrook,Very Small Entity,10629.45,4,2657.3625
 1487.0,Benjamin Charles Tudor Jeffreys,Single Donation Entity,2000.0,1,2000.0
 1488.0,Diana Ruth Johnson,Very Small Entity,16482.92,5,3296.584
@@ -557,7 +558,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1492.0,Jo Swinson,Very Small Entity,5743.8,3,1914.6000000000001
 1493.0,Derek Vaughan,Very Small Entity,3000.0,2,1500.0
 1495.0,Andrew Griffiths,Small Entity,47100.0,9,5233.333333333333
-1496.0,Penny Mordaunt,Small Entity,139000.0,15,9266.666666666666
+1496.0,Penny Mordaunt,Small Entity,129000.0,14,9214.285714285714
 1497.0,Theresa Griffin,Very Small Entity,48909.95,3,16303.316666666666
 1498.0,Jeremy Browne,Single Donation Entity,2634.0,1,2634.0
 1499.0,David Heath,Very Small Entity,5353.0,2,2676.5
@@ -571,7 +572,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1507.0,Susan Kramer,Very Small Entity,5290.09,3,1763.3633333333335
 1508.0,Graham Allen,Single Donation Entity,2634.0,1,2634.0
 1509.0,Philip Andrew Davies,Single Donation Entity,2000.0,1,2000.0
-1510.0,Mike Penning,Small Medium Entity,322160.0,19,16955.78947368421
+1510.0,Mike Penning,Small Medium Entity,278535.0,17,16384.41176470588
 1511.0,Brian Binley,Very Small Entity,7324.92,3,2441.64
 1512.0,Patricia Hewitt,Very Small Entity,10909.0,3,3636.3333333333335
 1513.0,Mary Macleod,Small Medium Entity,119061.93,26,4579.304999999999
@@ -592,17 +593,17 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1528.0,John Battle,Single Donation Entity,1500.0,1,1500.0
 1529.0,Charlie Elphicke,Very Small Entity,5700.0,3,1900.0
 1530.0,Rosalind Scott,Single Donation Entity,5000.0,1,5000.0
-1531.0,Jonathan Djanogly,Small Medium Entity,270283.89,16,16892.743125
+1531.0,Jonathan Djanogly,Small Entity,261893.19999999998,14,18706.65714285714
 1532.0,Michael German,Single Donation Entity,3374.15,1,3374.15
 1533.0,Mark Todd,Single Donation Entity,4119.41,1,4119.41
 1534.0,Stephen Barclay,Small Entity,61305.0,7,8757.857142857143
 1535.0,Jennifer Willott,Very Small Entity,6740.0,2,3370.0
-1536.0,Joan Ryan,Small Medium Entity,94485.1,20,4724.255
+1536.0,Joan Ryan,Small Entity,58966.6,14,4211.9
 1537.0,Julie Elliott,Very Small Entity,3800.0,2,1900.0
 1538.0,Hilary Armstrong,Single Donation Entity,1543.98,1,1543.98
-1539.0,Jack Straw,Very Small Entity,28828.600000000002,5,5765.72
+1539.0,Jack Straw,Very Small Entity,28828.6,5,5765.719999999999
 1540.0,Paul Blomfield,Single Donation Entity,2485.0,1,2485.0
-1541.0,Liam Byrne,Small Medium Entity,119236.81,30,3974.5603333333333
+1541.0,Liam Byrne,Small Medium Entity,100653.61,26,3871.2926923076925
 1542.0,John Prescott,Small Entity,35524.17,9,3947.1299999999997
 1543.0,Jenny Randerson Am,Very Small Entity,5000.0,2,2500.0
 1544.0,Focus On Scotland,Small Medium Entity,649240.0,34,19095.29411764706
@@ -617,7 +618,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1554.0,Dawn Butler,Small Medium Entity,69030.3,17,4060.6058823529415
 1555.0,Wilfred Emmanuel-Jones,Very Small Entity,10000.0,2,5000.0
 1556.0,Ian Mccartney,Very Small Entity,3543.8,2,1771.9
-1557.0,Damian Collins,Small Entity,39440.0,8,4930.0
+1557.0,Damian Collins,Small Entity,34440.0,7,4920.0
 1558.0,Doug Naysmith,Single Donation Entity,3595.4,1,3595.4
 1559.0,Isabel Owen,Single Donation Entity,5179.0,1,5179.0
 1560.0,Lyn Brown,Very Small Entity,5481.0,2,2740.5
@@ -630,7 +631,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1568.0,Timothy Kirkhope,Single Donation Entity,3044.98,1,3044.98
 1569.0,Conor Burns,Small Entity,28850.02,10,2885.002
 1570.0,David Gauke,Single Donation Entity,22704.67,1,22704.67
-1571.0,Greg Hands,Small Medium Entity,97688.53,17,5746.384117647059
+1571.0,Greg Hands,Small Medium Entity,92688.53,16,5793.033125
 1572.0,Mark Hoban,Very Small Entity,26504.67,3,8834.89
 1573.0,John Reid,Very Small Entity,7500.0,2,3750.0
 1574.0,Lindsay Roy,Single Donation Entity,1077.0,1,1077.0
@@ -645,7 +646,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1583.0,Emma Reynolds,Very Small Entity,15398.0,5,3079.6
 1584.0,Edwina Hart Am,Single Donation Entity,1625.0,1,1625.0
 1585.0,Jane Kennedy,Single Donation Entity,1528.0,1,1528.0
-1586.0,Michael Gove,Small Medium Entity,936590.66,83,11284.22481927711
+1586.0,Michael Gove,Small Medium Entity,734121.48,65,11294.176615384615
 1587.0,Damian Green,Single Donation Entity,1563.5,1,1563.5
 1588.0,Douglas Hogg,Single Donation Entity,1700.0,1,1700.0
 1589.0,Anne Mcguire,Very Small Entity,3114.56,2,1557.28
@@ -679,10 +680,10 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1618.0,Islington Labour Group,Very Small Entity,24000.0,2,12000.0
 1619.0,United & Cecil Club,Small Medium Entity,157681.78,17,9275.398823529411
 1620.0,Bernard Jenkin,Very Small Entity,49185.94,3,16395.313333333335
-1621.0,Spring Lunch,Small Medium Entity,286342.0,25,11453.68
-1622.0,Edward Miliband,Small Medium Entity,395563.08,61,6484.640655737705
+1621.0,Spring Lunch,Small Medium Entity,271342.0,24,11305.916666666666
+1622.0,Edward Miliband,Small Medium Entity,391663.08,59,6638.357288135593
 1623.0,Edward Balls,Small Medium Entity,182634.14,18,10146.341111111113
-1625.0,Nigel Adams,Small Medium Entity,340262.14,57,5969.511228070176
+1625.0,Nigel Adams,Small Medium Entity,303637.14,51,5953.669411764706
 1626.0,Tom Blenkinsop,Very Small Entity,12000.0,2,6000.0
 1628.0,Jason Mccartney,Very Small Entity,14665.0,5,2933.0
 1629.0,Grahame Morris,Small Entity,95531.11,8,11941.38875
@@ -693,24 +694,24 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1634.0,Oona King,Small Entity,56500.0,13,4346.153846153846
 1636.0,Alex Cunningham,Single Donation Entity,5000.0,1,5000.0
 1638.0,Matthew Offord,Small Entity,31010.41,12,2584.2008333333333
-1639.0,Rory Stewart,Small Medium Entity,396402.7,68,5829.451470588236
-1640.0,Andrew Bridgen,Very Small Entity,14634.27,5,2926.8540000000003
+1639.0,Rory Stewart,Small Medium Entity,230901.7,38,6076.36052631579
+1640.0,Andrew Bridgen,Very Small Entity,11334.27,4,2833.5675
 1642.0,Chris Kelly,Small Entity,16586.66,6,2764.443333333333
 1643.0,Ian Lucas,Small Entity,32231.97,10,3223.197
-1644.0,Dominic Raab,Small Medium Entity,499026.98,53,9415.603396226415
+1644.0,Dominic Raab,Small Medium Entity,276720.44,35,7906.298285714286
 1645.0,Nick Boles,Small Entity,18089.16,6,3014.86
 1646.0,Lgbtory,Single Donation Entity,10000.0,1,10000.0
-1647.0,Liberal Democrat Friends Of Israel,Small Entity,53000.0,6,8833.333333333334
-1648.0,Diane Abbott,Small Entity,52772.23,14,3769.445
+1647.0,Liberal Democrat Friends Of Israel,Very Small Entity,43000.0,5,8600.0
+1648.0,Diane Abbott,Small Entity,51185.73,13,3937.363846153846
 1649.0,Heidi Alexander,Very Small Entity,11690.02,2,5845.01
 1652.0,Tristram Hunt,Small Entity,129893.17,15,8659.544666666667
 1653.0,Julian Huppert,Very Small Entity,43034.0,3,14344.666666666666
 1654.0,John Leech,Very Small Entity,9270.0,3,3090.0
-1655.0,Mark Menzies,Small Medium Entity,106973.93000000001,27,3961.9974074074075
+1655.0,Mark Menzies,Small Medium Entity,100984.21,26,3884.008076923077
 1657.0,Ian Swales,Single Donation Entity,4300.0,1,4300.0
 1658.0,James Wharton,Small Medium Entity,202645.9,38,5332.786842105263
 1659.0,Chris White,Single Donation Entity,2200.0,1,2200.0
-1660.0,Craig Whittaker,Small Entity,34740.73,11,3158.2481818181823
+1660.0,Craig Whittaker,Small Entity,34740.729999999996,11,3158.2481818181814
 1662.0,Gordon Birtwistle,Very Small Entity,13471.59,3,4490.53
 1664.0,Lorely Burt,Single Donation Entity,3430.0,1,3430.0
 1665.0,Daniel Byles,Very Small Entity,5921.469999999999,2,2960.7349999999997
@@ -718,16 +719,16 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1667.0,Huw Irranca-Davies,Single Donation Entity,2421.47,1,2421.47
 1668.0,Tessa Jowell,Small Medium Entity,189355.53,22,8607.069545454546
 1670.0,Priti Patel,Small Medium Entity,362111.24,25,14484.4496
-1671.0,Yasmin Qureshi,Small Medium Entity,63423.4,19,3338.0736842105266
+1671.0,Yasmin Qureshi,Small Medium Entity,59943.4,17,3526.0823529411764
 1672.0,Heather Wheeler,Small Entity,42854.42,14,3061.0299999999997
-1673.0,Rushanara Ali,Small Medium Entity,82300.53,21,3919.072857142857
+1673.0,Rushanara Ali,Small Medium Entity,80620.53,20,4031.0265
 1674.0,Peter Bone,Very Small Entity,5800.0,2,2900.0
 1675.0,Thomas Docherty,Single Donation Entity,3279.0,1,3279.0
 1676.0,Jonathan Edwards,Single Donation Entity,4680.0,1,4680.0
-1677.0,Matthew Hancock,Small Medium Entity,569482.0,78,7301.051282051282
+1677.0,Matthew Hancock,Small Medium Entity,332492.0,49,6785.551020408163
 1678.0,Kate Hoey,Very Small Entity,43421.0,5,8684.2
 1681.0,Chris Heaton-Harris,Very Small Entity,17647.55,5,3529.5099999999998
-1682.0,Phillip Lee,Small Entity,58353.479999999996,12,4862.79
+1682.0,Phillip Lee,Small Entity,50853.479999999996,11,4623.043636363636
 1683.0,Charlotte Leslie,Small Entity,48681.43,14,3477.245
 1684.0,Pamela Nash,Very Small Entity,20226.940000000002,4,5056.735000000001
 1687.0,Catherine Mckinnell,Very Small Entity,9800.0,4,2450.0
@@ -744,7 +745,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1771.0,David Campbell Bannerman,Single Donation Entity,1501.0,1,1501.0
 1772.0,Project Umubano,Single Donation Entity,50000.0,1,50000.0
 1773.0,Bob Ainsworth,Single Donation Entity,4500.0,1,4500.0
-1774.0,Bill Esterson,Small Entity,68900.0,11,6263.636363636364
+1774.0,Bill Esterson,Small Entity,63900.0,10,6390.0
 1775.0,Mike Freer,Very Small Entity,12664.34,5,2532.868
 1776.0,Duncan Hames,Very Small Entity,11003.0,3,3667.6666666666665
 1777.0,Sheryll Murray,Small Entity,35610.0,12,2967.5
@@ -753,27 +754,27 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1780.0,Henry Smith,Small Entity,44408.3,11,4037.118181818182
 1781.0,Gerry Sutcliffe,Single Donation Entity,3500.0,1,3500.0
 1782.0,Justin Tomlinson,Single Donation Entity,3600.0,1,3600.0
-1792.0,Bob Blackman,Small Medium Entity,106078.15,30,3535.938333333333
+1792.0,Bob Blackman,Small Medium Entity,96131.15,27,3560.412962962963
 1793.0,Simon Danczuk,Very Small Entity,14673.0,3,4891.0
 1794.0,Philip Davies,Very Small Entity,17672.0,5,3534.4
 1795.0,Michael Dugher,Small Entity,22680.46,8,2835.0575
 1796.0,John Healey,Small Entity,116469.44,9,12941.048888888889
-1797.0,Sajid Javid,Small Medium Entity,565538.63,42,13465.205476190476
+1797.0,Sajid Javid,Small Medium Entity,328038.63,29,11311.676896551724
 1798.0,Angus Macneil,Small Entity,56646.479999999996,10,5664.647999999999
 1799.0,Ed Miliband,Very Small Entity,52835.8,4,13208.95
 1800.0,Stephen Mosley,Very Small Entity,10679.45,5,2135.8900000000003
 1801.0,Bridget Phillipson,Very Small Entity,24378.64,5,4875.728
-1802.0,Jim Murphy,Small Entity,82770.99,11,7524.635454545455
-1806.0,Luciana Berger,Small Medium Entity,107929.18,16,6745.57375
-1808.0,Stephen Twigg,Small Entity,17806.42,6,2967.736666666666
+1802.0,Jim Murphy,Small Entity,82770.98999999999,11,7524.635454545453
+1806.0,Luciana Berger,Small Entity,62929.18,11,5720.834545454545
+1808.0,Stephen Twigg,Very Small Entity,15846.42,5,3169.284
 1814.0,Steve Baker,Small Entity,64290.0,10,6429.0
 1815.0,Nadine Dorries,Single Donation Entity,8130.0,1,8130.0
-1816.0,Kwasi Kwarteng,Small Medium Entity,54031.39,19,2843.7573684210524
+1816.0,Kwasi Kwarteng,Small Medium Entity,48773.39,17,2869.0229411764703
 1817.0,Greg Mulholland,Very Small Entity,4043.59,2,2021.795
 1819.0,Gareth R Thomas,Very Small Entity,15301.0,3,5100.333333333333
 1820.0,Murdo Fraser,Very Small Entity,14700.0,4,3675.0
 1823.0,Iain Duncan Smith,Small Entity,56109.5,15,3740.633333333333
-1824.0,Tim Farron,Small Medium Entity,597862.9299999999,47,12720.487872340424
+1824.0,Tim Farron,Small Medium Entity,639554.9,49,13052.140816326531
 1825.0,Stephen Hepburn,Small Entity,18737.3,8,2342.1625
 1826.0,Greg Knight,Single Donation Entity,3000.0,1,3000.0
 1835.0,Ruth Davidson,Very Small Entity,29500.0,4,7375.0
@@ -784,9 +785,9 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1841.0,Anne Marie Morris,Small Medium Entity,47275.72,18,2626.428888888889
 1842.0,Jesse Norman,Very Small Entity,10450.0,3,3483.3333333333335
 1843.0,Alok Sharma,Small Entity,55760.57,9,6195.618888888889
-1844.0,Chuka Umunna,Small Medium Entity,313778.16,36,8716.06
+1844.0,Chuka Umunna,Small Medium Entity,293778.16000000003,34,8640.53411764706
 1845.0,Paul Uppal,Very Small Entity,9925.0,2,4962.5
-1846.0,Tom Watson,Small Medium Entity,589083.63,63,9350.53380952381
+1846.0,Tom Watson,Small Medium Entity,534333.63,59,9056.502203389831
 1850.0,Johann Lamont,Single Donation Entity,5000.0,1,5000.0
 1851.0,Stuart Andrew,Very Small Entity,14715.0,5,2943.0
 1852.0,Jim Dobbin,Very Small Entity,4265.0,2,2132.5
@@ -794,7 +795,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1854.0,Ian Murray,Small Entity,45310.1,10,4531.01
 1862.0,Rehman Chishti,Small Entity,45149.41,10,4514.941000000001
 1863.0,Gemma Doyle,Very Small Entity,10360.11,4,2590.0275
-1864.0,Caroline Lucas,Small Medium Entity,219680.0,25,8787.2
+1864.0,Caroline Lucas,Small Medium Entity,200740.0,21,9559.047619047618
 1865.0,Richard Ottaway,Very Small Entity,3212.0,2,1606.0
 1866.0,David Rutley,Single Donation Entity,2490.0,1,2490.0
 1867.0,Anas Sarwar,Small Medium Entity,232191.43,17,13658.319411764705
@@ -806,10 +807,10 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1879.0,David Tredinnick,Single Donation Entity,3025.0,1,3025.0
 1880.0,Richard Graham,Small Entity,39374.5,11,3579.5
 1883.0,Patrick Harvie,Single Donation Entity,5316.0,1,5316.0
-1893.0,Stephen Metcalfe,Small Entity,32302.0,6,5383.666666666667
+1893.0,Stephen Metcalfe,Very Small Entity,25302.0,5,5060.4
 1894.0,George Hollingbery,Single Donation Entity,3000.0,1,3000.0
 1895.0,Fabian Society,Small Entity,86753.0,9,9639.222222222223
-1896.0,Rhoda Grant,Very Small Entity,11155.189999999999,3,3718.396666666666
+1896.0,Rhoda Grant,Very Small Entity,11155.19,3,3718.396666666667
 1898.0,Ben Bradshaw,Small Entity,19929.47,7,2847.067142857143
 1899.0,The Rt Hon Jeffrey Donaldson Mp,Single Donation Entity,2700.0,1,2700.0
 1900.0,Robert Flello,Small Entity,39675.0,8,4959.375
@@ -820,16 +821,16 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1916.0,Richard Baker,Very Small Entity,14900.0,2,7450.0
 1920.0,Fulham Group,Single Donation Entity,25000.0,1,25000.0
 1921.0,Nicola Blackwood,Very Small Entity,6851.09,2,3425.545
-1922.0,Richard Harrington,Small Entity,74696.0,8,9337.0
+1922.0,Richard Harrington,Small Entity,52696.0,6,8782.666666666666
 1923.0,Meg Hillier,Very Small Entity,11116.25,3,3705.4166666666665
 1924.0,Chinyelu Onwurah,Very Small Entity,9909.19,4,2477.2975
-1925.0,Yvette Cooper,Small Medium Entity,934780.3099999999,73,12805.209726027397
+1925.0,Yvette Cooper,Small Medium Entity,903933.31,70,12913.333
 1926.0,Caroline Flint,Small Medium Entity,76843.58,20,3842.179
 1927.0,Rebecca Harris,Very Small Entity,14988.66,3,4996.22
 1928.0,Amber Rudd,Very Small Entity,3381.91,2,1690.955
 1929.0,Andrew Stephenson,Small Entity,34307.21,8,4288.40125
 1930.0,Clive Grunshaw,Very Small Entity,5000.0,2,2500.0
-1935.0,Dan Jarvis,Small Medium Entity,483617.19,43,11246.911395348838
+1935.0,Dan Jarvis,Small Medium Entity,471117.19,42,11217.075952380952
 1936.0,George Mudie,Single Donation Entity,4500.0,1,4500.0
 1937.0,Claire Perry,Single Donation Entity,9939.39,1,9939.39
 1938.0,Bob Russell,Single Donation Entity,5222.0,1,5222.0
@@ -839,24 +840,24 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 1943.0,Laura Sandys,Single Donation Entity,3691.93,1,3691.93
 1944.0,David Morris,Small Medium Entity,115082.67,30,3836.089
 1959.0,Gareth Johnson,Very Small Entity,3920.0,2,1960.0
-1962.0,Democracy 2015,Very Small Entity,19114.739999999998,4,4778.6849999999995
+1962.0,Democracy 2015,Very Small Entity,19114.74,4,4778.685
 1972.0,Don'T Cook Party,Very Small Entity,75000.0,2,37500.0
 1985.0,David Burrowes,Single Donation Entity,2276.0,1,2276.0
 1986.0,Life,Very Small Entity,12569.02,3,4189.673333333333
 1996.0,Jessica Lee,Single Donation Entity,1511.0,1,1511.0
-1997.0,Alun Cairns,Small Medium Entity,77149.73,17,4538.219411764706
+1997.0,Alun Cairns,Small Medium Entity,72149.73,16,4509.358125
 1998.0,Gloria De Piero,Very Small Entity,6000.0,3,2000.0
-1999.0,Helen Goodman,Small Entity,43894.23,6,7315.705000000001
+1999.0,Helen Goodman,Very Small Entity,40590.23,5,8118.046
 2000.0,George Galloway,Very Small Entity,4782.35,2,2391.175
-2001.0,John Howell,Small Entity,24495.92,7,3499.4171428571426
+2001.0,John Howell,Small Entity,17410.46,6,2901.7433333333333
 2002.0,Adrian Bailey,Single Donation Entity,4973.39,1,4973.39
 2003.0,Lucy Powell,Very Small Entity,18004.0,3,6001.333333333333
-2004.0,Jonathan Reynolds,Small Entity,31352.920000000002,8,3919.1150000000002
+2004.0,Jonathan Reynolds,Small Entity,31352.92,8,3919.115
 2005.0,Stephen Timms,Small Entity,72579.0,14,5184.214285714285
 2018.0,Oliver Colvile,Very Small Entity,13074.0,4,3268.5
 2021.0,Stella Creasy,Small Entity,18832.0,6,3138.6666666666665
-2022.0,Jack Lopresti,Small Medium Entity,66119.78,16,4132.48625
-2023.0,Andy Mcdonald,Small Entity,115572.0,9,12841.333333333334
+2022.0,Jack Lopresti,Small Entity,63119.78,15,4207.985333333333
+2023.0,Andy Mcdonald,Small Entity,106485.5,8,13310.6875
 2039.0,Richard Bacon,Very Small Entity,15891.19,5,3178.2380000000003
 2041.0,Jeremy Lefroy,Small Entity,25577.85,12,2131.4874999999997
 2055.0,Yorkshire Party,Very Small Entity,18998.0,3,6332.666666666667
@@ -864,18 +865,18 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 2060.0,Guy Opperman,Small Entity,35184.24,11,3198.5672727272727
 2061.0,John Lamont,Small Entity,18858.0,7,2694.0
 2070.0,Graham Evans,Very Small Entity,16319.92,3,5439.973333333333
-2072.0,Martin Vickers,Small Entity,39839.770000000004,12,3319.9808333333335
+2072.0,Martin Vickers,Small Entity,34839.77,11,3167.2518181818177
 2073.0,Nic Dakin,Very Small Entity,5153.0,2,2576.5
 2074.0,Conservative Councillors' Association,Small Entity,100680.0,14,7191.428571428572
 2080.0,Tom Greatrex,Very Small Entity,9859.439999999999,3,3286.4799999999996
 2081.0,Norman Lamb,Small Medium Entity,76750.5,23,3336.978260869565
 2082.0,John Biggs,Very Small Entity,6000.0,2,3000.0
 2093.0,Margaret Hodge,Small Entity,31373.17,6,5228.861666666667
-2094.0,Brandon Lewis,Medium Entity,621078.95,105,5915.037619047619
+2094.0,Brandon Lewis,Small Medium Entity,534517.95,93,5747.504838709677
 2096.0,Ben Wallace,Single Donation Entity,3500.0,1,3500.0
 2097.0,Alexandra Mayer,Single Donation Entity,11692.0,1,11692.0
 2098.0,Lucy Anderson,Very Small Entity,19710.0,4,4927.5
-2099.0,Vicky Foxcroft,Very Small Entity,16715.440000000002,4,4178.860000000001
+2099.0,Vicky Foxcroft,Very Small Entity,12349.44,3,4116.4800000000005
 2102.0,Frank Field,Small Entity,66909.7,6,11151.616666666667
 2103.0,Ben Gummer,Very Small Entity,7289.19,2,3644.595
 2104.0,Sadiq Khan,Small Medium Entity,363956.0,41,8876.975609756097
@@ -910,10 +911,10 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 2175.0,Mike Crockart,Single Donation Entity,3810.0,1,3810.0
 2188.0,Jim Eadie,Single Donation Entity,3108.0,1,3108.0
 2189.0,Margaret Mitchell,Single Donation Entity,3108.0,1,3108.0
-2190.0,Society Of Conservative Lawyers,Small Entity,439454.71,6,73242.45166666668
+2190.0,Society Of Conservative Lawyers,Small Entity,439454.70999999996,6,73242.45166666666
 2192.0,Anne-Marie Trevelyan,Small Medium Entity,47805.82,22,2172.991818181818
 2209.0,Yes Scotland Limited,Small Medium Entity,2431000.0,25,97240.0
-2217.0,Ian Austin,Small Medium Entity,90783.0,18,5043.5
+2217.0,Ian Austin,Small Entity,63783.0,13,4906.384615384615
 2218.0,Jackie Doyle-Price,Very Small Entity,8410.380000000001,3,2803.4600000000005
 2220.0,Lucy Allan,Single Donation Entity,2000.0,1,2000.0
 2221.0,Mohammad Asghar,Very Small Entity,4000.0,2,2000.0
@@ -929,7 +930,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 2256.0,Matthew Pennycook,Single Donation Entity,2885.35,1,2885.35
 2257.0,Anthony Cox,Very Small Entity,12500.0,2,6250.0
 2258.0,Christopher Green,Very Small Entity,34216.82,4,8554.205
-2259.0,Rowenna Davis,Very Small Entity,21500.0,5,4300.0
+2259.0,Rowenna Davis,Small Entity,31500.0,6,5250.0
 2296.0,Helen Hayes,Very Small Entity,7495.0,4,1873.75
 2298.0,George Ferguson,Very Small Entity,4589.0,2,2294.5
 2304.0,No Borders Campaign,Very Small Entity,125000.0,5,25000.0
@@ -947,17 +948,17 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 2364.0,Anna Soubry,Single Donation Entity,5000.0,1,5000.0
 2365.0,William Goodhand,Small Entity,29500.0,7,4214.285714285715
 2383.0,Christians For Independence,Single Donation Entity,100000.0,1,100000.0
-2392.0,Angus Macdonald,Very Small Entity,32560.0,3,10853.333333333334
+2392.0,Angus Macdonald,Very Small Entity,28780.0,2,14390.0
 2402.0,Neil Parish,Very Small Entity,4675.0,2,2337.5
 2403.0,Redbridge Labour Group,Small Entity,19850.0,7,2835.714285714286
 2416.0,Wfs2014 Ltd,Very Small Entity,30000.0,3,10000.0
 2420.0,Scottish Research Society,Single Donation Entity,74747.47,1,74747.47
-2423.0,Stephen Mccabe,Small Entity,28514.17,11,2592.197272727273
+2423.0,Stephen Mccabe,Small Entity,26514.17,10,2651.417
 2427.0,Cumbria Broadband Rural And Community Projects Limited,Very Small Entity,20145.0,3,6715.0
 2429.0,Let'S Stay Together,Small Entity,111501.0,8,13937.625
 2431.0,Better With Scotland,Single Donation Entity,20723.5,1,20723.5
 2435.0,Political Animal Lobby Ltd,Very Small Entity,17636.21,2,8818.105
-2450.0,James Heappey,Small Medium Entity,131407.41,22,5973.064090909091
+2450.0,James Heappey,Small Medium Entity,128907.41,21,6138.448095238095
 2451.0,Rhun Ap Iorwerth,Very Small Entity,5221.32,2,2610.66
 2452.0,Alun Craig Williams,Single Donation Entity,1600.0,1,1600.0
 2453.0,Afzal Amin,Single Donation Entity,1600.0,1,1600.0
@@ -977,24 +978,24 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 2578.0,Fabian Society,Small Entity,14300.0,2,7150.0
 2585.0,Angela Eagle,Small Medium Entity,204899.74,17,12052.92588235294
 2586.0,Daniel Poulter,Single Donation Entity,12500.0,1,12500.0
-2587.0,Tom Brake,Small Medium Entity,84885.0,17,4993.235294117647
+2587.0,Tom Brake,Small Entity,49701.0,11,4518.272727272727
 2588.0,George Eustice,Very Small Entity,7380.63,3,2460.21
 2590.0,Shabana Mahmood,Small Entity,62065.94,6,10344.323333333334
 2591.0,Mark Reckless,Single Donation Entity,13000.0,1,13000.0
 2592.0,Carlton Club,Small Entity,283850.0,10,28385.0
 2593.0,Raymond Finch,Single Donation Entity,7500.0,1,7500.0
 2594.0,Neil Findlay,Small Entity,41098.16,14,2935.5828571428574
-2598.0,Johnny Mercer,Small Medium Entity,114316.43000000001,37,3089.6332432432437
+2598.0,Johnny Mercer,Small Medium Entity,99903.63,29,3444.95275862069
 2599.0,Britain Yearly Meeting Of Religious Society Of Friends (Quakers),Very Small Entity,28500.0,4,7125.0
 2623.0,Cruelty Free International,Single Donation Entity,600.0,1,600.0
-2652.0,Radical Party,Small Medium Entity,52852.0,16,3303.25
+2652.0,Radical Party,Small Entity,36852.0,13,2834.769230769231
 2679.0,Simon Marcus,Single Donation Entity,2000.0,1,2000.0
 2736.0,British Institute Of Human Rights,Single Donation Entity,5573.0,1,5573.0
 2739.0,Karen Bradley,Single Donation Entity,5000.0,1,5000.0
-2740.0,John Stevenson,Small Medium Entity,115000.0,22,5227.272727272727
+2740.0,John Stevenson,Small Medium Entity,113250.0,21,5392.857142857143
 2745.0,Network For Animals Ltd,Very Small Entity,36271.8,3,12090.6
 2747.0,Mark Bradshaw,Single Donation Entity,5000.0,1,5000.0
-2755.0,Women'S Equality Party,Medium Entity,1855585.29,129,14384.382093023256
+2755.0,Women'S Equality Party,Medium Entity,1602968.81,121,13247.67611570248
 2786.0,Labour People Ltd,Small Entity,70000.0,7,10000.0
 2797.0,Stephen Greenhalgh,Very Small Entity,17276.0,5,3455.2
 2799.0,No Balls Ball,Very Small Entity,25450.0,2,12725.0
@@ -1005,49 +1006,49 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 2815.0,David Mackintosh,Very Small Entity,8037.0,3,2679.0
 2816.0,Tulip Siddiq,Very Small Entity,45835.0,2,22917.5
 2817.0,Derek Thomas,Very Small Entity,36613.0,4,9153.25
-2818.0,Tom Tugendhat,Small Medium Entity,715776.51,53,13505.217169811322
+2818.0,Tom Tugendhat,Small Medium Entity,745973.6900000001,55,13563.158000000001
 2819.0,Craig Williams,Very Small Entity,13252.06,4,3313.015
 2821.0,Tania Mathias,Very Small Entity,19500.0,4,4875.0
 2828.0,Gordon Matheson,Very Small Entity,26045.89,3,8681.963333333333
 2829.0,Liz Kendall,Small Medium Entity,174075.0,27,6447.222222222223
 2831.0,Kevin Foster,Very Small Entity,14080.39,3,4693.463333333333
 2839.0,Justine Greening,Single Donation Entity,3354.83,1,3354.83
-2842.0,Clive Lewis,Small Medium Entity,242929.28,33,7361.493333333333
+2842.0,Clive Lewis,Small Medium Entity,251011.68,34,7382.696470588235
 2843.0,Holly Lynch,Very Small Entity,27921.0,5,5584.2
 2844.0,Eric Pickles,Very Small Entity,15800.0,4,3950.0
 2845.0,Mary Robinson,Very Small Entity,23494.14,5,4698.8279999999995
 2846.0,Alex Rowley,Very Small Entity,7000.0,2,3500.0
 2855.0,Gareth Thomas,Very Small Entity,8500.0,3,2833.3333333333335
 2856.0,Paul Scully,Small Entity,28776.07,9,3197.341111111111
-2857.0,Will Quince,Small Medium Entity,53890.44,22,2449.5654545454545
+2857.0,Will Quince,Small Medium Entity,48068.59,20,2403.4294999999997
 2858.0,Kate Osamor,Very Small Entity,13895.33,5,2779.066
-2859.0,Alan Mak,Small Medium Entity,135044.42,25,5401.776800000001
-2860.0,Andrea Jenkyns,Small Medium Entity,105936.17,21,5044.579523809523
+2859.0,Alan Mak,Small Medium Entity,131097.61,23,5699.896086956521
+2860.0,Andrea Jenkyns,Small Medium Entity,93936.17,19,4944.008947368421
 2861.0,Suella Fernandes,Very Small Entity,17400.0,5,3480.0
 2862.0,Byron Davies,Very Small Entity,11946.0,2,5973.0
-2863.0,James Cleverly,Small Medium Entity,339469.35,38,8933.40394736842
-2864.0,Lisa Cameron,Small Entity,51555.53,14,3682.537857142857
+2863.0,James Cleverly,Small Medium Entity,325469.35,34,9572.62794117647
+2864.0,Lisa Cameron,Small Entity,49969.03,13,3843.7715384615385
 2865.0,Hannah Bardell,Very Small Entity,7437.09,2,3718.545
 2866.0,Caroline Ansell,Small Entity,68610.55,7,9801.507142857143
 2867.0,Tasmina Ahmed-Sheikh,Very Small Entity,10377.09,3,3459.03
 2868.0,John Bell,Single Donation Entity,1600.0,1,1600.0
 2869.0,Zac Goldsmith,Single Donation Entity,50000.0,1,50000.0
-2885.0,Robert Jenrick,Small Medium Entity,683283.16,53,12892.135094339623
+2885.0,Robert Jenrick,Small Medium Entity,723283.16,55,13150.60290909091
 2886.0,Mike Kane Mp,Very Small Entity,40367.6,3,13455.866666666667
 2887.0,Anne Main,Very Small Entity,4260.0,2,2130.0
 2889.0,Mark Pawsey,Very Small Entity,16004.78,5,3200.956
-2890.0,Tom Pursglove,Very Small Entity,7002.0,4,1750.5
+2890.0,Tom Pursglove,Very Small Entity,5402.0,3,1800.6666666666667
 2891.0,Jamie Reed,Very Small Entity,4539.5,2,2269.75
 2892.0,Daniel Zeichner,Single Donation Entity,2998.65,1,2998.65
-3902.0,Ashfield Independents,Very Small Entity,16800.0,4,4200.0
+3902.0,Ashfield Independents,Very Small Entity,8400.0,2,4200.0
 3906.0,Scottish Libertarian Party [De-Registered 11/11/22],Very Small Entity,17467.57,4,4366.8925
 3908.0,Helen Whately,Very Small Entity,9954.0,3,3318.0
 3909.0,Natalie Mcgarry,Single Donation Entity,1977.11,1,1977.11
-3910.0,Alison Mcgovern,Small Medium Entity,31203.43,16,1950.214375
-3911.0,Mark Garnier,Small Entity,34747.979999999996,8,4343.4974999999995
-3912.0,Labour Together,Small Medium Entity,6348725.0,98,64782.9081632653
+3910.0,Alison Mcgovern,Small Entity,21703.43,11,1973.0390909090909
+3911.0,Mark Garnier,Small Entity,34747.98,8,4343.4975
+3912.0,Labour Together,Medium Entity,7005391.0,105,66718.00952380952
 3930.0,Gary Godden,Single Donation Entity,5211.72,1,5211.72
-3931.0,Peter Kyle,Small Medium Entity,275723.3,28,9847.260714285714
+3931.0,Peter Kyle,Small Medium Entity,270596.58999999997,27,10022.095925925925
 3932.0,Jo Stevens,Very Small Entity,20757.0,3,6919.0
 3933.0,Karl Turner,Very Small Entity,9846.0,4,2461.5
 3942.0,In Campaign Ltd,Medium Large Entity,24228109.1,206,117612.18009708739
@@ -1055,7 +1056,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 3950.0,Conservatives In Ltd,Small Medium Entity,1798815.76,75,23984.210133333334
 3953.0,Grassroots Out Ltd,Small Medium Entity,2611474.76,18,145081.9311111111
 3963.0,Mhairi Black,Single Donation Entity,2851.0,1,2851.0
-3964.0,Jess Phillips,Small Medium Entity,127076.37,16,7942.273125
+3964.0,Jess Phillips,Small Entity,85288.75,13,6560.673076923077
 3965.0,Conservative Friends Of Chinese,Single Donation Entity,11250.0,1,11250.0
 3966.0,Mark Macmillan,Single Donation Entity,2000.0,1,2000.0
 3974.0,Leave.Eu Group Ltd,Very Small Entity,6400599.0,3,2133533.0
@@ -1064,14 +1065,14 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 3999.0,Another Europe Is Possible,Very Small Entity,15320.0,2,7660.0
 4001.0,Go Movement Ltd,Very Small Entity,45025.92,5,9005.184
 4010.0,Northumberland Dining Club,Small Entity,79477.86,10,7947.786
-4011.0,James Morris,Small Entity,92200.0,9,10244.444444444445
-4012.0,Bob Stewart,Small Entity,25738.83,7,3676.9757142857147
+4011.0,James Morris,Small Entity,82200.0,8,10275.0
+4012.0,Bob Stewart,Small Entity,25738.829999999998,7,3676.975714285714
 4013.0,Chris Evans,Single Donation Entity,4837.0,1,4837.0
 4014.0,David Jones,Very Small Entity,14770.26,4,3692.565
-4015.0,Chris Leslie,Small Entity,79798.81,15,5319.920666666667
+4015.0,Chris Leslie,Small Entity,44614.81,9,4957.201111111111
 4016.0,Karl Mccartney,Single Donation Entity,10397.0,1,10397.0
 4018.0,Stephen Phillips,Single Donation Entity,4837.0,1,4837.0
-4019.0,Naz Shah,Small Medium Entity,93510.48,19,4921.604210526316
+4019.0,Naz Shah,Small Medium Entity,94065.38,19,4950.80947368421
 4022.0,European Movement Of Uk Ltd,Small Medium Entity,546239.0,54,10115.537037037036
 4027.0,Trade Unionists Against European Union,Small Medium Entity,168000.0,16,10500.0
 4031.0,Darren Grimes,Small Entity,1350630.3599999999,8,168828.79499999998
@@ -1083,7 +1084,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 4092.0,Edward Argar,Very Small Entity,13217.0,4,3304.25
 4093.0,Jonathan Ashworth,Very Small Entity,11335.0,3,3778.3333333333335
 4094.0,Chris Davies,Very Small Entity,16749.9,3,5583.3
-4095.0,Simon Hart,Small Medium Entity,141296.66,21,6728.412380952381
+4095.0,Simon Hart,Small Medium Entity,105731.66,16,6608.22875
 4096.0,Craig Mackinlay,Very Small Entity,4500.0,2,2250.0
 4097.0,Amanda Milling,Single Donation Entity,2000.0,1,2000.0
 4098.0,David Nuttall,Single Donation Entity,2179.18,1,2179.18
@@ -1091,11 +1092,11 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 4100.0,Craig Tracey,Single Donation Entity,2000.0,1,2000.0
 4101.0,Martyn Underhill,Single Donation Entity,30000.0,1,30000.0
 4102.0,Peter Dowd,Single Donation Entity,3114.84,1,3114.84
-4103.0,Oliver Dowden,Very Small Entity,14867.0,2,7433.5
+4103.0,Oliver Dowden,Very Small Entity,34362.99,4,8590.7475
 4104.0,Lucy Frazer,Very Small Entity,42067.0,3,14022.333333333334
-4105.0,Kate Green,Small Entity,93105.0,9,10345.0
+4105.0,Kate Green,Small Entity,67205.0,7,9600.714285714286
 4106.0,Julian Knight,Single Donation Entity,10867.0,1,10867.0
-4107.0,Christian Matheson,Very Small Entity,14257.15,5,2851.43
+4107.0,Christian Matheson,Very Small Entity,11651.99,4,2912.9975
 4108.0,Callum Mccaig,Single Donation Entity,2075.0,1,2075.0
 4109.0,Jeff Smith,Very Small Entity,20889.82,4,5222.455
 4114.0,Veterans For Britain,Very Small Entity,200000.0,3,66666.66666666667
@@ -1109,7 +1110,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 4155.0,Paul Bell,Single Donation Entity,10000.0,1,10000.0
 4156.0,Jeremy Peter Middleton,Single Donation Entity,2000.0,1,2000.0
 4157.0,Flick Drummond,Single Donation Entity,2800.0,1,2800.0
-4158.0,Stephen Kinnock,Small Medium Entity,92080.22,17,5416.483529411765
+4158.0,Stephen Kinnock,Small Entity,79820.22,15,5321.348
 4160.0,Mark Spencer,Single Donation Entity,3000.0,1,3000.0
 4164.0,Green-Leaves,Very Small Entity,20000.0,2,10000.0
 4171.0,Wake Up And Vote,Very Small Entity,200000.0,2,100000.0
@@ -1130,14 +1131,14 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 4239.0,James Davies,Very Small Entity,10000.0,3,3333.3333333333335
 4240.0,Stuart Blair Donaldson,Very Small Entity,5871.0,2,2935.5
 4241.0,Yvonne Fovargue,Very Small Entity,6758.0599999999995,2,3379.0299999999997
-4242.0,Ranil Jayawardena,Small Entity,131867.18,15,8791.145333333332
+4242.0,Ranil Jayawardena,Small Entity,121867.18,14,8704.798571428571
 4243.0,Steve Rotheram,Small Entity,89900.0,9,9988.888888888889
 4244.0,Angela Smith,Single Donation Entity,2958.06,1,2958.06
 4247.0,Labour Tomorrow Ltd,Small Entity,335400.0,9,37266.666666666664
-5253.0,Momentum,Small Entity,78516.92,6,13086.153333333334
-5254.0,Steve Double,Small Entity,63125.0,7,9017.857142857143
+5253.0,Momentum,Very Small Entity,48258.46,4,12064.615
+5254.0,Steve Double,Very Small Entity,43400.0,5,8680.0
 5255.0,Steve Bedser,Single Donation Entity,2341.64,1,2341.64
-5263.0,Rupa Huq,Small Entity,30964.99,9,3440.5544444444445
+5263.0,Rupa Huq,Small Entity,30964.989999999998,9,3440.554444444444
 5264.0,Mike Wood,Very Small Entity,5050.0,2,2525.0
 5265.0,William Wragg,Single Donation Entity,2500.0,1,2500.0
 5266.0,Jamie Greene,Very Small Entity,8000.0,2,4000.0
@@ -1146,10 +1147,10 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 5269.0,Ross Thomson,Very Small Entity,26037.75,4,6509.4375
 5270.0,Jenny Gilruth,Single Donation Entity,8579.26,1,8579.26
 5271.0,Annie Wells,Single Donation Entity,2000.0,1,2000.0
-5277.0,Conservative Voice Limited,Small Entity,100000.0,7,14285.714285714286
+5277.0,Conservative Voice Limited,Small Entity,80000.0,6,13333.333333333334
 5279.0,Saving Labour,Small Entity,157460.0,7,22494.285714285714
 5280.0,Martyn Day,Very Small Entity,12329.23,3,4109.743333333333
-5281.0,Nigel Huddleston,Small Entity,22297.51,7,3185.3585714285714
+5281.0,Nigel Huddleston,Small Entity,17652.4,6,2942.066666666667
 5282.0,Chris Law,Single Donation Entity,4634.68,1,4634.68
 5283.0,Owen Smith,Small Medium Entity,866905.12,62,13982.34064516129
 5284.0,Andrew Turner,Single Donation Entity,2500.0,1,2500.0
@@ -1158,19 +1159,19 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 6304.0,Alec Shelbrooke,Very Small Entity,6860.0,3,2286.6666666666665
 6305.0,Glyn Davies,Single Donation Entity,1768.0,1,1768.0
 6306.0,Ian Mearns,Small Entity,173483.2,10,17348.32
-6308.0,Michael Tomlinson,Small Entity,34473.91,6,5745.651666666668
+6308.0,Michael Tomlinson,Very Small Entity,27473.91,5,5494.782
 6309.0,Scott Mann,Very Small Entity,6800.0,2,3400.0
-6310.0,Stephen Gethins,Very Small Entity,13950.6,5,2790.12
+6310.0,Stephen Gethins,Very Small Entity,12042.470000000001,4,3010.6175000000003
 6311.0,Alexander Stewart,Very Small Entity,8429.96,2,4214.98
 6312.0,Clare Haughey,Very Small Entity,8453.0,2,4226.5
 6326.0,Steven Paterson,Single Donation Entity,3800.0,1,3800.0
 6327.0,Michelle Thomson,Single Donation Entity,1685.94,1,1685.94
 6328.0,Dame Rosie Winterton,Very Small Entity,9600.0,3,3200.0
-6329.0,Chris Stephens,Small Entity,218009.0,8,27251.125
+6329.0,Chris Stephens,Small Entity,188345.0,7,26906.428571428572
 6340.0,Tracy Brabin,Very Small Entity,10900.0,2,5450.0
 6341.0,Ben Howlett,Single Donation Entity,3042.5,1,3042.5
 6345.0,Keir Starmer,Small Medium Entity,749741.71,70,10710.595857142856
-6346.0,Wes Streeting,Small Medium Entity,546877.07,57,9594.334561403508
+6346.0,Wes Streeting,Small Medium Entity,584489.06,56,10437.304642857143
 6375.0,Louise Haigh,Very Small Entity,5185.0,2,2592.5
 6376.0,Liz Mcinnes,Very Small Entity,5367.0,2,2683.5
 6377.0,Richard Fuller,Single Donation Entity,10000.0,1,10000.0
@@ -1184,7 +1185,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 6422.0,Sion Simon,Single Donation Entity,4321.0,1,4321.0
 6423.0,Andrew Bingham,Single Donation Entity,1840.0,1,1840.0
 6424.0,Jo Churchill,Single Donation Entity,5100.0,1,5100.0
-6425.0,Steve Reed,Very Small Entity,20052.23,5,4010.446
+6425.0,Steve Reed,Very Small Entity,17052.23,4,4263.0575
 6427.0,Karin Smyth,Single Donation Entity,3124.55,1,3124.55
 6440.0,Uk-Eu Open Policy Limited (Campaign Name: Best For Britain),Small Medium Entity,1595331.58,33,48343.38121212122
 6462.0,Open Britain Ltd,Very Small Entity,91373.23,3,30457.743333333332
@@ -1198,7 +1199,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 6489.0,Marie Rimmer,Very Small Entity,16777.2,4,4194.3
 6490.0,John Penrose,Single Donation Entity,5190.14,1,5190.14
 6502.0,Compass,Very Small Entity,64000.0,5,12800.0
-6508.0,Leave.Eu,Very Small Entity,34044.090000000004,3,11348.03
+6508.0,Leave.Eu,Very Small Entity,34044.09,3,11348.029999999999
 6537.0,Abisola Ifasawo,Single Donation Entity,1650.0,1,1650.0
 6538.0,Andrew Milligan,Single Donation Entity,1650.0,1,1650.0
 6539.0,Gareth Wallace,Single Donation Entity,1650.0,1,1650.0
@@ -1209,52 +1210,52 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 6545.0,Sheena Tranter,Single Donation Entity,1650.0,1,1650.0
 6546.0,Robert Brian Hamill,Single Donation Entity,10000.0,1,10000.0
 6550.0,Deidre Brock,Very Small Entity,4400.0,2,2200.0
-6551.0,Lilian Greenwood,Small Entity,11877.619999999999,7,1696.802857142857
+6551.0,Lilian Greenwood,Small Entity,10357.619999999999,6,1726.2699999999998
 6552.0,Simon Hoare,Very Small Entity,14787.0,3,4929.0
-6553.0,Imran Hussain,Small Entity,24840.63,10,2484.063
+6553.0,Imran Hussain,Small Entity,22843.13,9,2538.125555555556
 6554.0,Seema Kennedy,Very Small Entity,5687.0,2,2843.5
-6555.0,Brendan O'Hara,Small Entity,16419.38,6,2736.5633333333335
+6555.0,Brendan O'Hara,Very Small Entity,14413.19,5,2882.638
 6556.0,Antoinette Sandbach,Very Small Entity,5748.0,2,2874.0
 6557.0,Mark Williams,Single Donation Entity,1600.0,1,1600.0
-6590.0,Joseph Johnson,Small Entity,50275.28,10,5027.528
-6592.0,Rosena Allin-Khan,Small Medium Entity,216563.91,44,4921.907045454545
-6593.0,Dan Carden,Small Entity,44376.58,10,4437.658
-6595.0,Renew,Small Medium Entity,878622.7,52,16896.590384615385
-6603.0,Hatch Connect Uk Ltd,Small Entity,80000.0,7,11428.57142857143
-6620.0,Mary Glindon,Small Medium Entity,86928.0,17,5113.411764705882
+6590.0,Joseph Johnson,Small Entity,38592.64,8,4824.08
+6592.0,Rosena Allin-Khan,Small Medium Entity,212601.27,45,4724.472666666667
+6593.0,Dan Carden,Small Entity,41072.58,9,4563.62
+6595.0,Renew,Small Medium Entity,665623.7,45,14791.637777777776
+6603.0,Hatch Connect Uk Ltd,Small Entity,70000.0,6,11666.666666666666
+6620.0,Mary Glindon,Small Entity,67150.5,13,5165.423076923077
 6621.0,Angela Burns,Single Donation Entity,2000.0,1,2000.0
-6622.0,Darren Millar,Very Small Entity,10944.71,5,2188.942
+6622.0,Darren Millar,Very Small Entity,8513.0,4,2128.25
 6623.0,Mark Isherwood,Single Donation Entity,2000.0,1,2000.0
-6624.0,Russell George,Very Small Entity,9190.42,4,2297.605
+6624.0,Russell George,Very Small Entity,6758.71,3,2252.903333333333
 6625.0,Ms Virginia Crosbie,Small Entity,122004.2,15,8133.613333333333
 6626.0,Richard Minshull,Single Donation Entity,2000.0,1,2000.0
-6627.0,Mohammad Yasin,Very Small Entity,4973.0,3,1657.6666666666667
+6627.0,Mohammad Yasin,Very Small Entity,6696.04,3,2232.0133333333333
 6628.0,Suzy Davies,Single Donation Entity,2000.0,1,2000.0
-6630.0,Damien Egan,Very Small Entity,11900.0,4,2975.0
-6633.0,Lloyd Russell-Moyle,Small Medium Entity,58899.1,17,3464.6529411764704
+6630.0,Damien Egan,Very Small Entity,14400.0,5,2880.0
+6633.0,Lloyd Russell-Moyle,Small Entity,49761.1,15,3317.4066666666668
 6644.0,Tomos Davies,Single Donation Entity,2000.0,1,2000.0
 6645.0,Alex Burghart,Single Donation Entity,7800.0,1,7800.0
 6646.0,Leo Docherty,Small Entity,46974.85,9,5219.427777777778
-6647.0,Damien Moore,Small Entity,27272.82,6,4545.47
+6647.0,Damien Moore,Very Small Entity,20772.82,5,4154.564
 6648.0,Chris Thorne,Single Donation Entity,2000.0,1,2000.0
 6667.0,Advance Together [De-Registered 01/10/20],Small Entity,141415.98,12,11784.665
-6668.0,Simon Clarke,Small Medium Entity,266300.0,42,6340.476190476191
+6668.0,Simon Clarke,Small Medium Entity,226900.0,35,6482.857142857143
 6669.0,Claire Clay,Single Donation Entity,8940.0,1,8940.0
 6670.0,Labour Network In England Ltd,Single Donation Entity,10000.0,1,10000.0
 6674.0,Daniel Johnson,Single Donation Entity,6400.0,1,6400.0
 6675.0,Jeremy Balfour,Single Donation Entity,6500.0,1,6500.0
 6683.0,Ian Paisley Mp,Very Small Entity,11386.26,3,3795.42
-6691.0,Preet Kaur Gill,Very Small Entity,14420.82,5,2884.1639999999998
+6691.0,Preet Kaur Gill,Very Small Entity,11738.27,4,2934.5675
 6692.0,David Linden,Single Donation Entity,1989.48,1,1989.48
 6693.0,Chi Onwurah,Very Small Entity,36918.95,4,9229.7375
-6694.0,Philippa Whitford,Small Entity,13156.130000000001,6,2192.6883333333335
-6695.0,Anna Mcmorrin,Very Small Entity,22173.86,5,4434.772
-6696.0,Gavin Williamson,Small Entity,79223.61,11,7202.146363636363
+6694.0,Philippa Whitford,Very Small Entity,11033.05,5,2206.6099999999997
+6695.0,Anna Mcmorrin,Very Small Entity,17232.43,4,4308.1075
+6696.0,Gavin Williamson,Small Entity,59223.61,10,5922.361
 6697.0,Richard Leonard,Small Entity,63130.0,7,9018.57142857143
 6713.0,Aspire,Very Small Entity,9872.880000000001,2,4936.4400000000005
-6719.0,Veterans And People's Party,Very Small Entity,2000.0,2,1000.0
+6719.0,Veterans And People's Party,Single Donation Entity,1000.0,1,1000.0
 6737.0,Valerie Wise,Single Donation Entity,1973.62,1,1973.62
-6739.0,Duma Polska = Polish Pride,Small Medium Entity,94200.0,36,2616.6666666666665
+6739.0,Duma Polska = Polish Pride,Small Medium Entity,58600.0,22,2663.6363636363635
 6756.0,Jonathan Lord,Single Donation Entity,1819.0,1,1819.0
 6776.0,Neil Bibby,Single Donation Entity,5000.0,1,5000.0
 6777.0,Andrew Bowie,Very Small Entity,4650.0,2,2325.0
@@ -1271,8 +1272,8 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 6801.0,Franklin Roe,Single Donation Entity,2500.0,1,2500.0
 6811.0,Bob Seely,Very Small Entity,17149.33,5,3429.8660000000004
 6812.0,Christine Jardine,Very Small Entity,4191.21,2,2095.605
-6813.0,Judith Cummins,Small Entity,18133.0,6,3022.1666666666665
-6814.0,Liz Saville Roberts,Small Medium Entity,104362.9,19,5492.784210526315
+6813.0,Judith Cummins,Very Small Entity,16605.5,5,3321.1
+6814.0,Liz Saville Roberts,Small Medium Entity,86902.9,18,4827.938888888889
 6815.0,Paul Williams,Very Small Entity,23174.0,4,5793.5
 6822.0,Stephen Morgan,Small Entity,20826.28,7,2975.182857142857
 6823.0,Jon Trickett,Single Donation Entity,2000.0,1,2000.0
@@ -1280,15 +1281,15 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 6830.0,The Rt Hon Nigel Dodds Mp,Single Donation Entity,2700.0,1,2700.0
 6831.0,Paul Girvan Mp,Single Donation Entity,2700.0,1,2700.0
 6832.0,Emma Little-Pengelly Mp,Single Donation Entity,2700.0,1,2700.0
-6842.0,Janet Daby,Very Small Entity,8860.0,3,2953.3333333333335
+6842.0,Janet Daby,Very Small Entity,5235.0,2,2617.5
 6843.0,Dean Lockhart,Single Donation Entity,2000.0,1,2000.0
 6844.0,Both Unions Party Of Northern Ireland,Single Donation Entity,16810.0,1,16810.0
-6846.0,Ben Houchen,Small Medium Entity,201707.06,29,6955.415862068965
-6853.0,Darren Jones,Small Entity,91160.65,10,9116.064999999999
+6846.0,Ben Houchen,Small Medium Entity,195707.06,27,7248.409629629629
+6853.0,Darren Jones,Small Entity,68160.65,8,8520.08125
 6854.0,Stephen Kerr,Single Donation Entity,1600.57,1,1600.57
 6855.0,Ms Michelle Mcilveen,Single Donation Entity,2144.0,1,2144.0
 6856.0,Mr Gary Middleton,Single Donation Entity,2144.0,1,2144.0
-6857.0,Mr Jonathan Buckley,Very Small Entity,19144.0,3,6381.333333333333
+6857.0,Mr Jonathan Buckley,Very Small Entity,10644.0,2,5322.0
 6858.0,Mr William Humphrey,Single Donation Entity,2144.0,1,2144.0
 6859.0,Jackson Carlaw,Very Small Entity,22200.0,4,5550.0
 6862.0,Bill Bowman,Single Donation Entity,2200.0,1,2200.0
@@ -1299,24 +1300,24 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 6871.0,Mary Fee,Single Donation Entity,2200.0,1,2200.0
 6890.0,Joy Morrissey,Very Small Entity,17000.0,3,5666.666666666667
 6893.0,Gillian Keegan,Very Small Entity,19658.73,2,9829.365
-6894.0,Suella Braverman,Small Entity,52205.479999999996,8,6525.6849999999995
+6894.0,Suella Braverman,Small Entity,57564.19,7,8223.455714285714
 6896.0,Stephen Lloyd,Single Donation Entity,1600.57,1,1600.57
 6897.0,Layla Moran,Small Medium Entity,51978.81,16,3248.675625
-6898.0,Shaun Bailey,Small Medium Entity,742400.0,31,23948.387096774193
+6898.0,Shaun Bailey,Small Medium Entity,583900.0,29,20134.48275862069
 6899.0,Vaughan Gething,Small Medium Entity,345800.0,16,21612.5
 6914.0,Patrick Grady,Single Donation Entity,4678.0,1,4678.0
 7916.0,Remain Labour Ltd,Very Small Entity,20000.0,3,6666.666666666667
-7917.0,Ben Bradley,Small Entity,76000.0,12,6333.333333333333
-7931.0,Brexit Party,Medium Large Entity,24167202.19,249,97057.03690763052
+7917.0,Ben Bradley,Small Entity,66000.0,10,6600.0
+7931.0,Brexit Party,Medium Large Entity,24727900.3,290,85268.62172413793
 7933.0,Mark Drakeford,Very Small Entity,11379.0,3,3793.0
-7934.0,Andrew Lewin,Very Small Entity,30608.13,2,15304.065
-7935.0,Steve Brine,Very Small Entity,5000.0,2,2500.0
+7934.0,Andrew Lewin,Very Small Entity,69810.1,4,17452.525
+7935.0,Steve Brine,Single Donation Entity,2500.0,1,2500.0
 7936.0,Marcus Fysh,Very Small Entity,13682.02,3,4560.673333333333
-7939.0,Mã¡Irtã­N Ã“ Muilleoir,Single Donation Entity,4018.48,1,4018.48
+7939.0,Mãƒâ¡Irtãƒâ­N Ãƒâ€Œ Muilleoir,Single Donation Entity,4018.48,1,4018.48
 7940.0,Carolyn Harris,Very Small Entity,5095.0,2,2547.5
-7941.0,Neil Coyle,Small Entity,79390.11,12,6615.8425
+7941.0,Neil Coyle,Small Entity,77390.11,11,7035.464545454545
 7942.0,Tanmanjeet Singh Dhesi,Very Small Entity,9975.59,3,3325.1966666666667
-7943.0,Trudy Harrison,Very Small Entity,22362.72,4,5590.68
+7943.0,Trudy Harrison,Very Small Entity,17591.11,3,5863.703333333334
 7944.0,Sue Hayman,Single Donation Entity,9559.83,1,9559.83
 7945.0,Wera Hobhouse,Small Entity,32519.65,6,5419.941666666667
 7969.0,John Baron,Very Small Entity,9028.19,2,4514.095
@@ -1326,64 +1327,63 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 7975.0,Mr Declan Kearney,Single Donation Entity,6055.82,1,6055.82
 7978.0,Mr Christopher Stalford,Single Donation Entity,5872.43,1,5872.43
 7979.0,Ms Claire Sugden,Very Small Entity,8044.0,3,2681.3333333333335
-8015.0,Andy Street,Medium Large Entity,2763015.85,363,7611.61391184573
-8018.0,Naomi Long,Very Small Entity,11383.08,2,5691.54
-8019.0,Rosie Duffield,Very Small Entity,9666.8,5,1933.36
-8020.0,Seema Malhotra,Very Small Entity,6294.0,2,3147.0
-8021.0,Labour For A Public-Vote,Small Medium Entity,410750.0,26,15798.076923076924
-8025.0,Eddie Hughes,Very Small Entity,16855.0,5,3371.0
-9050.0,Brexit Express (Be),Small Medium Entity,4107799.97,71,57856.33760563381
-9054.0,Stephen Doughty,Small Medium Entity,41316.14,20,2065.807
-9055.0,Afzal Khan,Small Entity,45438.14,11,4130.74
-9057.0,Ã“Rlaithã­ Flynn,Single Donation Entity,10000.0,1,10000.0
-9057.0,Órlaithí Flynn,Single Donation Entity,10000.0,1,10000.0
-9077.0,Independent Group For Change,Small Medium Entity,542772.0,20,27138.6
-9108.0,Elizabeth Truss,Small Medium Entity,755218.16,45,16782.62577777778
-9109.0,Mandy Jones Am,Very Small Entity,4863.42,2,2431.71
-9110.0,Jenny Rathbone,Very Small Entity,4863.42,2,2431.71
-9111.0,Llyr Gruffydd Am,Very Small Entity,4863.42,2,2431.71
-9112.0,Alun Davies,Very Small Entity,10956.119999999999,3,3652.0399999999995
-9116.0,Mr Conor Keenan,Very Small Entity,3775.78,2,1887.89
-9117.0,Gary Fleming,Very Small Entity,3775.78,2,1887.89
-9118.0,Right To Vote,Small Medium Entity,600000.0,22,27272.727272727272
-9144.0,Bim Afolami,Small Medium Entity,249382.59,20,12469.1295
-9150.0,Alex Sobel,Very Small Entity,15299.92,5,3059.984
+8015.0,Andy Street,Medium Large Entity,2279242.52,288,7914.036527777778
+8018.0,Naomi Long,Single Donation Entity,5691.54,1,5691.54
+8019.0,Rosie Duffield,Very Small Entity,7333.4,3,2444.4666666666667
+8020.0,Seema Malhotra,Single Donation Entity,3147.0,1,3147.0
+8021.0,Labour For A Public-Vote,Small Entity,205375.0,13,15798.076923076924
+8025.0,Eddie Hughes,Very Small Entity,9577.5,3,3192.5
+9050.0,Brexit Express (Be),Small Medium Entity,4198948.77,69,60854.329999999994
+9054.0,Stephen Doughty,Small Entity,30066.14,14,2147.5814285714287
+9055.0,Afzal Khan,Small Entity,41115.14,9,4568.348888888889
+9057.0,Ãƒâ€Œrlaithãƒâ­ Flynn,Single Donation Entity,10000.0,1,10000.0
+9077.0,Independent Group For Change,Small Entity,275552.0,11,25050.18181818182
+9108.0,Elizabeth Truss,Small Medium Entity,747017.62,44,16977.673181818183
+9109.0,Mandy Jones Am,Single Donation Entity,2431.71,1,2431.71
+9110.0,Jenny Rathbone,Single Donation Entity,2431.71,1,2431.71
+9111.0,Llyr Gruffydd Am,Single Donation Entity,2431.71,1,2431.71
+9112.0,Alun Davies,Very Small Entity,8524.41,2,4262.205
+9116.0,Mr Conor Keenan,Single Donation Entity,1887.89,1,1887.89
+9117.0,Gary Fleming,Single Donation Entity,1887.89,1,1887.89
+9118.0,Right To Vote,Small Entity,300000.0,11,27272.727272727272
+9144.0,Bim Afolami,Small Medium Entity,247382.59,19,13020.136315789474
+9150.0,Alex Sobel,Very Small Entity,13797.46,4,3449.365
 9155.0,Centrum Campaign Limited,Small Entity,143733.58000000002,10,14373.358000000002
 9160.0,Right To Vote Ltd.,Very Small Entity,47500.0,3,15833.333333333334
-9179.0,Mickey Brady,Very Small Entity,3844.2,2,1922.1
-9180.0,Paul Maskey,Very Small Entity,7805.7,5,1561.1399999999999
-9181.0,Elisha Mccallion,Very Small Entity,3619.48,2,1809.74
-9183.0,Bambos Charalambous,Small Entity,16838.34,7,2405.477142857143
-9184.0,Mr Chris Hazzard,Very Small Entity,6060.0,2,3030.0
-9186.0,London And Northern Dining Club,Very Small Entity,22000.0,3,7333.333333333333
-9201.0,Blue Collar Conservatism Ltd,Small Entity,102000.0,14,7285.714285714285
+9179.0,Mickey Brady,Single Donation Entity,1922.1,1,1922.1
+9180.0,Paul Maskey,Very Small Entity,5005.35,3,1668.45
+9181.0,Elisha Mccallion,Single Donation Entity,1809.74,1,1809.74
+9183.0,Bambos Charalambous,Very Small Entity,12408.76,5,2481.752
+9184.0,Mr Chris Hazzard,Single Donation Entity,3030.0,1,3030.0
+9186.0,London And Northern Dining Club,Very Small Entity,12000.0,2,6000.0
+9201.0,Blue Collar Conservatism Ltd,Small Entity,63000.0,9,7000.0
 9202.0,Jennifer Forbes,Single Donation Entity,1549.89,1,1549.89
-9203.0,Esther Mcvey,Small Entity,31100.0,8,3887.5
-9204.0,Sam Gyimah,Small Entity,30128.0,8,3766.0
-9205.0,Heidi Allen,Very Small Entity,20000.0,4,5000.0
+9203.0,Esther Mcvey,Very Small Entity,15550.0,4,3887.5
+9204.0,Sam Gyimah,Very Small Entity,15064.0,4,3766.0
+9205.0,Heidi Allen,Very Small Entity,15000.0,3,5000.0
 9206.0,Elizabeth Savage,Single Donation Entity,2187.55,1,2187.55
-9216.0,Kieran Mullan,Very Small Entity,13100.22,3,4366.74
-9221.0,Toby Perkins,Very Small Entity,6000.0,2,3000.0
-9222.0,Jack Rankin,Very Small Entity,4000.0,2,2000.0
-9223.0,Mario Creatura,Very Small Entity,4000.0,2,2000.0
-10227.0,Matthew Barber,Very Small Entity,4000.0,2,2000.0
-10228.0,Tom Hunt,Small Entity,19071.0,7,2724.4285714285716
-10229.0,Miriam Cates,Very Small Entity,7641.0,4,1910.25
-10230.0,Peter Gibson,Very Small Entity,9321.09,4,2330.2725
-10231.0,Laura Evans,Very Small Entity,4000.0,2,2000.0
-10233.0,Matthew Vickers,Very Small Entity,11000.0,4,2750.0
-10234.0,Scott Benton,Very Small Entity,5000.0,2,2500.0
-10235.0,Siobhan Baillie,Very Small Entity,4000.0,2,2000.0
+9216.0,Kieran Mullan,Very Small Entity,8100.219999999999,2,4050.1099999999997
+9221.0,Toby Perkins,Single Donation Entity,3000.0,1,3000.0
+9222.0,Jack Rankin,Single Donation Entity,2000.0,1,2000.0
+9223.0,Mario Creatura,Single Donation Entity,2000.0,1,2000.0
+10227.0,Matthew Barber,Single Donation Entity,2000.0,1,2000.0
+10228.0,Tom Hunt,Small Entity,17071.0,6,2845.1666666666665
+10229.0,Miriam Cates,Very Small Entity,5641.0,3,1880.3333333333333
+10230.0,Peter Gibson,Very Small Entity,7321.09,3,2440.3633333333332
+10231.0,Laura Evans,Single Donation Entity,2000.0,1,2000.0
+10233.0,Matthew Vickers,Very Small Entity,9000.0,3,3000.0
+10234.0,Scott Benton,Single Donation Entity,2500.0,1,2500.0
+10235.0,Siobhan Baillie,Single Donation Entity,2000.0,1,2000.0
 10257.0,Make Votes Matter,Small Entity,403490.7,14,28820.764285714286
-10262.0,Resham Kotecha,Very Small Entity,5000.0,2,2500.0
-10263.0,Jonathan Gullis,Small Entity,40300.0,11,3663.6363636363635
-10264.0,Robert Largan,Very Small Entity,6000.0,3,2000.0
-10265.0,Jane Dodds,Very Small Entity,7058.82,4,1764.705
-10266.0,Phil Wilson,Very Small Entity,4000.0,2,2000.0
+10262.0,Resham Kotecha,Single Donation Entity,2500.0,1,2500.0
+10263.0,Jonathan Gullis,Small Entity,37800.0,10,3780.0
+10264.0,Robert Largan,Very Small Entity,4000.0,2,2000.0
+10265.0,Jane Dodds,Very Small Entity,3529.41,2,1764.705
+10266.0,Phil Wilson,Single Donation Entity,2000.0,1,2000.0
 10267.0,Scottish Unionist Association Trust,Very Small Entity,710192.16,4,177548.04
 10278.0,Walob Limited,Single Donation Entity,20500.0,1,20500.0
 10279.0,Ms Jennifer Powers - Campaign Name Right To Rent Right To Buy Right To Own,Single Donation Entity,68000.0,1,68000.0
-10294.0,Lee Anderson,Small Entity,101300.0,13,7792.307692307692
+10294.0,Lee Anderson,Small Entity,111300.0,15,7420.0
 10295.0,Luke Graham,Single Donation Entity,1586.5,1,1586.5
 10296.0,Paul Sweeney,Very Small Entity,4946.5,2,2473.25
 10300.0,Giles Watling,Very Small Entity,6570.01,2,3285.005
@@ -1401,7 +1401,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 11358.0,Mr Graham P Jones,Single Donation Entity,8077.02,1,8077.02
 11359.0,Mark Pack,Small Entity,15500.0,6,2583.3333333333335
 11360.0,James Frith,Single Donation Entity,5000.0,1,5000.0
-11361.0,Donna Jones,Small Entity,45600.0,7,6514.285714285715
+11361.0,Donna Jones,Small Entity,53600.0,8,6700.0
 11362.0,Cara Hunter,Single Donation Entity,6000.0,1,6000.0
 11365.0,Campaign Together Limited,Small Entity,55000.0,6,9166.666666666666
 11367.0,Represent Us Ltd,Single Donation Entity,40841.28,1,40841.28
@@ -1448,7 +1448,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 12602.0,Tom Randall,Very Small Entity,5600.0,2,2800.0
 12626.0,Sarah Atherton,Very Small Entity,15800.0,4,3950.0
 12627.0,Nicola Richards,Very Small Entity,9690.0,4,2422.5
-12628.0,Tahir Ali,Very Small Entity,5890.0,3,1963.3333333333333
+12628.0,Tahir Ali,Very Small Entity,13208.439999999999,4,3302.1099999999997
 12629.0,Cat Smith,Very Small Entity,27959.0,3,9319.666666666666
 12692.0,Hannah Blythyn,Single Donation Entity,2153.0,1,2153.0
 12693.0,Simon Fell,Small Entity,53684.2,11,4880.381818181818
@@ -1474,8 +1474,8 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 12866.0,Mrs Laura Trott,Small Entity,59623.3,9,6624.811111111111
 12882.0,Dafydd Llywelyn,Single Donation Entity,2000.0,1,2000.0
 12883.0,Marsha De Cordova,Very Small Entity,8436.0,2,4218.0
-12884.0,David Simmonds,Very Small Entity,89792.0,5,17958.4
-12885.0,Matt Vickers,Very Small Entity,11500.0,3,3833.3333333333335
+12884.0,David Simmonds,Small Entity,92880.0,6,15480.0
+12885.0,Matt Vickers,Small Entity,22248.3,6,3708.0499999999997
 12898.0,Anthony Browne,Small Entity,25750.0,6,4291.666666666667
 12920.0,Dame Eleanor Laing,Single Donation Entity,3400.0,1,3400.0
 12921.0,Robbie Moore,Very Small Entity,20000.0,5,4000.0
@@ -1487,9 +1487,9 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 12958.0,Climate Party,Single Donation Entity,25000.0,1,25000.0
 12982.0,Ms Abena Oppong-Asare,Small Entity,9841.89,6,1640.3149999999998
 12985.0,Ms Kim Leadbeater,Small Entity,58535.1,14,4181.078571428571
-12987.0,Kemi Badenoch,Small Medium Entity,610067.15,56,10894.05625
+12987.0,Kemi Badenoch,Small Medium Entity,620067.15,57,10878.371052631579
 13003.0,Ms Stephanie Peacock,Very Small Entity,5792.0,3,1930.6666666666667
-13005.0,Dr Olivia Blake,Small Entity,77120.0,8,9640.0
+13005.0,Dr Olivia Blake,Small Entity,96620.0,9,10735.555555555555
 13007.0,Ms Alicia Kearns,Small Entity,31744.25,7,4534.892857142857
 14001.0,Sam Tarry,Small Entity,57084.68,13,4391.129230769231
 14034.0,Ms Helen Morgan,Single Donation Entity,2000.0,1,2000.0
@@ -1500,7 +1500,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 14047.0,Oliver Coppard,Single Donation Entity,5000.0,1,5000.0
 14076.0,Alberto Costa,Very Small Entity,10654.0,2,5327.0
 14078.0,Sarah Owen,Single Donation Entity,1560.0,1,1560.0
-14079.0,Saqib Bhatti,Very Small Entity,10780.0,3,3593.3333333333335
+14079.0,Saqib Bhatti,Very Small Entity,15734.41,4,3933.6025
 14080.0,Brendan Clarke-Smith,Single Donation Entity,3300.0,1,3300.0
 14081.0,Jerome Mayhew,Very Small Entity,9301.41,2,4650.705
 14082.0,Greg Smith,Very Small Entity,5750.0,2,2875.0
@@ -1514,7 +1514,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 14150.0,Rishi Sunak,Small Medium Entity,494765.0,35,14136.142857142857
 14151.0,Louie French,Single Donation Entity,3100.0,1,3100.0
 14152.0,Jacob Young,Single Donation Entity,3100.0,1,3100.0
-14163.0,Alexander Stafford,Very Small Entity,23203.300000000003,4,5800.825000000001
+14163.0,Alexander Stafford,Very Small Entity,23203.3,4,5800.825
 14164.0,Antony Higginbotham,Very Small Entity,10693.0,3,3564.3333333333335
 14165.0,Fleur Anderson,Very Small Entity,6161.84,3,2053.9466666666667
 14166.0,Holly Mumby-Croft,Single Donation Entity,3300.0,1,3300.0
@@ -1523,14 +1523,14 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 15194.0,Wendy Chamberlain,Single Donation Entity,2776.98,1,2776.98
 15195.0,Claire Hanna,Single Donation Entity,4630.0,1,4630.0
 15201.0,Chris Green,Very Small Entity,13000.0,3,4333.333333333333
-15202.0,Dr Ben Spencer,Single Donation Entity,705.88,1,705.88
+15202.0,Dr Ben Spencer,Very Small Entity,8339.88,2,4169.94
 15226.0,Adam Afriyie,Very Small Entity,18722.879999999997,2,9361.439999999999
 15227.0,Alex Davies-Jones,Very Small Entity,14532.68,5,2906.536
 15229.0,Together 2030 Ltd,Small Medium Entity,32000.0,16,2000.0
 15230.0,Charlotte Nichols,Very Small Entity,5163.29,2,2581.645
 15231.0,City Of York Labour Group Of Councillors,Single Donation Entity,10000.0,1,10000.0
-15232.0,Munira Wilson,Very Small Entity,4941.73,2,2470.865
-15233.0,Liam Mcarthur,Very Small Entity,50673.0,4,12668.25
+15232.0,Munira Wilson,Very Small Entity,7404.75,3,2468.25
+15233.0,Liam Mcarthur,Small Entity,104727.0,7,14961.0
 15234.0,Elizabeth Webster,Single Donation Entity,2350.0,1,2350.0
 15235.0,Fiona Hyslop,Single Donation Entity,1942.3,1,1942.3
 15236.0,Labour Coast And Country,Very Small Entity,7637.0,2,3818.5
@@ -1544,16 +1544,16 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 16330.0,Gareth Davies,Very Small Entity,15356.86,3,5118.953333333334
 16331.0,Suzanne Webb,Very Small Entity,8500.0,2,4250.0
 16332.0,Vicky Ford,Very Small Entity,4961.09,2,2480.545
-16334.0,Association Of Conservative Peers (Acp),Very Small Entity,40000.0,2,20000.0
+16334.0,Association Of Conservative Peers (Acp),Very Small Entity,60000.0,3,20000.0
 17353.0,Taiwo Owatemi,Single Donation Entity,2300.0,1,2300.0
 17373.0,Beth Winter,Single Donation Entity,2000.0,1,2000.0
 17374.0,Jane Hunt,Single Donation Entity,4510.0,1,4510.0
 17375.0,Northern Research Group Limited,Small Entity,85000.0,6,14166.666666666666
-17376.0,Labour To Win,Very Small Entity,150000.0,5,30000.0
+17376.0,Labour To Win,Small Entity,170000.0,6,28333.333333333332
 17401.0,Robin Millar,Single Donation Entity,1852.37,1,1852.37
 17402.0,Ms Anum Qaisar,Very Small Entity,4442.1,2,2221.05
 17404.0,Stuart Mcmillan,Very Small Entity,7503.89,2,3751.945
-17413.0,Órfhlaith Begley,Single Donation Entity,1849.29,1,1849.29
+17413.0,Ã“Rfhlaith Begley,Single Donation Entity,1849.29,1,1849.29
 17416.0,Kim Mcguinness,Very Small Entity,35000.0,3,11666.666666666666
 17417.0,Mozammel Hossain,Small Entity,164875.0,13,12682.692307692309
 17418.0,Peter Mcreynolds,Single Donation Entity,3557.13,1,3557.13
@@ -1566,7 +1566,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 17426.0,Claire Baker,Single Donation Entity,1642.89,1,1642.89
 17447.0,Northern Campaign Group,Very Small Entity,185000.0,2,92500.0
 17448.0,Dame Andrea Jenkyns,Very Small Entity,6000.0,2,3000.0
-17449.0,John Finucane,Very Small Entity,5402.139999999999,3,1800.7133333333331
+17449.0,John Finucane,Very Small Entity,8073.16,4,2018.29
 17463.0,Labour First Ltd,Very Small Entity,13000.0,3,4333.333333333333
 17465.0,Nicola Sturgeon,Single Donation Entity,1706.3,1,1706.3
 17481.0,Chris Elmore,Single Donation Entity,2500.0,1,2500.0
@@ -1590,7 +1590,7 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 17627.0,Miles Briggs,Very Small Entity,6377.57,2,3188.785
 17628.0,Emma Hardy,Very Small Entity,15000.0,4,3750.0
 17629.0,Jeremy Miles,Small Entity,61800.0,11,5618.181818181818
-17630.0,Labour Campaign For Electoral Reform,Small Medium Entity,420023.8,20,21001.19
+17630.0,Labour Campaign For Electoral Reform,Small Medium Entity,434330.8,21,20682.41904761905
 17631.0,Labour Animal Welfare Society,Very Small Entity,65000.0,3,21666.666666666668
 17637.0,Friends Of The Earth Limited,Single Donation Entity,8500.0,1,8500.0
 17638.0,Zero Hour,Single Donation Entity,10770.0,1,10770.0
@@ -1611,18 +1611,19 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 17796.0,Mr Christian Hacking,Single Donation Entity,26101.0,1,26101.0
 17798.0,Chris Webb,Very Small Entity,17000.0,2,8500.0
 17800.0,Together Members Ltd,Single Donation Entity,39609.06,1,39609.06
+17854.0,Adam Jogee,Single Donation Entity,2653.58,1,2653.58
 17871.0,Alex Mcintyre,Single Donation Entity,10000.0,1,10000.0
 17872.0,Andrew Pakes,Single Donation Entity,2500.0,1,2500.0
 17873.0,Anneliese Midgley,Very Small Entity,8000.0,2,4000.0
 17874.0,Ben Obese-Jecty,Single Donation Entity,2650.0,1,2650.0
 17877.0,David Pinto-Duschinsky,Very Small Entity,7500.0,2,3750.0
-17878.0,Fred Thomas,Very Small Entity,17790.98,3,5930.326666666667
-17879.0,Bradley Thomas,Single Donation Entity,2650.0,1,2650.0
+17878.0,Fred Thomas,Very Small Entity,22887.28,4,5721.82
+17879.0,Bradley Thomas,Very Small Entity,7946.0,2,3973.0
 17880.0,Gregor Poynton,Very Small Entity,13000.0,2,6500.0
 17881.0,Iqbal Mohamed,Very Small Entity,12590.26,2,6295.13
 17882.0,Jake Richards,Single Donation Entity,10000.0,1,10000.0
 17883.0,Jessica Toale,Very Small Entity,30000.0,3,10000.0
-17885.0,Joe Powell,Very Small Entity,26510.0,5,5302.0
+17885.0,Joe Powell,Small Entity,39010.0,6,6501.666666666667
 17886.0,Josh Macalister,Very Small Entity,24300.0,4,6075.0
 17887.0,Ms Julie Minns,Single Donation Entity,5000.0,1,5000.0
 17888.0,Kanishka Narayan,Very Small Entity,11006.0,2,5503.0
@@ -1643,16 +1644,16 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 17912.0,Satvir Kaur,Single Donation Entity,7856.0,1,7856.0
 17913.0,Yuan Yang,Single Donation Entity,3000.0,1,3000.0
 17914.0,Steve Yemm,Very Small Entity,15000.0,2,7500.0
-17915.0,Tom Rutland,Very Small Entity,18000.0,3,6000.0
+17915.0,Tom Rutland,Very Small Entity,20500.0,4,5125.0
 17916.0,Blue Wv Ltd,Small Entity,131100.0,7,18728.571428571428
 17931.0,Alison Griffiths,Very Small Entity,7500.0,2,3750.0
-17932.0,Chris Murray,Very Small Entity,10000.0,2,5000.0
+17932.0,Chris Murray,Very Small Entity,16500.0,3,5500.0
 17933.0,Mel Stride,Very Small Entity,43000.0,3,14333.333333333334
-17952.0,Tony Vaughan,Very Small Entity,8400.0,2,4200.0
+17952.0,Tony Vaughan,Very Small Entity,12287.0,3,4095.6666666666665
 17954.0,Russell Findlay,Very Small Entity,50000.0,2,25000.0
 17978.0,Nesil Caliskan,Single Donation Entity,5001.0,1,5001.0
 17979.0,Gerald Jones,Single Donation Entity,2500.0,1,2500.0
-18005.0,Alan Gemmell,Single Donation Entity,2987.12,1,2987.12
+18005.0,Alan Gemmell,Very Small Entity,6874.12,2,3437.06
 18006.0,David Reed,Single Donation Entity,3774.78,1,3774.78
 18007.0,Florence Eshalomi,Single Donation Entity,5955.0,1,5955.0
 18008.0,Josh Simons,Single Donation Entity,47000.0,1,47000.0
@@ -1663,5 +1664,23 @@ RegulatedEntityId,Regulated Entity Name,Regulated Entity Group,Donations Value,D
 18013.0,Shivani Raja,Single Donation Entity,3245.79,1,3245.79
 18014.0,Sir Geoffrey Cox,Single Donation Entity,13302.0,1,13302.0
 18038.0,Kevin Hollinrake,Single Donation Entity,2500.0,1,2500.0
-18039.0,Laura Kyrke-Smith,Single Donation Entity,6240.0,1,6240.0
+18039.0,Laura Kyrke-Smith,Very Small Entity,9840.0,2,4920.0
 18040.0,Rupert Lowe,Single Donation Entity,20000.0,1,20000.0
+18066.0,Andrew Snowden,Single Donation Entity,2500.0,1,2500.0
+18067.0,David Taylor,Single Donation Entity,5680.0,1,5680.0
+18068.0,Conor Murphy,Single Donation Entity,3105.0,1,3105.0
+18069.0,Luke Akehurst,Single Donation Entity,2500.0,1,2500.0
+18070.0,Phil Brickell,Single Donation Entity,2840.0,1,2840.0
+18071.0,Richard Holden,Single Donation Entity,3200.0,1,3200.0
+18072.0,Seamus Logan,Single Donation Entity,3204.14,1,3204.14
+18073.0,Michelle O'Neill,Very Small Entity,6431.0,3,2143.6666666666665
+18075.0,Andrew Griffith,Very Small Entity,10000.0,2,5000.0
+18076.0,John Lamont,Small Entity,3200.0,1,3200.0
+18097.0,Anna Dixon,Single Donation Entity,5466.63,1,5466.63
+18098.0,Jon Pearce,Very Small Entity,5200.0,2,2600.0
+18099.0,Margaret Mullane,Single Donation Entity,16170.31,1,16170.31
+18100.0,Noah Law,Single Donation Entity,6967.0,1,6967.0
+18101.0,Rachel Taylor,Single Donation Entity,3199.8,1,3199.8
+18117.0,Tim Roca,Single Donation Entity,5000.0,1,5000.0
+18132.0,Dr Neil Shastri-Hurst,Single Donation Entity,5254.93,1,5254.93
+18134.0,Labour Yimby,Single Donation Entity,25000.0,1,25000.0

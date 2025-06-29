@@ -148,3 +148,709 @@ Traceback (most recent call last):
 streamlit.errors.StreamlitDuplicateElementId: There are multiple `text_input` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
 
 To fix this error, please pass a unique `key` argument to the `text_input` element.
+2025/06/29 12:18 ERROR:Error in load_raw_data: 'utf-8' codec can't decode byte 0xa3 in position 232459: invalid start byte
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 63, in load_raw_data
+    loaddata_df = pd.read_csv(
+  File "H:\python310\lib\site-packages\pandas\io\parsers\readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "H:\python310\lib\site-packages\pandas\io\parsers\readers.py", line 617, in _read
+    return parser.read(nrows)
+  File "H:\python310\lib\site-packages\pandas\io\parsers\readers.py", line 1748, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+  File "H:\python310\lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 234, in read
+    chunks = self._reader.read_low_memory(nrows)
+  File "parsers.pyx", line 843, in pandas._libs.parsers.TextReader.read_low_memory
+  File "parsers.pyx", line 904, in pandas._libs.parsers.TextReader._read_rows
+  File "parsers.pyx", line 879, in pandas._libs.parsers.TextReader._tokenize_rows
+  File "parsers.pyx", line 890, in pandas._libs.parsers.TextReader._check_tokenize_status
+  File "parsers.pyx", line 2050, in pandas._libs.parsers.raise_parser_error
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa3 in position 232459: invalid start byte
+2025/06/29 12:18 CRITICAL:First load crashed: 'utf-8' codec can't decode byte 0xa3 in position 232459: invalid start byte
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    initialise_data()  # Load the data
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 49, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 71, in firstload
+    load_data_to_session("raw_data", get_raw_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 65, in load_data_to_session
+    st.session_state[key] = loader_function()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 242, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+  File "H:\python310\lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 299, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 13, in get_raw_data
+    return load_raw_data(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 63, in load_raw_data
+    loaddata_df = pd.read_csv(
+  File "H:\python310\lib\site-packages\pandas\io\parsers\readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "H:\python310\lib\site-packages\pandas\io\parsers\readers.py", line 617, in _read
+    return parser.read(nrows)
+  File "H:\python310\lib\site-packages\pandas\io\parsers\readers.py", line 1748, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+  File "H:\python310\lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 234, in read
+    chunks = self._reader.read_low_memory(nrows)
+  File "parsers.pyx", line 843, in pandas._libs.parsers.TextReader.read_low_memory
+  File "parsers.pyx", line 904, in pandas._libs.parsers.TextReader._read_rows
+  File "parsers.pyx", line 879, in pandas._libs.parsers.TextReader._tokenize_rows
+  File "parsers.pyx", line 890, in pandas._libs.parsers.TextReader._check_tokenize_status
+  File "parsers.pyx", line 2050, in pandas._libs.parsers.raise_parser_error
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa3 in position 232459: invalid start byte
+2025/06/29 12:53 ERROR:Error in load_raw_data: Integer column has NA values in column 0
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 63, in load_raw_data
+    loaddata_df = pd.read_csv(
+                  ^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 626, in _read
+    return parser.read(nrows)
+           ^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1923, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 234, in read
+    chunks = self._reader.read_low_memory(nrows)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 838, in pandas._libs.parsers.TextReader.read_low_memory
+  File "parsers.pyx", line 921, in pandas._libs.parsers.TextReader._read_rows
+  File "parsers.pyx", line 1066, in pandas._libs.parsers.TextReader._convert_column_data
+  File "parsers.pyx", line 1105, in pandas._libs.parsers.TextReader._convert_tokens
+  File "parsers.pyx", line 1226, in pandas._libs.parsers.TextReader._convert_with_dtype
+ValueError: Integer column has NA values in column 0
+2025/06/29 12:53 CRITICAL:First load crashed: Integer column has NA values in column 0
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    initialise_data()  # Load the data
+    ^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 49, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 71, in firstload
+    load_data_to_session("raw_data", get_raw_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 65, in load_data_to_session
+    st.session_state[key] = loader_function()
+                            ^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 13, in get_raw_data
+    return load_raw_data(
+           ^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 63, in load_raw_data
+    loaddata_df = pd.read_csv(
+                  ^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 626, in _read
+    return parser.read(nrows)
+           ^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1923, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 234, in read
+    chunks = self._reader.read_low_memory(nrows)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 838, in pandas._libs.parsers.TextReader.read_low_memory
+  File "parsers.pyx", line 921, in pandas._libs.parsers.TextReader._read_rows
+  File "parsers.pyx", line 1066, in pandas._libs.parsers.TextReader._convert_column_data
+  File "parsers.pyx", line 1105, in pandas._libs.parsers.TextReader._convert_tokens
+  File "parsers.pyx", line 1226, in pandas._libs.parsers.TextReader._convert_with_dtype
+ValueError: Integer column has NA values in column 0
+2025/06/29 12:59 ERROR:Error in load_raw_data: cannot safely convert passed user dtype of int64 for float64 dtyped data in column 0
+Traceback (most recent call last):
+  File "parsers.pyx", line 1161, in pandas._libs.parsers.TextReader._convert_tokens
+TypeError: Cannot cast array data from dtype('float64') to dtype('int64') according to the rule 'safe'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 63, in load_raw_data
+    loaddata_df = pd.read_csv(
+                  ^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 626, in _read
+    return parser.read(nrows)
+           ^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1923, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 234, in read
+    chunks = self._reader.read_low_memory(nrows)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 838, in pandas._libs.parsers.TextReader.read_low_memory
+  File "parsers.pyx", line 921, in pandas._libs.parsers.TextReader._read_rows
+  File "parsers.pyx", line 1066, in pandas._libs.parsers.TextReader._convert_column_data
+  File "parsers.pyx", line 1169, in pandas._libs.parsers.TextReader._convert_tokens
+ValueError: cannot safely convert passed user dtype of int64 for float64 dtyped data in column 0
+2025/06/29 12:59 CRITICAL:First load crashed: cannot safely convert passed user dtype of int64 for float64 dtyped data in column 0
+Traceback (most recent call last):
+  File "parsers.pyx", line 1161, in pandas._libs.parsers.TextReader._convert_tokens
+TypeError: Cannot cast array data from dtype('float64') to dtype('int64') according to the rule 'safe'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    initialise_data()  # Load the data
+    ^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 49, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 71, in firstload
+    load_data_to_session("raw_data", get_raw_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 65, in load_data_to_session
+    st.session_state[key] = loader_function()
+                            ^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 13, in get_raw_data
+    return load_raw_data(
+           ^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 63, in load_raw_data
+    loaddata_df = pd.read_csv(
+                  ^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 626, in _read
+    return parser.read(nrows)
+           ^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1923, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 234, in read
+    chunks = self._reader.read_low_memory(nrows)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 838, in pandas._libs.parsers.TextReader.read_low_memory
+  File "parsers.pyx", line 921, in pandas._libs.parsers.TextReader._read_rows
+  File "parsers.pyx", line 1066, in pandas._libs.parsers.TextReader._convert_column_data
+  File "parsers.pyx", line 1169, in pandas._libs.parsers.TextReader._convert_tokens
+ValueError: cannot safely convert passed user dtype of int64 for float64 dtyped data in column 0
+2025/06/29 12:59 ERROR:Error in load_raw_data: cannot safely convert passed user dtype of int64 for float64 dtyped data in column 0
+Traceback (most recent call last):
+  File "parsers.pyx", line 1161, in pandas._libs.parsers.TextReader._convert_tokens
+TypeError: Cannot cast array data from dtype('float64') to dtype('int64') according to the rule 'safe'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 63, in load_raw_data
+    loaddata_df = pd.read_csv(
+                  ^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 626, in _read
+    return parser.read(nrows)
+           ^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1923, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 234, in read
+    chunks = self._reader.read_low_memory(nrows)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 838, in pandas._libs.parsers.TextReader.read_low_memory
+  File "parsers.pyx", line 921, in pandas._libs.parsers.TextReader._read_rows
+  File "parsers.pyx", line 1066, in pandas._libs.parsers.TextReader._convert_column_data
+  File "parsers.pyx", line 1169, in pandas._libs.parsers.TextReader._convert_tokens
+ValueError: cannot safely convert passed user dtype of int64 for float64 dtyped data in column 0
+2025/06/29 12:59 CRITICAL:First load crashed: cannot safely convert passed user dtype of int64 for float64 dtyped data in column 0
+Traceback (most recent call last):
+  File "parsers.pyx", line 1161, in pandas._libs.parsers.TextReader._convert_tokens
+TypeError: Cannot cast array data from dtype('float64') to dtype('int64') according to the rule 'safe'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 45, in <module>
+    initialise_data()  # Load the data
+    ^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 49, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 71, in firstload
+    load_data_to_session("raw_data", get_raw_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 65, in load_data_to_session
+    st.session_state[key] = loader_function()
+                            ^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 217, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 259, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 317, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 13, in get_raw_data
+    return load_raw_data(
+           ^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 63, in load_raw_data
+    loaddata_df = pd.read_csv(
+                  ^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 626, in _read
+    return parser.read(nrows)
+           ^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1923, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 234, in read
+    chunks = self._reader.read_low_memory(nrows)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 838, in pandas._libs.parsers.TextReader.read_low_memory
+  File "parsers.pyx", line 921, in pandas._libs.parsers.TextReader._read_rows
+  File "parsers.pyx", line 1066, in pandas._libs.parsers.TextReader._convert_column_data
+  File "parsers.pyx", line 1169, in pandas._libs.parsers.TextReader._convert_tokens
+ValueError: cannot safely convert passed user dtype of int64 for float64 dtyped data in column 0
+2025/06/29 01:05 ERROR:Session state variables not initialized!
+2025/06/29 01:05 ERROR:Error: originalfilepath is None!
+2025/06/29 01:05 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/06/29 01:05 ERROR:Failed to load election dates from file.
+2025/06/29 01:05 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/06/29 01:07 ERROR:Error in display_per_group_data_page: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/06/29 01:07 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 93, in mod_donations_per_political_party
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/06/29 01:07 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 93, in mod_donations_per_political_party
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/06/29 01:08 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 93, in mod_donations_per_political_party
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/06/29 01:08 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 93, in mod_donations_per_political_party
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/06/29 01:08 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 84, in mod_dubious_donations
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/06/29 01:08 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 84, in mod_dubious_donations
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/06/29 01:14 ERROR:Session state variables not initialized!
+2025/06/29 01:14 ERROR:Error: originalfilepath is None!
+2025/06/29 01:14 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/06/29 01:14 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/06/29 01:14 ERROR:Failed to load election dates from file.
+2025/06/29 01:14 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/06/29 01:24 ERROR:Error in pagesetup: invalid syntax (notesondataprep.py, line 29)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 11, in pagesetup
+    from app_pages.notesondataprep import notesondataprep_body
+  File "H:\VScode\dashboard_demo\app_pages\notesondataprep.py", line 29
+    "from the [Code Institute](%s)." % https://codeinstitute.net/
+                                            ^
+SyntaxError: invalid syntax
+2025/06/29 01:24 CRITICAL:Menu setup crashed: invalid syntax (notesondataprep.py, line 29)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 11, in pagesetup
+    from app_pages.notesondataprep import notesondataprep_body
+  File "H:\VScode\dashboard_demo\app_pages\notesondataprep.py", line 29
+    "from the [Code Institute](%s)." % https://codeinstitute.net/
+                                            ^
+SyntaxError: invalid syntax
+2025/06/29 01:25 ERROR:Error in pagesetup: invalid syntax. Perhaps you forgot a comma? (notesondataprep.py, line 30)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 11, in pagesetup
+    from app_pages.notesondataprep import notesondataprep_body
+  File "H:\VScode\dashboard_demo\app_pages\notesondataprep.py", line 30
+    "This was built using Streamlit and Python following training "
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+2025/06/29 01:25 CRITICAL:Menu setup crashed: invalid syntax. Perhaps you forgot a comma? (notesondataprep.py, line 30)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 11, in pagesetup
+    from app_pages.notesondataprep import notesondataprep_body
+  File "H:\VScode\dashboard_demo\app_pages\notesondataprep.py", line 30
+    "This was built using Streamlit and Python following training "
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+2025/06/29 01:36 ERROR:Error in pagesetup: 'str' object cannot be interpreted as an integer
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\notesondataprep.py", line 21, in notesondataprep_body
+    st.markdown(
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\metrics_util.py", line 410, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\elements\markdown.py", line 132, in markdown
+    markdown_proto.allow_html = unsafe_allow_html
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'str' object cannot be interpreted as an integer
+2025/06/29 01:36 CRITICAL:Menu setup crashed: 'str' object cannot be interpreted as an integer
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\notesondataprep.py", line 21, in notesondataprep_body
+    st.markdown(
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\metrics_util.py", line 410, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\elements\markdown.py", line 132, in markdown
+    markdown_proto.allow_html = unsafe_allow_html
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'str' object cannot be interpreted as an integer
+2025/06/29 01:37 ERROR:Error in pagesetup: invalid syntax. Perhaps you forgot a comma? (notesondataprep.py, line 22)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 11, in pagesetup
+    from app_pages.notesondataprep import notesondataprep_body
+  File "H:\VScode\dashboard_demo\app_pages\notesondataprep.py", line 22
+    "* The data was sourced from the "
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+2025/06/29 01:37 CRITICAL:Menu setup crashed: invalid syntax. Perhaps you forgot a comma? (notesondataprep.py, line 22)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 11, in pagesetup
+    from app_pages.notesondataprep import notesondataprep_body
+  File "H:\VScode\dashboard_demo\app_pages\notesondataprep.py", line 22
+    "* The data was sourced from the "
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+2025/06/29 01:39 ERROR:Error in pagesetup: invalid syntax. Perhaps you forgot a comma? (notesondataprep.py, line 21)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 11, in pagesetup
+    from app_pages.notesondataprep import notesondataprep_body
+  File "H:\VScode\dashboard_demo\app_pages\notesondataprep.py", line 21
+    st.markdown(f"* The data was sourced from the "
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+2025/06/29 01:39 CRITICAL:Menu setup crashed: invalid syntax. Perhaps you forgot a comma? (notesondataprep.py, line 21)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 11, in pagesetup
+    from app_pages.notesondataprep import notesondataprep_body
+  File "H:\VScode\dashboard_demo\app_pages\notesondataprep.py", line 21
+    st.markdown(f"* The data was sourced from the "
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+2025/06/29 01:41 ERROR:Session state variables not initialized!
+2025/06/29 01:41 ERROR:Error: originalfilepath is None!
+2025/06/29 01:41 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/06/29 01:41 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/06/29 01:41 ERROR:Failed to load election dates from file.
+2025/06/29 01:41 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/06/29 01:44 ERROR:Session state variables not initialized!
+2025/06/29 01:44 ERROR:Error: originalfilepath is None!
+2025/06/29 01:44 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/06/29 01:44 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/06/29 01:44 ERROR:Failed to load election dates from file.
+2025/06/29 01:44 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/06/29 01:53 ERROR:Error in pagesetup: invalid syntax (notesondataprep.py, line 60)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 11, in pagesetup
+    from app_pages.notesondataprep import notesondataprep_body
+  File "H:\VScode\dashboard_demo\app_pages\notesondataprep.py", line 60
+    )
+    ^
+SyntaxError: invalid syntax
+2025/06/29 01:53 CRITICAL:Menu setup crashed: invalid syntax (notesondataprep.py, line 60)
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 11, in pagesetup
+    from app_pages.notesondataprep import notesondataprep_body
+  File "H:\VScode\dashboard_demo\app_pages\notesondataprep.py", line 60
+    )
+    ^
+SyntaxError: invalid syntax
+2025/06/29 02:07 ERROR:Session state variables not initialized!
+2025/06/29 02:07 ERROR:Error: originalfilepath is None!
+2025/06/29 02:08 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/06/29 02:08 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/06/29 02:08 ERROR:Failed to load election dates from file.
+2025/06/29 02:08 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/06/29 02:10 ERROR:Error in display_per_group_data_page: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/06/29 02:10 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 84, in mod_dubious_donations
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/06/29 02:10 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\PoliticalPartyAnalysisDashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 128, in mod_dubious_donors
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
