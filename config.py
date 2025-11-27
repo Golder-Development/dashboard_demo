@@ -64,7 +64,7 @@ FILENAMES = {  # "directory" : {"file_name": "file_path"}
         "imported_raw_fname": "imported_raw.csv",
     },
     "source_dir": {
-        "source_data_fname": "Donations_accepted_by_political_parties_202506.csv"
+        "source_data_fname": "Donations_accepted_by_political_parties.csv"
     },
 }
 

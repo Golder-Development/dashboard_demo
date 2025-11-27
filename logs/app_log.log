@@ -917,3 +917,481 @@ Traceback (most recent call last):
   File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
     (min_date,
 TypeError: cannot unpack non-iterable NoneType object
+2025/11/22 02:58 ERROR:Session state variables not initialized!
+2025/11/22 02:58 ERROR:Error: originalfilepath is None!
+2025/11/22 02:58 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/11/22 02:58 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/11/22 02:58 ERROR:Failed to load election dates from file.
+2025/11/22 02:58 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/11/22 02:59 ERROR:Error in display_per_group_data_page: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/11/22 02:59 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\politicalpartyanalysisdashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 93, in mod_donations_per_political_party
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/11/22 02:59 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\politicalpartyanalysisdashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 93, in mod_donations_per_political_party
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/11/22 02:59 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\politicalpartyanalysisdashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 93, in mod_donations_per_political_party
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/11/27 10:26 ERROR:Error in load_raw_data: 'utf-8' codec can't decode byte 0xa3 in position 139011: invalid start byte
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 63, in load_raw_data
+    loaddata_df = pd.read_csv(
+                  ^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 626, in _read
+    return parser.read(nrows)
+           ^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1923, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 234, in read
+    chunks = self._reader.read_low_memory(nrows)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/parsers.pyx", line 838, in pandas._libs.parsers.TextReader.read_low_memory
+  File "pandas/_libs/parsers.pyx", line 905, in pandas._libs.parsers.TextReader._read_rows
+  File "pandas/_libs/parsers.pyx", line 874, in pandas._libs.parsers.TextReader._tokenize_rows
+  File "pandas/_libs/parsers.pyx", line 891, in pandas._libs.parsers.TextReader._check_tokenize_status
+  File "pandas/_libs/parsers.pyx", line 2053, in pandas._libs.parsers.raise_parser_error
+  File "<frozen codecs>", line 322, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa3 in position 139011: invalid start byte
+2025/11/27 10:26 CRITICAL:First load crashed: 'utf-8' codec can't decode byte 0xa3 in position 139011: invalid start byte
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\politicalpartyanalysisdashboard.py", line 45, in <module>
+    initialise_data()  # Load the data
+    ^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 49, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 71, in firstload
+    load_data_to_session("raw_data", get_raw_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 65, in load_data_to_session
+    st.session_state[key] = loader_function()
+                            ^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 228, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 270, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 329, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 13, in get_raw_data
+    return load_raw_data(
+           ^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 63, in load_raw_data
+    loaddata_df = pd.read_csv(
+                  ^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 626, in _read
+    return parser.read(nrows)
+           ^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1923, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 234, in read
+    chunks = self._reader.read_low_memory(nrows)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/parsers.pyx", line 838, in pandas._libs.parsers.TextReader.read_low_memory
+  File "pandas/_libs/parsers.pyx", line 905, in pandas._libs.parsers.TextReader._read_rows
+  File "pandas/_libs/parsers.pyx", line 874, in pandas._libs.parsers.TextReader._tokenize_rows
+  File "pandas/_libs/parsers.pyx", line 891, in pandas._libs.parsers.TextReader._check_tokenize_status
+  File "pandas/_libs/parsers.pyx", line 2053, in pandas._libs.parsers.raise_parser_error
+  File "<frozen codecs>", line 322, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa3 in position 139011: invalid start byte
+2025/11/27 10:30 ERROR:Error in load_raw_data: Integer column has NA values in column 0
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 63, in load_raw_data
+    loaddata_df = pd.read_csv(
+                  ^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 626, in _read
+    return parser.read(nrows)
+           ^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1923, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 234, in read
+    chunks = self._reader.read_low_memory(nrows)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/parsers.pyx", line 838, in pandas._libs.parsers.TextReader.read_low_memory
+  File "pandas/_libs/parsers.pyx", line 921, in pandas._libs.parsers.TextReader._read_rows
+  File "pandas/_libs/parsers.pyx", line 1066, in pandas._libs.parsers.TextReader._convert_column_data
+  File "pandas/_libs/parsers.pyx", line 1105, in pandas._libs.parsers.TextReader._convert_tokens
+  File "pandas/_libs/parsers.pyx", line 1226, in pandas._libs.parsers.TextReader._convert_with_dtype
+ValueError: Integer column has NA values in column 0
+2025/11/27 10:30 CRITICAL:First load crashed: Integer column has NA values in column 0
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\politicalpartyanalysisdashboard.py", line 45, in <module>
+    initialise_data()  # Load the data
+    ^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 49, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 71, in firstload
+    load_data_to_session("raw_data", get_raw_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 65, in load_data_to_session
+    st.session_state[key] = loader_function()
+                            ^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 228, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 270, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 329, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 13, in get_raw_data
+    return load_raw_data(
+           ^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 63, in load_raw_data
+    loaddata_df = pd.read_csv(
+                  ^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 626, in _read
+    return parser.read(nrows)
+           ^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1923, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 234, in read
+    chunks = self._reader.read_low_memory(nrows)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/parsers.pyx", line 838, in pandas._libs.parsers.TextReader.read_low_memory
+  File "pandas/_libs/parsers.pyx", line 921, in pandas._libs.parsers.TextReader._read_rows
+  File "pandas/_libs/parsers.pyx", line 1066, in pandas._libs.parsers.TextReader._convert_column_data
+  File "pandas/_libs/parsers.pyx", line 1105, in pandas._libs.parsers.TextReader._convert_tokens
+  File "pandas/_libs/parsers.pyx", line 1226, in pandas._libs.parsers.TextReader._convert_with_dtype
+ValueError: Integer column has NA values in column 0
+2025/11/27 10:30 ERROR:Error in load_raw_data: Integer column has NA values in column 0
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 63, in load_raw_data
+    loaddata_df = pd.read_csv(
+                  ^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 626, in _read
+    return parser.read(nrows)
+           ^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1923, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 234, in read
+    chunks = self._reader.read_low_memory(nrows)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/parsers.pyx", line 838, in pandas._libs.parsers.TextReader.read_low_memory
+  File "pandas/_libs/parsers.pyx", line 921, in pandas._libs.parsers.TextReader._read_rows
+  File "pandas/_libs/parsers.pyx", line 1066, in pandas._libs.parsers.TextReader._convert_column_data
+  File "pandas/_libs/parsers.pyx", line 1105, in pandas._libs.parsers.TextReader._convert_tokens
+  File "pandas/_libs/parsers.pyx", line 1226, in pandas._libs.parsers.TextReader._convert_with_dtype
+ValueError: Integer column has NA values in column 0
+2025/11/27 10:30 CRITICAL:First load crashed: Integer column has NA values in column 0
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\politicalpartyanalysisdashboard.py", line 45, in <module>
+    initialise_data()  # Load the data
+    ^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_utils.py", line 49, in initialise_data
+    firstload()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 71, in firstload
+    load_data_to_session("raw_data", get_raw_data)
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 65, in load_data_to_session
+    st.session_state[key] = loader_function()
+                            ^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 228, in __call__
+    return self._get_or_create_cached_value(args, kwargs, spinner_message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 270, in _get_or_create_cached_value
+    return self._handle_cache_miss(cache, value_key, func_args, func_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\streamlit\runtime\caching\cache_utils.py", line 329, in _handle_cache_miss
+    computed_value = self._info.func(*func_args, **func_kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\data_loader.py", line 13, in get_raw_data
+    return load_raw_data(
+           ^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\data\datasetupandclean.py", line 63, in load_raw_data
+    loaddata_df = pd.read_csv(
+                  ^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 626, in _read
+    return parser.read(nrows)
+           ^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1923, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h:\VScode\dashboard_demo\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 234, in read
+    chunks = self._reader.read_low_memory(nrows)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/parsers.pyx", line 838, in pandas._libs.parsers.TextReader.read_low_memory
+  File "pandas/_libs/parsers.pyx", line 921, in pandas._libs.parsers.TextReader._read_rows
+  File "pandas/_libs/parsers.pyx", line 1066, in pandas._libs.parsers.TextReader._convert_column_data
+  File "pandas/_libs/parsers.pyx", line 1105, in pandas._libs.parsers.TextReader._convert_tokens
+  File "pandas/_libs/parsers.pyx", line 1226, in pandas._libs.parsers.TextReader._convert_with_dtype
+ValueError: Integer column has NA values in column 0
+2025/11/27 03:43 ERROR:Session state variables not initialized!
+2025/11/27 03:43 ERROR:Error: originalfilepath is None!
+2025/11/27 03:43 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/11/27 03:43 ERROR:Failed to load election dates from file.
+2025/11/27 03:43 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/11/27 03:46 ERROR:Error in display_per_group_data_page: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/11/27 03:46 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\politicalpartyanalysisdashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 93, in mod_donations_per_political_party
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/11/27 04:16 ERROR:Session state variables not initialized!
+2025/11/27 04:16 ERROR:Error: originalfilepath is None!
+2025/11/27 04:16 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/11/27 04:16 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/11/27 04:16 ERROR:Failed to load election dates from file.
+2025/11/27 04:16 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/11/27 04:31 ERROR:Session state variables not initialized!
+2025/11/27 04:31 ERROR:Error: originalfilepath is None!
+2025/11/27 04:31 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/11/27 04:31 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/11/27 04:31 ERROR:Failed to load election dates from file.
+2025/11/27 04:31 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/11/27 04:41 ERROR:Session state variables not initialized!
+2025/11/27 04:41 ERROR:Error: originalfilepath is None!
+2025/11/27 04:41 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/11/27 04:41 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/11/27 04:41 ERROR:Failed to load election dates from file.
+2025/11/27 04:41 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.
+2025/11/27 04:41 ERROR:Error in display_per_group_data_page: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/11/27 04:41 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\politicalpartyanalysisdashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 93, in mod_donations_per_political_party
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/11/27 04:42 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\politicalpartyanalysisdashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 93, in mod_donations_per_political_party
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/11/27 04:42 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\politicalpartyanalysisdashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 36, in mod_sponsorships
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/11/27 04:42 CRITICAL:Menu setup crashed: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "H:\VScode\dashboard_demo\politicalpartyanalysisdashboard.py", line 56, in <module>
+    politicalpartyanalysis.pagesetup()
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\politicalpartyanalysis.py", line 50, in pagesetup
+    app.run()  # Run the  app
+    ^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\multi_page.py", line 47, in run
+    page["function"]()  # Run the selected page's function
+    ^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\mod_page_calls.py", line 52, in mod_bequeths
+    display_per_group_data_page(
+  File "H:\VScode\dashboard_demo\utils\logger.py", line 41, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "H:\VScode\dashboard_demo\app_pages\modular_page_per_donor.py", line 41, in display_per_group_data_page
+    (min_date,
+TypeError: cannot unpack non-iterable NoneType object
+2025/11/27 04:49 ERROR:Session state variables not initialized!
+2025/11/27 04:49 ERROR:Error: originalfilepath is None!
+2025/11/27 04:49 ERROR:Failed to load data from output\cleaned_donations.csv
+2025/11/27 04:49 ERROR:Timestamp key election_dates_last_modified not recognised.
+2025/11/27 04:49 ERROR:Failed to load election dates from file.
+2025/11/27 04:49 ERROR:Timestamp key load_donorlist_data_last_modified not recognised.

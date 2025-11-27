@@ -53,7 +53,7 @@ def setup_package():
     # Define the entry points of the package
     packageentry_points = {"PoliticalPartyAnalysisDashboard": ["main = main:main"]}
     # Define the package data
-    package_data = {"data": ["data/Donations_accepted_by_political_parties.csv"]}
+    package_data = {"data": ["source/Donations_accepted_by_political_parties.csv"]}
     # Define the package classifiers
     classifiers = [
         "Programming Language :: Python :: 3",
