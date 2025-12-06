@@ -62,6 +62,7 @@ def raw_data_cleanup(
     loaddata_df["Value"] = (
         loaddata_df["Value"]
         .astype(str)  # Ensure values are strings before replacing
+        .str.replace("Â£", "", regex=False)  # Remove encoded pound sign
         .str.replace("£", "", regex=False)  # Remove pound sign
         .str.replace(",", "", regex=False)  # Remove commas
         .str.replace(r"\((.*?)\)", r"-\1", regex=True)  # Convert (100) to -100
