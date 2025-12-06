@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load data
-df = pd.read_csv("/mnt/data/cleaned_data.csv", low_memory=False)
+df = pd.read_csv("/output/cleaned_data.csv", low_memory=False)
 
 # Parse dates
 df["ReceivedDate"] = pd.to_datetime(df["ReceivedDate"], errors="coerce")

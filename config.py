@@ -98,7 +98,8 @@ DATA_REMAPPINGS = {
         "Scottish National Party": 102,
         "Green Party": 63,
         "Plaid Cymru": 77,
-        "UKIP": 85,
+        "Reform UK": 7931,
+        "UKIP": 84,
         "Unknown": 0,
     },
 }
