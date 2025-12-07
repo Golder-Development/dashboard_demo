@@ -104,9 +104,9 @@ def mod_regulated_donor_per_entity():
     with tab1:
         display_per_group_data_page(
             functionname="mod_regulated_donor_per_entity",
-            filter_key="RegulatedEntity_ftr",
+            filter_key="PoliticalParty_ftr",
             target_label="Donors per Regulated Entity",
-            group_entity="Party",)
+            group_entity="Donor",)
 
 
 
@@ -117,9 +117,9 @@ def mod_regulated_entity_per_donor():
         display_per_group_data_page(
             functionname="mod_regulated_donor_per_entity",
             filter_key="RegulatedEntity_ftr",
-            target_label="Regulated Entity by Entity",
-            group_entity="Entity",
-            tab_name="RegEntity_by_Donor")
+            target_label="Regulated Entity by Donor",
+            group_entity="Entity"
+            )
 
 
 

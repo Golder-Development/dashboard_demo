@@ -8,7 +8,8 @@ from components import mappings as mp
 from components import calculations as calc
 from utils.logger import logger, log_function_call
 from data.GenElectionRelationship import (
-    load_election_dates
+    load_election_dates,
+    classify_electoral_cycle_from_thresholds,
     )
 
 
@@ -430,7 +431,7 @@ def load_cleaned_data(
         loadclean_df["YrsSinceLastElection"] = None
         logger.error("Election dates could not be loaded. Returning None.")
         st.error("Election dates could not be loaded. Returning None.")
-        return None
+        return None 
     else:
         # Convert election dates into Pandas Series
         loadclean_df["ReceivedDate"] = pd.to_datetime(
@@ -439,7 +440,7 @@ def load_cleaned_data(
             pd.Series(st.session_state.ElectionDatesAscend))
         election_dates_desc = pd.to_datetime(
             pd.Series(st.session_state.ElectionDatesDescend))
-
+        electoral_cycle_thresholds = st.session_state.electoral_cycle_rules
         # Calculate days till the next election and since the last election
         def get_days_till_next_election(date_series):
             date_series = pd.to_datetime(date_series)
@@ -478,6 +479,12 @@ def load_cleaned_data(
             )
         loadclean_df["DaysSinceLastElection"] = (
             get_days_since_last_election(loadclean_df["ReceivedDate"])
+            )
+        loadclean_df["ElectoralCyclePhase"] = loadclean_df.apply(
+            classify_electoral_cycle_from_thresholds,
+            axis=1,
+            thresholds_dict=electoral_cycle_thresholds,
+            default_label="Unclassified"
             )
 
         # Compute weeks and quarters and years

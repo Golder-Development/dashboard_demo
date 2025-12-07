@@ -207,3 +207,15 @@ SECURITY = {  # "security_variable": "security_value"
     "username": "",
     "password": "",
 }
+
+# Electoral cycle phase definitions
+# Each entry is a tuple: (min_days_since_last, max_days_since_last,
+#                         min_days_till_next, max_days_till_next)
+# Use None to represent open-ended ranges.
+ELECTORAL_CYCLE_RULES = {
+    (0, 30): "Final Campaign Period",
+    (31, 90): "Campaign Build-Up",
+    (91, 180): "Pre-Campaign Phase",
+    (181, 730): "Early Cycle",        # ~ 6 months–2 years out
+    (731, 3650): "Mid-Cycle",         # 2–10 years (covers long cycles)
+}

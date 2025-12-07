@@ -55,8 +55,8 @@ def plot_pie_chart(
         None (Displays the chart in Streamlit)
     """
     if graph_df is None or XValues not in graph_df:
-            st.error("Data is missing or incorrect column name provided.")
-    return
+        st.error("Data is missing or incorrect column name provided.")
+        return
 
     # Define custom color mapping (Adjust colors as needed)
     color_mapping = political_colors
@@ -112,4 +112,4 @@ def plot_pie_chart(
     )
 
     # Display in Streamlit
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')

@@ -40,6 +40,7 @@ def initialize_session_state():
     init_state_var("RERUN_MP_PARTY_MEMBERSHIP", config.RERUN_MP_PARTY_MEMBERSHIP)
     # Initialize directories
     init_state_var("directories", config.DIRECTORIES)
+    init_state_var("electoral_cycle_rules", config.ELECTORAL_CYCLE_RULES)
 
     # Ensure directories exist
     for key, path in config.DIRECTORIES.items():

@@ -32,14 +32,17 @@ political_colors = {
     "Alliance Party of Northern Ireland": "#FFD700",
     # Neutral gray for unclassified entities
     "Independent": "#a0522d",
-    "Other": "#7f7f7f",
+
     # Categories for entity sizes
-    "Large Entity": "#333333",  # Dark grey
-    "Medium Entity": "#555555",  # Medium-dark grey
-    "Small Entity": "#888888",  # Medium grey
-    "Very Small Entity": "#bbbbbb",  # Light grey
-    "Single Donation Entity": "#dddddd",  # Very light grey
-    "Small Medium Entity": "#aaaaaa",  # Pale grey
+    "Large Entity": "#222222",          # Very dark grey
+    "Medium Large Entity": "#444444",   # Dark grey
+    "Medium Entity": "#666666",         # Medium-dark grey
+    "Small Medium Entity": "#888888",   # Medium grey
+    "Small Entity": "#aaaaaa",          # Medium-light grey
+    "Very Small Entity": "#cccccc",     # Light grey
+    "Single Donation Entity": "#e8e8e8",  # Very light grey
+    "Other": "#7f7f7f",
+    "": "#7f7f7f",
 }
 
 # End of ColorMaps.py

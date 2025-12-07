@@ -2,6 +2,8 @@ import math
 import datetime as dt
 import bisect
 import streamlit as st
+import pandas as pd
+from components import calculations as calc
 from pdpy.elections import get_general_elections_dict
 from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
@@ -122,19 +124,25 @@ def GenElectionRelation2(R_Date, divisor=1,
         return None
 
 
-# # Example usage
-# if __name__ == "__main__":
-#     import pandas as pd
+def classify_electoral_cycle_from_thresholds(row,
+                                             thresholds_dict,
+                                             default_label="Unclassified"):
+    """
+    Use the existing assign_group threshold logic to classify a donation
+    into an electoral-cycle phase based on DaysTillNextElection.
+    """
+    days_till = row["DaysTillNextElection"]
 
-#     data = {'ReceivedDate': ['2019/01/01 00:00:00', '2023/01/01 00:00:00']}
-#     df = pd.DataFrame(data)
+    # Handle missing / NaT values
+    if pd.isna(days_till):
+        return "Unknown"
 
-#     df['WeeksTillNextElection'] = df['ReceivedDate'].apply(
-#         lambda x: GenElectionRelation2(x, divisor=7, direction="DaysTill")
-#     )
-#     df['WeeksSinceLastElection'] = df['ReceivedDate'].apply(
-#         lambda x: GenElectionRelation2(x, divisor=7, direction="DaysSince")
-#     )
-
-#     print(df)
-
+    # Reuse existing threshold allocation logic:
+    # days_till acts as the "total", 
+    # default_label acts as entity_value fallback.
+    phase = calc.assign_group(
+        total=days_till,
+        thresholds_dict=thresholds_dict,
+        entity_value=default_label,
+    )
+    return phase

@@ -141,5 +141,5 @@ def plot_custom_bar_chart(
         )
 
     # Display in Streamlit
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
     logger.info("Bar chart displayed successfully.")

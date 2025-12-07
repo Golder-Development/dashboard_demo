@@ -486,10 +486,10 @@ def assign_group_with_exceptions(row,
     # Check if this entity is in the exception list first
     if exception_list and entity_value in exception_list:
         return entity_value
-    
+
     # Otherwise, use threshold-based grouping
     return assign_group(row["total_measure"], thresholds_dict, entity_value)
-    
+
 
 
 def calculate_agg_by_variable(
