@@ -7,7 +7,7 @@ from pathlib import Path
 BASE_DIR = Path(os.getcwd())
 
 # ReRun MP Party Membership
-RERUN_MP_PARTY_MEMBERSHIP = False
+RERUN_MP_PARTY_MEMBERSHIP = True
 
 # Placeholder values
 PLACEHOLDER_DATE = pd.Timestamp("1900-01-01 00:00:00")

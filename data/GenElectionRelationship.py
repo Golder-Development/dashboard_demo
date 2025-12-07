@@ -5,70 +5,48 @@ import streamlit as st
 from pdpy.elections import get_general_elections_dict
 from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
-from data.data_utils import try_to_use_preprocessed_data
 
 
 @log_function_call
 @st.cache_data
 def load_election_dates():
     """Load general election dates into session state."""
-    election_dates_df = None
-    logger.debug(f"st.session_state.ELECTION_DATES"
-                 f": {st.session_state.ELECTION_DATES}")
-    if st.session_state.ELECTION_DATES is None:
-        logger.info("Election dates not found in session.")
-    else:
-        logger.debug("try to load previous election dates from file.")
-        election_dates_df = try_to_use_preprocessed_data(
-            originalfilepath=st.session_state.get('source_data_fname'),
-            savedfilepath=st.session_state.get('ELECTION_DATES'),
-            timestamp_key="election_dates_last_modified"
-            )
-        # load ElectionDate_Dict from file defined in ELECTION_DATES
-        if election_dates_df is not None:
-            logger.info("Election dates loaded from file.")
-            election_dates_df = st.session_state.ELECTION_DATES
-            logger.debug(f"Election dates loaded from"
-                         f" file. {election_dates_df}")
-        if election_dates_df is not None:
-            logger.debug(f"Election dates loaded from"
-                         f" file. {election_dates_df}")
-        else:
-            logger.error("Failed to load election dates from file.")
-        # convert election dates to dictionary
-    if election_dates_df is None:
-        logger.info("Election_dates_df empty - loading from pdpy.")
-        ElectionDates_dict = get_general_elections_dict()
-        if ElectionDates_dict:
-            logger.info("Election Dates loaded vis pdpy.")
-        else:
-            logger.error("Failed to load election dates.")
-        # Type field to all records
-        for key, value in ElectionDates_dict.items():
-            ElectionDates_dict[key]['type'] = "General Election"
-        logger.debug(f"ElectionDates_dict from pdpy: {ElectionDates_dict}")
-    else:
-        ElectionDates_dict = election_dates_df.to_dict(orient='index')
-        logger.debug(f"ElectionDates_dict from"
-                     f" election_dates_df: {ElectionDates_dict}")
+    logger.info("Loading election dates from pdpy.")
+    ElectionDates_dict = get_general_elections_dict()
+    
+    if not ElectionDates_dict:
+        logger.error("Failed to load election dates.")
+        st.session_state.ElectionDatesAscend = []
+        st.session_state.ElectionDatesDescend = []
+        raise ValueError("No valid election dates found.")
+    
+    logger.info("Election Dates loaded from pdpy.")
+    
+    # Add type field to all records
+    for key, value in ElectionDates_dict.items():
+        ElectionDates_dict[key]['type'] = "General Election"
+    logger.debug(f"ElectionDates_dict from pdpy: {ElectionDates_dict}")
+    
     # Extract only election dates as `date` objects
     election_dates = [
         value["election"] for key, value in ElectionDates_dict.items()
         if isinstance(value, dict) and "election" in value and
         value.get("type") == "General Election"
-        ]
-    # check there are records in election_dates
+    ]
+    
+    # Check there are records in election_dates
     if election_dates:
         # Store sorted election dates in session state
         st.session_state.ElectionDatesAscend = sorted(election_dates)
-        st.session_state.ElectionDatesDescend = sorted(election_dates,
-                                                       reverse=True)
+        st.session_state.ElectionDatesDescend = sorted(
+            election_dates, reverse=True
+        )
         logger.info("Election Dates Loaded Successfully.")
         logger.debug("ElectionDatesAscend:"
                      f" {st.session_state.ElectionDatesAscend}")
         logger.debug("ElectionDatesDescend:"
                      f" {st.session_state.ElectionDatesDescend}")
-    if not election_dates:
+    else:
         logger.error("Failed to load election dates")
         st.session_state.ElectionDatesAscend = []
         st.session_state.ElectionDatesDescend = []

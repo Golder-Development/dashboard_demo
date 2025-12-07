@@ -7,7 +7,7 @@
     and also development guidance.
 * A hosted version of the dashboard should be available at
     -   https://golder-development-dashboard-demo-politicalpartyanalysis-rctb68.streamlit.app/
-or  -   https://dashboard-demo2.onrender.com/
+
 * When first run the dashboard undertakes a data refresh which involves a level of deduplication
     this can take several minutes, the "Please wait while the data sets are being calculated" 
     message will disappear when processing has completed.

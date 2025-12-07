@@ -196,3 +196,21 @@ def load_cleaned_data(originaldatafilepath):
         index_col="index",)
 
     return loaddata_df
+
+def load_donor_list(originaldatafilepath):
+    loaddata_df = pd.read_csv(
+        originaldatafilepath,
+        dtype={
+            "DonorId": "int64",
+            "DonorName": "object",
+            "DonorType": "object",
+            "CompanyRegistrationNumber": "object",
+            "Address": "object",
+            "Postcode": "object",
+            "Country": "object",
+            "IsIrishSource": "string",
+        },
+        index_col="DonorId",
+    )
+    
+    return loaddata_df

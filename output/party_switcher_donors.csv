@@ -1,0 +1,823 @@
+DonorId,DonorName,YearsActive,PartySwitches,SwitchesToGovParty,FirstYear,LastYear,TotalValue
+2.0,Birkenhead North End Labour Club,2,1,0,2001,2003,118680.84000000001
+31063.0,Mr Christopher Kelly,2,1,0,2009,2017,11750.0
+28611.0,Deloitte & Touche Llp,4,2,0,2004,2014,625199.81
+29024.0,Freud Communications Ltd,2,1,0,2005,2016,96977.0
+29107.0,Progress Ltd,2,1,0,2005,2015,25605.0
+29393.0,H Bauer Publishing,5,2,0,2006,2010,303866.55
+29740.0,Avanti Communications Group Plc,5,2,0,2012,2018,40447.98
+29804.0,Mr Andrew Williams,2,1,0,2007,2016,28197.0
+29957.0,Mr Richard Caring,3,1,0,2007,2015,357506.93
+30228.0,Ms Annabel Goldsmith,5,2,0,2008,2019,97300.0
+30921.0,Miss Nicole Sinclaire,3,1,0,2009,2014,89366.94
+30953.0,Mr Antony Hook,2,1,0,2009,2014,12156.0
+31749.0,Taipei Representative Office In The Uk,6,3,0,2001,2018,30220.0
+28479.0,Deloitte Mcs Ltd,2,1,0,2004,2014,71038.75
+31752.0,Virgin Atlantic Airways Ltd,7,2,0,2006,2012,88493.12
+31756.0,Government Of Sri Lanka,3,2,0,2007,2012,10883.0
+31764.0,Oil And Gas Uk,2,1,0,2004,2008,11220.52
+31765.0,Total Exploration And Production Uk,3,2,0,2009,2012,11460.980000000001
+31766.0,Government Of Qatar,3,2,0,2004,2009,20212.0
+31767.0,British Ukranian Society,7,3,0,2007,2015,17000.0
+31773.0,Globe International,4,2,0,2006,2009,43297.82
+31774.0,Government Of India,5,4,0,2005,2009,94377.0
+31775.0,Uk-China Forum Ltd,5,4,0,2008,2017,64511.31
+31782.0,Conservative Middle East Council,10,2,0,2006,2018,62363.74
+28552.0,Mr John Longhurst,16,2,0,2001,2014,66174.0
+28161.0,Kpmg Uk Limited,6,2,0,2001,2014,574587.51
+26289.0,Mr John  Wheeler,8,1,0,2010,2024,165390.0
+27524.0,Pricewater House Coopers Llp,14,7,0,2007,2023,3008481.7500000005
+26358.0,Lga Conservative Group,8,1,0,2010,2024,73659.66
+26728.0,The Funding Corporation Group Ltd,2,1,0,2010,2011,180000.0
+26736.0,Randox Laboratories Ltd,11,2,0,2010,2023,182200.0
+26738.0,Sita Holdings Uk Ltd,5,1,0,2007,2011,72073.0
+26808.0,Mr William Thomas,3,1,0,2010,2014,54817.0
+26812.0,Annabel Goldsmith,2,1,0,2010,2016,30500.0
+26816.0,Mr Michael Davis,2,1,0,2010,2011,125000.0
+27162.0,Bowmer & Kirkland Ltd,2,1,0,2001,2011,17152.28
+27318.0,Nova International Ltd (Film Nova),2,1,0,2004,2009,17500.0
+27519.0,Price Waterhouse Coopers,3,2,0,2001,2016,102131.01
+27665.0,Im Properties (Coleshill) Ltd,9,1,0,2005,2013,1428134.7200000002
+28066.0,Patersons Of Greenoak Hill Ltd,4,2,0,2002,2021,42343.0
+27680.0,Lord Matthew  Oakeshott,13,7,0,2005,2025,841250.0
+27697.0,Grosvenor Limited,9,2,0,2001,2020,250765.38
+27719.0,Mr Adrian Swire,4,2,0,2006,2014,71000.0
+27728.0,Mr Peter Elgood,2,1,0,2009,2011,72895.0
+27730.0,Eastern Atlantic Helicopters Ltd,3,2,0,2009,2015,89808.17000000001
+27745.0,Ministry Of Sound,5,2,0,2006,2018,57355.0
+27792.0,Ecm (London) Limited,4,1,0,2007,2024,25000.0
+27920.0,Grand Central Railway Company Ltd,4,2,0,2009,2014,75656.0
+27930.0,Mr David Sainsbury,3,2,0,2010,2018,3069422.21
+27951.0,Edward C Chelsea,2,1,0,2010,2018,19000.0
+31791.0,Consolidated Contractors International Ltd,7,1,0,2004,2017,50316.4
+31792.0,Virgin Nigeria Airways Ltd,2,1,0,2007,2008,15243.900000000001
+31793.0,Government Of Taiwan,7,6,0,2007,2018,50680.0
+32570.0,High Commission For India,3,2,0,2008,2017,18737.15
+32107.0,Government Of Japan,4,2,0,2006,2012,22600.0
+32111.0,Ministry Of Foreign Affairs Government Of Japan,2,1,0,2008,2018,14765.49
+32194.0,Kurdistan Regional Government,6,4,0,2008,2017,29539.78
+32213.0,African Development Bank,5,1,0,2008,2024,27897.73
+32271.0,Government Of Oman,4,2,0,2008,2015,22000.0
+32379.0,The Bible Society,2,1,0,2007,2012,12000.0
+32409.0,Uk-Korea Forum For The Future,2,1,0,2009,2013,12302.0
+32459.0,The European Azerbaijan Society,6,3,0,2009,2016,67039.94
+32499.0,The Us State Department,3,2,0,2008,2013,16330.859999999999
+32535.0,Taiwan Ministry Of Foreign Affairs,3,1,0,2009,2015,10050.0
+32610.0,Kurdistan Regional Parliament Of Iraq,2,1,0,2010,2011,22750.0
+31801.0,Hong Kong Economic And Trade Office,3,2,0,2006,2011,33209.8
+32637.0,The Government Of The Kingdom Of Saudi Arabia,2,1,0,2009,2018,11629.67
+32693.0,Ministry Of Foreign Affairs Bahrain,7,2,0,2010,2018,92544.15
+32696.0,All-Party Parliamentary China Group,9,6,0,2010,2019,123380.82
+32697.0,Great Britain China Centre,3,2,0,2010,2018,11812.21
+32699.0,Uk-Japan 21St Century Group,4,1,0,2010,2024,15637.24
+32708.0,Astrium Plc,2,1,0,2003,2010,17351.12
+32903.0,Scottish Parliament Corporate Policy Unit,10,5,0,2003,2021,1570428.68
+33111.0,Electoral Commission,12,4,0,2006,2024,6413462.66
+34195.0,Sir John Stuart Wheeler,2,1,0,2010,2016,490000.0
+34219.0,Odey Asset Management Group Limited,2,1,0,2011,2015,46000.0
+32077.0,Yalta European Strategy Limited,3,1,0,2006,2008,11222.35
+32044.0,Government Of Hong Kong,4,2,0,2006,2018,24847.91
+32042.0,Qatari Government,12,4,0,2004,2021,67400.44
+32021.0,Norwich Union,2,1,0,2007,2008,28538.0
+31810.0,Hong Kong Government,7,4,0,2006,2018,327448.35
+31812.0,Bahrain Government,8,5,0,2003,2023,56194.07
+31813.0,Cayman Islands Government Office In The United Kingdom,5,2,0,2004,2019,83937.86
+31815.0,British Council,7,4,0,2008,2022,51407.450000000004
+31816.0,Ministry Of External Affairs Government Of India,3,1,0,2009,2017,26675.0
+31829.0,Le Cercle,3,2,0,2009,2019,17119.89
+31830.0,Taiwan Ministry Of Foreign Affairs,3,1,0,2006,2018,28479.72
+31841.0,Ministry Of Foreign Affairs - Qatar,3,2,0,2004,2018,13100.0
+31860.0,Government Of United Arab Emirates,5,4,0,2006,2014,150070.75
+31866.0,Kuwait National Assembly,3,1,0,2008,2018,51258.96
+31881.0,Indian High Commission,3,2,0,2004,2017,40000.0
+31892.0,Chinese Government,2,1,0,2009,2011,36668.27
+31894.0,Anglo Arab Organisation,2,1,0,2007,2008,25288.6
+31902.0,Deutsche Bank,2,1,0,2007,2008,21737.25
+31922.0,Results Uk,10,8,0,2006,2022,63170.71
+31938.0,Aberdeen Asset Management Ltd,3,1,0,2010,2019,14667.45
+31953.0,State Of Qatar,2,1,0,2010,2011,12000.0
+31968.0,Government Of Pakistan,2,1,0,2009,2017,23171.0
+31979.0,Nominet,3,1,0,2008,2011,28011.0
+32007.0,Voluntary Service Overseas (Vso),9,8,0,2008,2018,27970.129999999997
+32013.0,Eagle Scientific Ltd,4,2,0,2009,2018,17557.79
+26325.0,Sofra International Limited,4,3,0,2006,2014,23658.0
+26272.0,Mr Mark Evans,2,1,0,2010,2017,12500.0
+34371.0,Wolfe Property Services Limited,4,2,0,2011,2019,47850.630000000005
+20754.0,Oxfordshire County Council Labour Group,4,1,0,2009,2017,15258.48
+19974.0,Ms Tessa Keswick,4,2,0,2009,2017,32238.6
+19990.0,Mr Kevan  Macdonald,2,1,0,2009,2014,37000.0
+20004.0,Mr Mike Waterson,2,1,0,2009,2015,11000.0
+20030.0,Mr Nicholas D Jenkins,2,1,0,2009,2011,24500.0
+20073.0,Mr Philip K Gibbs,3,1,0,2009,2015,30000.0
+20477.0,David Evans,2,1,0,2009,2011,25000.0
+20524.0,Mr Robert Hiscox,2,1,0,2009,2016,55000.0
+20552.0,Nikki Sinclaire,2,1,0,2009,2010,27083.61
+20583.0,Mr Mark Cooper,10,1,0,2009,2022,182018.96
+20730.0,Eric N Smith Ltd,2,1,0,2009,2015,17500.0
+20760.0,Drum Property Group Ltd,3,1,0,2015,2016,112261.26000000001
+19943.0,Kenneth Pearson,3,1,0,2009,2014,11900.0
+20895.0,Upm Limited,3,1,0,2009,2019,17000.0
+21154.0,Mr Richard G Carss,2,1,0,2009,2017,27500.0
+21155.0,Adam Fleming,2,1,0,2009,2010,85000.0
+21235.0,Mr Jonathan Ferster,2,1,0,2009,2014,55000.0
+21474.0,Mr Michael Brown,2,1,0,2009,2015,16650.0
+21552.0,Mr Simon Rowley,2,1,0,2009,2014,42000.0
+21567.0,Mr Ewan Kirk,2,1,0,2009,2016,35000.0
+21579.0,Robin Walker,4,1,0,2009,2019,17000.0
+21592.0,Ic Technology Uk Limited,4,2,0,2009,2016,120000.0
+21646.0,Mr Christopher  Leach,8,1,0,2009,2023,211600.0
+19971.0,Mr David J Brown,5,4,0,2006,2018,210666.87
+19919.0,Mr Andrew Green,3,1,0,2009,2014,51200.0
+26260.0,Peter J Lloyd,2,1,0,2010,2018,22500.0
+18693.0,Richard Reed,2,1,0,2008,2016,58008.5
+18120.0,Will Hobhouse,8,3,0,2008,2019,56000.0
+18263.0,Mr Michael  Campbell,3,1,0,2008,2014,13700.0
+18278.0,Mrs Elizabeth Jackson,5,1,0,2008,2024,108300.0
+18283.0,Mr Jeremy Middleton,7,1,0,2008,2025,26339.0
+18370.0,Mr Richard C Girling,6,2,0,2014,2019,411060.0
+18397.0,Drillgreat Ltd,3,1,0,2008,2019,110000.0
+18434.0,Lisbet Rausing,2,1,0,2008,2010,55000.0
+18445.0,Mr Abdul-Majid Jafar,8,4,0,2008,2017,357682.8
+18454.0,Michael Clarke,3,1,0,2008,2015,112000.0
+18513.0,Mr Nicholas  Bowers,5,1,0,2008,2018,60763.82
+18702.0,Anthony Blair,3,1,0,2009,2018,92000.0
+19905.0,Mr John Baker,2,1,0,2007,2009,19465.19
+18852.0,Mr Simon Ruddick,7,1,0,2008,2023,173433.22
+18893.0,Mr Edward J King,6,1,0,2008,2021,28400.0
+18964.0,Viscount Michael Cowdray,4,1,0,2008,2015,45000.0
+19518.0,Aviva Plc (Sponsorship),2,1,0,2008,2016,18630.0
+19568.0,Stephen Curran,7,2,0,2008,2024,26750.0
+19576.0,First Corporate Shipping Limited,4,2,0,2008,2019,84500.0
+19634.0,Mr Michael Cox,5,1,0,2014,2019,31385.02
+19709.0,Mr David Black,2,1,0,2008,2017,16800.0
+19805.0,Mr Keith Godden,2,1,0,2008,2009,11840.33
+19833.0,Mr Michael Banks,2,1,0,2008,2016,123000.0
+21674.0,Mr Willie Wilson,3,2,0,2009,2014,55120.0
+21754.0,Mrs Elizabeth Jackson,10,1,0,2009,2022,728466.15
+21796.0,Mr Peter  Gardiner,4,1,0,2009,2017,11619.6
+24845.0,Mr David Purser,2,1,0,2014,2017,11800.0
+24025.0,Alchemist Estates Ltd,3,2,0,2010,2013,94000.0
+24039.0,Tom Martin,4,3,0,2002,2017,448699.0
+24073.0,Mr David Mayhew,2,1,0,2010,2017,105000.0
+24086.0,Michael R Lynch,3,1,0,2010,2016,225000.0
+24094.0,Mr Abdul-Majid Jafar,2,1,0,2010,2015,40000.0
+24139.0,Tessa Keswick,2,1,0,2010,2016,22500.0
+24453.0,Mr Joe Hemani,2,1,0,2010,2014,60000.0
+24539.0,Vascroft Contractors Ltd,3,1,0,2010,2014,24500.0
+24715.0,Loxton Developments Ltd,2,1,0,2010,2017,12000.0
+24717.0,C & C Alpha Group Ltd,3,2,0,2010,2013,537492.52
+24908.0,Mr Christopher Wood,9,1,0,2010,2023,628029.3
+21861.0,United Utilities Plc,3,1,0,2008,2013,34250.0
+25164.0,Mr Lev V Mikheev,6,1,0,2010,2019,184500.0
+25257.0,Jonathan Goodman,2,1,0,2010,2015,47000.0
+25279.0,Mr Alexander  Knaster,5,2,0,2010,2015,455000.0
+25280.0,Mr Jeremy G Knight-Adams,11,2,0,2010,2024,671100.0
+25317.0,Mr Franck R Petitgas,3,1,0,2010,2016,47000.0
+25329.0,Mr Emmanuel Roman,2,1,0,2010,2016,54756.0
+25422.0,Anthony Wilson,5,1,0,2010,2022,48700.0
+26118.0,Ms Sian Bennett,2,1,0,2010,2018,12000.0
+26124.0,Mr Stephen Lee,2,1,0,2010,2017,52760.0
+26235.0,Mr Alan Wilson,2,1,0,2010,2013,11000.0
+24012.0,J & H Sales (International) Ltd,6,3,0,2010,2015,314700.0
+24003.0,Durham Associates Ltd,4,3,0,2004,2021,99940.0
+23965.0,Mr Andrew White,11,4,0,2010,2019,206465.95
+23877.0,Buckley Jewellery Ltd,2,1,0,2010,2013,70000.0
+22433.0,Mr Richard Brindle,2,1,0,2009,2016,35000.0
+22631.0,Mr John E Thorpe,2,1,0,2009,2017,1001250.0
+22744.0,Mr Julian Jones,5,2,0,2009,2017,34331.2
+22987.0,Madhus Limited,2,1,0,2009,2014,23911.25
+23015.0,Mr Michael Pryor,2,1,0,2009,2015,17500.0
+23026.0,Selfridges Retail Limited,9,2,0,2006,2017,346000.0
+23120.0,Mr Andrew Reid,5,2,0,2009,2015,189215.14
+23187.0,Mr Peter Cruddas,5,1,0,2009,2017,340000.0
+23205.0,Cc Property Company Ltd,14,6,0,2009,2022,1071576.51
+23217.0,Mr Jitesh Gadhia,3,1,0,2009,2014,68020.0
+23423.0,Philip Shelley,3,1,0,2009,2014,20500.0
+23450.0,Wft London Limited,2,1,0,2009,2015,60647.0
+23460.0,Peter Hearn,4,1,0,2009,2017,186300.0
+23506.0,Sun Mark Ltd,11,4,0,2009,2019,1404218.57
+23527.0,Mr Arunasalam Yogeswaran,9,1,0,2009,2019,55976.53
+23556.0,Anthony Clake,2,1,0,2009,2016,182014.0
+23638.0,Cygnet Group Ltd,9,2,0,2009,2018,38330.0
+23656.0,Maelor Williams,5,2,0,2009,2015,112493.8
+23742.0,Mr Robert M Kirkland,13,2,0,2010,2024,164641.65
+23802.0,The A & S Leisure Group Ltd,9,1,0,2010,2024,170000.0
+23815.0,I-Cd Publishing Ltd,5,2,0,2010,2016,142000.0
+34348.0,Mr Anthony H Daniell,4,1,0,2011,2016,126150.0
+34496.0,Global Brands Ltd,3,1,0,2011,2017,23000.0
+5.0,Bridgwater Trust,4,1,0,2001,2009,26137.0
+74381.0,B.E. Wedge Holdings Limited,2,1,0,2016,2017,110000.0
+74076.0,Mr David De Rothschild,2,1,0,2016,2017,20000.0
+74093.0,Roger Michael Isherwood,2,1,0,2016,2017,14600.0
+74166.0,Paul Myners,2,1,0,2016,2018,55000.0
+74185.0,Jardentome Ltd,2,1,0,2016,2018,61260.0
+74213.0,Bar And Kitchen Ltd,4,3,0,2016,2021,108750.0
+74219.0,Matthew Ridley,3,1,0,2016,2018,58777.86
+74320.0,Criterion Capital Ltd,2,1,0,2016,2017,55000.0
+74354.0,Commercial Estates Group Ltd,5,1,0,2016,2024,49774.0
+74367.0,Cru International Limited,3,2,0,2016,2019,60500.0
+74377.0,Mark Coombs,2,1,0,2016,2017,1050000.0
+74384.0,Geoffrey J De Jager,3,1,0,2016,2018,14500.0
+74052.0,Kirly Limited,2,1,0,2016,2017,35000.0
+74386.0,Interfish Ltd,2,1,0,2016,2017,70000.0
+74404.0,Ms Lorraine Spencer,2,1,0,2016,2018,43000.0
+74454.0,Ageas (Uk) Limited,3,1,0,2016,2016,65000.0
+74482.0,Trailfinders Limited,3,1,0,2016,2019,2700000.0
+74485.0,Mr Ian Mukherjee,3,1,0,2016,2022,75000.0
+74638.0,Pew Consultancy Ltd,5,1,0,2016,2022,101287.05
+76268.0,Hm Government Of Gibraltar,7,4,0,2013,2024,26716.3
+76448.0,Mr Adam  Knight,5,2,0,2016,2022,121000.0
+76468.0,Michael Romberg,3,1,0,2016,2019,30186.65
+76644.0,Mave (Uk) Limited,2,1,0,2016,2017,40000.0
+74055.0,Clearview Homes Ltd,2,1,0,2016,2018,23000.0
+73888.0,Better For The Country Ltd,2,1,0,2016,2017,2373897.76
+67319.0,Pimlico Plumbers Ltd,4,1,0,2015,2018,89786.01000000001
+69630.0,Agd Equipment Ltd,3,1,0,2015,2016,30000.0
+67332.0,Mr Terence W Brown,4,2,0,2015,2019,75000.0
+67361.0,Mr John Whitehead,2,1,0,2015,2017,149985.7
+67378.0,Mr David A Freud,3,2,0,2015,2019,27000.0
+67618.0,Damian Aspinall,2,1,0,2015,2016,32000.0
+67630.0,Nick Harrison,3,1,0,2015,2017,64000.0
+67870.0,David Riley,3,2,0,2015,2017,156000.0
+68068.0,Mr Mervyn Davies,3,2,0,2015,2016,30017.0
+68069.0,Galliard Holdings Limited,4,1,0,2015,2019,65000.0
+68880.0,Andrew Law,4,2,0,2015,2020,291809.0
+69548.0,Idtd Services Limited,8,6,0,2015,2021,81500.0
+69685.0,Mr Bruno L Schroder,2,1,0,2015,2016,55000.0
+72846.0,Ministry Of Foreign Affairs (Saudi Arabia),2,1,0,2014,2016,40900.0
+69819.0,Learning Enterprises Organisation Ltd,2,1,0,2015,2017,12325.0
+69846.0,Gch Corporation Limited,3,1,0,2015,2019,29300.0
+69851.0,Iraco Real Estate Limited,2,1,0,2015,2019,155000.0
+69864.0,The Hearsum Family Ltd,2,1,0,2015,2016,15813.0
+72256.0,Mr Richard Hare,3,2,0,2015,2018,63008.5
+72285.0,Drax Power Limited,3,2,0,2015,2019,23810.36
+72330.0,Mr Roland Rudd,2,1,0,2015,2016,37508.5
+72584.0,Mr Ghill  Donald,3,1,0,2015,2017,16000.0
+72832.0,Ministry Of Foreign Affairs Of Japan,3,1,0,2016,2018,86442.76999999999
+72842.0,Africa House,3,1,0,2016,2018,10916.0
+76670.0,Ms Catherine Heath,3,2,0,2016,2019,92000.0
+77067.0,Rigby Group Plc,7,1,0,2016,2024,325000.0
+77233.0,Andrew White,3,1,0,2016,2019,45000.0
+84061.0,Klassic Property Ltd,3,2,0,2018,2019,13000.0
+83271.0,Martina Anderson Mep,2,1,0,2017,2018,64755.0
+83272.0,Declan Kearney Mla,2,1,0,2017,2018,27815.0
+83273.0,House Of Commons Department Of Resources,9,5,0,2017,2025,1868399.3
+83274.0,Northern Ireland Assembly Finance Office,9,5,0,2017,2025,1570590.72
+83276.0,Northern Ireland Assembly,8,2,0,2017,2025,153589.07
+83310.0,Medical Aid For Palestinians,3,1,0,2017,2019,18569.239999999998
+84029.0,Gerry Kelly Mla,2,1,0,2017,2018,21705.72
+84034.0,Indian Government,3,2,0,2008,2018,17710.739999999998
+84038.0,Disciple Media Ltd,6,2,0,2017,2022,46114.0
+84053.0,Ministry Of Foreign Affairs - Qatar,2,1,0,2018,2020,26300.0
+84089.0,United Arab Emirates Ministry Of Foreign Affairs (Mofa),6,4,0,2013,2018,106200.0
+77373.0,The All China Youth Federation,2,1,0,2016,2017,21297.5
+84188.0,Mr George Farmer,2,1,0,2018,2019,301500.0
+84208.0,Appt Management Services Limited,2,1,0,2018,2019,12406.25
+84346.0,Kingdom Of Saudi Arabia,2,1,0,2017,2018,81210.0
+84391.0,Ministry Of Foreign Affairs Qatar,4,3,0,2016,2020,96672.0
+85011.0,Northern Ireland Assembly,2,1,0,2018,2019,240357.71
+85177.0,Saudi Arabia Ministry Of Foreign Affairs,3,2,0,2016,2018,40142.0
+85500.0,Mohamed Amersi,5,2,0,2018,2023,497070.0
+85547.0,Government Of The Maldives,2,1,0,2008,2018,10073.68
+85561.0,Yunus Emre Institute,2,1,0,2018,2019,18330.0
+86382.0,Melior Advisers Ltd,2,1,0,2017,2019,11880.0
+83270.0,Conor Murphy Mla,3,2,0,2017,2021,29914.67
+83269.0,Michelle O'Neill Mla,3,1,0,2017,2021,45344.0
+83268.0,Fra Mccann Mla,2,1,0,2017,2018,28191.4
+83266.0,Cathal Boylan Mla,2,1,0,2017,2018,22450.72
+77387.0,Mr Mark Hilton,2,1,0,2017,2018,69000.0
+77931.0,York Potash Ltd,3,1,0,2017,2019,19350.0
+77974.0,Mr Alexander Wright,2,1,0,2017,2018,132200.0
+77976.0,Now Advertising Limited,2,1,0,2017,2018,330596.0
+78045.0,Mr Anatole Kaletsky,3,2,0,2017,2024,90050.0
+78090.0,Mr Robert  Falzon,2,1,0,2017,2019,39000.0
+78145.0,Swiss Foreign Ministry,2,1,0,2017,2022,23200.0
+78156.0,The American Israel Public Affairs Committe (Aipac),2,1,0,2017,2019,11586.869999999999
+78161.0,Shura Council Of Saudi Arabia,2,1,0,2009,2017,50332.700000000004
+78788.0,Uk-Eu Open Policy Limited,2,1,0,2017,2018,49548.0
+78814.0,Open Britain Limited,2,1,0,2017,2019,72375.0
+81740.0,George Thompson,2,1,0,2017,2019,62262.14
+81799.0,Government Of The Republic Of China - Taiwan,3,2,0,2011,2018,22278.63
+83244.0,Velocity Mobile Limited,3,2,0,2017,2018,32500.0
+83246.0,Pg Paper Company Ltd,4,1,0,2017,2023,91499.98
+83253.0,Fifth Capital London Ltd,4,1,0,2017,2022,30940.0
+83259.0,Mr Gerry Carroll,5,2,0,2017,2022,55000.0
+83260.0,Linda Dillon Mla,2,1,0,2017,2018,25810.0
+83261.0,Michaela Boyle Mla,2,1,0,2017,2018,20850.37
+83263.0,Philip Mcguigan Mla,2,1,0,2017,2018,22663.61
+83264.0,Alex Maskey Mla,3,2,0,2017,2021,29710.89
+67326.0,Tempcover Ltd,3,2,0,2015,2017,417000.0
+56072.0,Mr Daniel Bailey,2,1,0,2014,2016,12820.0
+34605.0,Electoral Reform Society Limited,2,1,0,2009,2011,1526567.28
+44689.0,Mr William Davies,2,1,0,2012,2014,30000.0
+43051.0,Australia Israel Cultural Exchange Limited (Aice),6,4,0,2012,2020,41796.7
+43063.0,Khaled Said,2,1,0,2012,2019,17500.0
+43082.0,Packt Publishing Limited,4,2,0,2009,2017,23058.0
+43629.0,Mr Andrew  Law,5,2,0,2012,2017,946307.0
+43691.0,Mr Davide  Serra,3,1,0,2012,2019,220000.0
+43782.0,Falcon And Associates Fz-Llc,2,1,0,2012,2017,10690.14
+43795.0,Norweigan Government,3,1,0,2002,2012,11374.0
+43798.0,Conservative Friends Of Israel Ltd,10,4,0,2012,2025,107072.0
+44070.0,Australian Government,2,1,0,2012,2016,36860.39
+44633.0,Sri Lankan High Commission,2,1,0,2012,2013,34600.0
+44697.0,Ministry Of Foreign Affairs Republic Of China (Taiwan),5,4,0,2012,2019,112105.0
+43039.0,Mr Peter Levy,7,1,0,2011,2025,30328.0
+44850.0,Ms Susan Ruddick,4,2,0,2012,2016,55000.0
+44921.0,Huawei Technologies (Uk) Co Ltd,3,2,0,2012,2015,38450.0
+44933.0,Mr Peter Jeffries,6,1,0,2012,2017,59084.0
+45085.0,Care (Christian Action Research And Education),2,1,0,2017,2018,22550.0
+45113.0,Nominet Uk,2,1,0,2012,2013,13663.970000000001
+45527.0,Barclays Plc,3,2,0,2012,2018,22512.13
+45608.0,Anne Street Partners Limited,4,1,0,2013,2016,125000.0
+45715.0,Trenchant Ltd,6,1,0,2013,2019,393260.0
+45936.0,Henley Holmes Plc,4,1,0,2013,2016,119300.0
+45995.0,Heathrow Airport Holdings Limited,3,1,0,2013,2019,27857.2
+43047.0,Mr Tom Hollis,5,3,0,2011,2015,71072.5
+42966.0,Ms Fiona Hall,5,1,0,2011,2016,15989.5
+56069.0,Skene Group Limited,3,1,0,2013,2015,48717.53
+37926.0,Euro Foods Group Limited,2,1,0,2011,2015,13000.0
+34673.0,Mr Anthony Baines,3,2,0,2011,2015,35500.0
+35376.0,Fieldbonds Limited,3,2,0,2011,2017,64000.0
+36403.0,Mr William Reeeve,2,1,0,2011,2019,16540.0
+36650.0,Seal Communications Limited,2,1,0,2011,2014,15600.0
+36677.0,No Campaign Limited,2,1,0,2011,2017,241233.62
+36714.0,The Qatari Foundation,5,3,0,2011,2017,37328.130000000005
+36734.0,Mr Mark Blandford,3,1,0,2011,2019,12500.0
+37427.0,Ms Susan Kramer,11,3,0,2011,2022,49079.0
+37918.0,Ch2M Hill Services Ltd,7,3,0,2009,2017,45306.83
+37922.0,Quantum Securities Ltd,3,2,0,2011,2015,32000.0
+38020.0,Dr Crispin  Allard,9,1,0,2011,2025,94375.0
+42957.0,Mr Derek J Webb,7,3,0,2011,2024,977000.0
+38022.0,The Andrew Wainwright Reform Trust,2,1,0,2011,2019,26000.0
+38033.0,Posterscope Ltd,4,1,0,2011,2018,477028.16000000003
+38038.0,Mr Britt Shaw,3,1,0,2010,2013,16000.0
+38043.0,Mr Jonathan Wolf,2,1,0,2011,2016,170000.0
+38055.0,Mr Peter Hargreaves,2,1,0,2011,2016,6410000.0
+38064.0,Mr Christopher Rokos,5,2,0,2010,2018,887350.0
+38068.0,Lord John D Sainsbury,4,1,0,2011,2017,700000.0
+38080.0,Graham H Edwards,9,1,0,2011,2025,5967554.0
+38123.0,Oxfam Gb,4,3,0,2010,2017,10312.99
+38782.0,Mrs Patricia Fearnley,2,1,0,2011,2018,12000.0
+46025.0,Intela Consulting Ltd,2,1,0,2013,2015,27950.0
+46026.0,Mr David Claydon,3,1,0,2013,2016,59000.0
+46737.0,Mr Kevin Coyle,6,1,0,2013,2022,75854.0
+53881.0,Mr Stephen Fitzgerald,5,2,0,2014,2018,168500.0
+52202.0,Peak Scientific Holdings Ltd,8,4,0,2014,2023,1060000.0
+52274.0,S And J Investments (Delivery Office Southall) Limited,2,1,0,2014,2017,15000.0
+52313.0,Us Embassy,2,1,0,2014,2016,28595.199999999997
+52364.0,Sukhraj Singh,4,1,0,2014,2020,19000.0
+52395.0,Catholic Bishops' Conference Of England And Wales,3,1,0,2014,2018,75493.63
+52435.0,Falcon And Associates International Ltd,2,1,0,2014,2016,18753.0
+52476.0,Mr James Carver,4,2,0,2014,2017,13030.0
+52477.0,Mr Alexander Darwall,3,1,0,2014,2016,59999.0
+53808.0,Aamer Sarfraz,6,5,0,2014,2020,199250.0
+53872.0,Rtc Education Limited,6,2,0,2014,2020,170800.0
+53884.0,Lord Michael D Glendonbrook,3,1,0,2014,2016,1050000.0
+46769.0,Harwood Capital Llp,3,2,0,2013,2019,85000.0
+53911.0,Mr Alexander S Wilmot-Sitwell,4,2,0,2014,2017,120000.0
+53926.0,Mr Richard Mark Plackett,2,1,0,2014,2018,15705.6
+53996.0,Stian Westlake,3,1,0,2014,2019,14000.0
+54339.0,Gatwick Airport Ltd,3,1,0,2014,2023,45500.0
+54549.0,Benalla Limited,5,1,0,2014,2018,37000.0
+54554.0,Mr David S Stevenson,5,4,0,2014,2018,28750.0
+54660.0,Mr Roger Manser,6,2,0,2015,2020,224500.0
+54674.0,Mr Andrew Little,3,1,0,2015,2019,30000.0
+54682.0,Mr Lance Taylor,2,1,0,2015,2016,53000.0
+55995.0,Mr Mark Petterson,11,2,0,2015,2025,1860489.5
+50655.0,Precision Print Management Services Ltd,3,1,0,2014,2016,19000.0
+50279.0,Mr Harold Immanuel,4,1,0,2014,2019,51192.0
+50259.0,The Taipei Representative Office In The Uk (Tro),8,4,0,2011,2018,101431.32
+50192.0,Fujitsu Services Limited,6,3,0,2014,2019,149317.0
+46807.0,T J Morris Ltd,2,1,0,2013,2017,30000.0
+46841.0,Harbour International Limited,3,1,0,2013,2019,114763.6
+46842.0,Parliamentary Network On The World Bank And Imf,7,2,0,2013,2022,22994.0
+46870.0,Mr Larry Coltman,3,1,0,2013,2017,14500.5
+47050.0,Mr John Griffin,6,2,0,2013,2018,2031750.0
+47096.0,Calor Gas Ltd,5,1,0,2013,2018,21297.159999999996
+47158.0,Alexander Temerko,7,2,0,2013,2021,96516.66
+47171.0,Mr Adrian R B Johnson,5,2,0,2013,2019,29000.0
+47172.0,Ecotricity Group Limited,8,4,0,2013,2023,757644.0
+47186.0,Mr Leslie Kaye,4,1,0,2013,2016,60000.0
+47815.0,Mr William Rayner,2,1,0,2013,2014,17500.0
+47916.0,International Hospitals Group Ltd,2,1,0,2014,2015,52500.0
+47920.0,Central England Co-Operative,11,1,0,2014,2024,1185005.0
+48763.0,Allam House Ltd,6,4,0,2014,2019,785000.0
+48785.0,Springfield Real Estate Management Limited,2,1,0,2013,2015,63120.0
+48845.0,Marcinia Clarke,2,1,0,2014,2016,55000.0
+49806.0,Mr Nicholas Bowers,3,1,0,2014,2022,77900.0
+49833.0,Mr Michael J Oglesby,4,2,0,2014,2019,87916.65
+49837.0,Mr David A Roper,4,2,0,2014,2019,166375.0
+49889.0,Appt Corporation Ltd,3,1,0,2014,2018,18832.63
+50005.0,Ibrow Ltd Professional Management Services,5,3,0,2014,2019,27000.0
+18116.0,Mr Clive Boultbee-Brooks,3,1,0,2008,2010,17350.0
+18104.0,Mr Jonathan Wolf,2,1,0,2008,2016,525000.0
+18055.0,John T Ross,7,1,0,2008,2017,18000.0
+2071.0,Im Group Limited,11,5,0,2008,2019,979808.0
+1841.0,Bloomberg Tradebook Europe Limited,20,8,0,2001,2022,2241038.58
+1883.0,Independent News & Media (Uk) Ltd,8,4,0,2001,2011,193510.9
+1892.0,Mr Mohammed Ramzan,2,1,0,2001,2014,35000.0
+1970.0,Bestway (Holdings) Limited,20,9,0,2005,2024,1577893.23
+1975.0,John H Lewis,6,1,0,2004,2017,165040.0
+2020.0,Mr John Stocker,2,1,0,2001,2009,51320.0
+2035.0,Midland Chilled Foods Group Ltd,8,2,0,2006,2017,107000.0
+2037.0,Mr Gurdev Dadral,3,1,0,2010,2015,58000.0
+2044.0,Armajaro Holdings Limited,5,1,0,2004,2019,149999.0
+2062.0,Brompton Capital Ltd,9,6,0,2008,2016,2057126.0
+2098.0,Mrs Caroline Lucas,3,1,0,2007,2009,50225.0
+1769.0,Mr Paul R C Marshall,3,2,0,2003,2019,115750.0
+2107.0,Mr Simon Wolfson,2,1,0,2005,2016,60000.0
+2128.0,Tamares Real Estate Investments (Uk) Ltd,7,2,0,2005,2016,315905.0
+2153.0,Stuart Wheeler,2,1,0,2005,2016,268000.0
+2166.0,Midlands Co-Operative Society Ltd,13,3,0,2001,2013,915717.72
+2203.0,Michael Rake,2,1,0,2007,2016,12000.0
+2209.0,Pietas Consulting Ltd,13,6,0,2005,2019,302957.14
+2211.0,Mr Ian Wirght,6,2,0,2006,2014,17056.809999999998
+2249.0,Mr David William Lyons,3,2,0,2007,2016,30500.0
+2268.0,Peninsula Business Services Ltd,2,1,0,2007,2011,14680.0
+2271.0,Lorian Properties Ltd,4,1,0,2007,2019,16500.0
+1783.0,Midland Industrial Council,2,1,0,2003,2007,12500.0
+1760.0,Mr Peter Beck,3,1,0,2009,2015,82000.0
+1441.0,Gmi Holdings Limited,17,3,0,2001,2017,1120939.56
+1638.0,Bearwood Coporate Services Ltd,10,4,0,2002,2011,5397613.15
+1519.0,Political Animal Lobby Linited,9,5,0,2001,2017,402770.0
+1522.0,Mr Richard H Hunting,6,1,0,2001,2017,53976.78
+1554.0,Thompsons Solicitors,14,2,0,2001,2017,184199.05
+1597.0,Harris Ventures Ltd,10,1,0,2001,2016,1426244.2400000002
+1606.0,Mr Ken Costa,5,1,0,2001,2016,41000.0
+1611.0,Intercapital Private Group Ltd,5,2,0,2001,2005,736000.0
+1620.0,Peter Allen,3,1,0,2005,2016,38000.0
+1631.0,Sir Michael Hintze,11,2,0,2008,2023,640480.0
+1635.0,Michael Spencer,3,1,0,2001,2005,31000.0
+1636.0,Equity Partners Ltd,2,1,0,2002,2003,20000.0
+1639.0,Mr Colin Barrow,4,1,0,2001,2007,50817.0
+1747.0,Canary Wharf Group Plc,21,15,0,2003,2023,1283180.1500000001
+1687.0,Lord Kumar Bhattacharyya,2,1,0,2005,2007,27000.0
+1692.0,Network Rail Infrastructure Ltd,3,1,0,2005,2008,22875.0
+1718.0,Stefanos Stafanou,4,1,0,2003,2010,39000.0
+1720.0,Vincos Ltd,3,1,0,2003,2010,112321.92
+1721.0,Mrs Susan M Anstey,3,2,0,2003,2005,52850.0
+1734.0,London Diversified Fund Management (Uk) Ltd.,4,1,0,2004,2009,90500.0
+1737.0,Mr Johan Eliasch,2,1,0,2003,2004,10500.0
+1738.0,Mr Nicholas Pears,3,2,0,2004,2017,14548.86
+1741.0,City And West End Services Ltd,2,1,0,2003,2007,18500.14
+1742.0,Mr Jamie Borwick,3,2,0,2004,2008,16531.7
+2277.0,Mr William Lane,4,1,0,2007,2015,16500.0
+2284.0,Mr Andrew Cooksley,3,2,0,2007,2018,12741.17
+2343.0,Targetfollow Estates Limited,4,2,0,2007,2017,83950.0
+3066.0,Caledonia Investments Plc,3,2,0,2008,2010,188000.0
+3028.0,Mr Sam Singh,4,1,0,2008,2019,42880.0
+3032.0,Merthyr Tydfil Car Auction Limited,7,4,0,2006,2023,109672.06
+3035.0,Ms Vera Weisfeld,4,2,0,2004,2017,80000.0
+3037.0,Countrywide Developments Ltd,21,9,0,2003,2024,3884551.51
+3038.0,Ragm Plc,2,1,0,2009,2017,25000.0
+3040.0,Mr Jack Harvie,2,1,0,2009,2017,50000.0
+3042.0,Hospital Ambulance Car Service Ltd,2,1,0,2009,2017,18500.0
+3045.0,Airport Park And Ride Ltd,2,1,0,2009,2011,36956.08
+3046.0,Patersons Quarries Ltd,2,1,0,2009,2017,30000.0
+3065.0,Ivs Group Ltd,3,1,0,2013,2017,67080.0
+3068.0,Caroline Nash,2,1,0,2009,2010,78750.0
+2344.0,Ardeshir Nagshineh,3,1,0,2007,2017,35000.0
+3109.0,Mr Alan Morgan,4,1,0,2004,2016,31100.0
+3117.0,Mr John Isabell,4,1,0,2010,2016,15644.92
+3120.0,Britt Allen Shaw,10,4,0,2007,2024,254691.78
+3140.0,Glc Limited,2,1,0,2010,2017,30000.0
+3178.0,Mark Robertson,3,1,0,2010,2018,10500.0
+3204.0,Mr Trevor Chinn,11,4,0,2010,2024,568210.0
+3243.0,Purple Apple Management Limited,3,2,0,2009,2011,37500.0
+3249.0,Mr David J Rowland,2,1,0,2004,2010,11060.0
+3298.0,Norbrook Laboratories (Gb Ltd),11,2,0,2001,2014,1597856.75
+3783.0,Simon Robertson,6,1,0,2002,2016,222500.0
+2988.0,John Wheeler,2,1,0,2002,2016,630459.0
+2979.0,Brian Kingham,4,1,0,2002,2016,108400.0
+2970.0,Lady Victoria De Rothchild,2,1,0,2002,2018,25000.0
+2969.0,Emanuel Davison,4,1,0,2002,2006,75000.0
+2350.0,Pierre Laine,4,2,0,2008,2010,33550.0
+2354.0,Bell Pottinger Group Limited,5,3,0,2008,2012,59480.0
+2376.0,Cllr Ivor Braka,3,1,0,2007,2016,22000.0
+2389.0,Mr Michael Stone,5,2,0,2002,2017,119050.0
+2405.0,Mr Stephen  Jordan,10,3,0,2008,2024,33150.0
+2426.0,George Robinson,5,1,0,2008,2018,1386502.53
+2439.0,Mr Christopher Kelly,5,1,0,2008,2017,15237.0
+2461.0,Dcd London & Mutual Plc,6,2,0,2004,2019,29900.0
+2464.0,Mr Mohammed Miah,3,1,0,2007,2017,37000.0
+2481.0,Rochland Properties Ltd,25,2,0,2001,2024,1173000.0
+2506.0,Abercrombie And Kent Ltd,3,1,0,2001,2016,61500.0
+2553.0,Tees Components Ltd,7,2,0,2001,2019,47000.0
+2568.0,Vauxhall Motors Limited,3,2,0,2001,2006,28250.0
+2695.0,Mr Joe Fletcher,11,2,0,2001,2024,77241.79
+2721.0,Christofferson Robb & Co (Uk) Llp,5,2,0,2007,2011,155251.12999999998
+2754.0,Mr G Robinson,2,1,0,2002,2017,29818.98
+2834.0,Partick Stewart Obe,8,1,0,2002,2025,160290.0
+2904.0,Lord Sainsbury,4,3,0,2001,2016,2642500.0
+2942.0,Boehringer Ingelheim Ltd,6,1,0,2002,2011,32400.0
+2949.0,Stephen O Brook,10,2,0,2002,2017,61750.0
+2958.0,Jeffrey Management Ltd,6,2,0,2002,2016,40000.0
+1506.0,Mr Michael Freeman,4,2,0,2001,2016,367000.0
+1412.0,Mr Richard Wild,4,2,0,2001,2019,14000.0
+18040.0,Matthew R Ferrey,3,1,0,2008,2016,86000.0
+106.0,Mr Stephen Hargrave,5,2,0,2001,2023,23798.760000000002
+90.0,Dudley Gladstone Liberal Club,2,1,0,2006,2013,25153.97
+92.0,Jedforest Liberal Club,2,1,0,2006,2015,34962.259999999995
+93.0,Gowlett Trust,2,1,0,2006,2015,17500.0
+94.0,Joseph Rowntree Refrom Trust Ltd,2,1,0,2007,2016,15320.0
+98.0,Ellis Marsden Memorial Trust,3,1,0,2002,2024,43881.42
+99.0,Michael Batt,11,3,0,2001,2025,315599.3
+100.0,Mr Jon Moulton,8,2,0,2006,2023,110000.0
+103.0,Investors In Private Capital Limited,13,3,0,2008,2023,1213976.47
+104.0,Mr Henry Tinsley,3,1,0,2005,2024,29000.0
+105.0,Mr Henry Cole Tinsley,2,1,0,2005,2023,112262.3
+108.0,Mr Philip Harris,5,2,0,2001,2023,170610.5
+87.0,Mr Jon Moulton,5,1,0,2007,2024,68000.0
+110.0,Oceana Investment Corporation Ltd,3,1,0,2001,2023,42500.0
+111.0,Mr Alan Sharr,3,2,0,2001,2024,130372.3
+113.0,Mr Geoffrey Leigh,3,1,0,2001,2024,130809.8
+114.0,Mr Michael A. Heller,2,1,0,2001,2025,166077.03
+117.0,Mr R E Carlsson,2,1,0,2001,2002,27500.0
+119.0,Mr Michael Maude,6,1,0,2007,2019,105795.78
+121.0,Sir Rocco Forte Ltd,6,3,0,2001,2016,72000.0
+134.0,Mr John Coker,2,1,0,2005,2009,201050.0
+138.0,Mr David C Allen,10,2,0,2009,2022,40270.0
+162.0,Malik Karim,2,1,0,2010,2019,37500.0
+89.0,Morris Hall Trust,6,2,0,2003,2021,26700.0
+86.0,Mr Alan Howard,2,1,0,2007,2012,25000.0
+1404.0,Mr John Payton,10,6,0,2001,2019,70555.0
+23.0,Mr John Evers,4,1,0,2004,2017,33626.54
+9.0,Congleton Liberal Club Building Company,17,2,0,2001,2023,259552.96
+10.0,Countryside Trust Fund,4,2,0,2003,2017,22795.6
+11.0,C. A. Church Limited,3,1,0,2003,2011,36000.0
+13.0,Dundee Liberal Club Trust,7,2,0,2001,2014,69060.74
+14.0,Earlswood Hall Trustees,3,1,0,2004,2006,13725.65
+15.0,Dame Maureen Thomas,17,2,0,2003,2024,159800.0
+17.0,Glasgow Unionist Association Trust,4,2,0,2003,2007,53065.14
+20.0,Dame Maureen Thomas,4,1,0,2004,2010,30275.77
+21.0,Dame Maureen Thomas,3,2,0,2003,2007,58345.42
+22.0,Morris Hall Trustees,6,2,0,2001,2015,18100.0
+24.0,Dame Maureen Thomas,2,1,0,2001,2005,45500.0
+85.0,Heaton Moor Reform Club,2,1,0,2007,2012,20000.0
+33.0,Scottish Unionist Association Trust,13,2,0,2001,2017,300053.6
+35.0,Sir Havergal Downes-Shaw Will Trust,16,3,0,2001,2024,110332.0
+56.0,Ben Gowlett Trustees,5,1,0,2009,2015,70230.0
+61.0,The Mainstream Trust,7,2,0,2001,2015,388761.0
+64.0,Miss Averil Henshall,5,1,0,2002,2018,22823.059999999998
+75.0,Amicus,9,2,0,2011,2020,986704.45
+77.0,The Joseph Rowntree Reform Trust Ltd,28,14,0,2001,2025,10938181.66
+80.0,Llantisilio Hall Trust,5,3,0,2005,2011,70584.32
+83.0,Huntingdon,4,1,0,2008,2013,59250.0
+84.0,May Keyte Will Trust,2,1,0,2007,2012,36757.56
+181.0,D Clayton Jones,4,3,0,2001,2011,17567.0
+189.0,Rab Capital Plc,6,1,0,2001,2017,89500.0
+206.0,Mr James D Hanson,4,1,0,2001,2013,33680.0
+1014.0,Mr David Morgan,4,1,0,2001,2009,52207.08
+838.0,Lord William Dartmough,3,1,0,2001,2009,13700.0
+853.0,Mr Richard J Tice,2,1,0,2001,2016,17000.0
+865.0,Mr Matthew Parker,2,1,0,2001,2004,12161.0
+922.0,Mr Stephen Stone,9,1,0,2001,2025,1185971.2
+959.0,International Motors Ltd,15,4,0,2001,2020,4844431.18
+970.0,John Allen,3,1,0,2001,2017,67000.0
+979.0,Mr John H Ward,4,1,0,2001,2008,96950.0
+985.0,Michael Farmer,10,2,0,2001,2021,1713372.32
+1004.0,Donald J Lewin,3,2,0,2001,2005,30500.0
+1013.0,Mr Sam Miller,6,2,0,2001,2019,128266.0
+1018.0,Charles Pearson,5,1,0,2001,2017,87562.47
+207.0,Harris & Sheldon Group Ltd,23,3,0,2001,2023,261000.0
+1019.0,Andrew Perloff,3,1,0,2001,2018,22500.0
+1028.0,Lady Na Stevens,2,1,0,2001,2010,18502.0
+1083.0,Stockvale Ltd,4,1,0,2001,2014,10725.0
+1114.0,Mr John Reid,3,1,0,2001,2007,14000.0
+1132.0,Mr George M Hollingberry,5,2,0,2001,2005,23186.13
+1160.0,Mr David Foster,5,3,0,2001,2019,173700.0
+1214.0,Mr Mark A Pritchard,2,1,0,2001,2014,19182.5
+1305.0,David Potter,2,1,0,2001,2016,240000.0
+1310.0,Esson Properties Ltd,8,1,0,2001,2019,177000.0
+1402.0,Mr James Kyle,3,2,0,2001,2017,18000.0
+833.0,Stalbury Trustees,14,3,0,2001,2017,644838.5800000001
+827.0,Ms Fran Edwards,3,1,0,2001,2016,13500.0
+816.0,Mr David Rowland,2,1,0,2001,2009,1038459.0
+755.0,Techtest Ltd,7,3,0,2001,2019,946000.0
+212.0,Mohammed Khaliq,5,3,0,2001,2015,19500.0
+215.0,Jon Moynihan,3,1,0,2001,2016,62380.0
+228.0,Iir Limited,5,2,0,2001,2005,2367586.74
+232.0,David D Coleman,7,1,0,2001,2024,116247.63
+233.0,Lord Na Avebury,6,1,0,2001,2015,14500.0
+256.0,Westminster City Councillors Group,15,2,0,2001,2024,116733.13
+389.0,Roubal Properties Limited,8,2,0,2001,2017,229981.7
+391.0,Scottish Power Ltd,23,13,0,2001,2024,262162.5
+513.0,Communication Workers Union,19,7,0,2001,2024,1765045.2599999998
+637.0,Ms Joan Morgan,3,1,0,2001,2016,16055.25
+652.0,Mr A Wilkins,4,1,0,2001,2015,29750.0
+669.0,City Cruises Plc,3,1,0,2001,2014,11604.0
+671.0,Mr David Lowes,5,1,0,2001,2019,65150.0
+705.0,Mr John William Leavesley,3,2,0,2001,2004,25912.16
+726.0,Flowidea Ltd,24,7,0,2001,2025,4180071.77
+727.0,Sovereign Strategy Ltd,11,4,0,2001,2015,217682.0
+731.0,Browell Smith And Co. Solicitors,4,2,0,2002,2006,36933.0
+744.0,Jrj Investments Ltd,16,4,0,2001,2022,341363.95999999996
+747.0,Arbuthnot Banking Group Plc,14,2,0,2005,2022,501725.99
+751.0,Mr Robin Grey,6,1,0,2005,2015,89993.42
+752.0,J C Bamford Excavators Ltd,24,10,0,2001,2024,13942908.719999999
+3806.0,Hca International Ltd,3,1,0,2002,2011,19000.0
+3843.0,Manchester Airport Group,4,1,0,2001,2005,277548.02
+3892.0,Mr David Harrison,3,1,0,2002,2016,22570.0
+12748.0,Precis Holdings Ltd,2,1,0,2006,2019,31550.0
+11517.0,Vertex Data Science Ltd,2,1,0,2004,2005,23500.5
+11733.0,Mr Andy Taylor,2,1,0,2006,2016,252000.0
+11755.0,Microsoft Limited,7,5,0,2006,2014,181576.41
+12005.0,Shore Capital Group Ltd,12,4,0,2006,2022,858387.3
+12015.0,Western United Investment Company Ltd,2,1,0,2006,2014,144717.1
+12221.0,Alison A Frost,6,1,0,2006,2016,29041.59
+12238.0,Anna L Rausing,3,1,0,2006,2016,558500.0
+12682.0,Co-Operative Group (Cws) Ltd,25,3,0,2001,2025,14606578.059999999
+12720.0,Mr Sudhir  Choudhrie,10,2,0,2006,2023,746342.72
+12740.0,Mr Gerald Davidson,4,2,0,2006,2015,26411.86
+12754.0,Killik & Co Llp,5,2,0,2006,2019,106620.63
+11275.0,William Edwards,4,1,0,2005,2022,42200.0
+12769.0,Michael P Aiken,4,2,0,2006,2015,27127.2
+12781.0,Mr David Harding,4,1,0,2006,2016,1068000.0
+12784.0,Mr Robert Hill,4,2,0,2006,2019,20250.0
+12804.0,Mr Christopher Kelly,5,2,0,2006,2019,10697.05
+12879.0,David B Pearl,3,1,0,2006,2015,32500.0
+12944.0,Betterworld Limited,13,8,0,2006,2018,613750.0
+12986.0,Mr Kenneth A Graham,3,1,0,2006,2021,16500.0
+12992.0,Irwin Mitchell Llp,5,1,0,2004,2012,52300.0
+13284.0,Growth Financial Services Ltd,12,5,0,2005,2019,1263000.0
+13346.0,Mr Martin Rayner,2,1,0,2006,2012,11100.0
+11430.0,Midcounties Co-Operative Ltd,21,1,0,2005,2025,844786.0700000001
+11247.0,Henry Porter,2,1,0,2005,2017,19850.0
+3913.0,Glastonbury Festivals Ltd,4,1,0,2002,2013,12100.0
+10418.0,Mr Alexander Trotter,2,1,0,2005,2014,11500.0
+10128.0,William Cook Ltd,14,4,0,2005,2020,1866981.6600000001
+10150.0,Mr Christopher Smith,3,2,0,2005,2015,14562.26
+10182.0,Agcp Ltd,2,1,0,2005,2016,50000.0
+10192.0,The Cayzer Trust Company Ltd,20,6,0,2005,2025,530140.0
+10242.0,Mr Richard Broyd,5,2,0,2005,2019,54600.0
+10352.0,Mr Rhoderick Swire,3,2,0,2005,2012,15625.0
+10362.0,Mr John  Jarvis,2,1,0,2005,2017,12700.0
+10380.0,Angus Macdonald,4,2,0,2005,2017,21501.0
+10383.0,Ranjit Singh Baxi,3,2,0,2005,2012,36600.0
+10412.0,Dr Ashraf Chohan,2,1,0,2005,2015,19240.0
+10465.0,Mr Charles Wigoder,4,1,0,2005,2011,44500.0
+11131.0,Mr Thomas Hearn,2,1,0,2005,2015,17400.0
+10584.0,John C C Stevens,2,1,0,2005,2010,35450.0
+10590.0,Christopher Huhne,4,1,0,2005,2015,23766.0
+10635.0,Mr Henry Tinsley,3,2,0,2005,2017,13000.0
+10686.0,Mr A Michael Wheatley,5,1,0,2005,2014,34510.18
+10729.0,Ian Watson,3,1,0,2005,2018,72750.0
+10730.0,Mrs Victoria Ash,6,1,0,2005,2022,260000.0
+10939.0,Mr Simon Hall,3,2,0,2005,2016,34700.0
+10997.0,Mr Michael Macgregor,8,1,0,2005,2017,13529.0
+11022.0,Thomas R Scott,7,1,0,2005,2013,633390.0
+11083.0,Gmg Financial Services Ltd,4,1,0,2013,2015,20685.440000000002
+13365.0,Ian Roper Taylor,3,2,0,2006,2018,128000.0
+13373.0,Mr Michael C Warshaw,4,2,0,2006,2017,14703.93
+13452.0,Mrs Iris Margaret Jones,4,1,0,2006,2017,25012.739999999998
+16703.0,Mr David E Johnson,4,1,0,2007,2019,17240.0
+16237.0,Mr James A Mcalpine,3,1,0,2007,2015,30000.0
+16238.0,Ronald Mcletchie,2,1,0,2007,2015,20000.0
+16242.0,Mr Robin Odey,3,1,0,2007,2014,55000.0
+16273.0,John Garrett,2,1,0,2007,2009,14000.0
+16279.0,Mr David Khan,6,1,0,2007,2024,386800.0
+16317.0,Airbus Uk Ltd,7,4,0,2007,2018,71767.0
+16360.0,Mr Tim Watts,5,2,0,2007,2023,44000.0
+16432.0,E.On Uk Plc,3,1,0,2007,2016,28400.0
+16486.0,Trust Reservations Limited,7,2,0,2007,2019,63510.24
+16691.0,Dr Elaine  Drage,5,2,0,2007,2017,15574.0
+16737.0,Balmoral Comtec Limited,12,7,0,2007,2024,688500.0
+13629.0,Mr David A Nickson,3,1,0,2006,2014,12500.0
+16855.0,Mr Martin Lloyd,5,2,0,2007,2020,15089.44
+16917.0,Mr William P Richards,4,1,0,2007,2012,155000.0
+16931.0,Sage Media Ltd,2,1,0,2008,2012,12000.0
+17330.0,Mr Robin Hall,5,3,0,2008,2019,12805.0
+17347.0,Mr Michael Headley,9,1,0,2008,2017,33811.0
+17458.0,Simon J Sacher,3,1,0,2008,2015,10635.0
+17535.0,Mark Constantine,2,1,0,2008,2015,35000.0
+17606.0,Mr John M Hanson,3,1,0,2008,2013,16000.0
+17754.0,Westfield Shoppingtowns Limited,5,3,0,2008,2014,317870.0
+18038.0,Mr David G Harrison,7,2,0,2008,2024,46350.0
+16197.0,Mr David John Coldman,3,1,0,2007,2018,145000.0
+16191.0,Mr F M (James) Stewart,2,1,0,2007,2011,13500.0
+16074.0,Dcd Properties Limited,6,4,0,2007,2016,309172.12
+15998.0,Mr Stephen Johnson,3,1,0,2007,2017,12115.0
+13632.0,Mr Allan Massie,8,3,0,2006,2021,150116.8
+13996.0,Mr James Wray,3,1,0,2007,2015,15500.0
+14319.0,Arron Banks,7,3,0,2007,2017,208702.0
+14382.0,Christopher Gate,4,1,0,2007,2017,36200.0
+14401.0,Mr Keith Mills,2,1,0,2007,2015,15300.0
+14402.0,David Mond,6,2,0,2007,2017,57500.0
+14458.0,Coleman Investments Ltd,2,1,0,2007,2015,15000.0
+14472.0,Marcus Evans Limited,6,1,0,2006,2015,574310.0
+14576.0,Sir Brian Souter,2,1,0,2007,2014,600000.0
+14635.0,Mr Gerald Cunningham,2,1,0,2007,2017,25316.05
+14878.0,Mr Gerald  Elliot,3,2,0,2007,2017,53500.0
+14954.0,Mr Michael Crockart,4,1,0,2003,2012,41736.0
+15015.0,Mrs Dorothy E Suttie,2,1,0,2007,2014,13000.0
+15106.0,Bet365 Group Limited,3,1,0,2007,2016,680000.0
+15271.0,Venson Automotive Solutions Ltd - Sponsorship,2,1,0,2007,2008,134375.0
+15353.0,Mr David Cooke,6,1,0,2007,2019,17500.0
+15428.0,Fitness Industry Association Limited,2,1,0,2007,2011,13055.0
+15548.0,Eads-Uk Ltd,3,1,0,2007,2013,19225.0
+15763.0,Mr David Lilley,6,3,0,2007,2015,313485.0
+15843.0,Park Lane Properties (Leeds) Limited,4,2,0,2005,2017,23000.0
+15973.0,Fabian Hamilton,5,2,0,2007,2009,13996.57
+10115.0,Windmill Business Group,2,1,0,2005,2009,10150.0
+10085.0,Ipgl Limited,21,10,0,2005,2024,7654338.69
+9997.0,Mr Donald Gosling,3,2,0,2005,2015,111000.0
+5750.0,Euk Consulting Limited,8,2,0,2003,2010,105525.0
+5246.0,Scotmid Co-Operative Society,25,4,0,2001,2025,525927.03
+5284.0,Mr Nicholas A Gould,4,1,0,2003,2017,15990.0
+5535.0,Mr Christopher J Moran,8,2,0,2003,2021,140801.86
+5543.0,Mr William Watts,2,1,0,2003,2015,27000.0
+5592.0,Mr John Moores,11,2,0,2004,2019,72403.64
+5601.0,Mr Keith Longdon,3,1,0,2003,2012,10742.0
+5636.0,Conservative Friends Of Turkey,8,4,0,2003,2023,105530.0
+5645.0,Mr Carl D Hughes,3,1,0,2003,2015,16550.0
+5662.0,Richard R Burns,3,1,0,2003,2017,19665.0
+5749.0,Edf Energy Plc,5,3,0,2003,2017,49055.0
+5825.0,Resource Limited,3,1,0,2003,2019,101450.0
+6179.0,National Express Group Plc,11,3,0,2004,2019,96675.0
+5917.0,Margaret Forster,2,1,0,2003,2016,64945.16
+5933.0,Mr Peter  Gardiner,6,3,0,2003,2017,39400.0
+5958.0,Mr W J Edwards,6,3,0,2004,2010,15600.0
+5959.0,Mr Anthony Gatling,3,1,0,2004,2009,20500.0
+5979.0,Mr Brian Kingham,2,1,0,2004,2016,25000.0
+5983.0,Lord D Stevens Of Ludgate,5,1,0,2004,2017,65005.0
+5984.0,Mr Christopher Palmer,6,3,0,2004,2019,64450.0
+6036.0,The Buccleuch Estates Limited (The),7,2,0,2004,2014,84750.0
+6049.0,Mr Ian Robertson,4,1,0,2004,2024,23000.0
+6128.0,Charles Skene,4,3,0,2004,2007,40250.0
+5142.0,Finsbury Group Ltd,6,4,0,2003,2016,97958.76000000001
+5082.0,Southend-On-Sea Labour Club & Institute Ltd,13,1,0,2003,2024,43496.38999999999
+5073.0,James Jonas,6,1,0,2003,2013,19498.52
+5042.0,Mr Christopher Simpson,7,1,0,2003,2017,18850.0
+3934.0,Baroness Na Nicholsen Mep,4,1,0,2002,2018,68333.28
+3994.0,Northumbria Water Ltd,9,3,0,2002,2013,61708.47
+4002.0,Mr Peter Thomas,2,1,0,2002,2006,14375.0
+4049.0,Birmingham International Airport Plc,7,3,0,2001,2015,61035.0
+4060.0,Citigroup Global Markets Limited,4,1,0,2002,2016,544124.5
+4124.0,Mr Edward Hart,2,1,0,2002,2012,30236.97
+4129.0,Mr Christopher J Compson,3,2,0,2002,2016,13100.0
+4172.0,Mr Emmanuel Davidson,2,1,0,2002,2004,17000.0
+4178.0,Stephen C Knight,5,1,0,2002,2014,38210.0
+4198.0,Mr Robert Brass,7,1,0,2002,2021,39350.0
+4254.0,Stockport Council Group,2,1,0,2003,2009,14121.71
+4346.0,Cllr David Abrahams,3,1,0,2003,2013,28600.0
+4353.0,Lord Na Sainsbury Of Turville,4,2,0,2003,2017,2564500.0
+4437.0,Tesco Plc,12,7,0,2002,2013,172856.0
+4491.0,Baa Plc,5,4,0,2001,2009,1222640.0
+4551.0,Daniel Alexander,3,1,0,2003,2017,113000.0
+4567.0,Hampden Buildings,20,2,0,2001,2021,186100.0
+4814.0,Mr David Gerard,2,1,0,2003,2019,219985.0
+4855.0,Cloburn Quarry Company Limited,8,1,0,2003,2010,1922510.94
+4872.0,Mr Michael Stephenson,3,2,0,2003,2018,58970.0
+4907.0,Mr Kevin Mcdonald,3,1,0,2003,2016,42634.270000000004
+6173.0,Mr Leslie Butterfield,3,1,0,2004,2015,12050.0
+6332.0,Mr Andrew D Roberts,3,1,0,2004,2016,28450.0
+9959.0,David Scott,2,1,0,2005,2016,12000.0
+8775.0,The Grace Club,2,1,0,2005,2014,11000.0
+8162.0,Keith Brown,5,1,0,2004,2016,24965.0
+8169.0,Mr Michael Carter,4,1,0,2004,2017,339700.0
+8218.0,Kpmg Llp,15,6,0,2003,2017,1851061.53
+8222.0,Fort Vale Engineering Ltd,9,2,0,2004,2019,133500.0
+8243.0,Mr David J Jones,5,2,0,2004,2017,47032.67
+8367.0,Christine Lee & Co (Solicitors) Limited,12,2,0,2005,2020,719086.8800000001
+8571.0,Dla Piper Rudnick Gray Cary Uk Ltd,3,1,0,2006,2010,19648.4
+8575.0,English Welsh & Scottish Railway Limited,3,1,0,2005,2008,71200.0
+8747.0,Mr Jeremy J Hosking,10,2,0,2005,2018,704900.0
+8751.0,Anthony R Tanner,2,1,0,2005,2018,19250.0
+8857.0,Conservative Friends Of Israel,17,7,0,2004,2020,290322.19
+6340.0,Mr Richard G Purdy,5,1,0,2004,2024,17314.21
+8901.0,Mr John Richard Hughes,2,1,0,2005,2012,53679.58
+8955.0,Cvs Management Ltd,6,1,0,2005,2017,273501.43
+9024.0,Diana Van Neivelt Price,2,1,0,2005,2016,1440000.0
+9064.0,Asda Stores Limited,9,3,0,2004,2015,79173.47
+9150.0,Pearl Properties Ltd,3,2,0,2005,2015,40000.0
+9151.0,Greg Dyke,2,1,0,2005,2016,12000.0
+9549.0,Amit Bhatia,5,1,0,2005,2021,148200.0
+9584.0,Mr Mike Lynch,2,1,0,2005,2014,30000.0
+9665.0,Lord Sushanta Kumar Bhattacharyya,3,1,0,2007,2016,135000.0
+9781.0,Paul Brett,6,1,0,2005,2017,84250.0
+8074.0,Mr John Bell,3,1,0,2004,2018,16600.0
+8037.0,John Roberts,5,4,0,2004,2017,169250.0
+7852.0,Vitabiotics Limited,4,2,0,2004,2014,55490.0
+7851.0,Veetee Rice Limited,2,1,0,2004,2014,15000.0
+6367.0,John Marek,3,2,0,2004,2017,22247.5
+6378.0,Mr Richard Law,7,3,0,2004,2019,71400.0
+6418.0,Dunalastair Estates Ltd,8,1,0,2002,2009,160229.08000000002
+6447.0,Mr Peter Baines,2,1,0,2004,2009,12000.0
+6504.0,Howard Stanley Kalms,4,1,0,2001,2016,28408.75
+6549.0,Ben Goldsmith,2,1,0,2004,2008,30000.0
+6597.0,Mr Roger Orf,10,3,0,2004,2022,668845.0
+6670.0,Mr Ali Ahmed,4,2,0,2004,2015,11900.0
+6692.0,Cllr John Robinson,2,1,0,2004,2008,47694.63
+6821.0,Mr George Bamford,2,1,0,2004,2009,42330.0
+7013.0,Mr Michael Eavis,7,3,0,2004,2024,421217.0
+7018.0,Richard Fuller,3,1,0,2004,2012,16169.56
+7024.0,Mr Richard Benyon,6,2,0,2004,2017,14205.0
+7035.0,Panther Securities Plc,10,2,0,2004,2016,228000.0
+7069.0,George Robinson,5,1,0,2004,2010,93000.0
+7084.0,Hot Group Plc,4,1,0,2004,2008,40300.0
+7135.0,Mr William Kenwright,3,1,0,2004,2009,16500.0
+7150.0,David Mccleary,6,2,0,2004,2016,216545.0
+7390.0,Peter Coates,3,2,0,2004,2015,111048.63
+7716.0,Mr Richard Gillham,5,1,0,2004,2018,14000.0
+7791.0,Aventis Pharma Ltd Trading As Sanofi,3,1,0,2004,2017,101439.0
+87429.0,Mr William E Hampton,5,1,0,2019,2023,4962865.88

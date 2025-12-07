@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 import streamlit as st
+from config import DATA_REMAPPINGS
 from data.data_utils import try_to_use_preprocessed_data
 from data.politicalperson import map_mp_to_party
 from components import mappings as mp
@@ -76,7 +77,7 @@ def load_cleaned_data(
             orig_df = orig_df
         else:
             orig_df = datafile
-    logger.debug(f"Clean Data Prep: streamlitdata load: {len(orig_df)}")
+    logger.debug(f"Clean Data Prep 79: streamlitdata load: {len(orig_df)}")
     # create a copy of the original data
     loadclean_df = orig_df.copy()
     # Create simple column to enable count of events using sum
@@ -123,7 +124,7 @@ def load_cleaned_data(
         .fillna(st.session_state.PLACEHOLDER_DATE)
     )
     # Phase 1 - line 122 - Clean data prep
-    logger.debug(f"Clean Data Prep 123: streamlitdata"
+    logger.debug(f"Clean Data Prep 126: streamlitdata"
                  f" load: {len(loadclean_df)}")
 
     # Create Year and Month columns
@@ -201,7 +202,7 @@ def load_cleaned_data(
         loadclean_df["PartyName"] = (
             loadclean_df["PartyName"]
             .fillna(loadclean_df["RegulatedEntityName"]))
-    logger.debug(f"Clean Data Prep 150: Map Party: {len(loadclean_df)}")
+    logger.debug(f"Clean Data Prep 204: Map Party: {len(loadclean_df)}")
 
     # Create a DubiousData flag for problematic records
     if ("PLACEHOLDER_DATE" not in st.session_state) or (
@@ -318,17 +319,26 @@ def load_cleaned_data(
 
     # Apply dictionary to populate RegEntity_Group
     thresholds = st.session_state.thresholds
+    party_parents = st.session_state.data_remappings["PartyParents"]
     if "RegulatedEntityName" in loadclean_df.columns:
         loadclean_df["RegEntity_Group"] = calc.determine_groups_optimized(
-            loadclean_df, "RegulatedEntityName", "EventCount", thresholds
+            loadclean_df,
+            "RegulatedEntityName",
+            "EventCount",
+            thresholds,
+            exception_dict=party_parents
         )
-    logger.debug(f"Clean Data Prep 235: RegEntity_Map: {len(loadclean_df)}")
-    #' Applky Dictionary to populate Party_Group
+    logger.debug(f"Clean Data Prep 325: RegEntity_Map: {len(loadclean_df)}")
+    #' Apply Dictionary to populate Party_Group
     if "PartyName" in loadclean_df.columns:
         loadclean_df["Party_Group"] = calc.determine_groups_optimized(
-            loadclean_df, "PartyName", "EventCount", thresholds
+            loadclean_df, 
+            "PartyName",
+            "EventCount",
+            thresholds,
+            exception_dict=party_parents
         )
-    logger.debug(f"Clean Data Prep 235: Party_Group: {len(loadclean_df)}")
+    logger.debug(f"Clean Data Prep 335: Party_Group: {len(loadclean_df)}")
     # Ensure all columns that are in data are also in data_clean
     for col in orig_df.columns:
         if col not in loadclean_df.columns:

@@ -1,13 +1,15 @@
 import streamlit as st
 import os
 import json
-import pandas as pd
+# import pandas as pd
 from utils.logger import log_function_call, logger
 from data.data_file_defs import (load_source_data,
                                 load_improved_raw_data,
                                 load_cleaned_data,
-                                load_cleaned_donations,
+                                load_cleaned_donations
+                                # ,load_donor_list
                                  )
+
 
 @st.cache_data
 @log_function_call
@@ -34,7 +36,6 @@ def try_to_use_preprocessed_data(originalfilepath,
                     f" dated {last_mod_time} instead of {originalfilepath}")
         return importfile(timestamp_key, savedfilepath)
     return None
-
 
 
 @log_function_call
@@ -108,11 +109,10 @@ def is_file_updated(main_file, timestamp_key):
         # Update the session state and the JSON file with the new timestamp
         last_modified_dates[timestamp_key] = current_mod_time
         st.session_state[timestamp_key] = current_mod_time
-
         # Save the updated modification times back to the JSON file
         save_last_modified_dates(last_modified_dates)
 
-        return True # File has changed
+        return True  # File has changed
 
     return False  # File is unchanged
 
@@ -138,8 +138,14 @@ def importfile(timestamp_key, savedfilepath):
         loaddata_df = load_cleaned_data(savedfilepath)
     elif timestamp_key == "cleaned_donations_last_modified":
         loaddata_df = load_cleaned_donations(savedfilepath)
+    elif timestamp_key == "election_dates_last_modified":
+        # Import here to avoid circular dependency
+        from data.GenElectionRelationship import load_election_dates
+        loaddata_df = load_election_dates()
+    # elif timestamp_key == "load_donorlist_data_last_modified":
+    #    loaddata_df = load_donor_list(savedfilepath)
+    # or whatever the appropriate loader is
     else:
         logger.error(f"Timestamp key {timestamp_key} not recognised.")
         return
-    
     return loaddata_df

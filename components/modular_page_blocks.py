@@ -55,11 +55,18 @@ def load_and_filter_data(filter_key, pagereflabel):
 @log_function_call
 def display_summary_statistics(filtered_df, overall_df, target_label,
                                pageref_label):
+    default_stats = {
+    "unique_donations": 0,
+    "total_value": 0,
+    "mean_value": 0,
+    "unique_reg_entities": 0,
+    "unique_donors": 0,
+    }   
     """Displays summary statistics for the given dataset."""
     if filtered_df is None or filtered_df.empty:
         if logger.level <= 20:
             st.warning(f"No {target_label}s found for the selected filters.")
-        return
+        return  None, None, default_stats, default_stats, 0
 
     min_date_df = get_mindate(filtered_df).date()
     max_date_df = get_maxdate(filtered_df).date()

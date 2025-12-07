@@ -405,7 +405,7 @@ def compute_summary_statistics(df, filters):
     }
 
 
-def determine_groups_optimized(df, entity, measure, thresholds_dict):
+def determine_groups_optimized(df, entity, measure, thresholds_dict, exception_dict=None):
     """
     Optimized version of group determination.
 
@@ -415,7 +415,7 @@ def determine_groups_optimized(df, entity, measure, thresholds_dict):
         measure (str): Column name representing the numeric measure.
         thresholds_dict (dict): Dictionary mapping (low, high)
         tuples to group labels.
-
+        exception_dict(dict): Dictionary mapping entity values to exception groups.
     Returns:
         pd.Series: A Series containing assigned groups for each row.
     """
@@ -423,12 +423,26 @@ def determine_groups_optimized(df, entity, measure, thresholds_dict):
     entity_totals = df.groupby(entity, as_index=False)[measure].sum()
     entity_totals.rename(columns={measure: "total_measure"}, inplace=True)
 
-    # Step 2: Assign groups based on thresholds
-    entity_totals["group"] = entity_totals.apply(
-                                lambda row: assign_group(row["total_measure"],
-                                                         thresholds_dict,
-                                                         row[entity]), axis=1
+    # Step 2: Assign groups based on thresholds or (exceptions)
+    # if exception_dict is provided, use assign_group_with_exceptions
+    # other wise use assign_group
+    if exception_dict:
+        #logger to show exception dict being used
+        logger.debug(f"Group assignment with exceptions: {exception_dict}")
+        entity_totals["group"] = entity_totals.apply(
+            lambda row: assign_group_with_exceptions(
+                row,
+                thresholds_dict,
+                row[entity],
+                exception_dict
+            ), axis=1
         )
+    else:
+        entity_totals["group"] = entity_totals.apply(
+                                    lambda row: assign_group(row["total_measure"],
+                                                            thresholds_dict,
+                                                            row[entity]), axis=1
+            )
 
     # Step 3: Merge back into the original DataFrame
     df = df.merge(entity_totals[[entity, "group"]], on=entity, how="left")
@@ -461,6 +475,21 @@ def assign_group(total, thresholds_dict, entity_value):
         if low <= total <= high:
             return group_name
     return entity_value  # Assign entity name if above max threshold
+
+def assign_group_with_exceptions(row,
+                                 thresholds_dict,
+                                 entity_value,
+                                 exception_list):
+    """
+    Assigns a group based on thresholds and exceptions.  
+    """
+    # Check if this entity is in the exception list first
+    if exception_list and entity_value in exception_list:
+        return entity_value
+    
+    # Otherwise, use threshold-based grouping
+    return assign_group(row["total_measure"], thresholds_dict, entity_value)
+    
 
 
 def calculate_agg_by_variable(

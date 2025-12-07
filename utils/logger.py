@@ -1,22 +1,26 @@
 import logging
 import os
 import sys
+import time
 import functools
 import streamlit as st
 from functools import wraps
 
 # Allow dynamic control of log level via environment variable or a default
-# to change via terminal: export LOG_LEVEL=DEBUG (linux), set LOG_LEVEL=DEBUG (Windows)
+# to change via terminal: export LOG_LEVEL=DEBUG (linux),
+# set LOG_LEVEL=DEBUG (Windows)
 # or alter in config.py
 # Use DEBUG for detailed logs
 # Can be DEBUG, INFO, WARNING, ERROR, CRITICAL
-LOG_LEVEL = os.getenv("LOG_LEVEL", "ERROR").upper()
+LOG_LEVEL = os.getenv("LOG_LEVEL", "DEBUG").upper()
 
 # Configure logging correctly,  # Defaults to INFO if invalid
+# Ensure timestamps use local time with offset and seconds for clarity
+logging.Formatter.converter = time.localtime
 logging.basicConfig(
     level=getattr(logging, LOG_LEVEL, logging.INFO),
     format="%(asctime)s %(levelname)s:%(message)s",
-    datefmt="%Y/%m/%d %I:%M",
+    datefmt="%Y-%m-%d %H:%M:%S %z",
     encoding="utf-8",
     handlers=[
         # Logs to a file
