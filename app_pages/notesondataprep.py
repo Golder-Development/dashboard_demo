@@ -139,7 +139,7 @@ def notesondataprep_body():
     st.markdown("#### Regulated Entity Classification")
     st.markdown(
         "Regulated Entities were then analysed and categorised based on "
-        "the number of donations received. The table below"
+        "the number of donations received during a parliamentary sitting. The table below"
         " shows the categories used."
     )
     st.markdown("---")
@@ -147,4 +147,5 @@ def notesondataprep_body():
     col1, col2 = st.columns(2)
     with col1:
         ppcalc.display_thresholds_table()
+    
     st.write("---")

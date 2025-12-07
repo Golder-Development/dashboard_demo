@@ -15,27 +15,27 @@ def load_election_dates():
     """Load general election dates into session state."""
     logger.info("Loading election dates from pdpy.")
     ElectionDates_dict = get_general_elections_dict()
-    
+
     if not ElectionDates_dict:
         logger.error("Failed to load election dates.")
         st.session_state.ElectionDatesAscend = []
         st.session_state.ElectionDatesDescend = []
         raise ValueError("No valid election dates found.")
-    
+
     logger.info("Election Dates loaded from pdpy.")
-    
+
     # Add type field to all records
     for key, value in ElectionDates_dict.items():
         ElectionDates_dict[key]['type'] = "General Election"
     logger.debug(f"ElectionDates_dict from pdpy: {ElectionDates_dict}")
-    
+
     # Extract only election dates as `date` objects
     election_dates = [
         value["election"] for key, value in ElectionDates_dict.items()
         if isinstance(value, dict) and "election" in value and
         value.get("type") == "General Election"
     ]
-    
+
     # Check there are records in election_dates
     if election_dates:
         # Store sorted election dates in session state
@@ -138,7 +138,7 @@ def classify_electoral_cycle_from_thresholds(row,
         return "Unknown"
 
     # Reuse existing threshold allocation logic:
-    # days_till acts as the "total", 
+    # days_till acts as the "total",
     # default_label acts as entity_value fallback.
     phase = calc.assign_group(
         total=days_till,

@@ -317,6 +317,38 @@ def load_cleaned_data(
     # if "DubiousData" is less than 0, set it to 0
     loadclean_df["DubiousData"] = loadclean_df["DubiousData"].clip(lower=0)
 
+    # Add parliamentary_sitting column BEFORE group assignment
+    # so we can group by parliamentary sitting instead of lifetime totals
+    elections_csv_path = os.path.join(
+        st.session_state.BASE_DIR, "reference_files", "elections.csv")
+
+    if os.path.exists(elections_csv_path):
+        elections_df = pd.read_csv(elections_csv_path)
+        # Filter to only General Elections
+        elections_df = elections_df[elections_df['type'] == 'General Election']
+        elections_df['election'] = pd.to_datetime(elections_df['election'])
+        elections_df = elections_df.sort_values('election')
+
+        def assign_parliamentary_sitting(received_date):
+            """Assign donation to parliamentary sitting based on election date"""
+            if pd.isna(received_date):
+                return "Unknown"
+
+            # Find the most recent election before this date
+            prev_elections = elections_df[elections_df['election'] <= received_date]
+            if prev_elections.empty:
+                return "Pre-1929"
+            else:
+                return prev_elections.iloc[-1]['name']
+
+        loadclean_df['parliamentary_sitting'] = loadclean_df['ReceivedDate'].apply(
+            assign_parliamentary_sitting
+        )
+        logger.info(f"Added parliamentary_sitting column with {loadclean_df['parliamentary_sitting'].nunique()} unique periods")
+    else:
+        logger.warning(f"Elections CSV not found at {elections_csv_path}, setting parliamentary_sitting to 'Unknown'")
+        loadclean_df['parliamentary_sitting'] = "Unknown"
+
     # Apply dictionary to populate RegEntity_Group
     thresholds = st.session_state.thresholds
     party_parents = st.session_state.data_remappings["PartyParents"]
@@ -326,7 +358,8 @@ def load_cleaned_data(
             "RegulatedEntityName",
             "EventCount",
             thresholds,
-            exception_dict=party_parents
+            exception_dict=party_parents,
+            groupby_column="parliamentary_sitting"
         )
     logger.debug(f"Clean Data Prep 325: RegEntity_Map: {len(loadclean_df)}")
     # Apply Dictionary to populate Party_Group
@@ -336,7 +369,8 @@ def load_cleaned_data(
             "PartyName",
             "EventCount",
             thresholds,
-            exception_dict=party_parents
+            exception_dict=party_parents,
+            groupby_column="parliamentary_sitting"
         )
     logger.debug(f"Clean Data Prep 335: Party_Group: {len(loadclean_df)}")
     # Ensure all columns that are in data are also in data_clean
@@ -460,14 +494,15 @@ def load_cleaned_data(
 
         def get_days_since_last_election(date_series):
             date_series = pd.to_datetime(date_series)
-            idx = np.searchsorted(election_dates_desc, date_series, side="right") - 1
+            # Use ascending dates and get the position just BEFORE the date
+            idx = np.searchsorted(election_dates_asc, date_series, side="right") - 1
 
-            # Ensure idx is within valid bounds
-            idx = np.clip(idx, 0, len(election_dates_desc) - 1)
+            # Ensure idx is within valid bounds (can be -1 if before first election)
+            idx = np.clip(idx, 0, len(election_dates_asc) - 1)
 
             # Assign last election date only if idx is valid
             last_election_dates = np.where(idx >= 0,
-                                        election_dates_desc.iloc[idx],
+                                        election_dates_asc.iloc[idx],
                                         pd.NaT)
 
             # Compute days difference and handle NaT cases
@@ -493,6 +528,8 @@ def load_cleaned_data(
                 np.ceil(loadclean_df["DaysTillNextElection"] / divisor))
             loadclean_df[f"{period}SinceLastElection"] = (
                 np.ceil(loadclean_df["DaysSinceLastElection"] / divisor))
+
+        # parliamentary_sitting column already added earlier (before group assignment)
 
     logger.debug(f"Clean Data Prep 353: Election dates: {len(loadclean_df)}")
     # compare count of rows in original data with cleaned data

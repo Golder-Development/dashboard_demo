@@ -117,10 +117,10 @@ def display_visualizations(graph_df, target_label, pageref_label):
         left_widget_graph_key = "left" + pageref_label_vis
         plot_bar_line.plot_bar_line_by_year(
             graph_df,
-            XValues="YearReceived",
+            XValues="parliamentary_sitting",
             YValues="Value",
             GroupData="Party_Group",
-            XLabel="Year",
+            XLabel="Parliament Election Year",
             YLabel="Value of Donations £",
             Title=f"Value of {target_label}s by" " Year and Entity",
             CalcType="sum",
@@ -135,10 +135,10 @@ def display_visualizations(graph_df, target_label, pageref_label):
         right_widget_graph_key = "right" + pageref_label_vis
         plot_bar_line.plot_bar_line_by_year(
             graph_df,
-            XValues="YearReceived",
+            XValues="parliamentary_sitting",
             YValues="EventCount",
             GroupData="Party_Group",
-            XLabel="Year",
+            XLabel="Parliament Election Year",
             YLabel="Donations",
             Title=f"Donations of {target_label}s by Year and Entity",
             CalcType="sum",
@@ -277,6 +277,7 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label,
         "Reporting Period": ("ReportingPeriodName", None),
         "Party Affiliation": ("PartyName", None),
         "Regulated Entity Group": ("Party_Group", None),
+        "Parliament Election Year": ("parliamentary_sitting", None),
     }
 
     prev_selected_group = st.session_state.get("selected_group_entity", None)

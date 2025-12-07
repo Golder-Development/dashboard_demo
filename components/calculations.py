@@ -405,7 +405,7 @@ def compute_summary_statistics(df, filters):
     }
 
 
-def determine_groups_optimized(df, entity, measure, thresholds_dict, exception_dict=None):
+def determine_groups_optimized(df, entity, measure, thresholds_dict, exception_dict=None, groupby_column=None):
     """
     Optimized version of group determination.
 
@@ -416,11 +416,19 @@ def determine_groups_optimized(df, entity, measure, thresholds_dict, exception_d
         thresholds_dict (dict): Dictionary mapping (low, high)
         tuples to group labels.
         exception_dict(dict): Dictionary mapping entity values to exception groups.
+        groupby_column (str): Optional column to group by (e.g., 'parliamentary_sitting')
+                             to calculate thresholds per group instead of lifetime totals.
     Returns:
         pd.Series: A Series containing assigned groups for each row.
     """
-    # Step 1: Compute total measure per entity
-    entity_totals = df.groupby(entity, as_index=False)[measure].sum()
+    # Step 1: Compute total measure per entity (and optionally per groupby_column)
+    if groupby_column and groupby_column in df.columns:
+        entity_totals = df.groupby([entity, groupby_column], as_index=False)[measure].sum()
+        merge_columns = [entity, groupby_column]
+    else:
+        entity_totals = df.groupby(entity, as_index=False)[measure].sum()
+        merge_columns = [entity]
+    
     entity_totals.rename(columns={measure: "total_measure"}, inplace=True)
 
     # Step 2: Assign groups based on thresholds or (exceptions)
@@ -445,7 +453,8 @@ def determine_groups_optimized(df, entity, measure, thresholds_dict, exception_d
             )
 
     # Step 3: Merge back into the original DataFrame
-    df = df.merge(entity_totals[[entity, "group"]], on=entity, how="left")
+    merge_cols = merge_columns + ["group"]
+    df = df.merge(entity_totals[merge_cols], on=merge_columns, how="left")
     logger.debug(f"Group assignment: {df['group'].value_counts()}")
     logger.debug(f"Group assignment: {entity_totals['group'].value_counts()}")
 
@@ -479,12 +488,14 @@ def assign_group(total, thresholds_dict, entity_value):
 def assign_group_with_exceptions(row,
                                  thresholds_dict,
                                  entity_value,
-                                 exception_list):
+                                 exception_dict):
     """
-    Assigns a group based on thresholds and exceptions.  
+    Assigns a group based on thresholds and exceptions.
+    If entity_value is a key in exception_dict, return the entity name
+    instead of a threshold category (party exception).
     """
-    # Check if this entity is in the exception list first
-    if exception_list and entity_value in exception_list:
+    # Check if this entity is in the exception dict (exact match)
+    if exception_dict and entity_value in exception_dict:
         return entity_value
 
     # Otherwise, use threshold-based grouping

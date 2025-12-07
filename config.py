@@ -69,7 +69,23 @@ FILENAMES = {  # "directory" : {"file_name": "file_path"}
 }
 
 
-# Threshold for donations
+# Threshold for donations per parliamentary sitting
+# Based on percentile analysis to ensure even distribution of entities
+# across categories when analyzing per-parliament periods (~5 years each)
+# Distribution: 30.4% (2), 17.4% (3), 11.4% (4), 10.6% (5-6), 13.8% (7-12), 16.3% (13+)
+THRESHOLDS = {  # "threshold_range": "threshold_name"
+    (0, 0): "No Relevant Donations",
+    (1, 1): "Single Donation Entity",
+    (2, 2): "Very Small Entity",
+    (3, 3): "Small Entity",
+    (4, 4): "Small Medium Entity",
+    (5, 6): "Medium Entity",
+    (7, 12): "Medium Large Entity",
+    (13, 10000): "Large Entity",
+}
+
+"""
+# OLD Threshold for donations (lifetime totals)
 THRESHOLDS = {  # "threshold_range": "threshold_name"
     (0, 0): "No Relevant Donations",
     (1, 1): "Single Donation Entity",
@@ -80,6 +96,8 @@ THRESHOLDS = {  # "threshold_range": "threshold_name"
     (201, 500): "Medium Large Entity",
     (501, 1000): "Large Entity",
 }
+"""
+
 
 # Data remappings
 DATA_REMAPPINGS = {
@@ -91,15 +109,16 @@ DATA_REMAPPINGS = {
         "Other Payment": "Other",
     },
     # Mapping of party name to RegulatedEntityId
+    # Keys are FULL party names as they appear in the data
     "PartyParents": {  # "party_name": "RegulatedEntityId"
-        "Conservatives": 52,
-        "Labour": 53,
+        "Conservative And Unionist Party": 52,
+        "Labour Party": 53,
         "Liberal Democrats": 90,
-        "Scottish National Party": 102,
+        "Scottish National Party (Snp)": 102,
         "Green Party": 63,
-        "Plaid Cymru": 77,
+        "Plaid Cymru - Party Of Wales": 77,
         "Reform UK": 7931,
-        "UKIP": 84,
+        "Uk Independence Party (Ukip)": 84,
         "Unknown": 0,
     },
 }

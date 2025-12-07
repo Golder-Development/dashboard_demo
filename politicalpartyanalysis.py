@@ -24,8 +24,8 @@ def pagesetup():
         mod_publicfund_donations,
         mod_regulated_donor_per_entity,
         mod_regulated_entity_per_donor
-        
     )
+    from app_pages.donor_loyalty_analysis import mod_donor_loyalty
 
     # Create an instance of the MultiPage class
     app = MultiPage(app_name="UK Political Donations")  # Create an instance
@@ -49,6 +49,7 @@ def pagesetup():
                  mod_regulated_donor_per_entity)
     app.add_page("Regulated Entity per Donor", 
                  mod_regulated_entity_per_donor)
+    app.add_page("Donor Loyalty Analysis", mod_donor_loyalty)
     app.add_page("Notes on Data and Manipulations", notesondataprep_body)
     app.add_page("Logout", logoutpage)
 

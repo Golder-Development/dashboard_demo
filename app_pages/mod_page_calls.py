@@ -3,6 +3,7 @@ from app_pages.modular_page import display_data_page
 from app_pages.modular_page_per_donor import (
     display_per_group_data_page
 )
+from app_pages.donor_loyalty_analysis import mod_donor_loyalty
 from components.text_management import check_password  # , load_page_text
 from utils.logger import logger  # Import the logger
 from utils.logger import log_function_call  # Import decorator
@@ -90,11 +91,11 @@ def mod_dubious_donations():
 
 # Donations by Political Party by donor
 def mod_donations_per_political_party():
-    display_per_group_data_page(
+    display_data_page(
             functionname="mod_donations_per_political_party",
             filter_key="PoliticalParty_ftr",
-            target_label="Donations per Political Party",
-            group_entity="Donor")
+            target_label="Donations per Political Party"
+            )
 
 
 # Regulated Entity Donors
@@ -102,11 +103,10 @@ def mod_regulated_donor_per_entity():
     tab1, tab2 = st.tabs(["Donors per Regulated Entity",
                           "TBC"])
     with tab1:
-        display_per_group_data_page(
+        display_data_page(
             functionname="mod_regulated_donor_per_entity",
             filter_key="PoliticalParty_ftr",
-            target_label="Donors per Regulated Entity",
-            group_entity="Donor",)
+            target_label="Donors per Regulated Entity")
 
 
 
