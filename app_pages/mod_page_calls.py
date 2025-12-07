@@ -90,30 +90,37 @@ def mod_dubious_donations():
 
 # Donations by Political Party by donor
 def mod_donations_per_political_party():
-        display_per_group_data_page(
+    display_per_group_data_page(
             functionname="mod_donations_per_political_party",
             filter_key="PoliticalParty_ftr",
             target_label="Donations per Political Party",
             group_entity="Donor")
 
 
-
 # Regulated Entity Donors
 def mod_regulated_donor_per_entity():
     tab1, tab2 = st.tabs(["Donors per Regulated Entity",
-                          "Regulated Entity by Donor"])
+                          "TBC"])
     with tab1:
         display_per_group_data_page(
             functionname="mod_regulated_donor_per_entity",
             filter_key="RegulatedEntity_ftr",
             target_label="Donors per Regulated Entity",
-            group_entity="Party")
-    with tab2:
+            group_entity="Party",)
+
+
+
+def mod_regulated_entity_per_donor():
+    tab1, tab2 = st.tabs(["Regulated Entity by Donor",
+                          "TBC"])
+    with tab1:
         display_per_group_data_page(
             functionname="mod_regulated_donor_per_entity",
             filter_key="RegulatedEntity_ftr",
             target_label="Regulated Entity by Entity",
-            group_entity="Entity")
+            group_entity="Entity",
+            tab_name="RegEntity_by_Donor")
+
 
 
 # Dubious Donors

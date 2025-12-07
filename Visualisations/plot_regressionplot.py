@@ -17,12 +17,12 @@ def plot_regressionplot(
     size_label="Regulated Entities",
     size_scale=1,  # Adjusted default for better scaling
     dot_size=50,
-    x_scale="log",  # linear or log 
-    y_scale="log",  # linear or log 
+    x_scale="log",  # linear or log
+    y_scale="log",  # linear or log
     use_custom_colors=False,
     legend_title=None,
     show_trendline=True,  # New: Option to enable regression trendline
-    use_container_width=True,
+    width='stretch',
 ):
     """
     Creates an interactive scatter plot with optional regression trendline.
@@ -114,5 +114,4 @@ def plot_regressionplot(
     )
 
     # Display in Streamlit
-    st.plotly_chart(fig, use_container_width=use_container_width)
-
+    st.plotly_chart(fig, use_container_width=True)

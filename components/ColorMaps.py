@@ -1,7 +1,7 @@
 # Description: This file contains the color maps used in the visualizations.
 
 
-political_colors= {
+political_colors = {
     # Official Tory blue
     "Conservative And Unionist Party": "#0087DC",
     # Official Labour red

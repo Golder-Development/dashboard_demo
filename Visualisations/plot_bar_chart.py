@@ -22,7 +22,7 @@ def plot_custom_bar_chart(
     y_scale="linear",
     legend_title=None,
     use_custom_colors=False,
-    use_container_width=True,
+    width='stretch',
     xaxis_sort="value_desc",  # Added option for x-axis sorting
 ):
     """
@@ -93,7 +93,8 @@ def plot_custom_bar_chart(
 
     # Determine color mapping
     color_discrete_map = {
-        str(cat).strip(): color_mapping.get(str(cat).strip(), "#636efa") for cat in df_agg[color_column].unique()
+        str(cat).strip(): color_mapping.get(str(cat).strip(),
+                                            "#636efa") for cat in df_agg[color_column].unique()
     }
 
     logger.debug(f"Final color_discrete_map: {color_discrete_map}")
@@ -140,5 +141,5 @@ def plot_custom_bar_chart(
         )
 
     # Display in Streamlit
-    st.plotly_chart(fig, use_container_width=use_container_width)
+    st.plotly_chart(fig, use_container_width=True)
     logger.info("Bar chart displayed successfully.")

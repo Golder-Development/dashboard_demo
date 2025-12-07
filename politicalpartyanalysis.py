@@ -22,6 +22,9 @@ def pagesetup():
         mod_cash_donations,
         mod_non_cash_donations,
         mod_publicfund_donations,
+        mod_regulated_donor_per_entity,
+        mod_regulated_entity_per_donor
+        
     )
 
     # Create an instance of the MultiPage class
@@ -40,8 +43,12 @@ def pagesetup():
     app.add_page("Paid Visits", mod_visits)
     app.add_page("Dubious Donors", mod_dubious_donors)
     app.add_page("Dubious Donations", mod_dubious_donations)
-    app.add_page("Donations by Political Party",
+    app.add_page("Internal Political Party Donations",
                  mod_donations_per_political_party)
+    app.add_page("Regulated Donor per Entity", 
+                 mod_regulated_donor_per_entity)
+    app.add_page("Regulated Entity per Donor", 
+                 mod_regulated_entity_per_donor)
     app.add_page("Notes on Data and Manipulations", notesondataprep_body)
     app.add_page("Logout", logoutpage)
 

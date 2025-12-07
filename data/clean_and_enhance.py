@@ -2,9 +2,8 @@ import os
 import pandas as pd
 import numpy as np
 import streamlit as st
-from config import DATA_REMAPPINGS
 from data.data_utils import try_to_use_preprocessed_data
-from data.politicalperson import map_mp_to_party
+# from data.politicalperson import map_mp_to_party
 from components import mappings as mp
 from components import calculations as calc
 from utils.logger import logger, log_function_call
@@ -188,7 +187,7 @@ def load_cleaned_data(
                                               "Special Interest"]],
                                 how="left",
                                 on="RegulatedEntityId")
-                    # Replace Independent with "" in PartyName and 1000001 in PartyId with Null
+        # Replace Independent with "" in PartyName and 1000001 in PartyId with Null
         loadclean_df["PartyId"] = loadclean_df["PartyId"].replace(1000001, pd.NA)
         loadclean_df["PartyName"] = loadclean_df["PartyName"].replace("Independent", pd.NA)
         # Handle missing values for parent entities
@@ -253,7 +252,7 @@ def load_cleaned_data(
             .isin(DubiousDonorTypesDT)
             .astype(int)
             )
-        + 
+        +
         (
             loadclean_df["DonorStatus"]
             .isin(DubiousDonorTypesDS)
@@ -265,7 +264,7 @@ def load_cleaned_data(
             .isin(DubiousDonorTypesND)
             .astype(int)
             )
-        
+
     )
     # Extend dubious donation criteria using session state variables
     DubiousDonationTypes = (
@@ -279,7 +278,7 @@ def load_cleaned_data(
     DubiousDonationTypesREN = DubiousDonationTypes.get("RegulatedEntityName")
     DubiousDonationTypesIA = DubiousDonationTypes.get("IsAggregation")
     DubiousDonationTypesRD = DubiousDonationTypes.get("ReceivedDate")
-        
+
     loadclean_df["DubiousData"] = (
         loadclean_df["DubiousDonor"]
         + (loadclean_df["DonationType"].isin(DubiousDonationTypesDT).astype(int))
@@ -303,8 +302,8 @@ def load_cleaned_data(
             (
                 (loadclean_df["IsAggregation"].eq(True) |
                  loadclean_df["DonationType"].eq("Aggregated Donation") |
-                    loadclean_df["NatureOfDonation"].eq("Aggregated Donation") 
-                )
+                    loadclean_df["NatureOfDonation"].eq("Aggregated Donation")
+                 )
                 & (
                     loadclean_df["DonorStatus"].isin(
                         st.session_state["filter_def"].get("SafeDonors_ftr")
@@ -329,10 +328,10 @@ def load_cleaned_data(
             exception_dict=party_parents
         )
     logger.debug(f"Clean Data Prep 325: RegEntity_Map: {len(loadclean_df)}")
-    #' Apply Dictionary to populate Party_Group
+    # Apply Dictionary to populate Party_Group
     if "PartyName" in loadclean_df.columns:
         loadclean_df["Party_Group"] = calc.determine_groups_optimized(
-            loadclean_df, 
+            loadclean_df,
             "PartyName",
             "EventCount",
             thresholds,
@@ -405,7 +404,7 @@ def load_cleaned_data(
         loadclean_df["Party_Group"].astype("category").cat.codes)
     loadclean_df["RegEntityGrou[Int"] = (
         loadclean_df["RegEntity_Group"].astype("category").cat.codes)
-    
+
     # Column encoding PublicFundsInt
     loadclean_df["PublicFundsInt"] = (
         loadclean_df["DonationType"]
@@ -445,10 +444,10 @@ def load_cleaned_data(
         def get_days_till_next_election(date_series):
             date_series = pd.to_datetime(date_series)
             idx = np.searchsorted(election_dates_asc, date_series, side="left")
-            
+
             # Ensure idx is within valid bounds
             idx = np.clip(idx, 0, len(election_dates_asc) - 1)
-            
+
             # Assign next election date only if idx is valid
             next_election_dates = np.where(idx < len(election_dates_asc),
                                         election_dates_asc.iloc[idx],
@@ -461,10 +460,10 @@ def load_cleaned_data(
         def get_days_since_last_election(date_series):
             date_series = pd.to_datetime(date_series)
             idx = np.searchsorted(election_dates_desc, date_series, side="right") - 1
-            
+
             # Ensure idx is within valid bounds
             idx = np.clip(idx, 0, len(election_dates_desc) - 1)
-            
+
             # Assign last election date only if idx is valid
             last_election_dates = np.where(idx >= 0,
                                         election_dates_desc.iloc[idx],

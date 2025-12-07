@@ -8,7 +8,7 @@ from components.calculations import (
     calculate_percentage,
     format_number,
 )
-from Visualisations import ( 
+from Visualisations import (
     plot_bar_line
     )
 from components.text_management import (
@@ -56,17 +56,17 @@ def load_and_filter_data(filter_key, pagereflabel):
 def display_summary_statistics(filtered_df, overall_df, target_label,
                                pageref_label):
     default_stats = {
-    "unique_donations": 0,
-    "total_value": 0,
-    "mean_value": 0,
-    "unique_reg_entities": 0,
-    "unique_donors": 0,
-    }   
+                     "unique_donations": 0,
+                     "total_value": 0,
+                     "mean_value": 0,
+                     "unique_reg_entities": 0,
+                     "unique_donors": 0,
+                    }
     """Displays summary statistics for the given dataset."""
     if filtered_df is None or filtered_df.empty:
         if logger.level <= 20:
             st.warning(f"No {target_label}s found for the selected filters.")
-        return  None, None, default_stats, default_stats, 0
+        return None, None, default_stats, default_stats, 0
 
     min_date_df = get_mindate(filtered_df).date()
     max_date_df = get_maxdate(filtered_df).date()
@@ -167,12 +167,17 @@ def display_textual_insights_predefined(pageref_label, target_label, min_date,
              f"who donated £{format_number(tstats['most_valuable_donor'][1])}.")
     st.write(f"* The most common recipient of {target_label}s was {tstats['most_common_entity'][0]}, "
              f"they received {format_number(tstats['most_common_entity'][1])} donations.")
-    st.write(f"* {tstats['most_valuable_entity'][0]} received £{format_number(tstats['most_valuable_entity'][1])} "
-             f" of {target_label}s.")
+    st.write(
+        f"* {tstats['most_valuable_entity'][0]} received "
+        f"£{format_number(tstats['most_valuable_entity'][1])} "
+        f"of {target_label}s."
+    )
+
 
 @log_function_call
 def display_textual_insights_custom(pageref_label, target_label):
-    """Displays stored text elements for a given page. Allows edits only if admin is logged in."""
+    """Displays stored text elements for a given page.
+    Allows edits only if admin is logged in."""
 
     page_texts = load_page_text(pageref_label)
     logger.debug(f"Page texts: {page_texts}")
@@ -201,22 +206,46 @@ def display_textual_insights_custom(pageref_label, target_label):
 
         if is_admin:
             new_value = st.text_area(
-                f"Edit {text_key}:", value=text_value, key=f"edit_{pageref_label}_{text_key}"
+                f"Edit {text_key}:",
+                value=text_value,
+                key=f"edit_{pageref_label}_{text_key}"
             )
 
-            if st.button(f"Save {text_key}", key=f"save_{pageref_label}_{text_key}"):
+            if st.button(f"Save {text_key}",
+                         key=f"save_{pageref_label}_{text_key}"):
                 save_text(pageref_label, text_key, new_value)
                 st.success(f"Updated {text_key}!")
                 st.rerun()
 
 
-def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
-    """Loads and filters dataset based on filter_key from session state."""
+def load_and_filter_pergroup(group_entity, filter_key, pageref_label,
+                             functionname=None, tab_name=None,
+                             widget_key=None):
+    """Loads and filters dataset based on filter_key from session state.
+
+    Parameters:
+        group_entity (str): The entity type to group by.
+        filter_key (str): Filter key from session state.
+        pageref_label (str): Label for page reference and widget ID.
+        functionname (str, optional): Function name for uniqueness.
+        tab_name (str, optional): Tab name for distinguishing tabs.
+        widget_key (str, optional): Explicit widget key. If None, auto-gen.
+    """
+    # Generate unique widget key if not provided
+    if widget_key is None:
+        key_parts = ["date_range"]
+        if functionname:
+            key_parts.append(functionname)
+        if tab_name:
+            key_parts.append(tab_name)
+        key_parts.append(pageref_label)
+        widget_key = "_".join(key_parts)
+
     cleaned_df = st.session_state["data_clean"]
     if cleaned_df is None:
         st.error(f"No data found. Please upload a dataset. {__name__}")
         logger.error(f"No data found. Please upload a dataset. {__name__}")
-        return None, None
+        return None, None, None, None, None, None, None, None
 
     # Get min and max dates from the dataset
     min_date = dt.datetime.combine(get_mindate(cleaned_df),
@@ -231,6 +260,7 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
         max_value=max_date,
         value=(min_date, max_date),
         format="YYYY-MM-DD",
+        key=widget_key,
     )
 
     start_date, end_date = date_range2
@@ -255,11 +285,14 @@ def load_and_filter_pergroup(group_entity, filter_key, pageref_label):
         "Select Group Entity",
         options=list(group_entity_options.keys()),
         format_func=lambda x: group_entity_options[x][0],
-        key="selected_group_entity"
+        key=f"{functionname}_{tab_name}_{pageref_label}_group_entity_select"
     )
 
     # Reset section dropdown when group entity changes
-    if prev_selected_group is not None and prev_selected_group != selected_group_entity:
+    if (
+        prev_selected_group is not None
+        and prev_selected_group != selected_group_entity
+    ):
         st.session_state["selected_entity_name"] = "All"
 
     # Get corresponding column names

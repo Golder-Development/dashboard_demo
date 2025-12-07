@@ -18,7 +18,7 @@ def plot_bar_line_by_year(
     x_scale="linear",
     y_scale="linear",
     use_custom_colors=False,
-    use_container_width=True,
+    width='stretch',
     percentbars=False,  # Show as percentage of total
     orientation="v",    # 'v' for vertical, 'h' for horizontal bars
     widget_key="graph1",
@@ -166,4 +166,4 @@ def plot_bar_line_by_year(
     #     )
     # )
 
-    st.plotly_chart(fig, use_container_width=use_container_width)
+    st.plotly_chart(fig, use_container_width=True)

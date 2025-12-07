@@ -12,18 +12,14 @@ from utils.logger import log_function_call  # Import decorator
 
 @log_function_call
 def display_per_group_data_page(
-    functionname="display_per_group_data_page",
-    filter_key=None,
-    target_label="default",
-    group_entity="Donor"):
-    """
-    Template function to generate a
-    Streamlit page for a specific data slice.
-    """
+                                functionname="display_per_group_data_page",
+                                filter_key=None,
+                                target_label="default",
+                                group_entity="Donor",
+                                tab_name=None):
     perc_target = st.session_state.get("perc_target", 0.5)
-    pageref_label = filter_key + target_label
-    (
-        cleaned_df,
+    pageref_label = f"{functionname}{target_label}{tab_name}"
+    (cleaned_df,
         cleaned_d_df,
         cleaned_r_df,
         cleaned_c_df,
@@ -31,8 +27,12 @@ def display_per_group_data_page(
         cleaned_r_d_df,
         cleaned_c_r_df,
         cleaned_c_r_d_df,
-    ) = load_and_filter_pergroup(
-        group_entity=group_entity, filter_key=filter_key, pageref_label=pageref_label
+     ) = load_and_filter_pergroup(
+        group_entity=group_entity,
+        filter_key=filter_key,
+        pageref_label=pageref_label,
+        functionname=functionname,
+        tab_name=tab_name
     )
 
     if cleaned_df is None:
