@@ -73,14 +73,12 @@ FILENAMES = {  # "directory" : {"file_name": "file_path"}
 # Based on percentile analysis to ensure even distribution of entities
 # across categories when analyzing per-parliament periods (~5 years each)
 # Distribution: 30.4% (2), 17.4% (3), 11.4% (4), 10.6% (5-6), 13.8% (7-12), 16.3% (13+)
+# changed 2025-12-09 small 47.4%, medium 35%, large 16.4%
 THRESHOLDS = {  # "threshold_range": "threshold_name"
     (0, 0): "No Relevant Donations",
     (1, 1): "Single Donation Entity",
-    (2, 2): "Very Small Entity",
-    (3, 3): "Small Entity",
-    (4, 4): "Small Medium Entity",
-    (5, 6): "Medium Entity",
-    (7, 12): "Medium Large Entity",
+    (2, 3): "Small Entity",
+    (4, 12): "Medium Entity",
     (13, 10000): "Large Entity",
 }
 
@@ -114,11 +112,18 @@ DATA_REMAPPINGS = {
         "Conservative And Unionist Party": 52,
         "Labour Party": 53,
         "Liberal Democrats": 90,
+        "Liberal Party": 54,
         "Scottish National Party (Snp)": 102,
         "Green Party": 63,
         "Plaid Cymru - Party Of Wales": 77,
         "Reform UK": 7931,
-        "Uk Independence Party (Ukip)": 84,
+        "Uk Independence Party (Ukip)": 85,
+        "Your Party": 1506,
+        "Democratic Unionist Party": 60,
+        "Sinn Féin": 62,
+        "Ulster Unionist Party (Uup)": 59,
+        "Social Democratic And Labour Party": 61,
+        "Alliance Party Of Northern Ireland": 58,
         "Unknown": 0,
     },
 }
