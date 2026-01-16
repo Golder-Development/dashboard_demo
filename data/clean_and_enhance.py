@@ -577,7 +577,8 @@ def load_cleaned_data(
     # Save cleaned data
     if output_csv:
         # Save the cleaned data to a CSV file for further analysis or reporting
-        loadclean_df.to_csv(processeddatafilepath)
+        from data.data_file_defs import save_dataframe_to_zip
+        save_dataframe_to_zip(loadclean_df, processeddatafilepath, index=True)
     logger.info(f"Cleaned Data completed, shape: {loadclean_df.shape}")
     # return the cleaned data
     return loadclean_df

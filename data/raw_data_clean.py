@@ -222,8 +222,9 @@ def raw_data_cleanup(
 
     # Save cleaned data if required
     if output_csv:
-        loaddata_df.to_csv(processeddatafilepath)
-        logger.info(f"Data saved to {processeddatafilepath}")
+        from data.data_file_defs import save_dataframe_to_zip
+        save_dataframe_to_zip(loaddata_df, processeddatafilepath, index=True)
+        logger.info(f"Data saved to {processeddatafilepath.replace('.csv', '.zip')}")
     # Save the cleaned data to session state
     logger.info(f"Data cleanup completed, shape: {loaddata_df.shape}")
 

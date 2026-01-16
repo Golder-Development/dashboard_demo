@@ -26,13 +26,29 @@
 6. Open a new terminal and `pip3 install -r requirements.txt`
 7. Once requirements are all installed - use type 'streamlit run PoliticalPartyAnalysisDashboard.py'
 
+## Converting Existing CSV Files to ZIP
+
+To save disk space (~90% compression), run the conversion utility once:
+
+```bash
+python convert_csv_to_zip.py
+```
+
+This will automatically:
+- Compress large CSV files in `source/` and `output/` directories
+- Convert them to ZIP format
+- Remove the original CSV files
+- Display space savings summary
+
+The dashboard will automatically use ZIP files transparently - no configuration needed!
+
 ## Updating Data
 
-The dashboard automatically detects when source data has been updated and reprocesses accordingly.
+The dashboard automatically detects when source data has been updated and reprocesses accordingly. **Large data files are automatically stored as ZIP files to save space.**
 
 ### Method 1: Replace the Source File (Simple)
 
-Simply replace `source/Donations_accepted_by_political_parties.csv` with your new data file. The dashboard will automatically detect the change on next launch and reload all data.
+Simply replace `source/Donations_accepted_by_political_parties.csv` (or the `.zip` version) with your new data file. The dashboard will automatically detect the change on next launch and reload all data.
 
 ### Method 2: Append New Data (Recommended for Updates)
 
@@ -47,18 +63,24 @@ When you receive a new data export from the Electoral Commission:
 
 3. The script will:
 
-   - Create an automatic timestamped backup
+   - Automatically read from ZIP or CSV files
+   - Create an automatic timestamped backup (as ZIP)
    - Append the new data to the main file
    - Remove duplicates based on ECRef (unique donation reference)
+   - Save the result as a compressed ZIP file
    - Provide a summary of records added/removed
 4. Restart the dashboard to load the updated data
 
-**Note:** The script automatically creates backups before making changes, stored as `source/Donations_accepted_by_political_parties_backup_[timestamp].csv`
+**Note:** 
+- The script automatically creates ZIP backups: `source/Donations_accepted_by_political_parties_backup_[timestamp].zip`
+- Large files are stored as ZIP to save ~90% disk space
+- The system automatically reads from ZIP files when available, falling back to CSV if needed
 
 ### Data Refresh Mechanism
 
 The dashboard uses an intelligent caching system that:
 - Tracks file modification timestamps in `reference_files/last_modified_dates.json`
 - Automatically reprocesses data when source files change
-- Stores processed data in `output/` directory for faster subsequent loads
+- Stores processed data in `output/` directory as ZIP files for faster subsequent loads
 - Respects the full data pipeline: raw → cleaned → donations → donor/entity lists
+- Transparently handles both CSV and ZIP file formats

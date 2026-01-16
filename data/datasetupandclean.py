@@ -104,8 +104,9 @@ def load_raw_data(main_file="raw_data",
         # Save the raw data to session state
         st.session_state.raw_data = loaddata_df
         if output_csv:
-            loaddata_df.to_csv(processeddatafilepath)
-            logger.info(f"Data saved to {processeddatafilepath}")
+            from data.data_file_defs import save_dataframe_to_zip
+            save_dataframe_to_zip(loaddata_df, processeddatafilepath, index=True)
+            logger.info(f"Data saved to {processeddatafilepath.replace('.csv', '.zip')}")
         logger.info("Data saved to sessionstate as 'raw_data'")
 
     # Cleanse the raw data

@@ -1,9 +1,40 @@
 import pandas as pd
+import zipfile
+import os
+
+
+def _read_csv_from_zip_or_csv(filepath):
+    """Helper function to read CSV from ZIP file or regular CSV"""
+    # Check if ZIP version exists
+    zip_path = filepath.replace('.csv', '.zip')
+    if os.path.exists(zip_path):
+        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+            # Get the CSV filename from the original path
+            csv_filename = os.path.basename(filepath)
+            with zip_ref.open(csv_filename) as f:
+                return f
+    # Fallback to regular CSV if ZIP doesn't exist
+    return filepath
+
+
+def save_dataframe_to_zip(df, csv_filepath, index=True):
+    """Helper function to save DataFrame to ZIP file"""
+    zip_filepath = csv_filepath.replace('.csv', '.zip')
+    csv_filename = os.path.basename(csv_filepath)
+    
+    # Create parent directory if it doesn't exist
+    os.makedirs(os.path.dirname(zip_filepath), exist_ok=True)
+    
+    with zipfile.ZipFile(zip_filepath, 'w', zipfile.ZIP_DEFLATED) as zip_ref:
+        csv_string = df.to_csv(index=index)
+        zip_ref.writestr(csv_filename, csv_string)
+    
+    return zip_filepath
 
 
 def load_source_data(originaldatafilepath):
     loaddata_df = pd.read_csv(
-        originaldatafilepath,
+        _read_csv_from_zip_or_csv(originaldatafilepath),
         dtype={
             "index": "int64",
             "ECRef": "object",
@@ -43,7 +74,7 @@ def load_source_data(originaldatafilepath):
 
 def load_improved_raw_data(originaldatafilepath):
     loaddata_df = pd.read_csv(
-        originaldatafilepath,
+        _read_csv_from_zip_or_csv(originaldatafilepath),
         dtype={
             "index": "int64",
             "ECRef": "object",
@@ -83,7 +114,7 @@ def load_improved_raw_data(originaldatafilepath):
 
 def load_cleaned_donations(originaldatafilepath):
     loaddata_df = pd.read_csv(
-        originaldatafilepath,
+        _read_csv_from_zip_or_csv(originaldatafilepath),
         dtype={
             "index": "int64",
             "ECRef": "object",
@@ -131,7 +162,7 @@ def load_cleaned_donations(originaldatafilepath):
 
 def load_cleaned_data(originaldatafilepath):
     loaddata_df = pd.read_csv(
-        originaldatafilepath,
+        _read_csv_from_zip_or_csv(originaldatafilepath),
         dtype={
             "index": "int64",
             "ECRef": "object",
@@ -200,7 +231,7 @@ def load_cleaned_data(originaldatafilepath):
 
 def load_donor_list(originaldatafilepath):
     loaddata_df = pd.read_csv(
-        originaldatafilepath,
+        _read_csv_from_zip_or_csv(originaldatafilepath),
         dtype={
             "DonorId": "int64",
             "DonorName": "object",
