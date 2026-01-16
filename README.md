@@ -3,15 +3,15 @@
 ## Created During Course with Code institute
 
 * Currently built to work on Python 3.10.11 - may work on more recent releases.
-* This repo was built based on learning with aid from ChatGpt and codepilot for issue fixing 
+* This repo was built based on learning with aid from ChatGpt and codepilot for issue fixing
     and also development guidance.
 * A hosted version of the dashboard should be available at
     -   https://golder-development-dashboard-demo-politicalpartyanalysis-rctb68.streamlit.app/
 
 * When first run the dashboard undertakes a data refresh which involves a level of deduplication
-    this can take several minutes, the "Please wait while the data sets are being calculated" 
+    this can take several minutes, the "Please wait while the data sets are being calculated"
     message will disappear when processing has completed.
-* Please review the "Notes on Data and Manipulations" page of the app for assumptions and 
+* Please review the "Notes on Data and Manipulations" page of the app for assumptions and
     data manipulations undertaken as part of the analysis.
 * Please credit "https://www.linkedin.com/in/paulgolder/" if you use this repo or the calculations
     in it in your own developments.
@@ -25,3 +25,40 @@
 5. Wait for the workspace to open. This can take a few minutes.
 6. Open a new terminal and `pip3 install -r requirements.txt`
 7. Once requirements are all installed - use type 'streamlit run PoliticalPartyAnalysisDashboard.py'
+
+## Updating Data
+
+The dashboard automatically detects when source data has been updated and reprocesses accordingly.
+
+### Method 1: Replace the Source File (Simple)
+
+Simply replace `source/Donations_accepted_by_political_parties.csv` with your new data file. The dashboard will automatically detect the change on next launch and reload all data.
+
+### Method 2: Append New Data (Recommended for Updates)
+
+When you receive a new data export from the Electoral Commission:
+
+1. Save the new file to the `source/` directory with a date suffix (e.g., `Donations_accepted_by_political_parties_20260116.csv`)
+2. Run the append and dedupe script:
+
+   ```bash
+   python append_and_dedupe_donations.py
+   ```
+
+3. The script will:
+
+   - Create an automatic timestamped backup
+   - Append the new data to the main file
+   - Remove duplicates based on ECRef (unique donation reference)
+   - Provide a summary of records added/removed
+4. Restart the dashboard to load the updated data
+
+**Note:** The script automatically creates backups before making changes, stored as `source/Donations_accepted_by_political_parties_backup_[timestamp].csv`
+
+### Data Refresh Mechanism
+
+The dashboard uses an intelligent caching system that:
+- Tracks file modification timestamps in `reference_files/last_modified_dates.json`
+- Automatically reprocesses data when source files change
+- Stores processed data in `output/` directory for faster subsequent loads
+- Respects the full data pipeline: raw → cleaned → donations → donor/entity lists
