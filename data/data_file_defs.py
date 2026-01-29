@@ -1,6 +1,7 @@
 import pandas as pd
 import zipfile
 import os
+import config
 
 
 def _read_csv_from_zip_or_csv(filepath):
@@ -19,11 +20,23 @@ def _read_csv_from_zip_or_csv(filepath):
 
 def save_dataframe_to_zip(df, csv_filepath, index=True):
     """Helper function to save DataFrame to ZIP file"""
-    zip_filepath = csv_filepath.replace('.csv', '.zip')
-    csv_filename = os.path.basename(csv_filepath)
+    # Check if csv_filepath is already a zip reference
+    if csv_filepath.endswith('.zip'):
+        zip_filepath = csv_filepath
+        csv_filename = os.path.basename(csv_filepath).replace('.zip', '.csv')
+    else:
+        zip_filepath = csv_filepath.replace('.csv', '.zip')
+        csv_filename = os.path.basename(csv_filepath)
+
+    # If no directory was provided, default to output directory
+    if not os.path.dirname(zip_filepath):
+        output_dir = config.DIRECTORIES.get("output_dir", "")
+        zip_filepath = os.path.join(output_dir, zip_filepath)
     
     # Create parent directory if it doesn't exist
-    os.makedirs(os.path.dirname(zip_filepath), exist_ok=True)
+    dir_path = os.path.dirname(zip_filepath)
+    if dir_path:
+        os.makedirs(dir_path, exist_ok=True)
     
     with zipfile.ZipFile(zip_filepath, 'w', zipfile.ZIP_DEFLATED) as zip_ref:
         csv_string = df.to_csv(index=index)
@@ -36,7 +49,6 @@ def load_source_data(originaldatafilepath):
     loaddata_df = pd.read_csv(
         _read_csv_from_zip_or_csv(originaldatafilepath),
         dtype={
-            "index": "int64",
             "ECRef": "object",
             "RegulatedEntityName": "object",
             "RegulatedEntityType": "object",
@@ -67,7 +79,7 @@ def load_source_data(originaldatafilepath):
             "RegisterName": "object",
             "IsIrishSource": "string",
         },
-        index_col="index",
+        index_col=0,
     )
     return loaddata_df
 
@@ -76,7 +88,6 @@ def load_improved_raw_data(originaldatafilepath):
     loaddata_df = pd.read_csv(
         _read_csv_from_zip_or_csv(originaldatafilepath),
         dtype={
-            "index": "int64",
             "ECRef": "object",
             "RegulatedEntityName": "object",
             "RegulatedEntityType": "object",
@@ -107,7 +118,7 @@ def load_improved_raw_data(originaldatafilepath):
             "RegisterName": "object",
             "IsIrishSource": "string",
         },
-        index_col="index",
+        index_col=0,
     )
     return loaddata_df
 
@@ -116,7 +127,6 @@ def load_cleaned_donations(originaldatafilepath):
     loaddata_df = pd.read_csv(
         _read_csv_from_zip_or_csv(originaldatafilepath),
         dtype={
-            "index": "int64",
             "ECRef": "object",
             "OriginalRegulatedEntityName": "object",
             "RegulatedEntityName": "object",
@@ -141,7 +151,7 @@ def load_cleaned_donations(originaldatafilepath):
             "ReportingPeriodName": "object",
             "IsBequest": "string",
             "IsAggregation": "string",
-            "OriginalRegulatedEntityId": "int64t",
+            "OriginalRegulatedEntityId": "int64",
             "AccountingUnitId": "object",
             "OriginalDonorId": "int64",
             "CampaigningName": "object",
@@ -155,7 +165,7 @@ def load_cleaned_donations(originaldatafilepath):
             "DonorId": "int64",
             "DonorName": "object",
         },
-        index_col="index",)
+        index_col=0,)
 
     return loaddata_df
 
@@ -164,7 +174,6 @@ def load_cleaned_data(originaldatafilepath):
     loaddata_df = pd.read_csv(
         _read_csv_from_zip_or_csv(originaldatafilepath),
         dtype={
-            "index": "int64",
             "ECRef": "object",
             "OriginalRegulatedEntityName": "object",
             "RegulatedEntityType": "object",
@@ -177,11 +186,10 @@ def load_cleaned_data(originaldatafilepath):
             "NatureOfDonation": "object",
             "PurposeOfVisit": "object",
             "DonationAction": "object",
-            "ReceivedDate": "datetime64",
             "ReportingPeriodName": "object",
             "IsBequest": "string",
             "IsAggregation": "string",
-            "OriginalRegulatedEntityId": "int64t",
+            "OriginalRegulatedEntityId": "int64",
             "OriginalDonorId": "int64",
             "CampaigningName": "object",
             "RegisterName": "object",
@@ -225,9 +233,11 @@ def load_cleaned_data(originaldatafilepath):
             "YrsSinceLastElection": "int64",
             "parliamentary_sitting": "object",
         },
-        index_col="index",)
+        parse_dates=["ReceivedDate"],
+        index_col=0,)
 
     return loaddata_df
+
 
 def load_donor_list(originaldatafilepath):
     loaddata_df = pd.read_csv(

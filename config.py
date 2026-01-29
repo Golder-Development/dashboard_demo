@@ -16,15 +16,15 @@ perc_target = 0.5
 
 DIRECTORIES = {  # "directory_name": "directory_path"
     "BASE_DIR": Path(os.getcwd()),
-    "data_dir": os.path.join("data"),
-    "output_dir": os.path.join("output"),
-    "logs_dir": os.path.join("logs"),
-    "reference_dir": os.path.join("reference_files"),
-    "components_dir": os.path.join("components"),
-    "app_pages_dir": os.path.join("app_pages"),
-    "utils_dir": os.path.join("utils"),
-    "source_dir": os.path.join("source"),
-    "tests_dir": os.path.join("tests"),
+    "data_dir": os.path.join(str(BASE_DIR), "data"),
+    "output_dir": os.path.join(str(BASE_DIR), "output"),
+    "logs_dir": os.path.join(str(BASE_DIR), "logs"),
+    "reference_dir": os.path.join(str(BASE_DIR), "reference_files"),
+    "components_dir": os.path.join(str(BASE_DIR), "components"),
+    "app_pages_dir": os.path.join(str(BASE_DIR), "app_pages"),
+    "utils_dir": os.path.join(str(BASE_DIR), "utils"),
+    "source_dir": os.path.join(str(BASE_DIR), "source"),
+    "tests_dir": os.path.join(str(BASE_DIR), "tests"),
 }
 
 DIRECTORIES_original = {  # "directory_name": "directory_path"
@@ -55,6 +55,7 @@ FILENAMES = {  # "directory" : {"file_name": "file_path"}
         "ELECTION_DATES": "elections.csv",
         "LAST_MODIFIED_DATES": "last_modified_dates.json",
     },
+    '''
     "output_dir": {
         "cleaned_data_fname": "cleaned_data.csv",
         "cleaned_donations_fname": "cleaned_donations.csv",
@@ -63,8 +64,18 @@ FILENAMES = {  # "directory" : {"file_name": "file_path"}
         "party_summary_fname": "party_summary.csv",
         "imported_raw_fname": "imported_raw.csv",
     },
+    '''
+    "output_dir": {
+        "cleaned_data_fname": "cleaned_data.zip",
+        "cleaned_donations_fname": "cleaned_donations.zip",
+        "cleaned_donorlist_fname": "cleaned_donorlist.zip",
+        "cleaned_regentity_fname": "cleaned_regentity.zip",
+        "party_summary_fname": "party_summary.zip",
+        "imported_raw_fname": "imported_raw.zip",
+    },
+
     "source_dir": {
-        "source_data_fname": "Donations_accepted_by_political_parties.csv"
+        "source_data_fname": "Donations_accepted_by_political_parties.zip"
     },
 }
 
@@ -184,8 +195,7 @@ FILTER_DEF = {  # "filter_name": {"column_name": "value"}
             "Aggregated Donation",
         ],
         "DonationType": [
-            "Aggregated Donation"]
-        ,
+            "Aggregated Donation"],
         "IsAggregation": [True],
         "ReceivedDate": ["PLACEHOLDER_DATE", None],
         "RegulatedEntityId": [1000001],
@@ -194,8 +204,7 @@ FILTER_DEF = {  # "filter_name": {"column_name": "value"}
                                 "Unidentifiable Entity",
                                 "Unknown Entity",
                                 ],
-        "DonationAction": ["Returned", "Forfeited"],
-        "IsAggregation": [True],
+        "DonationAction": ["Returned", "Forfeited"]
     },
     "BlankDate_ftr": {"ReceivedDate": ["PLACEHOLDER_DATE", None]},
     "BlankDonor_ftr": {"DonorId": [1000001]},

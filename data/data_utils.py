@@ -104,6 +104,11 @@ def is_file_updated(main_file, timestamp_key):
     last_mod_time = last_modified_dates.get(timestamp_key, None)
     logger.info(f"Last modification time: {last_mod_time}")
 
+    # If file does not exist or mod time unavailable, treat as not updated
+    if current_mod_time is None:
+        logger.error(f"Cannot determine modification time for {main_file}")
+        return False
+
     # Check if the file has been updated
     if last_mod_time is None or (current_mod_time > last_mod_time):
         # Update the session state and the JSON file with the new timestamp
