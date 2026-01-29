@@ -1,0 +1,6 @@
+2026-01-29 21:20:19 +0000 ERROR:Session state variables not initialized!
+2026-01-29 21:20:19 +0000 ERROR:Error: originalfilepath is None!
+2026-01-29 21:20:23 +0000 ERROR:Cannot determine modification time for cleaned_donations.zip
+2026-01-29 21:20:23 +0000 ERROR:Failed to load data from cleaned_donations.zip
+2026-01-29 21:21:03 +0000 ERROR:Cannot determine modification time for cleaned_data.zip
+2026-01-29 21:21:04 +0000 ERROR:Cannot determine modification time for cleaned_data.zip
