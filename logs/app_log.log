@@ -29469,3 +29469,461 @@ Name: count, dtype: int64
 2026-01-30 19:07:46 +0000 INFO:pagesetup executed successfully
 2026-01-30 19:07:46 +0000 INFO:Menu setup completed successfully.
 2026-01-30 19:07:46 +0000 INFO:App is fully loaded and ready!
+2026-01-30 19:19:48 +0000 INFO:Logging is set up correctly! Current log level: DEBUG
+2026-01-30 19:19:48 +0000 DEBUG:Calling get_git_version with args={args}, kwargs={kwargs}
+2026-01-30 19:19:54 +0000 INFO:get_git_version executed successfully
+2026-01-30 19:19:54 +0000 DEBUG:Calling get_git_version with args={args}, kwargs={kwargs}
+2026-01-30 19:19:57 +0000 INFO:get_git_version executed successfully
+2026-01-30 19:19:57 +0000 INFO:Streamlit App Starting...
+2026-01-30 19:19:57 +0000 INFO:Current Working Directory: H:\GitHub\dashboard_demo
+2026-01-30 19:19:57 +0000 INFO:running H:\GitHub\dashboard_demo, H:\GitHub\dashboard_demo\PoliticalPartyAnalysisDashboard.py
+2026-01-30 19:19:57 +0000 INFO:Running App setup...
+2026-01-30 19:19:57 +0000 DEBUG:Calling setup_package with args={args}, kwargs={kwargs}
+2026-01-30 19:19:57 +0000 INFO:Setting up the package
+2026-01-30 19:19:57 +0000 INFO:Module directory: H:\GitHub\dashboard_demo
+2026-01-30 19:19:57 +0000 DEBUG:Calling get_git_version with args={args}, kwargs={kwargs}
+2026-01-30 19:20:00 +0000 INFO:get_git_version executed successfully
+2026-01-30 19:20:00 +0000 INFO:Version: v50.202
+2026-01-30 19:20:00 +0000 DEBUG:Calling initialize_session_state with args={args}, kwargs={kwargs}
+2026-01-30 19:20:00 +0000 INFO:BASE_DIR: H:\GitHub\dashboard_demo
+2026-01-30 19:20:00 +0000 DEBUG:Initialised BASE_DIR with value: H:\GitHub\dashboard_demo
+2026-01-30 19:20:00 +0000 DEBUG:Initialised filenames with value: {'reference_dir': {'Donor_dedupe_cleaned_fname': 'Donor_dedupe_cleaned_data.csv', 'ListofPoliticalPeople_fname': 'ListOfPoliticalPeople.csv', 'mppartymemb_fname': 'mppartymemb_pypd.csv', 'donor_map_fname': 'PoliticalDonorsDeduped.csv', 'politician_party_fname': 'ListOfPoliticalPeople_Final.csv', 'regentity_map_fname': 'PoliticalEntityDeDuped.csv', 'original_data_fname': 'original_data.csv', 'CREDENTIALS_FILE': 'admin_credentials.json', 'TEXT_FILE': 'admin_text.json', 'ELECTION_DATES': 'elections.csv', 'LAST_MODIFIED_DATES': 'last_modified_dates.json'}, '\n    "output_dir": {\n        "cleaned_data_fname": "cleaned_data.csv",\n        "cleaned_donations_fname": "cleaned_donations.csv",\n        "cleaned_donorlist_fname": "cleaned_donorlist.csv",\n        "cleaned_regentity_fname": "cleaned_regentity.csv",\n        "party_summary_fname": "party_summary.csv",\n        "imported_raw_fname": "imported_raw.csv",\n    },\n    output_dir': {'cleaned_data_fname': 'cleaned_data.zip', 'cleaned_donations_fname': 'cleaned_donations.zip', 'cleaned_donorlist_fname': 'cleaned_donorlist.zip', 'cleaned_regentity_fname': 'cleaned_regentity.zip', 'party_summary_fname': 'party_summary.zip', 'imported_raw_fname': 'imported_raw.zip'}, 'source_dir': {'source_data_fname': 'Donations_accepted_by_political_parties.zip'}}
+2026-01-30 19:20:00 +0000 DEBUG:Initialised PLACEHOLDER_DATE with value: 1900-01-01 00:00:00
+2026-01-30 19:20:00 +0000 DEBUG:Initialised PLACEHOLDER_ID with value: 1000001
+2026-01-30 19:20:00 +0000 DEBUG:Initialised thresholds with value: {(0, 0): 'No Relevant Donations', (1, 1): 'Single Donation Entity', (2, 3): 'Small Entity', (4, 12): 'Medium Entity', (13, 10000): 'Large Entity'}
+2026-01-30 19:20:00 +0000 DEBUG:Initialised data_remappings with value: {'NatureOfDonation': {'IsBequest': 'Is A Bequest', 'IsAggregation': 'Aggregated Donation', 'IsSponsorship': 'Sponsorship', 'Donation to nan': 'Other', 'Other Payment': 'Other'}, 'PartyParents': {'Conservative And Unionist Party': 52, 'Labour Party': 53, 'Liberal Democrats': 90, 'Liberal Party': 54, 'Scottish National Party (Snp)': 102, 'Green Party': 63, 'Plaid Cymru - Party Of Wales': 77, 'Reform UK': 7931, 'Uk Independence Party (Ukip)': 85, 'Your Party': 1506, 'Democratic Unionist Party': 60, 'Sinn Féin': 62, 'Ulster Unionist Party (Uup)': 59, 'Social Democratic And Labour Party': 61, 'Alliance Party Of Northern Ireland': 58, 'Unknown': 0}}
+2026-01-30 19:20:00 +0000 DEBUG:Initialised filter_def with value: {'Sponsorships_ftr': {'NatureOfDonation': 'Sponsorship', 'IsSponsorshipInt': 1}, 'ReturnedDonations_ftr': {'DonationAction': ['Returned', 'Forfeited'], 'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonors_ftr': {'DubiousDonor': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonations_ftr': {'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'AggregatedDonations_ftr': {'IsAggregationInt': 1, 'NatureOfDonation': 'Aggregated Donation', 'DonationType': 'Aggregated Donation'}, 'SafeDonors_ftr': {'DonorStatus': ['Trade Union', 'Registered Political Party', 'Friendly Society', 'Public Fund']}, 'DubiousDonorTypes_ftr': {'DonorStatus': ['Impermissible Donor', 'Unidentified Donor', 'Unidentifiable Donor', 'Anonymous Donor'], 'DonorName': ['Impermissible Donor', 'Unidentified Donor', 'Unidentifiable Donor', 'Anonymous Donor'], 'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Unidentifiable Donor', 'Anonymous Donor'], 'DonorId': [1000001], 'DonationType': ['Impermissible Donor', 'Unidentified Donor', 'Unidentifiable Donor', 'Anonymous Donor']}, 'DubiousDonationType_ftr': {'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Total value of donations not reported individually', 'Aggregated Donation'], 'DonationType': ['Aggregated Donation'], 'IsAggregation': [True], 'ReceivedDate': ['PLACEHOLDER_DATE', None], 'RegulatedEntityId': [1000001], 'RegulatedEntityName': ['Unidentified Entity', 'Unidentifiable Entity', 'Unknown Entity'], 'DonationAction': ['Returned', 'Forfeited']}, 'BlankDate_ftr': {'ReceivedDate': ['PLACEHOLDER_DATE', None]}, 'BlankDonor_ftr': {'DonorId': [1000001]}, 'BlankRegEntity_ftr': {'RegulatedEntityId': [1000001]}, 'DonatedVisits_ftr': {'DonationType': 'Visit', 'NatureOfDonation': 'Visit'}, 'Bequests_ftr': {'IsBequestInt': 1, 'NatureOfDonation': 'Bequest', 'DonationType': 'Bequest'}, 'CorporateDonations_ftr': {'DonorStatus': ['Company', 'Partnership', 'Limited Liability Partnership']}, 'RegulatedEntity_ftr': {'RegulatedEntityType': ['Political Party', 'Regulated Donee', 'Permitted Participant', 'Third Party']}, 'PoliticalParty_ftr': {'DonorStatus': 'Registered Political Party'}, 'CashDonations_ftr': {'DonationType': ['Cash', 'Aggregate Donation']}, 'PublicFundsDonations_ftr': {'DonationType': 'Public Funds'}, 'NonCashDonations_ftr': {'DonationType': ['Non Cash', 'Visit', 'Bequest', 'Sponsorship']}}
+2026-01-30 19:20:00 +0000 DEBUG:Initialised security with value: {'is_admin': False, 'is_authenticated': False, 'username': '', 'password': ''}
+2026-01-30 19:20:00 +0000 DEBUG:Initialised perc_target with value: 0.5
+2026-01-30 19:20:00 +0000 DEBUG:Initialised RERUN_MP_PARTY_MEMBERSHIP with value: True
+2026-01-30 19:20:00 +0000 DEBUG:Initialised directories with value: {'BASE_DIR': WindowsPath('H:/GitHub/dashboard_demo'), 'data_dir': 'H:\\GitHub\\dashboard_demo\\data', 'output_dir': 'H:\\GitHub\\dashboard_demo\\output', 'logs_dir': 'H:\\GitHub\\dashboard_demo\\logs', 'reference_dir': 'H:\\GitHub\\dashboard_demo\\reference_files', 'components_dir': 'H:\\GitHub\\dashboard_demo\\components', 'app_pages_dir': 'H:\\GitHub\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\GitHub\\dashboard_demo\\utils', 'source_dir': 'H:\\GitHub\\dashboard_demo\\source', 'tests_dir': 'H:\\GitHub\\dashboard_demo\\tests'}
+2026-01-30 19:20:00 +0000 DEBUG:Initialised electoral_cycle_rules with value: {(0, 30): 'Final Campaign Period', (31, 90): 'Campaign Build-Up', (91, 180): 'Pre-Campaign Phase', (181, 730): 'Early Cycle', (731, 3650): 'Mid-Cycle'}
+2026-01-30 19:20:00 +0000 DEBUG:Initialised reference_dir with value: H:\GitHub\dashboard_demo\reference_files
+2026-01-30 19:20:00 +0000 DEBUG:Initialised data_dir with value: H:\GitHub\dashboard_demo\data
+2026-01-30 19:20:00 +0000 DEBUG:Initialised output_dir with value: H:\GitHub\dashboard_demo\output
+2026-01-30 19:20:00 +0000 DEBUG:Initialised logs_dir with value: H:\GitHub\dashboard_demo\logs
+2026-01-30 19:20:00 +0000 DEBUG:Initialised components_dir with value: H:\GitHub\dashboard_demo\components
+2026-01-30 19:20:00 +0000 DEBUG:Initialised app_pages_dir with value: H:\GitHub\dashboard_demo\app_pages
+2026-01-30 19:20:00 +0000 DEBUG:Initialised utils_dir with value: H:\GitHub\dashboard_demo\utils
+2026-01-30 19:20:00 +0000 DEBUG:Initialised Donor_dedupe_cleaned_fname with value: H:\GitHub\dashboard_demo\reference_files\Donor_dedupe_cleaned_data.csv
+2026-01-30 19:20:00 +0000 DEBUG:Initialised ListofPoliticalPeople_fname with value: H:\GitHub\dashboard_demo\reference_files\ListOfPoliticalPeople.csv
+2026-01-30 19:20:00 +0000 DEBUG:Initialised mppartymemb_fname with value: H:\GitHub\dashboard_demo\reference_files\mppartymemb_pypd.csv
+2026-01-30 19:20:00 +0000 DEBUG:Initialised donor_map_fname with value: H:\GitHub\dashboard_demo\reference_files\PoliticalDonorsDeduped.csv
+2026-01-30 19:20:00 +0000 DEBUG:Initialised politician_party_fname with value: H:\GitHub\dashboard_demo\reference_files\ListOfPoliticalPeople_Final.csv
+2026-01-30 19:20:00 +0000 DEBUG:Initialised regentity_map_fname with value: H:\GitHub\dashboard_demo\reference_files\PoliticalEntityDeDuped.csv
+2026-01-30 19:20:00 +0000 DEBUG:Initialised original_data_fname with value: H:\GitHub\dashboard_demo\reference_files\original_data.csv
+2026-01-30 19:20:00 +0000 DEBUG:Initialised CREDENTIALS_FILE with value: H:\GitHub\dashboard_demo\reference_files\admin_credentials.json
+2026-01-30 19:20:00 +0000 DEBUG:Initialised TEXT_FILE with value: H:\GitHub\dashboard_demo\reference_files\admin_text.json
+2026-01-30 19:20:00 +0000 DEBUG:Initialised ELECTION_DATES with value: H:\GitHub\dashboard_demo\reference_files\elections.csv
+2026-01-30 19:20:00 +0000 DEBUG:Initialised LAST_MODIFIED_DATES with value: H:\GitHub\dashboard_demo\reference_files\last_modified_dates.json
+2026-01-30 19:20:00 +0000 DEBUG:Initialised cleaned_data_fname with value: cleaned_data.zip
+2026-01-30 19:20:00 +0000 DEBUG:Initialised cleaned_donations_fname with value: cleaned_donations.zip
+2026-01-30 19:20:00 +0000 DEBUG:Initialised cleaned_donorlist_fname with value: cleaned_donorlist.zip
+2026-01-30 19:20:00 +0000 DEBUG:Initialised cleaned_regentity_fname with value: cleaned_regentity.zip
+2026-01-30 19:20:00 +0000 DEBUG:Initialised party_summary_fname with value: party_summary.zip
+2026-01-30 19:20:00 +0000 DEBUG:Initialised imported_raw_fname with value: imported_raw.zip
+2026-01-30 19:20:00 +0000 DEBUG:Initialised source_data_fname with value: H:\GitHub\dashboard_demo\source\Donations_accepted_by_political_parties.zip
+2026-01-30 19:20:00 +0000 DEBUG:Initialised Cash_ftr with value: None
+2026-01-30 19:20:00 +0000 INFO:Session_state variables initialized
+2026-01-30 19:20:00 +0000 DEBUG:politician_party_fname: H:\GitHub\dashboard_demo\reference_files\ListOfPoliticalPeople_Final.csv
+2026-01-30 19:20:00 +0000 DEBUG:CREDENTIALS_FILE: H:\GitHub\dashboard_demo\reference_files\admin_credentials.json
+2026-01-30 19:20:00 +0000 DEBUG:app_pages_dir: H:\GitHub\dashboard_demo\app_pages
+2026-01-30 19:20:00 +0000 DEBUG:original_data_fname: H:\GitHub\dashboard_demo\reference_files\original_data.csv
+2026-01-30 19:20:00 +0000 DEBUG:cleaned_donorlist_fname: cleaned_donorlist.zip
+2026-01-30 19:20:00 +0000 DEBUG:data_remappings: {'NatureOfDonation': {'IsBequest': 'Is A Bequest', 'IsAggregation': 'Aggregated Donation', 'IsSponsorship': 'Sponsorship', 'Donation to nan': 'Other', 'Other Payment': 'Other'}, 'PartyParents': {'Conservative And Unionist Party': 52, 'Labour Party': 53, 'Liberal Democrats': 90, 'Liberal Party': 54, 'Scottish National Party (Snp)': 102, 'Green Party': 63, 'Plaid Cymru - Party Of Wales': 77, 'Reform UK': 7931, 'Uk Independence Party (Ukip)': 85, 'Your Party': 1506, 'Democratic Unionist Party': 60, 'Sinn Féin': 62, 'Ulster Unionist Party (Uup)': 59, 'Social Democratic And Labour Party': 61, 'Alliance Party Of Northern Ireland': 58, 'Unknown': 0}}
+2026-01-30 19:20:00 +0000 DEBUG:cleaned_donations_fname: cleaned_donations.zip
+2026-01-30 19:20:00 +0000 DEBUG:mppartymemb_fname: H:\GitHub\dashboard_demo\reference_files\mppartymemb_pypd.csv
+2026-01-30 19:20:00 +0000 DEBUG:perc_target: 0.5
+2026-01-30 19:20:00 +0000 DEBUG:regentity_map_fname: H:\GitHub\dashboard_demo\reference_files\PoliticalEntityDeDuped.csv
+2026-01-30 19:20:00 +0000 DEBUG:source_data_fname: H:\GitHub\dashboard_demo\source\Donations_accepted_by_political_parties.zip
+2026-01-30 19:20:00 +0000 DEBUG:reference_dir: H:\GitHub\dashboard_demo\reference_files
+2026-01-30 19:20:00 +0000 DEBUG:PLACEHOLDER_ID: 1000001
+2026-01-30 19:20:00 +0000 DEBUG:cleaned_regentity_fname: cleaned_regentity.zip
+2026-01-30 19:20:00 +0000 DEBUG:logs_dir: H:\GitHub\dashboard_demo\logs
+2026-01-30 19:20:00 +0000 DEBUG:party_summary_fname: party_summary.zip
+2026-01-30 19:20:00 +0000 DEBUG:PLACEHOLDER_DATE: 1900-01-01 00:00:00
+2026-01-30 19:20:00 +0000 DEBUG:BASE_DIR: H:\GitHub\dashboard_demo
+2026-01-30 19:20:00 +0000 DEBUG:RERUN_MP_PARTY_MEMBERSHIP: True
+2026-01-30 19:20:00 +0000 DEBUG:filter_def: {'Sponsorships_ftr': {'NatureOfDonation': 'Sponsorship', 'IsSponsorshipInt': 1}, 'ReturnedDonations_ftr': {'DonationAction': ['Returned', 'Forfeited'], 'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonors_ftr': {'DubiousDonor': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'DubiousDonations_ftr': {'DubiousData': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}, 'AggregatedDonations_ftr': {'IsAggregationInt': 1, 'NatureOfDonation': 'Aggregated Donation', 'DonationType': 'Aggregated Donation'}, 'SafeDonors_ftr': {'DonorStatus': ['Trade Union', 'Registered Political Party', 'Friendly Society', 'Public Fund']}, 'DubiousDonorTypes_ftr': {'DonorStatus': ['Impermissible Donor', 'Unidentified Donor', 'Unidentifiable Donor', 'Anonymous Donor'], 'DonorName': ['Impermissible Donor', 'Unidentified Donor', 'Unidentifiable Donor', 'Anonymous Donor'], 'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Unidentifiable Donor', 'Anonymous Donor'], 'DonorId': [1000001], 'DonationType': ['Impermissible Donor', 'Unidentified Donor', 'Unidentifiable Donor', 'Anonymous Donor']}, 'DubiousDonationType_ftr': {'NatureOfDonation': ['Impermissible Donor', 'Unidentified Donor', 'Total value of donations not reported individually', 'Aggregated Donation'], 'DonationType': ['Aggregated Donation'], 'IsAggregation': [True], 'ReceivedDate': ['PLACEHOLDER_DATE', None], 'RegulatedEntityId': [1000001], 'RegulatedEntityName': ['Unidentified Entity', 'Unidentifiable Entity', 'Unknown Entity'], 'DonationAction': ['Returned', 'Forfeited']}, 'BlankDate_ftr': {'ReceivedDate': ['PLACEHOLDER_DATE', None]}, 'BlankDonor_ftr': {'DonorId': [1000001]}, 'BlankRegEntity_ftr': {'RegulatedEntityId': [1000001]}, 'DonatedVisits_ftr': {'DonationType': 'Visit', 'NatureOfDonation': 'Visit'}, 'Bequests_ftr': {'IsBequestInt': 1, 'NatureOfDonation': 'Bequest', 'DonationType': 'Bequest'}, 'CorporateDonations_ftr': {'DonorStatus': ['Company', 'Partnership', 'Limited Liability Partnership']}, 'RegulatedEntity_ftr': {'RegulatedEntityType': ['Political Party', 'Regulated Donee', 'Permitted Participant', 'Third Party']}, 'PoliticalParty_ftr': {'DonorStatus': 'Registered Political Party'}, 'CashDonations_ftr': {'DonationType': ['Cash', 'Aggregate Donation']}, 'PublicFundsDonations_ftr': {'DonationType': 'Public Funds'}, 'NonCashDonations_ftr': {'DonationType': ['Non Cash', 'Visit', 'Bequest', 'Sponsorship']}}
+2026-01-30 19:20:00 +0000 DEBUG:ELECTION_DATES: H:\GitHub\dashboard_demo\reference_files\elections.csv
+2026-01-30 19:20:00 +0000 DEBUG:cleaned_data_fname: cleaned_data.zip
+2026-01-30 19:20:00 +0000 DEBUG:TEXT_FILE: H:\GitHub\dashboard_demo\reference_files\admin_text.json
+2026-01-30 19:20:00 +0000 DEBUG:Donor_dedupe_cleaned_fname: H:\GitHub\dashboard_demo\reference_files\Donor_dedupe_cleaned_data.csv
+2026-01-30 19:20:00 +0000 DEBUG:components_dir: H:\GitHub\dashboard_demo\components
+2026-01-30 19:20:00 +0000 DEBUG:security: {'is_admin': False, 'is_authenticated': False, 'username': '', 'password': ''}
+2026-01-30 19:20:00 +0000 DEBUG:directories: {'BASE_DIR': WindowsPath('H:/GitHub/dashboard_demo'), 'data_dir': 'H:\\GitHub\\dashboard_demo\\data', 'output_dir': 'H:\\GitHub\\dashboard_demo\\output', 'logs_dir': 'H:\\GitHub\\dashboard_demo\\logs', 'reference_dir': 'H:\\GitHub\\dashboard_demo\\reference_files', 'components_dir': 'H:\\GitHub\\dashboard_demo\\components', 'app_pages_dir': 'H:\\GitHub\\dashboard_demo\\app_pages', 'utils_dir': 'H:\\GitHub\\dashboard_demo\\utils', 'source_dir': 'H:\\GitHub\\dashboard_demo\\source', 'tests_dir': 'H:\\GitHub\\dashboard_demo\\tests'}
+2026-01-30 19:20:00 +0000 DEBUG:electoral_cycle_rules: {(0, 30): 'Final Campaign Period', (31, 90): 'Campaign Build-Up', (91, 180): 'Pre-Campaign Phase', (181, 730): 'Early Cycle', (731, 3650): 'Mid-Cycle'}
+2026-01-30 19:20:00 +0000 DEBUG:LAST_MODIFIED_DATES: H:\GitHub\dashboard_demo\reference_files\last_modified_dates.json
+2026-01-30 19:20:00 +0000 DEBUG:output_dir: H:\GitHub\dashboard_demo\output
+2026-01-30 19:20:00 +0000 DEBUG:thresholds: {(0, 0): 'No Relevant Donations', (1, 1): 'Single Donation Entity', (2, 3): 'Small Entity', (4, 12): 'Medium Entity', (13, 10000): 'Large Entity'}
+2026-01-30 19:20:00 +0000 DEBUG:ListofPoliticalPeople_fname: H:\GitHub\dashboard_demo\reference_files\ListOfPoliticalPeople.csv
+2026-01-30 19:20:00 +0000 DEBUG:Cash_ftr: None
+2026-01-30 19:20:00 +0000 DEBUG:utils_dir: H:\GitHub\dashboard_demo\utils
+2026-01-30 19:20:00 +0000 DEBUG:imported_raw_fname: imported_raw.zip
+2026-01-30 19:20:00 +0000 DEBUG:filenames: {'reference_dir': {'Donor_dedupe_cleaned_fname': 'Donor_dedupe_cleaned_data.csv', 'ListofPoliticalPeople_fname': 'ListOfPoliticalPeople.csv', 'mppartymemb_fname': 'mppartymemb_pypd.csv', 'donor_map_fname': 'PoliticalDonorsDeduped.csv', 'politician_party_fname': 'ListOfPoliticalPeople_Final.csv', 'regentity_map_fname': 'PoliticalEntityDeDuped.csv', 'original_data_fname': 'original_data.csv', 'CREDENTIALS_FILE': 'admin_credentials.json', 'TEXT_FILE': 'admin_text.json', 'ELECTION_DATES': 'elections.csv', 'LAST_MODIFIED_DATES': 'last_modified_dates.json'}, '\n    "output_dir": {\n        "cleaned_data_fname": "cleaned_data.csv",\n        "cleaned_donations_fname": "cleaned_donations.csv",\n        "cleaned_donorlist_fname": "cleaned_donorlist.csv",\n        "cleaned_regentity_fname": "cleaned_regentity.csv",\n        "party_summary_fname": "party_summary.csv",\n        "imported_raw_fname": "imported_raw.csv",\n    },\n    output_dir': {'cleaned_data_fname': 'cleaned_data.zip', 'cleaned_donations_fname': 'cleaned_donations.zip', 'cleaned_donorlist_fname': 'cleaned_donorlist.zip', 'cleaned_regentity_fname': 'cleaned_regentity.zip', 'party_summary_fname': 'party_summary.zip', 'imported_raw_fname': 'imported_raw.zip'}, 'source_dir': {'source_data_fname': 'Donations_accepted_by_political_parties.zip'}}
+2026-01-30 19:20:00 +0000 DEBUG:donor_map_fname: H:\GitHub\dashboard_demo\reference_files\PoliticalDonorsDeduped.csv
+2026-01-30 19:20:00 +0000 DEBUG:data_dir: H:\GitHub\dashboard_demo\data
+2026-01-30 19:20:00 +0000 INFO:Session state Setup complete
+2026-01-30 19:20:00 +0000 INFO:initialize_session_state executed successfully
+2026-01-30 19:20:00 +0000 INFO:Package setup complete
+2026-01-30 19:20:00 +0000 INFO:setup_package executed successfully
+2026-01-30 19:20:00 +0000 INFO:Setup completed successfully.
+2026-01-30 19:20:00 +0000 DEBUG:Calling initialise_data with args={args}, kwargs={kwargs}
+2026-01-30 19:20:00 +0000 DEBUG:Calling get_git_version with args={args}, kwargs={kwargs}
+2026-01-30 19:20:03 +0000 INFO:get_git_version executed successfully
+2026-01-30 19:20:03 +0000 INFO:Running first load function.
+2026-01-30 19:20:03 +0000 DEBUG:Calling firstload with args={args}, kwargs={kwargs}
+2026-01-30 19:20:03 +0000 DEBUG:Calling get_raw_data with args={args}, kwargs={kwargs}
+2026-01-30 19:20:03 +0000 DEBUG:Calling load_raw_data with args={args}, kwargs={kwargs}
+2026-01-30 19:20:03 +0000 DEBUG:Original data file path pre raw data load: source_data_fname
+2026-01-30 19:20:03 +0000 DEBUG:Processed data file path pre raw data load: imported_raw_fname
+2026-01-30 19:20:03 +0000 DEBUG:Calling try_to_use_preprocessed_data with args={args}, kwargs={kwargs}
+2026-01-30 19:20:03 +0000 INFO:Original file path: H:\GitHub\dashboard_demo\source\Donations_accepted_by_political_parties.zip
+2026-01-30 19:20:03 +0000 INFO:Saved file path: imported_raw.zip
+2026-01-30 19:20:03 +0000 DEBUG:Calling is_file_updated with args={args}, kwargs={kwargs}
+2026-01-30 19:20:03 +0000 INFO:Checking if H:\GitHub\dashboard_demo\source\Donations_accepted_by_political_parties.zip has been updated.
+2026-01-30 19:20:03 +0000 DEBUG:Calling get_file_modification_time with args={args}, kwargs={kwargs}
+2026-01-30 19:20:03 +0000 INFO:Getting modification time for H:\GitHub\dashboard_demo\source\Donations_accepted_by_political_parties.zip
+2026-01-30 19:20:03 +0000 INFO:get_file_modification_time executed successfully
+2026-01-30 19:20:03 +0000 INFO:Current modification time: 1769774510.1556323
+2026-01-30 19:20:03 +0000 INFO:Last modification time: 1769774510.1556323
+2026-01-30 19:20:03 +0000 INFO:is_file_updated executed successfully
+2026-01-30 19:20:03 +0000 INFO:try_to_use_preprocessed_data executed successfully
+2026-01-30 19:20:03 +0000 INFO:Loading raw data...
+2026-01-30 19:20:03 +0000 DEBUG:Original data file path post raw data load: H:\GitHub\dashboard_demo\source\Donations_accepted_by_political_parties.zip
+2026-01-30 19:20:03 +0000 DEBUG:Processed data file path post raw data load: imported_raw.zip
+2026-01-30 19:20:04 +0000 INFO:Data loaded successfully. Data has 91341 rows and 29 columns
+2026-01-30 19:20:05 +0000 INFO:Data saved to imported_raw.zip
+2026-01-30 19:20:05 +0000 INFO:Data saved to sessionstate as 'raw_data'
+2026-01-30 19:20:05 +0000 DEBUG:Calling raw_data_cleanup with args={args}, kwargs={kwargs}
+2026-01-30 19:20:05 +0000 INFO:Cleaning up raw data
+2026-01-30 19:20:05 +0000 ERROR:Session state variables not initialized!
+2026-01-30 19:20:05 +0000 DEBUG:Calling try_to_use_preprocessed_data with args={args}, kwargs={kwargs}
+2026-01-30 19:20:05 +0000 INFO:Original file path: None
+2026-01-30 19:20:05 +0000 INFO:Saved file path: cleaned_donations.zip
+2026-01-30 19:20:05 +0000 ERROR:Error: originalfilepath is None!
+2026-01-30 19:20:05 +0000 INFO:try_to_use_preprocessed_data executed successfully
+2026-01-30 19:20:05 +0000 INFO:Data loaded, shape: (91341, 29)
+2026-01-30 19:20:07 +0000 DEBUG:Calling dedupe_entity_file with args={args}, kwargs={kwargs}
+2026-01-30 19:20:07 +0000 INFO:Map file regentity_map_fname exists. Proceeding with deduplication.
+2026-01-30 19:20:07 +0000 INFO:File deduplication complete, shape: ECRef                            592
+OriginalRegulatedEntityName      592
+RegulatedEntityType              592
+Value                            592
+AcceptedDate                     574
+AccountingUnitName               592
+DonorName                        592
+AccountingUnitsAsCentralParty    592
+IsSponsorship                    592
+DonorStatus                      592
+RegulatedDoneeType               592
+CompanyRegistrationNumber        592
+Postcode                         592
+DonationType                     592
+NatureOfDonation                 592
+PurposeOfVisit                   592
+DonationAction                   592
+ReceivedDate                     486
+ReportedDate                     592
+IsReportedPrePoll                423
+ReportingPeriodName              592
+IsBequest                        592
+IsAggregation                    592
+OriginalRegulatedEntityId        592
+AccountingUnitId                 592
+DonorId                          592
+CampaigningName                  592
+RegisterName                     592
+IsIrishSource                    592
+CleanedRegulatedEntityName       592
+CleanedRegulatedEntityId         592
+RegulatedEntityId                592
+RegulatedEntityName              592
+dtype: int64 records updated with new RegulatedEntityId and ECRef                            10109
+OriginalRegulatedEntityName      10109
+RegulatedEntityType              10109
+Value                            10107
+AcceptedDate                      9796
+AccountingUnitName               10109
+DonorName                        10109
+AccountingUnitsAsCentralParty    10109
+IsSponsorship                    10109
+DonorStatus                      10109
+RegulatedDoneeType               10109
+CompanyRegistrationNumber        10109
+Postcode                         10109
+DonationType                     10109
+NatureOfDonation                 10109
+PurposeOfVisit                   10109
+DonationAction                   10109
+ReceivedDate                      7075
+ReportedDate                     10099
+IsReportedPrePoll                 4878
+ReportingPeriodName              10109
+IsBequest                        10109
+IsAggregation                    10109
+OriginalRegulatedEntityId        10109
+AccountingUnitId                 10109
+DonorId                          10109
+CampaigningName                  10109
+RegisterName                     10109
+IsIrishSource                    10109
+CleanedRegulatedEntityName       10109
+CleanedRegulatedEntityId         10109
+RegulatedEntityId                10109
+RegulatedEntityName              10109
+dtype: int64 records updated with new RegulatedEntityName
+2026-01-30 19:20:07 +0000 DEBUG:File deduplication cleaned complete, shape: ECRef                            3771
+OriginalRegulatedEntityName      3771
+RegulatedEntityType              3771
+Value                            3771
+AcceptedDate                     3667
+AccountingUnitName               3771
+DonorName                        3771
+AccountingUnitsAsCentralParty    3771
+IsSponsorship                    3771
+DonorStatus                      3771
+RegulatedDoneeType               3771
+CompanyRegistrationNumber        3771
+Postcode                         3771
+DonationType                     3771
+NatureOfDonation                 3771
+PurposeOfVisit                   3771
+DonationAction                   3771
+ReceivedDate                     3297
+ReportedDate                     3771
+IsReportedPrePoll                 449
+ReportingPeriodName              3771
+IsBequest                        3771
+IsAggregation                    3771
+OriginalRegulatedEntityId        3771
+AccountingUnitId                 3771
+DonorId                          3771
+CampaigningName                  3771
+RegisterName                     3771
+IsIrishSource                    3771
+CleanedRegulatedEntityName        592
+CleanedRegulatedEntityId          592
+RegulatedEntityId                3771
+RegulatedEntityName              3771
+dtype: int64 records updated with new RegulatedEntityId and ECRef                            13288
+OriginalRegulatedEntityName      13288
+RegulatedEntityType              13288
+Value                            13286
+AcceptedDate                     12889
+AccountingUnitName               13288
+DonorName                        13288
+AccountingUnitsAsCentralParty    13288
+IsSponsorship                    13288
+DonorStatus                      13288
+RegulatedDoneeType               13288
+CompanyRegistrationNumber        13288
+Postcode                         13288
+DonationType                     13288
+NatureOfDonation                 13288
+PurposeOfVisit                   13288
+DonationAction                   13288
+ReceivedDate                      9886
+ReportedDate                     13278
+IsReportedPrePoll                 4904
+ReportingPeriodName              13288
+IsBequest                        13288
+IsAggregation                    13288
+OriginalRegulatedEntityId        13288
+AccountingUnitId                 13288
+DonorId                          13288
+CampaigningName                  13288
+RegisterName                     13288
+IsIrishSource                    13288
+CleanedRegulatedEntityName       10109
+CleanedRegulatedEntityId         10109
+RegulatedEntityId                13288
+RegulatedEntityName              13288
+dtype: int64 records updated with new RegulatedEntityName
+2026-01-30 19:20:07 +0000 INFO:File deduplication complete, shape: (91341, 33)
+2026-01-30 19:20:07 +0000 INFO:dedupe_entity_file executed successfully
+2026-01-30 19:20:07 +0000 DEBUG:Calling dedupe_entity_file with args={args}, kwargs={kwargs}
+2026-01-30 19:20:07 +0000 INFO:Map file donor_map_fname exists. Proceeding with deduplication.
+2026-01-30 19:20:07 +0000 INFO:File deduplication complete, shape: ECRef                            34082
+OriginalRegulatedEntityName      34082
+RegulatedEntityType              34082
+Value                            34079
+AcceptedDate                     33689
+AccountingUnitName               34082
+OriginalDonorName                34082
+AccountingUnitsAsCentralParty    34082
+IsSponsorship                    34082
+DonorStatus                      34082
+RegulatedDoneeType               34082
+CompanyRegistrationNumber        34082
+Postcode                         34082
+DonationType                     34082
+NatureOfDonation                 34082
+PurposeOfVisit                   34082
+DonationAction                   34082
+ReceivedDate                     32487
+ReportedDate                     34071
+IsReportedPrePoll                22707
+ReportingPeriodName              34082
+IsBequest                        34082
+IsAggregation                    34082
+OriginalRegulatedEntityId        34082
+AccountingUnitId                 34082
+OriginalDonorId                  34082
+CampaigningName                  34082
+RegisterName                     34082
+IsIrishSource                    34082
+CleanedRegulatedEntityName       34082
+CleanedRegulatedEntityId         34082
+RegulatedEntityId                34082
+RegulatedEntityName              34082
+CleanedDonorName                 34082
+CleanedDonorId                   34082
+DonorId                          34082
+DonorName                        34082
+dtype: int64 records updated with new DonorId and ECRef                            20155
+OriginalRegulatedEntityName      20155
+RegulatedEntityType              20155
+Value                            20153
+AcceptedDate                     19834
+AccountingUnitName               20155
+OriginalDonorName                20155
+AccountingUnitsAsCentralParty    20155
+IsSponsorship                    20155
+DonorStatus                      20155
+RegulatedDoneeType               20155
+CompanyRegistrationNumber        20155
+Postcode                         20155
+DonationType                     20155
+NatureOfDonation                 20155
+PurposeOfVisit                   20155
+DonationAction                   20155
+ReceivedDate                     19620
+ReportedDate                     20146
+IsReportedPrePoll                13414
+ReportingPeriodName              20155
+IsBequest                        20155
+IsAggregation                    20155
+OriginalRegulatedEntityId        20155
+AccountingUnitId                 20155
+OriginalDonorId                  20155
+CampaigningName                  20155
+RegisterName                     20155
+IsIrishSource                    20155
+CleanedRegulatedEntityName       20154
+CleanedRegulatedEntityId         20154
+RegulatedEntityId                20155
+RegulatedEntityName              20155
+CleanedDonorName                 20155
+CleanedDonorId                   20155
+DonorId                          20155
+DonorName                        20155
+dtype: int64 records updated with new DonorName
+2026-01-30 19:20:07 +0000 DEBUG:File deduplication cleaned complete, shape: ECRef                            52934
+OriginalRegulatedEntityName      52934
+RegulatedEntityType              52934
+Value                            52931
+AcceptedDate                     52138
+AccountingUnitName               52934
+OriginalDonorName                52934
+AccountingUnitsAsCentralParty    52934
+IsSponsorship                    52934
+DonorStatus                      52934
+RegulatedDoneeType               52934
+CompanyRegistrationNumber        52934
+Postcode                         52934
+DonationType                     52934
+NatureOfDonation                 52934
+PurposeOfVisit                   52934
+DonationAction                   52934
+ReceivedDate                     50532
+ReportedDate                     52923
+IsReportedPrePoll                23658
+ReportingPeriodName              52934
+IsBequest                        52934
+IsAggregation                    52934
+OriginalRegulatedEntityId        52934
+AccountingUnitId                 52934
+OriginalDonorId                  52934
+CampaigningName                  52934
+RegisterName                     52934
+IsIrishSource                    52934
+CleanedRegulatedEntityName       49804
+CleanedRegulatedEntityId         49804
+RegulatedEntityId                52934
+RegulatedEntityName              52934
+CleanedDonorName                 34082
+CleanedDonorId                   34082
+DonorId                          52934
+DonorName                        52934
+dtype: int64 records updated with new DonorId and ECRef                            39007
+OriginalRegulatedEntityName      39007
+RegulatedEntityType              39007
+Value                            39005
+AcceptedDate                     38283
+AccountingUnitName               39007
+OriginalDonorName                39007
+AccountingUnitsAsCentralParty    39007
+IsSponsorship                    39007
+DonorStatus                      39007
+RegulatedDoneeType               39007
+CompanyRegistrationNumber        39007
+Postcode                         39007
+DonationType                     39007
+NatureOfDonation                 39007
+PurposeOfVisit                   39007
+DonationAction                   39007
+ReceivedDate                     37665
+ReportedDate                     38998
+IsReportedPrePoll                14365
+ReportingPeriodName              39007
+IsBequest                        39007
+IsAggregation                    39007
+OriginalRegulatedEntityId        39007
+AccountingUnitId                 39007
+OriginalDonorId                  39007
+CampaigningName                  39007
+RegisterName                     39007
+IsIrishSource                    39007
+CleanedRegulatedEntityName       35876
+CleanedRegulatedEntityId         35876
+RegulatedEntityId                39007
+RegulatedEntityName              39007
+CleanedDonorName                 20155
+CleanedDonorId                   20155
+DonorId                          39007
+DonorName                        39007
+dtype: int64 records updated with new DonorName
+2026-01-30 19:20:07 +0000 INFO:File deduplication complete, shape: (91341, 37)
+2026-01-30 19:20:07 +0000 INFO:dedupe_entity_file executed successfully
+2026-01-30 19:20:07 +0000 INFO:Raw Data cleanup completed
+2026-01-30 19:20:07 +0000 INFO:Data shape: (91341, 37)
+2026-01-30 19:20:09 +0000 INFO:Data saved to cleaned_donations.zip
+2026-01-30 19:20:09 +0000 INFO:Data cleanup completed, shape: (91341, 37)
+2026-01-30 19:20:09 +0000 INFO:raw_data_cleanup executed successfully
+2026-01-30 19:20:09 +0000 INFO:load_raw_data executed successfully
+2026-01-30 19:20:09 +0000 INFO:get_raw_data executed successfully
+2026-01-30 19:20:09 +0000 DEBUG:st.session_state.raw_data: 91341
+2026-01-30 19:20:09 +0000 DEBUG:Calling get_cleaned_data with args={args}, kwargs={kwargs}
+2026-01-30 19:20:09 +0000 DEBUG:Calling load_cleaned_data with args={args}, kwargs={kwargs}
+2026-01-30 19:20:09 +0000 DEBUG:Rows in Raw Data: 91341
+2026-01-30 19:20:09 +0000 DEBUG:Calling try_to_use_preprocessed_data with args={args}, kwargs={kwargs}
+2026-01-30 19:20:09 +0000 INFO:Original file path: cleaned_donations.zip
+2026-01-30 19:20:09 +0000 INFO:Saved file path: cleaned_data.zip
+2026-01-30 19:20:09 +0000 DEBUG:Calling is_file_updated with args={args}, kwargs={kwargs}
+2026-01-30 19:20:09 +0000 INFO:Checking if cleaned_donations.zip has been updated.
+2026-01-30 19:20:09 +0000 DEBUG:Calling get_file_modification_time with args={args}, kwargs={kwargs}
+2026-01-30 19:20:09 +0000 INFO:Getting modification time for cleaned_donations.zip
+2026-01-30 19:20:09 +0000 WARNING:File cleaned_donations.zip does not exist.
+2026-01-30 19:20:09 +0000 INFO:get_file_modification_time executed successfully
+2026-01-30 19:20:09 +0000 INFO:Current modification time: None
+2026-01-30 19:20:09 +0000 INFO:Last modification time: 1769774510.1556323
+2026-01-30 19:20:09 +0000 WARNING:Cannot determine modification time for cleaned_donations.zip
+2026-01-30 19:20:09 +0000 INFO:is_file_updated executed successfully
+2026-01-30 19:20:09 +0000 INFO:try_to_use_preprocessed_data executed successfully
+2026-01-30 19:20:09 +0000 ERROR:Failed to load data from cleaned_donations.zip
+2026-01-30 19:20:09 +0000 INFO:Loading and cleaning data... data.clean_and_enhance
+2026-01-30 19:20:09 +0000 DEBUG:Clean Data Prep 79: streamlitdata load: 91341
+2026-01-30 19:20:10 +0000 DEBUG:Clean Data Prep 126: streamlitdata load: 91341
+2026-01-30 19:20:11 +0000 INFO:Map file regentity_map_fname exists. Proceeding with deduplication.
+2026-01-30 19:20:12 +0000 DEBUG:Clean Data Prep 204: Map Party: 91341
