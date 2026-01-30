@@ -5,6 +5,7 @@ from Visualisations import (
     plot_bar_chart
 )
 from utils.logger import log_function_call, logger
+from data.data_file_defs import normalize_string_columns_for_streamlit
 from components.calculations import (
     format_number,
     calculate_percentage,
@@ -325,6 +326,9 @@ def hlf_body():
             avg_donation_sorted["Average Donation"] = (
                 avg_donation_sorted["Average Donation"]
                 .apply(lambda x: f"£{format_number(x)}"))
+            avg_donation_sorted = normalize_string_columns_for_streamlit(
+                avg_donation_sorted
+            )
             st.dataframe(avg_donation_sorted)
         st.write("---")
 # End of hlf_body function

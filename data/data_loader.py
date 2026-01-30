@@ -23,7 +23,8 @@ def get_raw_data():
 @log_function_call
 @st.cache_data
 def get_cleaned_data():
-    return load_cleaned_data(
+    from data.data_file_defs import normalize_string_columns_for_streamlit
+    cleaned_df = load_cleaned_data(
         originaldatafilepath="cleaned_donations_fname",
         processeddatafilepath="cleaned_data_fname",
         datafile="raw_data",
@@ -31,6 +32,7 @@ def get_cleaned_data():
         output_csv=True,
         main_file="raw_data",
         cleaned_file="data_clean")
+    return normalize_string_columns_for_streamlit(cleaned_df)
 
 
 @log_function_call

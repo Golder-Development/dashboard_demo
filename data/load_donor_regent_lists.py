@@ -64,7 +64,8 @@ def load_donorList_data(main_file="data_clear",
     ]
 
     if output_csv:
-        from data.data_file_defs import save_dataframe_to_zip
+        from data.data_file_defs import save_dataframe_to_zip, normalize_string_columns_for_streamlit
+        donorlist_df = normalize_string_columns_for_streamlit(donorlist_df)
         save_dataframe_to_zip(donorlist_df, cleaneddatafilepath, index=False)
         logger.info(f"Donor data saved to {cleaneddatafilepath.replace('.csv', '.zip')}")
     logger.info("Donor Data summary completed")
@@ -135,7 +136,8 @@ def load_regulated_entity_data(
     ]
 
     if output_csv:
-        from data.data_file_defs import save_dataframe_to_zip
+        from data.data_file_defs import save_dataframe_to_zip, normalize_string_columns_for_streamlit
+        regent_df = normalize_string_columns_for_streamlit(regent_df)
         save_dataframe_to_zip(regent_df, cleaneddatafilepath, index=False)
         logger.info(f"Regulated entity data saved to {cleaneddatafilepath.replace('.csv', '.zip')}")
     logger.info("Raw Data cleanup completed")
@@ -207,7 +209,8 @@ def load_entity_summary_data(
 
     # generate CSV file of summary data
     if output_csv:
-        from data.data_file_defs import save_dataframe_to_zip
+        from data.data_file_defs import save_dataframe_to_zip, normalize_string_columns_for_streamlit
+        RegulatedEntity_df = normalize_string_columns_for_streamlit(RegulatedEntity_df)
         save_dataframe_to_zip(RegulatedEntity_df, cleaned_data_file, index=True)
         logger.info(f"Regulated entity summary saved to {cleaned_data_file.replace('.csv', '.zip')}")
     logger.info("Raw Data cleanup completed")

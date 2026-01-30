@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from data.data_file_defs import normalize_string_columns_for_streamlit
 from data.data_utils import try_to_use_preprocessed_data
 from data.data_dedupe import dedupe_entity_file
 from utils.logger import (
@@ -222,7 +223,8 @@ def raw_data_cleanup(
 
     # Save cleaned data if required
     if output_csv:
-        from data.data_file_defs import save_dataframe_to_zip
+        from data.data_file_defs import save_dataframe_to_zip, normalize_string_columns_for_streamlit
+        loaddata_df = normalize_string_columns_for_streamlit(loaddata_df)
         save_dataframe_to_zip(loaddata_df, processeddatafilepath, index=True)
         logger.info(f"Data saved to {processeddatafilepath.replace('.csv', '.zip')}")
     # Save the cleaned data to session state

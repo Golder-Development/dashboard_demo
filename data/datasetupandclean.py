@@ -104,7 +104,8 @@ def load_raw_data(main_file="raw_data",
         # Save the raw data to session state
         st.session_state.raw_data = loaddata_df
         if output_csv:
-            from data.data_file_defs import save_dataframe_to_zip
+            from data.data_file_defs import save_dataframe_to_zip, normalize_string_columns_for_streamlit
+            loaddata_df = normalize_string_columns_for_streamlit(loaddata_df)
             save_dataframe_to_zip(loaddata_df, processeddatafilepath, index=True)
             logger.info(f"Data saved to {processeddatafilepath.replace('.csv', '.zip')}")
         logger.info("Data saved to sessionstate as 'raw_data'")

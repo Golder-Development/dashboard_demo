@@ -26,22 +26,6 @@
 6. Open a new terminal and `pip3 install -r requirements.txt`
 7. Once requirements are all installed - use type 'streamlit run PoliticalPartyAnalysisDashboard.py'
 
-## Converting Existing CSV Files to ZIP
-
-To save disk space (~90% compression), run the conversion utility once:
-
-```bash
-python convert_csv_to_zip.py
-```
-
-This will automatically:
-- Compress large CSV files in `source/` and `output/` directories
-- Convert them to ZIP format
-- Remove the original CSV files
-- Display space savings summary
-
-The dashboard will automatically use ZIP files transparently - no configuration needed!
-
 ## Updating Data
 
 The dashboard automatically detects when source data has been updated and reprocesses accordingly. **Large data files are automatically stored as ZIP files to save space.**
