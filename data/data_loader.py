@@ -62,6 +62,7 @@ def get_regentity_data():
 
 @log_function_call
 def firstload():
+    from data.data_file_defs import normalize_string_columns_for_streamlit
     def load_data_to_session(key, loader_function):
         if key not in st.session_state:
             st.session_state[key] = loader_function()
@@ -71,12 +72,20 @@ def firstload():
 
     # Load and cache data correctly
     load_data_to_session("raw_data", get_raw_data)
+    if "raw_data" in st.session_state and st.session_state.raw_data is not None:
+        st.session_state.raw_data = normalize_string_columns_for_streamlit(
+            st.session_state.raw_data
+        )
     if "raw_data" not in st.session_state:
         logger.info("raw_data not in session state.")
     else:
         logger.debug("st.session_state.raw_data:"
                      f" {len(st.session_state.raw_data)}")
     load_data_to_session("data_clean", get_cleaned_data)
+    if "data_clean" in st.session_state and st.session_state.data_clean is not None:
+        st.session_state.data_clean = normalize_string_columns_for_streamlit(
+            st.session_state.data_clean
+        )
     if "data_clean" not in st.session_state:
         logger.info("data_clean not in session state.")
     else:
@@ -84,6 +93,10 @@ def firstload():
                     f" {len(st.session_state.data_clean)}")
     # load_data_to_session("data_party_sum", get_party_summary_data)
     load_data_to_session("data_donor", get_donor_data)
+    if "data_donor" in st.session_state and st.session_state.data_donor is not None:
+        st.session_state.data_donor = normalize_string_columns_for_streamlit(
+            st.session_state.data_donor
+        )
     if "data_clean" not in st.session_state:
         logger.info("data_clean not in session state.")
     else:
@@ -92,6 +105,13 @@ def firstload():
         logger.debug("st.session_state.data_clean:"
                     f" {len(st.session_state.data_clean)}")
     load_data_to_session("data_regentity", get_regentity_data)
+    if (
+        "data_regentity" in st.session_state
+        and st.session_state.data_regentity is not None
+    ):
+        st.session_state.data_regentity = normalize_string_columns_for_streamlit(
+            st.session_state.data_regentity
+        )
     if "data_clean" not in st.session_state:
         logger.info("data_clean not in session state.")
     else:

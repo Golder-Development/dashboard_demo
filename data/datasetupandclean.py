@@ -101,7 +101,9 @@ def load_raw_data(main_file="raw_data",
         logger.info(f"Data loaded successfully."
                     f" Data has {loaddata_df.shape[0]} rows "
                     f"and {loaddata_df.shape[1]} columns")
-        # Save the raw data to session state
+        # Save the raw data to session state (normalize to avoid Arrow errors)
+        from data.data_file_defs import normalize_string_columns_for_streamlit
+        loaddata_df = normalize_string_columns_for_streamlit(loaddata_df)
         st.session_state.raw_data = loaddata_df
         if output_csv:
             from data.data_file_defs import save_dataframe_to_zip, normalize_string_columns_for_streamlit
