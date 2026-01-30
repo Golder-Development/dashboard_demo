@@ -301,12 +301,10 @@ def mod_donor_type():
         )
         st.dataframe(
             grouped_data_pct,
-            use_container_width=True,
-            hide_index=True
+            use_container_width=True
         )
     else:
         st.dataframe(
             display_df,
-            use_container_width=True,
-            hide_index=True
+            use_container_width=True
         )

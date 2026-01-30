@@ -1,5 +1,6 @@
 import streamlit as st
 import plotly.express as px
+import pandas as pd
 from components.ColorMaps import political_colors
 
 
@@ -33,6 +34,26 @@ def plot_bar_line_by_year(
         st.warning("No data available to plot.")
         return
 
+    required_columns = [XValues, GroupData, YValues]
+    missing_columns = [col for col in required_columns if col not in graph_df]
+    if missing_columns:
+        st.error(
+            "Missing required columns: " + ", ".join(missing_columns)
+        )
+        return
+
+    working_df = graph_df.copy()
+    # Ensure numeric values for aggregation
+    working_df[YValues] = pd.to_numeric(working_df[YValues], errors="coerce")
+    if x_scale == "linear":
+        working_df[XValues] = pd.to_numeric(
+            working_df[XValues], errors="coerce"
+        )
+    working_df = working_df.dropna(subset=[XValues, GroupData, YValues])
+    if working_df.empty:
+        st.warning("No valid data available after cleaning.")
+        return
+
     aggregation_methods = {
         "sum": "sum",
         "avg": "mean",
@@ -51,7 +72,7 @@ def plot_bar_line_by_year(
         CalcType = "sum"
 
     grouped_data = (
-        graph_df.groupby([XValues, GroupData], observed=True)[YValues]
+        working_df.groupby([XValues, GroupData], observed=True)[YValues]
         .agg(aggregation_methods[CalcType])
         .reset_index()
     )

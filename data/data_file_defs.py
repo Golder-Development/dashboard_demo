@@ -4,6 +4,20 @@ import os
 import config
 
 
+def normalize_string_columns_for_streamlit(df):
+    """
+    Convert pandas string dtypes (e.g., string[pyarrow]) to plain object
+    to avoid Streamlit 1.19 Arrow LargeUtf8 rendering errors.
+    """
+    if df is None:
+        return df
+    for col in df.columns:
+        dtype_str = str(df[col].dtype)
+        if dtype_str.startswith("string"):
+            df[col] = df[col].astype("object")
+    return df
+
+
 def _read_csv_from_zip_or_csv(filepath):
     """Helper function to read CSV from ZIP file or regular CSV"""
     # Check if ZIP version exists
@@ -81,7 +95,7 @@ def load_source_data(originaldatafilepath):
         },
         index_col=0,
     )
-    return loaddata_df
+    return normalize_string_columns_for_streamlit(loaddata_df)
 
 
 def load_improved_raw_data(originaldatafilepath):
@@ -120,7 +134,7 @@ def load_improved_raw_data(originaldatafilepath):
         },
         index_col=0,
     )
-    return loaddata_df
+    return normalize_string_columns_for_streamlit(loaddata_df)
 
 
 def load_cleaned_donations(originaldatafilepath):
@@ -167,7 +181,7 @@ def load_cleaned_donations(originaldatafilepath):
         },
         index_col=0,)
 
-    return loaddata_df
+    return normalize_string_columns_for_streamlit(loaddata_df)
 
 
 def load_cleaned_data(originaldatafilepath):
@@ -231,12 +245,12 @@ def load_cleaned_data(originaldatafilepath):
             "QtrsSinceLastElection": "int64",
             "YrsTillNextElection": "int64",
             "YrsSinceLastElection": "int64",
-            "parliamentary_sitting": "object",
+            "parliamentary_sitting": "int64",
         },
         parse_dates=["ReceivedDate"],
         index_col=0,)
 
-    return loaddata_df
+    return normalize_string_columns_for_streamlit(loaddata_df)
 
 
 def load_donor_list(originaldatafilepath):
@@ -254,5 +268,5 @@ def load_donor_list(originaldatafilepath):
         },
         index_col="DonorId",
     )
-    
-    return loaddata_df
+
+    return normalize_string_columns_for_streamlit(loaddata_df)

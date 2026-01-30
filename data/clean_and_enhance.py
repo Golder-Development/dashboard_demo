@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 from data.data_utils import try_to_use_preprocessed_data
+from data.data_file_defs import normalize_string_columns_for_streamlit
 # from data.politicalperson import map_mp_to_party
 from components import mappings as mp
 from components import calculations as calc
@@ -574,6 +575,8 @@ def load_cleaned_data(
         ],
         axis=1,
     )
+    # Normalize string dtypes to avoid Streamlit Arrow LargeUtf8 errors
+    loadclean_df = normalize_string_columns_for_streamlit(loadclean_df)
     # Save cleaned data
     if output_csv:
         # Save the cleaned data to a CSV file for further analysis or reporting

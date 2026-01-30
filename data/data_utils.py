@@ -35,6 +35,20 @@ def try_to_use_preprocessed_data(originalfilepath,
         logger.info(f"Loading preprocessed data. Using {savedfilepath}"
                     f" dated {last_mod_time} instead of {originalfilepath}")
         return importfile(timestamp_key, savedfilepath)
+
+    # If saved file is missing, try alternate extension before giving up
+    if not os.path.exists(savedfilepath):
+        alt_path = None
+        if savedfilepath.endswith(".zip"):
+            alt_path = savedfilepath.replace(".zip", ".csv")
+        elif savedfilepath.endswith(".csv"):
+            alt_path = savedfilepath.replace(".csv", ".zip")
+        if alt_path and os.path.exists(alt_path):
+            logger.info(
+                f"Loading preprocessed data from alternate file {alt_path}"
+            )
+            return importfile(timestamp_key, alt_path)
+
     return None
 
 
@@ -82,9 +96,20 @@ def get_file_modification_time(filepath):
     logger.info(f"Getting modification time for {filepath}")
     if os.path.exists(filepath):
         return os.path.getmtime(filepath)
-    else:
-        logger.warning(f"File {filepath} does not exist.")
-        return None
+
+    # Try alternate extension if CSV/ZIP doesn't exist
+    alt_path = None
+    if filepath.endswith(".zip"):
+        alt_path = filepath.replace(".zip", ".csv")
+    elif filepath.endswith(".csv"):
+        alt_path = filepath.replace(".csv", ".zip")
+
+    if alt_path and os.path.exists(alt_path):
+        logger.info(f"Using alternate file for modification time: {alt_path}")
+        return os.path.getmtime(alt_path)
+
+    logger.warning(f"File {filepath} does not exist.")
+    return None
 
 
 @log_function_call
@@ -106,8 +131,9 @@ def is_file_updated(main_file, timestamp_key):
 
     # If file does not exist or mod time unavailable, treat as not updated
     if current_mod_time is None:
-        logger.error(f"Cannot determine modification time for {main_file}")
-        return False
+        logger.warning(f"Cannot determine modification time for {main_file}")
+        # Force reprocessing if we cannot determine file timestamp
+        return True
 
     # Check if the file has been updated
     if last_mod_time is None or (current_mod_time > last_mod_time):
@@ -130,8 +156,17 @@ def importfile(timestamp_key, savedfilepath):
     logger.info(f"Importing file from {savedfilepath}")
 
     if not os.path.exists(savedfilepath):
-        logger.error(f"File {savedfilepath} does not exist.")
-        return None
+        alt_path = None
+        if savedfilepath.endswith(".zip"):
+            alt_path = savedfilepath.replace(".zip", ".csv")
+        elif savedfilepath.endswith(".csv"):
+            alt_path = savedfilepath.replace(".csv", ".zip")
+        if alt_path and os.path.exists(alt_path):
+            logger.info(f"Using alternate file for import: {alt_path}")
+            savedfilepath = alt_path
+        else:
+            logger.error(f"File {savedfilepath} does not exist.")
+            return None
     elif os.path.getsize(savedfilepath) == 0:
         logger.error(f"File {savedfilepath} is empty.")
         return None

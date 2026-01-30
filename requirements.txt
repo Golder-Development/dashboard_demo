@@ -1,3 +1,7 @@
+streamlit== 1.19.0
+streamlit-faker
+streamlit-extras
+altair<5
 setuptools
 numpy
 scipy
@@ -8,12 +12,7 @@ plotly
 patsy
 statsmodels
 rapidfuzz
-streamlit
 pytest
 bcrypt
 pathlib
 packages/pdpy-1.0.tar.gz
-altair<5
-streamlit-faker
-streamlit-extras
-numpy >= 2

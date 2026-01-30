@@ -325,7 +325,7 @@ def hlf_body():
             avg_donation_sorted["Average Donation"] = (
                 avg_donation_sorted["Average Donation"]
                 .apply(lambda x: f"£{format_number(x)}"))
-            st.dataframe(avg_donation_sorted, hide_index=True)
+            st.dataframe(avg_donation_sorted)
         st.write("---")
 # End of hlf_body function
 # Path: app_pages/headlinefigures.py
