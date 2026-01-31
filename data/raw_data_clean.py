@@ -34,23 +34,27 @@ def raw_data_cleanup(
         loaddata_df: cleaned data file
     """
     logger.info("Cleaning up raw data")
-    # Ensure session state variables are initialized
-    if (
-        st.session_state.get(originaldatafilepath) is None
-        or st.session_state.get(processeddatafilepath) is None
-    ):
+    # Resolve file paths from session state if keys were provided
+    resolved_original = st.session_state.get(
+        originaldatafilepath, originaldatafilepath
+    )
+    resolved_processed = st.session_state.get(
+        processeddatafilepath, processeddatafilepath
+    )
+
+    if not resolved_original or not resolved_processed:
         logger.error("Session state variables not initialized!")
 
     # check if processed data file exists and is relevant to original data file
     # if it does, load the processed data file, if not undertake data cleanup
-    originaldatafilepath = st.session_state.get(originaldatafilepath)
-    processeddatafilepath = st.session_state.get(processeddatafilepath)
+    originaldatafilepath = resolved_original
+    processeddatafilepath = resolved_processed
     # Use function to check if file has been updated and if not,
     # load preprocessed data
     preloaddata_df = try_to_use_preprocessed_data(
         originalfilepath=originaldatafilepath,
         savedfilepath=processeddatafilepath,
-        timestamp_key="cleaned_raw_data_last_modified")
+        timestamp_key="cleaned_donations_last_modified")
     # Check if cached data loaded successfully and return it
     if preloaddata_df is not None:
         return preloaddata_df

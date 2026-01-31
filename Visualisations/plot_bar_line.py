@@ -33,6 +33,10 @@ def plot_bar_line_by_year(
     if graph_df is None or graph_df.empty:
         st.warning("No data available to plot.")
         return
+    
+    # CRITICAL: Normalize string columns to prevent LargeUTF8 errors
+    from data.data_file_defs import normalize_string_columns_for_streamlit
+    graph_df = normalize_string_columns_for_streamlit(graph_df.copy())
 
     required_columns = [XValues, GroupData, YValues]
     missing_columns = [col for col in required_columns if col not in graph_df]
@@ -76,6 +80,10 @@ def plot_bar_line_by_year(
         .agg(aggregation_methods[CalcType])
         .reset_index()
     )
+    
+    # Ensure the aggregated column name is correct for Plotly
+    if grouped_data.columns[-1] != YValues:
+        grouped_data = grouped_data.rename(columns={grouped_data.columns[-1]: YValues})
 
     if show_filter_box:
         with st.expander("Filter Data", expanded=True):
@@ -186,5 +194,5 @@ def plot_bar_line_by_year(
     #         else "<b>%{x}</b><br>%{y:,.0f}<br>%{legendgroup}"
     #     )
     # )
-
-    st.plotly_chart(fig, width='stretch')
+    
+    st.plotly_chart(fig, use_container_width=True)

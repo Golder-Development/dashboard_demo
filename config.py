@@ -55,16 +55,6 @@ FILENAMES = {  # "directory" : {"file_name": "file_path"}
         "ELECTION_DATES": "elections.csv",
         "LAST_MODIFIED_DATES": "last_modified_dates.json",
     },
-    '''
-    "output_dir": {
-        "cleaned_data_fname": "cleaned_data.csv",
-        "cleaned_donations_fname": "cleaned_donations.csv",
-        "cleaned_donorlist_fname": "cleaned_donorlist.csv",
-        "cleaned_regentity_fname": "cleaned_regentity.csv",
-        "party_summary_fname": "party_summary.csv",
-        "imported_raw_fname": "imported_raw.csv",
-    },
-    '''
     "output_dir": {
         "cleaned_data_fname": "cleaned_data.zip",
         "cleaned_donations_fname": "cleaned_donations.zip",

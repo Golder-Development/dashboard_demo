@@ -20,14 +20,28 @@ def normalize_string_columns_for_streamlit(df):
 
 def _read_csv_from_zip_or_csv(filepath):
     """Helper function to read CSV from ZIP file or regular CSV"""
-    # Check if ZIP version exists
-    zip_path = filepath.replace('.csv', '.zip')
+    # If a ZIP path is provided directly, read from it
+    if filepath.endswith(".zip") and os.path.exists(filepath):
+        with zipfile.ZipFile(filepath, "r") as zip_ref:
+            csv_filename = os.path.basename(filepath).replace(".zip", ".csv")
+            if csv_filename in zip_ref.namelist():
+                return zip_ref.open(csv_filename)
+            # Fall back to the first CSV found in the archive
+            for name in zip_ref.namelist():
+                if name.lower().endswith(".csv"):
+                    return zip_ref.open(name)
+
+    # Check if ZIP version exists for a CSV path
+    zip_path = filepath.replace(".csv", ".zip")
     if os.path.exists(zip_path):
-        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-            # Get the CSV filename from the original path
+        with zipfile.ZipFile(zip_path, "r") as zip_ref:
             csv_filename = os.path.basename(filepath)
-            with zip_ref.open(csv_filename) as f:
-                return f
+            if csv_filename in zip_ref.namelist():
+                return zip_ref.open(csv_filename)
+            for name in zip_ref.namelist():
+                if name.lower().endswith(".csv"):
+                    return zip_ref.open(name)
+
     # Fallback to regular CSV if ZIP doesn't exist
     return filepath
 
@@ -35,6 +49,7 @@ def _read_csv_from_zip_or_csv(filepath):
 def save_dataframe_to_zip(df, csv_filepath, index=True):
     """Helper function to save DataFrame to ZIP file"""
     # Check if csv_filepath is already a zip reference
+    csv_filepath = os.fspath(csv_filepath).strip()
     if csv_filepath.endswith('.zip'):
         zip_filepath = csv_filepath
         csv_filename = os.path.basename(csv_filepath).replace('.zip', '.csv')
@@ -46,6 +61,10 @@ def save_dataframe_to_zip(df, csv_filepath, index=True):
     if not os.path.dirname(zip_filepath):
         output_dir = config.DIRECTORIES.get("output_dir", "")
         zip_filepath = os.path.join(output_dir, zip_filepath)
+
+    # Normalize and ensure absolute path
+    zip_filepath = os.path.normpath(os.path.abspath(zip_filepath))
+    csv_filename = str(csv_filename).strip()
     
     # Create parent directory if it doesn't exist
     dir_path = os.path.dirname(zip_filepath)
@@ -62,6 +81,7 @@ def save_dataframe_to_zip(df, csv_filepath, index=True):
 def load_source_data(originaldatafilepath):
     loaddata_df = pd.read_csv(
         _read_csv_from_zip_or_csv(originaldatafilepath),
+        engine='python',
         dtype={
             "ECRef": "object",
             "RegulatedEntityName": "object",
@@ -140,6 +160,7 @@ def load_improved_raw_data(originaldatafilepath):
 def load_cleaned_donations(originaldatafilepath):
     loaddata_df = pd.read_csv(
         _read_csv_from_zip_or_csv(originaldatafilepath),
+        engine='python',
         dtype={
             "ECRef": "object",
             "OriginalRegulatedEntityName": "object",
@@ -165,18 +186,18 @@ def load_cleaned_donations(originaldatafilepath):
             "ReportingPeriodName": "object",
             "IsBequest": "object",
             "IsAggregation": "object",
-            "OriginalRegulatedEntityId": "int64",
+            "OriginalRegulatedEntityId": "Int64",
             "AccountingUnitId": "object",
-            "OriginalDonorId": "int64",
+            "OriginalDonorId": "Int64",
             "CampaigningName": "object",
             "RegisterName": "object",
             "IsIrishSource": "object",
             "CleanedRegulatedEntityName": "object",
-            "CleanedRegulatedEntityId": "int64",
-            "RegulatedEntityId": "int64",
+            "CleanedRegulatedEntityId": "Int64",
+            "RegulatedEntityId": "Int64",
             "CleanedDonorName": "object",
-            "CleanedDonorId": "int64",
-            "DonorId": "int64",
+            "CleanedDonorId": "Int64",
+            "DonorId": "Int64",
             "DonorName": "object",
         },
         index_col=0,)
@@ -187,6 +208,7 @@ def load_cleaned_donations(originaldatafilepath):
 def load_cleaned_data(originaldatafilepath):
     loaddata_df = pd.read_csv(
         _read_csv_from_zip_or_csv(originaldatafilepath),
+        engine='python',
         dtype={
             "ECRef": "object",
             "OriginalRegulatedEntityName": "object",

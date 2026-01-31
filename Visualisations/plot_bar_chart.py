@@ -36,6 +36,10 @@ def plot_custom_bar_chart(
         st.error("Data is missing or incorrect column names provided.")
         logger.error("Data is missing or incorrect column names provided.")
         return
+    
+    # CRITICAL: Normalize string columns to prevent LargeUTF8 errors
+    from data.data_file_defs import normalize_string_columns_for_streamlit
+    graph_df = normalize_string_columns_for_streamlit(graph_df.copy())
 
     # Aggregate Data
     if agg_func == "sum":
@@ -141,5 +145,5 @@ def plot_custom_bar_chart(
         )
 
     # Display in Streamlit
-    st.plotly_chart(fig, width='stretch')
+    st.plotly_chart(fig, use_container_width=True)
     logger.info("Bar chart displayed successfully.")

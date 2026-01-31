@@ -42,7 +42,7 @@ def load_cleaned_data(
     loaddata_df = try_to_use_preprocessed_data(
         originalfilepath=originaldatafilepath,
         savedfilepath=processeddatafilepath,
-        timestamp_key="load_raw_data_last_modified")
+        timestamp_key="cleaned_data_last_modified")
     if loaddata_df is None:
         logger.error(f"Failed to load data from {originaldatafilepath}")
     # Check if cached data loaded successfully and return it
