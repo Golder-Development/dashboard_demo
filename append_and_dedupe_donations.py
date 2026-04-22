@@ -3,6 +3,9 @@ Script to append new donations data and remove duplicates
 Appends Donations_accepted_by_political_parties_20260116.csv to 
 Donations_accepted_by_political_parties.csv and removes duplicates based on ECRef
 Works with both CSV and ZIP formats (automatically uses ZIP if available)
+
+IMPORTANT: This script now normalizes PyArrow string types to prevent Streamlit
+LargeUtf8 errors that were occurring after data updates.
 """
 
 import pandas as pd
@@ -16,20 +19,38 @@ MAIN_FILE = os.path.join(SOURCE_DIR, "Donations_accepted_by_political_parties.cs
 NEW_FILE = os.path.join(SOURCE_DIR, "Donations_accepted_by_political_parties_20260116.csv")
 BACKUP_FILE = os.path.join(SOURCE_DIR, f"Donations_accepted_by_political_parties_backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv")
 
+
 def read_csv_or_zip(filepath):
-    """Read CSV from either ZIP file or regular CSV"""
+    """Read CSV from either ZIP file or regular CSV, avoiding PyArrow types"""
     zip_path = filepath.replace('.csv', '.zip')
     if os.path.exists(zip_path):
         print(f"Reading from ZIP: {zip_path}")
         with zipfile.ZipFile(zip_path, 'r') as zip_ref:
             csv_filename = os.path.basename(filepath)
             with zip_ref.open(csv_filename) as f:
-                return pd.read_csv(f)
+                # Use engine='python' and dtype_backend='numpy' to avoid PyArrow
+                return pd.read_csv(f, engine='python', dtype_backend='numpy')
     elif os.path.exists(filepath):
         print(f"Reading from CSV: {filepath}")
-        return pd.read_csv(filepath)
+        # Use engine='python' and dtype_backend='numpy' to avoid PyArrow
+        return pd.read_csv(filepath, engine='python', dtype_backend='numpy')
     else:
         return None
+
+
+def normalize_string_columns(df):
+    """
+    Convert pandas string dtypes (e.g., string[pyarrow]) to plain object dtype.
+    This prevents Streamlit from encountering Arrow LargeUtf8 rendering errors.
+    """
+    if df is None:
+        return df
+    for col in df.columns:
+        dtype_str = str(df[col].dtype)
+        if dtype_str.startswith("string"):
+            df[col] = df[col].astype("object")
+    return df
+
 
 def save_to_zip(df, csv_filepath):
     """Save DataFrame to ZIP file"""
@@ -64,6 +85,7 @@ def append_and_dedupe():
     if df_main is None:
         print(f"Error: Could not read main file")
         return False
+    df_main = normalize_string_columns(df_main)
     initial_count = len(df_main)
     print(f"Main file has {initial_count:,} records")
 
@@ -72,6 +94,7 @@ def append_and_dedupe():
     if df_new is None:
         print(f"Error: Could not read new file")
         return False
+    df_new = normalize_string_columns(df_new)
     new_count = len(df_new)
     print(f"New file has {new_count:,} records")
 
@@ -103,6 +126,9 @@ def append_and_dedupe():
         cols.remove('index')
         cols = ['index'] + cols
         df_deduplicated = df_deduplicated[cols]
+
+    # Normalize string columns before saving to prevent Streamlit Arrow errors
+    df_deduplicated = normalize_string_columns(df_deduplicated)
 
     # Save the deduplicated data back to main file as ZIP
     zip_file = MAIN_FILE.replace('.csv', '.zip')
