@@ -29,7 +29,7 @@ def get_government_party(year):
     return 'Unknown'
 
 
-def extract_year_from_parliamentary_sitting(sitting):
+def extract_year_from_ParliamentarySitting(sitting):
     """Extract year from parliamentary sitting identifier"""
     try:
         return int(str(sitting))
@@ -195,9 +195,9 @@ def display_government_period_analysis(donor_df, parties_list):
     each party is in government.
     """)
 
-    # Extract year from parliamentary_sitting
-    donor_df['Year'] = donor_df['parliamentary_sitting'].apply(
-        extract_year_from_parliamentary_sitting
+    # Extract year from ParliamentarySitting
+    donor_df['Year'] = donor_df['ParliamentarySitting'].apply(
+        extract_year_from_ParliamentarySitting
     )
 
     # Get government party for each year

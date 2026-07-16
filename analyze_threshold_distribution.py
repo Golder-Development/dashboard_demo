@@ -19,24 +19,24 @@ if not cleaned_data_path.exists():
 print("Loading cleaned data...")
 df = pd.read_csv(cleaned_data_path)
 
-# Check if parliamentary_sitting column exists
-if 'parliamentary_sitting' not in df.columns:
-    print("Error: 'parliamentary_sitting' column not found in cleaned data")
+# Check if ParliamentarySitting column exists
+if 'ParliamentarySitting' not in df.columns:
+    print("Error: 'ParliamentarySitting' column not found in cleaned data")
     print(f"Available columns: {df.columns.tolist()}")
     sys.exit(1)
 
 print(f"Total rows: {len(df)}")
 print(f"Date range: {df['ReceivedDate'].min()} to {df['ReceivedDate'].max()}")
 print(f"\nParliamentary sittings found:")
-print(df['parliamentary_sitting'].unique())
+print(df['ParliamentarySitting'].unique())
 
-# Group by RegulatedEntityName and parliamentary_sitting to get donation counts
+# Group by RegulatedEntityName and ParliamentarySitting to get donation counts
 print("\n" + "="*80)
 print("ANALYZING DONATION DISTRIBUTION PER ENTITY PER PARLIAMENT")
 print("="*80)
 
 entity_parliament_counts = df.groupby(
-    ['RegulatedEntityName', 'parliamentary_sitting']
+    ['RegulatedEntityName', 'ParliamentarySitting']
 ).size().reset_index(name='donation_count')
 
 print(f"\nTotal entity-parliament combinations: {len(entity_parliament_counts)}")
@@ -150,4 +150,4 @@ for entity in total_by_entity.head(10).index:
     total = parliament_counts['donation_count'].sum()
     print(f"\n  {entity} (total: {total} donations)")
     for _, row in parliament_counts.iterrows():
-        print(f"    {str(row['parliamentary_sitting']):10s}: {row['donation_count']:3d} donations")
+        print(f"    {str(row['ParliamentarySitting']):10s}: {row['donation_count']:3d} donations")

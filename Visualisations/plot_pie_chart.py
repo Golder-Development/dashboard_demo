@@ -1,10 +1,12 @@
 import streamlit as st
 import plotly.express as px
+import pandas as pd
 from components.ColorMaps import political_colors
-from utils.logger import logger
-from utils.logger import log_function_call  # Import decorator
+from utils.plotly_v6_fix import get_plotly_safe_data, clean_plotly_figure
+from utils.logger import log_function_call, logger
 
 
+@log_function_call
 def plot_pie_chart(
     graph_df,  # df
     XValues,  # category_column
@@ -21,39 +23,16 @@ def plot_pie_chart(
     legend_title=None,
     width='stretch',
     show_filter_box=False,
-     ):
-    """
-    Creates an interactive pie chart in Streamlit using Plotly Express.
-
-    Features:
-    - Aggregates data by count or sum.
-    - Supports optional color grouping.
-    - Allows color mapping based on a dictionary when enabled.
-    - Uses an interactive donut-style chart by default.
-    - Allows full label customization for better readability.
-    - Supports multiple charts on a single Streamlit page using unique `key`.
-
-    Parameters:
-        graph_df (pd.DataFrame): The DataFrame containing the data.
-        XValues - category_column (str): Column used for grouping (categorical variable).
-        YValues - value_column (str, optional): Column for summing values.
-            If None, counts instances.
-        Title - title (str): Title of the pie chart.
-        XLabel - category_label (str): Custom label for category column in tooltips.
-        YLabel - value_label (str): Custom label for the values.
-        color_label (str): Custom label for the color column (if used).
-        color_column (str, optional): Column for color differentiation.
-        use_custom_colors (bool): Whether to apply custom colors from a
-            dictionary.
-        hole (float): Size of the hole in the middle (0 for full pie,
-            >0 for donut).
-        widget_key (str, optional): Unique key for Streamlit widgets to allow
-            multiple charts on the same page.
-        use_container_width (bool): Whether to use full width in Streamlit.
-
-    Returns:
-        None (Displays the chart in Streamlit)
-    """
+):
+    # logging debug - Piechart code - initial parameters
+    logger.debug(
+        f"plot_pie_chart called with parameters: "
+        f"XValues={XValues}, YValues={YValues}, Title={Title}, "
+        f"XLabel={XLabel}, YLabel={YLabel}, color_column={color_column}, "
+        f"use_custom_colors={use_custom_colors}, hole={hole}, "
+        f"widget_key={widget_key}, legend_title={legend_title}"
+    )
+    
     if graph_df is None or XValues not in graph_df:
         st.error("Data is missing or incorrect column name provided.")
         return
@@ -66,54 +45,71 @@ def plot_pie_chart(
     color_mapping = political_colors
 
     # Determine aggregation method
-    if YValues:
-        data = graph_df.groupby(XValues, observed=True, as_index=False)[
-            YValues
-        ].sum()
+    if YValues and YValues in graph_df:
+        # If a value column exists, sum up the values
+        data = graph_df.groupby(XValues, observed=True, as_index=False)[YValues].sum()
+        numeric_col = YValues
     else:
-        data = graph_df[XValues].YValues().reset_index()
+        # FIX 1: Use value_counts() instead of non-existent .YValues() method
+        # This safely counts occurrences of each group
+        data = graph_df[XValues].value_counts().reset_index()
+        # Columns of value_counts in modern pandas are [XValues, 'count']
         data.columns = [XValues, "count"]
-        XValues = "count"
+        numeric_col = "count"
 
     # Custom labels for tooltips
-    labels = {XValues: XLabel, YValues: YLabel}
+    labels_dict = {XValues: XLabel or XValues, numeric_col: YLabel or numeric_col}
 
     if color_column:
-        labels[color_column] = color_label
+        labels_dict[color_column] = color_label or color_column
 
     # Determine color mapping
     if use_custom_colors:
         color_discrete_map = {
-            cat: color_mapping.get(cat, "#636efa") for cat in data[XValues]
+            str(cat).strip(): color_mapping.get(str(cat).strip(), "#636efa") 
+            for cat in data[XValues].unique()
         }
     else:
         color_discrete_map = None
 
+    # --- FIX 3: SAFELY GENERATE REQUIRED COLUMNS ---
+    # We dynamically build the list depending on whether we counted or summed
+    required_columns = [XValues, numeric_col]
+    if color_column and color_column in data.columns:
+        required_columns.append(color_column)
+
+    # Check plotly version and apply fix for v6 onwards
+    chart_data = get_plotly_safe_data(data, required_columns)
+
     # Create Pie Chart
     fig = px.pie(
-        data,
+        chart_data,
         names=XValues,
-        values=YValues,
-        color=XValues if use_custom_colors else None,
+        values=numeric_col,
+        # FIX 2: Added color column parameter to ensure discrete color mapping applies correctly
+        color=XValues if use_custom_colors else None, 
         title=Title,
         hole=hole,
-        labels=XLabel,
+        labels=labels_dict,  # FIX 2: Must be passed as a dictionary, not a raw string!
         color_discrete_map=color_discrete_map,
     )
 
     # Improve layout
     fig.update_layout(
         title=dict(xanchor="center", yanchor="top", x=0.5),
-        legend=dict(orientation="h",
-                    yanchor="top",
-                    y=-0.1,
-                    xanchor="center", x=0.5),
-        legend_title=(
-            XValues
-            if XValues
-            else "Legend" if legend_title is None else legend_title
+        legend=dict(
+            orientation="h",
+            yanchor="top",
+            y=-0.1,
+            xanchor="center", 
+            x=0.5
+        ),
+        legend_title=dict(
+            text=(legend_title if legend_title else XLabel if XLabel else XValues)
         ),
     )
 
     # Display in Streamlit
-    st.plotly_chart(fig, use_container_width=True)
+    safe_fig_dict = clean_plotly_figure(fig)
+    st.plotly_chart(safe_fig_dict, use_container_width=True)
+    logger.info("Pie chart displayed successfully.")

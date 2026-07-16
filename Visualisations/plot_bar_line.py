@@ -1,6 +1,8 @@
 import streamlit as st
 import plotly.express as px
 import pandas as pd
+from utils.plotly_v6_fix import get_plotly_safe_data, clean_plotly_figure
+from utils.logger import log_function_call, logger
 from components.ColorMaps import political_colors
 
 
@@ -30,6 +32,19 @@ def plot_bar_line_by_year(
     color_map=None,  # Custom color mapping
         ):
 
+    # debug logger list all parameters indetail
+    logger.debug(
+        f"plot_bar_line_by_year called with parameters: "
+        f"XValues={XValues}, YValues={YValues}, GroupData={GroupData}, "
+        f"XLabel={XLabel}, YLabel={YLabel}, Title={Title}, "
+        f"LegendTitle={LegendTitle}, CalcType={CalcType}, ChartType={ChartType}, "
+        f"x_scale={x_scale}, y_scale={y_scale}, use_custom_colors={use_custom_colors}, "
+        f"width={width}, percentbars={percentbars}, orientation={orientation}, "
+        f"widget_key={widget_key}, show_filter_box={show_filter_box}, "
+        f"show_data_values={show_data_values}, barmode={barmode}, "
+        f"show_legend={show_legend}, color_map={color_map}"
+    )
+
     if graph_df is None or graph_df.empty:
         st.warning("No data available to plot.")
         return
@@ -46,6 +61,9 @@ def plot_bar_line_by_year(
         )
         return
 
+    # debug logger show first few rows of the dataframe
+    logger.debug(f"DataFrame head:\n{graph_df.head()}")
+
     working_df = graph_df.copy()
     # Ensure numeric values for aggregation
     working_df[YValues] = pd.to_numeric(working_df[YValues], errors="coerce")
@@ -56,8 +74,12 @@ def plot_bar_line_by_year(
     working_df = working_df.dropna(subset=[XValues, GroupData, YValues])
     if working_df.empty:
         st.warning("No valid data available after cleaning.")
+        logger.warning("Working DataFrame is empty after cleaning.")
         return
 
+    # debug logger show first few rows of the working dataframe
+    logger.debug(f"Working DataFrame head:\n{working_df.head()}")
+    
     aggregation_methods = {
         "sum": "sum",
         "avg": "mean",
@@ -80,10 +102,16 @@ def plot_bar_line_by_year(
         .agg(aggregation_methods[CalcType])
         .reset_index()
     )
+
+    # debug logger show first few rows of the grouped dataframe
+    logger.debug(f"Grouped DataFrame head:\n{grouped_data.head()}")
     
     # Ensure the aggregated column name is correct for Plotly
     if grouped_data.columns[-1] != YValues:
         grouped_data = grouped_data.rename(columns={grouped_data.columns[-1]: YValues})
+    
+    # debug logger show first few rows of the final grouped dataframe
+    logger.debug(f"Final Grouped DataFrame head:\n{grouped_data.head()}")
 
     if show_filter_box:
         with st.expander("Filter Data", expanded=True):
@@ -148,10 +176,13 @@ def plot_bar_line_by_year(
     else:
         color_map = None
 
+    # check plotly version and apply fix for v6 on
+    chart_data = get_plotly_safe_data(filtered_data, required_columns)
+
     # Plot Bar or Line Chart
     if ChartType == "Bar":
         fig = px.bar(
-            filtered_data,
+            chart_data,
             x=XValues,
             y=YValues,
             color=GroupData,
@@ -163,7 +194,7 @@ def plot_bar_line_by_year(
         )
     else:
         fig = px.line(
-            filtered_data,
+            chart_data,
             x=XValues,
             y=YValues,
             color=GroupData,
@@ -173,6 +204,9 @@ def plot_bar_line_by_year(
             color_discrete_map=color_map,
         )
 
+    # logger of fig call
+    logger.debug(f"Plotly figure created: {fig}")
+    
     # Update layout
     fig.update_layout(
         xaxis_title=XLabel,
@@ -186,7 +220,12 @@ def plot_bar_line_by_year(
                     y=-0.1, xanchor="center", x=0.5),
         title=dict(xanchor="center", yanchor="top", x=0.5),
     )
+    # logger of fig layout update
+    logger.debug("Plotly figure layout updated.")
+    # logger of final fig
+    logger.debug(f"Final Plotly figure: {fig}")
 
+    
     # fig.update_traces(
     #     hovertemplate=(
     #         "<b>%{x}</b><br>%{y:.2f}%<br>%{legendgroup}"
@@ -194,5 +233,6 @@ def plot_bar_line_by_year(
     #         else "<b>%{x}</b><br>%{y:,.0f}<br>%{legendgroup}"
     #     )
     # )
-    
-    st.plotly_chart(fig, use_container_width=True)
+
+    safe_fig_dict = clean_plotly_figure(fig)
+    st.plotly_chart(safe_fig_dict, use_container_width=True)

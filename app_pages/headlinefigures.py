@@ -188,7 +188,7 @@ def hlf_body():
                 )
                 filtered_df_sort = filtered_df_sort[
                     filtered_df_sort["DubiousData"] > 0
-                ]  
+                ]
                 filtered_df_sort = filtered_df_sort.rename(
                     columns={"DubiousData": "Data Safety Score"}
                 )

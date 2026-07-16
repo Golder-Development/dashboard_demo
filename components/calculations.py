@@ -416,7 +416,7 @@ def determine_groups_optimized(df, entity, measure, thresholds_dict, exception_d
         thresholds_dict (dict): Dictionary mapping (low, high)
         tuples to group labels.
         exception_dict(dict): Dictionary mapping entity values to exception groups.
-        groupby_column (str): Optional column to group by (e.g., 'parliamentary_sitting')
+        groupby_column (str): Optional column to group by (e.g., 'ParliamentarySitting')
                              to calculate thresholds per group instead of lifetime totals.
     Returns:
         pd.Series: A Series containing assigned groups for each row.

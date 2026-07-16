@@ -1,10 +1,12 @@
 import streamlit as st
 import plotly.express as px
 from components.ColorMaps import political_colors
+from utils.plotly_v6_fix import get_plotly_safe_data, clean_plotly_figure
 from utils.logger import logger
 from utils.logger import log_function_call  # Import decorator
 
 
+@log_function_call
 def plot_custom_bar_chart(
     graph_df,
     XValues,
@@ -25,13 +27,6 @@ def plot_custom_bar_chart(
     width='stretch',
     xaxis_sort="value_desc",  # Added option for x-axis sorting
 ):
-    """
-    Generates an interactive bar chart using Plotly Express
-    Parameters:
-    ...
-    xaxis_sort (str): Sorting for x-axis ('alphabetic_asc', 'value_desc', 'value_asc').
-    ...
-    """
     if graph_df is None or XValues not in graph_df or YValues not in graph_df:
         st.error("Data is missing or incorrect column names provided.")
         logger.error("Data is missing or incorrect column names provided.")
@@ -75,7 +70,7 @@ def plot_custom_bar_chart(
 
     logger.debug(f"Aggregated DataFrame: {df_agg}")
 
-    # Apply x-axis sorting
+    # Apply sorting rules
     if xaxis_sort == "alphabetic_asc":
         df_agg = df_agg.sort_values(by=XValues, ascending=True)
     elif xaxis_sort == "value_desc":
@@ -97,15 +92,23 @@ def plot_custom_bar_chart(
 
     # Determine color mapping
     color_discrete_map = {
-        str(cat).strip(): color_mapping.get(str(cat).strip(),
-                                            "#636efa") for cat in df_agg[color_column].unique()
+        str(cat).strip(): color_mapping.get(str(cat).strip(), "#636efa") 
+        for cat in df_agg[color_column].unique()
     }
 
     logger.debug(f"Final color_discrete_map: {color_discrete_map}")
 
+    # --- FIX 1: SAFELY GENERATE REQUIRED COLUMNS ---
+    required_columns = [XValues, YValues]
+    if group_column:
+        required_columns.append(group_column)
+
+    # Check plotly version and apply fix for v6 onwards
+    chart_data = get_plotly_safe_data(df_agg, required_columns)
+
     # Generate Bar Chart
     fig = px.bar(
-        df_agg,
+        chart_data,
         x=XValues if orientation == "v" else YValues,
         y=YValues if orientation == "v" else XValues,
         color=color_column,
@@ -113,23 +116,29 @@ def plot_custom_bar_chart(
         title=title,
         labels={XValues: XLabel or XValues, YValues: YLabel or YValues},
         color_discrete_map=color_discrete_map,
-        color_discrete_sequence=color_discrete_map,
-        orientation=orientation,
+        orientation=orientation
     )
-
-    # Adjust bar width to auto-fill x-axis with a small gap
-    fig.update_traces(width=0.9)
 
     # Debugging missing mappings
     missing_keys = [cat for cat in df_agg[XValues].unique() if cat not in color_mapping]
     logger.debug(f"Missing color mappings for: {missing_keys}")
 
-    logger.debug(f"Generated Figure: {fig}")
+    # FIX 3: Force Plotly layout to respect our pandas sort array order
+    sorted_categories = df_agg[XValues].unique().tolist()
 
     # Update layout with axis scale options
     fig.update_layout(
-        xaxis={"type": x_scale},
-        yaxis={"type": y_scale},
+        bargap=0.1,
+        xaxis={
+            "type": x_scale,
+            "categoryorder": "array" if orientation == "v" else None,
+            "categoryarray": sorted_categories if orientation == "v" else None
+        },
+        yaxis={
+            "type": y_scale,
+            "categoryorder": "array" if orientation == "h" else None,
+            "categoryarray": sorted_categories if orientation == "h" else None
+        },
         legend=dict(orientation="h", yanchor="top", y=-0.1, xanchor="center", x=0.5),
         legend_title=(legend_title if legend_title else group_column if group_column else "legend"),
         title=dict(xanchor="center", yanchor="top", x=0.5),
@@ -139,11 +148,10 @@ def plot_custom_bar_chart(
     # Apply formatting to hover text if YValues is Value
     if YValues == "Value":
         fig.update_traces(
-            hovertemplate="<b>%{x}</b><br><br>"
-            + YValues
-            + ": £%{y:,.0f}<extra></extra>"
+            hovertemplate="<b>%{x}</b><br><br>" + YValues + ": £%{y:,.0f}<extra></extra>"
         )
 
     # Display in Streamlit
-    st.plotly_chart(fig, use_container_width=True)
+    safe_fig_dict = clean_plotly_figure(fig)
+    st.plotly_chart(safe_fig_dict, use_container_width=True)
     logger.info("Bar chart displayed successfully.")

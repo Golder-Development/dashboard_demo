@@ -64,7 +64,8 @@ def raw_data_cleanup(
     logger.info(f"Data loaded, shape: {loaddata_df.shape}")
     # Remove Currency sign of Value and convert to Float
     # Handle "Value" column correctly
-    loaddata_df["Value"] = (
+    # loaddata_df["Value"] = (
+    clean_values = (        
         loaddata_df["Value"]
         .astype(str)  # Ensure values are strings before replacing
         .str.replace("Â£", "", regex=False)  # Remove encoded pound sign
@@ -75,7 +76,12 @@ def raw_data_cleanup(
     )
 
     # Convert to float safely
-    loaddata_df["Value"] = pd.to_numeric(loaddata_df["Value"], errors="coerce")
+    loaddata_df["Value"] = pd.to_numeric(clean_values, errors="coerce")
+
+    # Finally, fill ALL NaNs (including any newly coerced ones) with 0
+    loaddata_df["Value"] = loaddata_df["Value"].fillna(0)
+
+    
     # Fill missing text fields with empty strings
     columns_to_fill = [
         "PurposeOfVisit",

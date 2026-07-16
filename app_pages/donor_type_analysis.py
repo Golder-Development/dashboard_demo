@@ -48,7 +48,7 @@ def mod_donor_type():
     with col3:
         # Get unique parliamentary sittings and sort them
         available_sittings = sorted(
-            filtered_df['parliamentary_sitting'].unique()
+            filtered_df['ParliamentarySitting'].unique()
         )
         selected_sittings = st.multiselect(
             "Parliamentary Sitting",
@@ -61,7 +61,7 @@ def mod_donor_type():
     # Filter data by selected parliamentary sittings
     if selected_sittings:
         working_df = filtered_df[
-            filtered_df['parliamentary_sitting'].isin(selected_sittings)
+            filtered_df['ParliamentarySitting'].isin(selected_sittings)
         ].copy()
     else:
         st.warning("Please select at least one parliamentary sitting")

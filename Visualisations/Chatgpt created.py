@@ -15,7 +15,7 @@ df["ReceivedDate"] = pd.to_datetime(df["ReceivedDate"], errors="coerce")
 df["Year"] = df["ReceivedDate"].dt.year
 
 # Filter out partial data years (1997 and 2024)
-df_filtered = df[~df["parliamentary_sitting"].isin(
+df_filtered = df[~df["ParliamentarySitting"].isin(
     [1997, 2024]
 )].copy()
 
@@ -45,11 +45,11 @@ plt.savefig(os.path.join(output_dir,
 plt.close()
 
 # --- Determine latest reporting period ---
-if "parliamentary_sitting" in df_filtered.columns:
+if "ParliamentarySitting" in df_filtered.columns:
     period_last_dates = (
-        df_filtered.dropna(subset=["parliamentary_sitting",
+        df_filtered.dropna(subset=["ParliamentarySitting",
                                     "ReceivedDate"])
-          .groupby("parliamentary_sitting")["ReceivedDate"]
+          .groupby("ParliamentarySitting")["ReceivedDate"]
           .max()
     )
     if not period_last_dates.empty:
@@ -63,7 +63,7 @@ else:
 # (Latest Reporting Period) ---
 if latest_period is not None and "DonorStatus" in df_filtered.columns:
     period_df = df_filtered[
-        df_filtered["parliamentary_sitting"] == latest_period
+        df_filtered["ParliamentarySitting"] == latest_period
     ].copy()
     donor_party = (
         period_df.groupby(
@@ -97,23 +97,23 @@ if latest_period is not None and "DonorStatus" in df_filtered.columns:
 # --- Chart 3: Donations vs Maximum Public Funding ---
 MAX_PUBLIC_FUNDING = 340_000_000  # loaf-of-bread democracy figure
 
-if "parliamentary_sitting" in df_filtered.columns:
+if "ParliamentarySitting" in df_filtered.columns:
     cycle_totals = (
-        df_filtered.dropna(subset=["parliamentary_sitting"])
-          .groupby("parliamentary_sitting", as_index=False)["Value"]
+        df_filtered.dropna(subset=["ParliamentarySitting"])
+          .groupby("ParliamentarySitting", as_index=False)["Value"]
           .sum()
     )
 
     period_last_dates = (
-        df_filtered.dropna(subset=["parliamentary_sitting",
+        df_filtered.dropna(subset=["ParliamentarySitting",
                                     "ReceivedDate"])
-          .groupby("parliamentary_sitting")["ReceivedDate"]
+          .groupby("ParliamentarySitting")["ReceivedDate"]
           .max()
           .reset_index()
     )
     cycle_totals = cycle_totals.merge(
         period_last_dates,
-        on="parliamentary_sitting",
+        on="ParliamentarySitting",
         how="left"
     )
     cycle_totals = cycle_totals.sort_values("ReceivedDate")
@@ -131,7 +131,7 @@ if "parliamentary_sitting" in df_filtered.columns:
             width=0.4,
             label="Max Public Funding (5-year cycle)")
     plt.xticks([i + 0.2 for i in x],
-               cycle_totals["parliamentary_sitting"],
+               cycle_totals["ParliamentarySitting"],
                rotation=45,
                ha="right")
     plt.xlabel("Parliamentary Sitting")

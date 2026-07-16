@@ -267,7 +267,7 @@ def load_cleaned_data(originaldatafilepath):
             "QtrsSinceLastElection": "int64",
             "YrsTillNextElection": "int64",
             "YrsSinceLastElection": "int64",
-            "parliamentary_sitting": "int64",
+            "ParliamentarySitting": "int64",
         },
         parse_dates=["ReceivedDate"],
         index_col=0,)
