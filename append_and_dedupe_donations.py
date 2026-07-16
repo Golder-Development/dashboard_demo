@@ -1,6 +1,6 @@
 """
 Script to append new donations data and remove duplicates
-Appends Donations_accepted_by_political_parties_20260116.csv to 
+Appends Donations_accepted_by_political_parties_20260716.csv to 
 Donations_accepted_by_political_parties.csv and removes duplicates based on ECRef
 Works with both CSV and ZIP formats (automatically uses ZIP if available)
 
@@ -16,7 +16,7 @@ from datetime import datetime
 # Define file paths
 SOURCE_DIR = "source"
 MAIN_FILE = os.path.join(SOURCE_DIR, "Donations_accepted_by_political_parties.csv")
-NEW_FILE = os.path.join(SOURCE_DIR, "Donations_accepted_by_political_parties_20260116.csv")
+NEW_FILE = os.path.join(SOURCE_DIR, "Donations_accepted_by_political_parties_20260716.csv")
 BACKUP_FILE = os.path.join(SOURCE_DIR, f"Donations_accepted_by_political_parties_backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv")
 
 
@@ -29,11 +29,11 @@ def read_csv_or_zip(filepath):
             csv_filename = os.path.basename(filepath)
             with zip_ref.open(csv_filename) as f:
                 # Use engine='python' and dtype_backend='numpy' to avoid PyArrow
-                return pd.read_csv(f, engine='python', dtype_backend='numpy')
+                return pd.read_csv(f, engine='python', dtype_backend='numpy_nullable')
     elif os.path.exists(filepath):
         print(f"Reading from CSV: {filepath}")
         # Use engine='python' and dtype_backend='numpy' to avoid PyArrow
-        return pd.read_csv(filepath, engine='python', dtype_backend='numpy')
+        return pd.read_csv(filepath, engine='python', dtype_backend='numpy_nullable')
     else:
         return None
 
