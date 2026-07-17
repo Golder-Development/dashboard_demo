@@ -1,4 +1,4 @@
-streamlit== 1.19.0
+streamlit
 streamlit-faker
 streamlit-extras
 altair<5

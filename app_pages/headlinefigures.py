@@ -320,15 +320,31 @@ def hlf_body():
         with col2:
             # diplay a table of the data
             st.write("### Average Donation per Party")
+
+            # 1. Get the top 10
             avg_donation_sorted = (
-                avg_donation.sort_values(by="Average Donation",
-                                         ascending=False).head(10))
+                avg_donation["Average Donation"]
+                .sort_values(ascending=False)
+                .head(10)
+                .reset_index()  # Keep index clean
+            )
+
+            # 2. Format the numbers to currency strings
             avg_donation_sorted["Average Donation"] = (
                 avg_donation_sorted["Average Donation"]
-                .apply(lambda x: f"£{format_number(x)}"))
-            avg_donation_sorted = normalize_string_columns_for_streamlit(
-                avg_donation_sorted
+                .apply(lambda x: f"£{format_number(x)}")
             )
+
+            # 3. FORCE DOWNCAST ALL STRING COLUMNS TO OBJECT/STRING (Standard UTF-8)
+            # This overrides any PyArrow-backed 'LargeUtf8' layouts created during formatting
+            for col in avg_donation_sorted.columns:
+                if avg_donation_sorted[col].dtype == 'string' or avg_donation_sorted[col].dtype == object:
+                    avg_donation_sorted[col] = avg_donation_sorted[col].astype(str)
+
+            # 4. Fallback call to your custom normalizer (just in case)
+            avg_donation_sorted = normalize_string_columns_for_streamlit(avg_donation_sorted)
+
+            # 5. Render safely in Streamlit
             st.dataframe(avg_donation_sorted)
         st.write("---")
 # End of hlf_body function
